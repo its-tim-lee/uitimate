@@ -12,6 +12,8 @@ import { CUSTOM_COMPONENTS } from "../builder-registry";
 const BUILDER_API_KEY = import.meta.env.VITE_PUBLIC_BUILDER_KEY;
 const MODEL_NAME = "figma-imports";
 
+console.info('BUILDER_API_KEY', BUILDER_API_KEY);
+
 export default function BuilderPage() {
   const [notFound, setNotFound] = React.useState(false);
   const [content, setContent] = React.useState<BuilderContent | null>(null);

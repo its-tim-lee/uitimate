@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  Content,
+  fetchOneEntry,
+  getBuilderSearchParams,
+  isPreviewing,
+} from "@builder.io/sdk-react";
+import { CUSTOM_COMPONENTS } from "../builder-registry";
+
+const BUILDER_API_KEY = import.meta.env.VITE_PUBLIC_BUILDER_KEY;
+const MODEL_NAME = "figma-imports";
+
+const url = new URL(import.meta.url);
+const urlPath = url.pathname;
+
+let content = null;
+let notFound = false;
+
+try {
+  content = await fetchOneEntry({
+    model: MODEL_NAME,
+    apiKey: BUILDER_API_KEY,
+    userAttributes: { urlPath },
+    options: getBuilderSearchParams(url.searchParams),
+  });
+
+  if (!content && !isPreviewing(url.search)) {
+    notFound = true;
+  }
+} catch (err) {
+  console.error("Error fetching content:", err);
+  notFound = true;
+}
+---
+
+<Layout>
+  <h1>Figma Imports</h1>
+  {notFound ? (
+    <div>404 Page Not Found</div>
+  ) : (
+    <Content
+      content={content}
+      model={MODEL_NAME}
+      apiKey={BUILDER_API_KEY}
+      customComponents={CUSTOM_COMPONENTS}
+    />
+  )}
+</Layout>
