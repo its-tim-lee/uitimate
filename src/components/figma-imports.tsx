@@ -8,25 +8,23 @@ import {
 } from "@builder.io/sdk-react";
 import { CUSTOM_COMPONENTS } from "../builder-registry";
 
-// const BUILDER_API_KEY = import.meta.env.VITE_PUBLIC_BUILDER_KEY;
-const BUILDER_API_KEY = '98fbc09c6e5f46339905dae426950482';
+// Builder Public API Key set in .env file
+const BUILDER_API_KEY = import.meta.env.VITE_PUBLIC_BUILDER_KEY;
 const MODEL_NAME = "figma-imports";
 
 export default function BuilderPage() {
   const [notFound, setNotFound] = React.useState(false);
   const [content, setContent] = React.useState<BuilderContent | null>(null);
 
-
-console.log("BUILDER_API_KEY ", BUILDER_API_KEY);
   // get the page content from Builder
   React.useEffect(() => {
     fetchOneEntry({
       model: MODEL_NAME,
       apiKey: BUILDER_API_KEY,
-      options: getBuilderSearchParams(new URL(location.href).searchParams),
       userAttributes: {
         urlPath: window.location.pathname,
       },
+      options: getBuilderSearchParams(new URL(location.href).searchParams),
     })
       .then((content) => {
         if (content) {
