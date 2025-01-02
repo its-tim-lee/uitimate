@@ -2,10 +2,10 @@
 import './../styles/globals.css' // according to https://ui.shadcn.com/docs/installation/astro
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-import { SpecialButton } from '../components/SpecialButton.tsx';
+import { Alert } from '../components/components.tsx';
 ---
 
 <Layout>
-  <SpecialButton client:only="react" />
+  <Alert severity="success" client:only="react">This is a success Alert.</Alert>
 	<Welcome class="bg-blue-400" />
 </Layout>

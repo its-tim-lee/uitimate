@@ -1,3 +1,4 @@
+import { Alert } from "@mui/material";
 import type { RegisteredComponent } from "@builder.io/sdk-react";
 import {
   Accordion,
@@ -5,6 +6,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./components/ui/accordion";
+
+// import SimpleAlert from "./components/SimpleAlert";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -99,6 +102,143 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         meta: {
           ts: "any",
         },
+      },
+    ],
+  },
+  {
+    component: Alert,
+    name: "Alert",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "action",
+        type: "string",
+        meta: {
+          ts: "any",
+        },
+      },
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "any",
+        },
+      },
+      {
+        name: "classes",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "Partial<AlertClasses>",
+        },
+      },
+      {
+        name: "className",
+        type: "string",
+      },
+      {
+        name: "closeText",
+        type: "string",
+      },
+      {
+        name: "color",
+        type: "string",
+        enum: ["error", "info", "success", "warning"],
+      },
+      {
+        name: "component",
+        type: "string",
+        meta: {
+          ts: "ElementType<any, keyof IntrinsicElements>",
+        },
+      },
+      {
+        name: "components",
+        type: "string",
+        meta: {
+          ts: "{ CloseButton?: ElementType<any, keyof IntrinsicElements>; CloseIcon?: ElementType<any, keyof IntrinsicElements>; }",
+        },
+      },
+      {
+        name: "componentsProps",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "{ closeButton?: IconButtonProps; closeIcon?: SvgIconProps; }",
+        },
+      },
+      {
+        name: "elevation",
+        type: "number",
+      },
+      {
+        name: "icon",
+        type: "string",
+        meta: {
+          ts: "any",
+        },
+      },
+      {
+        name: "iconMapping",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "Partial<Record<OverridableStringUnion<AlertColor, AlertPropsColorOverrides>, any>>",
+        },
+      },
+      {
+        name: "ref",
+        type: "string",
+        meta: {
+          ts: "ComponentProps extends { ref?: infer RefType; } ? RefType : Ref<unknown>",
+        },
+      },
+      {
+        name: "severity",
+        type: "string",
+        enum: ["error", "info", "success", "warning"],
+      },
+      {
+        name: "slotProps",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "{ [P in keyof K]?: K[P]; }",
+        },
+      },
+      {
+        name: "slots",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "Partial<Slots>",
+        },
+      },
+      {
+        name: "square",
+        type: "boolean",
+      },
+      {
+        name: "style",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "CSSProperties",
+        },
+      },
+      {
+        name: "sx",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "SxProps<Theme>",
+        },
+      },
+      {
+        name: "variant",
+        type: "string",
+        enum: ["filled", "outlined", "standard"],
       },
     ],
   },

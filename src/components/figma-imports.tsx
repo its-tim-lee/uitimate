@@ -12,7 +12,7 @@ import { CUSTOM_COMPONENTS } from "../builder-registry";
 const BUILDER_API_KEY = import.meta.env.VITE_PUBLIC_BUILDER_KEY;
 const MODEL_NAME = "figma-imports";
 
-export default function BuilderPage() {
+export default function BuilderPageOld() {
   const [notFound, setNotFound] = React.useState(false);
   const [content, setContent] = React.useState<BuilderContent | null>(null);
 
