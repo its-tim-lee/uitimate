@@ -3,9 +3,11 @@ import './../styles/globals.css' // according to https://ui.shadcn.com/docs/inst
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import { Alert, Button } from '../components/components.tsx';
+import { PricingSection } from '../components/builder/pricing/PricingSection.tsx';
 ---
 
 <Layout>
+  <PricingSection client:only="react"/>
   <Button color='primary' variant="outlined" client:only="react">Text</Button>
   <Alert severity="success" client:only="react">This is a success Alert.</Alert>
 	<Welcome class="bg-blue-400" />
