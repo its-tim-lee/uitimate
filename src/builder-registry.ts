@@ -1,4 +1,4 @@
-import { Alert } from "@mui/material";
+import { Alert, Button } from "@mui/material";
 import type { RegisteredComponent } from "@builder.io/sdk-react";
 import {
   Accordion,
@@ -239,6 +239,159 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         name: "variant",
         type: "string",
         enum: ["filled", "outlined", "standard"],
+      },
+    ],
+  },
+  {
+    component: Button,
+    name: "Button",
+    override: true,
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "action",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "Ref<ButtonBaseActions>",
+        },
+      },
+      {
+        name: "centerRipple",
+        type: "boolean",
+      },
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "any",
+        },
+      },
+      {
+        name: "classes",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "Partial<ButtonClasses>",
+        },
+      },
+      {
+        name: "className",
+        type: "string",
+      },
+      {
+        name: "color",
+        type: "string",
+        enum: [
+          "error",
+          "info",
+          "inherit",
+          "primary",
+          "secondary",
+          "success",
+          "warning",
+        ],
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+      },
+      {
+        name: "disableElevation",
+        type: "boolean",
+      },
+      {
+        name: "disableFocusRipple",
+        type: "boolean",
+      },
+      {
+        name: "disableRipple",
+        type: "boolean",
+      },
+      {
+        name: "disableTouchRipple",
+        type: "boolean",
+      },
+      {
+        name: "endIcon",
+        type: "string",
+        meta: {
+          ts: "any",
+        },
+      },
+      {
+        name: "focusRipple",
+        type: "boolean",
+      },
+      {
+        name: "focusVisibleClassName",
+        type: "string",
+      },
+      {
+        name: "fullWidth",
+        type: "boolean",
+      },
+      {
+        name: "href",
+        type: "string",
+        required: false,
+      },
+      {
+        name: "LinkComponent",
+        type: "string",
+        meta: {
+          ts: "ElementType<any, keyof IntrinsicElements>",
+        },
+      },
+      {
+        name: "size",
+        type: "string",
+        enum: ["large", "medium", "small"],
+      },
+      {
+        name: "startIcon",
+        type: "string",
+        meta: {
+          ts: "any",
+        },
+      },
+      {
+        name: "style",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "CSSProperties",
+        },
+      },
+      {
+        name: "sx",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "SxProps<Theme>",
+        },
+      },
+      {
+        name: "TouchRippleProps",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "Partial<TouchRippleProps>",
+        },
+      },
+      {
+        name: "touchRippleRef",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "Ref<TouchRippleActions>",
+        },
+      },
+      {
+        name: "variant",
+        type: "string",
+        enum: ["contained", "outlined", "text"],
       },
     ],
   },

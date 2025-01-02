@@ -27,6 +27,7 @@ console.log("BUILDER_API_KEY ", BUILDER_API_KEY);
       userAttributes: {
         urlPath: window.location.pathname,
       },
+
     })
       .then((content) => {
         if (content) {
