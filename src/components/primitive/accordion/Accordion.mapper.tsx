@@ -1,5 +1,5 @@
 import { figmaMapping, type BaseFigmaProps } from "@builder.io/dev-tools/figma";
-import { Accordion } from "@/components/ui/accordion";
+import { Accordion } from "~/src/components/primitive/accordion";
 
 interface FigmaComponent extends BaseFigmaProps {}
 
@@ -11,7 +11,7 @@ figmaMapping({
         type="single"
         orientation="vertical"
         collapsible
-        className="w-full"
+        className="tw-w-full"
       >
         {figma.$children}
       </Accordion>

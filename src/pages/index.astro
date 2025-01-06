@@ -2,13 +2,17 @@
 import './../styles/globals.css' // according to https://ui.shadcn.com/docs/installation/astro
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-import { Alert, Button } from '../components/components.tsx';
 import { PricingSection } from '../components/builder/pricing/PricingSection.tsx';
+import RefTest from '../components/quick-test/RefTest.tsx';
+import { TestAlert } from '../components/quick-test/TestAlert.tsx';
+import { RadixSlot } from '../components/quick-test/RadixSlot.tsx';
 ---
 
 <Layout>
+  <RadixSlot client:only="react"/>
+  <TestAlert title="Test2" description="!!!Test2" variant="destructive" icon="lucide:terminal" client:only="react">
+  </TestAlert>
   <PricingSection client:only="react"/>
-  <Button color='primary' variant="outlined" client:only="react">Text</Button>
-  <Alert severity="success" client:only="react">This is a success Alert.</Alert>
 	<Welcome class="bg-blue-400" />
+
 </Layout>

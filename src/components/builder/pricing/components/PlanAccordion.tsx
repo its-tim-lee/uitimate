@@ -4,8 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/ui/accordion";
-import { Alert } from "@/components/components.tsx";
+} from "~/src/components/primitive/accordion";
 import { type PlanData } from "../types";
 
 interface PlanAccordionProps {
@@ -19,9 +18,6 @@ export function PlanAccordion({ plan }: PlanAccordionProps) {
       <AccordionContent>
         {plan.isRecommended ? (
           <div className="flex flex-col self-stretch p-2 w-full">
-            <Alert severity="success" className="w-full">
-              {plan.description}
-            </Alert>
             <div className="flex flex-col mt-2 w-full tracking-normal text-black">
               <div className="text-xl font-bold">{plan.price}</div>
               <div className="mt-1 text-sm">{plan.priceDetails}</div>

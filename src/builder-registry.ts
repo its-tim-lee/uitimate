@@ -1,13 +1,27 @@
-import { Alert, Button } from "@mui/material";
+/**
+ * Simply import components here even with no real registratio,
+ * that's enough to show them in the builder devtools to register
+ */
+import { Icon } from "@iconify/react";
 import type { RegisteredComponent } from "@builder.io/sdk-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./components/ui/accordion";
-
-// import SimpleAlert from "./components/SimpleAlert";
+} from "./components/primitive/accordion";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "./components/composite/alert/index.tsx";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "./components/primitive/avatar";
+import { Badge } from "./components/composite/badge";
+import { Button } from "./components/composite/button";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -108,290 +122,106 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: Alert,
     name: "Alert",
+  },
+  {
+    component: AlertDescription,
+    name: "AlertDescription",
+  },
+  {
+    component: AlertTitle,
+    name: "AlertTitle",
+  },
+  {
+    component: Avatar,
+    name: "Avatar",
     canHaveChildren: true,
     inputs: [
-      {
-        name: "action",
-        type: "string",
-        meta: {
-          ts: "any",
-        },
-      },
       {
         name: "children",
         type: "string",
         hideFromUI: true,
         meta: {
-          ts: "any",
+          ts: "ReactNode",
         },
       },
+    ],
+  },
+  {
+    component: AvatarFallback,
+    name: "AvatarFallback",
+    canHaveChildren: true,
+    inputs: [
       {
-        name: "classes",
-        type: "object",
+        name: "children",
+        type: "string",
         hideFromUI: true,
         meta: {
-          ts: "Partial<AlertClasses>",
+          ts: "ReactNode",
         },
       },
       {
-        name: "className",
-        type: "string",
-      },
-      {
-        name: "closeText",
-        type: "string",
-      },
-      {
-        name: "color",
-        type: "string",
-        enum: ["error", "info", "success", "warning"],
-      },
-      {
-        name: "component",
-        type: "string",
-        meta: {
-          ts: "ElementType<any, keyof IntrinsicElements>",
-        },
-      },
-      {
-        name: "components",
-        type: "string",
-        meta: {
-          ts: "{ CloseButton?: ElementType<any, keyof IntrinsicElements>; CloseIcon?: ElementType<any, keyof IntrinsicElements>; }",
-        },
-      },
-      {
-        name: "componentsProps",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "{ closeButton?: IconButtonProps; closeIcon?: SvgIconProps; }",
-        },
-      },
-      {
-        name: "elevation",
+        name: "delayMs",
         type: "number",
       },
+    ],
+  },
+  {
+    component: AvatarImage,
+    name: "AvatarImage",
+    canHaveChildren: true,
+    inputs: [
       {
-        name: "icon",
+        name: "children",
         type: "string",
-        meta: {
-          ts: "any",
-        },
-      },
-      {
-        name: "iconMapping",
-        type: "object",
         hideFromUI: true,
         meta: {
-          ts: "Partial<Record<OverridableStringUnion<AlertColor, AlertPropsColorOverrides>, any>>",
+          ts: "ReactNode",
         },
       },
+    ],
+  },
+  {
+    component: Badge,
+    name: "Badge",
+    canHaveChildren: true,
+    inputs: [
       {
-        name: "ref",
+        name: "children",
         type: "string",
-        meta: {
-          ts: "ComponentProps extends { ref?: infer RefType; } ? RefType : Ref<unknown>",
-        },
-      },
-      {
-        name: "severity",
-        type: "string",
-        enum: ["error", "info", "success", "warning"],
-      },
-      {
-        name: "slotProps",
-        type: "object",
         hideFromUI: true,
         meta: {
-          ts: "{ [P in keyof K]?: K[P]; }",
+          ts: "ReactNode",
         },
-      },
-      {
-        name: "slots",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "Partial<Slots>",
-        },
-      },
-      {
-        name: "square",
-        type: "boolean",
-      },
-      {
-        name: "style",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "CSSProperties",
-        },
-      },
-      {
-        name: "sx",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "SxProps<Theme>",
-        },
-      },
-      {
-        name: "variant",
-        type: "string",
-        enum: ["filled", "outlined", "standard"],
       },
     ],
   },
   {
     component: Button,
     name: "Button",
-    override: true,
     canHaveChildren: true,
     inputs: [
-      {
-        name: "action",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "Ref<ButtonBaseActions>",
-        },
-      },
-      {
-        name: "centerRipple",
-        type: "boolean",
-      },
       {
         name: "children",
         type: "string",
         hideFromUI: true,
         meta: {
-          ts: "any",
+          ts: "ReactNode",
         },
       },
+    ],
+  },
+  {
+    component: Icon,
+    name: "Icon",
+    canHaveChildren: true,
+    inputs: [
       {
-        name: "classes",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "Partial<ButtonClasses>",
-        },
-      },
-      {
-        name: "className",
-        type: "string",
-      },
-      {
-        name: "color",
-        type: "string",
-        enum: [
-          "error",
-          "info",
-          "inherit",
-          "primary",
-          "secondary",
-          "success",
-          "warning",
-        ],
-      },
-      {
-        name: "disabled",
-        type: "boolean",
-      },
-      {
-        name: "disableElevation",
-        type: "boolean",
-      },
-      {
-        name: "disableFocusRipple",
-        type: "boolean",
-      },
-      {
-        name: "disableRipple",
-        type: "boolean",
-      },
-      {
-        name: "disableTouchRipple",
-        type: "boolean",
-      },
-      {
-        name: "endIcon",
+        name: "icon",
         type: "string",
         meta: {
-          ts: "any",
+          ts: "string | IconifyIcon",
         },
-      },
-      {
-        name: "focusRipple",
-        type: "boolean",
-      },
-      {
-        name: "focusVisibleClassName",
-        type: "string",
-      },
-      {
-        name: "fullWidth",
-        type: "boolean",
-      },
-      {
-        name: "href",
-        type: "string",
-        required: false,
-      },
-      {
-        name: "LinkComponent",
-        type: "string",
-        meta: {
-          ts: "ElementType<any, keyof IntrinsicElements>",
-        },
-      },
-      {
-        name: "size",
-        type: "string",
-        enum: ["large", "medium", "small"],
-      },
-      {
-        name: "startIcon",
-        type: "string",
-        meta: {
-          ts: "any",
-        },
-      },
-      {
-        name: "style",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "CSSProperties",
-        },
-      },
-      {
-        name: "sx",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "SxProps<Theme>",
-        },
-      },
-      {
-        name: "TouchRippleProps",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "Partial<TouchRippleProps>",
-        },
-      },
-      {
-        name: "touchRippleRef",
-        type: "object",
-        hideFromUI: true,
-        meta: {
-          ts: "Ref<TouchRippleActions>",
-        },
-      },
-      {
-        name: "variant",
-        type: "string",
-        enum: ["contained", "outlined", "text"],
+        required: true,
       },
     ],
   },
