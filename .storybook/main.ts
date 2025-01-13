@@ -6,6 +6,9 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    // TODO: Caveat: this can only open VSC, not Cursor,
+    // so the compromise can be showing the code on the Storybook UI
+    "storybook-addon-source-link",
   ],
   core: {
     builder: {

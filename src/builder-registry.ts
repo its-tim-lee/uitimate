@@ -15,13 +15,30 @@ import {
   AlertDescription,
   AlertTitle,
 } from "./components/composite/alert/index.tsx";
+import { AspectRatio } from "./components/primitive/aspect-ratio";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "./components/primitive/avatar";
 import { Badge } from "./components/composite/badge";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "./components/composite/breadcrumb";
 import { Button } from "./components/composite/button";
+import { Input } from "./components/composite/input";
+import { Progress } from "./components/primitive/progress";
+import { Separator } from "./components/primitive/separator";
+import { TabsList, TabsTrigger, Tabs } from "./components/primitive/tabs";
+import { TextHeader } from "./components/composite/text-header";
+
+
+
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -29,6 +46,9 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     name: "Accordion",
     canHaveChildren: true,
     inputs: [
+      // API:https://github.com/BuilderIO/builder/blob/main/packages/core/docs/interfaces/Input.md
+      // or see https://www.builder.io/c/docs/component-api-reference#embed
+      // or https://www.builder.io/c/docs/register-components-options
       {
         name: "children",
         type: "string",
@@ -88,7 +108,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
       {
         name: "children",
         type: "string",
-        hideFromUI: true,
+        // hideFromUI: true,
         meta: {
           ts: "any",
         },
@@ -120,16 +140,75 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
+    component: Icon,
+    name: "Icon",
+    canHaveChildren: true,
+    noWrap: true,
+    inputs: [
+      {
+        name: "icon",
+        type: "string",
+        meta: {
+          ts: "string | IconifyIcon",
+        },
+        required: true,
+      },
+    ],
+  },
+  {
     component: Alert,
     name: "Alert",
+    canHaveChildren: true,
+    noWrap: true,
+    inputs: [
+      {
+        name: "prop3",
+        type: "number",
+      },
+    ]
   },
   {
     component: AlertDescription,
     name: "AlertDescription",
+    canHaveChildren: true,
+    noWrap: true,
+    inputs: [
+      {
+        name: "prop2",
+        type: "number",
+      },
+    ]
   },
   {
     component: AlertTitle,
     name: "AlertTitle",
+    noWrap: true,
+    inputs: [
+      {
+        name: "prop1",
+        type: "number",
+      },
+    ],
+    canHaveChildren: true,
+  },
+  {
+    component: AspectRatio,
+    name: "AspectRatio",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+      {
+        name: "ratio",
+        type: "number",
+      },
+    ],
   },
   {
     component: Avatar,
@@ -181,8 +260,8 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
-    component: Badge,
-    name: "Badge",
+    component: Breadcrumb,
+    name: "Breadcrumb",
     canHaveChildren: true,
     inputs: [
       {
@@ -194,35 +273,223 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         },
       },
     ],
+  },
+  {
+    component: BreadcrumbItem,
+    name: "BreadcrumbItem",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+    ],
+  },
+  {
+    component: BreadcrumbLink,
+    name: "BreadcrumbLink",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+    ],
+  },
+  {
+    component: BreadcrumbList,
+    name: "BreadcrumbList",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+    ],
+  },
+  {
+    component: BreadcrumbPage,
+    name: "BreadcrumbPage",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+    ],
+  },
+  {
+    component: BreadcrumbSeparator,
+    name: "BreadcrumbSeparator",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+    ],
+  },
+  {
+    component: Badge,
+    name: "Badge",
+    // inputs: [
+      //   {
+        //     name: "children",
+        //     type: "string",
+        //     hideFromUI: true,
+        //     meta: {
+          //       ts: "ReactNode",
+          //     },
+          //   },
+          // ],
+    canHaveChildren: true,
+    defaultChildren: [
+      {
+        '@type': '@builder.io/sdk:Element',
+        component: {
+          name: 'Text',
+          options: {
+            text: 'Badge',
+          },
+        },
+      },
+    ],
+  },
+  {
+    component: Input,
+    name: "Input",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+    ],
+  },
+  {
+    component: Progress,
+    name: "Progress",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+      {
+        name: "max",
+        type: "number",
+      },
+      {
+        name: "value",
+        type: "number",
+      },
+    ],
+  },
+  {
+    component: Separator,
+    name: "Separator",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+      {
+        name: "decorative",
+        type: "boolean",
+      },
+      {
+        name: "orientation",
+        type: "string",
+        enum: ["horizontal", "vertical"],
+      },
+    ],
+  },
+  {
+    component: Tabs,
+    name: "Tabs",
+  },
+  {
+    component: TabsList,
+    name: "TabsList",
+  },
+  {
+    component: TabsTrigger,
+    name: "TabsTrigger",
+  },
+  {
+    component: TextHeader,
+    name: "TextHeader",
   },
   {
     component: Button,
     name: "Button",
-    canHaveChildren: true,
-    inputs: [
-      {
-        name: "children",
-        type: "string",
-        hideFromUI: true,
-        meta: {
-          ts: "ReactNode",
-        },
-      },
-    ],
-  },
-  {
-    component: Icon,
-    name: "Icon",
-    canHaveChildren: true,
-    inputs: [
-      {
-        name: "icon",
-        type: "string",
-        meta: {
-          ts: "string | IconifyIcon",
-        },
-        required: true,
-      },
-    ],
+    // inputs: [
+    //   {
+    //     name: "children",
+    //     type: "string",
+    //     hideFromUI: true,
+    //     meta: {
+    //       ts: "ReactNode",
+    //     },
+    //   },
+    // ],
+    // canHaveChildren: true,
+    // defaultChildren: [
+    //   /**
+    //    * HACK:
+    //    * If this led to below error, just not use the entry on Builder Console, cuz the entry has already broken.
+    //    * Using another entry should work.
+    //    * ```
+    //    * Could not find a registered component named "Core:Fragment".
+    //    * If you registered it, is the file that registered it imported by the file that needs to render it? Error Component Stack
+    //    * ```
+    //    *
+    //    * TODO:
+    //    * Even we don't use this, it seems we still can place any Builder's built-in component via the Console.
+    //    * So maybe this is really just for presentation and nothing more.
+    //    */
+    //   {
+    //     '@type': '@builder.io/sdk:Element',
+    //     component: {
+    //       name: 'Text',
+    //       options: {
+    //         text: 'Button',
+    //       },
+    //     },
+    //   },
+    // ],
   },
 ];

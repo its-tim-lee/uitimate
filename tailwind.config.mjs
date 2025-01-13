@@ -5,6 +5,9 @@ export default {
     prefix: 'tw-',
 	theme: {
     	extend: {
+        boxShadow: {
+          'base': '0px 1px 3px 0px rgba(0, 0, 0, 0.1)'
+        },
     		borderRadius: {
     			lg: 'var(--radius)',
     			md: 'calc(var(--radius) - 2px)',

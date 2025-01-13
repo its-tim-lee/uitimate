@@ -1,0 +1,10 @@
+/**
+ * Currently this is used just for Builder.io.
+ * For some reasons, Builder's canvas will still show the default styles of <li>,
+ * which will break the UI.
+ *
+ * It also seems like Tailwind doesn't have these kind of reset styles.
+ */
+li {
+  all: unset !important;
+}

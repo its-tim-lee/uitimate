@@ -1,4 +1,5 @@
 import React from "react";
+import users from "../data/users.json";
 import {
   Content,
   fetchOneEntry,
@@ -9,7 +10,7 @@ import {
 import { CUSTOM_COMPONENTS } from "../builder-registry";
 
 // const BUILDER_API_KEY = import.meta.env.VITE_PUBLIC_BUILDER_KEY;
-const BUILDER_API_KEY = '98fbc09c6e5f46339905dae426950482';
+const BUILDER_API_KEY = '6efd0c48c4d24847b8d4855991e579f3';
 const MODEL_NAME = "figma-imports";
 
 export default function BuilderPage() {
@@ -30,6 +31,7 @@ console.log("BUILDER_API_KEY ", BUILDER_API_KEY);
 
     })
       .then((content) => {
+        console.log("content ", content);
         if (content) {
           setContent(content);
         }
@@ -38,6 +40,7 @@ console.log("BUILDER_API_KEY ", BUILDER_API_KEY);
       .catch((err) => {
         console.log("Oops: ", err);
       });
+
   }, []);
 
   // If no page is found, return
@@ -53,6 +56,9 @@ console.log("BUILDER_API_KEY ", BUILDER_API_KEY);
       <Content
         content={content}
         model={MODEL_NAME}
+        // data={{
+        //   users
+        // }}
         apiKey={BUILDER_API_KEY}
         customComponents={CUSTOM_COMPONENTS}
       />

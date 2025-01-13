@@ -14,7 +14,8 @@ const Avatar = ({ className, ...props }: ComponentProps<typeof Root>) => (
 );
 Avatar.displayName = "Avatar";
 
-const AvatarImage = ({ className, ...props }: ComponentProps<typeof Image>) => (
+// HACK: for the reason of destructuring `children` from `props`, see #2025-01-10
+const AvatarImage = ({ className, children, ...props }: ComponentProps<typeof Image>) => (
   <Image
     className={cn("tw-aspect-square tw-h-full tw-w-full", className)}
     {...props}

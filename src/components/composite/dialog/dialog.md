@@ -1,0 +1,1 @@
+While the code of dialog content can be generated from Builder, we need to manually transfer the code to use the syntax of our dialog APIs, cuz currently, there's no better (ie., reliable and fast) way than manual work.
