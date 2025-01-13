@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Root, Trigger, Portal, Close, Overlay, Content, Title, Description } from "@radix-ui/react-dialog"
-import { Icon } from "@iconify/react"
+import { Icon } from "~/src/components/compound/icon/Icon"
 import { cn } from "@/lib/utils"
 
 const Dialog = Root
@@ -83,8 +83,6 @@ DialogDescription.displayName = Description.displayName
 
 export {
   Dialog,
-  DialogPortal,
-  DialogOverlay,
   DialogTrigger,
   DialogClose,
   DialogContent,

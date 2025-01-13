@@ -34,11 +34,10 @@ import { Button } from "./components/composite/button";
 import { Input } from "./components/composite/input";
 import { Progress } from "./components/primitive/progress";
 import { Separator } from "./components/primitive/separator";
+import { Switch } from "./components/compound/Switch/Switch";
 import { TabsList, TabsTrigger, Tabs } from "./components/primitive/tabs";
 import { TextHeader } from "./components/composite/text-header";
-
-
-
+import { Toggle } from "./components/primitive/Toggle/Toggle";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -140,22 +139,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
-    component: Icon,
-    name: "Icon",
-    canHaveChildren: true,
-    noWrap: true,
-    inputs: [
-      {
-        name: "icon",
-        type: "string",
-        meta: {
-          ts: "string | IconifyIcon",
-        },
-        required: true,
-      },
-    ],
-  },
-  {
     component: Alert,
     name: "Alert",
     canHaveChildren: true,
@@ -165,7 +148,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         name: "prop3",
         type: "number",
       },
-    ]
+    ],
   },
   {
     component: AlertDescription,
@@ -177,7 +160,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         name: "prop2",
         type: "number",
       },
-    ]
+    ],
   },
   {
     component: AlertTitle,
@@ -255,6 +238,32 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         hideFromUI: true,
         meta: {
           ts: "ReactNode",
+        },
+      },
+    ],
+  },
+  {
+    component: Badge,
+    name: "Badge",
+    // inputs: [
+    //   {
+    //     name: "children",
+    //     type: "string",
+    //     hideFromUI: true,
+    //     meta: {
+    //       ts: "ReactNode",
+    //     },
+    //   },
+    // ],
+    canHaveChildren: true,
+    defaultChildren: [
+      {
+        "@type": "@builder.io/sdk:Element",
+        component: {
+          name: "Text",
+          options: {
+            text: "Badge",
+          },
         },
       },
     ],
@@ -350,28 +359,57 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
-    component: Badge,
-    name: "Badge",
+    component: Button,
+    name: "Button",
     // inputs: [
-      //   {
-        //     name: "children",
-        //     type: "string",
-        //     hideFromUI: true,
-        //     meta: {
-          //       ts: "ReactNode",
-          //     },
-          //   },
-          // ],
+    //   {
+    //     name: "children",
+    //     type: "string",
+    //     hideFromUI: true,
+    //     meta: {
+    //       ts: "ReactNode",
+    //     },
+    //   },
+    // ],
+    // canHaveChildren: true,
+    // defaultChildren: [
+    //   /**
+    //    * HACK:
+    //    * If this led to below error, just not use the entry on Builder Console, cuz the entry has already broken.
+    //    * Using another entry should work.
+    //    * ```
+    //    * Could not find a registered component named "Core:Fragment".
+    //    * If you registered it, is the file that registered it imported by the file that needs to render it? Error Component Stack
+    //    * ```
+    //    *
+    //    * TODO:
+    //    * Even we don't use this, it seems we still can place any Builder's built-in component via the Console.
+    //    * So maybe this is really just for presentation and nothing more.
+    //    */
+    //   {
+    //     '@type': '@builder.io/sdk:Element',
+    //     component: {
+    //       name: 'Text',
+    //       options: {
+    //         text: 'Button',
+    //       },
+    //     },
+    //   },
+    // ],
+  },
+  {
+    component: Icon,
+    name: "Icon",
     canHaveChildren: true,
-    defaultChildren: [
+    noWrap: true,
+    inputs: [
       {
-        '@type': '@builder.io/sdk:Element',
-        component: {
-          name: 'Text',
-          options: {
-            text: 'Badge',
-          },
+        name: "icon",
+        type: "string",
+        meta: {
+          ts: "string | IconifyIcon",
         },
+        required: true,
       },
     ],
   },
@@ -438,6 +476,29 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
+    component: Switch,
+    name: "Switch",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "checked",
+        type: "boolean",
+      },
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+      {
+        name: "required",
+        type: "boolean",
+      },
+    ],
+  },
+  {
     component: Tabs,
     name: "Tabs",
   },
@@ -454,42 +515,26 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     name: "TextHeader",
   },
   {
-    component: Button,
-    name: "Button",
-    // inputs: [
-    //   {
-    //     name: "children",
-    //     type: "string",
-    //     hideFromUI: true,
-    //     meta: {
-    //       ts: "ReactNode",
-    //     },
-    //   },
-    // ],
-    // canHaveChildren: true,
-    // defaultChildren: [
-    //   /**
-    //    * HACK:
-    //    * If this led to below error, just not use the entry on Builder Console, cuz the entry has already broken.
-    //    * Using another entry should work.
-    //    * ```
-    //    * Could not find a registered component named "Core:Fragment".
-    //    * If you registered it, is the file that registered it imported by the file that needs to render it? Error Component Stack
-    //    * ```
-    //    *
-    //    * TODO:
-    //    * Even we don't use this, it seems we still can place any Builder's built-in component via the Console.
-    //    * So maybe this is really just for presentation and nothing more.
-    //    */
-    //   {
-    //     '@type': '@builder.io/sdk:Element',
-    //     component: {
-    //       name: 'Text',
-    //       options: {
-    //         text: 'Button',
-    //       },
-    //     },
-    //   },
-    // ],
+    component: Toggle,
+    name: "Toggle",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+      {
+        name: "defaultPressed",
+        type: "boolean",
+      },
+      {
+        name: "pressed",
+        type: "boolean",
+      },
+    ],
   },
 ];

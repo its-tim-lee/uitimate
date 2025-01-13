@@ -5,10 +5,9 @@ import {
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
-  AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "./index.tsx"
+} from "./AlertDialog.tsx"
 import { Button } from "@/components/composite/button"
 
 export default {
@@ -22,6 +21,9 @@ export default {
   },
 }
 
+/**
+ * #2025-01-12
+ */
 export const Variant1 = {
   name: 'Default',
   render: () => {
@@ -31,13 +33,11 @@ export const Variant1 = {
         <Button variant="outline">Show Dialog</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
           </AlertDialogDescription>
-        </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction>Continue</AlertDialogAction>

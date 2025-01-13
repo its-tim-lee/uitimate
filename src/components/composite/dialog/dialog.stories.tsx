@@ -7,9 +7,15 @@ import {
   DialogClose,
   DialogTitle,
   DialogTrigger,
-} from "./index.tsx"
+} from "./Dialog.tsx"
 import { useState } from "react";
-
+/**
+ * AI relevant usage note:
+ *
+ * While the code of dialog content can be generated from Builder,
+ * we need to manually transfer the code to use the syntax of our dialog APIs,
+ * cuz currently, there's no better (ie., reliable and fast) way than manual work.
+ */
 export default {
   title: 'Example/Dialog',
   parameters: {
@@ -21,6 +27,14 @@ export default {
   },
 }
 
+/**
+ * #2025-01-12
+ *
+ * Below are the differneces between Dialog and AlertDialog:
+ * - AlertDialog is meant to be used in "modal" situation
+ * - AlertDialog has 2 more components: AlertDialogCancel and AlertDialogAction
+ * - AlertDialog doesn't have DialogClose
+ */
 export const Variant1 = {
   name: 'Default',
   render: () => {
@@ -28,7 +42,6 @@ export const Variant1 = {
     /**
      * The reason that only using `modal` will still cause the dialog to close when clicking outside is because
      * that is simply the common need, and that's why to make it work, we need to use `makeModalModeWork`.
-     * Or you can use AlertDialog, which is used in a critical case, so the modal mode is enabled by default.
      */
     const makeModalModeWork = (e: Event) => e.preventDefault()
     return (
