@@ -32,6 +32,7 @@ import {
 } from "./components/composite/breadcrumb";
 import { Button } from "./components/composite/button";
 import { Input } from "./components/composite/input";
+import { Menubar, MenubarMenu, MenubarTrigger , MenubarContent } from "./components/compound/menubar/Menubar";
 import { Progress } from "./components/primitive/progress";
 import { Separator } from "./components/primitive/separator";
 import { Slider } from "./components/primitive/Slider/Slider";
@@ -432,6 +433,22 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         },
       },
     ],
+  },
+  {
+    component: Menubar,
+    name: "Menubar"
+  },
+  {
+    component: MenubarTrigger,
+    name: "MenubarTrigger"
+  },
+  {
+    component: MenubarContent,
+    name: "MenubarContent"
+  },
+  {
+    component: MenubarMenu,
+    name: "MenubarMenu"
   },
   {
     component: Progress,
