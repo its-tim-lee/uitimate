@@ -40,6 +40,13 @@ import {
   MenubarContent,
 } from "./components/compound/menubar/Menubar";
 import { Progress } from "./components/primitive/progress";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "./components/primitive/Select/Select";
 import { Separator } from "./components/primitive/separator";
 import { Slider } from "./components/primitive/Slider/Slider";
 import { Switch } from "./components/compound/Switch/Switch";
@@ -483,6 +490,26 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         type: "number",
       },
     ],
+  },
+  {
+    component: Select,
+    name: "Select",
+  },
+  {
+    component: SelectValue,
+    name: "SelectValue",
+  },
+  {
+    component: SelectContent,
+    name: "SelectContent",
+  },
+  {
+    component: SelectItem,
+    name: "SelectItem",
+  },
+  {
+    component: SelectTrigger,
+    name: "SelectTrigger",
   },
   {
     component: Separator,
