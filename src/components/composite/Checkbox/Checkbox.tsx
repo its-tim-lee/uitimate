@@ -1,25 +1,25 @@
 import { type ComponentProps } from "react"
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
+import { Root, Indicator } from "@radix-ui/react-checkbox"
 import { cn } from "@/lib/utils"
-import { Icon } from "@iconify/react"
+import { Icon } from "@/components/compound/icon/Icon.tsx"
 import { SHA256 } from "crypto-js"
 import { Label } from "@/components/primitive/label/index.tsx"
 
 const Checkbox = ({ className, label, description, ...props }: CheckboxProps) => {
   const id = label && `id${SHA256(label)}`
   return <div className="tw-items-top tw-flex tw-space-x-2">
-    <CheckboxPrimitive.Root id={id} {...props}
+    <Root id={id} {...props}
       className={cn(
         "tw-peer tw-h-4 tw-w-4 tw-shrink-0 tw-rounded-sm tw-border tw-border-primary tw-shadow focus-visible:tw-outline-none focus-visible:tw-ring-1 focus-visible:tw-ring-ring disabled:tw-cursor-not-allowed disabled:tw-opacity-50 data-[state=checked]:tw-bg-primary data-[state=checked]:tw-text-primary-foreground",
         className
       )}
     >
-      <CheckboxPrimitive.Indicator
+      <Indicator
         className={cn("tw-flex tw-items-center tw-justify-center tw-text-current")}
       >
         <Icon icon="lucide:check" className="tw-h-4 tw-w-4" />
-      </CheckboxPrimitive.Indicator>
-    </CheckboxPrimitive.Root>
+      </Indicator>
+    </Root>
     {label && (
       <div className="tw-grid tw-gap-1.5 tw-leading-none">
         <Label htmlFor={id}
@@ -32,11 +32,11 @@ const Checkbox = ({ className, label, description, ...props }: CheckboxProps) =>
     )}
   </div>
 }
-Checkbox.displayName = CheckboxPrimitive.Root.displayName
+Checkbox.displayName = Root.displayName
 
 export { Checkbox }
 
-export interface CheckboxProps extends ComponentProps<typeof CheckboxPrimitive.Root> {
+export interface CheckboxProps extends ComponentProps<typeof Root> {
   label?: string
   description?: string
 }

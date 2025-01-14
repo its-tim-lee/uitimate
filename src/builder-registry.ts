@@ -44,6 +44,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "./components/primitive/ToggleGroup/ToggleGroup";
+import { Checkbox } from "./components/composite/Checkbox/Checkbox.tsx";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -556,25 +557,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: Switch,
     name: "Switch",
-    canHaveChildren: true,
-    inputs: [
-      {
-        name: "checked",
-        type: "boolean",
-      },
-      {
-        name: "children",
-        type: "string",
-        hideFromUI: true,
-        meta: {
-          ts: "ReactNode",
-        },
-      },
-      {
-        name: "required",
-        type: "boolean",
-      },
-    ],
+  },
+  {
+    component: Checkbox,
+    name: "Checkbox",
   },
   {
     component: Tabs,

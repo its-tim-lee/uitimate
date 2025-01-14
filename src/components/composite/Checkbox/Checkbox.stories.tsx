@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Checkbox } from './index.tsx';
+import { Checkbox } from './Checkbox.tsx';
 
 export default {
   title: 'Example/Checkbox',
@@ -13,15 +13,13 @@ export default {
 }
 
 export const Variant1 = {
-  name: 'Checked Initially',
+  name: 'Checked',
   render: () => {
     const [checked, setChecked] = useState(true)
     return <Checkbox
         label="This is a label"
         description="This is a description"
-        defaultChecked
-        onCheckedChange={(checked) => setChecked(checked === "indeterminate" ? false : checked)}
-        value={checked.toString()}
+        checked={checked}
       />
   },
 };
