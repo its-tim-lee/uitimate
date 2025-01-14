@@ -34,10 +34,15 @@ import { Button } from "./components/composite/button";
 import { Input } from "./components/composite/input";
 import { Progress } from "./components/primitive/progress";
 import { Separator } from "./components/primitive/separator";
+import { Slider } from "./components/primitive/Slider/Slider";
 import { Switch } from "./components/compound/Switch/Switch";
 import { TabsList, TabsTrigger, Tabs } from "./components/primitive/tabs";
 import { TextHeader } from "./components/composite/text-header";
 import { Toggle } from "./components/primitive/Toggle/Toggle";
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "./components/primitive/ToggleGroup/ToggleGroup";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -476,6 +481,62 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
+    component: Slider,
+    name: "Slider",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+      },
+      {
+        name: "inverted",
+        type: "boolean",
+      },
+      {
+        name: "max",
+        type: "number",
+      },
+      {
+        name: "min",
+        type: "number",
+      },
+      {
+        name: "minStepsBetweenThumbs",
+        type: "number",
+      },
+      {
+        name: "name",
+        type: "string",
+      },
+      {
+        name: "orientation",
+        type: "string",
+        enum: ["horizontal", "vertical"],
+      },
+      {
+        name: "step",
+        type: "number",
+      },
+      {
+        name: "value",
+        type: "object",
+        hideFromUI: true,
+        meta: {
+          ts: "number[]",
+        },
+      },
+    ],
+  },
+  {
     component: Switch,
     name: "Switch",
     canHaveChildren: true,
@@ -536,5 +597,13 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         type: "boolean",
       },
     ],
+  },
+  {
+    component: ToggleGroup,
+    name: "ToggleGroup",
+  },
+  {
+    component: ToggleGroupItem,
+    name: "ToggleGroupItem",
   },
 ];
