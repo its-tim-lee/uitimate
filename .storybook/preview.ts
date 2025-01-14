@@ -2,7 +2,6 @@
 import './global.scss';
 import { type Preview } from "@storybook/react";
 
-
 const preview: Preview = {
   parameters: {
     controls: {
@@ -16,3 +15,5 @@ const preview: Preview = {
 
 export default preview;
 
+import { listenSidebarTogglingInCanvas } from './lib/toggling-sidebar';
+export const decorators = [listenSidebarTogglingInCanvas];
