@@ -31,20 +31,26 @@ import {
   BreadcrumbSeparator,
 } from "./components/composite/breadcrumb";
 import { Button } from "./components/composite/button";
+import { Checkbox } from "./components/composite/Checkbox/Checkbox.tsx";
 import { Input } from "./components/composite/input";
-import { Menubar, MenubarMenu, MenubarTrigger , MenubarContent } from "./components/compound/menubar/Menubar";
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+} from "./components/compound/menubar/Menubar";
 import { Progress } from "./components/primitive/progress";
 import { Separator } from "./components/primitive/separator";
 import { Slider } from "./components/primitive/Slider/Slider";
 import { Switch } from "./components/compound/Switch/Switch";
 import { TabsList, TabsTrigger, Tabs } from "./components/primitive/tabs";
+import { Textarea } from "./components/primitive/Textarea/Textarea";
 import { TextHeader } from "./components/composite/text-header";
 import { Toggle } from "./components/primitive/Toggle/Toggle";
 import {
   ToggleGroup,
   ToggleGroupItem,
 } from "./components/primitive/ToggleGroup/ToggleGroup";
-import { Checkbox } from "./components/composite/Checkbox/Checkbox.tsx";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -405,6 +411,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     // ],
   },
   {
+    component: Checkbox,
+    name: "Checkbox",
+  },
+  {
     component: Icon,
     name: "Icon",
     canHaveChildren: true,
@@ -437,19 +447,19 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   },
   {
     component: Menubar,
-    name: "Menubar"
-  },
-  {
-    component: MenubarTrigger,
-    name: "MenubarTrigger"
+    name: "Menubar",
   },
   {
     component: MenubarContent,
-    name: "MenubarContent"
+    name: "MenubarContent",
   },
   {
     component: MenubarMenu,
-    name: "MenubarMenu"
+    name: "MenubarMenu",
+  },
+  {
+    component: MenubarTrigger,
+    name: "MenubarTrigger",
   },
   {
     component: Progress,
@@ -559,10 +569,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     name: "Switch",
   },
   {
-    component: Checkbox,
-    name: "Checkbox",
-  },
-  {
     component: Tabs,
     name: "Tabs",
   },
@@ -573,6 +579,21 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: TabsTrigger,
     name: "TabsTrigger",
+  },
+  {
+    component: Textarea,
+    name: "Textarea",
+    canHaveChildren: true,
+    inputs: [
+      {
+        name: "children",
+        type: "string",
+        hideFromUI: true,
+        meta: {
+          ts: "ReactNode",
+        },
+      },
+    ],
   },
   {
     component: TextHeader,
