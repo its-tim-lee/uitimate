@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Checkbox } from './Checkbox.tsx';
+import type { CheckedState } from '@radix-ui/react-checkbox';
 
 export default {
   title: 'Example/Checkbox',
@@ -15,11 +16,12 @@ export default {
 export const Variant1 = {
   name: 'Checked',
   render: () => {
-    const [checked, setChecked] = useState(true)
+    const [checked, setChecked] = useState<CheckedState>(true)
     return <Checkbox
         label="This is a label"
         description="This is a description"
         checked={checked}
+        onCheckedChange={setChecked}
       />
   },
 };

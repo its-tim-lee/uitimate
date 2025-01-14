@@ -15,11 +15,16 @@ export default {
 }
 
 export const Variant1 = {
-  name: 'Default',
+  name: 'On',
   render: () => {
     const [checked, setChecked] = useState(true)
     return (
-      <Switch checked={checked} onCheckedChange={setChecked}/>
+      <Switch
+        label="This is a label"
+        description="This is a description"
+        checked={checked}
+        onCheckedChange={setChecked}
+      />
     )
   },
 };
