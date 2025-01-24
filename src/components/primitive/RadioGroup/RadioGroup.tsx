@@ -5,19 +5,27 @@ import { Circle } from "lucide-react"
 import { Label } from "@/components/primitive/label/index.tsx"
 import { SHA256 } from "crypto-js"
 
-const RadioGroup = (
-  { className, ...props }: ComponentProps<typeof Root>) => {
-  return (
+const RadioGroup = ({ className, label, ...props }: ComponentProps<typeof Root> & { label?: string }) => {
+  const $radioGroup = (
     <Root
       className={cn("tw-grid tw-gap-2", className)}
       {...props}
     />
   )
+
+  return !label ? $radioGroup : (
+    <div className="tw-flex tw-flex-col tw-space-y-3">
+      <Label className="tw-text-sm tw-font-medium tw-leading-none">
+        {label}
+      </Label>
+      {$radioGroup}
+    </div>
+  )
 }
 
 const RadioGroupItem = (
-  { className, label, description, ...props }: RadioGroupItemProps) => {
-  const id = label && `id${SHA256(label)}`
+  { className, title, outline, ...props }: RadioGroupItemProps) => {
+  const id = title && `id${SHA256(title)}`
 
   const $radioItem = (
     <Item
@@ -34,17 +42,17 @@ const RadioGroupItem = (
     </Item>
   )
 
-  return !label ? $radioItem : (
+  return !title ? $radioItem : (
     <div className="tw-items-top tw-flex tw-space-x-2">
       {$radioItem}
-      {label && (
+      {title && (
         <div className="tw-grid tw-gap-1.5 tw-leading-none">
           <Label htmlFor={id}
             className="tw-text-sm tw-font-medium tw-leading-none peer-disabled:tw-cursor-not-allowed peer-disabled:tw-opacity-70"
           >
-            {label}
+            {title}
           </Label>
-          {description && <p className="tw-text-sm tw-text-muted-foreground">{description}</p>}
+          {outline && <p className="tw-text-sm tw-text-muted-foreground">{outline}</p>}
         </div>
       )}
     </div>
@@ -52,8 +60,8 @@ const RadioGroupItem = (
 }
 
 export interface RadioGroupItemProps extends ComponentProps<typeof Item> {
-  label?: string
-  description?: string
+  title?: string
+  outline?: string
 }
 
 RadioGroup.displayName = "RadioGroup"

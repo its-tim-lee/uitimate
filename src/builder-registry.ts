@@ -32,6 +32,14 @@ import {
 } from "./components/composite/breadcrumb";
 import { Button } from "./components/composite/button";
 import { Checkbox } from "./components/composite/Checkbox/Checkbox.tsx";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "./components/primitive/Form/Form";
 import { Input } from "./components/composite/input";
 import {
   Menubar,
@@ -41,11 +49,15 @@ import {
 } from "./components/compound/menubar/Menubar";
 import { Progress } from "./components/primitive/progress";
 import {
+  RadioGroup,
+  RadioGroupItem,
+} from "./components/primitive/RadioGroup/RadioGroup";
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "./components/primitive/Select/Select";
 import { Separator } from "./components/primitive/separator";
 import { Slider } from "./components/primitive/Slider/Slider";
@@ -58,6 +70,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "./components/primitive/ToggleGroup/ToggleGroup";
+import { Fragment } from "react";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -118,6 +131,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         },
       },
     ],
+  },
+  {
+    component: Fragment,
+    name: 'React.Fragment'
   },
   {
     component: AccordionItem,
@@ -422,6 +439,30 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     name: "Checkbox",
   },
   {
+    component: Form,
+    name: "Form",
+  },
+  {
+    component: FormControl,
+    name: "FormControl",
+  },
+  {
+    component: FormDescription,
+    name: "FormDescription",
+  },
+  {
+    component: FormItem,
+    name: "FormItem"
+  },
+  {
+    component: FormLabel,
+    name: "FormLabel",
+  },
+  {
+    component: FormMessage,
+    name: "FormMessage"
+  },
+  {
     component: Icon,
     name: "Icon",
     canHaveChildren: true,
@@ -440,17 +481,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: Input,
     name: "Input",
-    canHaveChildren: true,
-    inputs: [
-      {
-        name: "children",
-        type: "string",
-        hideFromUI: true,
-        meta: {
-          ts: "ReactNode",
-        },
-      },
-    ],
   },
   {
     component: Menubar,
@@ -492,12 +522,16 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     ],
   },
   {
-    component: Select,
-    name: "Select",
+    component: RadioGroup,
+    name: "RadioGroup",
   },
   {
-    component: SelectValue,
-    name: "SelectValue",
+    component: RadioGroupItem,
+    name: "RadioGroupItem",
+  },
+  {
+    component: Select,
+    name: "Select",
   },
   {
     component: SelectContent,
@@ -510,6 +544,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: SelectTrigger,
     name: "SelectTrigger",
+  },
+  {
+    component: SelectValue,
+    name: "SelectValue",
   },
   {
     component: Separator,
@@ -629,32 +667,16 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: Toggle,
     name: "Toggle",
-    canHaveChildren: true,
-    inputs: [
-      {
-        name: "children",
-        type: "string",
-        hideFromUI: true,
-        meta: {
-          ts: "ReactNode",
-        },
-      },
-      {
-        name: "defaultPressed",
-        type: "boolean",
-      },
-      {
-        name: "pressed",
-        type: "boolean",
-      },
-    ],
+    // noWrap: true
   },
   {
     component: ToggleGroup,
     name: "ToggleGroup",
+    // noWrap: true
   },
   {
     component: ToggleGroupItem,
     name: "ToggleGroupItem",
+    // noWrap: true
   },
 ];

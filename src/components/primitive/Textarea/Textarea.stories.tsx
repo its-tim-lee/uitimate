@@ -13,5 +13,5 @@ export default {
 
 export const Variant1 = {
   name: 'Default',
-  render: () => <Textarea placeholder="Type your message here." />
+  render: () => <Textarea label="Label" description="Description" placeholder="Type your message here." />
 };

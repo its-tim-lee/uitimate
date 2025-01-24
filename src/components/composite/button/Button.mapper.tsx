@@ -44,6 +44,7 @@ interface FigmaButtonProps extends BaseFigmaProps {
 figmaMapping({
   componentKey: "844f89f005078d22a426d175dbc98c9281d4012c",
   mapper(figma: FigmaButtonProps) {
+    console.log(figma)
     return <Button
       variant={figma.Variant?.toLowerCase() as 'default' | 'secondary' | 'ghost' | 'link' | 'outline' | 'destructive'}
       size={figma.Size?.toLowerCase() as 'default' | 'icon' | 'lg' | 'sm'}

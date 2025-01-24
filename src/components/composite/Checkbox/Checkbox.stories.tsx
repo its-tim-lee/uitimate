@@ -18,8 +18,8 @@ export const Variant1 = {
   render: () => {
     const [checked, setChecked] = useState<CheckedState>(true)
     return <Checkbox
-        label="This is a label"
-        description="This is a description"
+        title="This is a label"
+        outline="This is a description"
         checked={checked}
         onCheckedChange={setChecked}
       />

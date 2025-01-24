@@ -23,7 +23,7 @@ export default {
 export const Variant1 = {
   name: 'Default',
   render: () =>
-  <Select>
+  <Select label="Select a meal" description="Description">
     <SelectTrigger >
       <SelectValue placeholder="Select a meal" />
     </SelectTrigger>

@@ -19,13 +19,9 @@ export const Variant1 = {
   name: 'Default',
   render: () => {
     return (
-      <RadioGroup defaultValue="comfortable">
-        <div className="tw-flex tw-items-center tw-space-x-2">
-          <RadioGroupItem value="default" label="Default" description="Default description" />
-        </div>
-        <div className="tw-flex tw-items-center tw-space-x-2">
-          <RadioGroupItem value="comfortable" label="Comfortable" description="Comfortable description" />
-        </div>
+      <RadioGroup label="Select a meal" defaultValue="comfortable">
+        <RadioGroupItem value="default" title="Default" outline="Default description" />
+        <RadioGroupItem value="comfortable" title="Comfortable" outline="Comfortable description" />
       </RadioGroup>
     )
   },

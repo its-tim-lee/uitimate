@@ -5,8 +5,8 @@ import { Icon } from "@/components/compound/icon/Icon.tsx"
 import { SHA256 } from "crypto-js"
 import { Label } from "@/components/primitive/label/index.tsx"
 
-const Checkbox = ({ className, label, description, ...props }: CheckboxProps) => {
-  const id = label && `id${SHA256(label)}`
+const Checkbox = ({ className, title, outline, ...props }: CheckboxProps) => {
+  const id = title && `id${SHA256(title)}`
 
   const $checkbox = (
     <Root id={id} {...props}
@@ -23,17 +23,17 @@ const Checkbox = ({ className, label, description, ...props }: CheckboxProps) =>
     </Root>
   )
 
-  return !label ? $checkbox : (
+  return !title ? $checkbox : (
     <div className="tw-items-top tw-flex tw-space-x-2">
       {$checkbox}
-      {label && (
+      {title && (
         <div className="tw-grid tw-gap-1.5 tw-leading-none">
           <Label htmlFor={id}
             className="tw-text-sm tw-font-medium tw-leading-none peer-disabled:tw-cursor-not-allowed peer-disabled:tw-opacity-70"
           >
-            {label}
+            {title}
           </Label>
-          {description && <p className="tw-text-sm tw-text-muted-foreground">{description}</p>}
+          {outline && <div className="tw-text-sm tw-text-muted-foreground">{outline}</div>}
         </div>
       )}
     </div>
@@ -44,6 +44,6 @@ Checkbox.displayName = Root.displayName
 export { Checkbox }
 
 export interface CheckboxProps extends ComponentProps<typeof Root> {
-  label?: string
-  description?: string
+  title?: string
+  outline?: string
 }

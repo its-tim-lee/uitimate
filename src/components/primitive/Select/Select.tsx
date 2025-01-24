@@ -1,6 +1,6 @@
 import { type ComponentProps } from "react"
 import {
-  Root as Select,
+  Root,
   Group as SelectGroup,
   Value as SelectValue,
   Trigger,
@@ -17,6 +17,7 @@ import {
 } from "@radix-ui/react-select"
 import { Icon } from "@/components/compound/icon/Icon.tsx"
 import { cn } from "@/lib/utils"
+import { Label as GeneralLabel } from "@/components/primitive/label/index.tsx"
 
 const SelectTrigger = (
   { className, children, ...props }: ComponentProps<typeof Trigger>
@@ -130,6 +131,18 @@ SelectContent.displayName = Content.displayName
 SelectLabel.displayName = Label.displayName
 SelectItem.displayName = Item.displayName
 SelectSeparator.displayName = Separator.displayName
+
+const Select = ({ className, label, description, ...props }: SelectProps) => {
+  return (label || description) ? (
+    <div className={cn("tw-flex tw-flex-col tw-space-y-2", className)}>
+      {label && <GeneralLabel className="tw-text-sm tw-font-medium tw-leading-none">{label}</GeneralLabel>}
+      <Root {...props}/>
+      {description && <p className="tw-text-sm tw-text-muted-foreground">{description}</p>}
+    </div>
+  ) : <Root {...props}/>
+}
+
+type SelectProps = ComponentProps<typeof Root> & { label?: string, description?: string, className?: string }
 
 export {
   Select,

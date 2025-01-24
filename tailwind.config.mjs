@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  purge: {
+    enabled: false,
+  },
     darkMode: ['class'],
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     prefix: 'tw-',
