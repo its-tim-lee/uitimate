@@ -1,27 +1,31 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/Accordion/Accordion.tsx";
+import { Button } from "@/components/ui/Button/Button.tsx";
+import { Fragment } from "react";
+
 /**
  * Simply import components here even with no real registratio,
  * that's enough to show them in the builder devtools to register
  */
 import { Icon } from "@iconify/react";
 import type { RegisteredComponent } from "@builder.io/sdk-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./components/primitive/accordion";
+import { TextHeader } from "@/components/ui/TextHeader/TextHeader.tsx";
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "./components/composite/alert/index.tsx";
-import { AspectRatio } from "./components/primitive/aspect-ratio";
+} from "./components/ui/Alert/Alert.tsx";
+import { AspectRatio } from "./components/ui/AspectRatio/AspectRatio.tsx";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "./components/primitive/avatar";
-import { Badge } from "./components/composite/badge";
+} from "./components/ui/Avatar/Avatar.tsx";
+import { Badge } from "./components/ui/Badge/Badge.tsx";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -29,9 +33,9 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "./components/composite/breadcrumb";
-import { Button } from "./components/composite/button";
-import { Checkbox } from "./components/composite/Checkbox/Checkbox.tsx";
+} from "./components/ui/Breadcrumb/Breadcrumb.tsx";
+import { Calendar } from "./components/ui/Calendar/Calendar";
+import { Checkbox } from "./components/ui/Checkbox/Checkbox";
 import {
   Form,
   FormControl,
@@ -39,38 +43,36 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./components/primitive/Form/Form";
-import { Input } from "./components/composite/input";
+} from "./components/ui/Form/Form.tsx";
+import { Input } from "./components/ui/Input/Input.tsx";
 import {
   Menubar,
   MenubarMenu,
   MenubarTrigger,
   MenubarContent,
-} from "./components/compound/menubar/Menubar";
-import { Progress } from "./components/primitive/progress";
+} from "./components/ui/Menubar/Menubar.tsx";
+import { Progress } from "./components/ui/Progress/Progress.tsx";
 import {
   RadioGroup,
   RadioGroupItem,
-} from "./components/primitive/RadioGroup/RadioGroup";
+} from "./components/ui/RadioGroup/RadioGroup.tsx";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./components/primitive/Select/Select";
-import { Separator } from "./components/primitive/separator";
-import { Slider } from "./components/primitive/Slider/Slider";
-import { Switch } from "./components/compound/Switch/Switch";
-import { TabsList, TabsTrigger, Tabs } from "./components/primitive/tabs";
-import { Textarea } from "./components/primitive/Textarea/Textarea";
-import { TextHeader } from "./components/composite/text-header";
-import { Toggle } from "./components/primitive/Toggle/Toggle";
+} from "./components/ui/Select/Select.tsx";
+import { Separator } from "./components/ui/Separator/Separator.tsx";
+import { Slider } from "./components/ui/Slider/Slider.tsx";
+import { Switch } from "./components/ui/Switch/Switch.tsx";
+import { TabsList, TabsTrigger, Tabs } from "./components/ui/Tabs/Tabs.tsx";
+import { Textarea } from "./components/ui/Textarea/Textarea.tsx";
+import { Toggle } from "./components/ui/Toggle/Toggle.tsx";
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "./components/primitive/ToggleGroup/ToggleGroup";
-import { Fragment } from "react";
+} from "./components/ui/ToggleGroup/ToggleGroup.tsx";
 
 export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
@@ -131,10 +133,6 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         },
       },
     ],
-  },
-  {
-    component: Fragment,
-    name: 'React.Fragment'
   },
   {
     component: AccordionItem,
@@ -435,6 +433,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     // ],
   },
   {
+    component: Calendar,
+    name: "Calendar"
+  },
+  {
     component: Checkbox,
     name: "Checkbox",
   },
@@ -452,7 +454,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   },
   {
     component: FormItem,
-    name: "FormItem"
+    name: "FormItem",
   },
   {
     component: FormLabel,
@@ -460,7 +462,7 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   },
   {
     component: FormMessage,
-    name: "FormMessage"
+    name: "FormMessage",
   },
   {
     component: Icon,
@@ -528,6 +530,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: RadioGroupItem,
     name: "RadioGroupItem",
+  },
+  {
+    component: Fragment,
+    name: "React.Fragment",
   },
   {
     component: Select,

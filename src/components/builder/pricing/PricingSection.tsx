@@ -1,6 +1,11 @@
 import * as React from "react";
 import { Button } from "@mui/material";
-import { Accordion } from "~/src/components/primitive/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/Accordion/Accordion.tsx";
 import { PlanAccordion } from "./components/PlanAccordion";
 import { pricingPlans } from "./data/plans";
 

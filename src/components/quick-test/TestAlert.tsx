@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Alert, AlertTitle, AlertDescription } from "@/components/composite/alert/index";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/Alert/Alert.tsx";
 import { Icon } from "@iconify/react";
 
 interface AlertComponentProps {

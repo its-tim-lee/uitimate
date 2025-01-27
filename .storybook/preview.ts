@@ -1,7 +1,7 @@
 // this is the enviornment for the Storybook canvas
+import React from 'react';
 import './global.scss';
 import { type Preview } from "@storybook/react";
-
 const preview: Preview = {
   parameters: {
     controls: {
@@ -16,4 +16,23 @@ const preview: Preview = {
 export default preview;
 
 import { listenSidebarTogglingInCanvas } from './lib/toggling-sidebar';
-export const decorators = [listenSidebarTogglingInCanvas];
+
+const withStrictMode = (Story) => {
+  return React.createElement(
+    React.StrictMode,
+    null,
+    React.createElement(Story, null)
+  );
+};
+
+export const decorators = [
+  /**
+   * In strict mode, React will call many things twice to find out accidental impurities:
+   * - The component function
+   * - `useState`
+   *   - Initializer function
+   *   - Updater function
+   */
+  withStrictMode,
+  listenSidebarTogglingInCanvas
+];

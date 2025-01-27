@@ -1,10 +1,9 @@
-import * as React from "react";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "~/src/components/primitive/accordion";
+} from "@/components/ui/Accordion/Accordion.tsx";
 import { type PlanData } from "../types";
 
 interface PlanAccordionProps {

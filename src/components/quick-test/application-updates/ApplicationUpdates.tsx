@@ -1,7 +1,7 @@
 import * as React from "react";
 import { type UpdateOption } from "./types.ts";
 import { UPDATE_OPTIONS } from "./constants.ts";
-import { ToggleGroupItem, ToggleGroup } from "@/components/primitive/ToggleGroup/ToggleGroup";
+import { ToggleGroupItem, ToggleGroup } from "@/components/ui/ToggleGroup/ToggleGroup.tsx";
 import { Icon } from "@iconify/react";
 
 export function ApplicationUpdates() {
