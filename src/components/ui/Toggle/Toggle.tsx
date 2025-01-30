@@ -11,6 +11,7 @@ const secondary = `
   tw-bg-transparent tw-text-primary
   hover:tw-bg-accent data-[state=on]:tw-bg-accent
 `
+// TODO: implement "link" just like button
 const toggleVariants = cva(
   `tw-inline-flex tw-items-center tw-justify-center tw-gap-2 tw-rounded-md tw-text-sm tw-font-medium tw-transition-colors focus-visible:tw-outline-none focus-visible:tw-ring-1 focus-visible:tw-ring-ring disabled:tw-pointer-events-none disabled:tw-opacity-50 [&_svg]:tw-pointer-events-none [&_svg]:tw-size-4 [&_svg]:tw-shrink-0`,
   {
@@ -22,7 +23,7 @@ const toggleVariants = cva(
           hover:tw-bg-primary/80 data-[state=on]:tw-bg-primary/80
         `,
         destructive:
-        `
+          `
           tw-shadow
           tw-bg-destructive tw-text-destructive-foreground
           hover:tw-bg-destructive/80 data-[state=on]:tw-bg-destructive/80

@@ -111,19 +111,9 @@ export const Variant2 = {
     const [propA, setPropA] = useState(0)
     const [propB, setPropB] = useState(0)
     return <>
-    <Toggle pressed={false} onClick={() => setPropA(propA + 1)}>Change propA</Toggle>
-    <Toggle pressed={false} onClick={() => setPropB(propB + 1)}>Change propB</Toggle>
-    <Variant2Child propA={propA} propB={propB} />
+      <Toggle pressed={false} onClick={() => setPropA(propA + 1)}>Change propA</Toggle>
+      <Toggle pressed={false} onClick={() => setPropB(propB + 1)}>Change propB</Toggle>
+      <Variant2Child propA={propA} propB={propB} />
     </>
-  }
-}
-
-/**
- * There're times that you'd wonder that why the effect is triggered than expected.
- */
-export const Variant3 = {
-  name: "Newbie mistakes / objects and functions as Effect's dependencies",
-  render: () => {
-    return <div>Variant3</div>
   }
 }

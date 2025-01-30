@@ -35,7 +35,15 @@ import {
   BreadcrumbSeparator,
 } from "./components/ui/Breadcrumb/Breadcrumb.tsx";
 import { Calendar } from "./components/ui/Calendar/Calendar";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./components/ui/Carousel/Carousel";
 import { Checkbox } from "./components/ui/Checkbox/Checkbox";
+import { Flat } from "./components/preset/flat/index.tsx";
 import {
   Form,
   FormControl,
@@ -51,6 +59,7 @@ import {
   MenubarTrigger,
   MenubarContent,
 } from "./components/ui/Menubar/Menubar.tsx";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "./components/ui/NavigationMenu/NavigationMenu";
 import { Progress } from "./components/ui/Progress/Progress.tsx";
 import {
   RadioGroup,
@@ -64,6 +73,7 @@ import {
   SelectValue,
 } from "./components/ui/Select/Select.tsx";
 import { Separator } from "./components/ui/Separator/Separator.tsx";
+import { Skeleton } from "./components/ui/Skeleton/Skeleton.tsx";
 import { Slider } from "./components/ui/Slider/Slider.tsx";
 import { Switch } from "./components/ui/Switch/Switch.tsx";
 import { TabsList, TabsTrigger, Tabs } from "./components/ui/Tabs/Tabs.tsx";
@@ -434,11 +444,35 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   },
   {
     component: Calendar,
-    name: "Calendar"
+    name: "Calendar",
+  },
+  {
+    component: Carousel,
+    name: "Carousel",
+  },
+  {
+    component: CarouselContent,
+    name: "CarouselContent",
+  },
+  {
+    component: CarouselItem,
+    name: "CarouselItem",
+  },
+  {
+    component: CarouselNext,
+    name: "CarouselNext",
+  },
+  {
+    component: CarouselPrevious,
+    name: "CarouselPrevious",
   },
   {
     component: Checkbox,
     name: "Checkbox",
+  },
+  {
+    component: Flat,
+    name: "Flat",
   },
   {
     component: Form,
@@ -499,6 +533,26 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
   {
     component: MenubarTrigger,
     name: "MenubarTrigger",
+  },
+  {
+    component: NavigationMenu,
+    name: "NavigationMenu",
+  },
+  {
+    component: NavigationMenuItem,
+    name: "NavigationMenuItem",
+  },
+  {
+    component: NavigationMenuTrigger,
+    name: "NavigationMenuTrigger",
+  },
+  {
+    component: NavigationMenuContent,
+    name: "NavigationMenuContent",
+  },
+  {
+    component: NavigationMenuLink,
+    name: "NavigationMenuLink",
   },
   {
     component: Progress,
@@ -578,6 +632,10 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
         enum: ["horizontal", "vertical"],
       },
     ],
+  },
+  {
+    component: Skeleton,
+    name: "Skeleton",
   },
   {
     component: Slider,

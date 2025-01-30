@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Root, Trigger, Portal, Close, Overlay, Content, Title, Description } from "@radix-ui/react-dialog"
-import { Icon } from "~/src/components/compound/icon/Icon"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
 import { cn } from "@/lib/utils"
 
 const Dialog = Root
