@@ -59,7 +59,21 @@ import {
   MenubarTrigger,
   MenubarContent,
 } from "./components/ui/Menubar/Menubar.tsx";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from "./components/ui/NavigationMenu/NavigationMenu";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from "./components/ui/NavigationMenu/NavigationMenu";
+import {
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationEllipsis,
+} from "./components/ui/Pagination/Pagination";
 import { Progress } from "./components/ui/Progress/Progress.tsx";
 import {
   RadioGroup,
@@ -539,20 +553,44 @@ export const CUSTOM_COMPONENTS: RegisteredComponent[] = [
     name: "NavigationMenu",
   },
   {
+    component: NavigationMenuContent,
+    name: "NavigationMenuContent",
+  },
+  {
     component: NavigationMenuItem,
     name: "NavigationMenuItem",
+  },
+  {
+    component: NavigationMenuLink,
+    name: "NavigationMenuLink",
   },
   {
     component: NavigationMenuTrigger,
     name: "NavigationMenuTrigger",
   },
   {
-    component: NavigationMenuContent,
-    name: "NavigationMenuContent",
+    component: Pagination,
+    name: "Pagination",
   },
   {
-    component: NavigationMenuLink,
-    name: "NavigationMenuLink",
+    component: PaginationItem,
+    name: "PaginationItem"
+  },
+  {
+    component: PaginationLink,
+    name: "PaginationLink"
+  },
+  {
+    component: PaginationNext,
+    name: "PaginationNext"
+  },
+  {
+    component: PaginationPrevious,
+    name: "PaginationPrevious"
+  },
+  {
+    component: PaginationEllipsis,
+    name: "PaginationEllipsis"
   },
   {
     component: Progress,
