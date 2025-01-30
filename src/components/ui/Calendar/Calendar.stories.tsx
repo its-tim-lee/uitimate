@@ -24,7 +24,7 @@ export const Variant1 = {
         mode="single"
         selected={date}
         onSelect={setDate}
-        className="rounded-md border shadow"
+        className="tw-rounded-md tw-border tw-shadow"
       />
     )
   },
