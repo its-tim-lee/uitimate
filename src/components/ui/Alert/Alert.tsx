@@ -16,28 +16,28 @@ const alertVariants = cva(
     },
   }
 )
-interface AlertProps extends App.ComponentProps, VariantProps<typeof alertVariants> {}
+interface AlertProps extends App.ComponentProps, VariantProps<typeof alertVariants> { }
 
-const Alert = ({ className, variant, attributes, ...props }: AlertProps) => (
+const Alert = ({ className, variant, ...props }: AlertProps) => (
   <div
     role="alert"
-    className={cn(alertVariants({ variant }), attributes.className, className)}
+    className={cn(alertVariants({ variant }), className)}
     {...props}
   />
 )
 Alert.displayName = "Alert"
 
-const AlertTitle = ({ className, attributes, ...props }: App.ComponentProps) => (
+const AlertTitle = ({ className, ...props }: App.ComponentProps) => (
   <div
-    className={cn("tw-mb-1 tw-font-medium tw-leading-none tw-tracking-tight", attributes.className, className)}
+    className={cn("tw-mb-1 tw-font-medium tw-leading-none tw-tracking-tight", className)}
     {...props}
   />
 )
 AlertTitle.displayName = "AlertTitle"
 
-const AlertDescription = ({ className, attributes, ...props }: App.ComponentProps) => (
+const AlertDescription = ({ className, ...props }: App.ComponentProps) => (
   <div
-    className={cn("tw-text-sm [&_p]:tw-leading-relaxed", attributes.className, className)}
+    className={cn("tw-text-sm [&_p]:tw-leading-relaxed", className)}
     {...props}
   />
 )

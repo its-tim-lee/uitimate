@@ -1,19 +1,24 @@
 ---
-import '~/helpers/styles/index.scss' // according to https://ui.shadcn.com/docs/installation/astro
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import { PricingSection } from '../components/builder/pricing/PricingSection.tsx';
-import RefTest from '../components/quick-test/RefTest.tsx';
-import { TestAlert } from '../components/quick-test/TestAlert.tsx';
-import { RadixSlot } from '../components/quick-test/RadixSlot.tsx';
-
+import "~/helpers/styles/index.scss"; // according to https://ui.shadcn.com/docs/installation/astro
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import { PricingSection } from "../components/builder/pricing/PricingSection.tsx";
+import RefTest from "../components/quick-test/RefTest.tsx";
+import { TestAlert } from "../components/quick-test/TestAlert.tsx";
+import { RadixSlot } from "../components/quick-test/RadixSlot.tsx";
+import TailwindPeerStyling from "../components/quick-test/TailwindPeerStyling/index.tsx";
 ---
 
 <Layout>
-  <RadixSlot client:only="react"/>
-  <TestAlert title="Test2" description="!!!Test2" variant="destructive" icon="lucide:terminal" client:only="react">
-  </TestAlert>
-  <PricingSection client:only="react"/>
-	<Welcome class="tw-p-4" />
-
+  <TailwindPeerStyling client:only="react" />
+  <RadixSlot client:only="react" />
+  <TestAlert
+    title="Test2"
+    description="!!!Test2"
+    variant="destructive"
+    icon="lucide:terminal"
+    client:only="react"
+  />
+  <PricingSection client:only="react" />
+  <Welcome class="tw-p-4" />
 </Layout>

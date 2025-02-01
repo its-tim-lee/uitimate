@@ -27,4 +27,4 @@ const Tooltip = ({ delayDuration = 700, skipDelayDuration = 300, disableHoverabl
 
 TooltipContent.displayName = Content.displayName
 
-export { Tooltip, TooltipTrigger, TooltipContent }
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
