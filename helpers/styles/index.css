@@ -5,11 +5,13 @@
 @import './reset.css'; */
 
 
+@config "../../tailwind.config.mjs";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base {
+@layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -92,4 +94,4 @@
 
 li {
   all: unset !important;
-} */
+}
