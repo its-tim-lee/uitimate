@@ -53,7 +53,7 @@ export const Variant1 = {
       >
         <DialogTitle>Title</DialogTitle>
         <DialogDescription>subtitle</DialogDescription>
-        <p className="tw-grid tw-gap-4 tw-py-4">Press ESC to close; and click outside will not close</p>
+        <p className="tw:grid tw:gap-4 tw:py-4">Press ESC to close; and click outside will not close</p>
         <DialogFooter>
           <DialogClose asChild><Button>Submit</Button></DialogClose>
           <DialogClose asChild><Button>Cancel</Button></DialogClose>

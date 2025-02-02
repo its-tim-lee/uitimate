@@ -13,12 +13,12 @@ const TextHeader =
     return (
       <div
         {...props}
-        className={cn("tw-flex tw-flex-col tw-space-y-2", className)}
+        className={cn("tw:flex tw:flex-col tw:space-y-2", className)}
       >
-        <Slot className={cn("tw-font-semibold tw-leading-none tw-tracking-tight", className)}>
+        <Slot className={cn("tw:font-semibold tw:leading-none tw:tracking-tight", className)}>
           {typeof title === 'string' ? <span>{title}</span> : title}
         </Slot>
-        <Slot className={cn("tw-text-sm tw-text-muted-foreground", className)}>
+        <Slot className={cn("tw:text-sm tw:text-muted-foreground", className)}>
           {typeof subtitle === 'string' ? <span>{subtitle}</span> : subtitle}
         </Slot>
       </div>

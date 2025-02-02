@@ -17,7 +17,7 @@ const Input =
     const $input = (
       <input
         className={cn(
-          "tw-flex tw-h-9 tw-w-full tw-rounded-md tw-border tw-border-input tw-bg-transparent tw-px-3 tw-py-1 tw-text-base tw-shadow-sm tw-transition-colors file:tw-border-0 file:tw-bg-transparent file:tw-text-sm file:tw-font-medium file:tw-text-foreground placeholder:tw-text-muted-foreground focus-visible:tw-outline-none focus-visible:tw-ring-1 focus-visible:tw-ring-ring disabled:tw-cursor-not-allowed disabled:tw-opacity-50 md:tw-text-sm",
+          "tw:flex tw:h-9 tw:w-full tw:rounded-md tw:border tw:border-input tw:bg-transparent tw:px-3 tw:py-1 tw:text-base tw:shadow-sm tw:transition-colors tw:file:border-0 tw:file:bg-transparent tw:file:text-sm tw:file:font-medium tw:file:text-foreground tw:placeholder:text-muted-foreground tw:focus-visible:outline-hidden tw:focus-visible:ring-1 tw:focus-visible:ring-ring tw:disabled:cursor-not-allowed tw:disabled:opacity-50 tw:md:text-sm",
           className
         )}
         {...props}
@@ -25,10 +25,10 @@ const Input =
     )
 
     return (label || description) ? (
-      <div className="tw-flex tw-flex-col tw-space-y-2">
-        {label && <Label className="tw-text-sm tw-font-medium tw-leading-none">{label}</Label>}
+      <div className="tw:flex tw:flex-col tw:space-y-2">
+        {label && <Label className="tw:text-sm tw:font-medium tw:leading-none">{label}</Label>}
         {$input}
-        {description && <div className="tw-text-sm tw-text-muted-foreground">{description}</div>}
+        {description && <div className="tw:text-sm tw:text-muted-foreground">{description}</div>}
       </div>
     ) : $input
   }

@@ -26,7 +26,7 @@ export const Variant1 = {
           <Toggle variant="outline" pressed={false}>Open Drawer</Toggle>
         </DrawerTrigger>
         <DrawerContent>
-          <div className="tw-mx-auto tw-w-full tw-max-w-sm tw-flex tw-flex-col tw-gap-4">
+          <div className="tw:mx-auto tw:w-full tw:max-w-sm tw:flex tw:flex-col tw:gap-4">
             <span>Some content</span>
             <DrawerClose asChild>
               <Toggle variant="outline" pressed={false}>Cancel</Toggle>

@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/Button/Button.tsx"
 const AlertDialogOverlay = ({ className, ...props }: ComponentProps<typeof Overlay>) => (
   <Overlay
     className={cn(
-      "tw-fixed tw-inset-0 tw-z-50 tw-bg-black/80 data-[state=open]:tw-animate-in data-[state=closed]:tw-animate-out data-[state=closed]:tw-fade-out-0 data-[state=open]:tw-fade-in-0",
+      "tw:fixed tw:inset-0 tw:z-50 tw:bg-black/80 tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0",
       className
     )}
     {...props}
@@ -19,8 +19,8 @@ const AlertDialogContent = ({ className, children, ...props }: ComponentProps<ty
     <AlertDialogOverlay />
     <Content
       className={cn(
-        "tw-fixed tw-left-[50%] tw-top-[50%] tw-z-50 tw-grid tw-w-full tw-max-w-lg tw-translate-x-[-50%] tw-translate-y-[-50%] tw-gap-4 tw-border tw-bg-background tw-p-6 tw-shadow-lg tw-duration-200 data-[state=open]:tw-animate-in data-[state=closed]:tw-animate-out data-[state=closed]:tw-fade-out-0 data-[state=open]:tw-fade-in-0 data-[state=closed]:tw-zoom-out-95 data-[state=open]:tw-zoom-in-95 data-[state=closed]:tw-slide-out-to-left-1/2 data-[state=closed]:tw-slide-out-to-top-[48%] data-[state=open]:tw-slide-in-from-left-1/2 data-[state=open]:tw-slide-in-from-top-[48%] tw-rounded-lg",
-        "tw-min-w-[320px]",
+        "tw:fixed tw:left-[50%] tw:top-[50%] tw:z-50 tw:grid tw:w-full tw:max-w-lg tw:translate-x-[-50%] tw:translate-y-[-50%] tw:gap-4 tw:border tw:bg-background tw:p-6 tw:shadow-lg tw:duration-200 tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0 tw:data-[state=closed]:zoom-out-95 tw:data-[state=open]:zoom-in-95 tw:data-[state=closed]:slide-out-to-left-1/2 tw:data-[state=closed]:slide-out-to-top-[48%] tw:data-[state=open]:slide-in-from-left-1/2 tw:data-[state=open]:slide-in-from-top-[48%] tw:rounded-lg",
+        "tw:min-w-[320px]",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ const AlertDialogContent = ({ className, children, ...props }: ComponentProps<ty
 const AlertDialogTitle = ({ className, ...props }: ComponentProps<typeof Title>) => (
   <Title
     className={cn(
-      "tw-text-lg tw-font-semibold tw-leading-none tw-tracking-tight",
+      "tw:text-lg tw:font-semibold tw:leading-none tw:tracking-tight",
       className
     )}
     {...props}
@@ -42,7 +42,7 @@ const AlertDialogTitle = ({ className, ...props }: ComponentProps<typeof Title>)
 
 const AlertDialogDescription = ({ className, ...props }: ComponentProps<typeof Description>) => (
   <Description
-    className={cn("tw-text-sm tw-text-muted-foreground", className)}
+    className={cn("tw:text-sm tw:text-muted-foreground", className)}
     {...props}
   />
 )
@@ -58,7 +58,7 @@ const AlertDialogCancel = ({ className, ...props }: ComponentProps<typeof Cancel
   <Cancel
     className={cn(
       buttonVariants({ variant: "outline" }),
-      "tw-mt-2 sm:tw-mt-0",
+      "tw:mt-2 tw:sm:mt-0",
       className
     )}
     {...props}
@@ -74,8 +74,8 @@ const AlertDialogFooter = ({
 }: HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "tw-flex tw-flex-col-reverse sm:tw-flex-row sm:tw-justify-end",
-      "tw-space-y-reverse tw-space-y-2 sm:tw-space-x-2 sm:tw-space-y-0",
+      "tw:flex tw:flex-col-reverse tw:sm:flex-row tw:sm:justify-end",
+      "tw:space-y-reverse tw:space-y-2 tw:sm:space-x-2 tw:sm:space-y-0",
       className
     )}
     {...props}

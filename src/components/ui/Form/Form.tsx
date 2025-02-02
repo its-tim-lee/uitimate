@@ -85,7 +85,7 @@ const FormItem = ({
       {
         return (
           <FormControlCtx.Provider value={{ field }}>
-            <div className={cn("tw-space-y-2", className)}>{children}</div>
+            <div className={cn("tw:space-y-2", className)}>{children}</div>
           </FormControlCtx.Provider>
         )}}/>
     </FormItemCtx.Provider>
@@ -95,7 +95,7 @@ const FormItem = ({
 const FormLabel = ({ className, ...props }: ComponentProps<typeof LabelPrimitive.Root>) => {
   const { error, formItemId } = useContext(FormItemCtx)
   console.log('Render: FormLabel')
-  return <Label className={cn(error && "tw-text-destructive", className)} htmlFor={formItemId} {...props} />
+  return <Label className={cn(error && "tw:text-destructive", className)} htmlFor={formItemId} {...props} />
 }
 
 /**
@@ -142,7 +142,7 @@ const FormControl = ({ children, ...props }: ComponentProps<typeof Slot>) => {
 const FormDescription = ({ className, ...props }: ComponentProps<'div'>) => {
   const { formDescriptionId } = useContext(FormItemCtx)
   console.log('Render: FormDescription')
-  return <div id={formDescriptionId} className={cn("tw-text-[0.8rem] tw-text-muted-foreground", className)} {...props} />
+  return <div id={formDescriptionId} className={cn("tw:text-[0.8rem] tw:text-muted-foreground", className)} {...props} />
 }
 
 const FormMessage = ({ className, children, ...props }: ComponentProps<'div'>) => {
@@ -152,7 +152,7 @@ const FormMessage = ({ className, children, ...props }: ComponentProps<'div'>) =
   return !body ? null : (
     <div
       id={formMessageId}
-      className={cn("tw-text-[0.8rem] tw-font-medium tw-text-destructive", className)}
+      className={cn("tw:text-[0.8rem] tw:font-medium tw:text-destructive", className)}
       {...props}
     >
       {body}

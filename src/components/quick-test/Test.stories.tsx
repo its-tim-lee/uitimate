@@ -25,7 +25,7 @@ const ChildDoesUseContext = React.memo(() => {
  */
 const ChildNoUseContext = React.memo(() => {
   console.log('Render:ChildNoUseContext')
-  return <div className='tw-border tw-border-red-500'>
+  return <div className='tw:border tw:border-red-500'>
     <h1>ChildNoUseContext</h1>
     <p>Without `memo`, it'd be re-rendered every time when parent re-renders</p>
   </div>

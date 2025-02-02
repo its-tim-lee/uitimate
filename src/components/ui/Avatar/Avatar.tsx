@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 const Avatar = ({ className, ...props }: ComponentProps<typeof Root>) => (
   <Root
     className={cn(
-      "tw-relative tw-flex tw-h-10 tw-w-10 tw-shrink-0 tw-overflow-hidden tw-rounded-full",
+      "tw:relative tw:flex tw:h-10 tw:w-10 tw:shrink-0 tw:overflow-hidden tw:rounded-full",
       className
     )}
     {...props}
@@ -17,7 +17,7 @@ Avatar.displayName = "Avatar";
 // HACK: for the reason of destructuring `children` from `props`, see #2025-01-10
 const AvatarImage = ({ className, children, ...props }: ComponentProps<typeof Image>) => (
   <Image
-    className={cn("tw-aspect-square tw-h-full tw-w-full", className)}
+    className={cn("tw:aspect-square tw:h-full tw:w-full", className)}
     {...props}
   />
 );
@@ -26,7 +26,7 @@ AvatarImage.displayName = "AvatarImage";
 const AvatarFallback = ({ className, ...props }: ComponentProps<typeof Fallback>) => (
   <Fallback
     className={cn(
-      "tw-flex tw-h-full tw-w-full tw-items-center tw-justify-center tw-rounded-full tw-bg-muted",
+      "tw:flex tw:h-full tw:w-full tw:items-center tw:justify-center tw:rounded-full tw:bg-muted",
       className
     )}
     {...props}

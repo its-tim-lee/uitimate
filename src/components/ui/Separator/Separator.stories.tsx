@@ -17,7 +17,7 @@ export const Variant1 = {
     return (
       <>
         Below is a separator
-        <Separator className="tw-my-4" />
+        <Separator className="tw:my-4" />
         Above is a separator
       </>
     )

@@ -21,6 +21,6 @@ export const Variant1 = {
       const timer = setTimeout(() => setProgress(66), 500)
       return () => clearTimeout(timer)
     }, [])
-    return <Progress value={progress} className="!tw-w-[300px]" />
+    return <Progress value={progress} className="tw:w-[300px]!" />
   }
 };

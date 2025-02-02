@@ -19,7 +19,7 @@ const Drawer = ({
 
 const DrawerOverlay = ({ className, ...props }: ComponentProps<typeof DrawerPrimitive.Overlay>) => (
   <DrawerPrimitive.Overlay
-    className={cn("tw-fixed tw-inset-0 tw-z-50 tw-bg-black/80", className)}
+    className={cn("tw:fixed tw:inset-0 tw:z-50 tw:bg-black/80", className)}
     {...props}
   />
 )
@@ -29,12 +29,12 @@ const DrawerContent = ({ className, children, ...props }: ComponentProps<typeof 
     <DrawerPrimitive.Overlay />
     <DrawerPrimitive.Content
       className={cn(
-        "tw-fixed tw-inset-x-0 tw-bottom-0 tw-z-50 tw-mt-24 tw-flex tw-h-auto tw-flex-col tw-rounded-t-[10px] tw-border tw-bg-background",
+        "tw:fixed tw:inset-x-0 tw:bottom-0 tw:z-50 tw:mt-24 tw:flex tw:h-auto tw:flex-col tw:rounded-t-[10px] tw:border tw:bg-background",
         className
       )}
       {...props}
     >
-      <div className="tw-mx-auto tw-mt-4 tw-h-2 tw-w-[100px] tw-rounded-full tw-bg-muted" />
+      <div className="tw:mx-auto tw:mt-4 tw:h-2 tw:w-[100px] tw:rounded-full tw:bg-muted" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>
@@ -42,14 +42,14 @@ const DrawerContent = ({ className, children, ...props }: ComponentProps<typeof 
 
 const DrawerHeader = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("tw-grid tw-gap-1.5 tw-p-4 tw-text-center sm:tw-text-left", className)}
+    className={cn("tw:grid tw:gap-1.5 tw:p-4 tw:text-center tw:sm:text-left", className)}
     {...props}
   />
 )
 
 const DrawerFooter = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("tw-mt-auto tw-flex tw-flex-col tw-gap-2 tw-p-4", className)}
+    className={cn("tw:mt-auto tw:flex tw:flex-col tw:gap-2 tw:p-4", className)}
     {...props}
   />
 )
@@ -57,7 +57,7 @@ const DrawerFooter = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) =
 const DrawerTitle = ({ className, ...props }: ComponentProps<typeof DrawerPrimitive.Title>) => (
   <DrawerPrimitive.Title
     className={cn(
-      "tw-text-lg tw-font-semibold tw-leading-none tw-tracking-tight",
+      "tw:text-lg tw:font-semibold tw:leading-none tw:tracking-tight",
       className
     )}
     {...props}

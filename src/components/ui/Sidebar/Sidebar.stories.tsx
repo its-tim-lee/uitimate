@@ -111,10 +111,10 @@ function SidebarVariant1() {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
                   Select Workspace
-                  <Icon icon="lucide:chevron-down" className="tw-ml-auto" />
+                  <Icon icon="lucide:chevron-down" className="tw:ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="tw-w-[--radix-popper-anchor-width]">
+              <DropdownMenuContent className="tw:w-(--radix-popper-anchor-width)">
                 <DropdownMenuItem>
                   <span>Acme Inc</span>
                 </DropdownMenuItem>
@@ -129,14 +129,14 @@ function SidebarVariant1() {
 
       <SidebarSeparator />
 
-      <SidebarContent className='tw-relative'>
+      <SidebarContent className='tw:relative'>
 
         {data.navMain.map((section) => (
           <SidebarGroup key={section.title}>
             <SidebarGroupLabel>{section.title}</SidebarGroupLabel>
             <SidebarGroupAction title="More!!">
               <Icon icon="lucide:more-vertical" />
-              <span className="tw-sr-only">More</span>
+              <span className="tw:sr-only">More</span>
             </SidebarGroupAction>
             <SidebarGroupContent>
               <SidebarMenu>
@@ -195,8 +195,8 @@ const SidebarVariantMix = () => {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Favorites</SidebarGroupLabel>
-          <SidebarGroupAction className="tw-group/private">
-            <Icon icon="lucide:more-vertical" className='group-hover/private:tw-opacity-100 tw-opacity-0' />
+          <SidebarGroupAction className="tw:group/private">
+            <Icon icon="lucide:more-vertical" className='tw:group-hover/private:opacity-100 tw:opacity-0' />
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -238,19 +238,19 @@ export const Variant1 = {
           </SidebarContent>
         </Sidebar>
         <SidebarInset>
-          <header className="tw-flex tw-sticky tw-top-0 tw-bg-background tw-h-16 tw-shrink-0 tw-items-center tw-gap-2 tw-border-b tw-px-4">
-            <SidebarTrigger className="tw--ml-1" />
-            <Separator orientation="vertical" className="tw-mr-2 tw-h-4" />
+          <header className="tw:flex tw:sticky tw:top-0 tw:bg-background tw:h-16 tw:shrink-0 tw:items-center tw:gap-2 tw:border-b tw:px-4">
+            <SidebarTrigger className="tw:-ml-1" />
+            <Separator orientation="vertical" className="tw:mr-2 tw:h-4" />
             <span>This is some title of the "sizable header"</span>
           </header>
-          <div className="tw-flex tw-flex-1 tw-flex-col tw-gap-4 tw-p-4">
+          <div className="tw:flex tw:flex-1 tw:flex-col tw:gap-4 tw:p-4">
             <p>
               A sizable header is a header that can be resized by the appearance of the sidebar.
             </p>
             {Array.from({ length: 24 }).map((_, index) => (
               <div
                 key={index}
-                className="tw-aspect-video tw-h-12 tw-w-full tw-rounded-lg tw-bg-muted/50"
+                className="tw:aspect-video tw:h-12 tw:w-full tw:rounded-lg tw:bg-muted/50"
               />
             ))}
           </div>
@@ -263,12 +263,12 @@ export const Variant1 = {
 const UnSizableHeader = () => {
   const { toggleSidebar } = useSidebar()
   return (
-    <header className="tw-fle tw-sticky tw-top-0 tw-z-50 tw-w-full tw-items-center tw-border-b tw-bg-background">
-      <div className="tw-flex tw-h-[--header-height] tw-w-full tw-items-center tw-gap-2 tw-px-4">
-        <Button className="tw-h-8 tw-w-8" variant="ghost" size="icon" onClick={toggleSidebar}>
+    <header className="tw-fle tw:sticky tw:top-0 tw:z-50 tw:w-full tw:items-center tw:border-b tw:bg-background">
+      <div className="tw:flex tw:h-(--header-height) tw:w-full tw:items-center tw:gap-2 tw:px-4">
+        <Button className="tw:h-8 tw:w-8" variant="ghost" size="icon" onClick={toggleSidebar}>
           <SidebarIcon />
         </Button>
-        <Separator orientation="vertical" className="tw-mr-2 tw-h-4" />
+        <Separator orientation="vertical" className="tw:mr-2 tw:h-4" />
         <span>This is some title of the "unsizable header"</span>
       </div>
     </header>
@@ -279,11 +279,11 @@ export const Variant1A = {
   name: 'V1A / Unsizable Header',
   render: () => {
     return (
-      <div className="[--header-height:calc(theme(spacing.14))]">
-        <SidebarProvider className="tw-flex tw-flex-col">
+      <div className="tw:[--header-height:calc(--spacing(14))]">
+        <SidebarProvider className="tw:flex tw:flex-col">
           <UnSizableHeader />
-          <div className='tw-flex tw-flex-1'>
-            <Sidebar className="tw-top-[--header-height] !tw-h-[calc(100svh-var(--header-height))]">
+          <div className='tw:flex tw:flex-1'>
+            <Sidebar className="tw:top-(--header-height) tw:h-[calc(100svh-var(--header-height))]!">
               <SidebarHeader>Sidebar Header</SidebarHeader>
               <SidebarSeparator />
               <SidebarContent>
@@ -291,14 +291,14 @@ export const Variant1A = {
               </SidebarContent>
             </Sidebar>
             <SidebarInset>
-              <div className="tw-flex tw-flex-1 tw-flex-col tw-gap-4 tw-p-4">
+              <div className="tw:flex tw:flex-1 tw:flex-col tw:gap-4 tw:p-4">
                 <p>
                   A unsizable header is a header that will not be resized by the appearance of the sidebar.
                 </p>
                 {Array.from({ length: 24 }).map((_, index) => (
                   <div
                     key={index}
-                    className="tw-aspect-video tw-h-12 tw-w-full tw-rounded-lg tw-bg-muted/50"
+                    className="tw:aspect-video tw:h-12 tw:w-full tw:rounded-lg tw:bg-muted/50"
                   />
                 ))}
               </div>
@@ -354,11 +354,11 @@ const SidebarVariant2 = () => {
                 <SidebarMenuItem>
                   <DropdownMenuTrigger asChild>
                     <SidebarMenuButton className="tw-data-[state=open]:tw-bg-sidebar-accent tw-data-[state=open]:tw-text-sidebar-accent-foreground">
-                      {item.title} <Icon icon="lucide:more-vertical" className="tw-ml-auto" />
+                      {item.title} <Icon icon="lucide:more-vertical" className="tw:ml-auto" />
                     </SidebarMenuButton>
                   </DropdownMenuTrigger>
                   {item.items?.length ? (
-                    <DropdownMenuContent side="right" align="start" className="tw-min-w-56 tw-rounded-lg">
+                    <DropdownMenuContent side="right" align="start" className="tw:min-w-56 tw:rounded-lg">
                       {item.items.map((item) => (
                         <DropdownMenuItem asChild key={item.title}>
                           <a href={item.url}>{item.title}</a>
@@ -402,14 +402,14 @@ const SidebarVariant3 = () => {
               <Collapsible
                 key={item.title}
                 defaultOpen={index === 1}
-                className="tw-group/collapsible"
+                className="tw:group/collapsible"
               >
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton>
                       {item.title}{" "}
-                      <Icon icon="lucide:plus" className="tw-ml-auto group-data-[state=open]/collapsible:tw-hidden" />
-                      <Icon icon="lucide:minus" className="tw-ml-auto group-data-[state=closed]/collapsible:tw-hidden" />
+                      <Icon icon="lucide:plus" className="tw:ml-auto tw:group-data-[state=open]/collapsible:hidden" />
+                      <Icon icon="lucide:minus" className="tw:ml-auto tw:group-data-[state=closed]/collapsible:hidden" />
                     </SidebarMenuButton>
                   </CollapsibleTrigger>
                   {item.items?.length ? (
@@ -597,7 +597,7 @@ const SidebarVariant4 = () => {
             {sidebarVariant3Data.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a href={item.url} className="tw-font-medium">{item.title}</a>
+                  <a href={item.url} className="tw:font-medium">{item.title}</a>
                 </SidebarMenuButton>
                 {item.items?.length ? (
                   <SidebarMenuSub>
@@ -647,9 +647,9 @@ const SidebarVariant5 = () => {
                     isActive={$i.title === activeItem}
                     onClick={() => setActiveItem($i.title)}
                   >
-                    <a href={$i.url} className="tw-font-medium">{$i.title}</a>
+                    <a href={$i.url} className="tw:font-medium">{$i.title}</a>
                   </SidebarMenuButton>
-                  <SidebarMenuAction className="tw-opacity-0 peer-data-[active=true]/menu-button:tw-opacity-100">
+                  <SidebarMenuAction className="tw:opacity-0 tw:peer-data-[active=true]/menu-button:opacity-100">
                     <Icon icon="lucide:chevron-right" />
                   </SidebarMenuAction>
                 </SidebarMenuItem>

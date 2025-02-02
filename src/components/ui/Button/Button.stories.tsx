@@ -49,7 +49,7 @@ export const Variant6 = {
 export const Variant7 = {
   name: 'disabled: Loading',
   render: () => <Button disabled>
-    <Icon icon="lucide:loader-circle" className="tw-animate-spin" />
+    <Icon icon="lucide:loader-circle" className="tw:animate-spin" />
     Please wait
   </Button>
 }

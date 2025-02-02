@@ -30,10 +30,10 @@ export const Variant1 = {
   render: () => {
     return (
       <ContextMenu>
-        <ContextMenuTrigger className="tw-flex tw-h-[150px] tw-w-[300px] tw-items-center tw-justify-center tw-rounded-md tw-border tw-border-dashed tw-text-sm">
+        <ContextMenuTrigger className="tw:flex tw:h-[150px] tw:w-[300px] tw:items-center tw:justify-center tw:rounded-md tw:border tw:border-dashed tw:text-sm">
           Right click here
         </ContextMenuTrigger>
-        <ContextMenuContent className="tw-w-64">
+        <ContextMenuContent className="tw:w-64">
           <ContextMenuItem inset>
             Back
             <ContextMenuShortcut>⌘[</ContextMenuShortcut>
@@ -44,7 +44,7 @@ export const Variant1 = {
           </ContextMenuItem>
           <ContextMenuSub>
             <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
-            <ContextMenuSubContent className="tw-w-48">
+            <ContextMenuSubContent className="tw:w-48">
               <ContextMenuItem>Save Page As...</ContextMenuItem>
               <ContextMenuItem>Create Shortcut...</ContextMenuItem>
               <ContextMenuItem>Name Window...</ContextMenuItem>

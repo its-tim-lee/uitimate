@@ -43,7 +43,7 @@ export const Variant2 = {
         <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
       <PopoverAnchor asChild>
-      <h1 className="tw-w-[100px]">Popover will show up on the right side of this element with offset</h1>
+      <h1 className="tw:w-[100px]">Popover will show up on the right side of this element with offset</h1>
       </PopoverAnchor>
       <PopoverContent side='right' sideOffset={30} align='start'>
         <h1>Content</h1></PopoverContent>

@@ -25,7 +25,7 @@ export const Variant1 = {
   name: 'Default',
   render: () => {
     return (
-      <Command className="tw-rounded-lg tw-border tw-shadow-md md:tw-min-w-[450px]">
+      <Command className="tw:rounded-lg tw:border tw:shadow-md tw:md:min-w-[450px]">
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>

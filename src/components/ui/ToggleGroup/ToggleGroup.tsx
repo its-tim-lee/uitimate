@@ -14,7 +14,7 @@ const ToggleGroup = (
   { className, variant, size, children, ...props }: ComponentProps<typeof Root> & VariantProps<typeof toggleVariants>,
 ) => (
   <Root
-    className={cn("tw-flex tw-items-center tw-justify-center tw-gap-1", className)}
+    className={cn("tw:flex tw:items-center tw:justify-center tw:gap-1", className)}
     {...props}
   >
     <Context.Provider value={{ variant, size }}>

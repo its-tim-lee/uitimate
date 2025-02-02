@@ -85,10 +85,10 @@ function SidebarVariant1() {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
                   Select Workspace
-                  <Icon icon="lucide:chevron-down" className="tw-ml-auto" />
+                  <Icon icon="lucide:chevron-down" className="tw:ml-auto" />
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="tw-w-[--radix-popper-anchor-width]">
+              <DropdownMenuContent className="tw:w-(--radix-popper-anchor-width)">
                 <DropdownMenuItem>
                   <span>Acme Inc</span>
                 </DropdownMenuItem>
@@ -103,14 +103,14 @@ function SidebarVariant1() {
 
       <SidebarSeparator />
 
-      <SidebarContent className='tw-relative'>
+      <SidebarContent className='tw:relative'>
 
         {data.navMain.map((section) => (
           <SidebarGroup key={section.title}>
             <SidebarGroupLabel>{section.title}</SidebarGroupLabel>
             <SidebarGroupAction title="More!!">
               <Icon icon="lucide:more-vertical" />
-              <span className="tw-sr-only">More</span>
+              <span className="tw:sr-only">More</span>
             </SidebarGroupAction>
             <SidebarGroupContent>
               <SidebarMenu>
@@ -171,20 +171,20 @@ function SidebarVariant1() {
 
 export default () => {
   return (
-    // <ul className="tw-space-y-4">
-    //   <li className="tw-flex tw-items-center tw-space-x-4">
-    //     <a href="#" className="tw-peer tw-p-2 tw-bg-blue-500 tw-text-white tw-rounded" data-active="true">
+    // <ul className="tw:space-y-4">
+    //   <li className="tw:flex tw:items-center tw:space-x-4">
+    //     <a href="#" className="tw:peer tw:p-2 tw:bg-blue-500 tw:text-white tw:rounded" data-active="true">
     //       Click Me
     //     </a>
-    //     <button className="tw-p-2 tw-bg-gray-300 tw-rounded peer-data-[active=true]:tw-bg-green-500">
+    //     <button className="tw:p-2 tw:bg-gray-300 tw:rounded tw:peer-data-[active=true]:bg-green-500">
     //       I'm a Button
     //     </button>
     //   </li>
-    //   <li className="tw-flex tw-items-center tw-space-x-4">
-    //     <a href="#" className="tw-peer tw-p-2 tw-bg-blue-500 tw-text-white tw-rounded" data-active="false">
+    //   <li className="tw:flex tw:items-center tw:space-x-4">
+    //     <a href="#" className="tw:peer tw:p-2 tw:bg-blue-500 tw:text-white tw:rounded" data-active="false">
     //       Click Me
     //     </a>
-    //     <button className="tw-p-2 tw-bg-gray-300 tw-rounded peer-data-[active=true]:tw-bg-green-500">
+    //     <button className="tw:p-2 tw:bg-gray-300 tw:rounded tw:peer-data-[active=true]:bg-green-500">
     //       I'm a Button
     //     </button>
     //   </li>
@@ -193,40 +193,40 @@ export default () => {
     <SidebarProvider>
       <SidebarVariant1 />
       <SidebarInset>
-        <header className="tw-flex tw-sticky tw-top-0 tw-bg-background tw-h-16 tw-shrink-0 tw-items-center tw-gap-2 tw-border-b tw-px-4">
-          <SidebarTrigger className="tw--ml-1" />
-          <Separator orientation="vertical" className="tw-mr-2 tw-h-4" />
+        <header className="tw:flex tw:sticky tw:top-0 tw:bg-background tw:h-16 tw:shrink-0 tw:items-center tw:gap-2 tw:border-b tw:px-4">
+          <SidebarTrigger className="tw:-ml-1" />
+          <Separator orientation="vertical" className="tw:mr-2 tw:h-4" />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="tw-hidden md:tw-block">
+              <BreadcrumbItem className="tw:hidden tw:md:block">
                 <BreadcrumbLink href="#">
                   Building Your Application
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className="tw-hidden md:tw-block" />
+              <BreadcrumbSeparator className="tw:hidden tw:md:block" />
               <BreadcrumbItem>
                 <BreadcrumbPage>Data Fetching</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </header>
-        <div className="tw-flex tw-flex-1 tw-flex-col tw-gap-4 tw-p-4">
+        <div className="tw:flex tw:flex-1 tw:flex-col tw:gap-4 tw:p-4">
           {Array.from({ length: 24 }).map((_, index) => (
             <div
               key={index}
-              className="tw-aspect-video tw-h-12 tw-w-full tw-rounded-lg tw-bg-muted/50"
+              className="tw:aspect-video tw:h-12 tw:w-full tw:rounded-lg tw:bg-muted/50"
             />
           ))}
         </div>
       </SidebarInset>
     </SidebarProvider>
 
-    // <div className="tw-group/collapsible" data-state="open">
+    // <div className="tw:group/collapsible" data-state="open">
     //   <div>
-    //     <button className="group-data-[state=closed]/collapsible:tw-hidden">
+    //     <button className="tw:group-data-[state=closed]/collapsible:hidden">
     //       Plus Icon
     //     </button>
-    //     <button className="group-data-[state=open]/collapsible:tw-hidden">
+    //     <button className="tw:group-data-[state=open]/collapsible:hidden">
     //       Minus Icon
     //     </button>
     //   </div>

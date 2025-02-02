@@ -17,7 +17,7 @@ figmaMapping({
   componentKey: "4e0a58d0f7ce43e931759369b67d7219244a0c2e",
   mapper(figma: FigmaAlertProps) {
     return <Alert variant={figma.Variant?.toLowerCase() as 'default' | 'destructive'}>
-      <Icon icon={figma.$findOneByName('Icon')?.$children[0].$componentName as string} className="tw-h-4 tw-w-4" />
+      <Icon icon={figma.$findOneByName('Icon')?.$children[0].$componentName as string} className="tw:h-4 tw:w-4" />
       <AlertTitle>{figma.Title}</AlertTitle>
       <AlertDescription>
         {figma.Content}

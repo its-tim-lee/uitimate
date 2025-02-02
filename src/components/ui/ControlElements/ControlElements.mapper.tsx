@@ -23,7 +23,7 @@ interface Figma extends BaseFigmaProps {
 figmaMapping({
   componentKey: "3ec14075a609d5dfd8a62c804e4e77cacd658d2e",
   mapper(figma: Figma) {
-    return <div className="tw-flex tw-gap-4">
+    return <div className="tw:flex tw:gap-4">
       {
         figma.$children.map(($c, idx) => {
           const componentProperties = new Map(); // @ts-ignore

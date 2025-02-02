@@ -33,7 +33,7 @@ figmaMapping({
         <Form
           onSubmit={() => {}}
           // schema={z.object({})}
-          className="tw-space-y-8"
+          className="tw:space-y-8"
         >
           {figma.$children}
         </Form>

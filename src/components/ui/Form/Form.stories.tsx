@@ -32,7 +32,7 @@ export function ProfileForm() {
       onSubmit={onSubmit}
       schema={schema}
 
-      className="tw-space-y-8"
+      className="tw:space-y-8"
       // validation strategy before a user submits the form.
       // the default is when the `onSubmit` event is fired (ie., not our onSubmit handler)
       mode="onBlur"

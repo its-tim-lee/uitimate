@@ -16,7 +16,7 @@ figmaMapping({
         type="single"
         orientation="vertical"
         collapsible
-        className="tw-w-full"
+        className="tw:w-full"
       >
         {figma.$children}
       </Accordion>

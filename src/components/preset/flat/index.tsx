@@ -16,7 +16,7 @@ const Flat =
     return (
       <div
         {...props}
-        className={cn("tw-shadow-base tw-p-6 tw-rounded-[8px] tw-border tw-border-solid tw-border-zinc-200", className)}
+        className={cn("tw:shadow-base tw:p-6 tw:rounded-[8px] tw:border tw:border-solid tw:border-zinc-200", className)}
       >
         {children}
       </div>

@@ -9,15 +9,15 @@ const tags = Array.from({ length: 50 }).map(
 
 function ScrollAreaDemo() {
   return (
-    <ScrollArea className="tw-h-72 tw-w-48 tw-rounded-md tw-border">
-      <div className="tw-p-4">
-        <h4 className="tw-mb-4 tw-text-sm tw-font-medium tw-leading-none">Tags</h4>
+    <ScrollArea className="tw:h-72 tw:w-48 tw:rounded-md tw:border">
+      <div className="tw:p-4">
+        <h4 className="tw:mb-4 tw:text-sm tw:font-medium tw:leading-none">Tags</h4>
         {tags.map((tag) => (
           <>
-            <div key={tag} className="tw-text-sm">
+            <div key={tag} className="tw:text-sm">
               {tag}
             </div>
-            <Separator className="tw-my-2" />
+            <Separator className="tw:my-2" />
           </>
         ))}
       </div>

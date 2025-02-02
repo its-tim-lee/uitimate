@@ -26,7 +26,7 @@ export function TestAlert({
     >
       <Icon
         icon={icon}
-        className="tw-h-4 tw-w-4"
+        className="tw:h-4 tw:w-4"
         aria-hidden="true"
       />
       <AlertTitle>{title}</AlertTitle>

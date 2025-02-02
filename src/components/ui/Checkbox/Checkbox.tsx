@@ -11,29 +11,29 @@ const Checkbox = ({ className, title, outline, ...props }: CheckboxProps) => {
   const $checkbox = (
     <Root id={id} {...props}
       className={cn(
-        "tw-peer tw-h-4 tw-w-4 tw-shrink-0 tw-rounded-sm tw-border tw-border-primary tw-shadow focus-visible:tw-outline-none focus-visible:tw-ring-1 focus-visible:tw-ring-ring disabled:tw-cursor-not-allowed disabled:tw-opacity-50 data-[state=checked]:tw-bg-primary data-[state=checked]:tw-text-primary-foreground",
+        "tw:peer tw:h-4 tw:w-4 tw:shrink-0 tw:rounded-sm tw:border tw:border-primary tw:shadow tw:focus-visible:outline-hidden tw:focus-visible:ring-1 tw:focus-visible:ring-ring tw:disabled:cursor-not-allowed tw:disabled:opacity-50 tw:data-[state=checked]:bg-primary tw:data-[state=checked]:text-primary-foreground",
         className
       )}
     >
       <Indicator
-        className={cn("tw-flex tw-items-center tw-justify-center tw-text-current")}
+        className={cn("tw:flex tw:items-center tw:justify-center tw:text-current")}
       >
-        <Icon icon="lucide:check" className="tw-h-4 tw-w-4" />
+        <Icon icon="lucide:check" className="tw:h-4 tw:w-4" />
       </Indicator>
     </Root>
   )
 
   return !title ? $checkbox : (
-    <div className="tw-items-top tw-flex tw-space-x-2">
+    <div className="tw-items-top tw:flex tw:space-x-2">
       {$checkbox}
       {title && (
-        <div className="tw-grid tw-gap-1.5 tw-leading-none">
+        <div className="tw:grid tw:gap-1.5 tw:leading-none">
           <Label htmlFor={id}
-            className="tw-text-sm tw-font-medium tw-leading-none peer-disabled:tw-cursor-not-allowed peer-disabled:tw-opacity-70"
+            className="tw:text-sm tw:font-medium tw:leading-none tw:peer-disabled:cursor-not-allowed tw:peer-disabled:opacity-70"
           >
             {title}
           </Label>
-          {outline && <div className="tw-text-sm tw-text-muted-foreground">{outline}</div>}
+          {outline && <div className="tw:text-sm tw:text-muted-foreground">{outline}</div>}
         </div>
       )}
     </div>

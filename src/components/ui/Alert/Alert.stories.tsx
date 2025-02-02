@@ -22,7 +22,7 @@ export const Variant1 = {
   name: 'Destructive',
   render: () => {
     return <Alert variant="destructive">
-      <Icon icon='lucide:circle-alert' className="tw-h-4 tw-w-4" />
+      <Icon icon='lucide:circle-alert' className="tw:h-4 tw:w-4" />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>
         Your session has expired. Please log in again.
@@ -35,7 +35,7 @@ export const Variant2 = {
   name: 'Default',
   render: () => {
     return <Alert variant="default">
-      <Icon icon='lucide:terminal' className="tw-h-4 tw-w-4" />
+      <Icon icon='lucide:terminal' className="tw:h-4 tw:w-4" />
       <AlertTitle>Heads up!</AlertTitle>
       <AlertDescription>
         You can add components to your app using the cli.
