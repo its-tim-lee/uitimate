@@ -1,0 +1,5 @@
+/* Tailwind CSS directives are not directly usable in plain CSS.
+   You need to compile them using a tool like PostCSS with Tailwind CSS. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
