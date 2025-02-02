@@ -1,6 +1,6 @@
 // this is the enviornment for the Storybook canvas
 import React from 'react';
-import '~/helpers/styles/index.css';
+import './../helpers/styles/index.css';
 import { type Preview } from "@storybook/react";
 const preview: Preview = {
   parameters: {
