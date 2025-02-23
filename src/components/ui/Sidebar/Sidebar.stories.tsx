@@ -194,9 +194,9 @@ const SidebarVariantMix = () => {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Favorites</SidebarGroupLabel>
-          <SidebarGroupAction className="tw:group/private">
-            <Icon icon="lucide:more-vertical" className='tw:group-hover/private:opacity-100 tw:opacity-0' />
+          <SidebarGroupLabel className="tw:text-accent-foreground/0">Favorites</SidebarGroupLabel>
+          <SidebarGroupAction className="tw:group/yo">
+            <Icon icon="lucide:more-vertical" className='tw:group-hover/yo:opacity-100 tw:opacity-0' />
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -352,11 +352,10 @@ const SidebarVariant2 = () => {
             {sidebarVariant2Data.map((item) => (
               <DropdownMenu key={item.title}>
                 <SidebarMenuItem>
-                  <DropdownMenuTrigger asChild>
-                    <SidebarMenuButton className="tw-data-[state=open]:tw-bg-sidebar-accent tw-data-[state=open]:tw-text-sidebar-accent-foreground">
-                      {item.title} <Icon icon="lucide:more-vertical" className="tw:ml-auto" />
-                    </SidebarMenuButton>
-                  </DropdownMenuTrigger>
+                  <SidebarMenuButton className="tw-data-[state=open]:tw-bg-sidebar-accent tw-data-[state=open]:tw-text-sidebar-accent-foreground tw:group/menu-button">
+                    {/* <Icon icon="lucide:more-vertical" /> */}
+                    {item.title} <DropdownMenuTrigger asChild><Icon icon="lucide:more-vertical" className="tw:ml-auto tw:invisible tw:group-data-[state=open]:tw-rotate-90 tw:group-hover/menu-button:visible" /></DropdownMenuTrigger>
+                  </SidebarMenuButton>
                   {item.items?.length ? (
                     <DropdownMenuContent side="right" align="start" className="tw:min-w-56 tw:rounded-lg">
                       {item.items.map((item) => (
@@ -639,22 +638,24 @@ const SidebarVariant5 = () => {
         {sidebarVariant3Data.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
-            <SidebarMenu>
-              {item.items.map(($i) => (
-                <SidebarMenuItem key={$i.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={$i.title === activeItem}
-                    onClick={() => setActiveItem($i.title)}
-                  >
-                    <a href={$i.url} className="tw:font-medium">{$i.title}</a>
-                  </SidebarMenuButton>
-                  <SidebarMenuAction className="tw:opacity-0 tw:peer-data-[active=true]/menu-button:opacity-100">
-                    <Icon icon="lucide:chevron-right" />
-                  </SidebarMenuAction>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {item.items.map(($i) => (
+                  <SidebarMenuItem key={$i.title}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={$i.title === activeItem}
+                      onClick={() => setActiveItem($i.title)}
+                    >
+                      <a href={$i.url} className="tw:font-medium">{$i.title}</a>
+                    </SidebarMenuButton>
+                    <SidebarMenuAction className="tw:opacity-0 tw:peer-data-[active=true]/menu-button:opacity-100">
+                      <Icon icon="lucide:chevron-right" />
+                    </SidebarMenuAction>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
           </SidebarGroup>
         ))}
       </SidebarContent>

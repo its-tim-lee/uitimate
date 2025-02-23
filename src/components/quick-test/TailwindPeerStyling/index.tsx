@@ -104,8 +104,26 @@ function SidebarVariant1() {
       <SidebarSeparator />
 
       <SidebarContent className='tw:relative'>
+        <SidebarGroup>
+          <SidebarGroupLabel className="tw:peer/label">
+            Favorites
+          </SidebarGroupLabel>
+          <SidebarGroupAction className="tw:opacity-0 tw:peer-hover/label:opacity-100">
+            <Icon icon="lucide:more-vertical" />
+          </SidebarGroupAction>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton>
+                  <Icon icon="lucide:home" className='tw:group-hover/menu-item:opacity-100 tw:opacity-0' />
+                  <span>Home</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
 
-        {data.navMain.map((section) => (
+        {/* {data.navMain.map((section) => (
           <SidebarGroup key={section.title}>
             <SidebarGroupLabel>{section.title}</SidebarGroupLabel>
             <SidebarGroupAction title="More!!">
@@ -142,7 +160,7 @@ function SidebarVariant1() {
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
-        ))}
+        ))} */}
       </SidebarContent>
 
 
@@ -171,6 +189,15 @@ function SidebarVariant1() {
 
 export default () => {
   return (
+    <div className="tw-bg-red-500 dark:tw-bg-gray-800 tw-rounded-lg tw-px-6 tw-py-8 tw-ring tw-shadow-xl tw-ring-gray-900/5">
+
+      <h3 className="tw-text-gray-900 dark:tw-text-white tw-mt-5 tw-text-base tw-font-medium tw-tracking-tight">
+        Writes upside-down
+      </h3>
+      <p className="tw-text-gray-500 dark:tw-text-gray-400 tw-mt-2 tw-text-sm">
+        The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
+      </p>
+    </div>
     // <ul className="tw:space-y-4">
     //   <li className="tw:flex tw:items-center tw:space-x-4">
     //     <a href="#" className="tw:peer tw:p-2 tw:bg-blue-500 tw:text-white tw:rounded" data-active="true">
@@ -190,36 +217,36 @@ export default () => {
     //   </li>
     // </ul>
 
-    <SidebarProvider>
-      <SidebarVariant1 />
-      <SidebarInset>
-        <header className="tw:flex tw:sticky tw:top-0 tw:bg-background tw:h-16 tw:shrink-0 tw:items-center tw:gap-2 tw:border-b tw:px-4">
-          <SidebarTrigger className="tw:-ml-1" />
-          <Separator orientation="vertical" className="tw:mr-2 tw:h-4" />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem className="tw:hidden tw:md:block">
-                <BreadcrumbLink href="#">
-                  Building Your Application
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="tw:hidden tw:md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-        </header>
-        <div className="tw:flex tw:flex-1 tw:flex-col tw:gap-4 tw:p-4">
-          {Array.from({ length: 24 }).map((_, index) => (
-            <div
-              key={index}
-              className="tw:aspect-video tw:h-12 tw:w-full tw:rounded-lg tw:bg-muted/50"
-            />
-          ))}
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+    // <SidebarProvider>
+    //   <SidebarVariant1 />
+    //   <SidebarInset>
+    //     <header className="tw:flex tw:sticky tw:top-0 tw:bg-background tw:h-16 tw:shrink-0 tw:items-center tw:gap-2 tw:border-b tw:px-4">
+    //       <SidebarTrigger className="tw:-ml-1" />
+    //       <Separator orientation="vertical" className="tw:mr-2 tw:h-4" />
+    //       <Breadcrumb>
+    //         <BreadcrumbList>
+    //           <BreadcrumbItem className="tw:hidden tw:md:block">
+    //             <BreadcrumbLink href="#">
+    //               Building Your Application
+    //             </BreadcrumbLink>
+    //           </BreadcrumbItem>
+    //           <BreadcrumbSeparator className="tw:hidden tw:md:block" />
+    //           <BreadcrumbItem>
+    //             <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+    //           </BreadcrumbItem>
+    //         </BreadcrumbList>
+    //       </Breadcrumb>
+    //     </header>
+    //     <div className="tw:flex tw:flex-1 tw:flex-col tw:gap-4 tw:p-4">
+    //       {Array.from({ length: 24 }).map((_, index) => (
+    //         <div
+    //           key={index}
+    //           className="tw:aspect-video tw:h-12 tw:w-full tw:rounded-lg tw:bg-muted/50"
+    //         />
+    //       ))}
+    //     </div>
+    //   </SidebarInset>
+    // </SidebarProvider>
 
     // <div className="tw:group/collapsible" data-state="open">
     //   <div>

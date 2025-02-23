@@ -202,7 +202,6 @@ const Sidebar = (
       </Sheet>
     )
   }
-
   return (
     <div
       ref={ref}
@@ -258,7 +257,7 @@ const SidebarTrigger = ({ className, onClick, children, ...props }: SidebarTrigg
       size="icon"
       className={cn("tw:h-7 tw:w-7", className)}
       onClick={(event) => {
-        onClick?.(event) // FIXME: what is this?
+        onClick?.(event)
         toggleSidebar()
       }}
       {...props}
@@ -362,11 +361,10 @@ const SidebarFooter = ({ className, children, ...props }: SidebarFooterProps) =>
 
 interface SidebarSeparatorProps extends ComponentProps<typeof Separator> { }
 const SidebarSeparator = (
-  { ref, className, children, ...props }: SidebarSeparatorProps,
+  { className, children, ...props }: SidebarSeparatorProps,
 ) => {
   return (
     <Separator
-      ref={ref}
       data-sidebar="separator"
       className={cn("tw:w-auto tw:bg-sidebar-border", className)}
       {...props}

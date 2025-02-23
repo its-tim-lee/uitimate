@@ -45,21 +45,21 @@ export const Variant1 = {
      */
     const makeModalModeWork = (e: Event) => e.preventDefault()
     return (
-    <Dialog defaultOpen open={open} onOpenChange={setOpen} modal>
-      <DialogTrigger asChild><Button variant="outline">Open</Button></DialogTrigger>
-      <DialogContent
-        onPointerDownOutside={makeModalModeWork}
-        onInteractOutside={makeModalModeWork}
-      >
-        <DialogTitle>Title</DialogTitle>
-        <DialogDescription>subtitle</DialogDescription>
-        <p className="tw:grid tw:gap-4 tw:py-4">Press ESC to close; and click outside will not close</p>
-        <DialogFooter>
-          <DialogClose asChild><Button>Submit</Button></DialogClose>
-          <DialogClose asChild><Button>Cancel</Button></DialogClose>
-        </DialogFooter>
-      </DialogContent>
-  </Dialog>)
+      <Dialog defaultOpen open={open} onOpenChange={setOpen} modal>
+        <DialogTrigger asChild><Button variant="outline">Open</Button></DialogTrigger>
+        <DialogContent
+          onPointerDownOutside={makeModalModeWork}
+          onInteractOutside={makeModalModeWork}
+        >
+          <DialogTitle>Title</DialogTitle>
+          <DialogDescription>subtitle</DialogDescription>
+          <p className="tw:grid tw:gap-4 tw:py-4">Press ESC to close; and click outside will not close</p>
+          <DialogFooter>
+            <DialogClose asChild><Button>Submit</Button></DialogClose>
+            <DialogClose asChild><Button>Cancel</Button></DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>)
   },
 };
 

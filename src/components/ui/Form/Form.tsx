@@ -81,13 +81,13 @@ const FormItem = ({
       ...fieldState, // `{ isDirty, isTouched, invalid, error }`
     }}>
       {/* The offical mentioned that when Controller is used with FormProvider, passing `control` is optional */}
-      <Controller {...props} render={({ field }) =>
-      {
+      <Controller {...props} render={({ field }) => {
         return (
           <FormControlCtx.Provider value={{ field }}>
             <div className={cn("tw:space-y-2", className)}>{children}</div>
           </FormControlCtx.Provider>
-        )}}/>
+        )
+      }} />
     </FormItemCtx.Provider>
   );
 };
@@ -95,7 +95,7 @@ const FormItem = ({
 const FormLabel = ({ className, ...props }: ComponentProps<typeof LabelPrimitive.Root>) => {
   const { error, formItemId } = useContext(FormItemCtx)
   console.log('Render: FormLabel')
-  return <Label className={cn(error && "tw:text-destructive", className)} htmlFor={formItemId} {...props} />
+  return <Label className={cn(error && "tw:text-destructive", "tw:dark:text-black", className)} htmlFor={formItemId} {...props} />
 }
 
 /**

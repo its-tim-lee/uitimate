@@ -17,6 +17,12 @@ export default {
   },
 }
 
+// TBD: user can provide where's the UI component in path,
+//      so that when user click copy-the-code,
+//      the import statement will be generated automatically with AI by respecting the path in that code
+//
+//      - Having a customized "Code" tab on Panel
+//      -
 export const Variant1 = {
   name: 'Default',
   render: () => {

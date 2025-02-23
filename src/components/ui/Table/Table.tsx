@@ -11,6 +11,11 @@ const Table = ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) 
   </div>
 )
 
+/**
+ * If there're more than one table row used in table's header, you may want to group them together
+ * using this component.
+ * But it's no harm to always use it.
+ */
 const TableHeader = ({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
   <thead className={cn("tw:[&_tr]:border-b", className)} {...props} />
 )
@@ -32,6 +37,9 @@ const TableFooter = ({ className, ...props }: React.HTMLAttributes<HTMLTableSect
   />
 )
 
+/**
+ * it's general row that can be used in table's header, body or footer
+ */
 const TableRow = ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
   <tr
     className={cn(
@@ -42,6 +50,9 @@ const TableRow = ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElem
   />
 )
 
+/**
+ * It's the cell used in table's header
+ */
 const TableHead = ({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
   <th
     className={cn(
@@ -52,6 +63,10 @@ const TableHead = ({ className, ...props }: React.ThHTMLAttributes<HTMLTableCell
   />
 )
 
+/**
+ * It's the cell used in table's body
+ * FIXME: should rename it to TableData to remind that it's <td>
+ */
 const TableCell = ({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
   <td
     className={cn(

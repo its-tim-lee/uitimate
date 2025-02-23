@@ -24,6 +24,9 @@ const BreadcrumbLink = ({ asChild, className, ...props }: ComponentProps<'a'> & 
   return <Comp className={cn("tw:transition-colors tw:hover:text-foreground", className)} {...props} />
 }
 
+/**
+ * This is the component that we usually use as the final item of the breadcrumb which will have more eye-catching style than other items.
+ */
 const BreadcrumbPage = ({ className, ...props }: ComponentProps<'span'>) => (
   <span role="link" aria-disabled="true" aria-current="page" className={cn("tw:font-normal tw:text-foreground", className)} {...props} />
 )
