@@ -1,4 +1,4 @@
-import { Separator } from "./Separator.tsx"
+import SeparatorDemo from "../../demo/separator-demo.tsx";
 
 export default {
   title: 'Example/Separator',
@@ -13,13 +13,5 @@ export default {
 
 export const Variant1 = {
   name: 'Default',
-  render: () => {
-    return (
-      <>
-        Below is a separator
-        <Separator className="tw:my-4" />
-        Above is a separator
-      </>
-    )
-  }
+  render: () => <SeparatorDemo />
 };

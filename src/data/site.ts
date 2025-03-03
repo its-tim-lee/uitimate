@@ -122,6 +122,12 @@ export default {
           title: 'Slider',
           href: '/docs/components/slider',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Separator',
+          href: '/docs/components/separator',
+          labels: []
         }
       ],
       labels: []
