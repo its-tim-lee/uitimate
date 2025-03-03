@@ -11,20 +11,22 @@ import {
   HeadingTitle,
 } from "@/components/ui/Heading/Heading";
 import VersatileTabs from "@/components/internal/VersatileTabs";
+import { Badge } from "~/src/components/ui/Badge/Badge";
 const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
 const anatomy = `
-  <Heading>
-    <HeadingTitle/>
-    <HeadingSubtitle/>
-  </Heading>
+  <Breadcrumb>
+    <BreadcrumbItem/>
+  </Breadcrumb>
 `;
+
+// TBD: DOC: saying using BreadcrumbFinal is optional, cuz there're sites/apps that prefering not showing the final item on the breadcrumb as user is viewing that page (represented as the final item), eg., react.dev
 ---
 
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
       title={startCase(routeName)}
-      subtitle="A primitive that contains a title and an optional subtitle."
+      subtitle="Displays the path to the current resource using a hierarchy of links."
     />
 
     <br />
@@ -35,7 +37,7 @@ const anatomy = `
       subtitle="How you can play this component."
     />
     <ComponentPageUsage
-      demoId="heading-demo"
+      demoId="breadcrumb-demo"
       anatomy={anatomy}
       client:only="react"
     />
@@ -48,19 +50,14 @@ const anatomy = `
       title="Design Notes"
       subtitle="The implementation details that some would appreciate."
     />
-    <p class="tw:text-justify tw:text-md">
-      "Really, bro?" This is probably the reaction that some people would have
-      when staring on this page/component. "Why this is even necessary to be a
-      component?", you yelled.
-    </p>
-    <br />
-    <p class="tw:text-justify tw:text-md">
-      But, turns out, this is an extreme common pattern that you actually can
-      find in many places, so it's worth to be abstracted out. (eg., Alert
-      component, a blog application, ...)
+
+    <p>
+      The <Badge variant="secondary">{`<`}BreadcrumbFinal{`>`}</Badge> is optional,
+      what its represents is just the final item on the breadcrumb UI to indicate
+      the current viewing page, but many sites/apps choose not to adopt this pattern
+      (eg., react.dev)
     </p>
 
-    <br />
     <br />
     <br />
 
@@ -69,22 +66,13 @@ const anatomy = `
       title="Example / API"
       subtitle="This tries to show all the API/Component usages."
     />
+
     <VersatileTabs
       settings={[
         {
-          title: "4 Levels",
+          title: "Mix",
           type: "preview",
-          demoId: "heading-4levels",
-        },
-        {
-          title: "Only Title",
-          type: "preview",
-          demoId: "heading-only-title",
-        },
-        {
-          title: "Shortcut API Style",
-          type: "preview",
-          demoId: "heading-shortcut-api",
+          demoId: "breadcrumb-mix",
         },
       ]}
       client:only="react"
@@ -101,19 +89,9 @@ const anatomy = `
     <VersatileTabs
       settings={[
         {
-          title: "Article",
+          title: "Expansible Collapse",
           type: "preview",
-          demoId: "heading-article",
-        },
-        {
-          title: "Card",
-          type: "preview",
-          demoId: "heading-card",
-        },
-        {
-          title: "Alert",
-          type: "preview",
-          demoId: "heading-alert",
+          demoId: "breadcrumb-expansible-collapse",
         },
       ]}
       client:only="react"

@@ -31,7 +31,6 @@ import { Separator } from '@/components/ui/Separator/Separator.tsx';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../DropdownMenu/DropdownMenu.tsx";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../Collapsible/Collapsible.tsx";
 import { useState } from "react";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../Breadcrumb/Breadcrumb.tsx";
 
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],

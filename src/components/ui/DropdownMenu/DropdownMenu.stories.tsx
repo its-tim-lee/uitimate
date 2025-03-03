@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "./DropdownMenu.tsx"
 import { Toggle } from "../Toggle/Toggle.tsx";
+import BreadcrumbExpansibleCollapse from "../../demo/breadcrumb-expansible-collapse.tsx";
 
 
 export default {

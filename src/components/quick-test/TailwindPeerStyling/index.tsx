@@ -30,7 +30,6 @@ import { Separator } from '@/components/ui/Separator/Separator.tsx';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/DropdownMenu/DropdownMenu.tsx";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/Collapsible/Collapsible.tsx";
 import { useState } from "react";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/Breadcrumb/Breadcrumb.tsx";
 
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
@@ -232,7 +231,7 @@ export default () => {
     //           </BreadcrumbItem>
     //           <BreadcrumbSeparator className="tw:hidden tw:md:block" />
     //           <BreadcrumbItem>
-    //             <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+    //             <BreadcrumbFinal>Data Fetching</BreadcrumbFinal>
     //           </BreadcrumbItem>
     //         </BreadcrumbList>
     //       </Breadcrumb>

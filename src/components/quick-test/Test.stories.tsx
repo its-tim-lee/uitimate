@@ -2,7 +2,7 @@ import React, { Children } from "react"
 import { cn } from "@/lib/utils"
 import { Icon } from "@iconify/react/dist/iconify.js"
 import { Button } from "../ui/Button/Button"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../ui/Breadcrumb/Breadcrumb"
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbFinal, BreadcrumbSeparator } from "../ui/Breadcrumb/Breadcrumb"
 import { Flat } from "../preset/flat"
 import { Progress } from "../ui/Progress/Progress"
 
@@ -336,7 +336,6 @@ export const OrdersDashboard = {
         {/* Breadcrumb */}
         <nav className="tw:mb-6">
           <Breadcrumb>
-            <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
               </BreadcrumbItem>
@@ -350,9 +349,8 @@ export const OrdersDashboard = {
                 <Icon icon="lucide:chevron-right" />
               </BreadcrumbSeparator>
               <BreadcrumbItem>
-                <BreadcrumbPage>Recent Orders</BreadcrumbPage>
+                <BreadcrumbFinal>Recent Orders</BreadcrumbFinal>
               </BreadcrumbItem>
-            </BreadcrumbList>
           </Breadcrumb>
         </nav>
 

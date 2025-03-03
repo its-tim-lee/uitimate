@@ -4,10 +4,12 @@ import {
   BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
+  BreadcrumbFinal,
   BreadcrumbSeparator,
 } from "./Breadcrumb.tsx"
+import BreadcrumbDemo from "../../demo/breadcrumb-demo.tsx";
+import BreadcrumbMix from "../../demo/breadcrumb-mix.tsx";
+import BreadcrumbExpansibleCollapse from "../../demo/breadcrumb-expansible-collapse.tsx";
 
 export default {
   title: 'Example/Breadcrumb',
@@ -19,42 +21,23 @@ export default {
     backgroundColor: { control: 'color' },
   },
 }
-/**
- * TODO: integrate with Dropdown component
- * TODO: it seems `<BreadcrumbList>` doesn't make sense
- * TODO: it seems `<BreadcrumbPage>` doesn't make sense, having `<BreadcrumbLink>` should be enough
- */
+
+// TBD: Using BreadcrumbFinal is optional, cuz there're sites that prefering not showing the final item on the breadcrumb as user is viewing that page (represented as the final item)
 export const Variant1 = {
-  name: 'Mix',
-  render: () => {
-    return (
-      <Breadcrumb>
-        <BreadcrumbList>
-
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">This is a link</BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator><Icon icon="lucide:slash" /></BreadcrumbSeparator>
-
-          {/* Too more items, show ellipsis to express "collapse" */}
-          <BreadcrumbItem><BreadcrumbEllipsis /></BreadcrumbItem>
-
-          <BreadcrumbSeparator />
-
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/components">Components</BreadcrumbLink>
-          </BreadcrumbItem>
-
-          <BreadcrumbSeparator/>
-
-          <BreadcrumbItem>
-            <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-          </BreadcrumbItem>
-
-        </BreadcrumbList>
-      </Breadcrumb>
-    )
-  },
+  name: 'Demo',
+  render: () => <BreadcrumbDemo />
 };
 
+
+export const Variant2 = {
+  name: 'API / Mix',
+  render: () => <BreadcrumbMix />
+};
+
+
+export const Expansible = {
+  name: 'Scenario / Expansible',
+  render: () => {
+    return <BreadcrumbExpansibleCollapse />
+  }
+}

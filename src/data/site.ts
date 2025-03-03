@@ -128,6 +128,12 @@ export default {
           title: 'Separator',
           href: '/docs/components/separator',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Breadcrumb',
+          href: '/docs/components/breadcrumb',
+          labels: []
         }
       ],
       labels: []
