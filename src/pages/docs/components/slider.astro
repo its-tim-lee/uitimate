@@ -1,0 +1,35 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import { Heading } from "@/components/ui/Heading/Heading";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `<Slider/>`;
+const apiLink = `https://www.radix-ui.com/primitives/docs/components/progress`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      apiLink={apiLink}
+      title={startCase(routeName)}
+      subtitle="An input where the user selects a value from within a given range."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="slider-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+  </DocPageLayout>
+</BaseLayout>

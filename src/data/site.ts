@@ -104,6 +104,24 @@ export default {
           title: 'Skeleton',
           href: '/docs/components/skeleton',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Image',
+          href: '/docs/components/image',
+          labels: []
+        },
+        {
+          type: 'link',
+          title: 'Progress',
+          href: '/docs/components/progress',
+          labels: []
+        },
+        {
+          type: 'link',
+          title: 'Slider',
+          href: '/docs/components/slider',
+          labels: []
         }
       ],
       labels: []

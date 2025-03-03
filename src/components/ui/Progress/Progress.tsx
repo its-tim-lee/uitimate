@@ -2,7 +2,7 @@ import * as React from "react"
 import { Root, Indicator } from "@radix-ui/react-progress"
 import { cn } from "@/lib/utils"
 
-const Progress = ({ className, value, ...props }: ProgressProps) => (
+export const Progress = ({ className, value, ...props }: ProgressProps) => (
   <Root
     className={cn(
       "tw:relative tw:h-2 tw:w-full tw:overflow-hidden tw:rounded-full tw:bg-primary/20",
@@ -18,5 +18,4 @@ const Progress = ({ className, value, ...props }: ProgressProps) => (
 )
 Progress.displayName = 'Progress'
 
-export { Progress }
-export interface ProgressProps extends React.ComponentProps<typeof Root> {}
+export type ProgressProps = React.ComponentProps<typeof Root>

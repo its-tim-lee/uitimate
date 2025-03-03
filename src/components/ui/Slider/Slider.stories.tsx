@@ -15,8 +15,8 @@ export const Variant1 = {
   name: 'Default',
   render: () => {
     return (
-      <Slider defaultValue={[50]} className={"tw:w-[320px]"}
-    />
+      <Slider defaultValue={[50]} className="tw:w-[320px]"
+      />
     )
   },
 };
