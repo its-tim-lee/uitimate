@@ -98,6 +98,12 @@ export default {
           title: 'Tooltip',
           href: '/docs/components/tooltip',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Skeleton',
+          href: '/docs/components/skeleton',
+          labels: []
         }
       ],
       labels: []
