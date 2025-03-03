@@ -1,0 +1,121 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `<Badge/>`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      title={startCase(routeName)}
+      subtitle="Displays a badge or a component that looks like a badge."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="badge-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Design Notes"
+      subtitle="The implementation details that some would be appreciated."
+    />
+
+    <p></p>
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "5 Variants",
+          type: "preview",
+          demoId: "badge-5variants",
+        },
+        {
+          title: "3 Sizes",
+          type: "preview",
+          demoId: "badge-3sizes",
+        },
+        {
+          title: "3 Modes",
+          type: "preview",
+          demoId: "badge-3modes",
+          content: `
+            You might wonder that why there're "mode" and "variant" for this component? Why not just merge them?
+            The reason is simply because they're really different. Each mode can pair with different variant.
+            The analogy is like, you've different dressing styles (ie., variants),
+            but your body shape can be thin or strong (ie., modes).`,
+        },
+        {
+          title: "Pill",
+          type: "preview",
+          demoId: "badge-pill",
+          content: `For the avatar one, do not put the image on the right, because we don't support it due to no one use this component in that manner. And note that, it meant to be used with our Avatar component, but if you want to use yours, make sure your avatar root component has an attribute called "data-avatar"`,
+        },
+        {
+          title: "Anchor",
+          type: "preview",
+          demoId: "badge-anchor",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
+    />
+
+    <VersatileTabs
+      settings={[
+        {
+          title: "API Doc",
+          type: "preview",
+          demoId: "badge-apidoc",
+        },
+        {
+          title: "CTA",
+          type: "preview",
+          demoId: "badge-cta",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <!-- ComponentPageAPI -->
+  </DocPageLayout>
+</BaseLayout>

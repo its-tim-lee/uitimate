@@ -5,8 +5,9 @@ import { cn } from "@/lib/utils"
 
 const Avatar = ({ className, ...props }: ComponentProps<typeof Root>) => (
   <Root
+    data-avatar
     className={cn(
-      "tw:relative tw:flex tw:h-10 tw:w-10 tw:shrink-0 tw:overflow-hidden tw:rounded-full",
+      "tw:relative tw:h-10 tw:w-10 tw:shrink-0 tw:overflow-hidden tw:rounded-full",
       className
     )}
     {...props}

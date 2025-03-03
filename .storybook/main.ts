@@ -9,6 +9,8 @@ const config: StorybookConfig = {
     // TODO: Caveat: this can only open VSC, not Cursor,
     // so the compromise can be showing the code on the Storybook UI
     "storybook-addon-source-link",
+    'storybook-dark-mode',
+    '@storybook/addon-themes'
   ],
   core: {
     builder: {

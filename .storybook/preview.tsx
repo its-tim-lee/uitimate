@@ -2,6 +2,8 @@
 import React from 'react';
 import '@/index.css';
 import { type Preview } from "@storybook/react";
+import { themes } from '@storybook/theming';
+import { withThemeByClassName } from '@storybook/addon-themes';
 
 const preview: Preview = {
   parameters: {
@@ -11,56 +13,20 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-  },
-  args: {
-    onArgsChange: (args: any) => {
-      console.log('Controls changed:', args);
-    },
-  },
-};
-/**
- * A decorator that:
- *  1) Renders the story’s Docs description (if any) on the Canvas
- *     > This will take JSDoc into the canvas, so if that's not what you want, define `parameters.docs.description.story` on the story to override it
- *  2) Builds a code snippet from the story’s args and shows a copy button
- */
-export const withDescriptionAndSnippetOnCanvas = (Story, context) => {
-  const description = context.parameters.docs?.description?.story;
-  const { args, component } = context;
-  const componentName = component?.displayName || component?.name || 'Component';
-  const propLines = Object.entries(args)
-    .map(([key, val]) => `  ${key}={${JSON.stringify(val)}}`)
-    .join('\n');
-
-  const snippet = `<${componentName} ${propLines} />`;
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(snippet);
-    } catch (error) {
-      console.error('Failed to copy snippet:', error);
+    darkMode: {
+      // Override the default dark theme
+      dark: { ...themes.dark, appBg: 'black' },
+      // Override the default light theme
+      light: { ...themes.normal, appBg: 'white' }
     }
-  };
-  return (
-    <div className="tw-font-sans tw-p-4">
-      {description && (
-        <p className="tw:italic tw:mb-2">
-          {description}
-        </p>
-      )}
-      <Story />
-      <pre className="tw:mt-4 tw:bg-gray-100 tw:p-4 tw:rounded">
-        {snippet}
-      </pre>
-      <button className="tw:mt-4 tw:bg-gray-100 tw:p-4 tw:rounded" onClick={($e) => {
-        handleCopy();
-        ($e.target as HTMLButtonElement).innerText = 'Code Copied';
-      }}>
-        Copy Code
-      </button>
-    </div>
-  );
+  },
+  // args: {
+  //   onArgsChange: (args: any) => {
+  //     console.log('Controls changed:', args);
+  //   },
+  // },
 };
+
 
 export default preview;
 
@@ -71,7 +37,6 @@ const withStrictMode = (Story) => <React.StrictMode><Story /></React.StrictMode>
 
 
 export const decorators = [
-  withDescriptionAndSnippetOnCanvas,
   /**
    * In strict mode, React will call many things twice to find out accidental impurities:
    * - The component function
@@ -80,5 +45,12 @@ export const decorators = [
    *   - Updater function
    */
   withStrictMode,
-  listenSidebarTogglingInCanvas
+  listenSidebarTogglingInCanvas,
+  withThemeByClassName({
+    themes: {
+      light: '',
+      dark: 'dark',
+    },
+    defaultTheme: 'light',
+  }),
 ];

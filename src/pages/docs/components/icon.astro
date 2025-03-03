@@ -1,0 +1,72 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+import { Badge } from "~/src/components/ui/Badge/Badge";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `<Icon/>`;
+const apiLink = `https://iconify.design/docs/icon-components/react/#iconify-for-react`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      apiLink={apiLink}
+      title={startCase(routeName)}
+      subtitle="Given icon name, it will render an icon."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="icon-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Design Notes"
+      subtitle="The implementation details that some would be appreciated."
+    />
+
+    <p>
+      This component is just a wrapper of Iconify's Icon, so you may check the
+      library's corresponding doc to see what are the APIs available, but in
+      most of time, you'd simply just use <Badge variant="secondary">icon</Badge
+      > prop.
+
+      <br /><br />
+
+      We use this internally a lots, but in case you do want to use other Icon
+      library, make sure it uses SVG under the hood, and that SVG need to have
+      the attribute <Badge variant="secondary">data-icon</Badge>; this is
+      because some of our components rely on the fact of SVG as well as the
+      attribute.
+
+      <br /><br />
+
+      Since this component is simple, and there're many examples in many other
+      component pages have shown the usage (eg., <Badge variant="secondary"
+        >{"<"}Button{">"}</Badge
+      >), nothing more to show on this page.
+    </p>
+  </DocPageLayout>
+</BaseLayout>

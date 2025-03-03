@@ -1,11 +1,11 @@
 /**
- * `Arrow` is not imported, cuz it's not that useful.
+ * `Arrow` is not imported from Radix, cuz it's not that useful.
  */
 import { Provider as TooltipProvider, Root, Trigger as TooltipTrigger, Content, Portal } from "@radix-ui/react-tooltip"
 import { cn } from "@/lib/utils"
 import type { ComponentProps } from "react"
 
-const TooltipContent = ({ className, sideOffset = 4, ref, ...props }: ComponentProps<typeof Content>) => (
+export const TooltipContent = ({ className, sideOffset = 4, ref, ...props }: ComponentProps<typeof Content>) => (
   <Portal>
     <Content
       ref={ref}
@@ -19,7 +19,8 @@ const TooltipContent = ({ className, sideOffset = 4, ref, ...props }: ComponentP
   </Portal>
 )
 
-const Tooltip = ({ delayDuration = 700, skipDelayDuration = 300, disableHoverableContent = false, ...props }: ComponentProps<typeof Root> & ComponentProps<typeof TooltipProvider>) => (
+export type TooltipProps = ComponentProps<typeof Root> & ComponentProps<typeof TooltipProvider>
+export const Tooltip = ({ delayDuration = 700, skipDelayDuration = 300, disableHoverableContent = false, ...props }: TooltipProps) => (
   <TooltipProvider delayDuration={delayDuration} skipDelayDuration={skipDelayDuration} disableHoverableContent={disableHoverableContent}>
     <Root {...props} />
   </TooltipProvider>
@@ -27,4 +28,4 @@ const Tooltip = ({ delayDuration = 700, skipDelayDuration = 300, disableHoverabl
 
 TooltipContent.displayName = Content.displayName
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+export { TooltipTrigger, TooltipProvider }

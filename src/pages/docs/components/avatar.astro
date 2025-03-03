@@ -1,0 +1,56 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `
+  <Avatar>
+    <AvatarImage/>
+    <AvatarFallback/>
+  </Avatar>
+`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      apiLink="/docs/components/avatar"
+      title={startCase(routeName)}
+      subtitle="An image element with a fallback for representing the user."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="avatar-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+    <br />
+    <br />
+    <Heading
+      size="h2"
+      title="Example"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <p>
+      Check out the <a href="/docs/components/badge" class="tw:underline"
+        >Badge component page</a
+      >
+    </p>
+  </DocPageLayout>
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `<Button/>`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      title={startCase(routeName)}
+      subtitle="A component that usually contains a single word or/and icon(s)."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="button-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "6 Variants",
+          type: "preview",
+          demoId: "button-6variants",
+        },
+        {
+          title: "Anchor & Icon",
+          type: "preview",
+          demoId: "button-anchor-icon",
+        },
+        {
+          title: "3 Sizes",
+          type: "preview",
+          demoId: "button-3sizes",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Search",
+          type: "preview",
+          demoId: "button-search",
+        },
+        {
+          title: "Switch",
+          type: "preview",
+          demoId: "button-switch",
+        },
+        {
+          title: "Badge",
+          type: "preview",
+          demoId: "button-badge",
+        },
+        {
+          title: "Dial",
+          type: "preview",
+          demoId: "button-dial",
+        },
+        {
+          title: "Progress",
+          type: "preview",
+          demoId: "button-progress",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <!-- ComponentPageAPI -->
+  </DocPageLayout>
+</BaseLayout>

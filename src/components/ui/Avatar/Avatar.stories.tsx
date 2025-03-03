@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from './Avatar.tsx';
+import AvatarDemo from '../../demo/avatar-demo.tsx';
 
 export default {
   title: 'Example/Avatar',
@@ -13,13 +13,5 @@ export default {
 
 export const Default = {
   name: 'Default',
-  render: () => {
-
-    return (
-      <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-      <AvatarFallback>CN</AvatarFallback>
-    </Avatar>
-    );
-  },
+  render: () => <AvatarDemo />
 };

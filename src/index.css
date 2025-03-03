@@ -1,6 +1,11 @@
 @import 'tailwindcss' prefix(tw);
-@plugin 'tailwindcss-animate';
+/**
+FIXME: currently, prefix with animation will not work. It has been fixed but hasn't released yet: https://github.com/tailwindlabs/tailwindcss/issues/16829
+*/
+/* @plugin 'tailwindcss-animate'; */
+/* @import "tailwindcss-animated" prefix(tw); */
 @custom-variant dark (&:where(.dark, .dark *));
+
 /**
   The reason we link the vars defined under `@layer base` is simply because the current limitation of `@theme`,
   cuz we can't declare a class at here such as `.dark {...}`, otherwise we can simply do stuff like:
@@ -142,12 +147,15 @@
   `--sidebar-background` will only be resolved when browser is rendering `--color-sidebar`
   */
   :root {
-    --background: var(--tw-color-white);
-    --foreground: var(--tw-color-zinc-950);
+
     --card: var(--tw-color-white);
     --card-foreground: var(--tw-color-zinc-950);
     --popover: var(--tw-color-white);
     --popover-foreground: var(--tw-color-zinc-950);
+
+    --background: var(--tw-color-white);
+    --foreground: var(--tw-color-zinc-950);
+
     --primary: var(--tw-color-zinc-900);
     --primary-foreground: var(--tw-color-zinc-50);
     --secondary: var(--tw-color-zinc-100);
@@ -158,6 +166,9 @@
     --accent-foreground: var(--tw-color-zinc-900);
     --destructive: var(--tw-color-red-500);
     --destructive-foreground: var(--tw-color-zinc-50);
+
+
+
     --border: var(--tw-color-zinc-200);
     --input: var(--tw-color-zinc-200);
     --ring: var(--tw-color-zinc-950);
@@ -226,4 +237,44 @@
   body {
     @apply tw:bg-background tw:text-foreground;
   }
+
+  /* Below are all from Shadcn Doc Site source code */
+  html {
+    @apply tw:scroll-smooth;
+  }
+  body {
+    @apply tw:overscroll-none;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+}
+
+@layer utilities {
+  .border-grid {
+    @apply tw:border-border/50 tw:dark:border-border tw:border-dashed;
+  }
+
+  .container-wrapper {
+    @apply tw:max-w-[1400px] tw:min-[1800px]:max-w-screen-2xl tw:min-[1400px]:border-x tw:border-border/70 tw:dark:border-border tw:mx-auto tw:w-full tw:border-dashed;
+  }
+
+  .container {
+    @apply tw:px-4 tw:xl:px-6 tw:mx-auto tw:max-w-screen-2xl;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+}
+
+body {
+  @apply tw:font-mono;
 }

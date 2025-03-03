@@ -4,6 +4,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "./Tooltip.tsx"
+import TooltipDemo from "../../demo/tooltip-demo.tsx";
 
 export default {
   title: 'Example/Tooltip',
@@ -18,18 +19,5 @@ export default {
 
 export const Variant1 = {
   name: 'Default',
-  render: () => {
-    return (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Toggle variant="outline" size="sm">
-            Hover
-          </Toggle>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Add to library</p>
-        </TooltipContent>
-      </Tooltip>
-    )
-  },
+  render: () => <TooltipDemo />
 };

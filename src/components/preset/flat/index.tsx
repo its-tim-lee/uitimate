@@ -1,4 +1,9 @@
 import { cn } from "@/lib/utils"
+import {
+  tv,
+  type VariantProps,
+} from 'tailwind-variants';
+import { type ComponentProps } from "react"
 
 /**
  * TODO: figure out the mental model of the rounded API (ie., why they use `--radius`)
@@ -11,12 +16,33 @@ import { cn } from "@/lib/utils"
  * TODO: doc how this works with the design: no mapper, but should still define the few variations in both design and development,
  * cuz in CMS AI, we should still map them
  */
-const Flat =
-  ({ className, children, ...props }: App.ComponentProps) => {
+
+export const flatVariants = tv({
+  base: [
+    "tw:bg-background tw:shadow-sm tw:border tw:border-solid tw:border-zinc-200 tw:rounded-[8px]",
+  ],
+  variants: {
+    size: {
+      sm: "tw:p-3",
+      md: "tw:p-6",
+      lg: "tw:p-8",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+})
+
+export type FlatProps =
+  ComponentProps<'div'> &
+  VariantProps<typeof flatVariants>
+
+export const Flat =
+  ({ size, className, children, ...props }: FlatProps) => {
     return (
       <div
         {...props}
-        className={cn("tw:bg-white tw:shadow-sm tw:p-6 tw:rounded-[8px] tw:border tw:border-solid tw:border-zinc-200", className)}
+        className={flatVariants({ size, className })}
       >
         {children}
       </div>
@@ -24,5 +50,3 @@ const Flat =
   }
 
 Flat.displayName = "Flat"
-
-export { Flat }

@@ -4,7 +4,7 @@ import { addons } from '@storybook/manager-api';
 // or in older docs you might see '@storybook/addons', but in v8+ use '@storybook/manager-api'
 
 addons.setConfig({
-  showToolbar: false,
+  // showToolbar: false,
   // other config here
 });
 // addons.setConfig({

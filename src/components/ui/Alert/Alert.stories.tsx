@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import IconV2 from "../Icon/IconV2.tsx";
 
 import {
   Alert,
@@ -17,12 +17,11 @@ export default {
   },
 }
 
-
 export const Variant1 = {
-  name: 'Destructive',
+  name: 'API / 2 Variants',
   render: () => {
     return <Alert variant="destructive">
-      <Icon icon='lucide:circle-alert' className="tw:h-4 tw:w-4" />
+      <IconV2 icon='lucide:circle-alert' className="tw:h-4 tw:w-4" />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>
         Your session has expired. Please log in again.
@@ -32,14 +31,19 @@ export const Variant1 = {
 };
 
 export const Variant2 = {
-  name: 'Default',
+  name: 'Scenario / Reminder',
   render: () => {
-    return <Alert variant="default">
-      <Icon icon='lucide:terminal' className="tw:h-4 tw:w-4" />
-      <AlertTitle>Heads up!</AlertTitle>
-      <AlertDescription>
-        You can add components to your app using the cli.
-      </AlertDescription>
-    </Alert>
+    return (
+      <>
+        <Alert>
+          <IconV2 icon='lucide:shield-check' className="tw:h-4 tw:w-4" />
+          <AlertTitle>Upated to the latest version!</AlertTitle>
+        </Alert>
+        <br />
+        <Alert>
+          <AlertTitle>Rollback to the previous version...</AlertTitle>
+        </Alert>
+      </>
+    )
   },
 };

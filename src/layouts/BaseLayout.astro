@@ -1,0 +1,26 @@
+---
+import SiteHeader from "../components/internal/SiteHeader.astro";
+import SiteFooter from "../components/internal/SiteFooter";
+const colorSchemeCode = await import(
+  "@/components/internal/color-scheme-control/fout-preventer.ts?raw"
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <script is:inline set:html={colorSchemeCode.default} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <SiteHeader />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

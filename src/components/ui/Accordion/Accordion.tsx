@@ -23,7 +23,7 @@ const AccordionTrigger = ({ className, children, ...props }: ComponentProps<type
       {...props}
     >
       {children}
-      <Icon icon='mdi:chevron-down' className="tw:h-4 tw:w-4 tw:shrink-0 tw:text-muted-foreground tw:transition-transform tw:duration-200" />
+      <Icon icon='lucide:chevron-down' className="tw:h-4 tw:w-4 tw:shrink-0 tw:text-muted-foreground tw:transition-transform tw:duration-200" />
     </Trigger>
   </Header>
 );

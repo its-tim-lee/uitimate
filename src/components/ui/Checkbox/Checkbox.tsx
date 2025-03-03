@@ -1,11 +1,11 @@
 import { type ComponentProps } from "react"
-import { Root, Indicator } from "@radix-ui/react-checkbox"
+import { Root, Indicator, type CheckedState } from "@radix-ui/react-checkbox"
 import { cn } from "@/lib/utils"
 import { Icon } from "@/components/ui/Icon/Icon.tsx"
 import { SHA256 } from "crypto-js"
 import { Label } from "~/src/components/ui/Label/Label.tsx"
 
-const Checkbox = ({ className, title, outline, ...props }: CheckboxProps) => {
+const Checkbox = ({ className, title, subtitle, outline, ...props }: CheckboxProps) => {
   const id = title && `id${SHA256(title)}`
 
   const $checkbox = (
@@ -34,16 +34,29 @@ const Checkbox = ({ className, title, outline, ...props }: CheckboxProps) => {
             {title}
           </Label>
           {outline && <div className="tw:text-sm tw:text-muted-foreground">{outline}</div>}
+          {subtitle && <div className="tw:text-sm tw:text-muted-foreground">{subtitle}</div>}
         </div>
       )}
     </div>
   )
 }
-Checkbox.displayName = Root.displayName
+type CheckboxTitleProps = ComponentProps<typeof Label>
+const CheckboxTitle = ({ id, className, children, ...props }: CheckboxTitleProps) => {
+  return <Label htmlFor={id}
+    data-title
+    className={cn("tw:text-sm tw:font-medium tw:leading-none tw:peer-disabled:cursor-not-allowed tw:peer-disabled:opacity-70", className)}
+    {...props}
+  >
+    {children}
+  </Label>
+}
 
+Checkbox.displayName = Root.displayName
+export type { CheckedState }
 export { Checkbox }
 
 export interface CheckboxProps extends ComponentProps<typeof Root> {
-  title?: string
-  outline?: string
+  title?: string;
+  subtitle?: string;
+  outline?: string;
 }

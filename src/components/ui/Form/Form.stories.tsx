@@ -11,7 +11,6 @@ import { z } from "zod"
 import { Input } from "@/components/ui/Input/Input.tsx"
 import { useEffect, useState } from "react";
 import { Toggle } from "@/components/ui/Toggle/Toggle.tsx";
-import { TextHeader } from "@/components/ui/TextHeader/TextHeader.tsx";
 export function ProfileForm() {
 
   const schema = z.object({
@@ -40,7 +39,7 @@ export function ProfileForm() {
       <FormItem name="username">
         <FormLabel>Username</FormLabel>
         <FormControl>
-          <Input placeholder="shadcn"/>
+          <Input placeholder="shadcn" />
         </FormControl>
         <FormDescription>
           This is your public display name.
@@ -48,14 +47,14 @@ export function ProfileForm() {
         <FormMessage />
       </FormItem>
       <FormItem
-              rules={{
-                required: true,
-                // valueAsNumber: true // TODO: why this doens't work?
-              }}
-      name="password">
+        rules={{
+          required: true,
+          // valueAsNumber: true // TODO: why this doens't work?
+        }}
+        name="password">
         <FormLabel>Password</FormLabel>
         <FormControl>
-          <Input placeholder="123"/>
+          <Input placeholder="123" />
         </FormControl>
         <FormDescription>
           This is your public display name.
@@ -64,7 +63,7 @@ export function ProfileForm() {
       </FormItem>
 
       <Toggle type="submit" pressed={false}>
-Submit
+        Submit
       </Toggle>
     </Form>
   );

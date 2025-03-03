@@ -1,9 +1,16 @@
-import { Icon } from "@iconify/react";
 import {
   Button,
-  type ButtonProps
 } from "./Button.tsx"
-
+import githubSVG from "@iconify/icons-lucide/github";
+import ButtonProgress from "../../demo/button-progress.tsx";
+import ButtonDial from "../../demo/button-dial.tsx";
+import ButtonBadge from "../../demo/button-badge.tsx";
+import ButtonSearch from "../../demo/button-search.tsx";
+import Button3Sizes from "../../demo/button-3sizes.tsx";
+import ButtonAnchorIcon from "../../demo/button-anchor-icon.tsx";
+import Button6Variants from "../../demo/button-6variants.tsx";
+import ButtonSwitch from "../../demo/button-switch.tsx";
+const { body: github } = githubSVG as any;
 export default {
   title: 'Example/Button',
   parameters: {
@@ -25,53 +32,43 @@ export default {
 
 }
 
+export const Variant2 = {
+  name: 'API / 6 Variants',
+  render: () => <Button6Variants />
+};
+
 export const Variant3 = {
-  name: 'Text + Icon',
-  args: {
-    variant: 'outline',
-    disabled: true,
-  },
-  render: (args: ButtonProps) => <Button {...args}>
-    <Icon icon="lucide:loader-circle" className="tw:animate-spin" />
-    Please wait
-  </Button>
+  name: 'Loading / Disabled',
+  render: () => <ButtonProgress />
 };
 
 export const Variant4 = {
-  parameters: {
-    docs: {
-      description: {
-        story: '',
-      },
-    },
-  },
-  name: 'Just icon',
-  args: {
-    variant: 'outline',
-    size: 'icon',
-  },
-  render: (args: ButtonProps) => <Button {...args}><Icon icon="lucide:chevron-right" /></Button>
+  name: 'Scenario / Switch',
+  render: () => <ButtonSwitch />
 };
 
-/**
- * The end result:
- *  the classes generated from `<Button>` will be applied to the child,
- *  in this case, the `<a>` tag, then the child will be unwrapped (ie., `<Button>` is gone)
- *
- * So it's basically applying the styling mechanism from `<Button>` to the child
- */
 export const Variant8 = {
-  name: 'Anchor',
-  args: {
-    asChild: true,
-    target: "_blank"
-  },
-  render: (args: ButtonProps) => {
+  name: 'API / Anchor & Icon',
+  render: () => <ButtonAnchorIcon />
+};
 
-    return (
-      <Button {...args}>
-        <a href="#">Login</a>
-      </Button>
-    )
-  }
+export const Variant10 = {
+  name: 'Scenario / Search',
+  render: () => <ButtonSearch />
+}
+
+export const Variant9 = {
+  name: 'API / 3 Sizes',
+  render: () => <Button3Sizes />
+
+};
+
+export const Variant11 = {
+  name: 'Scenario / Badge',
+  render: () => <ButtonBadge />
+};
+
+export const Variant12 = {
+  name: 'Scenario / Dial',
+  render: () => <ButtonDial />
 };

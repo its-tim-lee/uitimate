@@ -1,17 +1,17 @@
 import * as LabelPrimitive from "@radix-ui/react-label"
-import { cva, type VariantProps } from "class-variance-authority"
+import { tv, type VariantProps } from "tailwind-variants"
 
 import { cn } from "@/lib/utils"
 import type { ComponentProps } from "react"
 
-const labelVariants = cva(
-  "tw:text-sm tw:font-medium tw:leading-none tw:peer-disabled:cursor-not-allowed tw:peer-disabled:opacity-70"
-)
+const labelVariants = tv({
+  base: "tw:text-sm tw:font-medium tw:leading-none tw:peer-disabled:cursor-not-allowed tw:peer-disabled:opacity-70"
+})
 
 const Label = ({ className, ...props }: ComponentProps<typeof LabelPrimitive.Root>) => (
   <LabelPrimitive.Root
     className={cn(labelVariants(), className)}
-    {...props}
+    data-label {...props}
   />
 )
 Label.displayName = LabelPrimitive.Root.displayName
