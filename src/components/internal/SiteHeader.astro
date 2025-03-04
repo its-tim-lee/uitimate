@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { default as githubSVG } from "@iconify/icons-lucide/github";
 import IconV2 from "@/components/ui/Icon/IconV2";
 import Logo from "./TemporaryLogo";
-// import Searchbar from "./Searchbar";
+import Searchbar from "./Searchbar";
 import GithubButton from "./GithubButton";
 // const { default: github } = githubSVG as any;
 ---
@@ -34,9 +34,9 @@ import GithubButton from "./GithubButton";
         <div
           class="tw:flex tw:flex-1 tw:items-center tw:justify-between tw:gap-2 tw:md:justify-end"
         >
-          <!-- <Searchbar className="tw:flex-none" /> -->
+          <Searchbar className="tw:flex-none" />
           <nav class="tw:flex tw:items-center tw:gap-0.5">
-            <!-- <GithubButton /> -->
+            <GithubButton />
             <LightDarkSwitcher client:only="react" />
           </nav>
         </div>

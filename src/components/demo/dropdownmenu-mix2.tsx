@@ -18,8 +18,7 @@ type Checked = DropdownMenuCheckboxItemProps["checked"]
 
 export default () => {
   const [theme, setTheme] = React.useState("light")
-  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)
-  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false)
+  const [barPosition, setBarPosition] = React.useState<Checked>(true)
 
   return (
     <DropdownMenu>
@@ -41,14 +40,14 @@ export default () => {
         <DropdownMenuLabel>Sidebar</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={setShowStatusBar}
+          checked={barPosition === true}
+          onCheckedChange={() => setBarPosition(true)}
         >
           On Right
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
+          checked={barPosition === false}
+          onCheckedChange={() => setBarPosition(false)}
         >
           On Left
         </DropdownMenuCheckboxItem>
