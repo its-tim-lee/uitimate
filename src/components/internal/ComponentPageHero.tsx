@@ -32,8 +32,9 @@ export default ({ title, subtitle, apiLink }: { title: string, subtitle: string,
       <Badge variant="outline" className="tw:cursor-pointer">
         <IconV2 ssr icon={edit} /> Edit this page
       </Badge>
+      {/* FIXME: this seems have a smaller size comparing to others */}
       {apiLink && (
-        <Badge variant="outline" className="tw:cursor-pointer" asChild>
+        <Badge variant="primary" className="tw:cursor-pointer" asChild>
           <a href={apiLink} target="_blank">
             <IconV2 ssr icon={code} /> API Reference
           </a>
