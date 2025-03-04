@@ -12,14 +12,21 @@ import {
 } from "@/components/ui/Heading/Heading";
 import VersatileTabs from "@/components/internal/VersatileTabs";
 const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
-const anatomy = `<Button/>`;
+const anatomy = `
+<DropdownMenu>
+  <DropdownMenuTrigger/>
+  <DropdownMenuContent/>
+</DropdownMenu>
+`;
+const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName}`;
 ---
 
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      apiLink={apiLink}
       title={startCase(routeName)}
-      subtitle="A component that usually contains a single word or/and icon(s)."
+      subtitle="Displays a menu to the user—such as a set of actions or functions—triggered by a button."
     />
 
     <br />
@@ -30,7 +37,7 @@ const anatomy = `<Button/>`;
       subtitle="How you can play this component."
     />
     <ComponentPageUsage
-      demoId="button-demo"
+      demoId="dropdownmenu-demo"
       anatomy={anatomy}
       client:only="react"
     />
@@ -46,63 +53,15 @@ const anatomy = `<Button/>`;
     <VersatileTabs
       settings={[
         {
-          title: "6 Variants",
+          title: "Mix",
           type: "preview",
-          demoId: "button-6variants",
+          demoId: "dropdownmenu-mix1",
+          content: "This represents almost all the APIs",
         },
         {
-          title: "Anchor & Icon",
+          title: "Radio + Checkbox",
           type: "preview",
-          demoId: "button-anchor-icon",
-        },
-        {
-          title: "3 Sizes",
-          type: "preview",
-          demoId: "button-3sizes",
-        },
-      ]}
-      client:only="react"
-    />
-
-    <br />
-    <br />
-
-    <Heading
-      size="h2"
-      title="Example / Scenario"
-      subtitle="This lists common real-world use cases."
-    />
-    <VersatileTabs
-      settings={[
-        {
-          title: "Search",
-          type: "preview",
-          demoId: "button-search",
-        },
-        {
-          title: "Switch",
-          type: "preview",
-          demoId: "button-switch",
-        },
-        {
-          title: "Badge",
-          type: "preview",
-          demoId: "button-badge",
-        },
-        {
-          title: "Dial",
-          type: "preview",
-          demoId: "button-dial",
-        },
-        {
-          title: "Progress",
-          type: "preview",
-          demoId: "button-progress",
-        },
-        {
-          title: "Avatar",
-          type: "preview",
-          demoId: "button-avatar",
+          demoId: "dropdownmenu-mix2",
         },
       ]}
       client:only="react"

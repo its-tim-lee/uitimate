@@ -146,6 +146,12 @@ export default {
           title: 'Popover',
           href: '/docs/components/popover',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'DropdownMenu',
+          href: '/docs/components/dropdownmenu',
+          labels: []
         }
       ],
       labels: []

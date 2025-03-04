@@ -48,6 +48,7 @@ export const buttonVariants = tv({
         "tw:hover:underline"
       ],
     },
+    // TBD: different size should have different sized icon: src/components/demo/dropdownmenu-mix2.tsx
     size: {
       sm: "tw:text-sm tw:h-9 tw:rounded-md tw:px-3 tw:data-icon-btn:w-9 tw:data-icon-btn:p-0",
       md: "tw:text-md tw:h-10 tw:px-4 tw:py-2 tw:data-icon-btn:w-10 tw:data-icon-btn:p-0",
@@ -77,8 +78,9 @@ export type ButtonProps =
  */
 export const Button =
   ({
+
     variant, size, asChild = false,
-    icon = false, // #1
+    icon = false, // #1 FIXME: refactor to mode='icon' to align with the api design as Badge
     className, children,
     ...props
   }: ButtonProps) => {
