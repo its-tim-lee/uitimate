@@ -140,6 +140,12 @@ export default {
           title: 'Toast',
           href: '/docs/components/toast',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Popover',
+          href: '/docs/components/popover',
+          labels: []
         }
       ],
       labels: []
