@@ -134,6 +134,12 @@ export default {
           title: 'Breadcrumb',
           href: '/docs/components/breadcrumb',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Toast',
+          href: '/docs/components/toast',
+          labels: []
         }
       ],
       labels: []
