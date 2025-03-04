@@ -158,6 +158,12 @@ export default {
           title: 'Pagination',
           href: '/docs/components/pagination',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Resizable',
+          href: '/docs/components/resizable',
+          labels: []
         }
       ],
       labels: []
