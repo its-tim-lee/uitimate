@@ -1,0 +1,73 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+import { Badge } from "~/src/components/ui/Badge/Badge";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const apiLink = `https://ui.shadcn.com/docs/components/${routeName}`;
+const anatomy = `
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger/>
+      <MenubarContent>
+        <MenubarItem/>
+      </MenubarContent>
+    </MenubarMenu>
+    <!--
+      More <MenubarMenu /> ...
+    -->
+  </Menubar>
+`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      title={startCase(routeName)}
+      subtitle="Usually represents page navigation to separate long sets of data."
+      apiLink={apiLink}
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="menubar-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Design Notes"
+      subtitle="The implementation details that some would appreciate."
+    />
+
+    <p>
+      By just reading the demo code should let you understand pretty much
+      everything, but there're 3 child components from Radix that we choose to
+      not adopt in our source code, because in most of cases, you really don't
+      need them: <Badge variant="secondary">{"<"}Group{">"}</Badge>,
+      <Badge variant="secondary">{"<"}Label{">"}</Badge>, and <Badge
+        variant="secondary">{"<"}Arrow{">"}</Badge
+      >.
+    </p>
+    <!-- ComponentPageAPI -->
+  </DocPageLayout>
+</BaseLayout>

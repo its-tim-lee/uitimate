@@ -1,9 +1,4 @@
 import ResizableDemo from "../../demo/resizable-demo.tsx";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "./Resizable.tsx"
 
 export default {
   title: 'Example/Resizable',

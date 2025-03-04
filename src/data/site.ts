@@ -164,6 +164,12 @@ export default {
           title: 'Resizable',
           href: '/docs/components/resizable',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Menubar',
+          href: '/docs/components/menubar',
+          labels: []
         }
       ],
       labels: []
