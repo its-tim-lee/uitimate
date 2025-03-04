@@ -161,6 +161,21 @@ export default {
         }
       ],
       labels: []
-    }
+    },
+    {
+      type: 'group',
+      title: 'Component Patterns',
+      items: [
+        {
+          type: 'link',
+          title: 'Card',
+          href: '/docs/component-patterns/card',
+          labels: []
+        },
+
+
+      ],
+      labels: []
+    },
   ] as DocTreeItem[]
 }
