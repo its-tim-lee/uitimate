@@ -3,7 +3,7 @@ import { Button } from "../ui/Button/Button";
 
 export default () => (
   <Button variant='outline' disabled>
-    <IconV2 icon="lucide:loader-circle" className="tw:animate-spin" />
+    <IconV2 icon="lucide:loader-circle" className="tw:[&]:animate-spin" />
     Please wait
   </Button>
 )

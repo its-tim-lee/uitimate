@@ -152,6 +152,12 @@ export default {
           title: 'DropdownMenu',
           href: '/docs/components/dropdownmenu',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Pagination',
+          href: '/docs/components/pagination',
+          labels: []
         }
       ],
       labels: []

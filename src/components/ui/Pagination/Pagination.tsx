@@ -1,54 +1,65 @@
 import { Icon } from "@/components/ui/Icon/Icon.tsx"
 import { type ComponentProps } from "react"
-import { cn } from "@/lib/utils"
 import { type ButtonProps, buttonVariants } from "@/components/ui/Button/Button.tsx"
+import { tv, type VariantProps } from "tailwind-variants"
 
-const Pagination = ({ className, children, ...props }: ComponentProps<"nav">) => (
+const paginationVariants = tv({
+  slots: {
+    nav: "tw:mx-auto tw:flex tw:w-full tw:justify-center",
+    list: "tw:flex tw:flex-row tw:items-center tw:gap-1",
+    previous: "tw:gap-1 tw:pl-2.5",
+    next: "tw:gap-1 tw:pr-2.5",
+    ellipsis: "tw:flex tw:h-9 tw:w-9 tw:items-center tw:justify-center"
+  }
+})
+
+const { nav, list, previous, next, ellipsis } = paginationVariants()
+
+export type PaginationProps = ComponentProps<"nav">;
+export type PaginationItemProps = ComponentProps<"li">;
+export type PaginationLinkProps = (
+  Pick<ButtonProps, "size"> &
+  ComponentProps<"a"> &
+  { isActive?: boolean }
+);
+export type PaginationPreviousProps = PaginationLinkProps;
+export type PaginationNextProps = PaginationLinkProps;
+export type PaginationEllipsisProps = ComponentProps<"span">;
+
+// TBD: doc: `asChild`
+// TBD: doc: `isActive`
+export const Pagination = ({ className, children, ...props }: PaginationProps) => (
   <nav
     role="navigation"
     aria-label="pagination"
-    className={cn("tw:mx-auto tw:flex tw:w-full tw:justify-center", className)}
+    className={nav({ className })}
     {...props}
   >
-    <ul className="tw:flex tw:flex-row tw:items-center tw:gap-1">
-      {children}
-    </ul>
+    <ul className={list()}>{children}</ul>
   </nav>
 )
 
-const PaginationItem = ({ className, ...props }: ComponentProps<"li">) => <li className={className} {...props} />
+export const PaginationItem = ({ ...props }: PaginationItemProps) => <li {...props} />
 
-interface PaginationLinkProps extends Pick<ButtonProps, "size">, ComponentProps<"a"> {
-  isActive?: boolean
-}
-
-const PaginationLink = ({
+export const PaginationLink = ({
   className,
   isActive,
-  size = "icon",
   ...props
 }: PaginationLinkProps) => (
   <a
     aria-current={isActive ? "page" : undefined}
-    className={cn(
-      buttonVariants({
-        variant: isActive ? "outline" : "ghost",
-        size,
-      }),
-      className
-    )}
+    className={buttonVariants({ variant: isActive ? "outline" : "ghost", className })}
     {...props}
   />
 )
 
-const PaginationPrevious = ({
+export const PaginationPrevious = ({
   className,
   ...props
-}: ComponentProps<typeof PaginationLink>) => (
+}: PaginationPreviousProps) => (
   <PaginationLink
     aria-label="Go to previous page"
-    size="default"
-    className={cn("tw:gap-1 tw:pl-2.5", className)}
+    className={previous({ className })}
     {...props}
   >
     <Icon icon='lucide:chevron-left' className="tw:h-4 tw:w-4" />
@@ -56,14 +67,13 @@ const PaginationPrevious = ({
   </PaginationLink>
 )
 
-const PaginationNext = ({
+export const PaginationNext = ({
   className,
   ...props
-}: ComponentProps<typeof PaginationLink>) => (
+}: PaginationNextProps) => (
   <PaginationLink
     aria-label="Go to next page"
-    size="default"
-    className={cn("tw:gap-1 tw:pr-2.5", className)}
+    className={next({ className })}
     {...props}
   >
     <span>Next</span>
@@ -71,13 +81,13 @@ const PaginationNext = ({
   </PaginationLink>
 )
 
-const PaginationEllipsis = ({
+export const PaginationEllipsis = ({
   className,
   ...props
-}: ComponentProps<"span">) => (
+}: PaginationEllipsisProps) => (
   <span
     aria-hidden
-    className={cn("tw:flex tw:h-9 tw:w-9 tw:items-center tw:justify-center", className)}
+    className={ellipsis({ className })}
     {...props}
   >
     <Icon icon='lucide:more-horizontal' className="tw:h-4 tw:w-4" />
@@ -91,12 +101,3 @@ PaginationLink.displayName = "PaginationLink"
 PaginationPrevious.displayName = "PaginationPrevious"
 PaginationNext.displayName = "PaginationNext"
 PaginationEllipsis.displayName = "PaginationEllipsis"
-
-export {
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationEllipsis,
-}

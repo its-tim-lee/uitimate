@@ -1,0 +1,72 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+import { Badge } from "~/src/components/ui/Badge/Badge";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `
+  <Pagination>
+    <PaginationItem/>
+  </Pagination>
+`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      title={startCase(routeName)}
+      subtitle="Usually represents page navigation to separate long sets of data."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="pagination-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Design Notes"
+      subtitle="The implementation details that some would appreciate."
+    />
+
+    <p>
+      <!--
+        FIXME: put this as a description under preview tab of ComponentPageUsage
+        Or this can be considered as part of code-generation
+      -->
+      This is just no-brainer to use, and the only prop should you care about is
+      just <Badge variant="secondary">isActive</Badge>.
+      <br />
+      <br />
+      Another thing to note is, since <Badge variant="secondary"
+        >{"<"}a{">"}</Badge
+      > is the underlying element of
+      <Badge variant="secondary">{"<"}PaginationLink{">"}</Badge> component, if you
+      need to replace that with another element/component (eg., <Badge
+        variant="secondary">{"<"}Link{">"}</Badge
+      > from Next.js), may you just modify the source code, which keep the codebase
+      clean and simple.
+    </p>
+    <!-- ComponentPageAPI -->
+  </DocPageLayout>
+</BaseLayout>

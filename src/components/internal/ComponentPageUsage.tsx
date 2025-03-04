@@ -15,10 +15,11 @@ import VersatileTabs from "@/components/internal/VersatileTabs";
 
 type ComponentPageUsageProps = {
   anatomy: string,
-  demoId: string
+  demoId: string,
+  preview?: React.ReactNode
 }
 
-export default ({ demoId, anatomy }: ComponentPageUsageProps) => {
+export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
   const [activeTab, setActveTab] = useState('preview');
   const [touchedTab, setTouchedTab] = useState(activeTab);
   const [isDialogOpening, setIsDialogOpening] = useState(false);
@@ -68,7 +69,8 @@ export default ({ demoId, anatomy }: ComponentPageUsageProps) => {
     {
       title: 'Preview',
       type: 'preview' as const,
-      demoId
+      demoId,
+      content: preview
     },
     {
       title: 'Anatomy',
