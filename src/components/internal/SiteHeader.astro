@@ -34,7 +34,8 @@ import GithubButton from "./GithubButton";
         <div
           class="tw:flex tw:flex-1 tw:items-center tw:justify-between tw:gap-2 tw:md:justify-end"
         >
-          <Searchbar className="tw:flex-none" />
+          <Searchbar className="tw:flex-none" client:only="react" />
+
           <nav class="tw:flex tw:items-center tw:gap-0.5">
             <GithubButton />
             <LightDarkSwitcher client:only="react" />

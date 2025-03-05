@@ -30,7 +30,9 @@ export const Variant1 = {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
-            <CommandItem><Icon icon='lucide:smile' /><span>Search Emoji</span><CommandShortcut>⌘P</CommandShortcut></CommandItem>
+            <CommandItem onSelect={() => {
+              console.log('clicked')
+            }}><Icon icon='lucide:smile' /><span>Search Emoji</span><CommandShortcut>⌘P</CommandShortcut></CommandItem>
             <CommandSeparator />
             <CommandItem disabled><span>Calculator</span></CommandItem>
           </CommandGroup>
