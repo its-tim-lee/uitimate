@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar/Avatar";
 // but the code is for demo, so better be the code block can have other tabs to show other code
 export default () => <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="ghost" icon className="tw:rounded-full">
+    <Button variant="ghost" mode="icon" className="tw:rounded-full">
       <Avatar>
         <AvatarImage src="https://bitl.to/44ls" alt="@itistimlee" />
         <AvatarFallback>TL</AvatarFallback>

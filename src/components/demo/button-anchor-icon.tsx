@@ -10,7 +10,7 @@ export default () => (
          *
          * So it's basically applying the styling mechanism from `<Button>` to the child
          */
-  <Button asChild variant='outline' icon size='sm' className='tw:shadow-none' >
+  <Button asChild variant='outline' mode="icon" size='sm' className='tw:shadow-none' >
     <a href="#" target="_blank" rel="noreferrer">
       <IconV2 icon={github} ssr />
     </a>

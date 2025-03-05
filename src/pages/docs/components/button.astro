@@ -11,8 +11,10 @@ import {
   HeadingTitle,
 } from "@/components/ui/Heading/Heading";
 import VersatileTabs from "@/components/internal/VersatileTabs";
+import { Badge } from "~/src/components/ui/Badge/Badge";
 const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
 const anatomy = `<Button/>`;
+const apiLink = "https://www.radix-ui.com/primitives/docs/components/toggle";
 ---
 
 <BaseLayout>
@@ -20,6 +22,7 @@ const anatomy = `<Button/>`;
     <ComponentPageHero
       title={startCase(routeName)}
       subtitle="A component that usually contains a single word or/and icon(s)."
+      apiLink={apiLink}
     />
 
     <br />
@@ -34,6 +37,32 @@ const anatomy = `<Button/>`;
       anatomy={anatomy}
       client:only="react"
     />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Design Notes"
+      subtitle="The implementation details that some would appreciate."
+    />
+
+    <p>
+      If you wonder why the API doc links to the Radix's <Badge
+        variant="secondary">{`<`}Toggle{`>`}</Badge
+      > , that's because our our <Badge variant="secondary"
+        >{`<`}Button{`>`}</Badge
+      >
+      can be turned into that component (check the relevant example to see the usage)
+
+      <br />
+      <br />
+
+      The intention of merging the Toggle into Button is simple: Toggle is still
+      a button that can control the toggling state, and both logic are pretty
+      simple, not to mention styles quite the same, so it worth to combine them
+      together.
+    </p>
 
     <br />
     <br />
@@ -59,6 +88,15 @@ const anatomy = `<Button/>`;
           title: "3 Sizes",
           type: "preview",
           demoId: "button-3sizes",
+        },
+        {
+          title: "Toggle",
+          type: "preview",
+          demoId: "button-toggle",
+          // TBD: doc:
+          // - passing any Toggle related prop to the component will make it as a Toggle
+          // - when using Toggle, only 2 variants can be used: primary & outline
+          // - any Toggle related props can be passed in directly: currently, only three: pressed, defaultPressed, onPressedChange
         },
       ]}
       client:only="react"

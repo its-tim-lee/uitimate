@@ -6,7 +6,7 @@ export default () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" icon size='lg' className='tw:rounded-full tw:border-dashed tw:border-2 tw:border-gray-300 tw:scale-200'>
+        <Button variant="ghost" mode="icon" size='lg' className='tw:rounded-full tw:border-dashed tw:border-2 tw:border-gray-300 tw:scale-200'>
           <IconV2 icon="lucide:plus" />
         </Button>
       </DropdownMenuTrigger>

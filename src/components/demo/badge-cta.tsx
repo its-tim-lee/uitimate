@@ -7,7 +7,7 @@ export default () => {
     <div className="tw:flex tw:flex-col tw:gap-3 tw:items-center">
       <Badge variant="secondary" size="lg" className="tw:p-4 tw:font-mono tw:w-[450px] tw:justify-between">
         <span className="tw:px-2">npm install @google/generative-ai</span>
-        <Button icon variant="ghost" size="sm" className="tw:cursor-pointer tw:shadow-none ">
+        <Button mode="icon" variant="ghost" size="sm" className="tw:cursor-pointer tw:shadow-none ">
           <IconV2 icon='lucide:copy' />
         </Button>
       </Badge>

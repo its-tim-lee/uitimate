@@ -5,7 +5,7 @@ const { default: { body: github } } = githubSVG as any;
 
 export default () => {
   return (
-    <Button variant="ghost" size="sm" icon asChild>
+    <Button variant="ghost" size="sm" mode="icon" asChild>
       <a
         href="https://github.com/keypointer/keypointer-ui"
         target="_blank"

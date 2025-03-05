@@ -10,6 +10,8 @@ import Button3Sizes from "../../demo/button-3sizes.tsx";
 import ButtonAnchorIcon from "../../demo/button-anchor-icon.tsx";
 import Button6Variants from "../../demo/button-6variants.tsx";
 import ButtonSwitch from "../../demo/button-switch.tsx";
+import { useState } from "react";
+import ButtonToggle from "../../demo/button-toggle.tsx";
 const { body: github } = githubSVG as any;
 export default {
   title: 'Example/Button',
@@ -71,4 +73,9 @@ export const Variant11 = {
 export const Variant12 = {
   name: 'Scenario / Dial',
   render: () => <ButtonDial />
+};
+
+export const Variant13 = {
+  name: 'API / Toggle',
+  render: () => <ButtonToggle />
 };

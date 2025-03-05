@@ -20,14 +20,14 @@ export const Variant1 = {
   render: () => {
     return (
       <>
-      <ToggleGroup type="multiple">
-        <ToggleGroupItem value="bold" variant="secondary" aria-label="Toggle bold">
-          <Icon icon='lucide:bold' /> Bold
-        </ToggleGroupItem>
-        <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
-          <Icon icon='lucide:underline' />
-        </ToggleGroupItem>
-      </ToggleGroup>
+        <ToggleGroup type="multiple">
+          <ToggleGroupItem value="bold" variant="secondary" aria-label="Toggle bold">
+            <Icon icon='lucide:bold' /> Bold
+          </ToggleGroupItem>
+          <ToggleGroupItem value="strikethrough" aria-label="Toggle strikethrough">
+            <Icon icon='lucide:underline' />
+          </ToggleGroupItem>
+        </ToggleGroup>
       </>
     )
   },

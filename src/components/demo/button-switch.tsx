@@ -6,7 +6,7 @@ export default () => {
   const [themeIcon, setThemeIcon] = useState<'lucide:sun' | 'lucide:moon'>('lucide:sun');
   return (
     <Button
-      variant='outline' icon size='lg'
+      variant='outline' mode="icon" size='lg'
       onClick={() => setThemeIcon(themeIcon === 'lucide:sun' ? 'lucide:moon' : 'lucide:sun')}
     >
       <IconV2 icon={themeIcon} />

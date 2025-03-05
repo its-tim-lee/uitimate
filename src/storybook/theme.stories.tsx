@@ -21,7 +21,7 @@ const ThemeSwitch = () => {
   }
   return (
     <Button
-      variant='outline' icon size='lg'
+      variant='outline' mode="icon" size='lg'
       onClick={toggle}
     >
       <IconV2 icon={themeIcon} />

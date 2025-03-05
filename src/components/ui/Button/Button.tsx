@@ -1,16 +1,49 @@
 import { type ComponentProps } from "react"
-import { Slot } from "@radix-ui/react-slot"
+import { Toggle } from "@radix-ui/react-toggle"
+import { Primitive } from '@radix-ui/react-primitive';
 import {
   tv,
   type VariantProps,
 } from 'tailwind-variants';
-export const buttonVariants = tv({
+
+
+const variantSetting = {
+  size: {
+    sm: "tw:text-sm tw:h-9 tw:rounded-md tw:px-3 tw:data-icon-btn:w-9 tw:data-icon-btn:p-0",
+    md: "tw:text-md tw:h-10 tw:px-4 tw:py-2 tw:data-icon-btn:w-10 tw:data-icon-btn:p-0",
+    lg: "tw:text-lg tw:h-11 tw:rounded-md tw:px-8 tw:data-icon-btn:w-11 tw:data-icon-btn:p-0",
+  },
+}
+const baseStyle = [
+  "tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:whitespace-nowrap tw:rounded-md tw:font-medium tw:transition-colors tw:cursor-pointer",
+  "tw:focus-visible:outline-hidden tw:focus-visible:ring-1 tw:focus-visible:ring-ring",
+  "tw:disabled:pointer-events-none tw:disabled:opacity-50",
+  "tw:[&_svg]:pointer-events-none tw:[&_svg]:size-4 tw:[&_svg]:shrink-0",
+]
+const toggleVariants = tv({
   base: [
-    "tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:whitespace-nowrap tw:rounded-md tw:font-medium tw:transition-colors tw:cursor-pointer",
-    "tw:[&_svg]:size-4 tw:[&_svg]:shrink-0 tw:[&_svg]:pointer-events-none",
-    "tw:focus-visible:outline-hidden tw:focus-visible:ring-1 tw:focus-visible:ring-ring",
-    "tw:disabled:pointer-events-none tw:disabled:opacity-50"
+    ...baseStyle,
+    "tw:bg-background tw:text-foreground",
+    "tw:[&_*]:bg-background tw:[&_*]:text-foreground",
+    "tw:data-[state=on]:bg-secondary tw:data-[state=on]:text-secondary-foreground",
+    "tw:hover:bg-secondary tw:hover:text-secondary-foreground",
+    "tw:hover:[&_*]:bg-secondary tw:hover:[&_*]:text-secondary-foreground",
   ],
+  variants: {
+    variant: {
+      primary: [],
+      outline: ["tw:border tw:border-secondary tw:shadow-sm"],
+    },
+    size: variantSetting.size,
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md",
+  }
+})
+
+export const buttonVariants = tv({
+  base: baseStyle,
   variants: {
     variant: {
       primary:
@@ -33,27 +66,25 @@ export const buttonVariants = tv({
         ],
       outline:
         [
-          "tw:border tw:border-input tw:bg-background tw:text-foreground tw:shadow-sm",
+          "tw:border tw:border-secondary tw:bg-background tw:text-foreground tw:shadow-sm",
           "tw:hover:bg-secondary tw:hover:text-secondary-foreground",
           "tw:hover:[&_*]:bg-secondary tw:hover:[&_*]:text-secondary-foreground",
         ],
-      ghost: [
-        "tw:bg-background tw:text-foreground",
-        "tw:hover:bg-secondary tw:hover:text-secondary-foreground",
-        "tw:hover:[&_*]:bg-secondary tw:hover:[&_*]:text-secondary-foreground",
-      ],
-      link: [
-        "tw:text-primary tw:underline-offset-4",
-        "tw:[&_*]:text-primary",
-        "tw:hover:underline"
-      ],
+      ghost:
+        [
+          "tw:bg-background tw:text-foreground",
+          "tw:hover:bg-secondary tw:hover:text-secondary-foreground",
+          "tw:hover:[&_*]:bg-secondary tw:hover:[&_*]:text-secondary-foreground",
+        ],
+      link:
+        [
+          "tw:text-primary tw:underline-offset-4",
+          "tw:[&_*]:text-primary",
+          "tw:hover:underline"
+        ],
     },
     // TBD: different size should have different sized icon: src/components/demo/dropdownmenu-mix2.tsx
-    size: {
-      sm: "tw:text-sm tw:h-9 tw:rounded-md tw:px-3 tw:data-icon-btn:w-9 tw:data-icon-btn:p-0",
-      md: "tw:text-md tw:h-10 tw:px-4 tw:py-2 tw:data-icon-btn:w-10 tw:data-icon-btn:p-0",
-      lg: "tw:text-lg tw:h-11 tw:rounded-md tw:px-8 tw:data-icon-btn:w-11 tw:data-icon-btn:p-0",
-    },
+    size: variantSetting.size,
   },
   defaultVariants: {
     variant: "primary",
@@ -61,10 +92,19 @@ export const buttonVariants = tv({
   },
 })
 
-export type ButtonProps =
-  ComponentProps<'button'> &
+type ButtonProps =
+  ComponentProps<typeof Primitive.button> &
   VariantProps<typeof buttonVariants> &
-  { asChild?: boolean, icon?: boolean }
+  {
+    pressed?: undefined;
+    defaultPressed?: undefined;
+    onPressedChange?: undefined;
+  }
+
+type ToggleProps = ComponentProps<typeof Toggle> & VariantProps<typeof toggleVariants>;
+
+type Props =
+  { mode?: 'icon' } & (ButtonProps | (Omit<ButtonProps, 'variant'> & ToggleProps));
 
 /**
  * Implementation notes:
@@ -78,14 +118,29 @@ export type ButtonProps =
  */
 export const Button =
   ({
-
-    variant, size, asChild = false,
-    icon = false, // #1 FIXME: refactor to mode='icon' to align with the api design as Badge
+    variant, size,
+    mode,
     className, children,
     ...props
-  }: ButtonProps) => {
-    const Comp = asChild ? Slot : "button"
-    return <Comp data-icon-btn={icon || undefined} {...props} className={buttonVariants({ variant, size, className })}>
+  }: Props) => {
+    const shouldTreatAsToggle = props.pressed !== undefined || props.defaultPressed !== undefined || props.onPressedChange !== undefined
+    const Comp = shouldTreatAsToggle ? Toggle : Primitive.button
+
+    let toggleVariant: 'primary' | 'outline' = 'primary';
+    if (variant === 'primary' || variant === 'outline') {
+      toggleVariant = variant;
+    }
+
+    return <Comp
+      {...props}
+      type="button"
+      data-icon-btn={mode === 'icon' || undefined}
+      data-disabled={props.disabled ? '' : undefined}
+      className={shouldTreatAsToggle
+        ? toggleVariants({ variant: toggleVariant, size, className })
+        : buttonVariants({ variant, size, className })
+      }
+    >
       {children}
     </Comp>
   }

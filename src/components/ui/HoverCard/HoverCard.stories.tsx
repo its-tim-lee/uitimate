@@ -4,6 +4,7 @@ import {
   HoverCardTrigger,
 } from "./HoverCard.tsx"
 import { Toggle } from "../Toggle/Toggle.tsx"
+import { Button } from "../Button/Button.tsx";
 
 
 export default {
@@ -23,7 +24,7 @@ export const Variant1 = {
     return (
       <HoverCard>
         <HoverCardTrigger asChild>
-          <Toggle variant="secondary">@nextjs</Toggle>
+          <Button variant="link">@nextjs</Button>
         </HoverCardTrigger>
         <HoverCardContent className="w-80">
           <div className="flex justify-between space-x-4">

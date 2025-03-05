@@ -23,7 +23,7 @@ export default () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" icon size="lg">
+        <Button variant="ghost" mode="icon" size="lg">
           <IconV2 icon="lucide:settings" />
         </Button>
       </DropdownMenuTrigger>

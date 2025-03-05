@@ -264,7 +264,7 @@ const UnSizableHeader = () => {
   return (
     <header className="tw-fle tw:sticky tw:top-0 tw:z-50 tw:w-full tw:items-center tw:border-b tw:bg-background">
       <div className="tw:flex tw:h-(--header-height) tw:w-full tw:items-center tw:gap-2 tw:px-4">
-        <Button className="tw:h-8 tw:w-8" variant="ghost" size="icon" onClick={toggleSidebar}>
+        <Button className="tw:h-8 tw:w-8" variant="ghost" mode="icon" onClick={toggleSidebar}>
           <SidebarIcon />
         </Button>
         <Separator orientation="vertical" className="tw:mr-2 tw:h-4" />

@@ -16,7 +16,7 @@ export const Variant1 = {
   name: 'No-state Button',
   render: () => {
     return (
-      <Toggle pressed={false} variant="outline" size="sm">
+      <Toggle pressed={true} variant="outline" size="sm">
         <Icon icon='lucide:shopping-cart' />Order
       </Toggle>
     )
@@ -28,17 +28,17 @@ export const Variant2 = {
   render: () => {
     return (
       <div className="tw:flex tw:flex-col tw:gap-4">
-        <Toggle defaultPressed variant="default" size="lg">
+        <Toggle variant="primary" size="lg">
           Variant: default, size: lg
         </Toggle>
-        <Toggle defaultPressed variant="outline" size="lg">
+        <Toggle variant="primary" size="md">
+          Variant: primary, size: md
+        </Toggle>
+        <Toggle variant="primary" size="sm">
+          Variant: primary, size: sm
+        </Toggle>
+        <Toggle variant="outline" size="lg">
           Variant: outline, size: lg
-        </Toggle>
-        <Toggle defaultPressed variant="destructive" size="default">
-          Variant: destructive, size: default
-        </Toggle>
-        <Toggle defaultPressed variant="secondary" size="sm" className="tw:underline-offset-4 tw:hover:underline">
-          Variant: secondary, size: sm
         </Toggle>
       </div>
     )
@@ -49,9 +49,9 @@ export const Variant3 = {
   name: 'Link',
   render: () => {
     return (
-      <Toggle defaultPressed variant="default" size="lg" className="tw:underline-offset-4 tw:hover:underline">
-      Hover Me
-    </Toggle>
+      <Toggle defaultPressed variant="outline" size="lg" className="tw:underline-offset-4 tw:hover:underline">
+        Hover Me
+      </Toggle>
     )
   },
 };
