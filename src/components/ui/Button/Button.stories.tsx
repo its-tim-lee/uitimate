@@ -12,6 +12,7 @@ import Button6Variants from "../../demo/button-6variants.tsx";
 import ButtonSwitch from "../../demo/button-switch.tsx";
 import { useState } from "react";
 import ButtonToggle from "../../demo/button-toggle.tsx";
+import IconV2 from "../Icon/IconV2.tsx";
 const { body: github } = githubSVG as any;
 export default {
   title: 'Example/Button',
@@ -78,4 +79,75 @@ export const Variant12 = {
 export const Variant13 = {
   name: 'API / Toggle',
   render: () => <ButtonToggle />
+};
+
+export const Variant15 = {
+  name: 'Scenario / Button Group',
+  render: () => {
+    const [align, setAlign] = useState<string>('');
+    return (
+      <div>
+        <h3>Single Selection</h3>
+        <div className='tw:flex'>
+          <Button mode='icon' className='tw:rounded-none' pressed={align === 'justify'} onPressedChange={e => setAlign(e ? 'justify' : '')}>
+            <IconV2 icon='lucide:align-justify' />
+          </Button>
+          <Button mode='icon' className='tw:rounded-none' pressed={align === 'left'} onPressedChange={e => setAlign(e ? 'left' : '')}>
+            <IconV2 icon='lucide:align-left' />
+          </Button>
+          <Button mode='icon' className='tw:rounded-none' pressed={align === 'right'} onPressedChange={e => setAlign(e ? 'right' : '')}>
+            <IconV2 icon='lucide:align-right' />
+          </Button>
+        </div>
+      </div>
+    )
+
+  }
+};
+
+export const Variant16 = {
+  name: 'Scenario / Multiple Selection Button Group',
+  render: () => {
+    const [selections, setSelections] = useState<Record<string, boolean>>({
+      justify: false,
+      left: false,
+      right: false
+    });
+
+    const toggleSelection = (key: string) => {
+      setSelections(prev => ({
+        ...prev,
+        [key]: !prev[key]
+      }));
+    };
+
+    return <div className='tw:flex tw:flex-col tw:gap-4'>
+      <div className='tw:flex'>
+        <Button
+          mode='icon'
+          className='tw:rounded-none'
+          pressed={selections.justify}
+          onPressedChange={() => toggleSelection('justify')}
+        >
+          <IconV2 icon='lucide:align-justify' />
+        </Button>
+        <Button
+          mode='icon'
+          className='tw:rounded-none'
+          pressed={selections.left}
+          onPressedChange={() => toggleSelection('left')}
+        >
+          <IconV2 icon='lucide:align-left' />
+        </Button>
+        <Button
+          mode='icon'
+          className='tw:rounded-none'
+          pressed={selections.right}
+          onPressedChange={() => toggleSelection('right')}
+        >
+          <IconV2 icon='lucide:align-right' />
+        </Button>
+      </div>
+    </div>
+  }
 };

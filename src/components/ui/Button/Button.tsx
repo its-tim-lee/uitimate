@@ -96,9 +96,9 @@ type ButtonProps =
   ComponentProps<typeof Primitive.button> &
   VariantProps<typeof buttonVariants> &
   {
-    pressed?: undefined;
-    defaultPressed?: undefined;
-    onPressedChange?: undefined;
+    pressed?: boolean;
+    defaultPressed?: boolean;
+    onPressedChange?: (pressed: boolean) => void;
   }
 
 type ToggleProps = ComponentProps<typeof Toggle> & VariantProps<typeof toggleVariants>;
