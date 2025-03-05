@@ -1,9 +1,9 @@
 import { Root, Viewport, Corner, Scrollbar, Thumb } from "@radix-ui/react-scroll-area"
 import { type ComponentProps } from "react"
-
 import { cn } from "@/lib/utils"
 
-const ScrollArea = ({ className, children, ...props }: ComponentProps<typeof Root>) => (
+export type ScrollAreaProps = ComponentProps<typeof Root>
+export const ScrollArea = ({ className, children, ...props }: ScrollAreaProps) => (
   <Root
     className={cn("tw:relative tw:overflow-hidden", className)}
     {...props}
@@ -16,7 +16,8 @@ const ScrollArea = ({ className, children, ...props }: ComponentProps<typeof Roo
   </Root>
 )
 
-const ScrollBar = ({ className, orientation = "vertical", ...props }: ComponentProps<typeof Scrollbar>) => (
+export type ScrollBarProps = ComponentProps<typeof Scrollbar>
+export const ScrollBar = ({ className, orientation = "vertical", ...props }: ScrollBarProps) => (
   <Scrollbar
     orientation={orientation}
     className={cn(
@@ -29,11 +30,14 @@ const ScrollBar = ({ className, orientation = "vertical", ...props }: ComponentP
     )}
     {...props}
   >
+    {/*
+      "Thumb" is literally a small draggable widget that
+      being used to drag-to-scroll on the scroll bar area
+    */}
     <Thumb className="tw:relative tw:flex-1 tw:rounded-full tw:bg-border" />
   </Scrollbar>
 )
 
-ScrollArea.displayName = Root.displayName
-ScrollBar.displayName = Scrollbar.displayName
+ScrollArea.displayName = `ScrollArea`
+ScrollBar.displayName = `ScrollBar`
 
-export { ScrollArea, ScrollBar }

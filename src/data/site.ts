@@ -170,6 +170,18 @@ export default {
           title: 'Menubar',
           href: '/docs/components/menubar',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'HoverCard',
+          href: '/docs/components/hovercard',
+          labels: []
+        },
+        {
+          type: 'link',
+          title: 'ScrollArea',
+          href: '/docs/components/scroll-area',
+          labels: []
         }
       ],
       labels: []

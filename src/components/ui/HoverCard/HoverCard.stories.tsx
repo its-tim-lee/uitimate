@@ -1,3 +1,4 @@
+import HoverCardDemo from "../../demo/hovercard-demo.tsx";
 import {
   HoverCard,
   HoverCardContent,
@@ -20,18 +21,7 @@ export default {
 
 export const Variant1 = {
   name: 'Default',
-  render: () => {
-    return (
-      <HoverCard>
-        <HoverCardTrigger asChild>
-          <Button variant="link">@nextjs</Button>
-        </HoverCardTrigger>
-        <HoverCardContent className="w-80">
-          <div className="flex justify-between space-x-4">
-            content
-          </div>
-        </HoverCardContent>
-      </HoverCard>
-    )
-  },
+  render: () => <HoverCardDemo />
 };
+
+
