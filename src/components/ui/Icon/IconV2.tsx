@@ -31,6 +31,7 @@ type IconProps = (
  * HACK:
  * This complication should be all because Astro, otherwise our Icon component is simply just a wrapper of Iconify component.
  */
+// TBD: it might make sense to provide some size options to align with the APIs like Button especially when using Button and Icon together
 export default ({ icon, ssr = false, ...props }: IconProps) => {
   if (!ssr) return <Icon icon={icon as string} {...props} />
   return <svg

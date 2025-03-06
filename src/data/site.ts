@@ -182,6 +182,12 @@ export default {
           title: 'ScrollArea',
           href: '/docs/components/scroll-area',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Dialog',
+          href: '/docs/components/dialog',
+          labels: []
         }
       ],
       labels: []

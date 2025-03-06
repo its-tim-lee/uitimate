@@ -1,0 +1,110 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+import { Badge } from "~/src/components/ui/Badge/Badge";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `
+<Dialog>
+  <DialogHeading/>
+  <!-- Dialog body -->
+  <DialogAction/>
+</Dialog>`;
+const apiLink = `https://headlessui.com/react/dialog`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      apiLink={apiLink}
+      title={startCase(routeName)}
+      subtitle="A window overlaid on either the primary window or another dialog window, rendering the content underneath inert."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="dialog-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+    <br />
+    <br />
+    <Heading
+      size="h2"
+      title="Design Notes"
+      subtitle="The implementation details that some would appreciate."
+    />
+    <p class="tw:text-justify tw:text-md">
+      We don't use Radix's Dialog simply because there're just enormous issues
+      including bugs, bad DX, ...
+      <br />
+      <br />
+      Instead, HeadlessUI's Dialog is adopted, and we make AlertDialog (or called
+      Modal) into one single component.
+    </p>
+    <br />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Modal/AlertDialog",
+          type: "preview",
+          demoId: "dialog-modal",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Loading",
+          type: "preview",
+          demoId: "dialog-loading",
+        },
+        {
+          title: "Scroll",
+          type: "preview",
+          demoId: "dialog-scroll",
+        },
+        {
+          title: "DropdownMenu",
+          type: "preview",
+          demoId: "dialog-dropdown-menu",
+        },
+      ]}
+      client:only="react"
+    />
+  </DocPageLayout>
+</BaseLayout>

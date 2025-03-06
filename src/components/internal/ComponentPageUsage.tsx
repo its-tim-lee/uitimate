@@ -9,7 +9,7 @@ import {
   DialogFooter,
   DialogClose,
   DialogTitle,
-} from "@/components/ui/Dialog/Dialog.tsx"
+} from "@/components/ui/DialogOld/Dialog.tsx"
 import lf from 'localforage';
 import VersatileTabs from "@/components/internal/VersatileTabs";
 

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { type DialogProps } from "@/components/ui/Dialog/Dialog"
+import { type DialogProps } from "@/components/ui/DialogOld/Dialog"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/Button/Button"
 import {

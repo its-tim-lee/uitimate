@@ -9,9 +9,11 @@ import TailwindPeerStyling from "../components/quick-test/TailwindPeerStyling/in
 import DownloadHelper from "../components/quick-test/DownloadHelper.tsx";
 import FetchComponent from "../components/quick-test/FetchComponent.tsx";
 import OpenCodesandbox from "../components/quick-test/OpenCSB.tsx";
+import DialogDropdownMenu from "../components/demo/dialog-dropdown-menu.tsx";
 ---
 
 <Layout>
+  <DialogDropdownMenu client:only="react" />
   <FetchComponent client:only="react" />
   <DownloadHelper client:only="react" />
   <OpenCodesandbox client:only="react" />

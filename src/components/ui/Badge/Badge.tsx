@@ -40,6 +40,7 @@ export const badgeVariants = tv({
         "tw:hover:bg-secondary tw:hover:text-secondary-foreground",
       ]
     },
+    // TBD: fixing the size seems not flexible when implementing Github start button
     size: {
       sm: 'tw:text-xs tw:px-2.5 tw:py-0.5  tw:data-[mode="icon"]:size-5 tw:[&_[data-avatar]]:size-5 tw:data-[mode="pill"]:h-5', // h 20
       md: 'tw:text-sm tw:px-3 tw:py-0.5 tw:data-[mode="icon"]:size-6 tw:[&_[data-avatar]]:size-6 tw:data-[mode="pill"]:h-6', // h 24

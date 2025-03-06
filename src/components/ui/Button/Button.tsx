@@ -116,6 +116,11 @@ type Props =
  * and that's all because doing the component composition in .astro file,
  * so the solution is just doing that in a dedicated tsx file, and then import it to the .astro file.
  */
+// TBD: feeling that we should make Button be able to be a badge (or should use another name to disconnect the concept of Badge into Button from causing confusion),
+// so that it should have many benefits:
+// - Badge will be more dedicated such that it'd never be a button anymore, so from now on, Badge is entire different from Button: they have no overlap
+// - People will not try to have badge-style button by using Badge instead of Button
+// - It'd not have UI inconsistent when in some cases, gathering Button and Badge together and try to make them the same style, but finding out that their size is different
 export const Button =
   ({
     variant, size,

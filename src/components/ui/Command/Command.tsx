@@ -4,7 +4,7 @@ import { Command as CommandPrimitive, CommandInput as CommandInputPrimitive, Com
 import { Icon } from "@/components/ui/Icon/Icon.tsx"
 
 import { cn } from "@/lib/utils"
-import { Dialog, DialogContent } from "@/components/ui/Dialog/Dialog.tsx"
+import { Dialog, DialogContent } from "@/components/ui/DialogOld/Dialog.tsx"
 
 const Command = ({ className, ...props }: ComponentProps<typeof CommandPrimitive> & { className?: string }) => (
   <CommandPrimitive className={cn("tw:flex tw:h-full tw:w-full tw:flex-col tw:overflow-hidden tw:rounded-md tw:bg-popover tw:text-popover-foreground", className)} {...props} />

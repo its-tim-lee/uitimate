@@ -1,6 +1,8 @@
 import { type HTMLAttributes, type ReactNode, type ComponentProps, Children, isValidElement } from "react"
 import { tv, type VariantProps } from 'tailwind-variants';
 import React, { createContext, useContext } from 'react';
+import { Slot } from "@radix-ui/react-slot";
+import type * as Radix from '@radix-ui/react-slot';
 
 /**
  * TBD:
@@ -14,10 +16,10 @@ import React, { createContext, useContext } from 'react';
  * - Should provide a shortcut API style using composition is kind of tedious comparing the relevant sytnax used in mdx (ie., `# title`)
  */
 
-const TextHeaderCtx = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' }>({ size: 'h1' });
+export const TextHeaderCtx = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' }>({ size: 'h1' });
 
 export const headingVariants = tv({
-  base: ['tw:flex tw:flex-col tw:space-y-1 tw:text-left tw:mb-3'],
+  base: ['tw:flex tw:flex-col tw:space-y-1 tw:text-left tw:mb-3 tw:relative'],
   variants: {
     size: {
       h1: "",
@@ -29,7 +31,7 @@ export const headingVariants = tv({
 });
 
 export const headingTitleVariants = tv({
-  base: ["tw:tracking-tight tw:scroll-m-20 tw:data-single-element:mb-3"],
+  base: ["tw:leading-none tw:tracking-tight tw:scroll-m-20 tw:data-single-element:mb-3"],
   variants: {
     size: {
       h1: "tw:text-3xl tw:font-bold",
@@ -66,7 +68,14 @@ export type HeadingProps = ComponentProps<'div'> &
  * eg.,
  * - https://github.com/withastro/astro/issues/4926
  */
+// FIXME: providing `title` and `subtitle` is really an anti-pattern, and really make the code far more complex
+// but having the pattern like <Title>just a title</Title> still makes sense
 export const Heading = ({ className, size, title, subtitle, children, ...props }: HeadingProps) => {
+  // case-a: a pure text
+  // case-b; <Title> XXXXX
+  // case-c: <Title> and <Subtitle>
+  // case-d: a single element
+  // case-e: <Title> in another element XXXXX
   if (Children.count(children) === 1 && !(title || subtitle)) {
     const Comp = size
     return <Comp data-single-element {...props} className={headingTitleVariants({ size, className })}>{children}</Comp>
@@ -81,10 +90,6 @@ export const Heading = ({ className, size, title, subtitle, children, ...props }
       </>
     )
   }
-  else if (Children.count(children) === 1) {
-    const Comp = size
-    return <Comp data-single-element {...props} className={headingTitleVariants({ size, className })}>{children}</Comp>
-  }
 
   return (
     <TextHeaderCtx.Provider value={{ size }}>
@@ -97,22 +102,41 @@ export const Heading = ({ className, size, title, subtitle, children, ...props }
     </TextHeaderCtx.Provider>
   )
 };
+// TBD: throw error if not used within Heading
 
-export type HeadingTitleProps = ComponentProps<'div'>
-export const HeadingTitle = ({ children, className, ...props }: HeadingTitleProps) => {
+export type HeadingTitleProps = {
+  className?: string;
+  asChild?: boolean;
+  children: React.ReactNode;
+}
+
+export const HeadingTitle = ({
+  children,
+  className,
+  asChild,
+  ...props
+}: HeadingTitleProps) => {
   const { size: Size } = useContext(TextHeaderCtx);
-  return <Size
-    data-title
-    className={headingTitleVariants({ size: Size, className })}
-    {...props}>{children}</Size>;
+  console.log('Size', Size)
+  const Comp = asChild ? Slot : Size;
+  return (
+    <Comp
+      data-title
+      className={headingTitleVariants({ size: Size, className })}
+      {...props}
+    >
+      {children}
+    </Comp>
+  );
 };
 
-export type HeadingSubtitleProps = ComponentProps<'div'>
-export const HeadingSubtitle = ({ children, className, ...props }: HeadingSubtitleProps) => {
-  return <div
+export type HeadingSubtitleProps = ComponentProps<'div'> & { asChild?: boolean }
+export const HeadingSubtitle = ({ children, className, asChild, ...props }: HeadingSubtitleProps) => {
+  const Comp = asChild ? Slot : 'div';
+  return <Comp
     data-subtitle
     className={headingSubtitleVariants({ className })}
-    {...props}>{children}</div>;
+    {...props}>{children}</Comp>;
 };
 
 Heading.displayName = "Heading"
