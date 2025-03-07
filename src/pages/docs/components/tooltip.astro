@@ -5,6 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import DocPageLayout from "@/layouts/DocPageLayout.astro";
 import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
 import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import { Badge } from "@/components/ui/Badge/Badge";
 import {
   Heading,
   HeadingSubtitle,
@@ -40,6 +41,7 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName
       demoId="tooltip-demo"
       anatomy={anatomy}
       client:only="react"
+      preview="By default, the tooltip's content will be showed up a bit delayed after the hovering."
     />
 
     <br />
@@ -51,10 +53,38 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName
       subtitle="The implementation details that some would appreciate."
     />
     <p>
-      To see more API usages, check the corresponding API doc, and play that
-      within our playground.
+      We've used almost all the necessary widgets of Tooltip from Radix in our
+      component, so by just going through all the examples on this page, you'll
+      be good to understand how to use all of them. But just in case you kind of
+      worry about which are being left out from Radix, it's only one:
+      <Badge variant="secondary">{"<Arrow>"}</Badge>. The reason is simple: you
+      really don't need it in most of the cases.
     </p>
 
-    <!-- ComponentPageAPI -->
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Show immediately",
+          type: "preview",
+          demoId: "tooltip-instant",
+          content:
+            "In some cases (eg., sometimes, on the dashboard-like UI), you may want to show the tooltip immediately",
+        },
+        {
+          title: "Click to show",
+          type: "preview",
+          demoId: "tooltip-click-to-show",
+          content: `
+          Some design prefers to show the tooltip only when the user clicks on the tooltip-trigger, instead of hovering.
+          The key to make that work is still giving an anchor (or a fake element: <span> in below example) in TooltipTrigger`,
+        },
+      ]}
+      client:only="react"
+    />
   </DocPageLayout>
 </BaseLayout>

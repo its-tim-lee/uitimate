@@ -1,10 +1,5 @@
-import { Toggle } from "@/components/ui/Toggle/Toggle.tsx"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "./Tooltip.tsx"
-import TooltipDemo from "../../demo/tooltip-demo.tsx";
+import TooltipDemo from "@/components/demo/tooltip-demo.tsx";
+import TooltipInstant from "@/components/demo/tooltip-instant.tsx";
 
 export default {
   title: 'Example/Tooltip',
@@ -17,7 +12,13 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'Default',
+export const DEMO = {
+  name: 'DEMO',
   render: () => <TooltipDemo />
+};
+
+
+export const INSTANT = {
+  name: 'INSTANT',
+  render: () => <TooltipInstant />
 };

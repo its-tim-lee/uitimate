@@ -1,1 +1,0 @@
-No Figma to code support

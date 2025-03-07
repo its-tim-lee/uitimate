@@ -10,7 +10,7 @@ export default () => (
 
     Code Interpreter & Data Analysis
 
-    <Tooltip>
+    <Tooltip delayDuration={0}>
 
       <TooltipTrigger asChild><IconV2 icon="mingcute:question-line" /></TooltipTrigger>
 
