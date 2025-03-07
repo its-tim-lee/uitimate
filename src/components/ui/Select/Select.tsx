@@ -1,12 +1,13 @@
 import { type ComponentProps } from "react"
 import {
-  Root,
+  Root as Select,
   Group as SelectGroup,
   Value as SelectValue,
   Trigger,
   ScrollUpButton,
   ScrollDownButton,
   Content,
+  Icon as SelectIcon,
   Portal,
   Viewport,
   Label,
@@ -17,7 +18,6 @@ import {
 } from "@radix-ui/react-select"
 import { Icon } from "@/components/ui/Icon/Icon.tsx"
 import { cn } from "@/lib/utils"
-import { Label as GeneralLabel } from "~/src/components/ui/Label/Label.tsx"
 
 const SelectTrigger = (
   { className, children, ...props }: ComponentProps<typeof Trigger>
@@ -66,7 +66,7 @@ const SelectContent = (
       className={cn(
         "tw:relative tw:z-50 tw:max-h-96 tw:min-w-[8rem] tw:overflow-hidden tw:rounded-md tw:border tw:bg-popover tw:text-popover-foreground tw:shadow-md tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0 tw:data-[state=closed]:zoom-out-95 tw:data-[state=open]:zoom-in-95 tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2 tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2",
         position === "popper" &&
-          "tw:data-[side=bottom]:translate-y-1 tw:data-[side=left]:-translate-x-1 tw:data-[side=right]:translate-x-1 tw:data-[side=top]:-translate-y-1",
+        "tw:data-[side=bottom]:translate-y-1 tw:data-[side=left]:-translate-x-1 tw:data-[side=right]:translate-x-1 tw:data-[side=top]:-translate-y-1",
         className
       )}
       position={position}
@@ -77,7 +77,7 @@ const SelectContent = (
         className={cn(
           "tw:p-1",
           position === "popper" &&
-            "tw:h-(--radix-select-trigger-height) tw:w-full tw:min-w-(--radix-select-trigger-width)"
+          "tw:h-(--radix-select-trigger-height) tw:w-full tw:min-w-(--radix-select-trigger-width)"
         )}
       >
         {children}
@@ -132,27 +132,17 @@ SelectLabel.displayName = Label.displayName
 SelectItem.displayName = Item.displayName
 SelectSeparator.displayName = Separator.displayName
 
-const Select = ({ className, label, description, ...props }: SelectProps) => {
-  return (label || description) ? (
-    <div className={cn("tw:flex tw:flex-col tw:space-y-2", className)}>
-      {label && <GeneralLabel className="tw:text-sm tw:font-medium tw:leading-none">{label}</GeneralLabel>}
-      <Root {...props}/>
-      {description && <p className="tw:text-sm tw:text-muted-foreground">{description}</p>}
-    </div>
-  ) : <Root {...props}/>
-}
-
-type SelectProps = ComponentProps<typeof Root> & { label?: string, description?: string, className?: string }
-
 export {
   Select,
   SelectGroup,
+  SelectIcon,
   SelectValue,
   SelectTrigger,
   SelectContent,
   SelectLabel,
   SelectItem,
   SelectSeparator,
+  // TBD: doc: in most of time, you don't need to worry these, cuz it has been included in the normal usage
   SelectScrollUpButton,
   SelectScrollDownButton,
 }

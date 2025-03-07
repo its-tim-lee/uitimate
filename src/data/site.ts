@@ -200,6 +200,12 @@ export default {
           title: 'Input',
           href: '/docs/components/input',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Select',
+          href: '/docs/components/select',
+          labels: []
         }
       ],
       labels: []

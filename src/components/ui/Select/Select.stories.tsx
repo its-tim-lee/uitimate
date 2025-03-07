@@ -1,3 +1,5 @@
+import SelectDemo from "../../demo/select-demo.tsx";
+import SelectScrollable from "../../demo/select-scrollable.tsx";
 import {
   Select,
   SelectContent,
@@ -20,26 +22,17 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'Default',
-  render: () =>
-  <Select label="Select a meal" description="Description">
-    <SelectTrigger >
-      <SelectValue placeholder="Select a meal" />
-    </SelectTrigger>
-    <SelectContent>
-      <SelectGroup>
-        <SelectLabel>Fruits</SelectLabel>
-        <SelectItem value="apple">Apple</SelectItem>
-        <SelectItem value="banana">Banana</SelectItem>
-        <SelectSeparator />
-        <SelectItem value="cherry">Cherry</SelectItem>
-        <SelectItem value="date">Date</SelectItem>
-      </SelectGroup>
-      <SelectSeparator />
-      <SelectItem value="milk">Milk</SelectItem>
-      <SelectItem value="water">Water</SelectItem>
-    </SelectContent>
-  </Select>
+export const DEMO = {
+  name: 'DEMO',
+  render: () => <SelectDemo />
 };
+
+
+
+export const Scrollable = {
+  name: 'API / Scrollable',
+  render: () => <SelectScrollable />
+};
+
+// TBD: doc: demostrate how to use it with form
 
