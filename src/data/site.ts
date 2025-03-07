@@ -212,6 +212,12 @@ export default {
           title: 'Switch',
           href: '/docs/components/switch',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Textarea',
+          href: '/docs/components/textarea',
+          labels: []
         }
       ],
       labels: []

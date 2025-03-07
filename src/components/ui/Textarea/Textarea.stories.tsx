@@ -1,4 +1,4 @@
-import { Textarea } from "./Textarea.tsx"
+import TextareaDemo from "@/components/demo/textarea-demo.tsx";
 
 export default {
   title: 'Example/Textarea',
@@ -11,7 +11,7 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'Default',
-  render: () => <Textarea label="Label" description="Description" placeholder="Type your message here." />
+export const DEMO = {
+  name: 'DEMO',
+  render: () => <TextareaDemo />
 };
