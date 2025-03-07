@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Checkbox } from './Checkbox.tsx';
-import type { CheckedState } from '@radix-ui/react-checkbox';
-
+import Checkbox2LabelOrientationsDemo from '../../demo/checkbox-2-label-orientations.tsx';
+import CheckboxMultipleLinesDemo from '../../demo/checkbox-multiple-lines.tsx';
+import CheckboxDemo from '../../demo/checkbox-demo.tsx';
+import CheckboxLabel from '../../demo/checkbox-label.tsx';
 export default {
   title: 'Example/Checkbox',
   parameters: {
@@ -12,19 +12,30 @@ export default {
     backgroundColor: { control: 'color' },
   },
 }
-
-export const Variant1 = {
-  name: 'Checked',
-  render: () => {
-    const [checked, setChecked] = useState<CheckedState>(true)
-    return <Checkbox
-      title="This is a label"
-      subtitle="This is a description"
-      checked={checked}
-      onCheckedChange={setChecked}
-    />
-  },
+export const DEMO = {
+  name: 'DEMO',
+  render: () => <CheckboxDemo />
 };
+
+// // TBD: using form compomnent with props of checkbox: `name`, `required`, and `value`; `disabled`
+// TBD: doc: if only having on child, which should be a label, then no need to use `CheckboxTitle`
+export const Variant2 = {
+  name: 'API / 2 Label Orientations',
+  render: () => <Checkbox2LabelOrientationsDemo />
+};
+
+// TBD: doc:
+// This shows how to manage the style when the label is in multiple lines
+// It also reveals that you can put some stuff other than text in the label
+export const MULTIPLE_LINES = {
+  name: 'Scenario / Multiple lines',
+  render: () => <CheckboxMultipleLinesDemo />
+}
+
+export const WITH_HEADING = {
+  name: 'Scenario / Label using Heading',
+  render: () => <CheckboxLabel />
+}
 
 
 // // TBD: using form compomnent with props of checkbox: `name`, `required`, and `value`; `disabled`

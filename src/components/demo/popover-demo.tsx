@@ -24,8 +24,8 @@ export default () => {
         </header>
         <Separator className="tw:my-4" />
         <div className="tw:flex tw:flex-col tw:gap-2">
-          <Checkbox title="On Github" />
-          <Checkbox title="Email" />
+          <Checkbox>On Github</Checkbox>
+          <Checkbox>Email</Checkbox>
         </div>
         <Separator className="tw:my-4" />
         <div className="tw:flex tw:justify-end tw:gap-2">

@@ -28,10 +28,10 @@ export default () => {
 
           <DropdownMenuGroup>
             <DropdownMenuItem >
-              <Checkbox title="AI" className='tw:leading-none' />
+              <Checkbox>AI</Checkbox>
             </DropdownMenuItem>
             <DropdownMenuItem >
-              <Checkbox title="UI" />
+              <Checkbox>UI</Checkbox>
             </DropdownMenuItem>
           </DropdownMenuGroup>
 

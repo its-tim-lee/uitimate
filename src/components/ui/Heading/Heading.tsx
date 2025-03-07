@@ -16,16 +16,18 @@ import type * as Radix from '@radix-ui/react-slot';
  * - Should provide a shortcut API style using composition is kind of tedious comparing the relevant sytnax used in mdx (ie., `# title`)
  */
 
-export const TextHeaderCtx = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' }>({ size: 'h1' });
+export const TextHeaderCtx = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' }>({ size: 'h1' });
 
 export const headingVariants = tv({
-  base: ['tw:flex tw:flex-col tw:space-y-1 tw:text-left tw:mb-3 tw:relative'],
+  base: ['tw:flex tw:flex-col tw:gap-1.5 tw:text-left tw:mb-3 tw:relative'],
   variants: {
     size: {
       h1: "",
       h2: "",
       h3: "",
       h4: "",
+      h5: "",
+      h6: "tw:mb-0",
     },
   },
 });
@@ -38,6 +40,8 @@ export const headingTitleVariants = tv({
       h2: "tw:text-2xl tw:font-semibold",
       h3: "tw:text-xl tw:font-semibold",
       h4: "tw:text-lg tw:font-semibold",
+      h5: "tw:text-base tw:font-semibold",
+      h6: "tw:text-sm tw:font-medium", // use case: checkbox label
     },
   },
 });
@@ -50,6 +54,8 @@ export const headingSubtitleVariants = tv({
       h2: "",
       h3: "",
       h4: "",
+      h5: "",
+      h6: "tw:text-sm",
     },
   },
 });
@@ -117,7 +123,6 @@ export const HeadingTitle = ({
   ...props
 }: HeadingTitleProps) => {
   const { size: Size } = useContext(TextHeaderCtx);
-  console.log('Size', Size)
   const Comp = asChild ? Slot : Size;
   return (
     <Comp
@@ -132,10 +137,11 @@ export const HeadingTitle = ({
 
 export type HeadingSubtitleProps = ComponentProps<'div'> & { asChild?: boolean }
 export const HeadingSubtitle = ({ children, className, asChild, ...props }: HeadingSubtitleProps) => {
+  const { size: Size } = useContext(TextHeaderCtx);
   const Comp = asChild ? Slot : 'div';
   return <Comp
     data-subtitle
-    className={headingSubtitleVariants({ className })}
+    className={headingSubtitleVariants({ size: Size, className })}
     {...props}>{children}</Comp>;
 };
 

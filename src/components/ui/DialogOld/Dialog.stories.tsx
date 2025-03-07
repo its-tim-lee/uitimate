@@ -16,7 +16,6 @@ import DialogModal from "../../demo/dialog-modal.tsx";
 import { Badge } from "../Badge/Badge.tsx";
 import IconV2 from "../Icon/IconV2.tsx";
 import { Separator } from '@/components/ui/Separator/Separator.tsx';
-import { Checkbox } from "../Checkbox/Checkbox.tsx";
 import { Input } from "../Input/Input.tsx";
 import DialogDropdownMenu from "../../demo/dialog-dropdown-menu.tsx";
 

@@ -1,4 +1,4 @@
-import Heading4Levels from "@/components/demo/heading-4levels.tsx";
+import Heading6Levels from "@/components/demo/heading-6levels.tsx";
 import HeadingOnlyTitle from "../../demo/heading-only-title.tsx";
 import HeadingShortcutApi from "../../demo/heading-shortcut-api.tsx";
 import HeadingArticle from "../../demo/heading-article.tsx";
@@ -18,8 +18,8 @@ export default {
 }
 
 export const Variant1 = {
-  name: 'API / 4 Levels',
-  render: () => <Heading4Levels />
+  name: 'API / 6 Levels',
+  render: () => <Heading6Levels />
 };
 /**
  * DOC: If only title is provided, do not use subcomponents;

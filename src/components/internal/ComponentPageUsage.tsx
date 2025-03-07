@@ -1,7 +1,7 @@
 import { CodeBlock } from "@/components/internal/CodeBlock.tsx";
 import { Button } from "@/components/ui/Button/Button.tsx";
 import { memo, useState, lazy, useMemo, Suspense, type ComponentProps, useEffect } from "react";
-import { Checkbox, type CheckedState } from '@/components/ui/Checkbox/Checkbox.tsx';
+import { Checkbox, CheckboxTitle, type CheckedState } from '@/components/ui/Checkbox/Checkbox.tsx';
 import {
   Dialog,
   DialogContent,
@@ -98,7 +98,9 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
           <DialogDescription>In case you not FULLY UNDERSTAND how this option work due to the past usage experience on almost all the libraries (ie., first installation, then setup, and finally use), be sure to check this page first. </DialogDescription>
           <DialogFooter>
             <div className="tw:flex tw:justify-between tw:items-center tw:w-full">
-              <Checkbox title="Don't remind me next time" checked={shouldNotRemindAgain} onCheckedChange={onToggleReminder} ></Checkbox>
+              <Checkbox checked={shouldNotRemindAgain} onCheckedChange={onToggleReminder} >
+                Don't remind me next time
+              </Checkbox>
               <DialogClose asChild><Button variant="primary" onClick={proceed}>Proceeed</Button></DialogClose>
             </div>
           </DialogFooter>
