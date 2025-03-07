@@ -1,10 +1,8 @@
-import { cn } from "@/lib/utils"
 import React, { Children, createContext, useContext, type ComponentProps } from 'react'
 import { Dialog as DialogRoot, DialogPanel as DialogContent, DialogTitle as Title, Description as DialogDescription, DialogBackdrop as DialogOverlay, CloseButton as DialogClose } from '@headlessui/react'
 import { tv, type VariantProps } from "tailwind-variants"
-import IconV2 from '../Icon/IconV2'
-import { headingSubtitleVariants, headingTitleVariants, headingVariants, HeadingSubtitle, HeadingTitle, TextHeaderCtx } from '../Heading/Heading'
-import { Button } from '../Button/Button'
+import IconV2 from '@/components/ui/Icon/IconV2'
+import { headingSubtitleVariants, headingTitleVariants, headingVariants, HeadingSubtitle, HeadingTitle, TextHeaderCtx } from '@/components/ui/Heading/Heading'
 /**
  * TODO: doing nice transition just like Shadcn's Dialog
  */
@@ -76,8 +74,6 @@ const DialogAction = ({
   />
 )
 
-type DialogHeadingProps = ComponentProps<'div'> & VariantProps<typeof headingVariants>
-
 /**
  * TBD: doc:
  * - describe why not just allow user to use Heading directly:
@@ -85,6 +81,7 @@ type DialogHeadingProps = ComponentProps<'div'> & VariantProps<typeof headingVar
  * - ARIA expectation: to keep accessibility friendly and keep the code clean,
  *   the balance is we'll only apply `aria-describedby` in `DialogSubtitle` and it'd be in certain style.
  */
+type DialogHeadingProps = ComponentProps<'div'> & VariantProps<typeof headingVariants>
 const DialogHeading = ({ size = 'h4', children, className, ...props }: DialogHeadingProps) => {
 
   let content = children

@@ -1,4 +1,5 @@
 # React
+
 - Component design
   - Always use `ComponentProps` to retrieve the types if needed
     ```tsx
