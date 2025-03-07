@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxSubtitle, CheckboxTitle, type CheckedState } from "@/components/ui/Checkbox/Checkbox"
+import { Checkbox, type CheckedState } from "@/components/ui/Checkbox/Checkbox"
 import { useState } from "react"
 
 export default () => {
@@ -7,8 +7,6 @@ export default () => {
     <Checkbox
       checked={checked}
       onCheckedChange={setChecked}
-    >
-      Label
-    </Checkbox>
+    />
   )
 }

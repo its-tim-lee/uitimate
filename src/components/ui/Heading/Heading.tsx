@@ -82,11 +82,23 @@ export const Heading = ({ className, size, title, subtitle, children, ...props }
   // case-c: <Title> and <Subtitle>
   // case-d: a single element
   // case-e: <Title> in another element XXXXX
-  if (Children.count(children) === 1 && !(title || subtitle)) {
-    const Comp = size
-    return <Comp data-single-element {...props} className={headingTitleVariants({ size, className })}>{children}</Comp>
-  }
   let content = children;
+  if (Children.count(children) === 1 && !(title || subtitle)) {
+    // const Comp = size
+    // return <Comp data-single-element {...props} className={headingTitleVariants({ size, className })}>{children}</Comp>
+    if (
+      typeof children === 'string' || // when passing literall a string
+      typeof (children as any)?.type === 'string' // a native element (eg., span)
+    ) {
+      content = <HeadingTitle>{children}</HeadingTitle>
+    }
+    else if ((children as any)?.type?.displayName !== 'HeadingTitle') {
+      // Possible cases (should all be extreme rare):
+      // - any element in another element
+      // - <HeadingSubtitle>
+      throw new Error('You just use this component in a wrong way, check the source code.')
+    }
+  }
   if (title || subtitle) {
     if (Children.count(children) !== 0) throw new Error('Either using `title` and/or `subtitle` or doing that via composition, but not both.')
     content = (

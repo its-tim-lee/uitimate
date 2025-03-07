@@ -1,7 +1,6 @@
 import Checkbox2LabelOrientationsDemo from '../../demo/checkbox-2-label-orientations.tsx';
 import CheckboxMultipleLinesDemo from '../../demo/checkbox-multiple-lines.tsx';
 import CheckboxDemo from '../../demo/checkbox-demo.tsx';
-import CheckboxLabel from '../../demo/checkbox-label.tsx';
 export default {
   title: 'Example/Checkbox',
   parameters: {
@@ -20,7 +19,7 @@ export const DEMO = {
 // // TBD: using form compomnent with props of checkbox: `name`, `required`, and `value`; `disabled`
 // TBD: doc: if only having on child, which should be a label, then no need to use `CheckboxTitle`
 export const Variant2 = {
-  name: 'API / 2 Label Orientations',
+  name: 'Scenario / 2 Label Orientations',
   render: () => <Checkbox2LabelOrientationsDemo />
 };
 
@@ -32,10 +31,6 @@ export const MULTIPLE_LINES = {
   render: () => <CheckboxMultipleLinesDemo />
 }
 
-export const WITH_HEADING = {
-  name: 'Scenario / Label using Heading',
-  render: () => <CheckboxLabel />
-}
 
 
 // // TBD: using form compomnent with props of checkbox: `name`, `required`, and `value`; `disabled`

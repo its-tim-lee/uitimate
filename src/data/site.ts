@@ -188,6 +188,12 @@ export default {
           title: 'Dialog',
           href: '/docs/components/dialog',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Checkbox',
+          href: '/docs/components/checkbox',
+          labels: []
         }
       ],
       labels: []

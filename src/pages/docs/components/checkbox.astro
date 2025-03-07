@@ -1,0 +1,65 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `<Checkbox/>`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      apiLink="/docs/components/tabs"
+      title={startCase(routeName)}
+      subtitle="A control that allows the user to toggle between checked and not checked."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="checkbox-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Label Orientations",
+          type: "preview",
+          demoId: "checkbox-2-label-orientations",
+        },
+        {
+          title: "Multiple Lines",
+          type: "preview",
+          demoId: "checkbox-multiple-lines",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <!-- ComponentPageAPI -->
+  </DocPageLayout>
+</BaseLayout>
