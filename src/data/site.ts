@@ -194,6 +194,12 @@ export default {
           title: 'Checkbox',
           href: '/docs/components/checkbox',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Input',
+          href: '/docs/components/input',
+          labels: []
         }
       ],
       labels: []
