@@ -43,6 +43,23 @@ const anatomy = `
     <br />
     <br />
 
-    <!-- TBD: show the usage with form -->
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Detect On/Off",
+          type: "preview",
+          demoId: "switch-detect-on-off",
+          content: `You can detect when the switch is on/off to perform further actions.`,
+        },
+      ]}
+      client:only="react"
+    />
+
+    <!-- TBD: show the usage with form, so that we can use Switch's API: `value`, `name`, `required`, `disabled` -->
   </DocPageLayout>
 </BaseLayout>

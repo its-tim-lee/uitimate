@@ -1,5 +1,5 @@
 import { Switch } from "@/components/ui/Switch/Switch"
-import { Label } from "../ui/Label/Label";
+import { Label } from "@/components/ui/Label/Label";
 
 export default () => {
   return (
