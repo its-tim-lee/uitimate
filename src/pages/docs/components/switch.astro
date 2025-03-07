@@ -1,0 +1,48 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName}`;
+const anatomy = `
+  <Switch />
+`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      title={startCase(routeName)}
+      subtitle="Displays a form input field or a component that looks like an input field."
+      apiLink={apiLink}
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="switch-demo"
+      anatomy={anatomy}
+      client:only="react"
+      preview="Since this is just a theme wrapper of Radix UI Switch, for more API details, please refer to their doc."
+    />
+
+    <br />
+    <br />
+
+    <!-- TBD: show the usage with form -->
+  </DocPageLayout>
+</BaseLayout>

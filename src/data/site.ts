@@ -206,6 +206,12 @@ export default {
           title: 'Select',
           href: '/docs/components/select',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Switch',
+          href: '/docs/components/switch',
+          labels: []
         }
       ],
       labels: []

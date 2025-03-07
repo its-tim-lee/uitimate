@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   Switch
 } from "./Switch.tsx"
+import SwitchDemo from "../../demo/switch-demo.tsx";
 
 export default {
   title: 'Example/Switch',
@@ -14,17 +15,7 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'On',
-  render: () => {
-    const [checked, setChecked] = useState(true)
-    return (
-      <Switch
-        label="This is a label"
-        description="This is a description"
-        checked={checked}
-        onCheckedChange={setChecked}
-      />
-    )
-  },
+export const DEMO = {
+  name: 'DEMO',
+  render: () => <SwitchDemo />
 };
