@@ -1,9 +1,17 @@
+import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import type { ComponentProps } from "react"
 
-export const variant = tv({
+const variants = tv({
   base: "tw:animate-pulse tw:rounded-md tw:bg-primary/10",
 })
-export type SkeletonProps = ComponentProps<"div"> & VariantProps<typeof variant>
 
-export const Skeleton = ({ className, ...props }: SkeletonProps) => <div className={variant({ className })} {...props} />
+type SkeletonProps = ComponentProps<"div"> & VariantProps<typeof variants>
+const Skeleton = ({ className, ...props }: SkeletonProps) => <div className={variants({ className })} {...props} />
+
+Skeleton.displayName = 'Skeleton'
+
+export {
+  Skeleton,
+  variants as skeletonVariants,
+  type SkeletonProps
+}
