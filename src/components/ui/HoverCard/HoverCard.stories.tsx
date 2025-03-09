@@ -1,12 +1,5 @@
 import HoverCardDemo from "../../demo/hovercard-demo.tsx";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "./HoverCard.tsx"
-import { Toggle } from "../Toggle/Toggle.tsx"
-import { Button } from "../Button/Button.tsx";
-
+import HoverCardApiDoc from "../../demo/hovercard-api-doc.tsx";
 
 export default {
   title: 'Components/HoverCard',
@@ -19,9 +12,13 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'Default',
+export const DEMO = {
+  name: 'DEMO',
   render: () => <HoverCardDemo />
 };
 
 
+export const API_DOC = {
+  name: 'API / API DOC',
+  render: () => <HoverCardApiDoc />
+};

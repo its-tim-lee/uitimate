@@ -30,7 +30,7 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/hover-card`
     />
 
     <br />
-
+    <br />
     <Heading
       size="h2"
       title="Usage"
@@ -41,5 +41,27 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/hover-card`
       anatomy={anatomy}
       client:only="react"
     />
+    <br />
+    <br />
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "API DOC",
+          type: "preview",
+          demoId: "hovercard-api-doc",
+          content:
+            "(Note: this example comes from Electron doc) Many things are covered at this example: first, you can control the opening state of the HoverCard component, but what below really reveals is another way to use this component; As you can see we put a fake element span inside HoverCardTrigger, and this can be used for some people that don't want to do heavily composition, but now it'd have some caveats that needed to be handled maually, and you can try what'd happen if `sideOffset` and `align` are removed. ",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <br />
+    <br />
   </DocPageLayout>
 </BaseLayout>

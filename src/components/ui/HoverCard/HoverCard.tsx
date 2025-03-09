@@ -36,6 +36,7 @@ HoverCardTrigger.displayName = 'HoverCardTrigger'
 HoverCardContent.displayName = 'HoverCardContent'
 
 export {
+  variants as hoverCardVariants,
   HoverCard,
   HoverCardTrigger,
   HoverCardContent,
