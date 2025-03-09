@@ -6,9 +6,10 @@ import DocPageLayout from "@/layouts/DocPageLayout.astro";
 import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
 import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
 import { Heading } from "@/components/ui/Heading/Heading";
+import VersatileTabs from "~/src/components/internal/VersatileTabs";
 const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
 const anatomy = `<Slider/>`;
-const apiLink = `https://www.radix-ui.com/primitives/docs/components/progress`;
+const apiLink = `https://www.radix-ui.com/primitives/docs/components/slider`;
 ---
 
 <BaseLayout>
@@ -29,6 +30,43 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/progress`;
     <ComponentPageUsage
       demoId="slider-demo"
       anatomy={anatomy}
+      client:only="react"
+      preview="In most of time, you'd probably just the APIs shown in the demo, but for more, check out the API reference."
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Music Mixer",
+          type: "preview",
+          demoId: "slider-music-mixer",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <Heading
+      size="h2"
+      title="Example / Showcases"
+      subtitle="There have more chances you can build this with, the limitation is only your imagination."
+    />
+
+    <VersatileTabs
+      settings={[
+        {
+          title: "Color Palette",
+          type: "preview",
+          demoId: "slider-color-palette",
+        },
+      ]}
       client:only="react"
     />
   </DocPageLayout>

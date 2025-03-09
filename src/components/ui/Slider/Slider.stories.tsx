@@ -1,5 +1,4 @@
-import { Slider } from "./Slider.tsx"
-
+import SliderDemo from "@/components/demo/slider-demo.tsx"
 export default {
   title: 'Example/Slider',
   parameters: {
@@ -11,12 +10,7 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'Default',
-  render: () => {
-    return (
-      <Slider defaultValue={[50]} className="tw:w-[320px]"
-      />
-    )
-  },
+export const DEMO = {
+  name: 'DEMO',
+  render: () => <SliderDemo />
 };
