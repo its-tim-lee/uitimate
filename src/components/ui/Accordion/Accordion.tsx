@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
 import { Root, Item, Trigger, Content, Header } from "@radix-ui/react-accordion"
-import { Icon } from "@iconify/react";
 import { cn } from "@/lib/utils"
+import { Icon } from "../Icon/Icon";
 
 const AccordionItem = ({ className, children, ...props }: ComponentProps<typeof Item>) => (
   <Item

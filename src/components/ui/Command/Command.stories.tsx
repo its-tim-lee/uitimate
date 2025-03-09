@@ -8,7 +8,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "./Command.tsx"
-import { Icon } from "../Icon/Icon.tsx";
+import { Icon } from "../Icon/Icon"
 
 export default {
   title: 'Example/Command',

@@ -19,6 +19,7 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      client:only="react"
       apiLink={apiLink}
       title={startCase(routeName)}
       subtitle="Augments native scroll functionality for custom, cross-browser styling."

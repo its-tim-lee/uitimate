@@ -1,7 +1,5 @@
-import IconV2 from "../ui/Icon/IconV2";
+import { Icon } from "../ui/Icon/Icon";
 import { Button } from "../ui/Button/Button";
-import githubSVG from "@iconify/icons-lucide/github";
-const { body: github } = githubSVG as any;
 export default () => (
   /**
          * The end result:
@@ -12,7 +10,7 @@ export default () => (
          */
   <Button asChild variant='outline' mode="icon" size='sm' className='tw:shadow-none' >
     <a href="#" target="_blank" rel="noreferrer">
-      <IconV2 icon={github} ssr />
+      <Icon icon='lucide:github' />
     </a>
   </Button>
 )

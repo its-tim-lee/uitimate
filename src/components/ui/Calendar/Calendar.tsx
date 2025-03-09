@@ -1,10 +1,10 @@
-import { Icon } from '@/components/ui/Icon/Icon.tsx'
 import * as React from 'react'
 import { DayFlag, DayPicker, SelectionState, UI } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
 
 import { buttonVariants } from '@/components/ui/Button/Button.tsx'
+import { Icon } from '../Icon/Icon'
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 

@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/Button/Button";
-import IconV2 from "@/components/ui/Icon/IconV2";
-import githubSVG from "@iconify/icons-lucide/github";
-const { default: { body: github } } = githubSVG as any;
+import { Icon } from "@/components/ui/Icon/Icon";
 
 export default () => {
   return (
@@ -11,7 +9,7 @@ export default () => {
         target="_blank"
         rel="noreferrer"
       >
-        <IconV2 icon={github} ssr /><span className="tw:sr-only">GitHub</span>
+        <Icon icon='lucide:github' /><span className="tw:sr-only">GitHub</span>
       </a>
     </Button>
   )

@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/Button/Button.tsx"
 import { z } from "zod"
 import { Input } from "@/components/ui/Input/Input.tsx"
 import { useEffect, useState } from "react";
-import { Toggle } from "@/components/ui/Toggle/Toggle.tsx";
 export function ProfileForm() {
 
   const schema = z.object({
@@ -62,9 +61,9 @@ export function ProfileForm() {
         <FormMessage />
       </FormItem>
 
-      <Toggle type="submit" pressed={false}>
+      <Button type="submit" pressed={false}>
         Submit
-      </Toggle>
+      </Button>
     </Form>
   );
 }

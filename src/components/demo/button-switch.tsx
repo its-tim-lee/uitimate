@@ -1,4 +1,4 @@
-import IconV2 from "../ui/Icon/IconV2";
+import { Icon } from "../ui/Icon/Icon";
 import { Button } from "../ui/Button/Button";
 import { useState } from "react";
 
@@ -9,7 +9,7 @@ export default () => {
       variant='outline' mode="icon" size='lg'
       onClick={() => setThemeIcon(themeIcon === 'lucide:sun' ? 'lucide:moon' : 'lucide:sun')}
     >
-      <IconV2 icon={themeIcon} />
+      <Icon icon={themeIcon} />
       <span className="tw:sr-only">Switch between dark and light mode</span>
     </Button>
   )

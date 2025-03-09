@@ -7,7 +7,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/Popover/Popover"
 import { Flat } from "../preset/flat"
-import IconV2 from "../ui/Icon/IconV2"
+import { Icon } from "../ui/Icon/Icon"
 import { Separator } from "../ui/Separator/Separator"
 import { Checkbox } from "../ui/Checkbox/Checkbox"
 
@@ -20,7 +20,7 @@ export default () => {
       <PopoverContent>
         <header className="tw:flex tw:items-center tw:justify-between">
           <h6 className="tw:font-black">Select notification channels</h6>
-          <IconV2 icon='lucide:x' className="tw:cursor-pointer tw:text-muted-foreground" />
+          <Icon icon='lucide:x' className="tw:cursor-pointer tw:text-muted-foreground" />
         </header>
         <Separator className="tw:my-4" />
         <div className="tw:flex tw:flex-col tw:gap-2">

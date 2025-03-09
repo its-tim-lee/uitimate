@@ -20,6 +20,7 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/progress`;
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      client:only="react"
       apiLink={apiLink}
       title={startCase(routeName)}
       subtitle="Displays an indicator showing the completion progress of a task, typically displayed as a progress bar."

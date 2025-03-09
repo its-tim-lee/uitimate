@@ -24,6 +24,7 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      client:only="react"
       apiLink={apiLink}
       title={startCase(routeName)}
       subtitle="Displays a menu to the user—such as a set of actions or functions—triggered by a button."

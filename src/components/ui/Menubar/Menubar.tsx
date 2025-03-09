@@ -5,9 +5,9 @@
  * `Group` is not imported, cuz I can't see its value, and it seems redundant to use it.
  */
 import { ItemIndicator, Root, Trigger, SubTrigger, SubContent, Content, Item, CheckboxItem, RadioItem, Separator, Menu as MenubarMenu, Portal as MenubarPortal, Sub as MenubarSub, RadioGroup as MenubarRadioGroup } from "@radix-ui/react-menubar"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
 import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
+import { Icon } from "../Icon/Icon"
 
 export const menubarVariants = tv({
   slots: {

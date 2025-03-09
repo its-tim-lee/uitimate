@@ -1,5 +1,5 @@
 import { Checkbox, type CheckedState } from "@/components/ui/Checkbox/Checkbox"
-import IconV2 from "../ui/Icon/IconV2"
+import { Icon } from "../ui/Icon/Icon"
 import { TooltipContent, TooltipTrigger, Tooltip, } from "../ui/Tooltip/Tooltip"
 import { Flat } from "../preset/flat"
 import { Heading, HeadingSubtitle, HeadingTitle } from "../ui/Heading/Heading"
@@ -30,7 +30,7 @@ export default () => {
               The app's App ID will be permanently deleted.
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <IconV2 icon='lucide:circle-help'></IconV2>
+                  <Icon icon='lucide:circle-help'></Icon>
                 </TooltipTrigger>
                 <TooltipContent className='tw:w-[320px] tw:p-4' align='end'>
                   <p className='tw:leading-5'>This App ID is a unique Google-assigned identifier for each app. Several Google products use this ID, including Google Ads where key events are keyed off this ID.</p>

@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/Dialog/Dialog.tsx"
 import { useState } from "react"
 import React from "react"
-import IconV2 from "../ui/Icon/IconV2"
+import { Icon } from "../ui/Icon/Icon"
 
 // FIXME: DialogHeading has a text-size bug when only having a <DialogTitle>`
 // TBD: doc: describe what is AlertDialog and the relevant design and behavior among ESC, click outside and default right-top close button with ARIA
@@ -25,7 +25,7 @@ export default () => {
         </DialogAction>
       </Dialog>
       <Button onClick={() => setIsOpen(true)} variant='ghost' className='tw:text-destructive'>
-        <IconV2 icon='lucide:trash-2' className='tw:text-lg'></IconV2>
+        <Icon icon='lucide:trash-2'></Icon>
         Delete GPT
       </Button>
     </>

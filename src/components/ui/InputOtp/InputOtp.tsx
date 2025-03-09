@@ -1,7 +1,6 @@
 import { type ComponentProps, type ElementRef, useContext } from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
-
+import { Icon } from "../Icon/Icon"
 import { cn } from "@/lib/utils"
 
 const InputOTP = (

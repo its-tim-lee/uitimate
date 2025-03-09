@@ -1,4 +1,4 @@
-import IconV2 from "@/components/ui/Icon/IconV2.tsx";
+import { Icon } from "@/components/ui/Icon/Icon.tsx";
 import { Badge } from "@/components/ui/Badge/Badge.tsx";
 import { Button } from "@/components/ui/Button/Button";
 
@@ -8,11 +8,11 @@ export default () => {
       <Badge variant="secondary" size="lg" className="tw:p-4 tw:font-mono tw:w-[450px] tw:justify-between">
         <span className="tw:px-2">npm install @google/generative-ai</span>
         <Button mode="icon" variant="ghost" size="sm" className="tw:cursor-pointer tw:shadow-none ">
-          <IconV2 icon='lucide:copy' />
+          <Icon icon='lucide:copy' />
         </Button>
       </Badge>
       <Badge variant="primary" size='lg' className="tw:cursor-pointer tw:grow-0">
-        <IconV2 icon='lucide:github' /> View on Github
+        <Icon icon='lucide:github' /> View on Github
       </Badge>
       <Button variant="outline" className="tw:shadow-none">
         MCP Server

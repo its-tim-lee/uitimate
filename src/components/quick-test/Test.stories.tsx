@@ -1,11 +1,10 @@
 import React, { Children } from "react"
 import { cn } from "@/lib/utils"
-import { Icon } from "@iconify/react/dist/iconify.js"
 import { Button } from "../ui/Button/Button"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbFinal, BreadcrumbSeparator } from "../ui/Breadcrumb/Breadcrumb"
 import { Flat } from "../preset/flat"
 import { Progress } from "../ui/Progress/Progress"
-
+import { Icon } from "../ui/Icon/Icon"
 type Attendee = {
   id: string;
   name: string;
@@ -336,21 +335,21 @@ export const OrdersDashboard = {
         {/* Breadcrumb */}
         <nav className="tw:mb-6">
           <Breadcrumb>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <Icon icon="lucide:chevron-right" />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/orders">Orders</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>
-                <Icon icon="lucide:chevron-right" />
-              </BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbFinal>Recent Orders</BreadcrumbFinal>
-              </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator>
+              <Icon icon="lucide:chevron-right" />
+            </BreadcrumbSeparator>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/orders">Orders</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator>
+              <Icon icon="lucide:chevron-right" />
+            </BreadcrumbSeparator>
+            <BreadcrumbItem>
+              <BreadcrumbFinal>Recent Orders</BreadcrumbFinal>
+            </BreadcrumbItem>
           </Breadcrumb>
         </nav>
 

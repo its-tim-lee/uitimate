@@ -14,7 +14,7 @@ import { Heading } from "../Heading/Heading.tsx";
 import DialogDemo from "../../demo/dialog-demo.tsx";
 import DialogModal from "../../demo/dialog-modal.tsx";
 import { Badge } from "../Badge/Badge.tsx";
-import IconV2 from "../Icon/IconV2.tsx";
+import { Icon } from "../Icon/Icon.tsx";
 import { Separator } from '@/components/ui/Separator/Separator.tsx';
 import { Input } from "../Input/Input.tsx";
 import DialogDropdownMenu from "../../demo/dialog-dropdown-menu.tsx";
@@ -64,12 +64,12 @@ export const SCENARIO_DROPDOWN_MENU_FAIL = {
     return (
       <>
         <Badge variant='secondary' size='md' className='tw:outline-[#d1d9e0] tw:outline-1 tw:py-1.5 tw:rounded-r-none'>
-          <IconV2 icon='lucide:star' className='tw:text-lg'></IconV2>
+          <Icon icon='lucide:star' className='tw:text-lg'></Icon>
           {' '} Star {' '}
           <Badge variant='secondary' size='sm' className='tw:rounded-full tw:bg-[#818b981f]'>82.2k</Badge>
         </Badge>
         <Badge mode='icon' variant='outline' size='lg' className='tw:bg-red-500'>
-          <IconV2 icon='icon-park-solid:down-one' className='tw:text-lg'></IconV2>
+          <Icon icon='icon-park-solid:down-one' className='tw:text-lg'></Icon>
         </Badge>
         {/*
         <div className='tw:flex tw:rounded-md tw:outline-[#d1d9e0] tw:outline-1'>

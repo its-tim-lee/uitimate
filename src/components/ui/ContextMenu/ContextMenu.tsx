@@ -15,9 +15,8 @@ import {
   Separator,
   ItemIndicator
 } from "@radix-ui/react-context-menu"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
 import { type ComponentProps } from "react"
-
+import { Icon } from "../Icon/Icon"
 import { cn } from "@/lib/utils"
 
 const ContextMenuSubTrigger = ({ className, inset, children, ...props }: ComponentProps<typeof SubTrigger> & { inset?: boolean }) => (

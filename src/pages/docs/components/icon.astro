@@ -20,6 +20,7 @@ const apiLink = `https://iconify.design/docs/icon-components/react/#iconify-for-
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      client:only="react"
       apiLink={apiLink}
       title={startCase(routeName)}
       subtitle="Given icon name, it will render an icon."
@@ -49,24 +50,54 @@ const apiLink = `https://iconify.design/docs/icon-components/react/#iconify-for-
 
     <p>
       This component is just a wrapper of Iconify's Icon, so you may check the
-      library's corresponding doc to see what are the APIs available, but in
+      library's corresponding doc to see what are the APIs available, but in 99%
       most of time, you'd simply just use <Badge variant="secondary">icon</Badge
       > prop.
 
       <br /><br />
 
-      We use this internally a lots, but in case you do want to use other Icon
-      library, make sure it uses SVG under the hood, and that SVG need to have
+      In case you do want to use other Icon library with any our other
+      component, make sure it uses SVG under the hood, and that SVG need to have
       the attribute <Badge variant="secondary">data-icon</Badge>; this is
       because some of our components rely on the fact of SVG as well as the
       attribute.
 
       <br /><br />
 
-      Since this component is simple, and there're many examples in many other
-      component pages have shown the usage (eg., <Badge variant="secondary"
-        >{"<"}Button{">"}</Badge
-      >), nothing more to show on this page.
+      Another note is SSR support for SVG (since the underlining icon library
+      use icon in svg); Basically there're 2 approaches to make that work: - 1)
+      Prepare SVG on the server side - 2) Leave an empty on the server side, and
+      render SVG on the client side Iconify natively works very well in CSR, but
+      not in SSR. In v5, they try to support 2), but that approach doesn't work
+      well in some (special) frameworks such as Astro (so it should be fair to
+      say that the majority of frameworks are not affected)
+
+      <br /><br />
+
+      Simply put, support for SSR in the approach 1) is totally out of the
+      scope, and it'd only make our Icon component extreme complicated and
+      brittle.
     </p>
+    <br /><br />
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Sizing",
+          type: "preview",
+          demoId: "icon-size",
+          content:
+            "To be fair, this is not really an API provided from this component, but just use Tailwind to style svg.",
+        },
+      ]}
+      client:only="react"
+    />
+
+    <br />
+    <br />
   </DocPageLayout>
 </BaseLayout>

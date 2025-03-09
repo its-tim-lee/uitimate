@@ -1,13 +1,8 @@
 import { Badge } from "@/components/ui/Badge/Badge.tsx";
-import IconV2 from "@/components/ui/Icon/IconV2.tsx";
-import githubSVG from "@iconify/icons-lucide/github";
+import { Icon } from "@/components/ui/Icon/Icon.tsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar/Avatar";
-import timleeImage from '@/assets/timlee.jpg'
-const { body: github } = githubSVG as any;
 
-
-
-export default () => <>
+export default () => <div className="tw:flex tw:flex-col tw:items-start">
   <Badge variant="secondary" mode='pill'>
     <Avatar>
       <AvatarImage src='https://bitl.to/44ls' alt="@itistimlee" />
@@ -17,10 +12,11 @@ export default () => <>
   </Badge>
   <br />
   <Badge variant="secondary" mode='pill'>
-    <IconV2 ssr icon={github} />
+    <Icon icon='lucide:github' />
     Github
   </Badge>
   <br />
-  Used by {''}
-  <Badge variant="secondary" mode='pill'>73.3k</Badge>
-</>
+  <span>Used by {''} <Badge variant="secondary" mode='pill'>73.3k</Badge></span>
+
+
+</div>

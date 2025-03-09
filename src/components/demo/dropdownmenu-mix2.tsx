@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
   type DropdownMenuCheckboxItemProps
 } from "@/components/ui/DropdownMenu/DropdownMenu"
-import IconV2 from "../ui/Icon/IconV2"
+import { Icon } from "../ui/Icon/Icon"
 
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 
@@ -24,7 +24,7 @@ export default () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" mode="icon" size="lg">
-          <IconV2 icon="lucide:settings" />
+          <Icon icon="lucide:settings" />
         </Button>
       </DropdownMenuTrigger>
 

@@ -6,12 +6,28 @@ import {
   type VariantProps,
 } from 'tailwind-variants';
 
-
+const compoundVariants = [
+  {
+    mode: 'icon',
+    size: 'sm',
+    className: 'tw:w-9',
+  },
+  {
+    mode: 'icon',
+    size: 'md',
+    className: 'tw:w-10',
+  },
+  {
+    mode: 'icon',
+    size: 'lg',
+    className: 'tw:w-11',
+  },
+]
 const variantSetting = {
   size: {
-    sm: "tw:text-sm tw:h-9 tw:rounded-md tw:px-3 tw:data-icon-btn:w-9 tw:data-icon-btn:p-0",
-    md: "tw:text-md tw:h-10 tw:px-4 tw:py-2 tw:data-icon-btn:w-10 tw:data-icon-btn:p-0",
-    lg: "tw:text-lg tw:h-11 tw:rounded-md tw:px-8 tw:data-icon-btn:w-11 tw:data-icon-btn:p-0",
+    sm: "tw:text-sm tw:h-9 tw:rounded-md tw:px-3",
+    md: "tw:text-md tw:h-10 tw:px-4 tw:py-2 ",
+    lg: "tw:text-lg tw:h-11 tw:rounded-md tw:px-8",
   },
 }
 const baseStyle = [
@@ -34,6 +50,7 @@ const toggleVariants = tv({
       primary: [],
       outline: ["tw:border tw:border-secondary tw:shadow-sm"],
     },
+    mode: { icon: ['tw:p-0!'] },
     size: variantSetting.size,
   },
   defaultVariants: {
@@ -83,16 +100,34 @@ export const buttonVariants = tv({
           "tw:hover:underline"
         ],
     },
+    mode: { icon: ['tw:p-0!'] },
     // TBD: different size should have different sized icon: src/components/demo/dropdownmenu-mix2.tsx
     size: variantSetting.size,
   },
+  compoundVariants: [
+    {
+      mode: 'icon',
+      size: 'sm',
+      class: 'tw:w-9',
+    },
+    {
+      mode: 'icon',
+      size: 'md',
+      class: 'tw:w-10',
+    },
+    {
+      mode: 'icon',
+      size: 'lg',
+      class: 'tw:w-11',
+    },
+  ],
   defaultVariants: {
     variant: "primary",
     size: "md",
   },
 })
 
-type ButtonProps =
+export type ButtonProps =
   ComponentProps<typeof Primitive.button> &
   VariantProps<typeof buttonVariants> &
   {
@@ -102,9 +137,7 @@ type ButtonProps =
   }
 
 type ToggleProps = ComponentProps<typeof Toggle> & VariantProps<typeof toggleVariants>;
-
-type Props =
-  { mode?: 'icon' } & (ButtonProps | (Omit<ButtonProps, 'variant'> & ToggleProps));
+type Props = ButtonProps | (Omit<ButtonProps, 'variant'> & ToggleProps)
 
 /**
  * Implementation notes:
@@ -135,15 +168,13 @@ export const Button =
     if (variant === 'primary' || variant === 'outline') {
       toggleVariant = variant;
     }
-
     return <Comp
       {...props}
       type="button"
-      data-icon-btn={mode === 'icon' || undefined}
       data-disabled={props.disabled ? '' : undefined}
       className={shouldTreatAsToggle
-        ? toggleVariants({ variant: toggleVariant, size, className })
-        : buttonVariants({ variant, size, className })
+        ? toggleVariants({ variant: toggleVariant, size, mode, className })
+        : buttonVariants({ variant, size, mode, className })
       }
     >
       {children}

@@ -1,6 +1,6 @@
 import { Root, List, Item, Trigger, Content, Link, Viewport, Indicator, Sub } from "@radix-ui/react-navigation-menu"
 import { type ComponentProps } from "react"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "../Icon/Icon"
 import { tv, type VariantProps } from "tailwind-variants"
 
 const navigationMenuVariants = tv({

@@ -10,7 +10,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/Command/Command";
-import IconV2 from "../ui/Icon/IconV2";
+import { Icon } from "../ui/Icon/Icon";
 import type { ComponentProps } from "react";
 import siteData, { type DocTreeItem } from "@/data/site";
 
@@ -76,7 +76,7 @@ export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
           'tw:flex tw:justify-start'
         )}
       >
-        <IconV2 icon='lucide:search' />
+        <Icon icon='lucide:search' />
         <kbd className={cn(
           'tw:pointer-events-none tw:select-none tw:gap-1 tw:rounded tw:border tw:bg-muted tw:px-1.5 tw:font-mono tw:text-[12px] tw:font-medium',
           'tw:sm:flex tw:items-center'
@@ -96,7 +96,7 @@ export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
               <CommandItem
                 key={page.href}
               >
-                <IconV2 icon={page.href?.includes('/components/') ? 'lucide:component' : 'lucide:file'} className="tw:mr-2" />
+                <Icon icon={page.href?.includes('/components/') ? 'lucide:component' : 'lucide:file'} className="tw:mr-2" />
                 <a href={page.href} rel="noopener noreferrer">
                   {page.title}
                 </a>

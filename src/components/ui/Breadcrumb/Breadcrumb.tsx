@@ -1,6 +1,6 @@
 import { Slot } from "@radix-ui/react-slot"
 import { type ComponentProps, createContext, useContext } from "react"
-import IconV2 from "../Icon/IconV2";
+import { Icon } from "../Icon/Icon";
 import { tv, type VariantProps } from "tailwind-variants"
 
 const variants = tv({
@@ -63,7 +63,7 @@ const BreadcrumbEllipsis = ({ className, ...props }: BreadcrumbEllipsisProps) =>
     className={ellipsis({ className })}
     {...props}
   >
-    <IconV2 icon="lucide:more-horizontal" className="tw:h-4 tw:w-4" />
+    <Icon icon="lucide:more-horizontal" className="tw:h-4 tw:w-4" />
     <span className="tw:sr-only">More</span>
   </span>
 )
@@ -75,7 +75,7 @@ const BreadcrumbSeparator = ({ children, className, ...props }: BreadcrumbSepara
     className={separator({ className })}
     {...props}
   >
-    {children || <IconV2 icon="lucide:chevron-right" className="tw:text-muted-foreground/40" />}
+    {children || <Icon icon="lucide:chevron-right" className="tw:text-muted-foreground/40" />}
   </li>
 )
 

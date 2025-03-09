@@ -22,6 +22,7 @@ const apiLink = `https://headlessui.com/react/textarea/${routeName}`;
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      client:only="react"
       apiLink={apiLink}
       title={startCase(routeName)}
       subtitle="A light wrapper around the native textarea element that handles tedious accessibility concerns and provides more opinionated states for things like hover and focus."

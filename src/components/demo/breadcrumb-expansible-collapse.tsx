@@ -4,7 +4,7 @@ import { DrawerTrigger } from "../ui/Drawer/Drawer";
 import { Drawer } from "../ui/Drawer/Drawer";
 import { DropdownMenuItem } from "../ui/DropdownMenu/DropdownMenu";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "../ui/DropdownMenu/DropdownMenu";
-import IconV2 from "../ui/Icon/IconV2";
+import { Icon } from "../ui/Icon/Icon";
 
 export default () => {
   return (
@@ -14,7 +14,7 @@ export default () => {
         <BreadcrumbLink href="/">Firebase</BreadcrumbLink>
       </BreadcrumbItem>
 
-      <BreadcrumbSeparator><IconV2 icon="lucide:slash" /></BreadcrumbSeparator>
+      <BreadcrumbSeparator><Icon icon="lucide:slash" /></BreadcrumbSeparator>
 
       {/* Desktop Style */}
       <BreadcrumbItem className='tw:hidden tw:sm:block'>
@@ -60,7 +60,7 @@ export default () => {
         </Drawer>
       </BreadcrumbItem>
 
-      <BreadcrumbSeparator><IconV2 icon="lucide:slash" /></BreadcrumbSeparator>
+      <BreadcrumbSeparator><Icon icon="lucide:slash" /></BreadcrumbSeparator>
 
       <BreadcrumbItem>
         <BreadcrumbFinal>Web</BreadcrumbFinal>

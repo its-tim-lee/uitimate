@@ -24,6 +24,7 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/hover-card`
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      client:only="react"
       apiLink={apiLink}
       title={startCase(routeName)}
       subtitle="For sighted users to preview content available behind a link."

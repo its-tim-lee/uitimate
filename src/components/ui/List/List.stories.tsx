@@ -2,7 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar.tsx";
 import { Badge } from "../Badge/Badge.tsx";
 import { Heading, HeadingTitle } from "../Heading/Heading.tsx";
-import IconV2 from "../Icon/IconV2.tsx";
+import { Icon } from "../Icon/Icon.tsx";
 import { Separator } from "../Separator/Separator.tsx";
 import { Switch } from "../Switch/Switch.tsx";
 import { List, ListItem, ListSubheader } from "./List.tsx";
@@ -41,13 +41,13 @@ export const Variant1 = {
           <ListItem className='tw:items-center tw:justify-between'>
             ID
             <span className='tw:flex tw:items-center tw:gap-2'>
-              u_2J89JSA4GJ <IconV2 icon='lucide:copy'></IconV2>
+              u_2J89JSA4GJ <Icon icon='lucide:copy'></Icon>
             </span>
 
           </ListItem>
           <ListItem className='tw:items-center tw:justify-between'>
             <span className='tw:flex tw:items-center tw:gap-2'>
-              Project ID <IconV2 icon='lucide:circle-help'></IconV2>
+              Project ID <Icon icon='lucide:circle-help'></Icon>
             </span>
             nuxt-webapplication
           </ListItem>
@@ -57,14 +57,14 @@ export const Variant1 = {
                 App nickname
               </HeadingTitle>
               <HeadingSubtitle className='tw:flex tw:items-center tw:gap-2'>
-                nuxt-webapplication <IconV2 icon='lucide:pencil'></IconV2>
+                nuxt-webapplication <Icon icon='lucide:pencil'></Icon>
               </HeadingSubtitle>
             </Heading>
           </ListItem>
           <ListItem className='tw:items-center tw:justify-start'>
             <Heading size='h6'>
               <HeadingTitle className='tw:flex tw:items-center tw:gap-2'>
-                App ID <IconV2 icon='lucide:circle-help'></IconV2>
+                App ID <Icon icon='lucide:circle-help'></Icon>
               </HeadingTitle>
               <HeadingSubtitle>
                 1:1085562005852:web:e017a129fd3ad76d333999
@@ -79,7 +79,7 @@ export const Variant1 = {
         <ListBox className='tw:w-[500px]'>
           <ListBoxItem className='tw:flex tw:items-center tw:justify-between tw:p-3 tw:gap-2'>
             <span className='tw:flex tw:items-center tw:gap-3'>
-              <IconV2 icon='lucide:mail' />Inbox
+              <Icon icon='lucide:mail' />Inbox
             </span>
             <Badge variant='ghost'>128</Badge>
           </ListBoxItem>
@@ -88,7 +88,7 @@ export const Variant1 = {
           </ListBoxItem>
           <ListBoxItem className='tw:flex tw:items-center tw:justify-between tw:p-3 tw:gap-2'>
             <span className='tw:flex tw:items-center tw:gap-3'>
-              <IconV2 icon='lucide:sticky-note' />Drafts
+              <Icon icon='lucide:sticky-note' />Drafts
             </span>
             <Badge variant='ghost'>9</Badge>
           </ListBoxItem>
@@ -98,14 +98,14 @@ export const Variant1 = {
         <List className='tw:w-[500px]'>
           <ListItem className='tw:items-center tw:justify-between'>
             <span className='tw:flex tw:items-center tw:gap-3'>
-              <IconV2 icon='lucide:mail' />Inbox
+              <Icon icon='lucide:mail' />Inbox
             </span>
             <Badge variant='ghost'>128</Badge>
           </ListItem>
           <Separator className='tw:w-[90%] tw:mx-auto' />
           <ListItem className='tw:items-center tw:justify-between'>
             <span className='tw:flex tw:items-center tw:gap-3'>
-              <IconV2 icon='lucide:sticky-note' />Drafts
+              <Icon icon='lucide:sticky-note' />Drafts
             </span>
             <Badge variant='ghost'>9</Badge>
           </ListItem>

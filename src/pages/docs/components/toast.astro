@@ -19,6 +19,7 @@ const apiLink = `https://sonner.emilkowal.ski/`;
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      client:only="react"
       apiLink={apiLink}
       title={startCase(routeName)}
       subtitle="A succinct message that is displayed temporarily."

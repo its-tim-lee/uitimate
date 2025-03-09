@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "../ui/Button/Button";
-import IconV2 from "../ui/Icon/IconV2";
+import { Icon } from "../ui/Icon/Icon";
 
 export default () => {
   const [selections, setSelections] = useState<Record<string, boolean>>({
@@ -24,7 +24,7 @@ export default () => {
         pressed={selections.justify}
         onPressedChange={() => toggleSelection('justify')}
       >
-        <IconV2 icon='lucide:align-justify' />
+        <Icon icon='lucide:align-justify' />
       </Button>
       <Button
         mode='icon'
@@ -32,7 +32,7 @@ export default () => {
         pressed={selections.left}
         onPressedChange={() => toggleSelection('left')}
       >
-        <IconV2 icon='lucide:align-left' />
+        <Icon icon='lucide:align-left' />
       </Button>
       <Button
         mode='icon'
@@ -40,7 +40,7 @@ export default () => {
         pressed={selections.right}
         onPressedChange={() => toggleSelection('right')}
       >
-        <IconV2 icon='lucide:align-right' />
+        <Icon icon='lucide:align-right' />
       </Button>
     </div>
   </div>

@@ -1,11 +1,10 @@
-import { Toggle } from "../Toggle/Toggle.tsx";
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
   DrawerTrigger,
 } from "./Drawer.tsx"
-
+import { Button } from "../Button/Button"
 export default {
   title: 'Example/Drawer',
   parameters: {
@@ -23,13 +22,13 @@ export const Variant1 = {
     return (
       <Drawer>
         <DrawerTrigger asChild>
-          <Toggle variant="outline" pressed={false}>Open Drawer</Toggle>
+          <Button variant="outline" pressed={false}>Open Drawer</Button>
         </DrawerTrigger>
         <DrawerContent>
           <div className="tw:mx-auto tw:w-full tw:max-w-sm tw:flex tw:flex-col tw:gap-4">
             <span>Some content</span>
             <DrawerClose asChild>
-              <Toggle variant="outline" pressed={false}>Cancel</Toggle>
+              <Button variant="outline" pressed={false}>Cancel</Button>
             </DrawerClose>
           </div>
         </DrawerContent>

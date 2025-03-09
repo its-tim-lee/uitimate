@@ -1,5 +1,5 @@
-import { Button } from "../Button/Button.tsx"
-import { Icon } from "../Icon/Icon.tsx"
+
+import { Icon } from "../Icon/Icon"
 import {
   Sidebar,
   SidebarContent,

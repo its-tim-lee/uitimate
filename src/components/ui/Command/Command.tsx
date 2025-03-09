@@ -1,7 +1,7 @@
 import { type ComponentProps, type HTMLAttributes } from "react"
 import { type DialogProps } from "@radix-ui/react-dialog"
 import { Command as CommandPrimitive, CommandInput as CommandInputPrimitive, CommandList as CommandListPrimitive, CommandEmpty as CommandEmptyPrimitive, CommandGroup as CommandGroupPrimitive, CommandSeparator as CommandSeparatorPrimitive, CommandItem as CommandItemPrimitive } from "cmdk"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "../Icon/Icon"
 
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent } from "@/components/ui/DialogOld/Dialog.tsx"

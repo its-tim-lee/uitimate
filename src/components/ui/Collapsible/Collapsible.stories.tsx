@@ -1,4 +1,4 @@
-import { Icon } from "../Icon/Icon.tsx";
+import { Icon } from "../Icon/Icon"
 
 import * as React from "react"
 

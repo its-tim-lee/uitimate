@@ -2,7 +2,7 @@
 import LightDarkSwitcher from "@/components/internal/color-scheme-control/light-dark-switcher";
 import { Button } from "@/components/ui/Button/Button";
 import { default as githubSVG } from "@iconify/icons-lucide/github";
-import IconV2 from "@/components/ui/Icon/IconV2";
+import { Icon } from "@/components/ui/Icon/Icon";
 import Logo from "./TemporaryLogo";
 import Searchbar from "./Searchbar";
 import GithubButton from "./GithubButton";
@@ -37,7 +37,7 @@ import GithubButton from "./GithubButton";
           <Searchbar className="tw:flex-none" client:only="react" />
 
           <nav class="tw:flex tw:items-center tw:gap-0.5">
-            <GithubButton />
+            <GithubButton client:only="react" />
             <LightDarkSwitcher client:only="react" />
           </nav>
         </div>

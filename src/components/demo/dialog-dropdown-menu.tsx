@@ -1,7 +1,7 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/DropdownMenu/DropdownMenu";
 import { useState } from "react";
 import { Button } from "../ui/Button/Button";
-import IconV2 from "../ui/Icon/IconV2";
+import { Icon } from "../ui/Icon/Icon";
 import { Checkbox } from "../ui/Checkbox/Checkbox";
 import { Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle } from "../ui/Dialog/Dialog";
 import { Input } from "../ui/Input/Input";
@@ -13,7 +13,7 @@ export default () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button mode='icon' variant='outline' size='sm'>
-            <IconV2 icon='icon-park-solid:down-one' ></IconV2>
+            <Icon icon='icon-park-solid:down-one' ></Icon>
           </Button>
         </DropdownMenuTrigger>
 
@@ -21,7 +21,7 @@ export default () => {
 
           <DropdownMenuLabel className='tw:flex tw:justify-between'>
             Lists
-            <IconV2 icon='lucide:x'></IconV2>
+            <Icon icon='lucide:x'></Icon>
           </DropdownMenuLabel>
 
           <DropdownMenuSeparator />
@@ -38,7 +38,7 @@ export default () => {
           <DropdownMenuSeparator />
 
           <DropdownMenuItem className='tw:flex tw:items-center tw:leading-none' onClick={() => setIsOpen(true)}>
-            <IconV2 icon='lucide:plus' className='tw:text-lg'></IconV2>
+            <Icon icon='lucide:plus'></Icon>
             Create list
           </DropdownMenuItem>
 

@@ -1,4 +1,4 @@
-import IconV2 from "../Icon/IconV2.tsx";
+import { Icon } from "../Icon/Icon.tsx";
 
 import {
   Alert,
@@ -21,7 +21,7 @@ export const Variant1 = {
   name: 'API / 2 Variants',
   render: () => {
     return <Alert variant="destructive">
-      <IconV2 icon='lucide:circle-alert' className="tw:h-4 tw:w-4" />
+      <Icon icon='lucide:circle-alert' className="tw:h-4 tw:w-4" />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>
         Your session has expired. Please log in again.
@@ -36,7 +36,7 @@ export const Variant2 = {
     return (
       <>
         <Alert>
-          <IconV2 icon='lucide:shield-check' className="tw:h-4 tw:w-4" />
+          <Icon icon='lucide:shield-check' className="tw:h-4 tw:w-4" />
           <AlertTitle>Upated to the latest version!</AlertTitle>
         </Alert>
         <br />

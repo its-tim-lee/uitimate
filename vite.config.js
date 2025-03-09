@@ -18,5 +18,4 @@ export default {
       '@': path.resolve(__dirname, 'src'),
     },
   },
-  // ssr: { noExternal: ["@builder.io/react"] },
 }

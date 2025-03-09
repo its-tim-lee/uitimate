@@ -17,7 +17,7 @@ import {
   ItemIndicator
 } from "@radix-ui/react-dropdown-menu"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Icon } from "../Icon/Icon.tsx"
+import { Icon } from "../Icon/Icon"
 
 export {
   DropdownMenu,

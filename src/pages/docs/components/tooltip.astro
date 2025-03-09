@@ -25,6 +25,7 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName
 <BaseLayout>
   <DocPageLayout>
     <ComponentPageHero
+      client:only="react"
       apiLink={apiLink}
       title={startCase(routeName)}
       subtitle="Given icon name, it will render an icon."

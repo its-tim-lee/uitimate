@@ -1,7 +1,7 @@
 import React, { Children, createContext, useContext, type ComponentProps } from 'react'
 import { Dialog as DialogRoot, DialogPanel as DialogContent, DialogTitle as Title, Description as DialogDescription, DialogBackdrop as DialogOverlay, CloseButton as DialogClose } from '@headlessui/react'
 import { tv, type VariantProps } from "tailwind-variants"
-import IconV2 from '@/components/ui/Icon/IconV2'
+import { Icon } from '@/components/ui/Icon/Icon'
 import { headingSubtitleVariants, headingTitleVariants, headingVariants, HeadingSubtitle, HeadingTitle, TextHeaderCtx } from '@/components/ui/Heading/Heading'
 /**
  * TODO: doing nice transition just like Shadcn's Dialog
@@ -118,7 +118,7 @@ const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
       <Title className={headingTitleVariants({ size, className })} {...props}>{children}</Title>
       {!modal && (
         <DialogClose className={closeButton()}>
-          <IconV2 icon="lucide:x" className="tw:h-4 tw:w-4" />
+          <Icon icon="lucide:x" className="tw:h-4 tw:w-4" />
           <span className="tw:sr-only">Close</span>
         </DialogClose>
       )}

@@ -3,7 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/Tooltip/Tooltip";
-import IconV2 from "../ui/Icon/IconV2";
+import { Icon } from "../ui/Icon/Icon";
 import { useState } from "react";
 
 export default () => {
@@ -13,7 +13,7 @@ export default () => {
     <span className="tw:flex tw:items-center tw:gap-2">
 
       Code Interpreter & Data Analysis
-      <IconV2 icon="mingcute:question-line" onClick={() => setIsOpen(true)} />
+      <Icon icon="mingcute:question-line" onClick={() => setIsOpen(true)} />
 
       <Tooltip open={isOpen} onOpenChange={setIsOpen}>
 

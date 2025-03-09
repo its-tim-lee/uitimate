@@ -16,8 +16,8 @@ import {
   ItemText,
   Separator
 } from "@radix-ui/react-select"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
 import { cn } from "@/lib/utils"
+import { Icon } from "../Icon/Icon"
 
 const SelectTrigger = (
   { className, children, ...props }: ComponentProps<typeof Trigger>

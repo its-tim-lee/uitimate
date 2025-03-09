@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/Label/Label"
 import Button from "~/src/pages/docs/components/button.astro"
-import IconV2 from "../ui/Icon/IconV2"
+import { Icon } from "../ui/Icon/Icon"
 import { Input } from "../ui/Input/Input"
 import { SelectTrigger, Select, SelectContent, SelectGroup, SelectItem, SelectValue } from "../ui/Select/Select"
 
@@ -12,7 +12,7 @@ import { SelectTrigger, Select, SelectContent, SelectGroup, SelectItem, SelectVa
 //           Top repositories
 //         </Label>
 //         <Button variant="primary">
-//           <IconV2 icon="lucide:book-marked" className='tw:bg-green-500' />
+//           <Icon icon="lucide:book-marked" className='tw:bg-green-500' />
 //           New
 //         </Button>
 //       </div>
@@ -28,7 +28,7 @@ export default () => {
     <div className="tw:flex tw:flex-col tw:gap-2">
       <Label htmlFor="ttl-value" className=''>
         Token time to live
-        <IconV2 icon="mingcute:question-line" className='tw:bg-green-500' />
+        <Icon icon="mingcute:question-line" className='tw:bg-green-500' />
       </Label>
       <div>
         <Input id="ttl-repo" type="number" value={1} />

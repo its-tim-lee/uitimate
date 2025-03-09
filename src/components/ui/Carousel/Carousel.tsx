@@ -1,9 +1,8 @@
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import { type KeyboardEvent, type ComponentProps, useCallback, useContext, useEffect, useState, createContext } from "react"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
 import { cn } from "@/lib/utils"
-import { Toggle } from "@/components/ui/Toggle/Toggle.tsx"
-
+import { Icon } from "../Icon/Icon"
+import { Button } from "../Button/Button"
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
 type CarouselOptions = UseCarouselParameters[0]
@@ -140,12 +139,12 @@ const CarouselItem = ({ className, ...props }: ComponentProps<"div">) => {
 }
 
 const CarouselPrevious = (
-  { className, variant = "outline", size = "default", ...props }: ComponentProps<typeof Toggle>
+  { className, variant = "outline", size = "md", ...props }: ComponentProps<typeof Button>
 ) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <Toggle
+    <Button
       pressed={false}
       variant={variant}
       size={size}
@@ -162,17 +161,17 @@ const CarouselPrevious = (
     >
       <Icon icon='lucide:arrow-left' className="tw:h-4 tw:w-4" />
       <span className="tw:sr-only">Previous slide</span>
-    </Toggle>
+    </Button>
   )
 }
 
 const CarouselNext = (
-  { className, variant = "outline", size = "default", ...props }: ComponentProps<typeof Toggle>
+  { className, variant = "outline", size = "md", ...props }: ComponentProps<typeof Button>
 ) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Toggle
+    <Button
       pressed={false}
       variant={variant}
       size={size}
@@ -189,7 +188,7 @@ const CarouselNext = (
     >
       <Icon icon='lucide:arrow-right' className="tw:h-4 tw:w-4" />
       <span className="tw:sr-only">Next slide</span>
-    </Toggle>
+    </Button>
   )
 }
 

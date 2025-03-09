@@ -1,6 +1,5 @@
 import { memo, useEffect, useId, useMemo, useRef, useState } from "react"
-import { Toggle } from "../../ui/Toggle/Toggle"
-
+import { Button } from "../../ui/Button/Button"
 export default {
   title: "Newbie mistakes / unwanted reactive as Effect's dependencies",
   parameters: {
@@ -33,7 +32,7 @@ export const ProblemA = {
       console.log('`count`: ', count)
       console.groupEnd()
     }, [options])
-    return <Toggle pressed={false} onClick={() => setCount(c => c + 1)}>Change count: {count}</Toggle>
+    return <Button pressed={false} onClick={() => setCount(c => c + 1)}>Change count: {count}</Button>
   }
 }
 
@@ -53,7 +52,7 @@ export const SolutionA1 = {
       console.log('`count`: ', count)
       console.groupEnd()
     }, [])
-    return <Toggle pressed={false} onClick={() => setCount(c => c + 1)}>Change count: {count}</Toggle>
+    return <Button pressed={false} onClick={() => setCount(c => c + 1)}>Change count: {count}</Button>
   }
 }
 
@@ -71,7 +70,7 @@ export const SolutionA2 = {
       console.log('`count`: ', count)
       console.groupEnd()
     }, [options])
-    return <Toggle pressed={false} onClick={() => setCount(c => c + 1)}>Change count: {count}</Toggle>
+    return <Button pressed={false} onClick={() => setCount(c => c + 1)}>Change count: {count}</Button>
   }
 }
 
@@ -98,7 +97,7 @@ export const ProblemB = {
       return () => emitter.off('message', handleMessage);
     }, [messages])
     return <>
-      <Toggle pressed={false} onClick={() => emitter.emit('message', 'hello')}>Send Message</Toggle>
+      <Button pressed={false} onClick={() => emitter.emit('message', 'hello')}>Send Message</Button>
       <h3>Stacked messages: </h3>
       <ul>
         {messages.map((m, i) => <li key={i}>{m}</li>)}
@@ -124,7 +123,7 @@ export const SolutionB = {
       return () => emitter.off('message', handleMessage);
     }, [])
     return <>
-      <Toggle pressed={false} onClick={() => emitter.emit('message', 'hello')}>Send Message</Toggle>
+      <Button pressed={false} onClick={() => emitter.emit('message', 'hello')}>Send Message</Button>
       <h3>Stacked messages: </h3>
       <ul>
         {messages.map((m, i) => <li key={i}>{m}</li>)}

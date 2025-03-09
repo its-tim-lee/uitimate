@@ -1,11 +1,4 @@
-import IconV2 from "../Icon/IconV2.tsx";
-import copySVG from "@iconify/icons-lucide/copy";
-const { body: copy } = copySVG as any;
-import githubSVG from "@iconify/icons-lucide/github";
-const { body: github } = githubSVG as any;
-import branchSVG from "@iconify/icons-lucide/git-branch";
-const { body: branch } = branchSVG as any;
-import timleeImage from '@/assets/timlee.jpg'
+import { Icon } from "../Icon/Icon.tsx";
 import Badge5Variants from "@/components/demo/badge-5variants.tsx";
 import Badge3Sizes from "@/components/demo/badge-3sizes.tsx";
 import Badge3Modes from "@/components/demo/badge-3modes.tsx";
@@ -67,15 +60,15 @@ export const Variant6 = {
     return (
       <div className="tw:flex tw:flex-col tw:gap-2">
         <Badge variant='outline' mode='icon' size='sm'>
-          <IconV2 ssr icon={github} />
+          <Icon icon='lucide:github' />
           <span className="tw:sr-only">View on Github</span>
         </Badge>
         <Badge variant='outline' mode='icon'>
-          <IconV2 ssr icon={github} />
+          <Icon icon='lucide:github' />
           <span className="tw:sr-only">View on Github</span>
         </Badge>
         <Badge variant='outline' mode='icon' size='lg'>
-          <IconV2 ssr icon={github} />
+          <Icon icon='lucide:github' />
           <span className="tw:sr-only">View on Github</span>
         </Badge>
       </div>
@@ -91,14 +84,14 @@ export const Variant7 = {
         <section className="tw:flex tw:flex-col tw:gap-2 tw:items-start">
           <Badge variant="secondary" mode='pill' size='sm'>
             <Avatar>
-              <AvatarImage src={timleeImage} alt="@itistimlee" />
+              <AvatarImage src="https://bitl.to/44ls" alt="@itistimlee" />
               <AvatarFallback>TL</AvatarFallback>
             </Avatar>
             Tim Lee
           </Badge>
           <br />
           <Badge variant="secondary" mode='pill' size='sm'>
-            <IconV2 ssr icon={github} />
+            <Icon icon='lucide:github' />
             Github
           </Badge>
           <br />
@@ -107,14 +100,14 @@ export const Variant7 = {
         <section className="tw:flex tw:flex-col tw:gap-2 tw:items-start">
           <Badge variant="secondary" mode='pill'>
             <Avatar>
-              <AvatarImage src={timleeImage} alt="@itistimlee" />
+              <AvatarImage src="https://bitl.to/44ls" alt="@itistimlee" />
               <AvatarFallback>TL</AvatarFallback>
             </Avatar>
             Tim Lee
           </Badge>
           <br />
           <Badge variant="secondary" mode='pill'>
-            <IconV2 ssr icon={github} />
+            <Icon icon='lucide:github' />
             Github
           </Badge>
           <br />
@@ -123,14 +116,14 @@ export const Variant7 = {
         <section className="tw:flex tw:flex-col tw:gap-2 tw:items-start">
           <Badge variant="secondary" mode='pill' size='lg'>
             <Avatar>
-              <AvatarImage src={timleeImage} alt="@itistimlee" />
+              <AvatarImage src="https://bitl.to/44ls" alt="@itistimlee" />
               <AvatarFallback>TL</AvatarFallback>
             </Avatar>
             Tim Lee
           </Badge>
           <br />
           <Badge variant="secondary" mode='pill' size='lg'>
-            <IconV2 ssr icon={github} />
+            <Icon icon='lucide:github' />
             Github
           </Badge>
           <br />

@@ -1,7 +1,7 @@
 import { Root, Indicator, type CheckedState } from "@radix-ui/react-checkbox"
 import { cn } from '@/lib/utils'
 import type { ComponentProps } from "react"
-import IconV2 from "@/components/ui/Icon/IconV2"
+import { Icon } from "@/components/ui/Icon/Icon"
 
 type CheckboxProps = ComponentProps<typeof Root>
 const Checkbox = ({
@@ -18,7 +18,7 @@ const Checkbox = ({
       {...props}
     >
       <Indicator className={cn("tw:flex tw:items-center tw:justify-center tw:text-current", className)}>
-        <IconV2 icon="lucide:check" className="tw:size-4" />
+        <Icon icon="lucide:check" className="tw:size-4" />
       </Indicator>
     </Root>
   )

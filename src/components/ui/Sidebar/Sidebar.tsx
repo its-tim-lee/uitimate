@@ -1,4 +1,3 @@
-import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { type VariantProps, cva } from "class-variance-authority"
 import { type ComponentProps, type ComponentRef } from "react"
@@ -17,7 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/Tooltip/Tooltip.tsx"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "../Icon/Icon"
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -254,7 +253,7 @@ const SidebarTrigger = ({ className, onClick, children, ...props }: SidebarTrigg
     <Button
       data-sidebar="trigger"
       variant="ghost"
-      icon
+      mode="icon"
       className={cn("tw:h-7 tw:w-7", className)}
       onClick={(event) => {
         onClick?.(event)

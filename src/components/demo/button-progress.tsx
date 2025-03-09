@@ -1,9 +1,9 @@
-import IconV2 from "../ui/Icon/IconV2";
+import { Icon } from "../ui/Icon/Icon";
 import { Button } from "../ui/Button/Button";
 
 export default () => (
   <Button variant='outline' disabled>
-    <IconV2 icon="lucide:loader-circle" className="tw:[&]:animate-spin" />
+    <Icon icon="lucide:loader-circle" className="tw:animate-spin" />
     Please wait
   </Button>
 )

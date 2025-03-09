@@ -1,6 +1,5 @@
 import { memo, useEffect, useId, useRef, useState } from "react"
-import { Toggle } from "../ui/Toggle/Toggle"
-
+import { Button } from "../ui/Button/Button"
 export default {
   title: 'Example/Concept',
   parameters: {
@@ -111,8 +110,8 @@ export const Variant2 = {
     const [propA, setPropA] = useState(0)
     const [propB, setPropB] = useState(0)
     return <>
-      <Toggle pressed={false} onClick={() => setPropA(propA + 1)}>Change propA</Toggle>
-      <Toggle pressed={false} onClick={() => setPropB(propB + 1)}>Change propB</Toggle>
+      <Button pressed={false} onClick={() => setPropA(propA + 1)}>Change propA</Button>
+      <Button pressed={false} onClick={() => setPropB(propB + 1)}>Change propB</Button>
       <Variant2Child propA={propA} propB={propB} />
     </>
   }

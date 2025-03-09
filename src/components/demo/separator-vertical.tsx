@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/Separator/Separator"
-import IconV2 from "../ui/Icon/IconV2"
+import { Icon } from "../ui/Icon/Icon"
 import { Image } from "@/components/ui/Image/Image"
 
 export default () => {
@@ -16,11 +16,11 @@ export default () => {
       <Separator />
       <div className="tw:flex tw:items-center tw:gap-6 tw:h-[20px]">
         <span className="tw:flex tw:items-center tw:gap-4">
-          <IconV2 icon='lucide:house'></IconV2>
+          <Icon icon='lucide:house'></Icon>
           Project Overview
         </span>
         <Separator orientation="vertical" className='tw:h-ful' />
-        <IconV2 icon='lucide:settings'></IconV2>
+        <Icon icon='lucide:settings'></Icon>
       </div>
     </div>
   )

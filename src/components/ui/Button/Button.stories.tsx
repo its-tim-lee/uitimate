@@ -12,7 +12,7 @@ import Button6Variants from "../../demo/button-6variants.tsx";
 import ButtonSwitch from "../../demo/button-switch.tsx";
 import { useState } from "react";
 import ButtonToggle from "../../demo/button-toggle.tsx";
-import IconV2 from "../Icon/IconV2.tsx";
+import { Icon } from "../Icon/Icon.tsx";
 const { body: github } = githubSVG as any;
 export default {
   title: 'Example/Button',
@@ -90,13 +90,13 @@ export const Variant15 = {
         <h3>Single Selection</h3>
         <div className='tw:flex'>
           <Button mode='icon' className='tw:rounded-none' pressed={align === 'justify'} onPressedChange={e => setAlign(e ? 'justify' : '')}>
-            <IconV2 icon='lucide:align-justify' />
+            <Icon icon='lucide:align-justify' />
           </Button>
           <Button mode='icon' className='tw:rounded-none' pressed={align === 'left'} onPressedChange={e => setAlign(e ? 'left' : '')}>
-            <IconV2 icon='lucide:align-left' />
+            <Icon icon='lucide:align-left' />
           </Button>
           <Button mode='icon' className='tw:rounded-none' pressed={align === 'right'} onPressedChange={e => setAlign(e ? 'right' : '')}>
-            <IconV2 icon='lucide:align-right' />
+            <Icon icon='lucide:align-right' />
           </Button>
         </div>
       </div>
@@ -129,7 +129,7 @@ export const Variant16 = {
           pressed={selections.justify}
           onPressedChange={() => toggleSelection('justify')}
         >
-          <IconV2 icon='lucide:align-justify' />
+          <Icon icon='lucide:align-justify' />
         </Button>
         <Button
           mode='icon'
@@ -137,7 +137,7 @@ export const Variant16 = {
           pressed={selections.left}
           onPressedChange={() => toggleSelection('left')}
         >
-          <IconV2 icon='lucide:align-left' />
+          <Icon icon='lucide:align-left' />
         </Button>
         <Button
           mode='icon'
@@ -145,7 +145,7 @@ export const Variant16 = {
           pressed={selections.right}
           onPressedChange={() => toggleSelection('right')}
         >
-          <IconV2 icon='lucide:align-right' />
+          <Icon icon='lucide:align-right' />
         </Button>
       </div>
     </div>
