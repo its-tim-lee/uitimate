@@ -6,8 +6,10 @@ import DocPageLayout from "@/layouts/DocPageLayout.astro";
 import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
 import { Heading } from "@/components/ui/Heading/Heading";
 import { Badge } from "~/src/components/ui/Badge/Badge";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
 const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
 const apiLink = `https://github.com/Aljullu/react-lazy-load-image-component#readme`;
+const anatomy = `<Image />`;
 ---
 
 <BaseLayout>
@@ -23,15 +25,17 @@ const apiLink = `https://github.com/Aljullu/react-lazy-load-image-component#read
 
     <Heading
       size="h2"
-      title="Design Notes"
-      subtitle="The implementation details that some would appreciate."
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="image-demo"
+      anatomy={anatomy}
+      client:only="react"
+      preview="We simply wrap react-lazy-load-image-component under the hood, so go check the corresponding doc. At the same time, if possible, I recommend you to use Cloudinary."
     />
 
-    <p>
-      Currently, we use this component internally in our <Badge
-        variant="secondary">Avatar</Badge
-      > component, so may you check the source code and example there, or refer to
-      the corresponding doc.
-    </p>
+    <br />
+    <br />
   </DocPageLayout>
 </BaseLayout>
