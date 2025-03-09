@@ -36,6 +36,26 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/separator`;
       demoId="separator-demo"
       anatomy={anatomy}
       client:only="react"
+      preview="In most of time, `orientation` is the only prop you need to care about (the default value for that is `horizontal`), but for more, check out the API reference."
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Vertical",
+          type: "preview",
+          demoId: "separator-vertical",
+        },
+      ]}
+      client:only="react"
     />
   </DocPageLayout>
 </BaseLayout>

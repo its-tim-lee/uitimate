@@ -2,9 +2,10 @@ import { type ComponentProps } from "react"
 import { Root } from "@radix-ui/react-separator"
 import { tv, type VariantProps } from "tailwind-variants"
 
-
-const variant = tv({
-  base: "tw:shrink-0 tw:bg-border",
+const variants = tv({
+  base: [
+    "tw:shrink-0 tw:bg-border"
+  ],
   variants: {
     orientation: {
       horizontal: "tw:h-[1px] tw:w-full",
@@ -16,9 +17,9 @@ const variant = tv({
   }
 })
 
-export type SeparatorProps = ComponentProps<typeof Root> & VariantProps<typeof variant>;
+type SeparatorProps = ComponentProps<typeof Root> & VariantProps<typeof variants>
 
-export const Separator = ({
+const Separator = ({
   className,
   orientation = "horizontal",
   decorative = true,
@@ -28,8 +29,15 @@ export const Separator = ({
     <Root
       decorative={decorative}
       orientation={orientation}
-      className={variant({ orientation, className })}
+      className={variants({ orientation, className })}
       {...props}
     />
   )
+}
+
+Separator.displayName = 'Separator'
+
+export {
+  Separator,
+  type SeparatorProps
 }
