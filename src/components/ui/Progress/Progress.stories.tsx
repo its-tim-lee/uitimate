@@ -1,4 +1,5 @@
-import ProgressDemo from "../../demo/progress-demo.tsx";
+import ProgressDemo from '../../demo/progress-demo';
+import ProgressLoading from '../../demo/progress-loading';
 
 export default {
   title: 'Example/Progress',
@@ -6,12 +7,14 @@ export default {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 }
 
-export const Variant1 = {
-  name: 'Default',
-  render: () => <ProgressDemo />
+export const DEMO = {
+  name: 'DEMO',
+  render: () => <ProgressDemo />,
+};
+
+export const Loading = {
+  name: 'Loading',
+  render: () => <ProgressLoading />
 };

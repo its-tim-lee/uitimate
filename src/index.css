@@ -272,7 +272,6 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-
 }
 
 body {

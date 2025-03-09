@@ -36,6 +36,44 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/progress`;
       demoId="progress-demo"
       anatomy={anatomy}
       client:only="react"
+      preview="The `indeterminate` is the only prop we created for this component, for others, see the API doc; but most of time, you'd probably just use either `indeterminate` or `value` (see more examples on this page)"
+    />
+    <br />
+    <br />
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Loading",
+          type: "preview",
+          demoId: "progress-loading",
+          content: "This just feeds different number to `value` prop.",
+        },
+      ]}
+      client:only="react"
+    />
+    <br />
+    <br />
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Toolbar Loader",
+          type: "preview",
+          demoId: "progress-toolbar-loader",
+          content:
+            "Some design prefers to show the progress bar on the bottom of the toolbar",
+        },
+      ]}
+      client:only="react"
     />
   </DocPageLayout>
 </BaseLayout>
