@@ -17,15 +17,19 @@ export default () => {
       <PopoverTrigger asChild>
         <Button className='tw:shadow-none' variant="outline" size='sm'>Notify me: <b>on Github, Email</b></Button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className='tw:w-85'>
         <header className="tw:flex tw:items-center tw:justify-between">
           <h6 className="tw:font-black">Select notification channels</h6>
           <Icon icon='lucide:x' className="tw:cursor-pointer tw:text-muted-foreground" />
         </header>
         <Separator className="tw:my-4" />
         <div className="tw:flex tw:flex-col tw:gap-2">
-          <Checkbox>On Github</Checkbox>
-          <Checkbox>Email</Checkbox>
+          <div className="tw:flex tw:items-center tw:gap-2">
+            <Checkbox /> Github
+          </div>
+          <div className="tw:flex tw:items-center tw:gap-2">
+            <Checkbox /> Email
+          </div>
         </div>
         <Separator className="tw:my-4" />
         <div className="tw:flex tw:justify-end tw:gap-2">

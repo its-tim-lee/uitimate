@@ -7,6 +7,7 @@ import {
 import { Button } from "@/components/ui/Button/Button.tsx"
 import { useState } from "react";
 import PopoverDemo from "../../demo/popover-demo.tsx";
+import PopoverOpenControl from "../../demo/popover-open-control.tsx";
 
 export default {
   title: 'Example/Popover',
@@ -20,22 +21,12 @@ export default {
 }
 
 export const Variant1 = {
-  name: 'Open initially',
-  render: () => {
-    const [open, setOpen] = useState(true)
-    return (
-      <Popover defaultOpen open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button variant="outline">Open popover</Button>
-        </PopoverTrigger>
-        <PopoverContent onInteractOutside={e => console.log(e)}><h1>Press ESC to close me</h1></PopoverContent>
-      </Popover>
-    )
-  },
+  name: 'API / Open initially',
+  render: () => <PopoverOpenControl />
 };
 
 export const Variant2 = {
-  name: 'Customized Popover Position',
+  name: 'API / Customized Popover Position',
   render: () => {
     const [open, setOpen] = useState(true)
     return (
@@ -49,45 +40,6 @@ export const Variant2 = {
         <PopoverContent side='right' sideOffset={30} align='start'>
           <h1>Content</h1></PopoverContent>
       </Popover>
-    )
-  },
-};
-
-export const Sizes = {
-  name: 'API / 3 Sizes',
-  render: () => {
-    return (
-      <div className="tw:flex tw:flex-col tw:gap-4">
-        <Popover defaultOpen>
-          <PopoverTrigger asChild>
-            <Button variant="outline">Small Popover</Button>
-          </PopoverTrigger>
-          <PopoverContent size="sm">
-            <h1>Small Popover Content</h1>
-            <p>This popover uses the small size variant</p>
-          </PopoverContent>
-        </Popover>
-
-        <Popover defaultOpen>
-          <PopoverTrigger asChild>
-            <Button variant="outline">Default Popover</Button>
-          </PopoverTrigger>
-          <PopoverContent>
-            <h1>Default Popover Content</h1>
-            <p>This popover uses the default size variant</p>
-          </PopoverContent>
-        </Popover>
-
-        <Popover defaultOpen>
-          <PopoverTrigger asChild>
-            <Button variant="outline">Large Popover</Button>
-          </PopoverTrigger>
-          <PopoverContent size="lg">
-            <h1>Large Popover Content</h1>
-            <p>This popover uses the large size variant</p>
-          </PopoverContent>
-        </Popover>
-      </div>
     )
   },
 };
