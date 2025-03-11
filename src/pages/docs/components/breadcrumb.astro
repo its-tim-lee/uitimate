@@ -11,7 +11,7 @@ import {
   HeadingTitle,
 } from "@/components/ui/Heading/Heading";
 import VersatileTabs from "@/components/internal/VersatileTabs";
-import { Badge } from "~/src/components/ui/Badge/Badge";
+import { Cta } from "~/src/components/ui/Cta/Cta";
 const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
 const anatomy = `
   <Breadcrumb>
@@ -53,10 +53,14 @@ const anatomy = `
     />
 
     <p>
-      The <Badge variant="secondary">{`<`}BreadcrumbFinal{`>`}</Badge> is optional,
-      what its represents is just the final item on the breadcrumb UI to indicate
-      the current viewing page, but many sites/apps choose not to adopt this pattern
-      (eg., react.dev)
+      You may see in our examples, there's <Cta
+        variant="secondary"
+        muted
+        shapes={["badge"]}>{`<`}BreadcrumbFinal{`>`}</Cta
+      >. Such component is optional, and what its represents is just the final
+      item on the breadcrumb UI to indicate the current viewing page (so you can
+      see that it shows a little dfferent style), but many sites/apps choose not
+      to adopt this pattern (eg., react.dev)
     </p>
 
     <br />
@@ -93,6 +97,7 @@ const anatomy = `
           title: "Expansible Collapse",
           type: "preview",
           demoId: "breadcrumb-expansible-collapse",
+          content: 'Try click "..." on the UI in different screen sizes',
         },
       ]}
       client:only="react"

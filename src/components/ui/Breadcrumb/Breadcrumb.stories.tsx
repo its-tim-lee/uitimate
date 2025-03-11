@@ -1,12 +1,3 @@
-import { Icon } from "@iconify/react";
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbFinal,
-  BreadcrumbSeparator,
-} from "./Breadcrumb.tsx"
 import BreadcrumbDemo from "../../demo/breadcrumb-demo.tsx";
 import BreadcrumbMix from "../../demo/breadcrumb-mix.tsx";
 import BreadcrumbExpansibleCollapse from "../../demo/breadcrumb-expansible-collapse.tsx";
@@ -22,8 +13,7 @@ export default {
   },
 }
 
-// TBD: Using BreadcrumbFinal is optional, cuz there're sites that prefering not showing the final item on the breadcrumb as user is viewing that page (represented as the final item)
-export const Variant1 = {
+export const DEMO = {
   name: 'Demo',
   render: () => <BreadcrumbDemo />
 };
