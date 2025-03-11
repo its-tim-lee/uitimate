@@ -57,6 +57,7 @@
     "crypto-js": "^4.2.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.5.2",
+    "hotkeys-js": "^3.13.9",
     "input-otp": "^1.4.2",
     "localforage": "^1.10.0",
     "lodash-es": "^4.17.21",

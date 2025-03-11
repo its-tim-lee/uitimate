@@ -242,6 +242,12 @@ export default {
           title: 'NavigationMenu',
           href: '/docs/components/navigationmenu',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Command',
+          href: '/docs/components/command',
+          labels: []
         }
       ],
       labels: []

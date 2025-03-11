@@ -1,0 +1,83 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `
+  <Command>
+    <CommandInput/>
+    <CommandList>
+
+      <CommandEmpty/>
+
+      <CommandGroup>
+        <CommandItem/>
+      </CommandGroup>
+
+      <CommandSeparator/>
+
+      <!-- More <CommandGroup> ... -->
+
+    </CommandList>
+  </Command>
+`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      client:only="react"
+      title={startCase(routeName)}
+      subtitle="Fast, unstyled command menu React component."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="command-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Command Dialog",
+          type: "preview",
+          demoId: "command-dialog",
+          content: `
+            This is just the same as the demo, but now the menu is living in a dialog, and we also shows some state control on the Command component.
+            Note that, we don't use the dialog component provided from CMDK, cuz the underlying component of that is Radix's Dialog, which we don't use at all.
+            And frankly, we really don't need to encapsulate the dedicated dialog component just for the Command component, cuz as you can see in the following example code,
+            it's just dead-easy to implement.
+            `,
+        },
+      ]}
+      client:only="react"
+    />
+
+    <!-- ComponentPageAPI -->
+  </DocPageLayout>
+</BaseLayout>

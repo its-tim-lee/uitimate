@@ -1,9 +1,10 @@
+import { Dialog } from "@/components/ui/Dialog/Dialog"
 import * as React from "react"
 import { type DialogProps } from "@/components/ui/DialogOld/Dialog"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/Button/Button"
 import {
-  CommandDialog,
+  Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -16,7 +17,7 @@ import siteData, { type DocTreeItem } from "@/data/site";
 
 
 export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
-  const [open, setOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = React.useState(false)
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -31,7 +32,7 @@ export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
         }
 
         e.preventDefault()
-        setOpen((open) => !open)
+        setIsOpen((open) => !open)
       }
     }
     document.addEventListener("keydown", down)
@@ -39,7 +40,7 @@ export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
   }, [])
 
   const runCommand = (command: () => unknown) => {
-    setOpen(false)
+    setIsOpen(false)
     command()
   }
 
@@ -68,7 +69,7 @@ export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
         size='sm'
         onClick={() => {
           console.log("clicked")
-          setOpen(true)
+          setIsOpen(true)
         }}
         {...props}
         className={cn(
@@ -84,27 +85,29 @@ export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
           <span className="tw:text-[16px]">⌘</span>K
         </kbd>
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+        <Command className='tw:p-0'>
+          <CommandInput placeholder="Type a command or search..." />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
 
 
 
-          <CommandGroup heading="Pages">
-            {allPages.map((page) => (
-              <CommandItem
-                key={page.href}
-              >
-                <Icon icon={page.href?.includes('/components/') ? 'lucide:component' : 'lucide:file'} className="tw:mr-2" />
-                <a href={page.href} rel="noopener noreferrer">
-                  {page.title}
-                </a>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>
+            <CommandGroup heading="Pages">
+              {allPages.map((page) => (
+                <CommandItem
+                  key={page.href}
+                >
+                  <Icon icon={page.href?.includes('/components/') ? 'lucide:component' : 'lucide:file'} className="tw:mr-2" />
+                  <a href={page.href} rel="noopener noreferrer">
+                    {page.title}
+                  </a>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </Dialog>
     </>
   )
 }
