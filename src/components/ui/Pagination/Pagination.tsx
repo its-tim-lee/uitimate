@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
 import { type ButtonProps, buttonVariants } from "@/components/ui/Button/Button.tsx"
-import { tv, type VariantProps } from "tailwind-variants"
-import { Icon } from "../Icon/Icon"
+import { tv } from "tailwind-variants"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
 
 const paginationVariants = tv({
   slots: {
@@ -12,23 +12,20 @@ const paginationVariants = tv({
     ellipsis: "tw:flex tw:h-9 tw:w-9 tw:items-center tw:justify-center"
   }
 })
+const {
+  nav,
+  list,
+  previous,
+  next,
+  ellipsis
+} = paginationVariants()
 
-const { nav, list, previous, next, ellipsis } = paginationVariants()
-
-export type PaginationProps = ComponentProps<"nav">;
-export type PaginationItemProps = ComponentProps<"li">;
-export type PaginationLinkProps = (
-  Pick<ButtonProps, "size"> &
-  ComponentProps<"a"> &
-  { isActive?: boolean }
-);
-export type PaginationPreviousProps = PaginationLinkProps;
-export type PaginationNextProps = PaginationLinkProps;
-export type PaginationEllipsisProps = ComponentProps<"span">;
-
-// TBD: doc: `asChild`
-// TBD: doc: `isActive`
-export const Pagination = ({ className, children, ...props }: PaginationProps) => (
+type PaginationProps = ComponentProps<"nav">
+const Pagination = ({
+  className,
+  children,
+  ...props
+}: PaginationProps) => (
   <nav
     role="navigation"
     aria-label="pagination"
@@ -38,10 +35,13 @@ export const Pagination = ({ className, children, ...props }: PaginationProps) =
     <ul className={list()}>{children}</ul>
   </nav>
 )
+type PaginationItemProps = ComponentProps<"li">
+const PaginationItem = ({ ...props }: PaginationItemProps) => <li {...props} />
 
-export const PaginationItem = ({ ...props }: PaginationItemProps) => <li {...props} />
-
-export const PaginationLink = ({
+type PaginationLinkProps = Pick<ButtonProps, "size"> & ComponentProps<"a"> & {
+  isActive?: boolean
+}
+const PaginationLink = ({
   className,
   isActive,
   ...props
@@ -53,7 +53,8 @@ export const PaginationLink = ({
   />
 )
 
-export const PaginationPrevious = ({
+type PaginationPreviousProps = PaginationLinkProps
+const PaginationPrevious = ({
   className,
   ...props
 }: PaginationPreviousProps) => (
@@ -67,7 +68,8 @@ export const PaginationPrevious = ({
   </PaginationLink>
 )
 
-export const PaginationNext = ({
+type PaginationNextProps = PaginationLinkProps
+const PaginationNext = ({
   className,
   ...props
 }: PaginationNextProps) => (
@@ -81,7 +83,8 @@ export const PaginationNext = ({
   </PaginationLink>
 )
 
-export const PaginationEllipsis = ({
+type PaginationEllipsisProps = ComponentProps<"span">
+const PaginationEllipsis = ({
   className,
   ...props
 }: PaginationEllipsisProps) => (
@@ -101,3 +104,19 @@ PaginationLink.displayName = "PaginationLink"
 PaginationPrevious.displayName = "PaginationPrevious"
 PaginationNext.displayName = "PaginationNext"
 PaginationEllipsis.displayName = "PaginationEllipsis"
+
+export {
+  paginationVariants,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+  type PaginationProps,
+  type PaginationItemProps,
+  type PaginationLinkProps,
+  type PaginationPreviousProps,
+  type PaginationNextProps,
+  type PaginationEllipsisProps
+}
