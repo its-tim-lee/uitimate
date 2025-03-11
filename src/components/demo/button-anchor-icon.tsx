@@ -1,5 +1,5 @@
 import { Icon } from "../ui/Icon/Icon";
-import { Button } from "../ui/Button/Button";
+import { Cta } from "../ui/Cta/Cta";
 export default () => (
   /**
          * The end result:
@@ -8,9 +8,10 @@ export default () => (
          *
          * So it's basically applying the styling mechanism from `<Button>` to the child
          */
-  <Button asChild variant='outline' mode="icon" size='sm' className='tw:shadow-none' >
+  <Cta asChild variant='ghost' size='sm' className='tw:shadow-none' >
     <a href="#" target="_blank" rel="noreferrer">
-      <Icon icon='lucide:github' />
+      <Icon icon='lucide:git-branch' />
+      21 Branches
     </a>
-  </Button>
+  </Cta>
 )

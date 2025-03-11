@@ -218,6 +218,12 @@ export default {
           title: 'Textarea',
           href: '/docs/components/textarea',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Cta',
+          href: '/docs/components/cta',
+          labels: []
         }
       ],
       labels: []

@@ -5,23 +5,10 @@ import {
 } from 'tailwind-variants';
 import { Slot } from "@radix-ui/react-slot";
 
-/**
- * TBD: For more details such as demos and guidelines, check:
- */
-
-/**
- * TBD: words on doc: Badge vs. Button
- * - why not merge them?
- * - differences: style, span vs. button
- * - differences: mode vs. variant
- */
-
 export const badgeVariants = tv({
   base: [
     "tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:rounded-md tw:outline tw:transition-colors",
     "tw:focus:outline-hidden tw:focus:ring-2 tw:focus:ring-ring tw:focus:ring-offset-2",
-    "tw:data-[mode='pill']:rounded-full tw:data-[mode='pill']:has-data-avatar:pl-0! tw:data-[mode='pill']:justify-between tw:data-[mode='pill']:py-0",
-    "tw:data-[mode='icon']:p-0"
   ],
   variants: {
     variant: {
@@ -40,13 +27,48 @@ export const badgeVariants = tv({
         "tw:hover:bg-secondary tw:hover:text-secondary-foreground",
       ]
     },
-    // TBD: fixing the size seems not flexible when implementing Github start button
+    mode: {
+      icon: ["tw:p-0!"],
+      pill: ["tw:rounded-full tw:has-data-avatar:pl-0! tw:justify-between tw:py-0!",]
+    },
     size: {
-      sm: 'tw:text-xs tw:px-2.5 tw:py-0.5  tw:data-[mode="icon"]:size-5 tw:[&_[data-avatar]]:size-5 tw:data-[mode="pill"]:h-5', // h 20
-      md: 'tw:text-sm tw:px-3 tw:py-0.5 tw:data-[mode="icon"]:size-6 tw:[&_[data-avatar]]:size-6 tw:data-[mode="pill"]:h-6', // h 24
-      lg: 'tw:text-md tw:px-3.5 tw:py-0.5  tw:data-[mode="icon"]:size-7 tw:[&_[data-avatar]]:size-7 tw:data-[mode="pill"]:h-7', // h 28
+      sm: 'tw:text-xs tw:px-2.5 tw:py-0.5  tw:[&_[data-avatar]]:size-5 ',
+      md: 'tw:text-sm tw:px-3 tw:py-0.5 tw:[&_[data-avatar]]:size-6 ',
+      lg: 'tw:text-md tw:px-3.5 tw:py-0.5  tw:[&_[data-avatar]]:size-7 '
     }
   },
+  compoundVariants: [
+    {
+      mode: 'icon',
+      size: 'sm',
+      class: 'tw:size-5',
+    },
+    {
+      mode: 'icon',
+      size: 'md',
+      class: 'tw:size-6',
+    },
+    {
+      mode: 'icon',
+      size: 'lg',
+      class: 'tw:size-7',
+    },
+    {
+      mode: 'pill',
+      size: 'sm',
+      class: 'tw:h-5', // h 20
+    },
+    {
+      mode: 'pill',
+      size: 'md',
+      class: 'tw:h-6', // h 24
+    },
+    {
+      mode: 'pill',
+      size: 'lg',
+      class: 'tw:h-7', // h 28
+    },
+  ],
   defaultVariants: {
     variant: "primary",
     size: "md",
@@ -61,13 +83,9 @@ export type BadgeProps = (
 export const Badge = ({
   size, variant, mode,
   asChild = false,
-  className, children, ...props
+  className, ...props
 }: BadgeProps) => {
   const Comp = asChild ? Slot : 'span'
-  return <Comp
-    data-mode={mode || undefined}
-    className={badgeVariants({ variant, className, size })} {...props}>
-    {children}
-  </Comp>
+  return <Comp className={badgeVariants({ variant, mode, className, size })} {...props} />
 }
 Badge.displayName = "Badge"

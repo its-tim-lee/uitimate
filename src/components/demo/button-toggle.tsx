@@ -1,9 +1,9 @@
-import { Button } from "../ui/Button/Button"
+import { Cta } from "../ui/Cta/Cta"
 
 export default () => {
   return (
-    <Button variant="outline" defaultPressed>
+    <Cta variant="outline" defaultPressed>
       This is pressed initially
-    </Button>
+    </Cta>
   )
 }

@@ -1,33 +1,17 @@
 import { type ComponentProps } from "react"
 import { Toggle } from "@radix-ui/react-toggle"
+import { Slot } from "@radix-ui/react-slot";
 import { Primitive } from '@radix-ui/react-primitive';
 import {
   tv,
   type VariantProps,
 } from 'tailwind-variants';
 
-const compoundVariants = [
-  {
-    mode: 'icon',
-    size: 'sm',
-    className: 'tw:w-9',
-  },
-  {
-    mode: 'icon',
-    size: 'md',
-    className: 'tw:w-10',
-  },
-  {
-    mode: 'icon',
-    size: 'lg',
-    className: 'tw:w-11',
-  },
-]
 const variantSetting = {
   size: {
-    sm: "tw:text-sm tw:h-9 tw:rounded-md tw:px-3",
-    md: "tw:text-md tw:h-10 tw:px-4 tw:py-2 ",
-    lg: "tw:text-lg tw:h-11 tw:rounded-md tw:px-8",
+    sm: "tw:text-sm tw:h-9 tw:px-3",
+    md: "tw:text-md tw:h-10 tw:px-4",
+    lg: "tw:text-lg tw:h-11 tw:px-8",
   },
 }
 const baseStyle = [
@@ -50,14 +34,105 @@ const toggleVariants = tv({
       primary: [],
       outline: ["tw:border tw:border-secondary tw:shadow-sm"],
     },
-    mode: { icon: ['tw:p-0!'] },
+    mode: {
+      icon: ['tw:p-0!'],
+      pill: [] // TBD:
+    },
     size: variantSetting.size,
   },
+  compoundVariants: [
+    {
+      mode: 'icon',
+      size: 'sm',
+      class: 'tw:w-9',
+    },
+    {
+      mode: 'icon',
+      size: 'md',
+      class: 'tw:w-10',
+    },
+    {
+      mode: 'icon',
+      size: 'lg',
+      class: 'tw:w-11',
+    },
+  ],
   defaultVariants: {
     variant: "primary",
     size: "md",
   }
 })
+
+export const badgeVariants = tv({
+  base: [
+    "tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:rounded-md tw:outline tw:transition-colors",
+    "tw:focus:outline-hidden tw:focus:ring-2 tw:focus:ring-ring tw:focus:ring-offset-2",
+  ],
+  variants: {
+    variant: {
+      primary:
+        "tw:outline-transparent tw:bg-primary tw:text-primary-foreground tw:hover:bg-primary/80",
+      secondary:
+        "tw:outline-transparent tw:bg-secondary tw:text-secondary-foreground tw:hover:bg-secondary/50",
+      destructive:
+        "tw:outline-transparent tw:bg-destructive tw:text-destructive-foreground tw:hover:bg-destructive/80",
+      outline: [
+        "tw:text-foreground tw:bg-background",
+        "tw:hover:bg-secondary tw:hover:text-secondary-foreground",
+      ],
+      ghost: [
+        "tw:bg-background tw:text-foreground tw:outline-transparent",
+        "tw:hover:bg-secondary tw:hover:text-secondary-foreground",
+      ]
+    },
+    mode: {
+      icon: ["tw:p-0!"],
+      pill: ["tw:rounded-full tw:has-data-avatar:pl-0! tw:justify-between tw:py-0!",]
+    },
+    size: {
+      sm: 'tw:text-xs tw:px-2.5 tw:py-0.5  tw:[&_[data-avatar]]:size-5 ',
+      md: 'tw:text-sm tw:px-3 tw:py-0.5 tw:[&_[data-avatar]]:size-6 ',
+      lg: 'tw:text-md tw:px-3.5 tw:py-0.5  tw:[&_[data-avatar]]:size-7 '
+    }
+  },
+  compoundVariants: [
+    {
+      mode: 'icon',
+      size: 'sm',
+      class: 'tw:size-5',
+    },
+    {
+      mode: 'icon',
+      size: 'md',
+      class: 'tw:size-6',
+    },
+    {
+      mode: 'icon',
+      size: 'lg',
+      class: 'tw:size-7',
+    },
+    {
+      mode: 'pill',
+      size: 'sm',
+      class: 'tw:h-5', // h 20
+    },
+    {
+      mode: 'pill',
+      size: 'md',
+      class: 'tw:h-6', // h 24
+    },
+    {
+      mode: 'pill',
+      size: 'lg',
+      class: 'tw:h-7', // h 28
+    },
+  ],
+  defaultVariants: {
+    variant: "primary",
+    size: "md",
+  },
+})
+
 
 export const buttonVariants = tv({
   base: baseStyle,
@@ -100,8 +175,10 @@ export const buttonVariants = tv({
           "tw:hover:underline"
         ],
     },
-    mode: { icon: ['tw:p-0!'] },
-    // TBD: different size should have different sized icon: src/components/demo/dropdownmenu-mix2.tsx
+    mode: {
+      icon: ['tw:p-0!'],
+      pill: []
+    },
     size: variantSetting.size,
   },
   compoundVariants: [
@@ -127,17 +204,29 @@ export const buttonVariants = tv({
   },
 })
 
+type MajorToggleProps = {
+  pressed?: boolean;
+  defaultPressed?: boolean;
+  onPressedChange?: (pressed: boolean) => void;
+}
+
+export type BadgeProps = (
+  {
+    asChild?: boolean,
+    mode?: 'pill' | 'icon',
+  } &
+  VariantProps<typeof badgeVariants> &
+  ComponentProps<typeof Primitive.button> &
+  MajorToggleProps
+)
+
 export type ButtonProps =
   ComponentProps<typeof Primitive.button> &
   VariantProps<typeof buttonVariants> &
-  {
-    pressed?: boolean;
-    defaultPressed?: boolean;
-    onPressedChange?: (pressed: boolean) => void;
-  }
+  MajorToggleProps
 
 type ToggleProps = ComponentProps<typeof Toggle> & VariantProps<typeof toggleVariants>;
-type Props = ButtonProps | (Omit<ButtonProps, 'variant'> & ToggleProps)
+type Props = ButtonProps | (Omit<ButtonProps, 'variant'> & ToggleProps) | BadgeProps
 
 /**
  * Implementation notes:
@@ -149,11 +238,6 @@ type Props = ButtonProps | (Omit<ButtonProps, 'variant'> & ToggleProps)
  * and that's all because doing the component composition in .astro file,
  * so the solution is just doing that in a dedicated tsx file, and then import it to the .astro file.
  */
-// TBD: feeling that we should make Button be able to be a badge (or should use another name to disconnect the concept of Badge into Button from causing confusion),
-// so that it should have many benefits:
-// - Badge will be more dedicated such that it'd never be a button anymore, so from now on, Badge is entire different from Button: they have no overlap
-// - People will not try to have badge-style button by using Badge instead of Button
-// - It'd not have UI inconsistent when in some cases, gathering Button and Badge together and try to make them the same style, but finding out that their size is different
 export const Button =
   ({
     variant, size,

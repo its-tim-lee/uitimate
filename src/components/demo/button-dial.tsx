@@ -1,8 +1,8 @@
 import { Icon } from "../ui/Icon/Icon";
-import { Button } from "../ui/Button/Button";
+import { Cta } from "../ui/Cta/Cta";
 
 export default () => (
-  <Button variant="outline" mode="icon" size='sm' className="tw:rounded-full">
+  <Cta variant="outline" shapes={['icon']} size='sm' className="tw:rounded-full">
     <Icon icon='lucide:plus' />
-  </Button>
+  </Cta>
 )
