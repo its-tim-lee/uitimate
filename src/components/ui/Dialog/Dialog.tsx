@@ -2,7 +2,7 @@ import React, { Children, createContext, useContext, type ComponentProps } from 
 import { Dialog as DialogRoot, DialogPanel as DialogContent, DialogTitle as Title, Description as DialogDescription, DialogBackdrop as DialogOverlay, CloseButton as DialogClose } from '@headlessui/react'
 import { tv, type VariantProps } from "tailwind-variants"
 import { Icon } from '@/components/ui/Icon/Icon'
-import { headingSubtitleVariants, headingTitleVariants, headingVariants, HeadingSubtitle, HeadingTitle, TextHeaderCtx } from '@/components/ui/Heading/Heading'
+import { headingVariants, type HeadingSubtitle, HeadingContext } from '@/components/ui/Heading/Heading'
 /**
  * TODO: doing nice transition just like Shadcn's Dialog
  */
@@ -29,7 +29,7 @@ export const variants = tv({
   }
 })
 const { root, overlay, content, action, closeButton } = variants()
-
+const { root: headingRoot, title, subtitle } = headingVariants()
 /**
  * TBD: doc: where the `className` and props will be applied
  */
@@ -98,24 +98,24 @@ const DialogHeading = ({ size = 'h4', children, className, ...props }: DialogHea
     else { throw new Error('You just use this component in a wrong way, check the source code.') }
   }
   return (
-    <TextHeaderCtx.Provider value={{ size }}>
+    <HeadingContext.Provider value={{ size }}>
       <div
         {...props}
-        className={headingVariants({ size, className })}
+        className={headingRoot({ size, className })}
       >
         {content}
       </div>
-    </TextHeaderCtx.Provider>
+    </HeadingContext.Provider>
   )
 }
 
 type DialogTitleProps = React.ComponentProps<typeof Title>
 const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
-  const { size } = useContext(TextHeaderCtx);
+  const { size } = useContext(HeadingContext);
   const { modal } = useContext(DialogCtx);
   return (
     <>
-      <Title className={headingTitleVariants({ size, className })} {...props}>{children}</Title>
+      <Title className={title({ size, className })} {...props}>{children}</Title>
       {!modal && (
         <DialogClose className={closeButton()}>
           <Icon icon="lucide:x" className="tw:h-4 tw:w-4" />
@@ -128,10 +128,10 @@ const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
 
 type DialogSubtitleProps = React.ComponentProps<typeof HeadingSubtitle>
 const DialogSubtitle = ({ className, children, ...props }: DialogSubtitleProps) => {
-  const { size } = useContext(TextHeaderCtx);
+  const { size } = useContext(HeadingContext);
   return (
     <DialogDescription
-      className={headingSubtitleVariants({ size, className })}
+      className={subtitle({ size, className })}
       {...props}>
       {children}
     </DialogDescription>

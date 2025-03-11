@@ -1,8 +1,7 @@
 import { type HTMLAttributes, type ReactNode, type ComponentProps, Children, isValidElement } from "react"
-import { tv, type VariantProps } from 'tailwind-variants';
-import React, { createContext, useContext } from 'react';
-import { Slot } from "@radix-ui/react-slot";
-import type * as Radix from '@radix-ui/react-slot';
+import { createContext, useContext } from 'react'
+import { Slot } from "@radix-ui/react-slot"
+import { tv, type VariantProps } from 'tailwind-variants'
 
 /**
  * TBD:
@@ -16,51 +15,42 @@ import type * as Radix from '@radix-ui/react-slot';
  * - Should provide a shortcut API style using composition is kind of tedious comparing the relevant sytnax used in mdx (ie., `# title`)
  */
 
-export const TextHeaderCtx = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' }>({ size: 'h1' });
+const HeadingContext = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' }>({ size: 'h1' })
 
-export const headingVariants = tv({
-  base: ['tw:flex tw:flex-col tw:gap-1.5 tw:text-left tw:mb-3 tw:relative'],
+const headingVariants = tv({
+  slots: {
+    root: "tw:flex tw:flex-col tw:gap-1.5 tw:text-left tw:mb-3 tw:relative",
+    title: "tw:leading-none tw:tracking-tight tw:scroll-m-20 tw:data-single-element:mb-3",
+    subtitle: "tw:text-base tw:text-muted-foreground",
+  },
   variants: {
     size: {
-      h1: "",
-      h2: "",
-      h3: "",
-      h4: "",
-      h5: "",
-      h6: "tw:mb-0",
-    },
-  },
-});
+      h1: {
+        title: "tw:text-3xl tw:font-bold",
+      },
+      h2: {
+        title: "tw:text-2xl tw:font-semibold",
+      },
+      h3: {
+        title: "tw:text-xl tw:font-semibold",
+      },
+      h4: {
+        title: "tw:text-lg tw:font-semibold",
+      },
+      h5: {
+        title: "tw:text-base tw:font-semibold",
+      },
+      h6: {
+        title: "tw:text-sm tw:font-medium", // use case: checkbox label
+        subtitle: "tw:text-sm",
+        root: "tw:mb-0",
+      }
+    }
+  }
+})
+const { root, title, subtitle } = headingVariants()
 
-export const headingTitleVariants = tv({
-  base: ["tw:leading-none tw:tracking-tight tw:scroll-m-20 tw:data-single-element:mb-3"],
-  variants: {
-    size: {
-      h1: "tw:text-3xl tw:font-bold",
-      h2: "tw:text-2xl tw:font-semibold",
-      h3: "tw:text-xl tw:font-semibold",
-      h4: "tw:text-lg tw:font-semibold",
-      h5: "tw:text-base tw:font-semibold",
-      h6: "tw:text-sm tw:font-medium", // use case: checkbox label
-    },
-  },
-});
-
-export const headingSubtitleVariants = tv({
-  base: ["tw:text-base tw:text-muted-foreground"],
-  variants: {
-    size: {
-      h1: "",
-      h2: "",
-      h3: "",
-      h4: "",
-      h5: "",
-      h6: "tw:text-sm",
-    },
-  },
-});
-
-export type HeadingProps = ComponentProps<'div'> &
+type HeadingProps = ComponentProps<'div'> &
   Omit<VariantProps<typeof headingVariants>, "size"> &
   Required<Pick<VariantProps<typeof headingVariants>, "size">> & {
     title?: string
@@ -76,7 +66,7 @@ export type HeadingProps = ComponentProps<'div'> &
  */
 // FIXME: providing `title` and `subtitle` is really an anti-pattern, and really make the code far more complex
 // but having the pattern like <Title>just a title</Title> still makes sense
-export const Heading = ({ className, size, title, subtitle, children, ...props }: HeadingProps) => {
+const Heading = ({ className, size, title, subtitle, children, ...props }: HeadingProps) => {
   // case-a: a pure text
   // case-b; <Title> XXXXX
   // case-c: <Title> and <Subtitle>
@@ -100,7 +90,9 @@ export const Heading = ({ className, size, title, subtitle, children, ...props }
     }
   }
   if (title || subtitle) {
-    if (Children.count(children) !== 0) throw new Error('Either using `title` and/or `subtitle` or doing that via composition, but not both.')
+    if (Children.count(children) !== 0) {
+      throw new Error('Either using `title` and/or `subtitle` or doing that via composition, but not both.')
+    }
     content = (
       <>
         {title && <HeadingTitle>{title}</HeadingTitle>}
@@ -110,53 +102,73 @@ export const Heading = ({ className, size, title, subtitle, children, ...props }
   }
 
   return (
-    <TextHeaderCtx.Provider value={{ size }}>
+    <HeadingContext.Provider value={{ size }}>
       <div
         {...props}
-        className={headingVariants({ size, className })}
+        className={root({ size, className })}
       >
         {content}
       </div>
-    </TextHeaderCtx.Provider>
+    </HeadingContext.Provider>
   )
 };
 // TBD: throw error if not used within Heading
 
-export type HeadingTitleProps = {
-  className?: string;
-  asChild?: boolean;
-  children: React.ReactNode;
+type HeadingTitleProps = {
+  className?: string
+  asChild?: boolean
+  children: ReactNode
 }
-
-export const HeadingTitle = ({
+const HeadingTitle = ({
   children,
   className,
   asChild,
   ...props
 }: HeadingTitleProps) => {
-  const { size: Size } = useContext(TextHeaderCtx);
-  const Comp = asChild ? Slot : Size;
+  const { size: Size } = useContext(HeadingContext)
+  const Comp = asChild ? Slot : Size
   return (
     <Comp
       data-title
-      className={headingTitleVariants({ size: Size, className })}
+      className={title({ size: Size, className })}
       {...props}
     >
       {children}
     </Comp>
-  );
-};
+  )
+}
 
-export type HeadingSubtitleProps = ComponentProps<'div'> & { asChild?: boolean }
-export const HeadingSubtitle = ({ children, className, asChild, ...props }: HeadingSubtitleProps) => {
-  const { size: Size } = useContext(TextHeaderCtx);
-  const Comp = asChild ? Slot : 'div';
-  return <Comp
-    data-subtitle
-    className={headingSubtitleVariants({ size: Size, className })}
-    {...props}>{children}</Comp>;
-};
+type HeadingSubtitleProps = ComponentProps<'div'> & { asChild?: boolean }
+const HeadingSubtitle = ({
+  children,
+  className,
+  asChild,
+  ...props
+}: HeadingSubtitleProps) => {
+  const { size: Size } = useContext(HeadingContext)
+  const Comp = asChild ? Slot : 'div'
+  return (
+    <Comp
+      data-subtitle
+      className={subtitle({ size: Size, className })}
+      {...props}
+    >
+      {children}
+    </Comp>
+  )
+}
 
 Heading.displayName = "Heading"
-HeadingTitle.displayName = "HeadingTitle";
-HeadingSubtitle.displayName = "HeadingSubtitle";
+HeadingTitle.displayName = "HeadingTitle"
+HeadingSubtitle.displayName = "HeadingSubtitle"
+
+export {
+  Heading,
+  HeadingTitle,
+  HeadingSubtitle,
+  HeadingContext,
+  headingVariants,
+  type HeadingProps,
+  type HeadingTitleProps,
+  type HeadingSubtitleProps
+}

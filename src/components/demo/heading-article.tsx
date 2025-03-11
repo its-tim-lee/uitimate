@@ -3,7 +3,7 @@ import {
   HeadingSubtitle,
   HeadingTitle,
 } from "@/components/ui/Heading/Heading";
-import { Badge } from "@/components/ui/Badge/Badge";
+import { Cta } from "@/components/ui/Cta/Cta";
 
 export default () => (
   <div className="tw:w-xl tw:[&_p]:pb-4">
@@ -15,7 +15,7 @@ export default () => (
       Several OpenAI models have vision capabilities, meaning the models can take images as input and answer questions about them. Historically, language models were limited to a single input modality: text.
     </p>
     <p className="tw:text-justify">
-      Currently, models that can take images as input include <Badge variant='secondary'>o1</Badge>, <Badge variant='secondary'>gpt-4.5-preview</Badge>, <Badge variant='secondary'>gpt-4o</Badge>, <Badge variant='secondary'>gpt-4o-mini</Badge>, and <Badge variant='secondary'>gpt-4-turbo</Badge>.
+      Currently, models that can take images as input include <Cta muted variant='secondary' shapes={['badge']}>o1</Cta>, <Cta muted variant='secondary' shapes={['badge']}>gpt-4.5-preview</Cta>, <Cta muted variant='secondary' shapes={['badge']}>gpt-4o</Cta>, <Cta muted variant='secondary' shapes={['badge']}>gpt-4o-mini</Cta>, and <Cta muted variant='secondary' shapes={['badge']}>gpt-4-turbo</Cta>.
     </p>
     <br />
     <Heading size="h3">Quickstart</Heading>
