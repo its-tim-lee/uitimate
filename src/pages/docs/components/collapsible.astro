@@ -1,0 +1,60 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `
+  <Avatar>
+    <AvatarImage/>
+    <AvatarFallback/>
+  </Avatar>
+`;
+const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName}`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      client:only="react"
+      title={startCase(routeName)}
+      subtitle="An interactive component which expands/collapses a panel."
+      apiLink={apiLink}
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="collapsible-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+    <br />
+    <br />
+    <Heading
+      size="h2"
+      title="Design Notes"
+      subtitle="The implementation details that some would appreciate."
+    />
+
+    <p>
+      Collapsible vs. Accordion: think about Collapsible is sort of applying
+      display: none | block (although it's not), this should help u to
+      understand that it's used in a one-off case, and usually for toggling the
+      visibility of certain thing
+    </p>
+  </DocPageLayout>
+</BaseLayout>

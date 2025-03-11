@@ -248,6 +248,12 @@ export default {
           title: 'Command',
           href: '/docs/components/command',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Collapsible',
+          href: '/docs/components/collapsible',
+          labels: []
         }
       ],
       labels: []
