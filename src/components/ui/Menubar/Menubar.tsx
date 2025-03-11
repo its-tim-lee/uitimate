@@ -7,9 +7,14 @@
 import { ItemIndicator, Root, Trigger, SubTrigger, SubContent, Content, Item, CheckboxItem, RadioItem, Separator, Menu as MenubarMenu, Portal as MenubarPortal, Sub as MenubarSub, RadioGroup as MenubarRadioGroup } from "@radix-ui/react-menubar"
 import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Icon } from "../Icon/Icon"
+import { Icon } from "@/components/ui/Icon/Icon"
 
-export const menubarVariants = tv({
+const itemBaseStyle = [
+  "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:text-sm tw:outline-hidden",
+  "tw:focus:bg-accent tw:focus:text-accent-foreground",
+  "tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50"
+]
+const menubarVariants = tv({
   slots: {
     root: "tw:flex tw:h-9 tw:items-center tw:space-x-1 tw:rounded-md tw:border tw:bg-background tw:p-1 tw:shadow-sm",
     trigger: "tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:px-3 tw:py-1 tw:text-sm tw:font-medium tw:outline-hidden tw:focus:bg-accent tw:focus:text-accent-foreground tw:data-[state=open]:bg-accent tw:data-[state=open]:text-accent-foreground",
@@ -30,21 +35,8 @@ export const menubarVariants = tv({
       "tw:data-[state=closed]:zoom-out-95 tw:data-[state=open]:zoom-in-95",
       "tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2 tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2"
     ],
-    item: [
-      "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:px-2 tw:py-1.5 tw:text-sm tw:outline-hidden",
-      "tw:focus:bg-accent tw:focus:text-accent-foreground",
-      "tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50"
-    ],
-    checkboxItem: [
-      "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:py-1.5 tw:pl-8 tw:pr-2 tw:text-sm tw:outline-hidden",
-      "tw:focus:bg-accent tw:focus:text-accent-foreground",
-      "tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50"
-    ],
-    radioItem: [
-      "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:py-1.5 tw:pl-8 tw:pr-2 tw:text-sm tw:outline-hidden",
-      "tw:focus:bg-accent tw:focus:text-accent-foreground",
-      "tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50"
-    ],
+    item: ["tw:px-2 tw:py-1.5", ...itemBaseStyle],
+    formItem: ["tw:py-1.5 tw:pl-8 tw:pr-2", ...itemBaseStyle],
     itemIndicator: "tw:absolute tw:left-2 tw:flex tw:h-3.5 tw:w-3.5 tw:items-center tw:justify-center",
     separator: "tw:-mx-1 tw:my-1 tw:h-px tw:bg-muted",
     shortcut: "tw:ml-auto tw:text-xs tw:tracking-widest tw:text-muted-foreground"
@@ -58,39 +50,30 @@ const {
   subContent,
   content,
   item,
-  checkboxItem,
-  radioItem,
+  formItem,
   itemIndicator,
   separator,
   shortcut
 } = menubarVariants()
 
-export type MenubarProps = ComponentProps<typeof Root>;
-export type MenubarTriggerProps = ComponentProps<typeof Trigger>;
-export type MenubarSubTriggerProps = ComponentProps<typeof SubTrigger>;
-export type MenubarSubContentProps = ComponentProps<typeof SubContent>;
-export type MenubarContentProps = ComponentProps<typeof Content>;
-export type MenubarItemProps = ComponentProps<typeof Item>;
-export type MenubarCheckboxItemProps = ComponentProps<typeof CheckboxItem>;
-export type MenubarRadioItemProps = ComponentProps<typeof RadioItem>;
-export type MenubarSeparatorProps = ComponentProps<typeof Separator>;
-export type MenubarShortcutProps = ComponentProps<"span">;
-
-export const Menubar = ({ className, ...props }: MenubarProps) => (
+type MenubarProps = ComponentProps<typeof Root>;
+const Menubar = ({ className, ...props }: MenubarProps) => (
   <Root
     className={root({ className })}
     {...props}
   />
 );
 
-export const MenubarTrigger = ({ className, ...props }: MenubarTriggerProps) => (
+type MenubarTriggerProps = ComponentProps<typeof Trigger>;
+const MenubarTrigger = ({ className, ...props }: MenubarTriggerProps) => (
   <Trigger
     className={trigger({ className })}
     {...props}
   />
 );
 
-export const MenubarSubTrigger = ({ className, children, ...props }: MenubarSubTriggerProps) => (
+type MenubarSubTriggerProps = ComponentProps<typeof SubTrigger>;
+const MenubarSubTrigger = ({ className, children, ...props }: MenubarSubTriggerProps) => (
   <SubTrigger
     className={subTrigger({ className })}
     {...props}
@@ -100,14 +83,16 @@ export const MenubarSubTrigger = ({ className, children, ...props }: MenubarSubT
   </SubTrigger>
 );
 
-export const MenubarSubContent = ({ className, ...props }: MenubarSubContentProps) => (
+type MenubarSubContentProps = ComponentProps<typeof SubContent>;
+const MenubarSubContent = ({ className, ...props }: MenubarSubContentProps) => (
   <SubContent
     className={subContent({ className })}
     {...props}
   />
 );
 
-export const MenubarContent = ({ className, align = "start", alignOffset = -4, sideOffset = 8, ...props }: MenubarContentProps) => (
+type MenubarContentProps = ComponentProps<typeof Content>;
+const MenubarContent = ({ className, align = "start", alignOffset = -4, sideOffset = 8, ...props }: MenubarContentProps) => (
   <MenubarPortal>
     <Content
       align={align}
@@ -119,16 +104,18 @@ export const MenubarContent = ({ className, align = "start", alignOffset = -4, s
   </MenubarPortal>
 );
 
-export const MenubarItem = ({ className, ...props }: MenubarItemProps) => (
+type MenubarItemProps = ComponentProps<typeof Item>;
+const MenubarItem = ({ className, ...props }: MenubarItemProps) => (
   <Item
     className={item({ className })}
     {...props}
   />
 );
 
-export const MenubarCheckboxItem = ({ className, children, checked, ...props }: MenubarCheckboxItemProps) => (
+type MenubarCheckboxItemProps = ComponentProps<typeof CheckboxItem>;
+const MenubarCheckboxItem = ({ className, children, checked, ...props }: MenubarCheckboxItemProps) => (
   <CheckboxItem
-    className={checkboxItem({ className })}
+    className={formItem({ className })}
     checked={checked}
     {...props}
   >
@@ -141,9 +128,10 @@ export const MenubarCheckboxItem = ({ className, children, checked, ...props }: 
   </CheckboxItem>
 );
 
-export const MenubarRadioItem = ({ className, children, ...props }: MenubarRadioItemProps) => (
+type MenubarRadioItemProps = ComponentProps<typeof RadioItem>;
+const MenubarRadioItem = ({ className, children, ...props }: MenubarRadioItemProps) => (
   <RadioItem
-    className={radioItem({ className })}
+    className={formItem({ className })}
     {...props}
   >
     <span className={itemIndicator()}>
@@ -155,14 +143,16 @@ export const MenubarRadioItem = ({ className, children, ...props }: MenubarRadio
   </RadioItem>
 );
 
-export const MenubarSeparator = ({ className, ...props }: MenubarSeparatorProps) => (
+type MenubarSeparatorProps = ComponentProps<typeof Separator>;
+const MenubarSeparator = ({ className, ...props }: MenubarSeparatorProps) => (
   <Separator
     className={separator({ className })}
     {...props}
   />
 );
 
-export const MenubarShortcut = ({ className, ...props }: MenubarShortcutProps) => (
+type MenubarShortcutProps = ComponentProps<"span">;
+const MenubarShortcut = ({ className, ...props }: MenubarShortcutProps) => (
   <span
     className={shortcut({ className })}
     {...props}
@@ -185,8 +175,29 @@ MenubarSeparator.displayName = 'MenubarSeparator';
 MenubarShortcut.displayName = "MenubarShortcut";
 
 export {
+  menubarVariants,
+  Menubar,
   MenubarMenu,
   MenubarPortal,
   MenubarSub,
-  MenubarRadioGroup
+  MenubarRadioGroup,
+  MenubarTrigger,
+  MenubarSubTrigger,
+  MenubarSubContent,
+  MenubarContent,
+  MenubarItem,
+  MenubarCheckboxItem,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  type MenubarProps,
+  type MenubarTriggerProps,
+  type MenubarSubTriggerProps,
+  type MenubarSubContentProps,
+  type MenubarContentProps,
+  type MenubarItemProps,
+  type MenubarCheckboxItemProps,
+  type MenubarRadioItemProps,
+  type MenubarSeparatorProps,
+  type MenubarShortcutProps,
 }
