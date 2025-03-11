@@ -17,7 +17,7 @@ export default () => {
             },
           })
         }>
-        Show Toast
+        Click repeatedly
       </Button>
     </>)
 }
