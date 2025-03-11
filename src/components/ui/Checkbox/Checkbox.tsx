@@ -1,7 +1,25 @@
+import { type ComponentProps } from "react"
 import { Root, Indicator, type CheckedState } from "@radix-ui/react-checkbox"
-import { cn } from '@/lib/utils'
-import type { ComponentProps } from "react"
-import { Icon } from "@/components/ui/Icon/Icon"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { tv } from "tailwind-variants"
+
+const variants = tv({
+  slots: {
+    root: [
+      "tw:peer tw:h-4 tw:w-4 tw:shrink-0",
+      "tw:rounded-sm tw:border tw:border-primary tw:shadow",
+
+      "tw:focus-visible:outline-hidden tw:focus-visible:ring-1 tw:focus-visible:ring-ring",
+      "tw:disabled:cursor-not-allowed tw:disabled:opacity-50",
+
+      "tw:data-[state=checked]:bg-primary tw:data-[state=checked]:text-primary-foreground"
+    ],
+    indicator: [
+      "tw:flex tw:items-center tw:justify-center tw:text-current"
+    ]
+  }
+})
+const { root, indicator } = variants()
 
 type CheckboxProps = ComponentProps<typeof Root>
 const Checkbox = ({
@@ -10,14 +28,10 @@ const Checkbox = ({
 }: CheckboxProps) => {
   return (
     <Root
-      className={cn(
-        "tw:peer tw:h-4 tw:w-4 tw:shrink-0 tw:rounded-sm tw:border tw:border-primary tw:shadow",
-        "tw:focus-visible:outline-hidden tw:focus-visible:ring-1 tw:focus-visible:ring-ring",
-        "tw:disabled:cursor-not-allowed tw:disabled:opacity-50",
-        "tw:data-[state=checked]:bg-primary tw:data-[state=checked]:text-primary-foreground", className)}
+      className={root({ className })}
       {...props}
     >
-      <Indicator className={cn("tw:flex tw:items-center tw:justify-center tw:text-current", className)}>
+      <Indicator className={indicator()}>
         <Icon icon="lucide:check" className="tw:size-4" />
       </Indicator>
     </Root>
@@ -26,4 +40,9 @@ const Checkbox = ({
 
 Checkbox.displayName = 'Checkbox'
 
-export { Checkbox, type CheckedState }
+export {
+  Checkbox,
+  variants as checkboxVariants,
+  type CheckboxProps,
+  type CheckedState
+}
