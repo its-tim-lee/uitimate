@@ -1,7 +1,7 @@
-import { Root, List, Item, Trigger, Content, Link, Viewport, Indicator, Sub } from "@radix-ui/react-navigation-menu"
 import { type ComponentProps } from "react"
-import { Icon } from "../Icon/Icon"
-import { tv, type VariantProps } from "tailwind-variants"
+import { Root, List, Item, Trigger, Content, Link, Viewport, Indicator, Sub } from "@radix-ui/react-navigation-menu"
+import { tv } from "tailwind-variants"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
 
 const navigationMenuVariants = tv({
   slots: {
@@ -52,15 +52,12 @@ const {
   indicatorArrow
 } = navigationMenuVariants()
 
-export type NavigationMenuProps = ComponentProps<typeof Root>;
-export type NavigationMenuItemProps = ComponentProps<typeof Item>;
-export type NavigationMenuTriggerProps = ComponentProps<typeof Trigger>;
-export type NavigationMenuContentProps = ComponentProps<typeof Content>;
-export type NavigationMenuViewportProps = ComponentProps<typeof Viewport>;
-export type NavigationMenuLinkProps = ComponentProps<typeof Link>;
-export type NavigationMenuIndicatorProps = ComponentProps<typeof Indicator>;
-
-export const NavigationMenu = ({ className, children, ...props }: NavigationMenuProps) => (
+type NavigationMenuProps = ComponentProps<typeof Root>
+const NavigationMenu = ({
+  className,
+  children,
+  ...props
+}: NavigationMenuProps) => (
   <Root
     className={root({ className })}
     {...props}
@@ -74,9 +71,15 @@ export const NavigationMenu = ({ className, children, ...props }: NavigationMenu
   </Root>
 )
 
-export const NavigationMenuItem = Item
+type NavigationMenuItemProps = ComponentProps<typeof Item>
+const NavigationMenuItem = Item
 
-export const NavigationMenuTrigger = ({ className, children, ...props }: NavigationMenuTriggerProps) => (
+type NavigationMenuTriggerProps = ComponentProps<typeof Trigger>
+const NavigationMenuTrigger = ({
+  className,
+  children,
+  ...props
+}: NavigationMenuTriggerProps) => (
   <Trigger
     className={trigger({ className })}
     {...props}
@@ -86,14 +89,22 @@ export const NavigationMenuTrigger = ({ className, children, ...props }: Navigat
   </Trigger>
 )
 
-export const NavigationMenuContent = ({ className, ...props }: NavigationMenuContentProps) => (
+type NavigationMenuContentProps = ComponentProps<typeof Content>
+const NavigationMenuContent = ({
+  className,
+  ...props
+}: NavigationMenuContentProps) => (
   <Content
     className={content({ className })}
     {...props}
   />
 )
 
-export const NavigationMenuViewport = ({ className, ...props }: NavigationMenuViewportProps) => (
+type NavigationMenuViewportProps = ComponentProps<typeof Viewport>
+const NavigationMenuViewport = ({
+  className,
+  ...props
+}: NavigationMenuViewportProps) => (
   <div className={viewportWrapper()}>
     <Viewport
       className={viewport({ className })}
@@ -102,7 +113,11 @@ export const NavigationMenuViewport = ({ className, ...props }: NavigationMenuVi
   </div>
 )
 
-export const NavigationMenuIndicator = ({ className, ...props }: NavigationMenuIndicatorProps) => (
+type NavigationMenuIndicatorProps = ComponentProps<typeof Indicator>
+const NavigationMenuIndicator = ({
+  className,
+  ...props
+}: NavigationMenuIndicatorProps) => (
   <Indicator
     className={indicator({ className })}
     {...props}
@@ -111,9 +126,19 @@ export const NavigationMenuIndicator = ({ className, ...props }: NavigationMenuI
   </Indicator>
 )
 
-export const NavigationMenuLink = Link
+type NavigationMenuLinkProps = ComponentProps<typeof Link>
+const NavigationMenuLink = ({
+  className,
+  ...props
+}: NavigationMenuLinkProps) => (
+  <Link
+    className={trigger({ className })}
+    {...props}
+  />
+)
 
 NavigationMenu.displayName = "NavigationMenu"
+NavigationMenuItem.displayName = "NavigationMenuItem"
 NavigationMenuTrigger.displayName = "NavigationMenuTrigger"
 NavigationMenuContent.displayName = "NavigationMenuContent"
 // TBD:
@@ -121,6 +146,23 @@ NavigationMenuContent.displayName = "NavigationMenuContent"
 // - doc -> We don't expose NavigationSubMenu cuz we can implement that using Tabs
 NavigationMenuViewport.displayName = "NavigationMenuViewport"
 NavigationMenuIndicator.displayName = "NavigationMenuIndicator"
+NavigationMenuLink.displayName = "NavigationMenuLink"
 
-// Export navigationMenuTriggerStyle for backward compatibility
-export const navigationMenuTriggerStyle = () => trigger()
+export {
+  navigationMenuVariants,
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuViewport,
+  NavigationMenuIndicator,
+  NavigationMenuLink,
+  type NavigationMenuProps,
+  type NavigationMenuItemProps,
+  type NavigationMenuTriggerProps,
+  type NavigationMenuContentProps,
+  type NavigationMenuViewportProps,
+  type NavigationMenuIndicatorProps,
+  type NavigationMenuLinkProps
+}
+

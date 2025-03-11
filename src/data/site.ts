@@ -236,6 +236,12 @@ export default {
           title: 'ContextMenu',
           href: '/docs/components/contextmenu',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'NavigationMenu',
+          href: '/docs/components/navigationmenu',
+          labels: []
         }
       ],
       labels: []
