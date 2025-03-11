@@ -224,6 +224,12 @@ export default {
           title: 'Cta',
           href: '/docs/components/cta',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Accordion',
+          href: '/docs/components/accordion',
+          labels: []
         }
       ],
       labels: []

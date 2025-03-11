@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './Accordion.tsx';
+import AccordionDemo from '../../demo/accordion-demo.tsx';
+import AccordionOverview from '../../demo/accordion-overview.tsx';
 
 export default {
   title: 'Example/Accordion',
@@ -12,132 +12,12 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'Type=single',
-  render: () => {
-    const [value, setValue] = useState('unique-id-2');
-    const items = [
-      {
-        value: 'unique-id-1',
-        disabled: true,
-        trigger: "Am disabled, you can't turn me on",
-        content: "You can't see this content",
-      },
-      {
-        value: 'unique-id-2',
-        trigger: "Click me can't toggle off",
-        content: "This is because the accordion is not collapsible",
-      },
-    ];
-    return (
-      <Accordion value={value} type="single" className="w-full" onValueChange={e => setValue(e)}>
-        {items.map($i => (
-          <AccordionItem key={$i.value} value={$i.value} disabled={$i.disabled}>
-            <AccordionTrigger>{$i.trigger}</AccordionTrigger>
-            <AccordionContent>{$i.content}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    );
-  },
-};
-
-export const Variant2 = {
-  name: 'Type=single, Collapsible',
-  render: () => {
-    const [value, setValue] = useState('unique-id-2');
-    const items = [
-      {
-        value: 'unique-id-1',
-        disabled: true,
-        trigger: "Am disabled, you can't turn me on",
-        content: "You can't see this content",
-      },
-      {
-        value: 'unique-id-2',
-        trigger: "Click me to toggle the content",
-        content: "Toggling the visibility of this content is due to the effect of `collapsible`",
-      },
-    ];
-    return (
-      <Accordion value={value} type="single" collapsible className="w-full" onValueChange={e => setValue(e)}>
-        {items.map($i => (
-          <AccordionItem key={$i.value} value={$i.value} disabled={$i.disabled}>
-            <AccordionTrigger>{$i.trigger}</AccordionTrigger>
-            <AccordionContent>{$i.content}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    );
-  },
-};
-
-export const Variant3 = {
-  name: 'Type=multiple',
-  render: () => {
-    const [value, setValue] = useState(['unique-id-2', 'unique-id-3'])
-    const items = [
-      {
-        value: "unique-id-1",
-        disabled: true,
-        trigger: "Am disabled, you can't turn me on",
-        content: "You can't see this content",
-      },
-      {
-        value: "unique-id-2",
-        disabled: false,
-        trigger: "This content will show up initially",
-        content: "This is because its `value` is included in `useState`",
-      },
-      {
-        value: "unique-id-3",
-        disabled: false,
-        trigger: "This content will show up initially",
-        content: "This is because its `value` is included in `useState`",
-      },
-      {
-        value: "unique-id-4",
-        disabled: false,
-        trigger: "This content will NOT show up initially",
-        content: "This is because its `value` is NOT included in `useState`",
-      },
-    ];
-    return (
-      <Accordion type="multiple" className="w-full">
-        {items.map($i => (
-          <AccordionItem key={$i.value} value={$i.value} disabled={$i.disabled}>
-            <AccordionTrigger>{$i.trigger}</AccordionTrigger>
-            <AccordionContent>{$i.content}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    );
-  }
+export const DEMO = {
+  name: 'DEMO',
+  render: () => <AccordionDemo />
 }
 
-export const Variant4 = {
-  name: 'Shadcn Example',
-  render: () => (
-    <Accordion type="single" collapsible className="tw:w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It comes with default styles that matches the other
-          components&apos; aesthetic.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes. It's animated by default, but you can disable it if you prefer.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  )
+export const Multiple = {
+  name: 'API / Overview',
+  render: () => <AccordionOverview />
 }

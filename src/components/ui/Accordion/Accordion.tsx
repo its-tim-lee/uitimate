@@ -1,43 +1,91 @@
 import { type ComponentProps } from "react"
 import { Root, Item, Trigger, Content, Header } from "@radix-ui/react-accordion"
-import { cn } from "@/lib/utils"
-import { Icon } from "../Icon/Icon";
+import { tv } from "tailwind-variants"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
 
-const AccordionItem = ({ className, children, ...props }: ComponentProps<typeof Item>) => (
-  <Item
-    className={cn("tw:border-b", props.disabled && "tw:text-muted-foreground", className)}
-    {...props}
-  >
-    {children}
-  </Item>
-);
-AccordionItem.displayName = "AccordionItem";
+const accordionVariants = tv({
+  slots: {
+    item: [
+      "tw:border-b",
+      "tw:data-[disabled]:text-muted-foreground"
+    ],
+    trigger: [
+      "tw:flex tw:flex-1 tw:items-center tw:justify-between tw:py-4 tw:text-sm tw:font-medium tw:transition-all tw:text-left",
+      "tw:hover:underline",
+      "tw:[&[data-state=open]>[data-icon]]:rotate-180"
+    ],
+    content: [
+      "tw:overflow-hidden tw:text-sm",
+      "tw:data-[state=closed]:animate-accordion-up tw:data-[state=open]:animate-accordion-down",
+    ],
+    contentInner: [
+      "tw:pb-4 tw:pt-0"
+    ]
+  }
+})
+const { item, trigger, content, contentInner } = accordionVariants()
 
-const AccordionTrigger = ({ className, children, ...props }: ComponentProps<typeof Trigger>) => (
-  <Header className="tw:flex">
-    <Trigger
-      className={cn(
-        "tw:flex tw:flex-1 tw:items-center tw:justify-between tw:py-4 tw:text-sm tw:font-medium tw:transition-all tw:hover:underline tw:text-left tw:[&[data-state=open]>svg]:rotate-180",
-        className
-      )}
+type AccordionItemProps = ComponentProps<typeof Item>
+const AccordionItem = ({
+  className,
+  disabled,
+  children,
+  ...props
+}: AccordionItemProps) => {
+  return (
+    <Item
+      className={item({ className })}
+      data-disabled={disabled}
       {...props}
     >
       {children}
-      <Icon icon='lucide:chevron-down' className="tw:h-4 tw:w-4 tw:shrink-0 tw:text-muted-foreground tw:transition-transform tw:duration-200" />
-    </Trigger>
-  </Header>
-);
-AccordionTrigger.displayName = Trigger.displayName;
+    </Item>
+  )
+}
 
-const AccordionContent = ({ className, children, ...props }: ComponentProps<typeof Content>) => (
-  <Content
-    className="tw:overflow-hidden tw:text-sm tw:data-[state=closed]:animate-accordion-up tw:data-[state=open]:animate-accordion-down"
-    {...props}
-  >
-    <div className={cn("tw:pb-4 tw:pt-0", className)}>{children}</div>
-  </Content>
-);
-AccordionContent.displayName = Content.displayName;
+type AccordionTriggerProps = ComponentProps<typeof Trigger>
+const AccordionTrigger = ({
+  className,
+  children,
+  ...props
+}: AccordionTriggerProps) => {
+  return (
+    <Header className="tw:flex">
+      <Trigger
+        className={trigger({ className })}
+        {...props}
+      >
+        {children}
+        <Icon
+          icon="lucide:chevron-down"
+          className="tw:h-4 tw:w-4 tw:shrink-0 tw:text-muted-foreground tw:transition-transform tw:duration-200"
+        />
+      </Trigger>
+    </Header>
+  )
+}
+
+type AccordionContentProps = ComponentProps<typeof Content>
+const AccordionContent = ({
+  className,
+  children,
+  ...props
+}: AccordionContentProps) => {
+  return (
+    <Content
+      className={content()}
+      {...props}
+    >
+      <div className={contentInner({ className })}>
+        {children}
+      </div>
+    </Content>
+  )
+}
+
+AccordionItem.displayName = "AccordionItem"
+AccordionTrigger.displayName = "AccordionTrigger"
+AccordionContent.displayName = "AccordionContent"
 
 export {
   /**
@@ -46,5 +94,11 @@ export {
    * - `defaultValue` can be replaced by `value`
    */
   Root as Accordion,
-  AccordionItem, AccordionTrigger, AccordionContent
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  accordionVariants,
+  type AccordionItemProps,
+  type AccordionTriggerProps,
+  type AccordionContentProps
 }

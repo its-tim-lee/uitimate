@@ -1,0 +1,69 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName}`;
+const anatomy = `
+  <Accordion>
+    <AccordionItem>
+      <AccordionTrigger/>
+      <AccordionContent/>
+    </AccordionItem>
+    <!-- more <AccordionItem> ... -->
+  </Accordion>
+`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      client:only="react"
+      title={startCase(routeName)}
+      subtitle="A vertically stacked set of interactive headings that each reveal an associated section of content."
+      apiLink={apiLink}
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="accordion-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / API"
+      subtitle="This tries to show all the API/Component usages."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Overview",
+          type: "preview",
+          demoId: "accordion-overview",
+          content: `This shows that multiple items can be toggled at the same time with some other state control. `,
+        },
+      ]}
+      client:only="react"
+    />
+  </DocPageLayout>
+</BaseLayout>
