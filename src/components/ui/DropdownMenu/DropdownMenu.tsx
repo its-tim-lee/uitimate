@@ -1,4 +1,4 @@
-import React from "react"
+import { type ComponentProps } from "react"
 import {
   Root as DropdownMenu,
   Trigger as DropdownMenuTrigger,
@@ -16,17 +16,8 @@ import {
   Separator,
   ItemIndicator
 } from "@radix-ui/react-dropdown-menu"
-import { tv, type VariantProps } from "tailwind-variants"
-import { Icon } from "../Icon/Icon"
-
-export {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuGroup,
-  DropdownMenuPortal,
-  DropdownMenuSub,
-  DropdownMenuRadioGroup,
-}
+import { tv } from "tailwind-variants"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
 
 const dropdownMenuVariants = tv({
   slots: {
@@ -40,14 +31,16 @@ const dropdownMenuVariants = tv({
       "tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out",
       "tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0",
       "tw:data-[state=closed]:zoom-out-95 tw:data-[state=open]:zoom-in-95",
-      "tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2 tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2"
+      "tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2",
+      "tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2"
     ],
     content: [
       "tw:z-50 tw:min-w-[8rem] tw:overflow-hidden tw:rounded-md tw:border tw:bg-popover tw:p-1 tw:text-popover-foreground tw:shadow-md",
       "tw:data-[state=closed]:zoom-out-95 tw:data-[state=open]:zoom-in-95",
       "tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out",
       "tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0",
-      "tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2 tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2"
+      "tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2",
+      "tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2"
     ],
     item: [
       "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:gap-2 tw:rounded-sm tw:px-2 tw:py-1.5 tw:text-sm tw:outline-hidden tw:transition-colors",
@@ -70,7 +63,6 @@ const dropdownMenuVariants = tv({
     shortcut: "tw:ml-auto tw:text-xs tw:tracking-widest tw:opacity-60"
   }
 })
-
 const {
   subTrigger,
   subContent,
@@ -83,17 +75,9 @@ const {
   shortcut
 } = dropdownMenuVariants()
 
-export type DropdownMenuSubTriggerProps = React.ComponentProps<typeof SubTrigger>;
-export type DropdownMenuSubContentProps = React.ComponentProps<typeof SubContent>;
-export type DropdownMenuContentProps = React.ComponentProps<typeof Content>;
-export type DropdownMenuItemProps = React.ComponentProps<typeof Item>;
-export type DropdownMenuCheckboxItemProps = React.ComponentProps<typeof CheckboxItem>;
-export type DropdownMenuRadioItemProps = React.ComponentProps<typeof RadioItem>;
-export type DropdownMenuLabelProps = React.ComponentProps<typeof Label>;
-export type DropdownMenuSeparatorProps = React.ComponentProps<typeof Separator>;
-export type DropdownMenuShortcutProps = React.HTMLAttributes<HTMLSpanElement>;
 
-export const DropdownMenuSubTrigger = ({ className, children, ...props }: DropdownMenuSubTriggerProps) => (
+type DropdownMenuSubTriggerProps = ComponentProps<typeof SubTrigger>
+const DropdownMenuSubTrigger = ({ className, children, ...props }: DropdownMenuSubTriggerProps) => (
   <SubTrigger
     className={subTrigger({ className })}
     {...props}
@@ -103,14 +87,23 @@ export const DropdownMenuSubTrigger = ({ className, children, ...props }: Dropdo
   </SubTrigger>
 )
 
-export const DropdownMenuSubContent = ({ className, ...props }: DropdownMenuSubContentProps) => (
+type DropdownMenuSubContentProps = ComponentProps<typeof SubContent>
+const DropdownMenuSubContent = ({
+  className,
+  ...props
+}: DropdownMenuSubContentProps) => (
   <SubContent
     className={subContent({ className })}
     {...props}
   />
 )
 
-export const DropdownMenuContent = ({ className, sideOffset = 4, ...props }: DropdownMenuContentProps) => (
+type DropdownMenuContentProps = ComponentProps<typeof Content>
+const DropdownMenuContent = ({
+  className,
+  sideOffset = 4,
+  ...props
+}: DropdownMenuContentProps) => (
   <DropdownMenuPortal>
     <Content
       sideOffset={sideOffset}
@@ -120,14 +113,24 @@ export const DropdownMenuContent = ({ className, sideOffset = 4, ...props }: Dro
   </DropdownMenuPortal>
 )
 
-export const DropdownMenuItem = ({ className, ...props }: React.ComponentProps<typeof Item>) => (
+type DropdownMenuItemProps = ComponentProps<typeof Item>
+const DropdownMenuItem = ({
+  className,
+  ...props
+}: DropdownMenuItemProps) => (
   <Item
     className={item({ className })}
     {...props}
   />
 )
 
-export const DropdownMenuCheckboxItem = ({ className, children, checked, ...props }: DropdownMenuCheckboxItemProps) => (
+type DropdownMenuCheckboxItemProps = ComponentProps<typeof CheckboxItem>
+const DropdownMenuCheckboxItem = ({
+  className,
+  children,
+  checked,
+  ...props
+}: DropdownMenuCheckboxItemProps) => (
   <CheckboxItem
     className={checkboxItem({ className })}
     checked={checked}
@@ -140,7 +143,12 @@ export const DropdownMenuCheckboxItem = ({ className, children, checked, ...prop
   </CheckboxItem>
 )
 
-export const DropdownMenuRadioItem = ({ className, children, ...props }: DropdownMenuRadioItemProps) => (
+type DropdownMenuRadioItemProps = ComponentProps<typeof RadioItem>
+const DropdownMenuRadioItem = ({
+  className,
+  children,
+  ...props
+}: DropdownMenuRadioItemProps) => (
   <RadioItem
     className={radioItem({ className })}
     {...props}
@@ -152,21 +160,33 @@ export const DropdownMenuRadioItem = ({ className, children, ...props }: Dropdow
   </RadioItem>
 )
 
-export const DropdownMenuLabel = ({ className, ...props }: DropdownMenuLabelProps) => (
+type DropdownMenuLabelProps = ComponentProps<typeof Label>
+const DropdownMenuLabel = ({
+  className,
+  ...props
+}: DropdownMenuLabelProps) => (
   <Label
     className={label({ className })}
     {...props}
   />
 )
 
-export const DropdownMenuSeparator = ({ className, ...props }: DropdownMenuSeparatorProps) => (
+type DropdownMenuSeparatorProps = ComponentProps<typeof Separator>
+const DropdownMenuSeparator = ({
+  className,
+  ...props
+}: DropdownMenuSeparatorProps) => (
   <Separator
     className={separator({ className })}
     {...props}
   />
 )
 
-export const DropdownMenuShortcut = ({ className, ...props }: DropdownMenuShortcutProps) => (
+type DropdownMenuShortcutProps = ComponentProps<'span'>
+const DropdownMenuShortcut = ({
+  className,
+  ...props
+}: DropdownMenuShortcutProps) => (
   <span
     className={shortcut({ className })}
     {...props}
@@ -188,3 +208,31 @@ DropdownMenuSub.displayName = "DropdownMenuSub"
 DropdownMenuSubContent.displayName = "DropdownMenuSubContent"
 DropdownMenuSubTrigger.displayName = "DropdownMenuSubTrigger"
 DropdownMenuRadioGroup.displayName = "DropdownMenuRadioGroup"
+
+export {
+  dropdownMenuVariants,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuGroup,
+  DropdownMenuPortal,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuRadioGroup,
+  type DropdownMenuSubTriggerProps,
+  type DropdownMenuSubContentProps,
+  type DropdownMenuContentProps,
+  type DropdownMenuItemProps,
+  type DropdownMenuCheckboxItemProps,
+  type DropdownMenuRadioItemProps,
+  type DropdownMenuLabelProps,
+  type DropdownMenuSeparatorProps,
+  type DropdownMenuShortcutProps
+}
