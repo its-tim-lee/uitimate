@@ -1,41 +1,19 @@
 import { Label } from "@/components/ui/Label/Label"
-import Button from "~/src/pages/docs/components/button.astro"
 import { Icon } from "../ui/Icon/Icon"
 import { Input } from "../ui/Input/Input"
 import { SelectTrigger, Select, SelectContent, SelectGroup, SelectItem, SelectValue } from "../ui/Select/Select"
 
-// export default () => {
-//   return (
-//     <div className="tw:flex tw:flex-col tw:gap-2">
-//       <div className="tw:flex tw:justify-between tw:items-center tw:gap-2">
-//         <Label htmlFor="find-repo" className='tw:font-medium'>
-//           Top repositories
-//         </Label>
-//         <Button variant="primary">
-//           <Icon icon="lucide:book-marked" className='tw:bg-green-500' />
-//           New
-//         </Button>
-//       </div>
-//       <Input id="find-repo" placeholder="Find a repository..." />
-//     </div>
-//   )
-// }
-
-
-
 export default () => {
   return (
     <div className="tw:flex tw:flex-col tw:gap-2">
-      <Label htmlFor="ttl-value" className=''>
+      <Label htmlFor="ttl" className='tw:flex tw:items-center tw:gap-2'>
         Token time to live
-        <Icon icon="mingcute:question-line" className='tw:bg-green-500' />
+        <Icon icon="mingcute:question-line" />
       </Label>
-      <div>
-        <Input id="ttl-repo" type="number" value={1} />
+      <div className="tw:flex tw:flex-col tw:gap-2">
+        <Input id="ttl" value={1} />
         <Select>
-          <SelectTrigger >
-            <SelectValue placeholder="days" />
-          </SelectTrigger>
+          <SelectTrigger ><SelectValue placeholder="days" /></SelectTrigger>
           <SelectContent>
             <SelectGroup>
               <SelectItem value="days">days</SelectItem>

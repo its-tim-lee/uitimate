@@ -28,6 +28,28 @@ const anatomy = `<Label/>`;
 
     <Heading
       size="h2"
+      title="WTF"
+      subtitle="The short introduction of the component."
+    />
+    <p>
+      Lable is used with form-related components like Checkbox, Radio Group,
+      Switch, etc, and it's all about UX (eg., Screen readers, browser autofill,
+      and other assistive technologies rely on this association). So, it's
+      generally suggested to use it as the best practice.
+      <br />
+      <br />
+      If you're not familar with this component, just think about that when you're
+      adding a lable (or title) onto a form control element (eg., input), shifting
+      your old behavior of using div to use Label, because by doing that, now clicking
+      the label will focuse its associated element, which there're good amount of
+      people will appreciate it :)
+    </p>
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
       title="Usage"
       subtitle="How you can play this component."
     />
@@ -35,6 +57,7 @@ const anatomy = `<Label/>`;
       demoId="label-demo"
       anatomy={anatomy}
       client:only="react"
+      preview="There're only one prop `htmlFor` you need to care about (see code example below), which associates the label with the form control element, that's it."
     />
     <br />
     <br />

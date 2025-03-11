@@ -1,19 +1,26 @@
+import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
-import { tv, type VariantProps } from "tailwind-variants"
-
-import { cn } from "@/lib/utils"
-import type { ComponentProps } from "react"
+import { tv } from "tailwind-variants"
 
 const labelVariants = tv({
-  base: "tw:text-sm tw:font-medium tw:leading-none tw:peer-disabled:cursor-not-allowed tw:peer-disabled:opacity-70"
+  base: [
+    "text-sm leading-none font-medium select-none",
+    "group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50",
+    "peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
+  ]
 })
+type LabelProps = React.ComponentProps<typeof LabelPrimitive.Root>
+const Label = ({
+  className,
+  ...props
+}: LabelProps) => {
+  return (
+    <LabelPrimitive.Root
+      data-slot="label"
+      className={labelVariants({ className })}
+      {...props}
+    />
+  )
+}
 
-const Label = ({ className, ...props }: ComponentProps<typeof LabelPrimitive.Root>) => (
-  <LabelPrimitive.Root
-    className={cn(labelVariants(), className)}
-    data-label {...props}
-  />
-)
-Label.displayName = LabelPrimitive.Root.displayName
-
-export { Label }
+export { Label, type LabelProps, labelVariants }
