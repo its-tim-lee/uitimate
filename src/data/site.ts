@@ -254,6 +254,12 @@ export default {
           title: 'Collapsible',
           href: '/docs/components/collapsible',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Drawer',
+          href: '/docs/components/drawer',
+          labels: []
         }
       ],
       labels: []

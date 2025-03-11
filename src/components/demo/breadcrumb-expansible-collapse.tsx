@@ -1,5 +1,5 @@
 import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbFinal, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "../ui/Breadcrumb/Breadcrumb"
-import { DrawerContent, DrawerHeader, DrawerTitle } from "../ui/Drawer/Drawer";
+import { DrawerContent } from "../ui/Drawer/Drawer";
 import { DrawerTrigger } from "../ui/Drawer/Drawer";
 import { Drawer } from "../ui/Drawer/Drawer";
 import { DropdownMenuItem } from "../ui/DropdownMenu/DropdownMenu";
@@ -41,9 +41,7 @@ export default () => {
         <Drawer>
           <DrawerTrigger asChild><BreadcrumbEllipsis /></DrawerTrigger>
           <DrawerContent>
-            <DrawerHeader className="tw:text-left tw:mb-4">
-              <DrawerTitle>Navigate to:</DrawerTitle>
-            </DrawerHeader>
+            Navigate to:
 
             <div className="tw:grid tw:gap-3 tw:px-4">
               {[
