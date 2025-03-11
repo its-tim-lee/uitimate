@@ -4,13 +4,13 @@ import React, { createContext, useContext } from 'react'
 
 const TabsVariantContext = createContext<{ variant: 'pill' | 'underline' }>({ variant: 'pill' })
 
-export const Tabs = ({ variant, ...props }: TabsProps) => (
+const Tabs = ({ variant, ...props }: TabsProps) => (
   <TabsVariantContext.Provider value={{ variant }}>
     <Root {...props} />
   </TabsVariantContext.Provider>
 )
 
-export const tabsListVariants = tv({
+const tabsListVariants = tv({
   base: 'tw:mb-3',
   variants: {
     variant: {
@@ -19,7 +19,7 @@ export const tabsListVariants = tv({
     },
   },
 })
-export const TabsList = ({ className, ...props }: TabsListProps) => {
+const TabsList = ({ className, ...props }: TabsListProps) => {
   const { variant } = useContext(TabsVariantContext)
   return (
     <List
@@ -29,7 +29,7 @@ export const TabsList = ({ className, ...props }: TabsListProps) => {
   )
 }
 
-export const tabsTriggerVariants = tv({
+const tabsTriggerVariants = tv({
   variants: {
     variant: {
       pill: [
@@ -45,7 +45,7 @@ export const tabsTriggerVariants = tv({
     },
   },
 })
-export const TabsTrigger = ({ className, ...props }: TabsTriggerProps) => {
+const TabsTrigger = ({ className, ...props }: TabsTriggerProps) => {
   const { variant } = useContext(TabsVariantContext)
   return (
     <Trigger
@@ -55,13 +55,13 @@ export const TabsTrigger = ({ className, ...props }: TabsTriggerProps) => {
   )
 }
 
-export const tabsContentVariants = tv({
+const tabsContentVariants = tv({
   base: [
     "tw:ring-offset-background",
     "tw:focus-visible:outline-hidden tw:focus-visible:ring-2 tw:focus-visible:ring-ring tw:focus-visible:ring-offset-2"
   ]
 })
-export const TabsContent = ({ className, ...props }: TabsContentProps) => (
+const TabsContent = ({ className, ...props }: TabsContentProps) => (
   <Content
     className={tabsContentVariants({ className })}
     {...props}
@@ -69,11 +69,13 @@ export const TabsContent = ({ className, ...props }: TabsContentProps) => (
 )
 
 Tabs.displayName = 'Tabs'
-TabsList.displayName = List.displayName
-TabsTrigger.displayName = Trigger.displayName
-TabsContent.displayName = Content.displayName
+TabsList.displayName = 'TabsList'
+TabsTrigger.displayName = 'TabsTrigger'
+TabsContent.displayName = 'TabsContent'
 
-export type TabsProps = React.ComponentProps<typeof Root> & { variant: 'pill' | 'underline' }
-export type TabsListProps = React.ComponentProps<typeof List>;
-export type TabsTriggerProps = React.ComponentProps<typeof Trigger>;
-export type TabsContentProps = React.ComponentProps<typeof Content>;
+type TabsProps = React.ComponentProps<typeof Root> & { variant: 'pill' | 'underline' }
+type TabsListProps = React.ComponentProps<typeof List>;
+type TabsTriggerProps = React.ComponentProps<typeof Trigger>;
+type TabsContentProps = React.ComponentProps<typeof Content>;
+
+export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants, tabsTriggerVariants, tabsContentVariants, type TabsProps, type TabsListProps, type TabsTriggerProps, type TabsContentProps }

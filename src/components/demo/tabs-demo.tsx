@@ -4,26 +4,22 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/Tabs/Tabs.tsx"
+import { useState } from "react";
 
-export default () => (
-  <Tabs defaultValue="preview" variant="underline">
-    <TabsList>
-      <TabsTrigger value="preview">Preview</TabsTrigger>
-      <TabsTrigger value="anatomy">Anatomy</TabsTrigger>
-      <TabsTrigger value="download">Download</TabsTrigger>
-      <TabsTrigger value="playground">Playground</TabsTrigger>
-    </TabsList>
-    <TabsContent value="preview">
-      <h1>Preview</h1>
-    </TabsContent>
-    <TabsContent value="anatomy">
-      <h1>Anatomy</h1>
-    </TabsContent>
-    <TabsContent value="download">
-      <h1>Download</h1>
-    </TabsContent>
-    <TabsContent value="playground">
-      <h1>Playground</h1>
-    </TabsContent>
-  </Tabs>
-)
+export default () => {
+  const [value, setValue] = useState("anatomy")
+  const items = [
+    { value: "preview", label: "Preview" },
+    { value: "anatomy", label: "Anatomy" },
+    { value: "download", label: "Download" },
+    { value: "playground", label: "Playground" },
+  ];
+  return (
+    <Tabs variant="underline" value={value} onValueChange={setValue}>
+      <TabsList>
+        {items.map(e => <TabsTrigger key={e.value} value={e.value}>{e.label}</TabsTrigger>)}
+      </TabsList>
+      {items.map(e => <TabsContent key={e.value} value={e.value}>{e.label}</TabsContent>)}
+    </Tabs>
+  );
+}
