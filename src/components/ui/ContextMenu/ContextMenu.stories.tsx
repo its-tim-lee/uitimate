@@ -1,7 +1,9 @@
+import { Icon } from "../Icon/Icon.tsx";
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
   ContextMenuContent,
+  ContextMenuGroup,
   ContextMenuItem,
   ContextMenuLabel,
   ContextMenuRadioGroup,
@@ -25,8 +27,8 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'Default',
+export const DEMO = {
+  name: 'DEMO',
   render: () => {
     return (
       <ContextMenu>
@@ -34,34 +36,31 @@ export const Variant1 = {
           Right click here
         </ContextMenuTrigger>
         <ContextMenuContent className="tw:w-64">
-          <ContextMenuItem inset>
-            Back
-            <ContextMenuShortcut>⌘[</ContextMenuShortcut>
-          </ContextMenuItem>
-          <ContextMenuItem inset disabled>
-            Forward
-            <ContextMenuShortcut>⌘]</ContextMenuShortcut>
-          </ContextMenuItem>
+          <ContextMenuGroup>
+            <ContextMenuItem inset>
+              Back
+              <ContextMenuShortcut>⌘[</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuItem inset disabled>
+              Forward
+              <ContextMenuShortcut>⌘]</ContextMenuShortcut>
+            </ContextMenuItem>
+          </ContextMenuGroup>
           <ContextMenuSub>
             <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
             <ContextMenuSubContent className="tw:w-48">
-              <ContextMenuItem>Save Page As...</ContextMenuItem>
               <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-              <ContextMenuItem>Name Window...</ContextMenuItem>
             </ContextMenuSubContent>
           </ContextMenuSub>
           <ContextMenuSeparator />
-          <ContextMenuCheckboxItem checked>
-            Show Bookmarks Bar
-            <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>
-          </ContextMenuCheckboxItem>
-          <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
+          <ContextMenuLabel inset>Theme</ContextMenuLabel>
+          <ContextMenuCheckboxItem checked>Dark</ContextMenuCheckboxItem>
+          <ContextMenuCheckboxItem>Light</ContextMenuCheckboxItem>
           <ContextMenuSeparator />
-          <ContextMenuRadioGroup value="pedro">
-            <ContextMenuLabel inset>People</ContextMenuLabel>
-            <ContextMenuSeparator />
-            <ContextMenuRadioItem value="pedro">Pedro Duarte</ContextMenuRadioItem>
-            <ContextMenuRadioItem value="colm">Colm Tuite</ContextMenuRadioItem>
+          <ContextMenuRadioGroup value="tl">
+            <ContextMenuLabel inset>Profile</ContextMenuLabel>
+            <ContextMenuRadioItem value="tl">Tim Lee</ContextMenuRadioItem>
+            <ContextMenuRadioItem value="pl">Pieter Levels</ContextMenuRadioItem>
           </ContextMenuRadioGroup>
         </ContextMenuContent>
       </ContextMenu>

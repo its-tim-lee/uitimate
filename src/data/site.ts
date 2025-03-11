@@ -230,6 +230,12 @@ export default {
           title: 'Accordion',
           href: '/docs/components/accordion',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'ContextMenu',
+          href: '/docs/components/contextmenu',
+          labels: []
         }
       ],
       labels: []

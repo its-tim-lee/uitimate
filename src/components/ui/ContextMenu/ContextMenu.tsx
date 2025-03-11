@@ -1,3 +1,4 @@
+import { type ComponentProps } from "react"
 import {
   Root as ContextMenu,
   Trigger as ContextMenuTrigger,
@@ -15,17 +16,58 @@ import {
   Separator,
   ItemIndicator
 } from "@radix-ui/react-context-menu"
-import { type ComponentProps } from "react"
-import { Icon } from "../Icon/Icon"
-import { cn } from "@/lib/utils"
+import { tv } from "tailwind-variants"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
+const baseContentStyle = [
+  "tw:z-50 tw:min-w-[8rem] tw:overflow-hidden tw:rounded-md tw:border tw:bg-popover tw:p-1 tw:text-popover-foreground",
+  "tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out",
+  "tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0",
+  "tw:data-[state=closed]:zoom-out-95 tw:data-[state=open]:zoom-in-95",
+  "tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2",
+  "tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2"
+]
+const itemBaseStyle = [
+  "tw:relative",
+  "tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:py-1.5 tw:text-sm tw:outline-hidden",
+  "tw:focus:bg-accent tw:focus:text-accent-foreground",
+  "tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50"
+]
+const contextMenuVariants = tv({
+  slots: {
+    subTrigger: [
+      " tw:px-2",
+      "tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:py-1.5 tw:text-sm tw:outline-hidden",
+      "tw:focus:bg-accent tw:focus:text-accent-foreground",
+      "tw:data-[state=open]:bg-accent tw:data-[state=open]:text-accent-foreground"
+    ],
+    subContent: ["tw:shadow-lg", ...baseContentStyle],
+    content: ["tw:shadow-md", ...baseContentStyle],
+    item: ["tw:px-2", ...itemBaseStyle],
+    formItem: ["tw:pl-8 tw:pr-2", ...itemBaseStyle],
+    label: "tw:px-2 tw:py-1.5 tw:text-sm tw:font-semibold tw:text-foreground",
+    separator: "tw:-mx-1 tw:my-1 tw:h-px tw:bg-border",
+    shortcut: "tw:ml-auto tw:text-xs tw:tracking-widest tw:text-muted-foreground"
+  },
+  variants: {
+    inset: {
+      true: {
+        subTrigger: "tw:pl-8",
+        item: "tw:pl-8",
+        label: "tw:pl-8"
+      }
+    }
+  }
+})
 
-const ContextMenuSubTrigger = ({ className, inset, children, ...props }: ComponentProps<typeof SubTrigger> & { inset?: boolean }) => (
+type ContextMenuSubTriggerProps = ComponentProps<typeof SubTrigger> & { inset?: boolean }
+const ContextMenuSubTrigger = ({
+  className,
+  inset,
+  children,
+  ...props
+}: ContextMenuSubTriggerProps) => (
   <SubTrigger
-    className={cn(
-      "tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:px-2 tw:py-1.5 tw:text-sm tw:outline-hidden tw:focus:bg-accent tw:focus:text-accent-foreground tw:data-[state=open]:bg-accent tw:data-[state=open]:text-accent-foreground",
-      inset && "tw:pl-8",
-      className
-    )}
+    className={contextMenuVariants({ inset }).subTrigger({ className })}
     {...props}
   >
     {children}
@@ -33,99 +75,115 @@ const ContextMenuSubTrigger = ({ className, inset, children, ...props }: Compone
   </SubTrigger>
 )
 
-const ContextMenuSubContent = ({ className, ...props }: ComponentProps<typeof SubContent>) => (
+type ContextMenuSubContentProps = ComponentProps<typeof SubContent>
+const ContextMenuSubContent = ({
+  className,
+  ...props
+}: ContextMenuSubContentProps) => (
   <SubContent
-    className={cn(
-      "tw:z-50 tw:min-w-[8rem] tw:overflow-hidden tw:rounded-md tw:border tw:bg-popover tw:p-1 tw:text-popover-foreground tw:shadow-lg tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0 tw:data-[state=closed]:zoom-out-95 tw:data-[state=open]:zoom-in-95 tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2 tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2",
-      className
-    )}
+    className={contextMenuVariants().subContent({ className })}
     {...props}
   />
 )
 
-const ContextMenuContent = ({ className, ...props }: ComponentProps<typeof Content>) => (
+type ContextMenuContentProps = ComponentProps<typeof Content>
+const ContextMenuContent = ({
+  className,
+  ...props
+}: ContextMenuContentProps) => (
   <ContextMenuPortal>
     <Content
-      className={cn(
-        "tw:z-50 tw:min-w-[8rem] tw:overflow-hidden tw:rounded-md tw:border tw:bg-popover tw:p-1 tw:text-popover-foreground tw:shadow-md tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0 tw:data-[state=closed]:zoom-out-95 tw:data-[state=open]:zoom-in-95 tw:data-[side=bottom]:slide-in-from-top-2 tw:data-[side=left]:slide-in-from-right-2 tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2",
-        className
-      )}
+      className={contextMenuVariants().content({ className })}
       {...props}
     />
   </ContextMenuPortal>
 )
 
-const ContextMenuItem = ({ className, inset, ...props }: ComponentProps<typeof Item> & { inset?: boolean }) => (
+type ContextMenuItemProps = ComponentProps<typeof Item> & { inset?: boolean }
+const ContextMenuItem = ({
+  className,
+  inset,
+  ...props
+}: ContextMenuItemProps) => (
   <Item
-    className={cn(
-      "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:px-2 tw:py-1.5 tw:text-sm tw:outline-hidden tw:focus:bg-accent tw:focus:text-accent-foreground tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50",
-      inset && "tw:pl-8",
-      className
-    )}
+    className={contextMenuVariants({ inset }).item({ className })}
     {...props}
   />
 )
 
-const ContextMenuCheckboxItem = ({ className, children, checked, ...props }: ComponentProps<typeof CheckboxItem>) => (
+type ContextMenuCheckboxItemProps = ComponentProps<typeof CheckboxItem>
+const ContextMenuCheckboxItem = ({
+  className,
+  children,
+  checked,
+  ...props
+}: ContextMenuCheckboxItemProps) => (
   <CheckboxItem
-    className={cn(
-      "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:py-1.5 tw:pl-8 tw:pr-2 tw:text-sm tw:outline-hidden tw:focus:bg-accent tw:focus:text-accent-foreground tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50",
-      className
-    )}
+    className={contextMenuVariants().formItem({ className })}
     checked={checked}
     {...props}
   >
     <span className="tw:absolute tw:left-2 tw:flex tw:h-3.5 tw:w-3.5 tw:items-center tw:justify-center">
-      <ItemIndicator><Icon icon='lucide:check' className="tw:h-4 tw:w-4" /></ItemIndicator>
+      <ItemIndicator>
+        <Icon icon='lucide:check' className="tw:h-4 tw:w-4" />
+      </ItemIndicator>
     </span>
     {children}
   </CheckboxItem>
 )
 
-const ContextMenuRadioItem = ({ className, children, ...props }: ComponentProps<typeof RadioItem>) => (
+type ContextMenuRadioItemProps = ComponentProps<typeof RadioItem>
+const ContextMenuRadioItem = ({
+  className,
+  children,
+  ...props
+}: ContextMenuRadioItemProps) => (
   <RadioItem
-    className={cn(
-      "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:py-1.5 tw:pl-8 tw:pr-2 tw:text-sm tw:outline-hidden tw:focus:bg-accent tw:focus:text-accent-foreground tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50",
-      className
-    )}
+    className={contextMenuVariants().formItem({ className })}
     {...props}
   >
     <span className="tw:absolute tw:left-2 tw:flex tw:h-3.5 tw:w-3.5 tw:items-center tw:justify-center">
-      <ItemIndicator><Icon icon='lucide:dot' className="tw:h-4 tw:w-4 tw:fill-current" /></ItemIndicator>
+      <ItemIndicator>
+        <Icon icon='lucide:dot' className="tw:h-4 tw:w-4 tw:fill-current" />
+      </ItemIndicator>
     </span>
     {children}
   </RadioItem>
 )
 
-const ContextMenuLabel = ({ className, inset, ...props }: ComponentProps<typeof Label> & { inset?: boolean }) => (
+type ContextMenuLabelProps = ComponentProps<typeof Label> & { inset?: boolean }
+const ContextMenuLabel = ({
+  className,
+  inset,
+  ...props
+}: ContextMenuLabelProps) => (
   <Label
-    className={cn(
-      "tw:px-2 tw:py-1.5 tw:text-sm tw:font-semibold tw:text-foreground",
-      inset && "tw:pl-8",
-      className
-    )}
+    className={contextMenuVariants({ inset }).label({ className })}
     {...props}
   />
 )
 
-const ContextMenuSeparator = ({ className, ...props }: ComponentProps<typeof Separator>) => (
+type ContextMenuSeparatorProps = ComponentProps<typeof Separator>
+const ContextMenuSeparator = ({
+  className,
+  ...props
+}: ContextMenuSeparatorProps) => (
   <Separator
-    className={cn("tw:-mx-1 tw:my-1 tw:h-px tw:bg-border", className)}
+    className={contextMenuVariants().separator({ className })}
     {...props}
   />
 )
 
-const ContextMenuShortcut = ({ className, ...props }: ComponentProps<'span'>) => {
-  return (
-    <span
-      className={cn(
-        "tw:ml-auto tw:text-xs tw:tracking-widest tw:text-muted-foreground",
-        className
-      )}
-      {...props}
-    />
-  )
-}
+type ContextMenuShortcutProps = ComponentProps<'span'>
+const ContextMenuShortcut = ({
+  className,
+  ...props
+}: ContextMenuShortcutProps) => (
+  <span
+    className={contextMenuVariants().shortcut({ className })}
+    {...props}
+  />
+)
 
 ContextMenu.displayName = "ContextMenu"
 ContextMenuTrigger.displayName = "ContextMenuTrigger"
@@ -144,6 +202,7 @@ ContextMenuSubTrigger.displayName = "ContextMenuSubTrigger"
 ContextMenuRadioGroup.displayName = "ContextMenuRadioGroup"
 
 export {
+  contextMenuVariants,
   ContextMenu,
   ContextMenuTrigger,
   ContextMenuContent,
@@ -159,4 +218,13 @@ export {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
+  type ContextMenuSubTriggerProps,
+  type ContextMenuSubContentProps,
+  type ContextMenuContentProps,
+  type ContextMenuItemProps,
+  type ContextMenuCheckboxItemProps,
+  type ContextMenuRadioItemProps,
+  type ContextMenuLabelProps,
+  type ContextMenuSeparatorProps,
+  type ContextMenuShortcutProps
 }
