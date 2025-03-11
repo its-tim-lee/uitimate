@@ -1,14 +1,26 @@
-import { Root, Viewport, Corner, Scrollbar, Thumb } from "@radix-ui/react-scroll-area"
 import { type ComponentProps } from "react"
-import { cn } from "@/lib/utils"
+import { Root, Viewport, Corner, Scrollbar, Thumb } from "@radix-ui/react-scroll-area"
+import { tv } from "tailwind-variants"
 
-export type ScrollAreaProps = ComponentProps<typeof Root>
-export const ScrollArea = ({ className, children, ...props }: ScrollAreaProps) => (
+const scrollAreaVariants = tv({
+  slots: {
+    root: "tw:relative tw:overflow-hidden",
+    viewport: "tw:h-full tw:w-full tw:rounded-[inherit]",
+  }
+})
+const { root, viewport } = scrollAreaVariants()
+
+type ScrollAreaProps = ComponentProps<typeof Root>
+const ScrollArea = ({
+  className,
+  children,
+  ...props
+}: ScrollAreaProps) => (
   <Root
-    className={cn("tw:relative tw:overflow-hidden", className)}
+    className={root({ className })}
     {...props}
   >
-    <Viewport className="tw:h-full tw:w-full tw:rounded-[inherit]">
+    <Viewport className={viewport()}>
       {children}
     </Viewport>
     <ScrollBar />
@@ -16,28 +28,52 @@ export const ScrollArea = ({ className, children, ...props }: ScrollAreaProps) =
   </Root>
 )
 
-export type ScrollBarProps = ComponentProps<typeof Scrollbar>
-export const ScrollBar = ({ className, orientation = "vertical", ...props }: ScrollBarProps) => (
-  <Scrollbar
-    orientation={orientation}
-    className={cn(
-      "tw:flex tw:touch-none tw:select-none tw:transition-colors",
-      orientation === "vertical" &&
-      "tw:h-full tw:w-2.5 tw:border-l tw:border-l-transparent tw:p-[1px]",
-      orientation === "horizontal" &&
-      "tw:h-2.5 tw:flex-col tw:border-t tw:border-t-transparent tw:p-[1px]",
-      className
-    )}
-    {...props}
-  >
-    {/*
+const scrollBarVariants = tv({
+  slots: {
+    scrollbar: "tw:flex tw:touch-none tw:select-none tw:transition-colors",
+    thumb: "tw:relative tw:flex-1 tw:rounded-full tw:bg-border"
+  },
+  variants: {
+    orientation: {
+      vertical: {
+        scrollbar: "tw:h-full tw:w-2.5 tw:border-l tw:border-l-transparent tw:p-[1px]",
+      },
+      horizontal: {
+        scrollbar: "tw:h-2.5 tw:flex-col tw:border-t tw:border-t-transparent tw:p-[1px]",
+      }
+    }
+  }
+})
+type ScrollBarProps = ComponentProps<typeof Scrollbar>
+const ScrollBar = ({
+  className,
+  orientation = "vertical",
+  ...props
+}: ScrollBarProps) => {
+  const { scrollbar, thumb } = scrollBarVariants({ orientation })
+  return (
+    <Scrollbar
+      orientation={orientation}
+      className={scrollbar({ className })}
+      {...props}
+    >
+      {/*
       "Thumb" is literally a small draggable widget that
       being used to drag-to-scroll on the scroll bar area
     */}
-    <Thumb className="tw:relative tw:flex-1 tw:rounded-full tw:bg-border" />
-  </Scrollbar>
-)
+      <Thumb className={thumb()} />
+    </Scrollbar>
+  )
+}
 
-ScrollArea.displayName = `ScrollArea`
-ScrollBar.displayName = `ScrollBar`
+ScrollArea.displayName = "ScrollArea"
+ScrollBar.displayName = "ScrollBar"
+
+export {
+  scrollAreaVariants,
+  ScrollArea,
+  ScrollBar,
+  type ScrollAreaProps,
+  type ScrollBarProps
+}
 
