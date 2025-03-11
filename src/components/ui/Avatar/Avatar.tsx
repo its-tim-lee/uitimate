@@ -1,38 +1,67 @@
 import { type ComponentProps } from "react"
 import { Root, Image, Fallback } from "@radix-ui/react-avatar"
+import { tv } from "tailwind-variants"
 
-import { cn } from "@/lib/utils"
+const avatarVariants = tv({
+  slots: {
+    root: ["tw:relative tw:h-10 tw:w-10 tw:shrink-0 tw:overflow-hidden tw:rounded-full"],
+    image: ["tw:aspect-square tw:h-full tw:w-full"],
+    fallback: ["tw:flex tw:h-full tw:w-full tw:items-center tw:justify-center tw:rounded-full tw:bg-muted"],
+  }
+})
+const { root, image, fallback } = avatarVariants()
 
-const Avatar = ({ className, ...props }: ComponentProps<typeof Root>) => (
-  <Root
-    data-avatar
-    className={cn(
-      "tw:relative tw:h-10 tw:w-10 tw:shrink-0 tw:overflow-hidden tw:rounded-full",
-      className
-    )}
-    {...props}
-  />
-);
-Avatar.displayName = "Avatar";
+type AvatarProps = ComponentProps<typeof Root>
+const Avatar = ({
+  className,
+  ...props
+}: AvatarProps) => {
+  return (
+    <Root
+      data-avatar
+      className={root({ className })}
+      {...props}
+    />
+  )
+}
 
-// HACK: for the reason of destructuring `children` from `props`, see #2025-01-10
-const AvatarImage = ({ className, children, ...props }: ComponentProps<typeof Image>) => (
-  <Image
-    className={cn("tw:aspect-square tw:h-full tw:w-full", className)}
-    {...props}
-  />
-);
-AvatarImage.displayName = "AvatarImage";
+type AvatarImageProps = ComponentProps<typeof Image>
+const AvatarImage = ({
+  className,
+  children,
+  ...props
+}: AvatarImageProps) => {
+  return (
+    <Image
+      className={image({ className })}
+      {...props}
+    />
+  )
+}
 
-const AvatarFallback = ({ className, ...props }: ComponentProps<typeof Fallback>) => (
-  <Fallback
-    className={cn(
-      "tw:flex tw:h-full tw:w-full tw:items-center tw:justify-center tw:rounded-full tw:bg-muted",
-      className
-    )}
-    {...props}
-  />
-);
-AvatarFallback.displayName = "AvatarFallback";
+type AvatarFallbackProps = ComponentProps<typeof Fallback>
+const AvatarFallback = ({
+  className,
+  ...props
+}: AvatarFallbackProps) => {
+  return (
+    <Fallback
+      className={fallback({ className })}
+      {...props}
+    />
+  )
+}
 
-export { Avatar, AvatarImage, AvatarFallback }
+Avatar.displayName = "Avatar"
+AvatarImage.displayName = "AvatarImage"
+AvatarFallback.displayName = "AvatarFallback"
+
+export {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  avatarVariants,
+  type AvatarProps,
+  type AvatarImageProps,
+  type AvatarFallbackProps
+}
