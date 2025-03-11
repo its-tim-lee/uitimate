@@ -6,7 +6,7 @@ import { headingVariants, type HeadingSubtitle, HeadingContext } from '@/compone
 /**
  * TODO: doing nice transition just like Shadcn's Dialog
  */
-export const variants = tv({
+const dialogVariants = tv({
   slots: {
     root: 'tw:relative tw:z-10 tw:focus:outline-none',
     overlay: "tw:fixed tw:inset-0 tw:bg-black/80",
@@ -28,7 +28,7 @@ export const variants = tv({
     ],
   }
 })
-const { root, overlay, content, action, closeButton } = variants()
+const { root, overlay, content, action, closeButton } = dialogVariants()
 const { root: headingRoot, title, subtitle } = headingVariants()
 /**
  * TBD: doc: where the `className` and props will be applied
@@ -139,6 +139,7 @@ const DialogSubtitle = ({ className, children, ...props }: DialogSubtitleProps) 
 }
 
 export {
+  dialogVariants,
   Dialog,
   DialogContent,
   DialogClose,
@@ -153,10 +154,10 @@ export {
   type DialogActionProps,
   type DialogHeadingProps,
   type DialogSubtitleProps
-}
-
+};
 Dialog.displayName = 'Dialog'
 DialogContent.displayName = 'DialogContent'
 DialogAction.displayName = 'DialogAction'
 DialogClose.displayName = 'DialogClose'
 DialogOverlay.displayName = 'DialogOverlay'
+
