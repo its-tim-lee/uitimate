@@ -1,15 +1,6 @@
 import SelectDemo from "../../demo/select-demo.tsx";
 import SelectScrollable from "../../demo/select-scrollable.tsx";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from "./Select.tsx"
+
 
 export default {
   title: 'Example/Select',
