@@ -1,0 +1,92 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+import { Badge } from "~/src/components/ui/Badge/Badge";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `
+<Carousel>
+  <CarouselContent>
+    <CarouselItem>...</CarouselItem>
+    <!-- More CarouselItem... -->
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>`;
+const apiLink = `https://www.embla-carousel.com/get-started/react/`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      client:only="react"
+      apiLink={apiLink}
+      title={startCase(routeName)}
+      subtitle="Display numbers of (visual) content on a rotating timer."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="carousel-demo"
+      anatomy={anatomy}
+      client:only="react"
+      preview="Pretty striaght forward, hum? Now, try to click on any navigation button, and then immediately press your right or left arrow key. Also, the slides are drggable! Give it a try :)"
+    />
+    <br />
+    <br />
+    <Heading
+      size="h2"
+      title="Design Notes"
+      subtitle="The implementation details that some would appreciate."
+    />
+    <p class="tw:text-justify tw:text-md"></p>
+    <br />
+
+    <br />
+    <br />
+
+    <Heading
+      size="h2"
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
+    />
+    <VersatileTabs
+      settings={[
+        {
+          title: "Track progress",
+          type: "preview",
+          demoId: "carousel-use-api",
+          content: `
+            To track which slide is currently selected/viewed in the entire slides,
+            we need to access the Embla API the Carousel component is using.
+            This can be done by passing 'setApi' prop as shown in the code below
+          `,
+        },
+        {
+          title: "Auto loop",
+          type: "preview",
+          demoId: "carousel-auto-loop",
+          content: `
+            This uses the built-in feature with the plugin (for more plugins, refers to https://www.embla-carousel.com/plugins/); now you can loop the slides infinitely!
+          `,
+        },
+      ]}
+      client:only="react"
+    />
+  </DocPageLayout>
+</BaseLayout>

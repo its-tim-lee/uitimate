@@ -272,6 +272,12 @@ export default {
           title: 'RadioGroup',
           href: '/docs/components/radio-group',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Carousel',
+          href: '/docs/components/carousel',
+          labels: []
         }
       ],
       labels: []

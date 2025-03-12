@@ -265,6 +265,14 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
   }
 }
 
+/*
+  Only use this way that the custom class can have the prefix.
+  (ie., you can't use `@layer utilities` to have the prefix)
+*/
+@utility flex-center {
+  @apply tw:flex tw:items-center tw:justify-center;
+}
+
 body {
   @apply tw:font-mono;
 }

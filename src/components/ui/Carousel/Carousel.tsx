@@ -1,28 +1,22 @@
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import { type KeyboardEvent, type ComponentProps, useCallback, useContext, useEffect, useState, createContext } from "react"
 import { cn } from "@/lib/utils"
-import { Icon } from "../Icon/Icon"
-import { Button } from "../Button/Button"
-type CarouselApi = UseEmblaCarouselType[1]
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
+import { Icon } from "@/components/ui/Icon/Icon"
+import { Cta } from "@/components/ui/Cta/Cta"
+import { type EmblaOptionsType, type EmblaPluginType } from 'embla-carousel'
 
-type CarouselProps = {
-  opts?: CarouselOptions
-  plugins?: CarouselPlugin
-  orientation?: "horizontal" | "vertical"
+type CarouselApi = UseEmblaCarouselType[1]
+type CarouselBaseProps = {
+  opts?: EmblaOptionsType
+  plugins?: EmblaPluginType[]
   setApi?: (api: CarouselApi) => void
 }
-
 type CarouselContextProps = {
   carouselRef: ReturnType<typeof useEmblaCarousel>[0]
   api: ReturnType<typeof useEmblaCarousel>[1]
-  scrollPrev: () => void
-  scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
-} & CarouselProps
+} & CarouselBaseProps
 
 const CarouselCtx = createContext<CarouselContextProps | null>(null)
 
@@ -31,38 +25,27 @@ const useCarousel = () => {
   if (!ctx) { throw new Error("useCarousel must be used within a <Carousel />") }
   return ctx
 }
-
+type CarouselProps = ComponentProps<"div"> & CarouselBaseProps
 const Carousel = (
   {
-    orientation = "horizontal",
-    opts,
+    opts = {},
     setApi,
     plugins,
     className,
     children,
     ...props
-  }: ComponentProps<"div"> & CarouselProps
+  }: CarouselProps
 ) => {
-  const [carouselRef, api] = useEmblaCarousel(
-    {
-      ...opts,
-      axis: orientation === "horizontal" ? "x" : "y",
-    },
-    plugins
-  )
+  const [carouselRef, api] = useEmblaCarousel(opts, plugins)
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
-  const [scrollPrev, scrollNext] = [() => api?.scrollPrev(), () => api?.scrollNext()]
-  /**
-   * This supports user to press arrow keys on the keybpard to scroll the carousel.
-   */
   const handleKeyDown = ($e: KeyboardEvent<HTMLDivElement>) => {
     if ($e.key === "ArrowLeft") {
       $e.preventDefault()
-      scrollPrev()
+      api?.scrollPrev()
     } else if ($e.key === "ArrowRight") {
       $e.preventDefault()
-      scrollNext()
+      api?.scrollNext()
     }
   }
   useEffect(() => { api && setApi && setApi(api) }, [api, setApi])
@@ -73,9 +56,8 @@ const Carousel = (
       setCanScrollNext(api.canScrollNext())
     }
     setCanScroll()
-    api.on("reInit", setCanScroll)
+    api.on("reInit", setCanScroll) // Embla can re-init itself when the viewport size changes
     api.on("select", setCanScroll)
-
     return () => { api?.off("select", setCanScroll) }
   }, [api])
 
@@ -83,12 +65,8 @@ const Carousel = (
     <CarouselCtx.Provider
       value={{
         carouselRef,
-        api: api,
+        api,
         opts,
-        orientation:
-          orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
-        scrollPrev,
-        scrollNext,
         canScrollPrev,
         canScrollNext,
       }}
@@ -106,14 +84,17 @@ const Carousel = (
   )
 }
 
-const CarouselContent = ({ className, ...props }: ComponentProps<"div">) => {
-  const { carouselRef, orientation } = useCarousel()
+type CarouselContentProps = ComponentProps<"div">
+const CarouselContent = ({ className, ...props }: CarouselContentProps) => {
+  const { carouselRef, opts } = useCarousel()
   return (
+    // This is called "overflow wrapper", which is required from Embla
+    // `ref` is also part of setup
     <div ref={carouselRef} className="tw:overflow-hidden">
       <div
         className={cn(
-          "tw:flex",
-          orientation === "horizontal" ? "tw:-ml-4" : "tw:-mt-4 tw:flex-col",
+          "tw:flex", // "scroll container" is required from Embla
+          (!opts?.axis || opts?.axis === "x") ? "tw:-ml-4" : "tw:-mt-4 tw:flex-col",
           className
         )}
         {...props}
@@ -122,15 +103,16 @@ const CarouselContent = ({ className, ...props }: ComponentProps<"div">) => {
   )
 }
 
-const CarouselItem = ({ className, ...props }: ComponentProps<"div">) => {
-  const { orientation } = useCarousel()
+type CarouselItemProps = ComponentProps<"div">
+const CarouselItem = ({ className, ...props }: CarouselItemProps) => {
+  const { opts } = useCarousel()
   return (
     <div
       role="group"
       aria-roledescription="slide"
       className={cn(
         "tw:min-w-0 tw:shrink-0 tw:grow-0 tw:basis-full",
-        orientation === "horizontal" ? "tw:pl-4" : "tw:pt-4",
+        (!opts?.axis || opts?.axis === "x") ? "tw:pl-4" : "tw:pt-4",
         className
       )}
       {...props}
@@ -138,57 +120,55 @@ const CarouselItem = ({ className, ...props }: ComponentProps<"div">) => {
   )
 }
 
+type CarouselPreviousProps = ComponentProps<typeof Cta>
 const CarouselPrevious = (
-  { className, variant = "outline", size = "md", ...props }: ComponentProps<typeof Button>
+  { className, variant = "outline", ...props }: CarouselPreviousProps
 ) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel()
-
+  const { api, canScrollPrev, opts } = useCarousel()
   return (
-    <Button
-      pressed={false}
+    <Cta
       variant={variant}
-      size={size}
       className={cn(
-        "tw:absolute tw- tw:h-8 tw:w-8 tw:rounded-full",
-        orientation === "horizontal"
+        "tw:absolute tw:size-8 tw:rounded-full",
+        (!opts?.axis || opts?.axis === "x")
           ? "tw:-left-12 tw:top-1/2 tw:-translate-y-1/2"
           : "tw:-top-12 tw:left-1/2 tw:-translate-x-1/2 tw:rotate-90",
         className
       )}
+      shapes={['icon']}
       disabled={!canScrollPrev}
-      onClick={scrollPrev}
+      onClick={() => api?.scrollPrev()}
       {...props}
     >
       <Icon icon='lucide:arrow-left' className="tw:h-4 tw:w-4" />
       <span className="tw:sr-only">Previous slide</span>
-    </Button>
+    </Cta>
   )
 }
 
+type CarouselNextProps = ComponentProps<typeof Cta>
 const CarouselNext = (
-  { className, variant = "outline", size = "md", ...props }: ComponentProps<typeof Button>
+  { className, variant = "outline", ...props }: CarouselNextProps
 ) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel()
-
+  const { api, canScrollNext, opts } = useCarousel()
   return (
-    <Button
-      pressed={false}
+    <Cta
       variant={variant}
-      size={size}
       className={cn(
-        "tw:absolute tw:h-8 tw:w-8 tw:rounded-full",
-        orientation === "horizontal"
+        "tw:absolute tw:size-8 tw:rounded-full",
+        (!opts?.axis || opts?.axis === "x")
           ? "tw:-right-12 tw:top-1/2 tw:-translate-y-1/2"
           : "tw:-bottom-12 tw:left-1/2 tw:-translate-x-1/2 tw:rotate-90",
         className
       )}
+      shapes={['icon']}
       disabled={!canScrollNext}
-      onClick={scrollNext}
+      onClick={() => api?.scrollNext()}
       {...props}
     >
       <Icon icon='lucide:arrow-right' className="tw:h-4 tw:w-4" />
       <span className="tw:sr-only">Next slide</span>
-    </Button>
+    </Cta>
   )
 }
 
@@ -200,6 +180,12 @@ CarouselNext.displayName = "CarouselNext"
 
 export {
   type CarouselApi,
+  type CarouselBaseProps,
+  type CarouselContextProps,
+  type CarouselContentProps,
+  type CarouselItemProps,
+  type CarouselNextProps,
+  type CarouselPreviousProps,
   Carousel,
   CarouselContent,
   CarouselItem,
