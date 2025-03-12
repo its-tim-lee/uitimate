@@ -260,6 +260,12 @@ export default {
           title: 'Drawer',
           href: '/docs/components/drawer',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'InputOtp',
+          href: '/docs/components/inputotp',
+          labels: []
         }
       ],
       labels: []

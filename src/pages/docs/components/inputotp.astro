@@ -1,0 +1,49 @@
+---
+import { startCase } from "lodash-es";
+import "@/index.css"; // according to https://ui.shadcn.com/docs/installation/astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import DocPageLayout from "@/layouts/DocPageLayout.astro";
+import ComponentPageUsage from "@/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "@/components/internal/ComponentPageHero.tsx";
+import {
+  Heading,
+  HeadingSubtitle,
+  HeadingTitle,
+} from "@/components/ui/Heading/Heading";
+import VersatileTabs from "@/components/internal/VersatileTabs";
+const routeName = Astro.url.pathname.split("/").filter(Boolean).pop();
+const anatomy = `
+  <InputOTP>
+    <InputOTPGroup>
+      <InputOTPSlot/>
+      <!-- More <InputOTPSlot> ... -->
+    </InputOTPGroup>
+    <InputOTPSeparator />
+    <!-- More <InputOTPGroup> ... -->
+  </InputOTP>
+`;
+---
+
+<BaseLayout>
+  <DocPageLayout>
+    <ComponentPageHero
+      client:only="react"
+      apiLink="https://input-otp.rodz.dev/"
+      title={startCase(routeName)}
+      subtitle="Accessible one-time password component with copy paste functionality."
+    />
+
+    <br />
+
+    <Heading
+      size="h2"
+      title="Usage"
+      subtitle="How you can play this component."
+    />
+    <ComponentPageUsage
+      demoId="inputotp-demo"
+      anatomy={anatomy}
+      client:only="react"
+    />
+  </DocPageLayout>
+</BaseLayout>

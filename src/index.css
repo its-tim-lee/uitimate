@@ -65,7 +65,6 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
-  --animate-caret-blink: caret-blink 1.25s ease-out infinite;
 
   @keyframes accordion-down {
     from {
@@ -85,14 +84,6 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
     }
     to {
       height: 0;
-    }
-  }
-  @keyframes caret-blink {
-    0%, 70%, 100% {
-      opacity: 1;
-    }
-    20%, 50% {
-      opacity: 0;
     }
   }
 }

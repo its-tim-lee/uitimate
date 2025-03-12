@@ -1,54 +1,113 @@
-import { type ComponentProps, type ElementRef, useContext } from "react"
+import "./index.css"
+import { type ComponentProps, useContext } from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
-import { Icon } from "../Icon/Icon"
-import { cn } from "@/lib/utils"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { tv } from "tailwind-variants"
 
-const InputOTP = (
-  { className, containerClassName, ...props }: ComponentProps<typeof OTPInput>
-) => (
+const inputOtpVariants = tv({
+  slots: {
+    root: [
+      "tw:disabled:cursor-not-allowed",
+    ],
+    container: "tw:flex tw:items-center tw:gap-2 tw:has-disabled:opacity-50",
+    group: "tw:flex tw:items-center",
+    slot: [
+      "tw:relative tw:flex tw:h-9 tw:w-9 tw:items-center tw:justify-center tw:text-sm",
+      "tw:border-y tw:border-r tw:shadow-xs tw:transition-all",
+      "tw:first:rounded-l-md tw:first:border-l tw:last:rounded-r-md",
+      "tw:border-input tw:ring-ring/10 tw:dark:ring-ring/20",
+      "tw:dark:outline-ring/40 tw:outline-ring/50",
+      "tw:data-[active=true]:z-10 tw:data-[active=true]:ring-4 tw:data-[active=true]:outline-1"
+    ],
+    caret: "tw:pointer-events-none tw:absolute tw:inset-0 tw:flex tw:items-center tw:justify-center",
+    caretBlink: "tw:animate-[caret-blink_1.25s_ease-out_infinite] tw:bg-foreground tw:h-4 tw:w-px tw:duration-1000"
+  }
+})
+
+const { root, container, group, slot, caret, caretBlink } = inputOtpVariants()
+
+type InputOTPProps = ComponentProps<typeof OTPInput> & {
+  containerClassName?: string
+}
+const InputOTP = ({
+  className,
+  containerClassName,
+  ...props
+}: InputOTPProps) => (
   <OTPInput
-    containerClassName={cn(
-      "tw:flex tw:items-center tw:gap-2 tw:has-disabled:opacity-50",
-      containerClassName
-    )}
-    className={cn("tw:disabled:cursor-not-allowed", className)}
+    data-slot="input-otp"
+    containerClassName={container({ className: containerClassName })}
+    className={root({ className })}
     {...props}
   />
 )
 
-const InputOTPGroup = ({ className, ...props }: ComponentProps<"div">) => <div className={cn("tw:flex tw:items-center", className)} {...props} />
+type InputOTPGroupProps = ComponentProps<"div">
+const InputOTPGroup = ({
+  className,
+  ...props
+}: InputOTPGroupProps) => (
+  <div
+    data-slot="input-otp-group"
+    className={group({ className })}
+    {...props}
+  />
+)
 
-const InputOTPSlot = (
-  { index, className, ...props }: ComponentProps<"div"> & { index: number },
-) => {
+type InputOTPSlotProps = ComponentProps<"div"> & {
+  index: number
+}
+const InputOTPSlot = ({
+  index,
+  className,
+  ...props
+}: InputOTPSlotProps) => {
   const inputOTPContext = useContext(OTPInputContext)
   const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index]
 
   return (
     <div
-      className={cn(
-        "tw:relative tw:flex tw:h-9 tw:w-9 tw:items-center tw:justify-center tw:border-y tw:border-r tw:border-input tw:text-sm tw:shadow-sm tw:transition-all tw:first:rounded-l-md tw:first:border-l tw:last:rounded-r-md",
-        isActive && "tw:z-10 tw:ring-1 tw:ring-ring",
-        className
-      )}
+      data-slot="input-otp-slot"
+      data-active={isActive}
+      className={slot({ className })}
       {...props}
     >
       {char}
       {hasFakeCaret && (
-        <div className="tw:pointer-events-none tw:absolute tw:inset-0 tw:flex tw:items-center tw:justify-center">
-          <div className="tw:h-4 tw:w-px tw:animate-caret-blink tw:bg-foreground tw:duration-1000" />
+        <div className={caret()}>
+          <div className={caretBlink()} />
         </div>
       )}
     </div>
   )
 }
 
-const InputOTPSeparator = (props: ComponentProps<"div">) => <div role="separator" {...props}><Icon icon='lucide:minus' /></div>
-
+type InputOTPSeparatorProps = ComponentProps<"div">
+const InputOTPSeparator = ({
+  ...props
+}: InputOTPSeparatorProps) => (
+  <div
+    data-slot="input-otp-separator"
+    role="separator"
+    {...props}
+  >
+    <Icon icon="lucide:minus" />
+  </div>
+)
 
 InputOTP.displayName = "InputOTP"
 InputOTPGroup.displayName = "InputOTPGroup"
 InputOTPSlot.displayName = "InputOTPSlot"
 InputOTPSeparator.displayName = "InputOTPSeparator"
 
-export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator }
+export {
+  inputOtpVariants,
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+  type InputOTPProps,
+  type InputOTPGroupProps,
+  type InputOTPSlotProps,
+  type InputOTPSeparatorProps
+}
