@@ -266,6 +266,12 @@ export default {
           title: 'InputOtp',
           href: '/docs/components/inputotp',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'RadioGroup',
+          href: '/docs/components/radio-group',
+          labels: []
         }
       ],
       labels: []

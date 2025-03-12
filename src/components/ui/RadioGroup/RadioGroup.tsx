@@ -1,70 +1,70 @@
-import { Root, Item, Indicator } from "@radix-ui/react-radio-group"
-import { cn } from "@/lib/utils"
 import { type ComponentProps } from "react"
-import { Circle } from "lucide-react"
-import { Label } from "~/src/components/ui/Label/Label.tsx"
-import { SHA256 } from "crypto-js"
+import { Root, Item, Indicator } from "@radix-ui/react-radio-group"
+import { tv } from "tailwind-variants"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
 
-const RadioGroup = ({ className, label, ...props }: ComponentProps<typeof Root> & { label?: string }) => {
-  const $radioGroup = (
-    <Root
-      className={cn("tw:grid tw:gap-2", className)}
-      {...props}
-    />
-  )
+const radioGroupVariants = tv({
+  slots: {
+    root: "tw:grid tw:gap-3",
+    item: [
+      "tw:aspect-square tw:size-4 tw:shrink-0 tw:rounded-full",
+      "tw:border tw:border-input tw:shadow-xs",
+      "tw:transition-[color,box-shadow]",
 
-  return !label ? $radioGroup : (
-    <div className="tw:flex tw:flex-col tw:space-y-3">
-      <Label className="tw:text-sm tw:font-medium tw:leading-none">
-        {label}
-      </Label>
-      {$radioGroup}
-    </div>
-  )
-}
+      "tw:text-primary tw:ring-ring/10 tw:dark:ring-ring/20",
+      "tw:dark:outline-ring/40 tw:outline-ring/50",
 
-const RadioGroupItem = (
-  { className, title, outline, ...props }: RadioGroupItemProps) => {
-  const id = title && `id${SHA256(title)}`
+      "tw:focus-visible:ring-4 tw:focus-visible:outline-1",
+      "tw:disabled:cursor-not-allowed tw:disabled:opacity-50",
+      "tw:aria-invalid:focus-visible:ring-0"
+    ],
+    indicator: "tw:relative tw:flex tw:items-center tw:justify-center"
+  }
+})
 
-  const $radioItem = (
-    <Item
-      id={id}
-      className={cn(
-        "tw:aspect-square tw:h-4 tw:w-4 tw:rounded-full tw:border tw:border-primary tw:text-primary tw:shadow tw:focus:outline-hidden tw:focus-visible:ring-1 tw:focus-visible:ring-ring tw:disabled:cursor-not-allowed tw:disabled:opacity-50",
-        className
-      )}
-      {...props}
+const { root, item, indicator } = radioGroupVariants()
+
+type RadioGroupProps = ComponentProps<typeof Root>
+const RadioGroup = ({
+  className,
+  ...props
+}: RadioGroupProps) => (
+  <Root
+    data-slot="radio-group"
+    className={root({ className })}
+    {...props}
+  />
+)
+
+type RadioGroupItemProps = ComponentProps<typeof Item>
+const RadioGroupItem = ({
+  className,
+  ...props
+}: RadioGroupItemProps) => (
+  <Item
+    data-slot="radio-group-item"
+    className={item({ className })}
+    {...props}
+  >
+    <Indicator
+      data-slot="radio-group-indicator"
+      className={indicator()}
     >
-      <Indicator className="tw:flex tw:items-center tw:justify-center">
-        <Circle className="tw:h-3.5 tw:w-3.5 tw:fill-primary" />
-      </Indicator>
-    </Item>
-  )
-
-  return !title ? $radioItem : (
-    <div className="tw-items-top tw:flex tw:space-x-2">
-      {$radioItem}
-      {title && (
-        <div className="tw:grid tw:gap-1.5 tw:leading-none">
-          <Label htmlFor={id}
-            className="tw:text-sm tw:font-medium tw:leading-none tw:peer-disabled:cursor-not-allowed tw:peer-disabled:opacity-70"
-          >
-            {title}
-          </Label>
-          {outline && <p className="tw:text-sm tw:text-muted-foreground">{outline}</p>}
-        </div>
-      )}
-    </div>
-  )
-}
-
-export interface RadioGroupItemProps extends ComponentProps<typeof Item> {
-  title?: string
-  outline?: string
-}
+      <Icon
+        icon="lucide:circle"
+        className="tw:fill-primary tw:absolute tw:top-1/2 tw:left-1/2 tw:size-2 tw:-translate-x-1/2 tw:-translate-y-1/2"
+      />
+    </Indicator>
+  </Item>
+)
 
 RadioGroup.displayName = "RadioGroup"
 RadioGroupItem.displayName = "RadioGroupItem"
 
-export { RadioGroup, RadioGroupItem }
+export {
+  radioGroupVariants,
+  RadioGroup,
+  RadioGroupItem,
+  type RadioGroupProps,
+  type RadioGroupItemProps
+}

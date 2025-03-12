@@ -1,8 +1,4 @@
-import { Label } from "~/src/components/ui/Label/Label.tsx"
-import {
-  RadioGroup,
-  RadioGroupItem
-} from "./RadioGroup.tsx"
+import RadioGroupDemo from "~/src/components/demo/radio-group-demo.tsx"
 
 export default {
   title: 'Primitive/RadioGroup',
@@ -17,12 +13,5 @@ export default {
 
 export const Variant1 = {
   name: 'Default',
-  render: () => {
-    return (
-      <RadioGroup label="Select a meal" defaultValue="comfortable">
-        <RadioGroupItem value="default" title="Default" outline="Default description" />
-        <RadioGroupItem value="comfortable" title="Comfortable" outline="Comfortable description" />
-      </RadioGroup>
-    )
-  },
+  render: () => <RadioGroupDemo />
 };
