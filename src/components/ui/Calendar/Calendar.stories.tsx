@@ -1,8 +1,6 @@
-import * as React from "react"
-import {
-  Calendar,
-} from "./Calendar.tsx"
-
+import CalendarDatePicker from "@/components/demo/calendar-date-picker"
+import CalendarDemo from "@/components/demo/calendar-demo"
+import CalendarDateRangePicker from "@/components/demo/calendar-date-range-picker"
 export default {
   title: 'Example/Calendar',
   parameters: {
@@ -14,18 +12,18 @@ export default {
   },
 }
 
-export const Variant1 = {
-  name: 'Default',
-  render: () => {
-    const [date, setDate] = React.useState<Date | undefined>(new Date())
+export const DEMO = {
+  name: 'DEMO',
+  render: () => <CalendarDemo />
+};
 
-    return (
-      <Calendar
-        mode="single"
-        selected={date}
-        onSelect={setDate}
-        className="tw:rounded-md tw:border tw:shadow"
-      />
-    )
-  },
+
+export const DatePicker = {
+  name: 'Date Picker',
+  render: () => <CalendarDatePicker />
+};
+
+export const DateRangePicker = {
+  name: 'Date Range Picker',
+  render: () => <CalendarDateRangePicker />
 };

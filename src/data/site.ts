@@ -278,6 +278,12 @@ export default {
           title: 'Carousel',
           href: '/docs/components/carousel',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Calendar',
+          href: '/docs/components/calendar',
+          labels: []
         }
       ],
       labels: []
