@@ -284,6 +284,12 @@ export default {
           title: 'Calendar',
           href: '/docs/components/calendar',
           labels: []
+        },
+        {
+          type: 'link',
+          title: 'Combobox',
+          href: '/docs/components/combobox',
+          labels: []
         }
       ],
       labels: []
@@ -298,6 +304,7 @@ export default {
           href: '/docs/component-patterns/card',
           labels: []
         },
+
 
 
       ],
