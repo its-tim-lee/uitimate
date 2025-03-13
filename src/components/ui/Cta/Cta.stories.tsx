@@ -1,3 +1,4 @@
+import Ratings from "../../demo/cta-ratings.tsx";
 import BadgeOnIcon from "../../demo/cta-badge-on-icon.tsx";
 import BadgeOnIconEdgeCase from "../../demo/cta-edge-case-badge-on-icon.tsx";
 import ButtonRoundedBadge from "../../demo/cta-rounded-badge.tsx";
@@ -118,4 +119,9 @@ export const Variant17 = {
 export const Variant18 = {
   name: 'Edge Case / Badge on Icon',
   render: () => <BadgeOnIconEdgeCase />
+};
+
+export const Variant19 = {
+  name: 'Scenario / Ratings',
+  render: () => <Ratings />
 };
