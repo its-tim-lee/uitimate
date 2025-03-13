@@ -7,42 +7,52 @@ import {
   type VariantProps,
 } from 'tailwind-variants';
 
+/**
+ * WARN: Before change any CSS, check the design considerations:
+ * - cta-base-case-badge-on-icon.tsx
+ */
+
 const baseStyle = [
   "tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:whitespace-nowrap tw:rounded-md tw:transition-colors tw:data-hover:cursor-pointer",
   "tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50",
-  "tw:[&_svg]:pointer-events-none tw:[&_svg]:size-4 tw:[&_svg]:shrink-0",
+  "tw:[&_[data-icon]]:pointer-events-none tw:[&_[data-icon]]:size-4 tw:[&_[data-icon]]:shrink-0",
   'tw:data-[state=on]:ring-2 tw:data-[state=on]:ring-primary/50' // "Toggle" style
 ]
 const primaryBaseStyle = [
   "tw:bg-primary tw:text-primary-foreground",
-  "tw:[&_*]:bg-primary tw:[&_*]:text-primary-foreground",
-  "tw:data-hover:bg-primary/80 tw:data-hover:[&_*]:bg-primary/80"
+  // "tw:[&_*]:bg-primary tw:[&_*]:text-primary-foreground",
+  // "tw:data-hover:bg-primary/80 tw:data-hover:[&_*]:bg-primary/80"
+  "tw:data-hover:bg-primary/80"
 ]
 const secondaryBaseStyle = [
   "tw:bg-secondary tw:text-secondary-foreground",
-  "tw:[&_*]:bg-secondary tw:[&_*]:text-secondary-foreground",
-  "tw:data-hover:bg-secondary/50 tw:data-hover:[&_*]:bg-secondary/50",
+  // "tw:[&_*]:bg-secondary tw:[&_*]:text-secondary-foreground",
+  // "tw:data-hover:bg-secondary/50 tw:data-hover:[&_*]:bg-secondary/50",
+  "tw:data-hover:bg-secondary/50"
 ]
 const destructiveBaseStyle = [
   "tw:bg-destructive tw:text-destructive-foreground",
-  "tw:[&_*]:bg-destructive tw:[&_*]:text-destructive-foreground",
-  "tw:data-hover:bg-destructive/80 tw:data-hover:[&_*]:bg-destructive/80"
+  // "tw:[&_*]:bg-destructive tw:[&_*]:text-destructive-foreground",
+  // "tw:data-hover:bg-destructive/80 tw:data-hover:[&_*]:bg-destructive/80",
+  "tw:data-hover:bg-destructive/80"
 ]
 const outlineBaseStyle = [
   "tw:bg-background tw:text-foreground",
-  "tw:[&_*]:bg-background tw:[&_*]:text-foreground",
-  "tw:data-hover:bg-secondary tw:data-hover:[&_*]:bg-secondary",
+  // "tw:[&_*]:bg-background tw:[&_*]:text-foreground",
+  // "tw:data-hover:bg-secondary tw:data-hover:[&_*]:bg-secondary",
+  "tw:data-hover:bg-secondary"
 ]
 const ghostBaseStyle = [
   "tw:bg-background tw:text-foreground",
-  "tw:[&_*]:bg-background tw:[&_*]:text-foreground",
-  "tw:data-hover:bg-secondary tw:data-hover:[&_*]:bg-secondary",
+  // "tw:[&_*]:bg-background tw:[&_*]:text-foreground",
+  // "tw:data-hover:bg-secondary tw:data-hover:[&_*]:bg-secondary",
+  "tw:data-hover:bg-secondary",
   "tw:data-[state=on]:ring-0! tw:data-[state=on]:bg-muted tw:data-[state=on]:[&_*]:bg-muted" // "Toggle" style
 ]
 const linkBaseStyle = [
   "tw:underline-offset-4",
   "tw:text-primary",
-  "tw:[&_*]:text-primary", // TBD: do we really need this?
+  // "tw:[&_*]:text-primary", // TBD: do we really need this?
   "tw:data-hover:underline"
 ]
 
@@ -67,9 +77,9 @@ const buttonVariants = tv({
     },
     // TBD: different size should have different sized icon: src/components/demo/dropdownmenu-mix2.tsx
     size: {
-      sm: "tw:text-sm tw:h-9 tw:px-3",
-      md: "tw:text-md tw:h-10 tw:px-4",
-      lg: "tw:text-lg tw:h-11 tw:px-8",
+      sm: "tw:text-sm tw:h-9 tw:px-3 tw:[&_[data-icon]]:size-[0.865rem]",
+      md: "tw:text-base tw:h-10 tw:px-4 tw:[&_[data-icon]]:size-[1rem]",
+      lg: "tw:text-lg tw:h-11 tw:px-8 tw:[&_[data-icon]]:size-[1.125rem]",
     }
   },
   compoundVariants: [
@@ -110,9 +120,9 @@ export const badgeVariants = tv({
       icon: ["tw:p-0! tw:aspect-square"],
     }, // TBD: fixed-size seems not flexible when implementing Github start button
     size: {
-      sm: 'tw:text-xs tw:px-2.5 tw:py-0.5  tw:[&_[data-avatar]]:size-5 ',
-      md: 'tw:text-sm tw:px-3 tw:py-0.5 tw:[&_[data-avatar]]:size-6 ',
-      lg: 'tw:text-md tw:px-3.5 tw:py-0.5  tw:[&_[data-avatar]]:size-7 '
+      sm: 'tw:text-xs tw:px-2.5 tw:py-0.5  tw:[&_[data-avatar]]:size-5 tw:[&_[data-icon]]:size-[0.75rem]',
+      md: 'tw:text-sm tw:px-3 tw:py-0.5 tw:[&_[data-avatar]]:size-6 tw:[&_[data-icon]]:size-[0.865rem]',
+      lg: 'tw:text-base tw:px-3.5 tw:py-0.5  tw:[&_[data-avatar]]:size-7 tw:[&_[data-icon]]:size-[1rem]'
     }
   },
   compoundVariants: [

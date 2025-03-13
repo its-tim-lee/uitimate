@@ -1,3 +1,5 @@
+import BadgeOnIcon from "../../demo/cta-badge-on-icon.tsx";
+import BadgeOnIconEdgeCase from "../../demo/cta-edge-case-badge-on-icon.tsx";
 import ButtonRoundedBadge from "../../demo/cta-rounded-badge.tsx";
 import CtaAll from "../../demo/cta-all";
 import CtaProgress from "../../demo/button-progress.tsx";
@@ -106,4 +108,14 @@ export const Variant15 = {
 export const Variant16 = {
   name: 'Scenario / Toggle Group (Multiple Selection)',
   render: () => <ToggleGroupMultipleSelection />
+};
+
+export const Variant17 = {
+  name: 'Scenario / Badge on Icon',
+  render: () => <BadgeOnIcon />
+};
+
+export const Variant18 = {
+  name: 'Edge Case / Badge on Icon',
+  render: () => <BadgeOnIconEdgeCase />
 };
