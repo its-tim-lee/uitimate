@@ -44,17 +44,21 @@ const apiLink = `https://www.radix-ui.com/primitives/docs/components/${routeName
     />
     <br />
     <br />
+
     <Heading
       size="h2"
-      title="Design Notes"
-      subtitle="The implementation details that some would appreciate."
+      title="Example / Scenario"
+      subtitle="This lists common real-world use cases."
     />
-
-    <p>
-      Collapsible vs. Accordion: think about Collapsible is sort of applying
-      display: none | block (although it's not), this should help u to
-      understand that it's used in a one-off case, and usually for toggling the
-      visibility of certain thing
-    </p>
+    <VersatileTabs
+      settings={[
+        {
+          title: "Stepper",
+          type: "preview",
+          demoId: "collapsible-stepper",
+        },
+      ]}
+      client:only="react"
+    />
   </DocPageLayout>
 </BaseLayout>
