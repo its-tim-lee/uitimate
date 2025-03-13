@@ -4,9 +4,9 @@ import { TimelineContent, Timeline, TimelineDot, TimelineItem, TimelineTitle, Ti
 export default () => {
   return (
     <Timeline>
-      <TimelineItem status="done">
+      <TimelineItem>
         <TimelineTitle>Install react-day-picker</TimelineTitle>
-        <TimelineDot status="current" />
+        <TimelineDot />
         <TimelineLine />
         <TimelineContent className="tw:flex tw:w-full tw:flex-col tw:gap-y-4 tw:overflow-hidden tw:text-balance tw:pt-4">
           <div className="tw:prose">
