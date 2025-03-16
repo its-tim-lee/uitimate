@@ -1,4 +1,5 @@
 import { type ComponentProps } from "react"
+import type React from "react";
 import { Toggle } from "@radix-ui/react-toggle"
 import { Slot } from "@radix-ui/react-slot";
 import { Primitive } from '@radix-ui/react-primitive';
@@ -159,6 +160,9 @@ export type CtaProps = (
     pressed?: boolean;
     defaultPressed?: boolean;
     onPressedChange?: (pressed: boolean) => void;
+    style?: React.CSSProperties & {
+      [key: `--${string}`]: string | number | boolean;
+    };
   }
 )
 
@@ -179,6 +183,9 @@ export type CtaProps = (
 const Cta =
   ({
     variant, size, shapes = [], muted = false,
+    // TBD: comment more details: It's no harm to always use type = button even it's not really actally a button
+    // but it's important to set this to `submit` to work with form properly
+    type = 'button',
     className, children, asChild = false, ...props
   }: CtaProps) => {
     if (shapes.length > 2) {
@@ -190,7 +197,7 @@ const Cta =
     const mode = shapes.find((s: any) => s !== 'badge') as 'icon' | undefined
     return <Comp
       {...props}
-      type="button" // TBD: comment more details: It's no harm to place this here for the situations that are actually a button, but this is useful in the form
+      type={type}
       data-disabled={props.disabled ? '' : undefined}
       onMouseEnter={(e) => !muted && (e.currentTarget.dataset.hover = '')}
       onMouseLeave={(e) => delete e.currentTarget.dataset.hover}

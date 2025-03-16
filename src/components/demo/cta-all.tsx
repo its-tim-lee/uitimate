@@ -67,6 +67,22 @@ export default () => {
           <Icon icon="lucide:plus" /> Add
         </Cta>
       </div>
+
+      {/*
+      We can do stuff like this, but it should have no such use cases,
+      so really don't need to deal with it in any way (eg., no need to set min-width)
+      */}
+      <div className="tw:flex tw:gap-2">
+        <Cta variant="primary" size="sm">
+          <Icon icon="lucide:plus" />
+        </Cta>
+        <Cta variant="secondary" size="md" >
+          <Icon icon="lucide:plus" />
+        </Cta>
+        <Cta variant="destructive" size="lg" >
+          <Icon icon="lucide:plus" />
+        </Cta>
+      </div>
       <div className="tw:flex tw:gap-2">
         <h1></h1>
         <Cta variant="primary" size="sm" shapes={['icon']} >
