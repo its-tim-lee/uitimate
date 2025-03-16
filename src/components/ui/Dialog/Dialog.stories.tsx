@@ -3,7 +3,7 @@ import DialogDemo from "../../demo/dialog-demo.tsx";
 import DialogDropdownMenu from "../../demo/dialog-dropdown-menu.tsx";
 import DialogLoading from "../../demo/dialog-loading.tsx";
 import DialogScroll from "../../demo/dialog-scroll.tsx";
-
+import DialogRemoveAppFromProject from "../../demo/form-remove-app-from-project.tsx";
 export default {
   title: 'Example/Dialog',
   parameters: {
@@ -40,4 +40,9 @@ export const SCROLL = {
 export const DROPDOWN_MENU = {
   name: 'Scenario / DropdownMenu',
   render: () => DialogDropdownMenu()
+}
+
+export const REMOVE_APP_FROM_PROJECT = {
+  name: 'Showcase / DialogRemoveAppFromProject',
+  render: () => DialogRemoveAppFromProject()
 }

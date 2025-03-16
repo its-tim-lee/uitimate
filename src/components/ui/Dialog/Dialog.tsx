@@ -12,7 +12,7 @@ const dialogVariants = tv({
     overlay: "tw:fixed tw:inset-0 tw:bg-black/80",
     content: [
       "tw:min-w-[320px] tw:w-screen tw:h-screen tw:md:h-auto tw:md:max-w-lg tw:space-y-4 tw:p-6",
-      "tw:md:rounded-lg tw:bg-background tw:relative tw:md:border",
+      "tw:md:rounded-lg tw:bg-background tw:relative tw:dark:md:border",
       "tw:flex tw:flex-col"
     ],
     closeButton: [
@@ -113,16 +113,23 @@ type DialogTitleProps = React.ComponentProps<typeof Title>
 const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
   const { size } = useContext(HeadingContext);
   const { modal } = useContext(DialogCtx);
+  if (typeof children === 'function') { // TODO: Since this should be extreme rare, the logic here hasn't integrated with the DialogClose yet
+    return (
+      <Title className={title({ size, className })} {...props}>
+        {children}
+      </Title>
+    );
+  }
   return (
-    <>
-      <Title className={title({ size, className })} {...props}>{children}</Title>
+    <Title className={title({ size, className })} {...props}>
+      {children}
       {!modal && (
         <DialogClose className={closeButton()}>
           <Icon icon="lucide:x" className="tw:h-4 tw:w-4" />
           <span className="tw:sr-only">Close</span>
         </DialogClose>
       )}
-    </>
+    </Title>
   )
 }
 

@@ -60,7 +60,7 @@ export default () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <Dialog open={isOpen}>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <DialogHeading>
           <DialogTitle>
             Select Region

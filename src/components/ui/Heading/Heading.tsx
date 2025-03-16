@@ -20,7 +20,7 @@ const HeadingContext = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 
 const headingVariants = tv({
   slots: {
     root: "tw:flex tw:flex-col tw:gap-1.5 tw:text-left tw:mb-3 tw:relative",
-    title: "tw:leading-none tw:tracking-tight tw:scroll-m-20 tw:data-single-element:mb-3",
+    title: "tw:leading-none tw:tracking-tight tw:scroll-m-20 tw:data-single-element:mb-3 tw:relative",
     subtitle: "tw:text-base tw:text-muted-foreground",
   },
   variants: {
