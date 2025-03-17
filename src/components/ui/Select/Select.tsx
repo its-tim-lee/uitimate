@@ -1,6 +1,6 @@
 import { type ComponentProps } from "react"
 import {
-  Root as Select,
+  Root,
   Group as SelectGroup,
   Value as SelectValue,
   Trigger,
@@ -22,9 +22,10 @@ import { Icon } from "@/components/ui/Icon/Icon.tsx"
 const selectVariants = tv({
   slots: {
     trigger: [
-      "tw:flex tw:h-9 tw:w-full tw:items-center tw:justify-between tw:whitespace-nowrap",
+      // h-10, shadow-xs aligns with the design of the input when they put together
+      "tw:flex tw:h-10 tw:w-full tw:items-center tw:justify-between tw:whitespace-nowrap",
       "tw:rounded-md tw:border tw:border-input tw:bg-transparent",
-      "tw:px-3 tw:py-2 tw:text-sm tw:shadow-sm",
+      "tw:px-3 tw:py-2 tw:text-sm tw:shadow-xs",
       "tw:ring-offset-background tw:placeholder:text-muted-foreground",
       "tw:focus:outline-hidden tw:focus:ring-1 tw:focus:ring-ring",
       "tw:disabled:cursor-not-allowed tw:disabled:opacity-50",
@@ -69,6 +70,22 @@ const selectVariants = tv({
 })
 
 const { trigger, scrollButton, content, viewport, label, item, itemIndicatorWrapper, separator } = selectVariants()
+
+type SelectProps = ComponentProps<typeof Root> & {
+  onChange?: (value: string) => void
+}
+
+const Select = ({ onChange, onValueChange, ...props }: SelectProps) => {
+  return (
+    <Root
+      onValueChange={v => { // see #20250318
+        onChange?.(v)
+        onValueChange?.(v)
+      }}
+      {...props}
+    />
+  )
+}
 
 type SelectTriggerProps = ComponentProps<typeof Trigger>
 const SelectTrigger = ({

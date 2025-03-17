@@ -180,9 +180,20 @@ const FormLabel = ({ className, ...props }: FormLabelProps) => {
 
 /**
  * WARN: currently, the only child of this component is the form control element
+ * - `maskedInput`
+ *    This is for integration with input masking lib, such as `Maskito`.
+ *    Usually, these libs will provide an event handler (in Maskito`, it's `onInput`),
+ *    that will only get called with the stacked "masked" inputed characters, meaning that
+ *    if the consumer enter invalid characters based on the mask rule, the event handler won't get triggered.
+ *
+ *    > if the libs don't provide such handlers, either the consumer need to implement that using other relevant APIs provided by the lib,
+ *    > or it's possible the libs are just incompetent.
+ *
+ *    So for the case of Maskito, `maskedInput` will be `onInput`, and according to the relevant logic in the following code,
+ *    this means that Maskito will only masked characters to react-hook-form to do the rest processing.
  */
-type FormControlProps = ComponentProps<typeof Slot>
-const FormControl = ({ ...props }: FormControlProps) => {
+type FormControlProps = ComponentProps<typeof Slot> & { maskedInput?: string }
+const FormControl = ({ maskedInput, ...props }: FormControlProps) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useContext(FormItemCtx);
   const { field } = useContext(FormControlCtx);
   if (!field) { throw new Error("FormControl must be used within a FormItem"); }
@@ -210,6 +221,7 @@ const FormControl = ({ ...props }: FormControlProps) => {
        */
       {...field}
       {...props}
+      {...(maskedInput ? { [maskedInput]: field.onChange, onChange: undefined } : {})}
     />
   );
 }

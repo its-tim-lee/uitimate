@@ -24,14 +24,22 @@ const radioGroupVariants = tv({
 
 const { root, item, indicator } = radioGroupVariants()
 
-type RadioGroupProps = ComponentProps<typeof Root>
+type RadioGroupProps = ComponentProps<typeof Root> & {
+  onChange?: (value: string) => void
+}
 const RadioGroup = ({
   className,
+  onChange,
+  onValueChange,
   ...props
 }: RadioGroupProps) => (
   <Root
     data-slot="radio-group"
     className={root({ className })}
+    onValueChange={(v) => { // see #20250318
+      onChange?.(v as any);
+      onValueChange?.(v);
+    }}
     {...props}
   />
 )

@@ -26,7 +26,8 @@ import { nanoid } from "nanoid";
 import { Label } from "../Label/Label.tsx"
 import FormFirebaseRegisterApp from "@/components/demo/form-firebase-register-app.tsx";
 import FormRemoveAppFromProject from "@/components/demo/form-remove-app-from-project.tsx"
-
+import StripeBillingInfo from "@/components/demo/stripe-billing-info.tsx";
+import StripePaymentMethod from "../../demo/stripe-payment-method.tsx"
 
 export const RegisterApp = {
   name: 'Showcase / Firebase Register App',
@@ -138,4 +139,14 @@ export const Variant1 = {
       <></>
     )
   },
+};
+
+export const STRIPE_BILLING_INFO = {
+  name: 'Showcase / Stripe Billing Info',
+  render: () => <StripeBillingInfo />
+};
+
+export const STRIPE_PAYMENT_METHOD = {
+  name: 'Showcase / Stripe Payment Method',
+  render: () => <StripePaymentMethod />
 };

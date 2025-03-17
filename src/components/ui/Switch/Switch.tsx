@@ -19,15 +19,26 @@ const variants = tv({
 })
 const { root, thumb } = variants()
 
-type SwitchProps = ComponentProps<typeof Root>
+type SwitchProps = ComponentProps<typeof Root> & {
+  onChange?: (checked: boolean) => void
+}
+/**
+ * #1, #2 see #20250318
+ */
 const Switch = ({
   className,
+  onChange,
+  onCheckedChange,
   ...props
 }: SwitchProps) => {
-
   return (
     <Root
       className={root({ className })}
+      checked={!!props.value} // #2
+      onCheckedChange={(v) => {
+        onChange?.(v as boolean); // #1
+        onCheckedChange?.(v as boolean);
+      }}
       {...props}
     >
       <Thumb className={thumb()} />

@@ -25,6 +25,7 @@ type CheckboxProps = ComponentProps<typeof Root> & {
   onChange?: (checked: boolean) => void
 }
 /**
+ * #20250318
  * #1, #2
  * This is literally for supporting the integration with React-hook-form (RHF).
  * To allow RHF to control the Checkbox, the component must provide the standard props:
