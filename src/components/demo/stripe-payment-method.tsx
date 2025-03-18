@@ -115,6 +115,9 @@ const patchSchema = (info: ZipCodeInfo) => {
       : z.string().optional()
   })
 }
+// TBD: make the country as combobox
+// TBD: make the city as select
+// TBD: define the universal schema for a field so that it can also be used in onBlur
 export default () => {
   const [zipInfo, setZipInfo] = useState<ZipCodeInfo>(zipInfoByCountry['us']);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
