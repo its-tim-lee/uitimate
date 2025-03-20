@@ -9,10 +9,14 @@ import { Icon as Root, type IconProps } from "@iconify/react";
  * TBD: keep observating the necessity of creating `size` prop
  * As long as Icon is used in the context of Button, Badge,...
  * since they already can scale the icon together, sizing is not an issue.
- * So the need of `size` prop will seem only be required when Icon and text is used out of the context of Button, Badge,...
- * but currently, I haven't encounter any case that need to scale icon differently with text.
+ *
+ * But now i can confirm that, if the Icon is Not used in those context,
+ * it's necessary to have a `size` prop to size the Icon,
+ * cuz people will simply forget they need to use Tailwind's `size-*` to size the Icon.
  *
  * Currently, to size the Icon, use Tailwind's `size-*`
+ *
+ * TBD: doc: the rendered result is just a svg
  */
 const Icon = (props: IconProps) => <Root data-icon {...props} />
 Icon.displayName = "Icon";
