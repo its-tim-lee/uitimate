@@ -1,4 +1,4 @@
-import { type ComponentProps } from "react"
+import { useState, type ComponentProps } from "react"
 import type React from "react";
 import { Toggle } from "@radix-ui/react-toggle"
 import { Slot } from "@radix-ui/react-slot";
@@ -48,7 +48,7 @@ const ghostBaseStyle = [
   // "tw:[&_*]:bg-background tw:[&_*]:text-foreground",
   // "tw:data-hover:bg-secondary tw:data-hover:[&_*]:bg-secondary",
   "tw:data-hover:bg-secondary",
-  "tw:data-[state=on]:ring-0! tw:data-[state=on]:bg-muted tw:data-[state=on]:[&_*]:bg-muted" // "Toggle" style
+  "tw:data-[state=on]:ring-0! tw:data-[state=on]:bg-muted " // "Toggle" style
 ]
 const linkBaseStyle = [
   "tw:underline-offset-4",
@@ -154,6 +154,8 @@ export type CtaProps = (
   Omit<VariantProps<typeof buttonVariants>, 'mode'> &
   {
     muted?: boolean;
+    unpressedOnBlur?: boolean;
+    wontUnpressedOnClick?: boolean;
     shapes?: ('badge' | 'icon')[];
     asChild?: boolean;
     // Below are major props of Radix's Toggle
@@ -186,24 +188,44 @@ const Cta =
     // TBD: comment more details: It's no harm to always use type = button even it's not really actally a button
     // but it's important to set this to `submit` to work with form properly
     type = 'button',
+    unpressedOnBlur = false,
+    onBlur,
+    onPressedChange,
+    wontUnpressedOnClick = false,
     className, children, asChild = false, ...props
   }: CtaProps) => {
+    const [toggled, setToggled] = useState(props.defaultPressed)
     if (shapes.length > 2) {
       throw new Error('`shapes` currently only can have up to 2 elements')
     }
-    const shouldTreatAsToggle = props.pressed !== undefined || props.defaultPressed !== undefined || props.onPressedChange !== undefined
+    const shouldTreatAsToggle = props.pressed !== undefined || props.defaultPressed !== undefined || onPressedChange !== undefined
     const Comp = muted ? 'span' : (shouldTreatAsToggle ? Toggle : (asChild ? Slot : Primitive.button))
     const isBadgeStyle = shapes.includes('badge')
     const mode = shapes.find((s: any) => s !== 'badge') as 'icon' | undefined
     return <Comp
-      {...props}
       type={type}
+      data-tag='cta'
       data-disabled={props.disabled ? '' : undefined}
       onMouseEnter={(e) => !muted && (e.currentTarget.dataset.hover = '')}
       onMouseLeave={(e) => delete e.currentTarget.dataset.hover}
       className={isBadgeStyle ?
         badgeVariants({ variant, size, mode, className }) :
-        buttonVariants({ variant, size, mode, className })}
+        buttonVariants({ variant, size, mode, className })
+      }
+      /**
+       * It should be no such use case: passing both `pressed` and `unpressedOnBlur` at the same time.
+       */
+      pressed={toggled}
+      onPressedChange={e => {
+        /**
+         * Currently, this use case only be found when using `wontUnpressedOnClick` and `unpressedOnBlur` at the same time.
+         */
+        if (!e && wontUnpressedOnClick) return onPressedChange?.(e)
+        setToggled(e)
+        onPressedChange?.(e)
+      }}
+      onBlur={e => (unpressedOnBlur && setToggled(false), onBlur?.(e))}
+      {...props}
     >
       {children}
     </Comp>
@@ -213,6 +235,7 @@ Cta.displayName = "Cta"
 
 export {
   Cta,
+  Toggle,
   buttonVariants
 }
 
