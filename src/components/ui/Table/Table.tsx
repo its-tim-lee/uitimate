@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 const Table = ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
   <div className="tw:relative tw:w-full tw:overflow-auto">
     <table
+      data-tag="table"
       className={cn("tw:w-full tw:caption-bottom tw:text-sm", className)}
       {...props}
     />
@@ -17,11 +18,13 @@ const Table = ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) 
  * But it's no harm to always use it.
  */
 const TableHeader = ({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
-  <thead className={cn("tw:[&_tr]:border-b", className)} {...props} />
+  <thead data-tag="table-header"
+    className={cn("tw:[&_tr]:border-b", className)} {...props} />
 )
 
 const TableBody = ({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
   <tbody
+    data-tag="table-body"
     className={cn("tw:[&_tr:last-child]:border-0", className)}
     {...props}
   />
@@ -29,8 +32,9 @@ const TableBody = ({ className, ...props }: React.HTMLAttributes<HTMLTableSectio
 
 const TableFooter = ({ className, ...props }: React.HTMLAttributes<HTMLTableSectionElement>) => (
   <tfoot
+    data-tag="table-footer"
     className={cn(
-      "tw:border-t tw:bg-muted/50 tw:font-medium tw:[&>tr]:last:border-b-0",
+      "tw:bg-muted/50 tw:border-t tw:font-medium tw:[&>tr]:last:border-b-0",
       className
     )}
     {...props}
@@ -42,8 +46,9 @@ const TableFooter = ({ className, ...props }: React.HTMLAttributes<HTMLTableSect
  */
 const TableRow = ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
   <tr
+    data-tag="table-row"
     className={cn(
-      "tw:border-b tw:transition-colors tw:hover:bg-muted/50 tw:data-[state=selected]:bg-muted",
+      "tw:hover:bg-muted/50 tw:data-[state=selected]:bg-muted tw:border-b tw:transition-colors",
       className
     )}
     {...props}
@@ -55,8 +60,9 @@ const TableRow = ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElem
  */
 const TableHead = ({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) => (
   <th
+    data-tag="table-head"
     className={cn(
-      "tw:h-10 tw:px-2 tw:text-left tw:align-middle tw:font-medium tw:text-muted-foreground tw:[&:has([role=checkbox])]:pr-0 tw:[&>[role=checkbox]]:translate-y-[2px]",
+      "tw:text-muted-foreground tw:h-10 tw:px-2 tw:text-left tw:align-middle tw:font-medium tw:[&:has([role=checkbox])]:pr-0 tw:[&>[role=checkbox]]:translate-y-[2px]",
       className
     )}
     {...props}
@@ -69,6 +75,7 @@ const TableHead = ({ className, ...props }: React.ThHTMLAttributes<HTMLTableCell
  */
 const TableCell = ({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) => (
   <td
+    data-tag="table-cell"
     className={cn(
       "tw:p-2 tw:align-middle tw:[&:has([role=checkbox])]:pr-0 tw:[&>[role=checkbox]]:translate-y-[2px]",
       className
@@ -79,7 +86,8 @@ const TableCell = ({ className, ...props }: React.TdHTMLAttributes<HTMLTableCell
 
 const TableCaption = ({ className, ...props }: React.HTMLAttributes<HTMLTableCaptionElement>) => (
   <caption
-    className={cn("tw:mt-4 tw:text-sm tw:text-muted-foreground tw:caption-bottom", className)}
+    data-tag="table-caption"
+    className={cn("tw:text-muted-foreground tw:mt-4 tw:text-sm", className)}
     {...props}
   />
 )

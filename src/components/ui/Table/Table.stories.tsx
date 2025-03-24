@@ -95,7 +95,7 @@ export const Variant1 = {
   name: 'Default',
   render: () => {
     return (
-      <Table>
+      <Table className="tw:w-[500px]">
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
           <TableRow>
