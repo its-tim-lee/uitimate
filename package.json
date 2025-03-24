@@ -124,5 +124,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "overrides": {
+    "react-is": "^19.0.0-rc-69d4b800-20241021"
   }
 }
