@@ -1,29 +1,27 @@
-
 import { Icon } from "../Icon/Icon"
 import {
   Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
   SidebarInset,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuBadge,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSkeleton,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarProvider,
-  SidebarRail,
-  SidebarSeparator,
-  SidebarTrigger,
+  SidebarLayout,
   useSidebar
+  // SidebarContent,
+  // SidebarFooter,
+  // SidebarGroup,
+  // SidebarGroupAction,
+  // SidebarGroupContent,
+  // SidebarGroupLabel,
+  // SidebarHeader,
+  // SidebarMenu,
+  // SidebarMenuAction,
+  // SidebarMenuBadge,
+  // SidebarMenuButton,
+  // SidebarMenuItem,
+  // SidebarMenuSkeleton,
+  // SidebarMenuSub,
+  // SidebarMenuSubButton,
+  // SidebarMenuSubItem,
+  // SidebarSeparator,
+
 } from "./Sidebar.tsx"
 
 import { Calendar, Home, Inbox, MoreHorizontal, Search, Settings, SidebarIcon } from "lucide-react"
@@ -31,6 +29,16 @@ import { Separator } from '@/components/ui/Separator/Separator.tsx';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../DropdownMenu/DropdownMenu.tsx";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../Collapsible/Collapsible.tsx";
 import { useState } from "react";
+import { Button } from "../Button/Button.tsx";
+import { Cta } from "../Cta/Cta.tsx";
+import { DrawerHeading } from "../Drawer/Drawer.tsx";
+import { useIsMobile } from "~/src/hooks/use-mobile.tsx";
+import { DialogAction, DialogContent } from "../Dialog/Dialog.tsx";
+import { DialogHeading, DialogSubtitle } from "../Dialog/Dialog.tsx";
+import { Dialog, DialogTitle } from "../Dialog/Dialog.tsx";
+import { Skeleton } from "../Skeleton/Skeleton.tsx";
+import { List, ListItem } from "../List/List.tsx";
+import { Heading, HeadingSubtitle, HeadingTitle } from "../Heading/Heading.tsx";
 
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
@@ -87,6 +95,10 @@ export default {
       if (rootElement) {
         rootElement.style.width = '100%';
         rootElement.style.padding = 'unset';
+        rootElement.style.height = '100dvh';
+        rootElement.style.display = 'flex';
+        rootElement.style.justifyContent = 'center';
+        rootElement.style.alignItems = 'center';
       }
       return <Story />;
     },
@@ -94,626 +106,317 @@ export default {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 }
-
-function SidebarVariant1() {
-  return (
-    <Sidebar collapsible="offcanvas" variant="inset" side="left">
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton>
-                  Select Workspace
-                  <Icon icon="lucide:chevron-down" className="tw:ml-auto" />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="tw:w-(--radix-popper-anchor-width)">
-                <DropdownMenuItem>
-                  <span>Acme Inc</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span>Acme Corp.</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
-
-      <SidebarSeparator />
-
-      <SidebarContent className='tw:relative'>
-
-        {data.navMain.map((section) => (
-          <SidebarGroup key={section.title}>
-            <SidebarGroupLabel>{section.title}</SidebarGroupLabel>
-            <SidebarGroupAction title="More!!">
-              <Icon icon="lucide:more-vertical" />
-              <span className="tw:sr-only">More</span>
-            </SidebarGroupAction>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {section.items.map(($i) => (
-                  <SidebarMenuItem key={$i.title}>
-                    <SidebarMenuButton asChild>
-                      <a href={$i.url}>
-                        <Icon icon={$i.icon} />
-                        <span>{$i.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <SidebarMenuAction>
-                          <Icon icon="lucide:chevron-right" />
-                        </SidebarMenuAction>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent side="right" align="start">
-                        <DropdownMenuItem>
-                          <span>Edit Project</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <span>Delete Project</span>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ))}
-      </SidebarContent>
-
-      <SidebarRail />
-
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <Button>
-                <Settings />
-                <span>Settings</span>
-              </Button>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
-    </Sidebar>
-  )
-}
-
-const SidebarVariantMix = () => {
-  return (
-    <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className="tw:text-accent-foreground/0">Favorites</SidebarGroupLabel>
-          <SidebarGroupAction className="tw:group/yo">
-            <Icon icon="lucide:more-vertical" className='tw:group-hover/yo:opacity-100 tw:opacity-0' />
-          </SidebarGroupAction>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton>Home</SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  )
-}
-
-export const VariantMix = {
-  name: 'Mix',
+// - TBD: doc
+//  - Main content scrollable
+//  - default shortcut
+//  - mobile and desktop sidebar
+//    - how they work smoothly in changing the breakpoint
+//    - must provide DrawerHeading
+//    - can provide different style to different breakpoints, just make sure to use Tailwind
+//      - cuz Tailwind's default breakpoint matches to our `useIsMobile`
+// #20250324
+export const DEMO = {
+  name: 'DEMO / Left Sidebar',
   render: () => {
     return (
-      <SidebarProvider>
-        <SidebarVariantMix />
+      <SidebarLayout defaultOpen directions={["left", "bottom"]}>
+        <Sidebar className='tw:p-0 tw:md:p-4'>
+          <Sidebar.Mobile>
+            <div className='tw:pb-4 tw:px-5 tw:overflow-y-scroll'>
+              <DrawerHeading className='tw:text-center'>
+                Mobile Sidebar
+              </DrawerHeading>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
+
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
+
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam.
+
+                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet.
+              </p>
+            </div>
+          </Sidebar.Mobile>
+          <Sidebar.Desktop>
+            <div className="tw:p-4">
+              <h3 className="tw:font-bold">Desktop Sidebar</h3>
+            </div>
+          </Sidebar.Desktop>
+        </Sidebar>
         <SidebarInset>
-          <SidebarTrigger />
+          <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
+            {Array.from({ length: 20 }).map((_, index) => (
+              <Skeleton key={index} className="tw:h-20 tw:w-full" />
+            ))}
+          </div>
+        </SidebarInset >
+      </SidebarLayout >
+    )
+  }
+}
+// - TBD: doc
+//  - Scrollable,
+//  - Different shortcuts
+//  - 2 variants
+//  - watch out how we express right and left sidebar using composition
+export const Scenario2Sidebars = {
+  name: 'Scenario / 2 Sidebars',
+  render: () => {
+    const [leftOpen, setLeftOpen] = useState(true)
+    const [rightOpen, setRightOpen] = useState(true)
+    return (
+      <SidebarLayout
+        variant="floating"
+        open={rightOpen}
+        directions={["right", "right"]}
+        shortcut='ctrl+1, command+1'
+        onOpenChange={setRightOpen}
+      >
+        <SidebarInset>
+          <SidebarLayout
+            variant="inset"
+            open={leftOpen}
+            directions={["left", "left"]}
+            shortcut='ctrl+2, command+2'
+            onOpenChange={setLeftOpen}
+          >
+            <Sidebar
+              className='tw:w-[320px]'
+            >
+              <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Skeleton key={index} className="tw:h-10 tw:w-full" />
+                ))}
+              </div>
+            </Sidebar>
+            <SidebarInset>
+              <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
+                {Array.from({ length: 20 }).map((_, index) => (
+                  <Skeleton key={index} className="tw:h-20 tw:w-full" />
+                ))}
+              </div>
+            </SidebarInset>
+          </SidebarLayout>
         </SidebarInset>
-      </SidebarProvider>
+        <Sidebar className='tw:w-[320px]'>
+          <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
+            {Array.from({ length: 30 }).map((_, index) => (
+              <Skeleton key={index} className="tw:h-10 tw:w-full" />
+            ))}
+          </div>
+        </Sidebar>
+      </SidebarLayout>
+    )
+  }
+}
+// - TBD: doc
+//  - integration with Dialog
+//  - key classes to make this work: overflow-hidden, max-h-[500px]
+export const InWindowSidebar = {
+  name: 'Scenario / In-Window Sidebar',
+  render: () => {
+    const [isOpen, setIsOpen] = useState(false)
+    return (
+      <>
+        <Dialog open={isOpen} onClose={() => setIsOpen(false)} className='tw:overflow-hidden tw:p-0 tw:md:max-h-[500px]'>
+          <SidebarLayout defaultOpen directions={["left"]}>
+            <Sidebar className='tw:p-4'>
+              <List>
+                <ListItem className='tw:p-2 tw:gap-3'>
+                  <Icon icon='lucide:settings' /> General
+                </ListItem>
+                <ListItem className='tw:p-2 tw:gap-3'>
+                  <Icon icon='lucide:bell' /> Notifications
+                </ListItem>
+                <ListItem className='tw:p-2 tw:gap-3'>
+                  <Icon icon='lucide:person-standing' /> Personalization
+                </ListItem>
+              </List>
+            </Sidebar>
+            <SidebarInset className='tw:p-6'>
+              <DialogHeading size="h4">
+                <DialogTitle>Edit profile</DialogTitle>
+                <DialogSubtitle>Make changes to your profile here. Click save when you're done.</DialogSubtitle>
+              </DialogHeading>
+              <br />
+              <div className='tw:overflow-y-scroll tw:space-y-4'>
+                {Array.from({ length: 20 }).map((_, index) => (
+                  <Skeleton key={index} className="tw:h-5 tw:w-full" />
+                ))}
+              </div>
+            </SidebarInset>
+          </SidebarLayout>
+        </Dialog>
+        <Button onClick={() => setIsOpen(true)}>Open</Button>
+      </>
+    )
+
+  }
+}
+
+// - TBD: doc
+//  - Toggle Control
+//  - enableMobileSidebar
+//    - You may provide ur fully customized mobile sidebar with our optional `useIsMobile` hook
+//  - shortcut
+export const ToggleControl = {
+  name: 'API / Toggle Control',
+  render: () => {
+    const [open, setOpen] = useState(true)
+    return (
+      <SidebarLayout
+        enableMobileSidebar={false}
+        open={open}
+        shortcut='ctrl+s, command+s'
+        variant="floating"
+        onOpenChange={setOpen}
+        directions={["left", "bottom"]}
+      >
+        <Sidebar className="tw:w-[200px]" />
+        <SidebarInset>
+          <Cta
+            variant="ghost"
+            shapes={['icon']}
+            size="lg"
+            onClick={() => setOpen(!open)}
+          >
+            <Icon icon='lucide:panel-left' />
+          </Cta>
+        </SidebarInset>
+      </SidebarLayout>
     )
   }
 }
 
-export const Variant1 = {
-  name: 'V1 / Sizable Header',
+
+export const YT = {
+  name: 'Showcase / YT',
   render: () => {
+    const [open, setOpen] = useState(true)
+    const onOpenChange = (open: boolean) => {
+      setOpen(open)
+    }
     return (
-      <SidebarProvider>
-        <Sidebar>
-          <SidebarHeader>Sidebar Header</SidebarHeader>
-          <SidebarSeparator />
-          <SidebarContent>
-            <SidebarGroup>Sidebar Content</SidebarGroup>
-          </SidebarContent>
-        </Sidebar>
-        <SidebarInset>
-          <header className="tw:flex tw:sticky tw:top-0 tw:bg-background tw:h-16 tw:shrink-0 tw:items-center tw:gap-2 tw:border-b tw:px-4">
-            <SidebarTrigger className="tw:-ml-1" />
-            <Separator orientation="vertical" className="tw:mr-2 tw:h-4" />
-            <span>This is some title of the "sizable header"</span>
-          </header>
-          <div className="tw:flex tw:flex-1 tw:flex-col tw:gap-4 tw:p-4">
-            <p>
-              A sizable header is a header that can be resized by the appearance of the sidebar.
-            </p>
-            {Array.from({ length: 24 }).map((_, index) => (
-              <div
-                key={index}
-                className="tw:aspect-video tw:h-12 tw:w-full tw:rounded-lg tw:bg-muted/50"
-              />
-            ))}
-          </div>
-        </SidebarInset>
-      </SidebarProvider>
-    )
-  },
-};
+      <div className='tw:flex tw:w-full tw:h-full'>
+        <List
+          data-toggle={open ? true : undefined}
+          data-tag='sidebar-icon'
+          className='tw:gap-3 tw:shrink-0 tw:h-full tw:hidden tw:sm:block tw:md:data-toggle:hidden'
+        >
+          <ListItem className='tw:p-3 tw:gap-1 tw:flex-col tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>
+            <Icon icon='mdi:home' className='tw:size-5' />
+            Home
+          </ListItem>
+          <ListItem className='tw:p-3 tw:gap-1 tw:flex-col tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>
+            <Icon icon='proicons:youtube-shorts' className='tw:size-5' />
+            Shorts
+          </ListItem>
+        </List>
+        <SidebarLayout open={open} onOpenChange={onOpenChange} directions={["left", "left"]} className="tw:flex-1">
+          <Sidebar className='tw:w-[240px]!'>
+            <List className='tw:p-4! tw:w-full'>
+              <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>
+                <Icon icon='mdi:home' className='tw:size-5' />
+                Home
+              </ListItem>
+              <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>
+                <Icon icon='proicons:youtube-shorts' className='tw:size-5' />
+                Shorts
+              </ListItem>
+            </List>
+          </Sidebar>
+          <SidebarInset>
 
-const UnSizableHeader = () => {
-  const { toggleSidebar } = useSidebar()
-  return (
-    <header className="tw-fle tw:sticky tw:top-0 tw:z-50 tw:w-full tw:items-center tw:border-b tw:bg-background">
-      <div className="tw:flex tw:h-(--header-height) tw:w-full tw:items-center tw:gap-2 tw:px-4">
-        <Button className="tw:h-8 tw:w-8" variant="ghost" mode="icon" onClick={toggleSidebar}>
-          <SidebarIcon />
-        </Button>
-        <Separator orientation="vertical" className="tw:mr-2 tw:h-4" />
-        <span>This is some title of the "unsizable header"</span>
-      </div>
-    </header>
-  )
-}
-
-export const Variant1A = {
-  name: 'V1A / Unsizable Header',
-  render: () => {
-    return (
-      <div className="tw:[--header-height:calc(--spacing(14))]">
-        <SidebarProvider className="tw:flex tw:flex-col">
-          <UnSizableHeader />
-          <div className='tw:flex tw:flex-1'>
-            <Sidebar className="tw:top-(--header-height) tw:h-[calc(100svh-var(--header-height))]!">
-              <SidebarHeader>Sidebar Header</SidebarHeader>
-              <SidebarSeparator />
-              <SidebarContent>
-                <SidebarGroup>Sidebar Content</SidebarGroup>
-              </SidebarContent>
-            </Sidebar>
-            <SidebarInset>
-              <div className="tw:flex tw:flex-1 tw:flex-col tw:gap-4 tw:p-4">
-                <p>
-                  A unsizable header is a header that will not be resized by the appearance of the sidebar.
-                </p>
-                {Array.from({ length: 24 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className="tw:aspect-video tw:h-12 tw:w-full tw:rounded-lg tw:bg-muted/50"
-                  />
-                ))}
-              </div>
-            </SidebarInset>
-          </div>
-
-        </SidebarProvider>
+          </SidebarInset>
+        </SidebarLayout>
       </div>
     )
-  },
+  }
 }
 
-const sidebarVariant2Data = [
-  {
-    title: "Getting Started",
-    url: "#",
-    items: [
-      {
-        title: "Installation",
-        url: "#",
-      },
-      {
-        title: "Project Structure",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "Building Your Application",
-    url: "#",
-    items: [
-      {
-        title: "Routing",
-        url: "#",
-      },
-      {
-        title: "Data Fetching",
-        url: "#",
-        isActive: true,
-      }
-    ],
-  },
-]
-
-const SidebarVariant2 = () => {
-  return (
-    <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarMenu>
-            {sidebarVariant2Data.map((item) => (
-              <DropdownMenu key={item.title}>
-                <SidebarMenuItem>
-                  <SidebarMenuButton className="tw-data-[state=open]:tw-bg-sidebar-accent tw-data-[state=open]:tw-text-sidebar-accent-foreground tw:group/menu-button">
-                    {/* <Icon icon="lucide:more-vertical" /> */}
-                    {item.title} <DropdownMenuTrigger asChild><Icon icon="lucide:more-vertical" className="tw:ml-auto tw:invisible tw:group-data-[state=open]:tw-rotate-90 tw:group-hover/menu-button:visible" /></DropdownMenuTrigger>
-                  </SidebarMenuButton>
-                  {item.items?.length ? (
-                    <DropdownMenuContent side="right" align="start" className="tw:min-w-56 tw:rounded-lg">
-                      {item.items.map((item) => (
-                        <DropdownMenuItem asChild key={item.title}>
-                          <a href={item.url}>{item.title}</a>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  ) : null}
-                </SidebarMenuItem>
-              </DropdownMenu>
-            ))}
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  )
-}
-/**
- * This shows case a way to implement submenu without using sidebar's built-in submenu components like `SidebarMenuSub`
- */
-export const Variant2 = {
-  name: 'V2 / Submenu: SidebarGroupx1 +Dropdown',
+export const ChatGPT = {
+  name: 'Showcase / GPT Sidebar',
   render: () => {
+    const [open, setOpen] = useState(true)
     return (
-      <SidebarProvider>
-        <SidebarVariant2 />
-        <SidebarInset>
-          <main><SidebarTrigger /></main>
-        </SidebarInset>
-      </SidebarProvider>
-    )
-  },
-};
-
-const SidebarVariant3 = () => {
-  return (
-    <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarMenu>
-            {sidebarVariant3Data.map((item, index) => (
-              <Collapsible
-                key={item.title}
-                defaultOpen={index === 1}
-                className="tw:group/collapsible"
+      <SidebarLayout open={open} onOpenChange={setOpen} directions={["left", "left"]}>
+        <Sidebar className='tw:w-[260px] tw:p-2'>
+          <div className='tw:w-full tw:flex tw:flex-col tw:h-full'>
+            <div className='tw:flex tw:justify-between tw:items-center'>
+              <Cta
+                variant="ghost"
+                shapes={['icon']}
+                size="lg"
+                onClick={() => setOpen(!open)}
               >
-                <SidebarMenuItem>
-                  <CollapsibleTrigger asChild>
-                    <SidebarMenuButton>
-                      {item.title}{" "}
-                      <Icon icon="lucide:plus" className="tw:ml-auto tw:group-data-[state=open]/collapsible:hidden" />
-                      <Icon icon="lucide:minus" className="tw:ml-auto tw:group-data-[state=closed]/collapsible:hidden" />
-                    </SidebarMenuButton>
-                  </CollapsibleTrigger>
-                  {item.items?.length ? (
-                    <CollapsibleContent>
-                      <SidebarMenuSub>
-                        {item.items.map(($i) => (
-                          <SidebarMenuSubItem key={$i.title}>
-                            <SidebarMenuSubButton
-                              asChild
-                              isActive={$i.isActive}
-                            >
-                              <a href={$i.url}>{$i.title}</a>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  ) : null}
-                </SidebarMenuItem>
-              </Collapsible>
-            ))}
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  )
+                <Icon icon='lucide:panel-left' />
+              </Cta>
+              <div>
+                <Cta
+                  variant="ghost"
+                  shapes={['icon']}
+                  size="lg"
+                >
+                  <Icon icon='lucide:search' />
+                </Cta>
+                <Cta
+                  variant="ghost"
+                  shapes={['icon']}
+                  size="lg"
+                >
+                  <Icon icon='lucide:edit' />
+                </Cta>
+              </div>
+            </div>
+
+            <List className='tw:mt-6'>
+              <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>
+                <Icon icon='hugeicons:chat-gpt' className='tw:size-5' />
+                ChatGPT
+              </ListItem>
+            </List>
+
+            <List className='tw:mt-6'>
+              <ListItem className='tw:text-muted-foreground tw:font-bold tw:p-3'>
+                Projects
+              </ListItem>
+              <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>
+                <Icon icon='mdi:folder-plus-outline' className='tw:size-5' />
+                New project
+              </ListItem>
+            </List>
+            <List className='tw:mt-6'>
+              <ListItem className='tw:text-muted-foreground tw:font-bold tw:p-3'>
+                Today
+              </ListItem>
+              <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer tw:overflow-hidden tw:whitespace-nowrap'>
+                CCP Taiwan Threat
+              </ListItem>
+            </List>
+            <div className='tw:p-3 tw:mt-auto tw:flex tw:items-center tw:gap-3'>
+              <Icon icon='hugeicons:chat-gpt' className='tw:size-7' />
+              <Heading size="h5" className='tw:mb-0'>
+                <HeadingTitle>View plans</HeadingTitle>
+                <HeadingSubtitle className='tw:whitespace-nowrap'>Unlimited access, team....</HeadingSubtitle>
+              </Heading>
+            </div>
+          </div>
+        </Sidebar>
+        <SidebarInset className='tw:flex tw:flex-col tw:p-2'>
+          {!open && (
+            <Cta
+              variant="ghost"
+              shapes={['icon']}
+              size="lg"
+              onClick={() => setOpen(!open)}
+            >
+              <Icon icon='lucide:panel-left' />
+            </Cta>
+          )}
+          <h1 className='tw:text-2xl tw:font-extrabold tw:flex-1 tw:flex tw:items-center tw:justify-center'>What can i help with?</h1>
+        </SidebarInset>
+      </SidebarLayout>
+    )
+  }
 }
-
-const sidebarVariant3Data = [
-  {
-    title: "Getting Started",
-    url: "#",
-    items: [
-      {
-        title: "Installation",
-        url: "#",
-      },
-      {
-        title: "Project Structure",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "Building Your Application",
-    url: "#",
-    items: [
-      {
-        title: "Routing",
-        url: "#",
-      },
-      {
-        title: "Data Fetching",
-        url: "#",
-        isActive: true,
-      },
-      {
-        title: "Rendering",
-        url: "#",
-      },
-      {
-        title: "Caching",
-        url: "#",
-      },
-      {
-        title: "Styling",
-        url: "#",
-      },
-      {
-        title: "Optimizing",
-        url: "#",
-      },
-      {
-        title: "Configuring",
-        url: "#",
-      },
-      {
-        title: "Testing",
-        url: "#",
-      },
-      {
-        title: "Authentication",
-        url: "#",
-      },
-      {
-        title: "Deploying",
-        url: "#",
-      },
-      {
-        title: "Upgrading",
-        url: "#",
-      },
-      {
-        title: "Examples",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "API Reference",
-    url: "#",
-    items: [
-      {
-        title: "Components",
-        url: "#",
-      },
-      {
-        title: "File Conventions",
-        url: "#",
-      },
-      {
-        title: "Functions",
-        url: "#",
-      },
-      {
-        title: "next.config.js Options",
-        url: "#",
-      },
-      {
-        title: "CLI",
-        url: "#",
-      },
-      {
-        title: "Edge Runtime",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "Architecture",
-    url: "#",
-    items: [
-      {
-        title: "Accessibility",
-        url: "#",
-      },
-      {
-        title: "Fast Refresh",
-        url: "#",
-      },
-      {
-        title: "Next.js Compiler",
-        url: "#",
-      },
-      {
-        title: "Supported Browsers",
-        url: "#",
-      },
-      {
-        title: "Turbopack",
-        url: "#",
-      },
-    ],
-  },
-  {
-    title: "Community",
-    url: "#",
-    items: [
-      {
-        title: "Contribution Guide",
-        url: "#",
-      },
-    ],
-  },
-]
-
-export const Variant3 = {
-  name: 'V3 / Submenu: SidebarGroup x 1 + Collapsible + SidebarMenuSub',
-  render: () => {
-    return (
-      <SidebarProvider>
-        <SidebarVariant3 />
-        <SidebarInset><SidebarTrigger /></SidebarInset>
-      </SidebarProvider>
-    )
-  },
-};
-
-const SidebarVariant4 = () => {
-  return (
-    <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarMenu>
-            {sidebarVariant3Data.map((item) => (
-              <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild>
-                  <a href={item.url} className="tw:font-medium">{item.title}</a>
-                </SidebarMenuButton>
-                {item.items?.length ? (
-                  <SidebarMenuSub>
-                    {item.items.map((item) => (
-                      <SidebarMenuSubItem key={item.title}>
-                        <SidebarMenuSubButton asChild isActive={item.isActive}>
-                          <a href={item.url}>{item.title}</a>
-                        </SidebarMenuSubButton>
-                      </SidebarMenuSubItem>
-                    ))}
-                  </SidebarMenuSub>
-                ) : null}
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  )
-}
-
-export const Variant4 = {
-  name: 'V4 / Submenu: SidebarGroup x 1 + SidebarMenuSub',
-  render: () => {
-    return (
-      <SidebarProvider>
-        <SidebarVariant4 />
-        <SidebarInset><SidebarTrigger /></SidebarInset>
-      </SidebarProvider>
-    )
-  },
-};
-
-const SidebarVariant5 = () => {
-  const [activeItem, setActiveItem] = useState('');
-  return (
-    <Sidebar>
-      <SidebarContent>
-        {sidebarVariant3Data.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {item.items.map(($i) => (
-                  <SidebarMenuItem key={$i.title}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={$i.title === activeItem}
-                      onClick={() => setActiveItem($i.title)}
-                    >
-                      <a href={$i.url} className="tw:font-medium">{$i.title}</a>
-                    </SidebarMenuButton>
-                    <SidebarMenuAction className="tw:opacity-0 tw:peer-data-[active=true]/menu-button:opacity-100">
-                      <Icon icon="lucide:chevron-right" />
-                    </SidebarMenuAction>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ))}
-      </SidebarContent>
-    </Sidebar>
-  );
-};
-
-export const Variant5 = {
-  name: 'V5 / Submenu: many SidebarGroup + SidebarGroupLabel',
-  render: () => {
-    return (
-      <SidebarProvider>
-        <SidebarVariant5 />
-        <SidebarInset><SidebarTrigger /></SidebarInset>
-      </SidebarProvider>
-    )
-  },
-};
-
-const SidebarVariant6 = () => {
-  return (
-    <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton>1st</SidebarMenuButton>
-              <SidebarMenuBadge>Badge</SidebarMenuBadge>
-              <SidebarMenuSub>
-                <SidebarMenuSubItem>
-                  <SidebarMenuSubButton>2nd</SidebarMenuSubButton>
-                </SidebarMenuSubItem>
-                <SidebarMenuSubItem>
-                  <SidebarMenuSub>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton>3rd</SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSkeleton showIcon />
-                    </SidebarMenuSubItem>
-                  </SidebarMenuSub>
-                </SidebarMenuSubItem>
-              </SidebarMenuSub>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
-  )
-}
-
-export const Variant6 = {
-  name: 'V6 / Nested Menus',
-  render: () => {
-    return (
-      <SidebarProvider>
-        <SidebarVariant6 />
-        <SidebarInset><SidebarTrigger /></SidebarInset>
-      </SidebarProvider>
-    )
-  },
-};

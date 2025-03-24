@@ -52,12 +52,7 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
 
   --color-sidebar: var(--sidebar-background);
   --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -174,12 +169,7 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
     --radius: 0.5rem;
     --sidebar-background: var(--tw-color-zinc-50);
     --sidebar-foreground: var(--tw-color-zinc-600);
-    --sidebar-primary: var(--tw-color-zinc-900);
-    --sidebar-primary-foreground: var(--tw-color-zinc-50);
-    --sidebar-accent: var(--tw-color-zinc-100);
-    --sidebar-accent-foreground: var(--tw-color-zinc-900);
     --sidebar-border: var(--tw-color-zinc-200);
-    --sidebar-ring: var(--tw-color-blue-500);
   }
 
   /* FIXME: should use complicated class name, not just .dark? */
@@ -213,12 +203,7 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
     --chart-5: hsl(340 75% 55%);
     --sidebar-background: var(--tw-color-zinc-900);
     --sidebar-foreground: var(--tw-color-zinc-100);
-    --sidebar-primary: var(--tw-color-blue-600);
-    --sidebar-primary-foreground: var(--tw-color-white);
-    --sidebar-accent: var(--tw-color-zinc-800);
-    --sidebar-accent-foreground: var(--tw-color-zinc-100);
     --sidebar-border: var(--tw-color-zinc-800);
-    --sidebar-ring: var(--tw-color-blue-500);
   }
 
   * {

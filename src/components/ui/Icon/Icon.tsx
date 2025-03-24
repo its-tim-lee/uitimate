@@ -18,7 +18,9 @@ import { Icon as Root, type IconProps } from "@iconify/react";
  *
  * TBD: doc: the rendered result is just a svg
  */
-const Icon = (props: IconProps) => <Root data-icon {...props} />
+// Wrapping svg into span is considered a best practice, cuz there're many issues of using
+// a svg directly. Eg., inside a flex container, the svg dimension will be a problem.
+const Icon = (props: IconProps) => <span><Root data-icon {...props} /></span>
 Icon.displayName = "Icon";
 export {
   Icon as Icon,

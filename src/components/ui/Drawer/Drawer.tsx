@@ -64,7 +64,7 @@ const DrawerContent = ({
       className={content({ className })}
       {...props}
     >
-      <div className={handle()} />
+      <div data-tag='handle' className={handle()} />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>
@@ -73,7 +73,6 @@ const DrawerContent = ({
 // TBD: doc: describe why not just allow user to use Heading directly
 type DrawerHeadingProps = ComponentProps<'div'> & VariantProps<typeof headingVariants>
 const DrawerHeading = ({ size = 'h4', children, className, ...props }: DrawerHeadingProps) => {
-
   let content = children
   if (Children.count(children) === 1) {
     if (
