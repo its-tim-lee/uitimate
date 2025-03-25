@@ -13,7 +13,7 @@ const accordionVariants = tv({
     trigger: [
       "tw:flex tw:flex-1 tw:items-center tw:justify-between tw:py-4 tw:text-sm tw:font-medium tw:transition-all tw:text-left",
       "tw:hover:underline",
-      "tw:[&[data-state=open]>[data-icon]]:rotate-180"
+      "tw:[&[data-state=open]_[data-icon]]:rotate-180"
     ],
     content: [
       "tw:overflow-hidden tw:text-sm",

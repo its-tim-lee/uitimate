@@ -11,7 +11,7 @@ const variants = tv({
     link: "tw:transition-colors tw:hover:text-foreground",
     final: "tw:font-normal tw:text-foreground",
     ellipsis: "tw:flex tw:h-4 tw:w-4 tw:items-center tw:justify-center",
-    separator: "tw:[&>[data-icon]]:w-3.5 tw:[&>[data-icon]]:h-3.5"
+    separator: "tw:[&_[data-icon]]:w-3.5 tw:[&_[data-icon]]:h-3.5"
   }
 })
 
