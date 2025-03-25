@@ -1,5 +1,15 @@
 @import 'tailwindcss' prefix(tw);
 /**
+ * This is literally for better code organization. But there's a concept worth to be mentioned:
+ * Baiscally, it's about how Tailwind v4 deals with traditional style scoping (eg., CSS modules, or the local style provided by frameworks like Vue)
+ * In fact, Tailwind does offer an API `@reference` to reference the global style to the local CSS,
+ * and by doing so, you're be able to do whatever you like as you did in the global CSS without worrying about Tailwind get loaded more than once.
+ *
+ * But importing that local CSS into the local component can lead to performance issue (see https://bitl.to/4Emz),
+ * and that's why we instead import them into the global.
+ */
+@import './components/ui/Sidebar/index.css';
+/**
 FIXME: currently, prefix with animation will not work. It has been fixed but hasn't released yet: https://github.com/tailwindlabs/tailwindcss/issues/16829
 */
 @plugin 'tailwindcss-animate';
@@ -49,10 +59,6 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-
-  --color-sidebar: var(--sidebar-background);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-border: var(--sidebar-border);
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -143,9 +149,6 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
     --chart-4: hsl(43 74% 66%);
     --chart-5: hsl(27 87% 67%);
     --radius: 0.5rem;
-    --sidebar-background: var(--tw-color-zinc-50);
-    --sidebar-foreground: var(--tw-color-zinc-600);
-    --sidebar-border: var(--tw-color-zinc-200);
   }
 
   /* FIXME: should use complicated class name, not just .dark? */
@@ -177,9 +180,6 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
     --chart-3: hsl(30 80% 55%);
     --chart-4: hsl(280 65% 60%);
     --chart-5: hsl(340 75% 55%);
-    --sidebar-background: var(--tw-color-zinc-900);
-    --sidebar-foreground: var(--tw-color-zinc-100);
-    --sidebar-border: var(--tw-color-zinc-800);
   }
 
   * {
