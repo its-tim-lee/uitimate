@@ -2,6 +2,7 @@ import { type ComponentProps } from "react"
 import { Root, Item, Trigger, Content, Header } from "@radix-ui/react-accordion"
 import { tv } from "tailwind-variants"
 import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import './index.css'
 
 const accordionVariants = tv({
   slots: {
@@ -16,7 +17,7 @@ const accordionVariants = tv({
     ],
     content: [
       "tw:overflow-hidden tw:text-sm",
-      "tw:data-[state=closed]:animate-accordion-up tw:data-[state=open]:animate-accordion-down",
+      "tw:data-[state=closed]:[animation:var(--animate-accordion-up)] tw:data-[state=open]:[animation:var(--animate-accordion-down)]",
     ],
     contentInner: [
       "tw:pb-4 tw:pt-0"
