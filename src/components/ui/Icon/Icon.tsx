@@ -1,4 +1,5 @@
-import { Icon as Root, type IconProps } from "@iconify/react";
+import { Icon as Root, type IconProps as _IconProps } from "@iconify/react";
+import { AccessibleIcon } from "@radix-ui/react-accessible-icon";
 /**
  * TBD: doc:
  * In case one is wondering why an icon need to support SSR, below is just one of many cases:
@@ -20,9 +21,18 @@ import { Icon as Root, type IconProps } from "@iconify/react";
  */
 // Wrapping svg into span is considered a best practice, cuz there're many issues of using
 // a svg directly. Eg., inside a flex container, the svg dimension will be a problem.
-const Icon = (props: IconProps) => <span><Root data-icon {...props} /></span>
+type IconProps = _IconProps & { label?: string }
+const Icon = ({ label, ...props }: IconProps) =>
+(
+  <AccessibleIcon label={label || ''}>
+    <span><Root data-icon {...props} /></span>
+  </AccessibleIcon>
+)
+
 Icon.displayName = "Icon";
+
 export {
   Icon as Icon,
+  AccessibleIcon,
   type IconProps,
 }
