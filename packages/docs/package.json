@@ -1,5 +1,5 @@
 {
-  "name": "packages-docs",
+  "name": "docs",
   "private": true,
   "sideEffects": false,
   "type": "module",
