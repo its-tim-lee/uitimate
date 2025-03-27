@@ -1,7 +1,7 @@
 {
   "name": "astro-tailwind-react-builder",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "dev": "astro dev",
     "dev:debug": "npx --node-arg=--inspect-brk astro dev",
@@ -89,6 +89,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.28.1",
     "@chromatic-com/storybook": "^3.2.3",
     "@iconify/icons-lucide": "^1.2.135",
     "@iconify/react": "^5.0.0",
