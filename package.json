@@ -11,6 +11,7 @@
     "add-component": "npx shadcn@latest add",
     "sb": "storybook dev -p 6006 --loglevel verbose --ci",
     "build-storybook": "storybook build",
+    "cs": "npx @changesets/cli",
     "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
