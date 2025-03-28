@@ -1,7 +1,6 @@
 import { Icon } from "./index.tsx";
 
-// import IconDemo from "../../demo/icon-demo.tsx";
-// import IconSize from "../../demo/icon-size.tsx";
+import IconDemo from "@/demos/icon-demo.tsx";
 import IconSize from "@/demos/icon-size.tsx";
 import { default as githubSVG } from '@iconify/icons-lucide/github';
 const { body: github } = githubSVG as any;// @ts-ignore
@@ -27,21 +26,21 @@ export default {
 
 }
 
-export const DEMO = {
-  name: 'DEMO',
-  render: () => {
-    return (
-      <div>
-        Hello <Icon icon='lucide:github' />
-      </div>
-    )
-  }
-}
-
 // export const DEMO = {
 //   name: 'DEMO',
-//   render: () => IconDemo()
+//   render: () => {
+//     return (
+//       <div>
+//         Hello <Icon icon='lucide:github' />
+//       </div>
+//     )
+//   }
 // }
+
+export const DEMO = {
+  name: 'DEMO',
+  render: () => IconDemo()
+}
 
 export const SIZE = {
   name: 'API / Size',
