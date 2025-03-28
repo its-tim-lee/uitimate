@@ -1,34 +1,34 @@
 import { useTranslation } from "react-i18next"
 import { href, useNavigate } from "react-router"
-import { Icon } from "~/library/icon/Icon"
-import { Link } from "~/library/link"
+import { Icon } from "@/library/icon/Icon"
+import { Link } from "@/library/link"
 
 export default function Route404() {
 	const navigate = useNavigate()
 	const { t } = useTranslation()
 	const to = href("/")
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-blue-950 dark:to-blue-900 dark:text-white flex items-center justify-center p-4">
-			<div className="max-w-2xl w-full text-center">
-				<div className="mb-8 flex justify-center">
-					<Icon name="Ghost" className="h-24 w-24 text-indigo-600 animate-float" />
+		<div className="tw:min-h-screen tw:bg-gradient-to-b tw:from-gray-50 tw:to-gray-100 tw:dark:from-blue-950 tw:dark:to-blue-900 tw:dark:text-white tw:flex tw:items-center tw:justify-center tw:p-4">
+			<div className="tw:max-w-2xl tw:w-full tw:text-center">
+				<div className="tw:mb-8 tw:flex tw:justify-center">
+					<Icon name="Ghost" className="tw:h-24 tw:w-24 tw:text-indigo-600 tw:animate-float" />
 				</div>
 
-				<h1 className="text-6xl font-bold dark:text-white text-gray-900 mb-4">404</h1>
-				<h2 className="text-3xl font-semibold dark:text-white text-gray-800 mb-4">{t("error.404.title")}</h2>
-				<p className="text-gray-600 dark:text-white mb-8 text-lg">{t("error.404.description")}</p>
+				<h1 className="tw:text-6xl tw:font-bold tw:dark:text-white tw:text-gray-900 tw:mb-4">404</h1>
+				<h2 className="tw:text-3xl tw:font-semibold tw:dark:text-white tw:text-gray-800 tw:mb-4">{t("error.404.title")}</h2>
+				<p className="tw:text-gray-600 tw:dark:text-white tw:mb-8 tw:text-lg">{t("error.404.description")}</p>
 
-				<div className="flex flex-col sm:flex-row gap-4 justify-center">
+				<div className="tw:flex tw:flex-col tw:sm:flex-row tw:gap-4 tw:justify-center">
 					<button
 						type="button"
 						onClick={() => navigate(-1)}
-						className="inline-flex cursor-pointer items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 transition-colors duration-300"
+						className="tw:inline-flex tw:cursor-pointer tw:items-center tw:justify-center tw:px-6 tw:py-3 tw:border tw:border-transparent tw:text-base tw:font-medium tw:rounded-md tw:text-indigo-700 tw:bg-indigo-100 tw:hover:bg-indigo-200 tw:transition-colors tw:duration-300"
 					>
 						{t("navigation.back")}
 					</button>
 					<Link
 						to={to}
-						className="inline-flex cursor-pointer items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-300"
+						className="tw:inline-flex tw:cursor-pointer tw:items-center tw:justify-center tw:px-6 tw:py-3 tw:border tw:border-transparent tw:text-base tw:font-medium tw:rounded-md tw:text-white tw:bg-indigo-600 tw:hover:bg-indigo-700 tw:transition-colors tw:duration-300"
 					>
 						{t("navigation.home")}
 					</Link>

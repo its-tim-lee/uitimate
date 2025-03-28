@@ -1,5 +1,5 @@
 import { generateSitemapIndex } from "@forge42/seo-tools/sitemap"
-import { createDomain } from "~/utils/http"
+import { createDomain } from "@/utils/http"
 import type { Route } from "./+types/sitemap-index[.]xml"
 
 export const loader = async ({ request }: Route.LoaderArgs) => {

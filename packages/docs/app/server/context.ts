@@ -1,6 +1,6 @@
 import type { Context } from "hono"
 import { i18next } from "remix-hono/i18next"
-import { getClientEnv, getServerEnv } from "~/env.server"
+import { getClientEnv, getServerEnv } from "@/env.server"
 
 export const getLoadContext = async (c: Context) => {
 	// get the locale from the context
@@ -21,11 +21,11 @@ export const getLoadContext = async (c: Context) => {
 	}
 }
 
-interface LoadContext extends Awaited<ReturnType<typeof getLoadContext>> {}
+interface LoadContext extends Awaited<ReturnType<typeof getLoadContext>> { }
 
 /**
  * Declare our loaders and actions context type
  */
 declare module "react-router" {
-	interface AppLoadContext extends Omit<LoadContext, "body"> {}
+	interface AppLoadContext extends Omit<LoadContext, "body"> { }
 }

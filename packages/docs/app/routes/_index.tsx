@@ -11,7 +11,8 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const { t } = useTranslation();
   return (
-    <div>
+    // <div className="text-red-500">
+    <div className="tw:text-red-500">
       <h1>{t("hi")}</h1>
     </div>
   );

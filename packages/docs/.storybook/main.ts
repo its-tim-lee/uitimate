@@ -1,7 +1,7 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../app/**/*.mdx", "../app/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
@@ -16,6 +16,9 @@ const config: StorybookConfig = {
     builder: {
       name: '@storybook/builder-vite', // this enables us to configure vite manually
       options: {
+        // this starts from the project root,
+        // in monorepo, if the storybook setup is in the package,
+        // then still, below path is from the package root instead of workspace root
         viteConfigPath: './.storybook/vite.config.ts'
       }
     }

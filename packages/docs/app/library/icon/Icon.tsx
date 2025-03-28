@@ -1,5 +1,5 @@
 import type { SVGProps } from "react"
-import { cn } from "~/utils/css"
+import { cn } from "@/utils/css"
 import spriteHref from "./icons/icon.svg"
 import type { IconName } from "./icons/types"
 
@@ -26,7 +26,7 @@ export interface IconProps extends SVGProps<SVGSVGElement> {
  */
 export const Icon = ({ name, testId, className, size = "md", ...props }: IconProps) => {
 	const iconSize = IconSize[size]
-	const iconClasses = cn("inline-block flex-shrink-0", className)
+	const iconClasses = cn("tw:inline-block tw:flex-shrink-0", className)
 	return (
 		<svg
 			className={iconClasses}

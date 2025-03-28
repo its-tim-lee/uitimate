@@ -1,6 +1,6 @@
 import { cacheHeader } from "pretty-cache-header"
 import { z } from "zod"
-import { resources } from "~/localization/resource"
+import { resources } from "@/localization/resource"
 import type { Route } from "./+types/resource.locales"
 
 export async function loader({ request, context }: Route.LoaderArgs) {

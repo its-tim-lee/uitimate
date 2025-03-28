@@ -1,23 +1,45 @@
 {
-  "name": "@itistimlee/npm-monorepo",
-  "version": "1.0.0",
-  "main": "index.js",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "private": true,
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.6",
+    "@storybook/addon-docs": "^8.6.10",
+    "@storybook/addon-essentials": "^8.6.10",
+    "@storybook/addon-interactions": "^8.6.10",
+    "@storybook/addon-onboarding": "^8.6.10",
+    "@storybook/addon-themes": "^8.6.10",
+    "@storybook/blocks": "^8.6.10",
+    "@storybook/builder-vite": "^8.6.10",
+    "@storybook/react": "^8.6.10",
+    "@storybook/react-vite": "^8.6.10",
+    "@storybook/test": "^8.6.10",
+    "@tailwindcss/vite": "^4.0.17",
+    "autoprefixer": "^10.4.21",
     "cz-conventional-changelog": "^3.3.0",
-    "cz-emoji-conventional": "^1.2.1"
+    "cz-emoji-conventional": "^1.2.1",
+    "storybook": "^8.6.10",
+    "storybook-addon-source-link": "^0.2.1",
+    "storybook-dark-mode": "^4.0.2",
+    "tailwindcss": "^4.0.17",
+    "tailwindcss-animate": "^1.0.7"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.2",
+    "tailwind-variants": "^1.0.0",
+    "@iconify/icons-lucide": "^1.2.135",
+    "@iconify/react": "^5.2.0",
+    "@radix-ui/react-accessible-icon": "^1.1.2",
+    "@radix-ui/react-avatar": "^1.1.3"
   }
 }
