@@ -1,3 +1,6 @@
 {
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@changesets/cli": "2.28.1"
+  }
 }
