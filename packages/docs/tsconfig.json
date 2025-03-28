@@ -9,6 +9,7 @@
   ],
   "compilerOptions": {
     "types": [
+      "node",
       "vitest/globals",
       "@vitest/browser/providers/playwright"
     ],
@@ -18,18 +19,26 @@
       "ES2023"
     ],
     "isolatedModules": true,
+    "downlevelIteration": true,
     "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "incremental": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "jsx": "react-jsx",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "target": "ES2023",
     "strict": true,
+    "checkJs": true,
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
+    "noUncheckedSideEffectImports": true,
     "paths": {
       "@/*": [
         "./app/*"
