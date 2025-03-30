@@ -27,7 +27,6 @@
     "resolveJsonModule": true,
     "noUncheckedSideEffectImports": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
     "types": [
       "node"
     ]
