@@ -1,5 +1,5 @@
 packages:
-  - "packages/*"
+  - "packages/**"
 catalog:
   react: 19.0.0 # without this, it'd be stupid to install react in all our tons of packages
   "@types/react": 19.0.12
