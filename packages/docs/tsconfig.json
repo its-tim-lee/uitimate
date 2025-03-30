@@ -3,21 +3,38 @@
     "env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/**/.server/**/*.ts",
+    "**/.server/**/*",
+    "**/.client/**/*",
     ".react-router/types/**/*",
     ".storybook/**/*"
   ],
   "compilerOptions": {
-    "types": [
-      "node",
-      "vitest/globals",
-      "@vitest/browser/providers/playwright"
-    ],
     "lib": [
       "DOM",
       "DOM.Iterable",
       "ES2023"
     ],
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    "rootDirs": [
+      ".",
+      "./.react-router/types"
+    ],
+    "plugins": [
+      {
+        "name": "@react-router/dev"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./app/*"
+      ],
+      "~/*": [
+        "./*"
+      ]
+    },
     "isolatedModules": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
@@ -39,24 +56,6 @@
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
     "noUncheckedSideEffectImports": true,
-    "paths": {
-      "@/*": [
-        "./app/*"
-      ],
-      "~/*": [
-        "./*"
-      ]
-    },
-    "rootDirs": [
-      ".",
-      "./.react-router/types"
-    ],
-    "plugins": [
-      {
-        "name": "@react-router/dev"
-      }
-    ],
-    // Vite takes care of building everything, not tsc.
     "noEmit": true
   }
 }

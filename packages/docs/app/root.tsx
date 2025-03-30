@@ -1,71 +1,101 @@
-import { useTranslation } from "react-i18next"
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, isRouteErrorResponse, useRouteError } from "react-router"
-import type { LinksFunction } from "react-router"
-import { useChangeLanguage } from "remix-i18next/react"
-import type { Route } from "./+types/root"
-import { LanguageSwitcher } from "./library/language-switcher"
-import { ClientHintCheck, getHints } from "./services/client-hints"
-import tailwindcss from "./style/index.css?url"
-
-export async function loader({ context, request }: Route.LoaderArgs) {
-  const { lang, clientEnv } = context
-  const hints = getHints(request)
-  return { lang, clientEnv, hints }
+/**
+ * This file is actually called "root route"
+ */
+import {
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useNavigation,
+} from "react-router";
+import pkg from "../package.json";
+import type { Route } from "./+types/root";
+import cssHref from "./style/index.css?url";
+/**
+ * This will always be called on the server even if no ssr (ie., in no-ssr case, server = build time server)
+ */
+export async function loader() {
+  console.log("🔥 Root loader");
+  return {
+    version: pkg.version,
+  }
 }
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: tailwindcss }]
+export const links: Route.LinksFunction = () => [
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  {
+    rel: "preconnect",
+    href: "https://fonts.gstatic.com",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+  },
+  { rel: "stylesheet", href: cssHref },
+];
 
-export const handle = {
-  i18n: "common",
-}
-
-export default function App({ loaderData }: Route.ComponentProps) {
-  const { lang, clientEnv } = loaderData
-  useChangeLanguage(lang)
+// called "app shell"
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <Outlet />
-      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: We set the window.env variable to the client env */}
-      <script dangerouslySetInnerHTML={{ __html: `window.env = ${JSON.stringify(clientEnv)}` }} />
-    </>
-  )
-}
-
-export const Layout = ({ children }: { children: React.ReactNode }) => {
-  const { i18n } = useTranslation()
-  return (
-    <html className="overflow-y-auto overflow-x-hidden" lang={i18n.language} dir={i18n.dir()}>
+    <html lang="en">
       <head>
-        <ClientHintCheck />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="w-full h-full">
-        <LanguageSwitcher />
+      <body>
+        {/* children will be the root Component, ErrorBoundary, or HydrateFallback */}
         {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
-  )
+  );
 }
 
-export const ErrorBoundary = () => {
-  const error = useRouteError()
-  const { t } = useTranslation()
+export function HydrateFallback({ loaderData }: Route.ComponentProps) {
+  console.log("🔥 HydrateFallback", loaderData);
+  return <p>Loading...{loaderData.version}</p>;
+}
 
-  const errorStatusCode = isRouteErrorResponse(error) ? error.status : "500"
+
+
+export default function App() {
+  const navigation = useNavigation();
+  const isNavigating = Boolean(navigation.location);
+  console.log("🔥 isNavigating", isNavigating);
+  return <Outlet />;
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let message = "Oops!";
+  let details = "An unexpected error occurred.";
+  let stack: string | undefined;
+
+  if (isRouteErrorResponse(error)) {
+    message = error.status === 404 ? "404" : "Error";
+    details =
+      error.status === 404
+        ? "The requested page could not be found."
+        : error.statusText || details;
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+    stack = error.stack;
+  }
 
   return (
-    <div className="placeholder-index relative h-full min-h-screen w-screen flex items-center bg-gradient-to-b from-gray-50 to-gray-100 dark:from-blue-950 dark:to-blue-900 justify-center dark:bg-white sm:pb-16 sm:pt-8">
-      <div className="relative mx-auto max-w-[90rem] sm:px-6 lg:px-8">
-        <div className="relative  min-h-72 flex flex-col justify-center sm:overflow-hidden sm:rounded-2xl p-1 md:p-4 lg:p-6">
-          <h1 className="text-center w-full text-red-600 text-2xl pb-2">{t(`error.${errorStatusCode}.title`)}</h1>
-          <p className="text-lg dark:text-white text-center w-full">{t(`error.${errorStatusCode}.description`)}</p>
-        </div>
-      </div>
-    </div>
-  )
+    <main className="pt-16 p-4 container mx-auto">
+      <h1>{message}</h1>
+      <p>{details}</p>
+      {stack && (
+        <pre className="w-full p-4 overflow-x-auto">
+          <code>{stack}</code>
+        </pre>
+      )}
+    </main>
+  );
 }
