@@ -1,0 +1,18 @@
+@theme {
+  --color-sidebar: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+}
+
+@layer base {
+  :root {
+    --sidebar-background: var(--tw-color-zinc-50);
+    --sidebar-foreground: var(--tw-color-zinc-600);
+    --sidebar-border: var(--tw-color-zinc-200);
+  }
+  .dark {
+    --sidebar-background: var(--tw-color-zinc-900);
+    --sidebar-foreground: var(--tw-color-zinc-100);
+    --sidebar-border: var(--tw-color-zinc-800);
+  }
+}
