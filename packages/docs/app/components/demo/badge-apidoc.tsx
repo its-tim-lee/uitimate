@@ -1,4 +1,4 @@
-import { Cta } from "../ui/Cta/Cta"
+import { Cta } from "@/components/ui/Cta/Cta.tsx";
 
 export default () => {
   return (

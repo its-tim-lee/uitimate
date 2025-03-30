@@ -1,10 +1,10 @@
-import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbFinal, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "../ui/Breadcrumb/Breadcrumb"
-import { DrawerContent } from "../ui/Drawer/Drawer";
-import { DrawerTrigger } from "../ui/Drawer/Drawer";
-import { Drawer } from "../ui/Drawer/Drawer";
-import { DropdownMenuItem } from "../ui/DropdownMenu/DropdownMenu";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "../ui/DropdownMenu/DropdownMenu";
-import { Icon } from "../ui/Icon/Icon";
+import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbFinal, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "@/components/ui/Breadcrumb/Breadcrumb.tsx";
+import { DrawerContent } from "@/components/ui/Drawer/Drawer.tsx";
+import { DrawerTrigger } from "@/components/ui/Drawer/Drawer.tsx";
+import { Drawer } from "@/components/ui/Drawer/Drawer.tsx";
+import { DropdownMenuItem } from "@/components/ui/DropdownMenu/DropdownMenu.tsx";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/DropdownMenu/DropdownMenu.tsx";
+import { Icon } from "@/components/ui/Icon/Icon.tsx";
 
 export default () => {
   return (

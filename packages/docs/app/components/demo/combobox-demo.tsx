@@ -1,8 +1,7 @@
 import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
 
-import { cn } from "@/lib/utils"
-import { Cta } from "@/components/ui/Cta/Cta"
+import { cn } from "@/helpers/css"
+import { Cta } from "@/components/ui/Cta/Cta.tsx"
 import {
   Command,
   CommandEmpty,
@@ -10,13 +9,13 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/Command/Command"
+} from "@/components/ui/Command/Command.tsx"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/Popover/Popover"
-import { Icon } from "@/components/ui/Icon/Icon"
+} from "@/components/ui/Popover/Popover.tsx"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
 const frameworks = [
   {
     value: "next.js",

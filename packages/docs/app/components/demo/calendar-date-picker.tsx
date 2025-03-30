@@ -7,9 +7,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/Popover/Popover.tsx"
-import { cn } from "@/lib/utils"
-import { Calendar } from "@/components/ui/Calendar/Calendar"
-import { Icon } from "@/components/ui/Icon/Icon"
+
+import { Calendar } from "@/components/ui/Calendar/Calendar.tsx"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { cn } from "@/helpers/css"
 export default () => {
   const [date, setDate] = React.useState<Date>()
   return (

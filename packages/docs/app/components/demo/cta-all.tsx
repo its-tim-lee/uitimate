@@ -1,6 +1,6 @@
-import { Icon } from "~/src/components/ui/Icon/Icon"
-import { Cta } from "~/src/components/ui/Cta/Cta"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar/Avatar"
+import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Cta } from "@/components/ui/Cta/Cta.tsx"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar/Avatar.tsx"
 
 export default () => {
   return (

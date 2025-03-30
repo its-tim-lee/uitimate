@@ -1,5 +1,5 @@
-import { Cta } from "../ui/Cta/Cta";
-import { Icon } from "../ui/Icon/Icon";
+import { Cta } from "@/components/ui/Cta/Cta.tsx";
+import { Icon } from "@/components/ui/Icon/Icon.tsx";
 
 export default () => (
   <div className='tw:flex tw:gap-6'>

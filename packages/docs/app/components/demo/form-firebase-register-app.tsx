@@ -11,7 +11,7 @@ import { Cta } from "@/components/ui/Cta/Cta.tsx"
 import { z } from "zod"
 import { Input } from "@/components/ui/Input/Input.tsx"
 import { useEffect, useRef, useState, useId } from "react";
-import { sleep } from "@/helper/util";
+import { sleep } from "@/helpers/utils";
 import { Icon } from "@/components/ui/Icon/Icon.tsx";
 import { TooltipContent, TooltipTrigger } from "@/components/ui/Tooltip/Tooltip.tsx";
 import { Tooltip } from "@/components/ui/Tooltip/Tooltip.tsx";

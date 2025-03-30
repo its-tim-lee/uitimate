@@ -1,6 +1,6 @@
-import { Checkbox, type CheckedState } from "@/components/ui/Checkbox/Checkbox"
+import { Checkbox, type CheckedState } from "@/components/ui/Checkbox/Checkbox.tsx"
 import { useState } from "react"
-import { Label } from "../ui/Label/Label"
+import { Label } from "@/components/ui/Label/Label.tsx"
 
 export default () => {
   const capabilities = [

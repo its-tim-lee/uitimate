@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { Collapsible, CollapsibleContent } from "@/components/ui/Collapsible/Collapsible"
-import { Cta } from "@/components/ui/Cta/Cta"
-import { Separator } from "../ui/Separator/Separator"
+import { Collapsible, CollapsibleContent } from "@/components/ui/Collapsible/Collapsible.tsx"
+import { Cta } from "@/components/ui/Cta/Cta.tsx"
+import { Separator } from "@/components/ui/Separator/Separator.tsx"
 
 export default () => {
   const [currentStep, setCurrentStep] = useState(1);

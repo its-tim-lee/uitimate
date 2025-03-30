@@ -1,6 +1,6 @@
-import { Icon } from "../ui/Icon/Icon";
+import { Icon } from "@/components/ui/Icon/Icon.tsx";
 import { useState } from "react";
-import { Cta } from "../ui/Cta/Cta";
+import { Cta } from "@/components/ui/Cta/Cta.tsx";
 
 export default () => {
   const [themeIcon, setThemeIcon] = useState<'lucide:sun' | 'lucide:moon'>('lucide:sun');

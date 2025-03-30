@@ -14,7 +14,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "../ui/ContextMenu/ContextMenu.tsx"
+} from "@/components/ui/ContextMenu/ContextMenu.tsx"
 
 
 export default () => {

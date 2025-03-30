@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Icon } from "../ui/Icon/Icon";
-import { Cta } from "../ui/Cta/Cta";
+import { Icon } from "@/components/ui/Icon/Icon.tsx";
+import { Cta } from "@/components/ui/Cta/Cta.tsx";
 
 /**
  * This example shows the several tricks:
