@@ -1,9 +1,6 @@
 # build output
 dist/
 
-# generated types
-.astro/
-
 # dependencies
 node_modules/
 
@@ -24,3 +21,7 @@ pnpm-debug.log*
 .idea/
 
 *storybook.log
+
+# React Router
+.react-router/
+build/
