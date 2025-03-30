@@ -5,10 +5,7 @@ import { useChangeLanguage } from "remix-i18next/react"
 import type { Route } from "./+types/root"
 import { LanguageSwitcher } from "./library/language-switcher"
 import { ClientHintCheck, getHints } from "./services/client-hints"
-import tailwindcss from "./tailwind.css?url" // /app/tailwind.css
-// import tailwindcss from "~/style/index.css?url"
-// import tailwindcss from "./../style/index.css?url" //FIXME: /style/index.css
-
+import tailwindcss from "./style/index.css?url"
 
 export async function loader({ context, request }: Route.LoaderArgs) {
   const { lang, clientEnv } = context
