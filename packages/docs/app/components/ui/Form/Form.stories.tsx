@@ -11,11 +11,11 @@ import { Cta } from "@/components/ui/Cta/Cta.tsx"
 import { z } from "zod"
 import { Input } from "@/components/ui/Input/Input.tsx"
 import { useEffect, useRef, useState, useId } from "react";
-import { sleep } from "@/helper/util";
-import { Icon } from "../Icon/Icon.tsx";
-import { TooltipContent, TooltipTrigger } from "../Tooltip/Tooltip.tsx";
-import { Tooltip } from "../Tooltip/Tooltip.tsx";
-import { Checkbox } from "../Checkbox/Checkbox.tsx";
+import { sleep } from "@/helpers/utils";
+import { Icon } from "@/components/ui/Icon/Icon.tsx";
+import { TooltipContent, TooltipTrigger } from "@/components/ui/Tooltip/Tooltip.tsx";
+import { Tooltip } from "@/components/ui/Tooltip/Tooltip.tsx";
+import { Checkbox } from "@/components/ui/Checkbox/Checkbox.tsx";
 import {
   type FormState,
   type UseFormReturn,
@@ -23,11 +23,11 @@ import {
   useFormContext
 } from "react-hook-form";
 import { nanoid } from "nanoid";
-import { Label } from "../Label/Label.tsx"
+import { Label } from "@/components/ui/Label/Label.tsx"
 import FormFirebaseRegisterApp from "@/components/demo/form-firebase-register-app.tsx";
 import FormRemoveAppFromProject from "@/components/demo/form-remove-app-from-project.tsx"
 import StripeBillingInfo from "@/components/demo/stripe-billing-info.tsx";
-import StripePaymentMethod from "../../demo/stripe-payment-method.tsx"
+import StripePaymentMethod from "@/components/demo/stripe-payment-method.tsx"
 
 export const RegisterApp = {
   name: 'Showcase / Firebase Register App',
