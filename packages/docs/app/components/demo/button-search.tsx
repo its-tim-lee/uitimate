@@ -1,5 +1,5 @@
-import { Icon } from "@/components/ui/icon/index.tsx";
-import { Cta } from "@/components/ui/cta/index.tsx";
+import { Icon } from "../ui/Icon/Icon";
+import { Cta } from "../ui/Cta/Cta";
 export default () => (
   <Cta
     variant='outline'
