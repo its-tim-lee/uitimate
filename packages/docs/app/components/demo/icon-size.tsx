@@ -1,4 +1,4 @@
-import { Icon } from "@/components/ui/icon";
+import { Icon } from "@/components/ui/Icon/Icon";
 export default () => (
   <div className="tw:flex tw:items-center tw:gap-2">
     <Icon icon="ri:openai-fill" />

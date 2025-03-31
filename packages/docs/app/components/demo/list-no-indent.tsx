@@ -57,14 +57,14 @@ export default () => {
       </List>
       <br />
       <List>
-        <ListItem className='tw:text-sm tw:text-muted-foreground tw:p-2'>
-          API Reference
+        <ListItem className='tw:text-sm tw:font-bold tw:p-2'>
+          Get Started
         </ListItem>
-        <ListItem className='tw:hover:bg-muted tw:hover:rounded-md tw:p-2'>
-          Components
+        <ListItem className='tw:text-sm tw:hover:bg-muted tw:hover:rounded-md tw:p-2'>
+          Introduction
         </ListItem>
-        <ListItem className='tw:hover:bg-muted tw:hover:rounded-md tw:p-2'>
-          Hooks
+        <ListItem className='tw:text-sm tw:hover:bg-muted tw:hover:rounded-md tw:p-2'>
+          Setup
         </ListItem>
 
       </List>
@@ -82,8 +82,8 @@ export default () => {
                 {e.dropdown && (
                   <CollapsibleTrigger asChild>
                     <span>
-                      <Icon icon="lucide:plus" className="tw:inline tw:group-data-[state=open]:hidden" />
-                      <Icon icon="lucide:minus" className="tw:inline tw:group-data-[state=closed]:hidden" />
+                      <Icon icon="lucide:chevron-down" className="tw:inline tw:group-data-[state=open]:hidden" />
+                      <Icon icon="lucide:chevron-up" className="tw:inline tw:group-data-[state=closed]:hidden" />
                     </span>
                   </CollapsibleTrigger>
                 )}
@@ -96,10 +96,10 @@ export default () => {
 
                 */}
                 <List className='tw:ml-0 tw:pl-0 tw:mb-4'>
-                  <ListItem className='tw:hover:bg-muted tw:text-muted-foreground tw:hover:rounded-md tw:p-2'>
+                  <ListItem className='tw:hover:bg-muted tw:hover:rounded-md tw:p-2'>
                     Routing
                   </ListItem>
-                  <ListItem className='tw:hover:bg-muted tw:text-muted-foreground tw:hover:rounded-md tw:p-2'>
+                  <ListItem className='tw:hover:bg-muted tw:hover:rounded-md tw:p-2'>
                     Data Fetching
                   </ListItem>
                 </List>

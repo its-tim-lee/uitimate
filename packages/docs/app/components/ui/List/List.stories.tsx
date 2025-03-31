@@ -21,7 +21,7 @@ import { List, ListItem } from "./List.tsx";
 import { HeadingSubtitle } from '@/components/ui/Heading/Heading.tsx';
 import { ListBox, ListBoxItem } from 'react-aria-components';
 import React, { useState } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/css';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../Accordion/Accordion.tsx";
 import { Separator } from '@/components/ui/Separator/Separator';
 import FirebaseSidebarListDemo from '@/components/demo/list-firebase-sidebar-list.tsx';
