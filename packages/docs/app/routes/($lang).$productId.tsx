@@ -5,3 +5,6 @@ export default function Product() {
     This is because when you have an optional dynamic param segment followed by another dynamic param, it cannot reliably be determined if a single-segment URL such as /american-flag-speedo should match /:lang /:productId
   </div>;
 }
+// components/core/form/introudction
+// components/core/form/api
+// components/receipe/xxx-bbb

@@ -36,7 +36,7 @@ export default ({ settings }: VersatileTabsProps) => {
     return settings.reduce((acc, $s) => {
       if ($s.type === 'preview' && $s.demoId) {
         acc[kebabCase(toLower($s.title))] = lazy(() =>
-          import(`@/components/demo/${$s.demoId}.tsx`)
+          import(`./../demo/${$s.demoId}.tsx`)
         );
       }
       return acc;
@@ -50,7 +50,7 @@ export default ({ settings }: VersatileTabsProps) => {
         if (setting.type === 'preview' && setting.demoId) {
           try {
             const tabId = kebabCase(toLower(setting.title));
-            const module = await import(`@/components/demo/${setting.demoId}.tsx?raw`);
+            const module = await import(`./../demo/${setting.demoId}.tsx?raw`);
             codeStrings[tabId] = module.default;
           } catch (error) {
             console.error(`Failed to load demo code for ${setting.demoId}:`, error);

@@ -87,9 +87,7 @@ export default function App() {
   const isNavigating = Boolean(navigation.location);
   console.log("🔥 isNavigating", isNavigating);
   return (
-    <DocPageLayout>
-      <Outlet />
-    </DocPageLayout>
+    <Outlet />
   );
 }
 
