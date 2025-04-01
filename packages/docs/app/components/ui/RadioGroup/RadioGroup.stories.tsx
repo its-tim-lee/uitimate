@@ -1,4 +1,4 @@
-import RadioGroupDemo from "~/src/components/demo/radio-group-demo.tsx"
+import RadioGroupDemo from "#/components/demo/radio-group-demo.tsx"
 
 export default {
   title: 'Primitive/RadioGroup',

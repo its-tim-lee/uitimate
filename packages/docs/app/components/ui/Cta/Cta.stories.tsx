@@ -5,7 +5,7 @@ import ButtonRoundedBadge from "../../demo/cta-rounded-badge.tsx";
 import CtaAll from "../../demo/cta-all";
 import CtaProgress from "../../demo/button-progress.tsx";
 import CtaDial from "../../demo/button-dial.tsx";
-import BadgeAPIDoc from "@/components/demo/badge-apidoc.tsx";
+import BadgeAPIDoc from "#/components/demo/badge-apidoc.tsx";
 import ButtonIncludeBadge from "../../demo/button-include-badge.tsx";
 import ButtonSearch from "../../demo/button-search.tsx";
 import Button3Sizes from "../../demo/button-3sizes.tsx";

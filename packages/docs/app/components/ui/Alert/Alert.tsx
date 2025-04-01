@@ -3,7 +3,7 @@ import {
   tv,
   type VariantProps
 } from 'tailwind-variants'
-import { cn } from "@/helpers/css"
+import { cn } from "#/helpers/css"
 
 export const alertVariants = tv({
   base: [

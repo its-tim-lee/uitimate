@@ -1,4 +1,4 @@
-import Heading6Levels from "@/components/demo/heading-6levels.tsx";
+import Heading6Levels from "#/components/demo/heading-6levels.tsx";
 import HeadingOnlyTitle from "../../demo/heading-only-title.tsx";
 import HeadingShortcutApi from "../../demo/heading-shortcut-api.tsx";
 import HeadingArticle from "../../demo/heading-article.tsx";

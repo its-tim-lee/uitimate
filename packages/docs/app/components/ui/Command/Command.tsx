@@ -2,7 +2,7 @@ import { type ComponentProps } from "react"
 import { type DialogProps } from "@radix-ui/react-dialog"
 import { Command as CommandPrimitive, CommandInput as CommandInputPrimitive, CommandList as CommandListPrimitive, CommandEmpty as CommandEmptyPrimitive, CommandGroup as CommandGroupPrimitive, CommandSeparator as CommandSeparatorPrimitive, CommandItem as CommandItemPrimitive } from "cmdk"
 import { tv } from "tailwind-variants"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 
 const commandVariants = tv({
   slots: {

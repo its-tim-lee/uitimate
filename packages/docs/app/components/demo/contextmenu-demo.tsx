@@ -1,4 +1,4 @@
-import { Icon } from "@/components/ui/Icon/Icon.tsx";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -14,7 +14,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/components/ui/ContextMenu/ContextMenu.tsx"
+} from "#/components/ui/ContextMenu/ContextMenu.tsx"
 
 
 export default () => {

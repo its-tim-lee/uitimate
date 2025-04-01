@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/Button/Button.tsx"
+import { Button } from "#/components/ui/Button/Button.tsx"
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
 
-} from "@/components/ui/Dialog/Dialog.tsx"
+} from "#/components/ui/Dialog/Dialog.tsx"
 import { useState } from "react"
 import { Collection, Header, ListBox, ListBoxItem, ListBoxSection } from "react-aria-components";
 import { Separator } from "../ui/Separator/Separator";

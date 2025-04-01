@@ -1,4 +1,4 @@
-import SliderDemo from "@/components/demo/slider-demo.tsx"
+import SliderDemo from "#/components/demo/slider-demo.tsx"
 export default {
   title: 'Example/Slider',
   parameters: {

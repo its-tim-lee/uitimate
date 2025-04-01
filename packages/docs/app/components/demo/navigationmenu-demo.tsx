@@ -1,6 +1,6 @@
-import { NavigationMenu, NavigationMenuItem, NavigationMenuContent, NavigationMenuLink, NavigationMenuTrigger } from "@/components/ui/NavigationMenu/NavigationMenu.tsx"
-import { Heading, HeadingSubtitle, HeadingTitle } from "@/components/ui/Heading/Heading.tsx"
-import { Cta } from "@/components/ui/Cta/Cta.tsx"
+import { NavigationMenu, NavigationMenuItem, NavigationMenuContent, NavigationMenuLink, NavigationMenuTrigger } from "#/components/ui/NavigationMenu/NavigationMenu.tsx"
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx"
+import { Cta } from "#/components/ui/Cta/Cta.tsx"
 
 export default () => {
   return (

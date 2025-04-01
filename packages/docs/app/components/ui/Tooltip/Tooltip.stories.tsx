@@ -1,5 +1,5 @@
-import TooltipDemo from "@/components/demo/tooltip-demo.tsx";
-import TooltipInstant from "@/components/demo/tooltip-instant.tsx";
+import TooltipDemo from "#/components/demo/tooltip-demo.tsx";
+import TooltipInstant from "#/components/demo/tooltip-instant.tsx";
 
 export default {
   title: 'Example/Tooltip',

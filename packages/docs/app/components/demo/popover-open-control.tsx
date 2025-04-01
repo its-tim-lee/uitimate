@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/Popover/Popover"
-import { Button } from "@/components/ui/Button/Button"
+import { Popover, PopoverContent, PopoverTrigger } from "#/components/ui/Popover/Popover"
+import { Button } from "#/components/ui/Button/Button"
 
 export default () => {
   const [open, setOpen] = useState(false)

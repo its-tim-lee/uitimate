@@ -1,9 +1,9 @@
-import { Collapsible, CollapsibleContent } from "@/components/ui/Collapsible/Collapsible.tsx";
-import { CollapsibleTrigger } from "@/components/ui/Collapsible/Collapsible.tsx";
-import { Cta } from "@/components/ui/Cta/Cta.tsx";
-import { Icon } from "@/components/ui/Icon/Icon.tsx";
-import { List, ListItem } from "@/components/ui/List/List.tsx";
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/Tooltip/Tooltip.tsx';
+import { Collapsible, CollapsibleContent } from "#/components/ui/Collapsible/Collapsible.tsx";
+import { CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible.tsx";
+import { Cta } from "#/components/ui/Cta/Cta.tsx";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
+import { List, ListItem } from "#/components/ui/List/List.tsx";
+import { Tooltip, TooltipContent, TooltipTrigger } from '#/components/ui/Tooltip/Tooltip.tsx';
 import React from 'react';
 
 // Define the file system node type

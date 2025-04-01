@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Cta } from '@/components/ui/Cta/Cta.tsx';
-import { Icon } from '@/components/ui/Icon/Icon.tsx';
+import { Cta } from '#/components/ui/Cta/Cta.tsx';
+import { Icon } from '#/components/ui/Icon/Icon.tsx';
 
 export default () => {
   const [selections, setSelections] = useState<Record<string, boolean>>({

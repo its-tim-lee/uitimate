@@ -1,6 +1,6 @@
-import CalendarDatePicker from "@/components/demo/calendar-date-picker"
-import CalendarDemo from "@/components/demo/calendar-demo"
-import CalendarDateRangePicker from "@/components/demo/calendar-date-range-picker"
+import CalendarDatePicker from "#/components/demo/calendar-date-picker"
+import CalendarDemo from "#/components/demo/calendar-demo"
+import CalendarDateRangePicker from "#/components/demo/calendar-date-range-picker"
 export default {
   title: 'Example/Calendar',
   parameters: {

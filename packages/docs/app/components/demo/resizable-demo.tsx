@@ -2,7 +2,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/components/ui/Resizable/Resizable.tsx"
+} from "#/components/ui/Resizable/Resizable.tsx"
 
 export default () => {
   return (

@@ -1,9 +1,9 @@
-import { Checkbox, type CheckedState } from "@/components/ui/Checkbox/Checkbox.tsx"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
-import { TooltipContent, TooltipTrigger, Tooltip, } from "@/components/ui/Tooltip/Tooltip.tsx"
-import { Flat } from "@/components/preset/flat/index.tsx"
-import { Heading, HeadingSubtitle, HeadingTitle } from "@/components/ui/Heading/Heading.tsx"
-import { Label } from "@/components/ui/Label/Label.tsx"
+import { Checkbox, type CheckedState } from "#/components/ui/Checkbox/Checkbox.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { TooltipContent, TooltipTrigger, Tooltip, } from "#/components/ui/Tooltip/Tooltip.tsx"
+import { Flat } from "#/components/preset/flat/index.tsx"
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx"
+import { Label } from "#/components/ui/Label/Label.tsx"
 import { useState } from "react"
 
 export default () => {

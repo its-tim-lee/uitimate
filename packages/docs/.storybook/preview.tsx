@@ -1,6 +1,6 @@
 // this is the enviornment for the Storybook canvas
 import React from 'react';
-import '~/app/style/index.css';
+import '#/style/index.css';
 import { type Preview } from "@storybook/react";
 import { themes } from '@storybook/theming';
 import { withThemeByClassName } from '@storybook/addon-themes';

@@ -1,4 +1,4 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select/Select.tsx";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "#/components/ui/Select/Select.tsx";
 
 export default () => {
   return (

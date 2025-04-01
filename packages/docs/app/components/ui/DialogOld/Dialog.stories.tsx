@@ -1,5 +1,5 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/DropdownMenu/DropdownMenu";
-import { Button } from "@/components/ui/Button/Button.tsx"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "#/components/ui/DropdownMenu/DropdownMenu";
+import { Button } from "#/components/ui/Button/Button.tsx"
 import {
   Dialog,
   DialogContent,
@@ -15,7 +15,7 @@ import DialogDemo from "../../demo/dialog-demo.tsx";
 import DialogModal from "../../demo/dialog-modal.tsx";
 import { Badge } from "../Badge/Badge.tsx";
 import { Icon } from "../Icon/Icon.tsx";
-import { Separator } from '@/components/ui/Separator/Separator.tsx';
+import { Separator } from '#/components/ui/Separator/Separator.tsx';
 import { Input } from "../Input/Input.tsx";
 import DialogDropdownMenu from "../../demo/dialog-dropdown-menu.tsx";
 

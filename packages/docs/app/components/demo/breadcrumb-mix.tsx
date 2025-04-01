@@ -1,5 +1,5 @@
-import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbFinal, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "@/components/ui/Breadcrumb/Breadcrumb.tsx";
-import { Icon } from "@/components/ui/Icon/Icon.tsx";
+import { Breadcrumb, BreadcrumbEllipsis, BreadcrumbFinal, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "#/components/ui/Breadcrumb/Breadcrumb.tsx";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
 
 export default () => {
   return (

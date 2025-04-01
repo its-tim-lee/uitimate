@@ -1,6 +1,6 @@
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/Carousel/Carousel.tsx"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "#/components/ui/Carousel/Carousel.tsx"
 import Autoplay from 'embla-carousel-autoplay'
-import { Flat } from "@/components/preset/flat/index.tsx"
+import { Flat } from "#/components/preset/flat/index.tsx"
 
 export default () => {
   return (

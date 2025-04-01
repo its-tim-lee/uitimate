@@ -16,7 +16,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/DropdownMenu/DropdownMenu.tsx"
+} from "#/components/ui/DropdownMenu/DropdownMenu.tsx"
 import {
   type ColumnDef,
   flexRender,

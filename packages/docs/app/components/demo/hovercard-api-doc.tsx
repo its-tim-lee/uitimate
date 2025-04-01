@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar/Avatar.tsx";
-import { Button } from "@/components/ui/Button/Button.tsx";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/HoverCard/HoverCard.tsx";
+import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar.tsx";
+import { Button } from "#/components/ui/Button/Button.tsx";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "#/components/ui/HoverCard/HoverCard.tsx";
 import { useRef, useState } from "react";
 import { Badge } from "../ui/Badge/Badge";
 

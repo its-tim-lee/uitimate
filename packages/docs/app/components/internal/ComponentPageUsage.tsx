@@ -1,7 +1,7 @@
-import { CodeBlock } from "@/components/internal/CodeBlock.tsx";
-import { Button } from "@/components/ui/Button/Button.tsx";
+import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
+import { Button } from "#/components/ui/Button/Button.tsx";
 import { memo, useState, lazy, useMemo, Suspense, type ComponentProps, useEffect } from "react";
-import { Checkbox, type CheckedState } from '@/components/ui/Checkbox/Checkbox.tsx';
+import { Checkbox, type CheckedState } from '#/components/ui/Checkbox/Checkbox.tsx';
 import {
   Dialog,
   DialogContent,
@@ -9,9 +9,9 @@ import {
   DialogFooter,
   DialogClose,
   DialogTitle,
-} from "@/components/ui/DialogOld/Dialog.tsx"
+} from "#/components/ui/DialogOld/Dialog.tsx"
 import lf from 'localforage';
-import VersatileTabs from "@/components/internal/VersatileTabs";
+import VersatileTabs from "#/components/internal/VersatileTabs";
 
 type ComponentPageUsageProps = {
   anatomy: string,
@@ -75,7 +75,7 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
     {
       title: 'Anatomy',
       type: 'normal' as const,
-      content: <CodeBlock>{anatomy}</CodeBlock>,
+      // content: <CodeBlock>{anatomy}</CodeBlock>,
     },
     {
       title: 'Download',
@@ -90,7 +90,7 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
   ];
   return (
     <>
-      <VersatileTabs settings={tabSettings} />
+      {/* <VersatileTabs settings={tabSettings} /> */}
 
       <Dialog open={isDialogOpening} onOpenChange={handleDialogOpenChange}>
         <DialogContent>

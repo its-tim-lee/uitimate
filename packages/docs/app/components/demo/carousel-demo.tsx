@@ -1,4 +1,4 @@
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/Carousel/Carousel.tsx"
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "#/components/ui/Carousel/Carousel.tsx"
 
 export default () => {
   return (

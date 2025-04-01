@@ -1,4 +1,4 @@
-import { Heading, HeadingSubtitle, HeadingTitle } from "@/components/ui/Heading/Heading.tsx";
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx";
 
 export default () => (
   <Heading size="h1">

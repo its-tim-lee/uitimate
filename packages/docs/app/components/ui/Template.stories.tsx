@@ -1,4 +1,4 @@
-import ComponentDemo from "@/components/demo/component-demo.tsx";
+import ComponentDemo from "#/components/demo/component-demo.tsx";
 
 export default {
   title: 'Example/Component',

@@ -1,4 +1,4 @@
-import siteData from "@/data/site";
+import siteData from "#/data/site";
 
 const SiteFooter = () => {
   return (

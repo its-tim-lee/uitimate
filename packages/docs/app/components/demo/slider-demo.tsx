@@ -1,4 +1,4 @@
-import { Slider } from "@/components/ui/Slider/Slider"
+import { Slider } from "#/components/ui/Slider/Slider"
 import { useState } from "react"
 export default () => {
   const [temperature, setTemperature] = useState(1)

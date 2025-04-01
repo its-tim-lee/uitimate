@@ -6,6 +6,9 @@
   "sideEffects": false,
   "license": "MIT",
   "type": "module",
+  "imports": {
+    "#/*": "./app/*"
+  },
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",

@@ -1,7 +1,7 @@
 import "./index.css"
 import { type ComponentProps, useContext } from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import { tv } from "tailwind-variants"
 
 const inputOtpVariants = tv({

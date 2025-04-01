@@ -1,5 +1,5 @@
 
-import NavigationMenuDemo from "@/components/demo/navigationmenu-demo.tsx"
+import NavigationMenuDemo from "#/components/demo/navigationmenu-demo.tsx"
 export default {
   title: 'Components/NavigationMenu',
   parameters: {

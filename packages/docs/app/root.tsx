@@ -14,17 +14,15 @@ import pkg from "../package.json";
 import type { Route } from "./+types/root";
 import cssHref from "./style/index.css?url";
 const colorSchemeCode = await import(
-  "@/components/internal/color-scheme-control/fout-preventer.ts?raw"
+  "#/components/internal/color-scheme-control/fout-preventer.ts?raw"
 );
-import SiteHeader from "@/components/internal/SiteHeader.tsx";
-import SiteFooter from "@/components/internal/SiteFooter.tsx";
-import DocPageLayout from "./components/internal/layout/DocPageLayout";
+import SiteHeader from "#/components/internal/SiteHeader.tsx";
+import SiteFooter from "#/components/internal/SiteFooter.tsx";
 
 /**
  * This will always be called on the server even if no ssr (ie., in no-ssr case, server = build time server)
  */
 export async function loader() {
-  console.log("🔥 Root loader");
   return {
     version: pkg.version,
   }
@@ -54,7 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <script dangerouslySetInnerHTML={{ __html: colorSchemeCode.default }} />
+        {/* <script dangerouslySetInnerHTML={{ __html: colorSchemeCode.default }} /> */}
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
@@ -86,9 +84,7 @@ export default function App() {
   const navigation = useNavigation();
   const isNavigating = Boolean(navigation.location);
   console.log("🔥 isNavigating", isNavigating);
-  return (
-    <Outlet />
-  );
+  return <Outlet />
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

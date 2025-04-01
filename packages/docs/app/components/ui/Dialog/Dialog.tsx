@@ -1,8 +1,8 @@
 import React, { Children, createContext, useContext, type ComponentProps } from 'react'
 import { Dialog as DialogRoot, DialogPanel as DialogContent, DialogTitle as Title, Description as DialogDescription, DialogBackdrop as DialogOverlay, CloseButton as DialogClose } from '@headlessui/react'
 import { tv, type VariantProps } from "tailwind-variants"
-import { Icon } from '@/components/ui/Icon/Icon'
-import { headingVariants, type HeadingSubtitle, HeadingContext } from '@/components/ui/Heading/Heading'
+import { Icon } from '#/components/ui/Icon/Icon'
+import { headingVariants, type HeadingSubtitle, HeadingContext } from '#/components/ui/Heading/Heading'
 /**
  * TODO: doing nice transition just like Shadcn's Dialog
  */

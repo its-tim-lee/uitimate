@@ -1,4 +1,4 @@
-import { Cta } from "@/components/ui/Cta/Cta.tsx";
+import { Cta } from "#/components/ui/Cta/Cta.tsx";
 
 export default () => (
   <Cta variant="outline" size='sm' className="tw:shadow-none">

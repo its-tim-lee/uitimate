@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
 import { Root, Item, Trigger, Content, Header } from "@radix-ui/react-accordion"
 import { tv } from "tailwind-variants"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import './index.css'
 
 const accordionVariants = tv({

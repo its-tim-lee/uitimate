@@ -1,7 +1,7 @@
 import { Suspense, type HTMLAttributes } from "react"
 import { twMerge } from "tailwind-merge"
-import { Button } from "../ui/Button/Button"
-import { Icon } from "../ui/Icon/Icon"
+import { Button } from "#/components/ui/Button/Button"
+import { Icon } from "#/components/ui/Icon/Icon"
 type PreviewBlockProps = HTMLAttributes<HTMLDivElement> & {
   toggleCodeBlock?: () => void
 }

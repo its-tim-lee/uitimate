@@ -1,7 +1,7 @@
-import { Checkbox, type CheckedState } from "@/components/ui/Checkbox/Checkbox.tsx"
+import { Checkbox, type CheckedState } from "#/components/ui/Checkbox/Checkbox.tsx"
 import { useState } from "react"
-import { Heading, HeadingSubtitle, HeadingTitle } from "@/components/ui/Heading/Heading.tsx"
-import { Label } from "@/components/ui/Label/Label.tsx"
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx"
+import { Label } from "#/components/ui/Label/Label.tsx"
 export default () => {
   const [checked, setChecked] = useState<CheckedState>(true)
   return (

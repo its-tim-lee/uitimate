@@ -1,5 +1,5 @@
-import { Drawer, DrawerContent, DrawerDescription, DrawerHeading, DrawerTitle, DrawerTrigger, DrawerClose } from "@/components/ui/Drawer/Drawer";
-import { Cta } from "@/components/ui/Cta/Cta";
+import { Drawer, DrawerContent, DrawerDescription, DrawerHeading, DrawerTitle, DrawerTrigger, DrawerClose } from "#/components/ui/Drawer/Drawer";
+import { Cta } from "#/components/ui/Cta/Cta";
 
 export default () => {
   return (

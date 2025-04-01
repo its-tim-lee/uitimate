@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/Button/Button.tsx"
-import { Icon } from "../../ui/Icon/Icon";
+import { Button } from "#/components/ui/Button/Button.tsx"
+import { Icon } from "#/components/ui/Icon/Icon";
 
 /**
  * This file is only meant to be used with @fout-preventer.ts

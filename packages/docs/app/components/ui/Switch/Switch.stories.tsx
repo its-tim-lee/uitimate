@@ -1,5 +1,5 @@
-import SwitchDemo from "@/components/demo/switch-demo.tsx";
-import SwitchDetectOnOff from "@/components/demo/switch-detect-on-off.tsx";
+import SwitchDemo from "#/components/demo/switch-demo.tsx";
+import SwitchDetectOnOff from "#/components/demo/switch-detect-on-off.tsx";
 export default {
   title: 'Example/Switch',
   parameters: {

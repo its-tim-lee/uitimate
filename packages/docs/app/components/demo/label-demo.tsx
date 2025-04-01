@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/Label/Label"
+import { Label } from "#/components/ui/Label/Label"
 import { Icon } from "../ui/Icon/Icon"
 import { Input } from "../ui/Input/Input"
 import { SelectTrigger, Select, SelectContent, SelectGroup, SelectItem, SelectValue } from "../ui/Select/Select"

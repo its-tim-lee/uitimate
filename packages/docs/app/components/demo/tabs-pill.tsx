@@ -4,7 +4,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/Tabs/Tabs.tsx"
+} from "#/components/ui/Tabs/Tabs.tsx"
 
 export default () => (
   <Tabs defaultValue="create" variant="pill" className="tw:w-[320px] tw:md:w-[600px]">

@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar/Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar";
 import { Cta } from "../ui/Cta/Cta";
 
 export default () => <div className="tw:flex tw:flex-col tw:items-start">

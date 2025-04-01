@@ -1,8 +1,8 @@
 import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
 import { type KeyboardEvent, type ComponentProps, useCallback, useContext, useEffect, useState, createContext } from "react"
-import { cn } from "@/lib/utils"
-import { Icon } from "@/components/ui/Icon/Icon"
-import { Cta } from "@/components/ui/Cta/Cta"
+import { cn } from "#/lib/utils"
+import { Icon } from "#/components/ui/Icon/Icon"
+import { Cta } from "#/components/ui/Cta/Cta"
 import { type EmblaOptionsType, type EmblaPluginType } from 'embla-carousel'
 
 type CarouselApi = UseEmblaCarouselType[1]

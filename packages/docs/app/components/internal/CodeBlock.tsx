@@ -1,8 +1,8 @@
 import type { ComponentProps } from "react"
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
-import { Button } from "../ui/Button/Button"
+import { Button } from "#/components/ui/Button/Button"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { Icon } from "../ui/Icon/Icon"
+import { Icon } from "#/components/ui/Icon/Icon"
 
 export const CodeBlock = (props: ComponentProps<typeof SyntaxHighlighter>) => {
   return (

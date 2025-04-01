@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { PopoverContent, PopoverTrigger } from "../ui/Popover/Popover"
 import { Popover } from "../ui/Popover/Popover"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../ui/Command/Command"
-import { cn } from "~/src/lib/utils"
+import { cn } from "#/helpers/css"
 
 // TBD: doc: below code examples show:
 // - how to integrate Combobox with Form

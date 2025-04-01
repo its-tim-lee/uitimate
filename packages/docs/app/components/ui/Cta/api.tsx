@@ -8,7 +8,7 @@ import {
 } from "./../../ui/Heading/Heading";
 import VersatileTabs from "./../../internal/VersatileTabs";
 const anatomy = `<Cta/>`;
-// Should allow me to provide a tooltip on this link, cuz Cta is not just a Toggle
+// // Should allow me to provide a tooltip on this link, cuz Cta is not just a Toggle
 const apiLink = "https://www.radix-ui.com/primitives/docs/components/toggle";
 
 export default () => {

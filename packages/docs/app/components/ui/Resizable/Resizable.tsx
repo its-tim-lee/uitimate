@@ -1,7 +1,7 @@
 import * as ResizablePrimitive from "react-resizable-panels"
 import { tv, type VariantProps } from "tailwind-variants"
 import React from "react"
-import { Icon } from "@/components/ui/Icon/Icon"
+import { Icon } from "#/components/ui/Icon/Icon"
 
 const resizableVariants = tv({
   slots: {

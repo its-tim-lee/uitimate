@@ -1,4 +1,4 @@
-import ComboboxDemo from "@/components/demo/combobox-demo.tsx";
+import ComboboxDemo from "#/components/demo/combobox-demo.tsx";
 
 export default {
   title: 'Example/Combobox',

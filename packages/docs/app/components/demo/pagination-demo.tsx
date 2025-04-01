@@ -5,7 +5,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/Pagination/Pagination.tsx"
+} from "#/components/ui/Pagination/Pagination.tsx"
 
 export default () => {
   return (

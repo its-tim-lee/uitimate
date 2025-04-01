@@ -1,6 +1,6 @@
-import { Badge } from "@/components/ui/Badge/Badge.tsx"
-import { Heading, HeadingSubtitle, HeadingTitle } from "../ui/Heading/Heading"
-import { Icon } from "../ui/Icon/Icon"
+import { Badge } from "#/components/ui/Badge/Badge.tsx"
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading"
+import { Icon } from "#/components/ui/Icon/Icon"
 
 
 export default ({ title, subtitle, apiLink }: { title: string, subtitle: string, apiLink?: string }) => {

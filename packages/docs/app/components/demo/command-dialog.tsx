@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from "@/components/ui/Command/Command"
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from "#/components/ui/Command/Command"
 import hotkeys from "hotkeys-js"
-import { Icon } from "@/components/ui/Icon/Icon"
-import { Dialog } from "@/components/ui/Dialog/Dialog"
+import { Icon } from "#/components/ui/Icon/Icon"
+import { Dialog } from "#/components/ui/Dialog/Dialog"
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false)

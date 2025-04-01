@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, useMemo } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/Tabs/Tabs.tsx';
-import { CodeBlock } from './CodeBlock.tsx';
-import PreviewBlock from './PreviewBlock.tsx';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '#/components/ui/Tabs/Tabs.tsx';
+import { CodeBlock } from '#/components/internal/CodeBlock.tsx';
+import PreviewBlock from '#/components/internal/PreviewBlock.tsx';
 import { kebabCase, toLower } from 'lodash-es';
 
 interface TabSetting {

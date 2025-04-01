@@ -3,7 +3,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/Tabs/Tabs.tsx"
+} from "#/components/ui/Tabs/Tabs.tsx"
 import { useState } from "react";
 
 export default () => {

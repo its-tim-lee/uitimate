@@ -12,7 +12,7 @@ import {
   MenubarMenu,
   MenubarShortcut,
   MenubarSub,
-} from "@/components/ui/Menubar/Menubar.tsx"
+} from "#/components/ui/Menubar/Menubar.tsx"
 
 export default () => {
   return (

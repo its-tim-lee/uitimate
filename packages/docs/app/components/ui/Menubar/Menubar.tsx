@@ -7,7 +7,7 @@
 import { ItemIndicator, Root, Trigger, SubTrigger, SubContent, Content, Item, CheckboxItem, RadioItem, Separator, Menu as MenubarMenu, Portal as MenubarPortal, Sub as MenubarSub, RadioGroup as MenubarRadioGroup } from "@radix-ui/react-menubar"
 import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Icon } from "@/components/ui/Icon/Icon"
+import { Icon } from "#/components/ui/Icon/Icon"
 
 const itemBaseStyle = [
   "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:text-sm tw:outline-hidden",

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { Carousel, type CarouselApi, CarouselNext, CarouselContent, CarouselItem, CarouselPrevious } from "@/components/ui/Carousel/Carousel.tsx"
-import { Flat } from "@/components/preset/flat/index.tsx"
+import { Carousel, type CarouselApi, CarouselNext, CarouselContent, CarouselItem, CarouselPrevious } from "#/components/ui/Carousel/Carousel.tsx"
+import { Flat } from "#/components/preset/flat/index.tsx"
 
 export default () => {
   const [api, setApi] = useState<CarouselApi>()

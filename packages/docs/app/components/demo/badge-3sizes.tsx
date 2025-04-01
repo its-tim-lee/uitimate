@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/Badge/Badge.tsx";
+import { Badge } from "#/components/ui/Badge/Badge.tsx";
 
 export default () => {
   return (

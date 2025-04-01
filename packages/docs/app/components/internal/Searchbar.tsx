@@ -1,8 +1,8 @@
-import { Dialog } from "@/components/ui/Dialog/Dialog"
+import { Dialog } from "#/components/ui/Dialog/Dialog"
 import * as React from "react"
-import { type DialogProps } from "@/components/ui/DialogOld/Dialog"
-import { cn } from "@/helpers/css"
-import { Button } from "@/components/ui/Button/Button"
+import { type DialogProps } from "#/components/ui/DialogOld/Dialog"
+import { cn } from "#/helpers/css"
+import { Button } from "#/components/ui/Button/Button"
 import {
   Command,
   CommandEmpty,
@@ -10,10 +10,10 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/Command/Command";
+} from "#/components/ui/Command/Command";
 import { Icon } from "../ui/Icon/Icon";
 import type { ComponentProps } from "react";
-import siteData, { type DocTreeItem } from "@/data/site";
+import siteData, { type DocTreeItem } from "#/data/site";
 
 
 export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {

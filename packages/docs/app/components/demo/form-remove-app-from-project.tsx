@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle } from "@/components/ui/Dialog/Dialog.tsx"
+import { Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle } from "#/components/ui/Dialog/Dialog.tsx"
 import { Icon } from "../ui/Icon/Icon"
 import { Cta } from "../ui/Cta/Cta"
 import { Separator } from "../ui/Separator/Separator"

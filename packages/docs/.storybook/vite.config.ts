@@ -1,11 +1,7 @@
 import { defineConfig } from 'vite'
 import postcss from './postcss.config.ts'
-import path from 'path';
-import { fileURLToPath } from 'url';
 import tailwind from "@tailwindcss/vite";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); // = where this vite.config.ts is located
-
+import tsconfigPaths from "vite-tsconfig-paths";
 /**
  * Storybook recommends to use this standalone vite config to get an optimal experience.
  */
@@ -20,11 +16,6 @@ export default defineConfig({
   },
   plugins: [
     tailwind(),
+    tsconfigPaths()
   ],
-  resolve: {
-    alias: {
-      '~': path.resolve(__dirname, '../'),
-      '@': path.resolve(__dirname, '../app'),
-    },
-  },
 })

@@ -1,4 +1,4 @@
-import { Textarea } from "@/components/ui/Textarea/Textarea"
+import { Textarea } from "#/components/ui/Textarea/Textarea"
 
 export default () => (
   <Textarea

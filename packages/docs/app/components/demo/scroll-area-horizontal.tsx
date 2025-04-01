@@ -1,5 +1,5 @@
 import { ScrollArea, ScrollBar } from "../ui/ScollArea/ScollArea";
-import { Image } from '@/components/ui/Image/Image'
+import { Image } from '#/components/ui/Image/Image'
 
 interface Artwork {
   artist: string

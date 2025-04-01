@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/Skeleton/Skeleton";
+import { Skeleton } from "#/components/ui/Skeleton/Skeleton";
 export default () => {
   return (
     <div className="tw:flex tw:flex-col tw:space-y-3 tw:w-[250px]">

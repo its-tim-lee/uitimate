@@ -20,11 +20,11 @@ import {
   type FormState,
 } from "react-hook-form"
 
-import { cn } from "@/helpers/css"
-import { Label } from "@/components/ui/Label/Label.tsx"
+import { cn } from "#/helpers/css"
+import { Label } from "#/components/ui/Label/Label.tsx"
 import { z, type ZodObject, type ZodRawShape } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { reflectiveClone } from "@/helpers/utils"
+import { reflectiveClone } from "#/helpers/utils"
 
 type FormProps<T extends ZodObject<ZodRawShape>> =
   (

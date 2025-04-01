@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
 import { Root, Item, Indicator } from "@radix-ui/react-radio-group"
 import { tv } from "tailwind-variants"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 
 const radioGroupVariants = tv({
   slots: {

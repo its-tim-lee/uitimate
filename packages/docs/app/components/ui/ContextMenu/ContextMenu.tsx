@@ -17,7 +17,7 @@ import {
   ItemIndicator
 } from "@radix-ui/react-context-menu"
 import { tv } from "tailwind-variants"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 const baseContentStyle = [
   "tw:z-50 tw:min-w-[8rem] tw:overflow-hidden tw:rounded-md tw:border tw:bg-popover tw:p-1 tw:text-popover-foreground",
   "tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out",

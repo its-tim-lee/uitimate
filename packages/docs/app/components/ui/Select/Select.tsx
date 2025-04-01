@@ -17,7 +17,7 @@ import {
   Separator
 } from "@radix-ui/react-select"
 import { tv } from "tailwind-variants"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 
 const selectVariants = tv({
   slots: {

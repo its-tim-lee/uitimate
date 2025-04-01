@@ -2,7 +2,7 @@ import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "@/components/ui/Heading/Heading";
+} from "#/components/ui/Heading/Heading";
 import { Icon } from "../ui/Icon/Icon";
 import { Flat } from "../preset/flat";
 

@@ -1,7 +1,7 @@
 import * as React from "react"
 
-import { cn } from "@/helpers/css"
-import { Cta } from "@/components/ui/Cta/Cta.tsx"
+import { cn } from "#/helpers/css"
+import { Cta } from "#/components/ui/Cta/Cta.tsx"
 import {
   Command,
   CommandEmpty,
@@ -9,13 +9,13 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/Command/Command.tsx"
+} from "#/components/ui/Command/Command.tsx"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/Popover/Popover.tsx"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+} from "#/components/ui/Popover/Popover.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 const frameworks = [
   {
     value: "next.js",

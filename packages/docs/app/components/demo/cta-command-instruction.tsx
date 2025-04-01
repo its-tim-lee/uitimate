@@ -1,5 +1,5 @@
-import { Icon } from "@/components/ui/Icon/Icon.tsx";
-import { Cta } from "@/components/ui/Cta/Cta.tsx";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
+import { Cta } from "#/components/ui/Cta/Cta.tsx";
 
 export default () => {
   return (

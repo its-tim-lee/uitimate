@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
-import { type ButtonProps, buttonVariants } from "@/components/ui/Button/Button.tsx"
+import { type ButtonProps, buttonVariants } from "#/components/ui/Button/Button.tsx"
 import { tv } from "tailwind-variants"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 
 const paginationVariants = tv({
   slots: {

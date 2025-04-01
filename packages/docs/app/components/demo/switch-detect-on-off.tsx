@@ -1,9 +1,9 @@
-import { Switch } from "@/components/ui/Switch/Switch"
-import { Label } from "@/components/ui/Label/Label";
-import { Button } from "@/components/ui/Button/Button.tsx"
+import { Switch } from "#/components/ui/Switch/Switch"
+import { Label } from "#/components/ui/Label/Label";
+import { Button } from "#/components/ui/Button/Button.tsx"
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
-} from "@/components/ui/Dialog/Dialog.tsx"
+} from "#/components/ui/Dialog/Dialog.tsx"
 import React from "react"
 import { Heading, HeadingSubtitle, HeadingTitle } from "../ui/Heading/Heading";
 

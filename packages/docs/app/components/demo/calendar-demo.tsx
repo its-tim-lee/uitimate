@@ -1,4 +1,4 @@
-import { Calendar } from "@/components/ui/Calendar/Calendar"
+import { Calendar } from "#/components/ui/Calendar/Calendar"
 
 export default () => {
 

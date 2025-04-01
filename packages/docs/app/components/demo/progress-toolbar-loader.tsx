@@ -1,5 +1,5 @@
 import { Flat } from "../preset/flat"
-import { Progress } from '@/components/ui/Progress/Progress';
+import { Progress } from '#/components/ui/Progress/Progress';
 
 // TODO: make this fancy: connect to the real world use case
 export default () => {

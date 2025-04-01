@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Progress } from "@/components/ui/Progress/Progress";
+import { Progress } from "#/components/ui/Progress/Progress";
 
 export default () => {
   const [progress, setProgress] = useState(0);

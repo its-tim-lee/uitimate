@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
 import { tv, type VariantProps } from "tailwind-variants"
-import { headingVariants, type HeadingSubtitleProps, HeadingContext } from '@/components/ui/Heading/Heading.tsx'
+import { headingVariants, type HeadingSubtitleProps, HeadingContext } from '#/components/ui/Heading/Heading.tsx'
 import { Children, useContext } from "react"
 
 const drawerVariants = tv({

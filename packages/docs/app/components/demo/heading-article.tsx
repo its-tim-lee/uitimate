@@ -2,8 +2,8 @@ import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "@/components/ui/Heading/Heading";
-import { Cta } from "@/components/ui/Cta/Cta";
+} from "#/components/ui/Heading/Heading";
+import { Cta } from "#/components/ui/Cta/Cta";
 
 export default () => (
   <div className="tw:w-xl tw:[&_p]:pb-4">

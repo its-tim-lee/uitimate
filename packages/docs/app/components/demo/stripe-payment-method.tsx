@@ -14,7 +14,7 @@ import { Checkbox } from "../ui/Checkbox/Checkbox"
 
 import type { MaskitoOptions } from '@maskito/core';
 import { useMaskito } from '@maskito/react';
-import { sleep } from "@/helpers/utils"
+import { sleep } from "#/helpers/utils"
 
 const threeDigitsOnlyMask: MaskitoOptions = {
   mask: [...new Array(3).fill(/\d/)],

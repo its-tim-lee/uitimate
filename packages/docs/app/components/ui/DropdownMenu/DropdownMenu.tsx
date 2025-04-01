@@ -17,7 +17,7 @@ import {
   ItemIndicator
 } from "@radix-ui/react-dropdown-menu"
 import { tv } from "tailwind-variants"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 
 const dropdownMenuVariants = tv({
   slots: {

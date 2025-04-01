@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/Button/Button"
-import { Input } from "@/components/ui/Input/Input"
-import { Label } from "@/components/ui/Label/Label"
+import { Button } from "#/components/ui/Button/Button"
+import { Input } from "#/components/ui/Input/Input"
+import { Label } from "#/components/ui/Label/Label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/Popover/Popover"
+} from "#/components/ui/Popover/Popover"
 import { Flat } from "../preset/flat"
 import { Icon } from "../ui/Icon/Icon"
 import { Separator } from "../ui/Separator/Separator"

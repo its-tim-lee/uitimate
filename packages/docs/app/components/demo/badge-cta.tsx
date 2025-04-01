@@ -1,6 +1,6 @@
-import { Icon } from "@/components/ui/Icon/Icon.tsx";
-import { Badge } from "@/components/ui/Badge/Badge.tsx";
-import { Button } from "@/components/ui/Button/Button";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
+import { Badge } from "#/components/ui/Badge/Badge.tsx";
+import { Button } from "#/components/ui/Button/Button";
 
 export default () => {
   return (

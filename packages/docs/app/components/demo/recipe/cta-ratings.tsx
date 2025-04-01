@@ -1,7 +1,6 @@
 import { useState } from 'react';
-// HACK: for some reasons, we can't use `@` here
-import { Cta } from '../../../components/ui/Cta/Cta.tsx';
-import { Icon } from '../../../components/ui/Icon/Icon.tsx';
+import { Cta } from '#/components/ui/Cta/Cta.tsx';
+import { Icon } from '#/components/ui/Icon/Icon.tsx';
 
 export default () => {
   const [rating, setRating] = useState<number | null>(null);

@@ -1,5 +1,5 @@
 import type { Config } from "@react-router/dev/config";
-import { componentUris } from "./app/helpers/route";
+import { componentUris } from "#/helpers/route";
 
 export default {
   // Though it's a global setting, individual routes can still be statically pre-rendered. Routes can also use client data loading with clientLoader to avoid server rendering/fetching for their portion of the UI.
@@ -12,6 +12,9 @@ export default {
    * - when prerender is only for certain routes, the others will be SPA.
    */
   async prerender({ getStaticPaths }) {
-    return [...getStaticPaths(), ...componentUris];
+    return [
+      ...getStaticPaths(),
+      ...componentUris
+    ];
   },
 } satisfies Config;

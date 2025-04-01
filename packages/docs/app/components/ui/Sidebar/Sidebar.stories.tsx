@@ -24,20 +24,20 @@ import {
 
 } from "./Sidebar.tsx"
 
-import { Separator } from '@/components/ui/Separator/Separator.tsx';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/DropdownMenu/DropdownMenu.tsx";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/Collapsible/Collapsible.tsx";
+import { Separator } from '#/components/ui/Separator/Separator.tsx';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "#/components/ui/DropdownMenu/DropdownMenu.tsx";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible.tsx";
 import { useState } from "react";
-import { Button } from "@/components/ui/Button/Button.tsx";
-import { Cta } from "@/components/ui/Cta/Cta.tsx";
-import { DrawerHeading } from "@/components/ui/Drawer/Drawer.tsx";
-import { useIsMobile } from "@/helpers/hooks/use-mobile.tsx";
-import { DialogAction, DialogContent } from "@/components/ui/Dialog/Dialog.tsx";
-import { DialogHeading, DialogSubtitle } from "@/components/ui/Dialog/Dialog.tsx";
-import { Dialog, DialogTitle } from "@/components/ui/Dialog/Dialog.tsx";
-import { Skeleton } from "@/components/ui/Skeleton/Skeleton.tsx";
-import { List, ListItem } from "@/components/ui/List/List.tsx";
-import { Heading, HeadingSubtitle, HeadingTitle } from "@/components/ui/Heading/Heading.tsx";
+import { Button } from "#/components/ui/Button/Button.tsx";
+import { Cta } from "#/components/ui/Cta/Cta.tsx";
+import { DrawerHeading } from "#/components/ui/Drawer/Drawer.tsx";
+import { useIsMobile } from "#/helpers/hooks/use-mobile.tsx";
+import { DialogAction, DialogContent } from "#/components/ui/Dialog/Dialog.tsx";
+import { DialogHeading, DialogSubtitle } from "#/components/ui/Dialog/Dialog.tsx";
+import { Dialog, DialogTitle } from "#/components/ui/Dialog/Dialog.tsx";
+import { Skeleton } from "#/components/ui/Skeleton/Skeleton.tsx";
+import { List, ListItem } from "#/components/ui/List/List.tsx";
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx";
 
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],

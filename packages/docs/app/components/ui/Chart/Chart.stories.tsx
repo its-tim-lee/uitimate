@@ -1,4 +1,4 @@
-import ChartDemo from "@/components/demo/chart-demo";
+import ChartDemo from "#/components/demo/chart-demo";
 
 export default {
   title: 'Example/Chart',

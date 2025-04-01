@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/Badge/Badge.tsx";
-import { Icon } from "@/components/ui/Icon/Icon.tsx";
+import { Badge } from "#/components/ui/Badge/Badge.tsx";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
 
 export default () => {
   return (

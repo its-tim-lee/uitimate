@@ -6,7 +6,7 @@
     "**/.server/**/*",
     "**/.client/**/*",
     ".react-router/types/**/*",
-    ".storybook/**/*"
+    ".storybook/**/*",
   ],
   "compilerOptions": {
     "lib": [
@@ -28,11 +28,11 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./app/*"
-      ],
       "~/*": [
         "./*"
+      ],
+      "#/*": [
+        "./app/*"
       ]
     },
     "isolatedModules": true,

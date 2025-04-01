@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/Button/Button.tsx";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/Avatar/Avatar.tsx";
+import { Button } from "#/components/ui/Button/Button.tsx";
+import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar.tsx";
 
 export default () => (
   <Button variant="ghost" mode="icon" className="tw:rounded-full">

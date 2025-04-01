@@ -1,4 +1,4 @@
-import TimelineDemo from "@/components/demo/timeline-demo.tsx";
+import TimelineDemo from "#/components/demo/timeline-demo.tsx";
 
 export default {
   title: 'Example/Timeline',

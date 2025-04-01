@@ -2,7 +2,7 @@ import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "@/components/ui/Heading/Heading";
+} from "#/components/ui/Heading/Heading";
 
 export default () => (
   <div className="tw:flex tw:flex-col tw:gap-2">

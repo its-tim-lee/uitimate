@@ -2,8 +2,8 @@ import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "@/components/ui/Heading/Heading";
-import { Flat } from "@/components/preset/flat/index.tsx";
+} from "#/components/ui/Heading/Heading";
+import { Flat } from "#/components/preset/flat/index.tsx";
 
 export default () => (
   <Flat className='tw:w-xl'>

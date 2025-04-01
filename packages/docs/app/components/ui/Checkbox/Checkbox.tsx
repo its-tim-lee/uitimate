@@ -1,6 +1,6 @@
 import { type ComponentProps } from "react"
 import { Root, Indicator, type CheckedState } from "@radix-ui/react-checkbox"
-import { Icon } from "@/components/ui/Icon/Icon.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import { tv } from "tailwind-variants"
 
 const variants = tv({

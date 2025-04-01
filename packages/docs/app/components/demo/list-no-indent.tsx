@@ -13,7 +13,7 @@ import { Icon } from "../ui/Icon/Icon.tsx";
 import { List, ListItem } from "../ui/List/List.tsx";
 import React, { useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/Accordion/Accordion.tsx";
-import { Separator } from '@/components/ui/Separator/Separator';
+import { Separator } from '#/components/ui/Separator/Separator';
 
 const caseAItems = [
   { content: 'Sponsers', dropdown: false },

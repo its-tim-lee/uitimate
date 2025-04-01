@@ -1,4 +1,4 @@
-import { Icon } from "@/components/ui/Icon/Icon"
+import { Icon } from "#/components/ui/Icon/Icon"
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, CommandShortcut } from "../ui/Command/Command"
 export default () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/Collapsible/Collapsible"
-import { Button } from "@/components/ui/Button/Button"
-import { Icon } from "@/components/ui/Icon/Icon"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible"
+import { Button } from "#/components/ui/Button/Button"
+import { Icon } from "#/components/ui/Icon/Icon"
 
 export default () => {
   const [isOpen, setIsOpen] = React.useState(false)

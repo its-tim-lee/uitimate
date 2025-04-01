@@ -1,4 +1,4 @@
-import TextareaDemo from "@/components/demo/textarea-demo.tsx";
+import TextareaDemo from "#/components/demo/textarea-demo.tsx";
 
 export default {
   title: 'Example/Textarea',

@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ComponentProps } from "react"
 import hotkeys from "hotkeys-js"
-import { useIsMobile } from "@/helpers/hooks/use-mobile"
+import { useIsMobile } from "#/helpers/hooks/use-mobile"
 import { tv } from "tailwind-variants"
-import { Drawer, DrawerContent, DrawerDescription, DrawerHeading, DrawerTitle } from "@/components/ui/Drawer/Drawer.tsx"
+import { Drawer, DrawerContent, DrawerDescription, DrawerHeading, DrawerTitle } from "#/components/ui/Drawer/Drawer.tsx"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7

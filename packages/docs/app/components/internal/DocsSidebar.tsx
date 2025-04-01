@@ -1,10 +1,9 @@
 
 import { NavLink } from "react-router";
 import data, { type DocTreeItem } from "../../data/site.ts";
-import { Badge } from "@/components/ui/Badge/Badge.tsx";
-import { List, ListItem } from "@/components/ui/List/List.tsx";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/Collapsible/Collapsible.tsx";
-import { Icon } from "@/components/ui/Icon/Icon.tsx";
+import { List, ListItem } from "#/components/ui/List/List.tsx";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible.tsx";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
 import type { ReactNode, JSX } from "react";
 
 const renderTreeItem = (item: DocTreeItem, depth: number = 0): JSX.Element | null => {

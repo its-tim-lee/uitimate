@@ -1,4 +1,4 @@
-import { Separator } from "@/components/ui/Separator/Separator"
+import { Separator } from "#/components/ui/Separator/Separator"
 import { Heading, HeadingSubtitle, HeadingTitle } from "../ui/Heading/Heading"
 
 export default () => (

@@ -2,7 +2,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/Tooltip/Tooltip";
+} from "#/components/ui/Tooltip/Tooltip";
 import { Icon } from "../ui/Icon/Icon";
 import { useState } from "react";
 

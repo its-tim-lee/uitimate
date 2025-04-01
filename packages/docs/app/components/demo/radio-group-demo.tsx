@@ -1,8 +1,8 @@
-import { Label } from "~/src/components/ui/Label/Label.tsx"
+import { Label } from "#/components/ui/Label/Label.tsx"
 import {
   RadioGroup,
   RadioGroupItem
-} from "~/src/components/ui/RadioGroup/RadioGroup.tsx"
+} from "#/components/ui/RadioGroup/RadioGroup.tsx"
 
 export default () => {
   return (

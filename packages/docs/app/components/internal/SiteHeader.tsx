@@ -1,6 +1,7 @@
-import LightDarkSwitcher from "@/components/internal/color-scheme-control/light-dark-switcher";
+import LightDarkSwitcher from "#/components/internal/color-scheme-control/light-dark-switcher";
 import Searchbar from "./Searchbar";
 import GithubButton from "./GithubButton";
+
 
 export default () => {
   return (

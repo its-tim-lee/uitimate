@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Button } from "@/components/ui/Button/Button"
+import { Button } from "#/components/ui/Button/Button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
   type DropdownMenuCheckboxItemProps
-} from "@/components/ui/DropdownMenu/DropdownMenu"
+} from "#/components/ui/DropdownMenu/DropdownMenu"
 import { Icon } from "../ui/Icon/Icon"
 
 type Checked = DropdownMenuCheckboxItemProps["checked"]

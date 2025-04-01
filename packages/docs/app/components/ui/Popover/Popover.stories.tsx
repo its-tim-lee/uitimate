@@ -4,7 +4,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "./Popover.tsx"
-import { Button } from "@/components/ui/Button/Button.tsx"
+import { Button } from "#/components/ui/Button/Button.tsx"
 import { useState } from "react";
 import PopoverDemo from "../../demo/popover-demo.tsx";
 import PopoverOpenControl from "../../demo/popover-open-control.tsx";
