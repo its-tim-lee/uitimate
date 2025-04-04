@@ -1,0 +1,8 @@
+---
+description: Whenever working on any Tailwind class, there're rules needed to be followed
+globs: 
+alwaysApply: false
+---
+
+- Any Tailwind class must start with `tw:`
+- Any Tailwind class can only have just one `tw:`
