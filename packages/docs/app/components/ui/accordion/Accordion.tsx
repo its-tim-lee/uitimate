@@ -88,6 +88,7 @@ AccordionItem.displayName = "AccordionItem"
 AccordionTrigger.displayName = "AccordionTrigger"
 AccordionContent.displayName = "AccordionContent"
 
+
 export {
   /**
    * for some props of Accordion:
@@ -101,5 +102,5 @@ export {
   accordionVariants,
   type AccordionItemProps,
   type AccordionTriggerProps,
-  type AccordionContentProps
+  type AccordionContentProps,
 }
