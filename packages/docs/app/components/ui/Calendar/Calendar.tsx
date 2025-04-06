@@ -1,5 +1,5 @@
 import { Cta, buttonVariants } from "#/components/ui/Cta/Cta"
-import { cn } from "#/lib/utils"
+import { cn } from "#/helpers"
 import { differenceInCalendarDays } from "date-fns"
 import { Icon } from "#/components/ui/Icon/Icon"
 import * as React from "react"
