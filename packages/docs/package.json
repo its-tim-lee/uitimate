@@ -16,9 +16,9 @@
     "client": "NODE_ENV=production npx sirv-cli build/client --single index.html",
     "typecheck": "react-router typegen && tsc",
     "typegen": "react-router typegen",
-    "build:storybook": "storybook build-storybook",
+    "build:storybook": "NODE_ENV=production storybook build-storybook",
     "sb": "storybook dev -p 6006 --loglevel verbose --ci",
-    "test-storybook": "NODE_NO_WARNINGS=1 NODE_OPTIONS=--experimental-vm-modules test-storybook"
+    "test-storybook": "NODE_ENV=production NODE_NO_WARNINGS=1 NODE_OPTIONS=--experimental-vm-modules test-storybook"
   },
   "dependencies": {
     "@epic-web/client-hints": "1.3.5",
