@@ -25,3 +25,6 @@ pnpm-debug.log*
 # React Router
 .react-router/
 build/
+
+# Argos
+./screenshots

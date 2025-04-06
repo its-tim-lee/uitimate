@@ -10,7 +10,8 @@ const config: StorybookConfig = {
     // so the compromise can be showing the code on the Storybook UI
     "storybook-addon-source-link",
     'storybook-dark-mode',
-    '@storybook/addon-themes'
+    '@storybook/addon-themes',
+    "@storybook/addon-viewport"
   ],
   core: {
     builder: {
