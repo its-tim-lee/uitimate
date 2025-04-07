@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Make sure you strictly follow below guidelines:
+
+- [tailwind-usage-guideline.mdc](mdc:.cursor/rules/tailwind-usage-guideline.mdc)
+- Any icon can only be built via app/components/ui/Icon 
+- Before making any style change, fully understand the file [index.css](mdc:packages/docs/app/style/index.css) is required

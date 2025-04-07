@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Whenever modifying any file, watch out if there's any comment that is also needed to be updated

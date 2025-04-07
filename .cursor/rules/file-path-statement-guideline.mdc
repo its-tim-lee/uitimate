@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+When writing any file path in a file, if that path can be expressed using the symbol #, do no use other way around, and always write the complete file path including the file extension

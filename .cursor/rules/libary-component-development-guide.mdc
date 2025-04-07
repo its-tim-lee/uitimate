@@ -1,0 +1,34 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+- All the component's name, and any type in the file must be in upper camel case
+- All the components' name must start with the same identifier (eg., In the heading component, there're: Heading, HeadingTitle, and HeadingSubtitle)
+- A props type of a component must be named in the form of "ComponentNameProps" (eg., A component "Heading" has a props type "HeadingProps")
+- Only React v19 syntax should be used (eg., do not usse `forwardRef`)
+- When declare any component type, if you can use `ComponentProps`, do not use `HTMLAttributes`
+- The name of a variant (declared via tailwind-variant) must be in lower camel case, and the ending of the name must be "Variants"
+- All the types in the file should be aggregated in `namespace` under below pattern:
+  ```
+  namespace Type {
+    export type ComponentName = ComponentNameProps;
+    // ...
+  }
+  ```
+- All the family components must define `displayName` which literally just points to the name of the corresponding component
+- Each component must have data-tag with the value to its `displayName` but in kebab case using lodash-es's kebabCase
+- Each component must declare type for its props
+- All the components, variants, React contexts should be exported
+- Among all the types in the file, only `namespace Type` will be exported
+- There's only one `export` will be used in the file to export everything that should be exported
+- All the React APIs, including the type, should be used without via the namespace `React`
+  > eg., instead of using `React.ComponentProps`, use `ComponentProps`
+- The code placement follows below rules:
+  - from the file bottom to top, it'd be: `export`, `namespace Type`, stacks of displayName
+  - the type of component's props will be placed just right before the component
+
+
+=========== WIP
+- In most of time, `asChild` should be supported in each component
+- Should modify the corresponding doc (if any) if needed due to any source code change
