@@ -1,0 +1,63 @@
+---
+description: whenever implementing any Figma layer to code, there're rules must be followed
+globs: 
+alwaysApply: false
+---
+# Figma to Code Implementation Guidelines
+!!!!!
+When implementing Figma designs to code, follow these strict rules based on the Figma layer data you receive.
+
+## Terminology
+- **Layer**: A single element in the Figma design (can be a frame, component, text, etc.)
+- **Figma Component**: A layer in Figma with name wrapped in angle brackets (e.g., "<Calendar>")
+- **Code Component**: All the first directories under packages/docs/app/components/ui are Code components
+
+## Data Structure
+The Figma data comes in JSON format with this structure:
+```json
+{
+  "metadata": {},
+  "nodes": [],
+  "globalVars": {}
+}
+```
+Every layer in the "nodes" array has essential attributes:
+- "name": this determines implementation approach
+- "type": this affects implementation requirements
+
+## Implementation Cases
+To implement any layer, STRICTLY follow either one below:
+
+### CASE-A: Regular Layers
+**When**: Layer name is plain text (e.g., "Calendar", "Button")
+**How**: 
+- Implement this specific layer using only HTML elements and Tailwind classes, you do NOT ALLOW to use any Code component to implement
+- For child layers (if any): see whether it follows which Implementation Rules
+
+### CASE-B: Figma Component Layers
+**When**: Layer name is wrapped in angle brackets (e.g., "<Calendar>", "<Icon>")
+**How**:
+Find out the corresponding Code Component by:
+   - 1. Use your internal tool `list_dir` to check available components
+   - 2. If a specific directory is found, make sure to read all the files under that (including all the relevant files specified on the import statements in those files if any)
+   - 3. If no found, escalate to user before proceeding
+**Note**
+- Never fallback to raw HTML implementation
+
+#### Sub-cases:
+- **CASE-B-1** (type="INSTANCE"):
+  - Code Component MUST be implemented exactly as shown in Figma Component
+  - No visual deviations allowed
+  
+- **CASE-B-2** (type≠"INSTANCE"):
+  - Try to match Figma Component design as closely as possible using Code Component
+  - Document any unavoidable visual differences
+
+## Implementation Rules
+- Never duplicate visual elements that the Code Component already provides
+- [project-react-component-development-guideline.mdc](mdc:.cursor/rules/project-react-component-development-guideline.mdc)
+
+## Implementation Steps
+1. Get the layer info from the Figma layer data
+2. Check "Implementation Cases" to see how to implement that layer
+3. Once done, go back to step 1 if any layer hasn't been implemented yet
