@@ -219,9 +219,6 @@ importers:
       '@argos-ci/cli':
         specifier: 2.5.6
         version: 2.5.6
-      '@argos-ci/playwright':
-        specifier: 5.0.2
-        version: 5.0.2
       '@argos-ci/storybook':
         specifier: 2.1.0
         version: 2.1.0(@storybook/test-runner@0.22.0(@swc/helpers@0.5.15)(@types/node@22.13.14)(babel-plugin-macros@3.1.0)(storybook@8.6.11(prettier@2.8.8)))(playwright@1.51.1)
@@ -231,9 +228,6 @@ importers:
       '@dotenvx/dotenvx':
         specifier: ^1.39.0
         version: 1.39.0
-      '@playwright/test':
-        specifier: 1.51.1
-        version: 1.51.1
       '@react-router/dev':
         specifier: ^7.4.1
         version: 7.4.1(@react-router/serve@7.4.1(react-router@7.4.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.3))(@types/node@22.13.14)(babel-plugin-macros@3.1.0)(lightningcss@1.29.2)(react-router@7.4.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.3)(vite@6.2.4(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.2))
@@ -1492,11 +1486,6 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
-
-  '@playwright/test@1.51.1':
-    resolution: {integrity: sha512-nM+kEaTSAoVlXmMPH10017vn3FSiFqr/bh4fKg9vmAdMfd9SDqRZNvPSiAHADc/itWak+qPvMPZQOPwCBW7k7Q==}
-    engines: {node: '>=18'}
-    hasBin: true
 
   '@pnpm/config.env-replace@1.1.0':
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}
@@ -8140,10 +8129,6 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
-
-  '@playwright/test@1.51.1':
-    dependencies:
-      playwright: 1.51.1
 
   '@pnpm/config.env-replace@1.1.0': {}
 
