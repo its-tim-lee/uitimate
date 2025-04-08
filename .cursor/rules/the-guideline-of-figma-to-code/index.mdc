@@ -1,6 +1,6 @@
 ---
 description: whenever converting any Figma design to code, there're rules must be followed
-globs:
+globs: 
 alwaysApply: false
 ---
 # Figma to Code Implementation Guidelines
@@ -16,7 +16,7 @@ The Figma data comes in JSON format with this structure:
   "globalVars": {}
 }
 ```
-Any element in the "nodes" array is called a Figma layer, and it has essential attributes "name" and "type" that will affect your approach to implement (more on this later).
+Any element in the "nodes" array is called a Figma layer, and it has essential attributes "name" and "type" that will affect your approach to implement (more on this later), it may also have "children", which just an array that contains another Figma layer(s)
 
 Figma layers in "nodes" are in hierarchy, and they stack in this fashion: the first and the only child of "nodes" is the root layer, then root layer might have children layers, and each child layer might have the dedicated children layers, and it goes on and on. If this is not the case, you should warn me and stop any your process.
 
@@ -60,6 +60,6 @@ Find out the corresponding Code Component by:
 0. Make sure review all the rules below, and alwasy respect them during your implementation
   - Never duplicate visual elements that the Code Component already provides
   - [project-react-component-development-guideline.mdc](mdc:.cursor/rules/project-react-component-development-guideline.mdc)
-1. Get the layer info from the Figma data
-2. Check "Implementation Cases" to see how to implement that layer
-3. Once checked, go back to step 1 for each child layer
+1. Get the info from the Figma layer
+2. Check "Implementation Cases" to see how to implement that layer, and you need to show me in the chat that which case you decide to perform on that layer
+3. Once checked, go back to step 1 for each child layer unless there's no any child 
