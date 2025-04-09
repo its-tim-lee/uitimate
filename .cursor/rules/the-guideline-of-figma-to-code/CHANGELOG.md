@@ -104,29 +104,32 @@ such that in 5 times of testing, no any issue is showing up.
 
 The reason of choosing 5 is just because in the past, 1 out of 5 testing must have some issue(s).
 
-  Attachment:
-  - #1 the prompt:
-  ```
-    Follow the steps below (you DO NOT ALLOW to move to next step if you haven't finished the previous step):
+Attachment:
 
-    1. Fetch the data from <FIGMA_LAYER_URL>
-    2. Read the guideline @the-guideline-of-figma-to-code/index.mdc
-    3. Implement the UI in @Heading.stories.tsx  by extreme following the guideline until your implementation result 100% match as my image
+- #1 the prompt:
 
-    Note that,
-    - In every step of your thinking process, show what were you thinking in our chat, before you show it up, no any further move you should perform.
-    - You don't need to be efficient, provide quick solutions, and make assumptions about importance (or whatever), instead, you should slow down to make sure follow all the details in @the-guideline-of-figma-to-code/index.mdc
-    - Before you present your solution, you need to double check whether each of your decison stricly follows all the instruction details from all above, including all the content in @the-guideline-of-figma-to-code/index.mdc , and if it does follow, show me how in words; if any of your decision violate any instruction from my side, you need to respect it and reimplement until all your decisons respect all my instructions
-  ```
+```
+  Follow the steps below (you DO NOT ALLOW to move to next step if you haven't finished the previous step):
 
-  Below are the reasons of prompt modification this time:
-  - the 1st note: in all the testing history, there's one time that Cursor shows its "thinking process" in a toggle-like UI in its words (https://bitl.to/4KQo), and I can see that it involves huge amount of its real thought under the hood, but since then, such UI doesn't show anymore, and it seems like there's no way to force Cursor to show it up. So although here we tell it to reveal the thinking process, but the result is still very different comparing to its native toggle-like thought-process UI (eg., now what it'd show is not that many)
-  - the 2nd note: one time it made a mistake, and it told me that that mistake is because he is trying to be rush and also made some assumption, and he claimed that it might because his system prompt direct him to be "efficient" and be able to provide quick solutions, ..., but that seems will affect our prompt effectivity.
-  - the 3rd note: this prompt is added all because from the past experiments; Basically, in many times it will just not strictly follow any of our prompt, even we use the word "STRICTLY" on our sentence (and even it is the first sentence in a Cursor rule). Since we cannot access its full thought process, but what we can do is that we can literally just tell it to list out all its decisions and how it is decision match our instruction, and the last trick we can do is, we kind of "instruct its thinking process in a loop"
+  1. Fetch the data from <FIGMA_LAYER_URL>
+  2. Read the guideline @the-guideline-of-figma-to-code/index.mdc
+  3. Implement the UI in @Heading.stories.tsx  by extreme following the guideline until your implementation result 100% match as my image
 
-  Futher notes:
-  - The reason that we use three steps in the main prompt instead of just a simple sentence is because he used to not even follow the guideline I showed in the main prompt, even though the main problem was quite short.
+  Note that,
+  - In every step of your thinking process, show what were you thinking in our chat, before you show it up, no any further move you should perform.
+  - You don't need to be efficient, provide quick solutions, and make assumptions about importance (or whatever), instead, you should slow down to make sure follow all the details in @the-guideline-of-figma-to-code/index.mdc
+  - Before you present your solution, you need to double check whether each of your decison stricly follows all the instruction details from all above, including all the content in @the-guideline-of-figma-to-code/index.mdc , and if it does follow, show me how in words; if any of your decision violate any instruction from my side, you need to respect it and reimplement until all your decisons respect all my instructions
+```
 
+Below are the reasons of prompt modification this time:
+
+- the 1st note: in all the testing history, there's one time that Cursor shows its "thinking process" in a toggle-like UI in its words (https://bitl.to/4KQo), and I can see that it involves huge amount of its real thought under the hood, but since then, such UI doesn't show anymore, and it seems like there's no way to force Cursor to show it up. So although here we tell it to reveal the thinking process, but the result is still very different comparing to its native toggle-like thought-process UI (eg., now what it'd show is not that many)
+- the 2nd note: one time it made a mistake, and it told me that that mistake is because he is trying to be rush and also made some assumption, and he claimed that it might because his system prompt direct him to be "efficient" and be able to provide quick solutions, ..., but that seems will affect our prompt effectivity.
+- the 3rd note: this prompt is added all because from the past experiments; Basically, in many times it will just not strictly follow any of our prompt, even we use the word "STRICTLY" on our sentence (and even it is the first sentence in a Cursor rule). Since we cannot access its full thought process, but what we can do is that we can literally just tell it to list out all its decisions and how it is decision match our instruction, and the last trick we can do is, we kind of "instruct its thinking process in a loop"
+
+Futher notes:
+
+- The reason that we use three steps in the main prompt instead of just a simple sentence is because he used to not even follow the guideline I showed in the main prompt, even though the main problem was quite short.
 
 ## 1.0.0
 
