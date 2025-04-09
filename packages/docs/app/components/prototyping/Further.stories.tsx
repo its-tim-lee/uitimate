@@ -4,6 +4,7 @@ import AccordionFigma from '#/components/demo/accordion-figma.tsx';
 
 export default {
   title: 'Prototyping/Further',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

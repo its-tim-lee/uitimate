@@ -3,6 +3,7 @@ import ComponentDemo from "#/components/demo/component-demo.tsx";
 
 export default {
   title: 'Example/Component',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },
@@ -10,7 +11,6 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-  excludeStories: [], // or exclude all: /.*$/
 } as Meta;
 
 export const Demo = {

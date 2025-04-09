@@ -1,9 +1,11 @@
+import type { Meta } from '@storybook/react';
 import { useState } from "react";
 import { Button } from "../components/ui/Button/Button";
 import { Icon } from "../components/ui/Icon/Icon";
 
 export default {
   title: 'Theme',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },
@@ -11,7 +13,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-}
+} as Meta;
 
 const ThemeSwitch = () => {
   const [themeIcon, setThemeIcon] = useState<'lucide:sun' | 'lucide:moon'>('lucide:sun');

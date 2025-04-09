@@ -6,6 +6,7 @@ import DialogScroll from "../../demo/dialog-scroll.tsx";
 import DialogRemoveAppFromProject from "../../demo/form-remove-app-from-project.tsx";
 export default {
   title: 'Example/Dialog',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

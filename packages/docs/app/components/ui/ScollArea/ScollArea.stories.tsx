@@ -3,6 +3,7 @@ import ScrollAreaHorizontal from "../../demo/scroll-area-horizontal.tsx";
 
 export default {
   title: 'Example/ScrollArea',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 export default {
   title: 'Example/HeadlessuiDialog',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

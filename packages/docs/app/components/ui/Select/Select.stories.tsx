@@ -4,6 +4,7 @@ import SelectScrollable from "../../demo/select-scrollable.tsx";
 
 export default {
   title: 'Example/Select',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

@@ -2,6 +2,7 @@ import InputOtpDemo from "../../demo/inputotp-demo.tsx";
 
 export default {
   title: 'Example/InputOtp',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

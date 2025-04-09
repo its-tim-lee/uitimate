@@ -8,6 +8,7 @@ import {
 
 export default {
   title: 'Example/Alert',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

@@ -3,6 +3,7 @@ import CommandDemo from "../../demo/command-demo.tsx"
 import CommandDialogDemo from "../../demo/command-dialog.tsx"
 export default {
   title: 'Example/Command',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

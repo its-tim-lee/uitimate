@@ -10,6 +10,7 @@ import ButtonGroupSingleSelection from "../../demo/button-group-single-selection
 import ButtonGroupMultipleSelection from "../../demo/button-group-multiple-selection.tsx";
 export default {
   title: 'Example/Cta',
+  includeStories: [],
   parameters: {
     layout: 'centered',
     // docs: {
