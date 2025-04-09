@@ -2,6 +2,7 @@ import MenubarDemo from "../../demo/menubar-demo.tsx";
 
 export default {
   title: 'Example/Menubar',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

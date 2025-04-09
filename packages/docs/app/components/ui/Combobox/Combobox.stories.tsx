@@ -2,6 +2,7 @@ import ComboboxDemo from "#/components/demo/combobox-demo.tsx";
 
 export default {
   title: 'Example/Combobox',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

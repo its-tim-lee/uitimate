@@ -11,6 +11,7 @@ import PopoverOpenControl from "../../demo/popover-open-control.tsx";
 
 export default {
   title: 'Example/Popover',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

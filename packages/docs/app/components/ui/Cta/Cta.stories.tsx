@@ -18,6 +18,7 @@ import ToggleGroupMultipleSelection from "../../demo/button-group-multiple-selec
 import CtaCommandInstruction from "../../demo/cta-command-instruction.tsx";
 export default {
   title: 'Example/Cta',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

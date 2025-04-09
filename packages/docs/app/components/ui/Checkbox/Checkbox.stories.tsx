@@ -3,6 +3,7 @@ import CheckboxMultipleLinesDemo from '../../demo/checkbox-multiple-lines.tsx';
 import CheckboxDemo from '../../demo/checkbox-demo.tsx';
 export default {
   title: 'Example/Checkbox',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

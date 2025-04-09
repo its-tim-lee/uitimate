@@ -2,6 +2,7 @@
 import DrawerDemo from "../../demo/drawer-demo.tsx";
 export default {
   title: 'Example/Drawer',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

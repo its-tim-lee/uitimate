@@ -3,6 +3,7 @@ import CalendarDemo from "#/components/demo/calendar-demo"
 import CalendarDateRangePicker from "#/components/demo/calendar-date-range-picker"
 export default {
   title: 'Example/Calendar',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

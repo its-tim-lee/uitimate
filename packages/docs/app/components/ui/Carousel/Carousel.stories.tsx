@@ -4,6 +4,7 @@ import CarouselAutoLoop from '../../demo/carousel-auto-loop.tsx';
 
 export default {
   title: 'Example/Carousel',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

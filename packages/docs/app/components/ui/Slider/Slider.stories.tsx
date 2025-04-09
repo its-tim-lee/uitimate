@@ -1,6 +1,7 @@
 import SliderDemo from "#/components/demo/slider-demo.tsx"
 export default {
   title: 'Example/Slider',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

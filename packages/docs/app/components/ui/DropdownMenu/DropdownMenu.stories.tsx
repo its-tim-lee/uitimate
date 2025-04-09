@@ -5,6 +5,7 @@ import DropdownMenuMix2 from "../../demo/dropdownmenu-mix2.tsx";
 
 export default {
   title: 'Example/DropdownMenu',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

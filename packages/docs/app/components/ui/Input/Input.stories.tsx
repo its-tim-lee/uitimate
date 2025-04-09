@@ -7,6 +7,7 @@ import { Input } from './Input.tsx';
 
 export default {
   title: 'Example/Input',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },
