@@ -30,5 +30,12 @@ alwaysApply: false
 
 
 =========== WIP
+- The folder structure: 
+  - doc
+  - mapper
+  - ...
 - In most of time, `asChild` should be supported in each component
-- Should modify the corresponding doc (if any) if needed due to any source code change
+- When any source code change, check whether there's anything (eg., comment, stories, doc, ...) needs to be updated as well:
+  - all other files under the same folder (eg., doc, storybook)
+  - all other files that use the source code
+  If making the update is uncertain, warn me
