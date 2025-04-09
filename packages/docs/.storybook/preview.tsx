@@ -7,19 +7,28 @@ import { withThemeByClassName } from '@storybook/addon-themes';
 
 const preview: Preview = {
   parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
+    /**
+     * This only applies when Argos is going to take a snapshot of any story,
+     * and the way it works is that depends on the number of modes declared below,
+     * it will take a snapshot for each mode.
+     *
+     * eg.,
+     * before it takes the snapshot of a story in dark mode,
+     * it'd first manipulate the theme global variable injected by the `withThemeByClassName` addon,
+     * and then take the snapshot.
+     */
+    argos: {
+      modes: {
+        light: {
+          theme: '',
+        },
+        dark: {
+          theme: 'dark',
+        }
+      }
     },
-    darkMode: {
-      // Override the default dark theme
-      dark: { ...themes.dark, appBg: 'black' },
-      // Override the default light theme
-      light: { ...themes.normal, appBg: 'white' }
-    }
   },
+
   // args: {
   //   onArgsChange: (args: any) => {
   //     console.log('Controls changed:', args);
@@ -46,10 +55,13 @@ export const decorators = [
    */
   withStrictMode,
   listenSidebarTogglingInCanvas,
+  /**
+   * this will add a "theme" global variable
+   */
   withThemeByClassName({
     themes: {
       light: '',
-      dark: 'dark',
+      dark: 'dark', // the value here is the class name that will be applied to the HTML element when the theme is switched to dark
     },
     defaultTheme: 'light',
   }),
