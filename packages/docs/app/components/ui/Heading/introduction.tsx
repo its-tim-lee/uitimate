@@ -3,8 +3,8 @@ import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "./../../ui/Heading/Heading";
-import VersatileTabs from "./../../internal/VersatileTabs";
+} from "#/components/ui/Heading/Heading";
+import VersatileTabs from "#/components/internal/VersatileTabs";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 
 export default () => {
