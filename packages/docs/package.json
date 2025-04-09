@@ -16,7 +16,8 @@
     "client": "NODE_ENV=production npx sirv-cli build/client --single index.html",
     "typecheck": "react-router typegen && tsc",
     "typegen": "react-router typegen",
-    "build:storybook": "NODE_ENV=production storybook build-storybook",
+    "build:storybook": "storybook build",
+    "test:screenshots": "npx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server ./storybook-static --port 6006 --silent\" \"npx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook\"",
     "sb": "storybook dev -p 6006 --loglevel verbose --ci",
     "test-storybook": "NODE_ENV=production NODE_NO_WARNINGS=1 NODE_OPTIONS=--experimental-vm-modules test-storybook"
   },
@@ -64,6 +65,7 @@
     "clsx": "2.1.1",
     "cmdk": "^1.0.4",
     "date-fns": "^4.1.0",
+    "embla-carousel": "8.6.0",
     "embla-carousel-autoplay": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
     "hotkeys-js": "^3.13.9",
@@ -105,7 +107,7 @@
     "@storybook/blocks": "^8.6.10",
     "@storybook/builder-vite": "^8.6.10",
     "@storybook/manager-api": "8.6.11",
-    "@storybook/react": "^8.6.10",
+    "@storybook/react": "^8.6.11",
     "@storybook/react-vite": "^8.6.10",
     "@storybook/test": "^8.6.10",
     "@storybook/test-runner": "0.22.0",
@@ -116,6 +118,8 @@
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
     "@types/react-syntax-highlighter": "15.5.13",
+    "dotenv-cli": "8.0.0",
+    "http-server": "14.1.1",
     "i": "^0.3.7",
     "npm": "^11.2.0",
     "react-router-devtools": "^1.1.8",
@@ -128,7 +132,8 @@
     "typescript": "^5.7.2",
     "vite": "^6.2.4",
     "vite-plugin-dynamic-import": "1.6.0",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "wait-on": "8.0.3"
   },
   "packageManager": "pnpm@10.2.0",
   "overrides": {
