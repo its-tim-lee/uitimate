@@ -2,6 +2,7 @@ import TimelineDemo from "#/components/demo/timeline-demo.tsx";
 
 export default {
   title: 'Example/Timeline',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

@@ -3,6 +3,7 @@ import CollapsibleStepper from "../../demo/collapsible-stepper";
 
 export default {
   title: 'Example/Collapsible',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

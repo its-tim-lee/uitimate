@@ -3,6 +3,7 @@ import SeparatorVertical from "../../demo/separator-vertical.tsx";
 
 export default {
   title: 'Example/Separator',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

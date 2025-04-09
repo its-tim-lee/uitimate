@@ -2,6 +2,7 @@ import AvatarDemo from '../../demo/avatar-demo.tsx';
 
 export default {
   title: 'Example/Avatar',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

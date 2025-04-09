@@ -10,6 +10,7 @@ import { AvatarImage } from "../Avatar/Avatar.tsx";
 
 export default {
   title: 'Example/Badge',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

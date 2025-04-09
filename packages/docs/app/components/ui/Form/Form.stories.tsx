@@ -42,6 +42,7 @@ export const RemoveAppFromProject = {
 
 export default {
   title: 'Example/Form',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

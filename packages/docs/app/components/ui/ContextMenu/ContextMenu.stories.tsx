@@ -18,6 +18,7 @@ import {
 
 export default {
   title: 'Example/ContextMenu',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

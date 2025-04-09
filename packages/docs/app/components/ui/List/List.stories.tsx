@@ -29,6 +29,7 @@ import ListDemo from '../../demo/list-demo.tsx';
 
 export default {
   title: 'Example/List',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

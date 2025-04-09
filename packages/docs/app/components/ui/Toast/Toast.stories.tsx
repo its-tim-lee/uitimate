@@ -2,6 +2,7 @@ import ToastDemo from "../../demo/toast-demo.tsx";
 
 export default {
   title: 'Example/Sonner',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

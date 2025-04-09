@@ -2,6 +2,7 @@ import PaginationDemo from "../../demo/pagination-demo.tsx";
 
 export default {
   title: 'Example/Pagination',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

@@ -81,6 +81,7 @@ const invoices = [
 
 export default {
   title: 'Example/Table',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

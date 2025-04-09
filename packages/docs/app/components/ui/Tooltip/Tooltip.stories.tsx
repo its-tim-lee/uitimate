@@ -3,6 +3,7 @@ import TooltipInstant from "#/components/demo/tooltip-instant.tsx";
 
 export default {
   title: 'Example/Tooltip',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

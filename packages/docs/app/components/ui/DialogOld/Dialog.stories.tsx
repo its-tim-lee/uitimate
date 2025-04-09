@@ -28,6 +28,7 @@ import DialogDropdownMenu from "../../demo/dialog-dropdown-menu.tsx";
  */
 export default {
   title: 'Example/DialogOld',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

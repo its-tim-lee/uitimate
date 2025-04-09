@@ -3,6 +3,7 @@ import ProgressLoading from '../../demo/progress-loading';
 
 export default {
   title: 'Example/Progress',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

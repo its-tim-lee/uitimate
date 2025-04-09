@@ -2,6 +2,7 @@ import ResizableDemo from "../../demo/resizable-demo.tsx";
 
 export default {
   title: 'Example/Resizable',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

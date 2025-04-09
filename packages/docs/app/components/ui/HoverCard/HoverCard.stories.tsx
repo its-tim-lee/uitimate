@@ -3,6 +3,7 @@ import HoverCardApiDoc from "../../demo/hovercard-api-doc.tsx";
 
 export default {
   title: 'Components/HoverCard',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

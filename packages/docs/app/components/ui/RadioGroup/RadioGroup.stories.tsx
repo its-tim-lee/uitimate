@@ -2,6 +2,7 @@ import RadioGroupDemo from "#/components/demo/radio-group-demo.tsx"
 
 export default {
   title: 'Primitive/RadioGroup',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

@@ -2,6 +2,7 @@ import SkeletonDemo from "../../demo/skeleton-demo.tsx";
 
 export default {
   title: 'Example/Skeleton',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },

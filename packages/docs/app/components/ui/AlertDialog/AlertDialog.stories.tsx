@@ -12,6 +12,7 @@ import { Button } from "#/components/ui/Button/Button.tsx"
 
 export default {
   title: 'Example/AlertDialog',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },
