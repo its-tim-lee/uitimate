@@ -3,8 +3,8 @@
 The current version is still not able to make Cursor AI reliably to implement Figma layer.
 Below are the possible issues of the implementation by AI:
 
-- [CLOSED] #2504071 No any `tw:` is used on the class
-- [OPEN] #2504072 Component's prop didn't get apply or wrongly apply
+- [OPEN] #2504071 No any `tw:` is used on the class
+- [CLOSED] #2504072 Component's prop didn't get apply or wrongly apply
   > eg.,
   > In the Figma component <Heading>, it uses h3 sizing,
   > but AI may implement it with or without the corresonding prop
@@ -58,6 +58,42 @@ Below are the possible issues of the implementation by AI:
   > rule clearly showing that kind of move is incorrect.
   > The problem seems gone after restrict more steps AI can perform.
 - [CLOSED] #2504079 Doesn't use <Heading> at all
+
+
+## 1.2.0
+
+### Minor Changes
+
+Quick fix the MCP figma-developer-mcp by NOT filtering out the Figma property "componentProperties". But the real world example value of "componentProperties" can be like:
+```
+{
+  Size: {
+    boundVariables: {},
+    type: "VARIANT",
+    value: "h4"
+  },
+  Variant: {
+    boundVariables: {},
+    type: "VARIANT",
+    value: "Single line subtitle"
+  },
+  Subtitle#15622:0: {
+    type: "TEXT",
+    value: "The application has been updated from v1.2 to v1.3."
+  },
+  Title#15622:1: {
+    type: "TEXT",
+    value: "Updated"
+  },
+}
+```
+So preparing a mapper file for each component (ie., *.mapper.md) should be the must to futher clarify the mapping relationship between code component & Figma componnet.
+
+Two solutions above should solve #2504072.
+
+---
+
+But just found out that #2504071 appear again in one of the tests.
 
 ## 1.1.0
 
