@@ -75,7 +75,7 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
     {
       title: 'Anatomy',
       type: 'normal' as const,
-      // content: <CodeBlock>{anatomy}</CodeBlock>,
+      content: <CodeBlock>{anatomy}</CodeBlock>,
     },
     {
       title: 'Download',
@@ -90,7 +90,7 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
   ];
   return (
     <>
-      {/* <VersatileTabs settings={tabSettings} /> */}
+      <VersatileTabs settings={tabSettings} />
 
       <Dialog open={isDialogOpening} onOpenChange={handleDialogOpenChange}>
         <DialogContent>
