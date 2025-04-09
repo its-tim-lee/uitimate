@@ -21,10 +21,11 @@ pnpm-debug.log*
 .idea/
 
 *storybook.log
+*storybook-static/
 
 # React Router
 .react-router/
 build/
 
 # Argos
-./screenshots
+screenshots/
