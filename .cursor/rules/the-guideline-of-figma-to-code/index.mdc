@@ -27,7 +27,7 @@ Figma layers in "nodes" are in hierarchy, and they stack in this fashion: the fi
 - **Code Component**: All the first directories under packages/docs/app/components/ui are Code components
 
 ## Implementation Cases
-To implement any layer, follow either one below:
+Now, you MUST first check whether the layer you're processing is a Regular Layer or a Figma Component, and that decision will lead you to the exact case (ie., once the case is decided, it can't be another case anymore):
 
 ### CASE-A: Regular Layer
 Implement it using only HTML elements and Tailwind classes

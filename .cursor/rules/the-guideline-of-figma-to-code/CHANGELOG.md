@@ -52,12 +52,22 @@ Below are the possible issues of the implementation by AI:
      >
      > ```
 
-- [REOPEN] #2504078 use <Alert>
+- [TRACKING] #2504078 use <Alert>
   > This seems all because we didn't restrict how AI can perform the steps,
   > so it sometimes use codebase semantic search, or list out all the code components under certain folder, and just found there's a component <Alert>, and it just uses it despite our
   > rule clearly showing that kind of move is incorrect.
   > The problem seems gone after restrict more steps AI can perform.
 - [CLOSED] #2504079 Doesn't use <Heading> at all
+
+## 1.2.2
+
+### Patch Changes
+
+It seems like we left a space for AI to allow itself to be able to do "inferential leap":
+it can first decide that the layer falls into CASE-A, but since we didn't retrict it to NOT look at CASE-B (or we didn't say that you can't change your mind after made the first decision), it's possible it might look up the description in CASE-B, and the acknowledgment from that description can possible affect its first decision.
+
+At this version, we try to apply "Guardrails" technique, and hopefully #2504078 can never appear anymore (I did run one test, and it didn't have the issue)
+
 
 ## 1.2.1
 
