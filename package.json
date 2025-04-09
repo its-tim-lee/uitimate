@@ -5,7 +5,7 @@
     "@changesets/cli": "2.28.1"
   },
   "scripts": {
-    "cs": "changeset",
+    "cs": "changeset && cursor $(ls -t .changeset/*.md | head -n 1)",
     "ver": "changeset version"
   }
 }
