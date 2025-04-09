@@ -1,6 +1,6 @@
 {
   "name": "@rule/the-guideline-of-figma-to-code",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "private": true,
   "dependencies": {
     "figma-developer-mcp-fixed": "0.1.15"

@@ -59,19 +59,38 @@ Below are the possible issues of the implementation by AI:
   > The problem seems gone after restrict more steps AI can perform.
 - [CLOSED] #2504079 Doesn't use <Heading> at all
 
+## 1.3.0
+
+### Minor Changes: Adjust the "Implementation Steps"
+
+The removeal from v1.2.3 cause #2504078 happens a lots. This is because:
+
+we didn't notice that we actually gave AI the flexibility that it can follow the old "Implementation Steps" in different approach.
+Basically, it first analyze the overall Figma JSON data, and it can totally possible to process the inner layer first, and by doing so with the old instruction:
+```
+  - Never duplicate visual elements that the Code Component already provides
+```
+that happens to contribute to the cause of "it picks the exising <Alert> because it does follow the CASE-B for <Icon>, and the searching on ui/ made it seen all the Code Components, and it has the memory about <Alert>, and then when it starts to process the root layer, as per the instruction above, it then picks <Alert> to use"
+
+Another biggest reason is that, we allow AI to perfer their natural tendency to prioritize their pre-trained knowledge than our instruction, so when it read "Never duplicate visual elements that the Code Component already provides", that just reminds its familiar knowledge, which is some kind of software engineering best practice, and now it'll prioritize the low-level pre-trained pattern than our strong instruction such as "once the case is decided, it can't be another case anymore"
+
+Note that it seems AI's performance is a bit better due to the change from v1.2.3
+
 ## 1.2.3
 
 ### Patch Changes: Modify the entry prompt
+
 AI is too slow to even just build a pure Heading component (it needs at least 2:30m), so now remove the following part from the entry prompt as shown below to see whether it can speed up while having no mistakes to make:
+
 ```
   - You don't need to be efficient, provide quick solutions, and make assumptions about importance (or whatever), instead, you should slow down to make sure follow all the details in @the-guideline-of-figma-to-code/index.mdc
 ```
+
 This version also improve the the first note in the entry prompt, since somtimes the MCP plugin can be unstable (eg., it's in red-light for some reasons), and AI may do other things to waste time:
 
 ```
    1. Call the MCP tool "Framelink Figma MCP" from your toolkit to fetch the data from <FIGMA_LINK> (if the MCP tool doesn't work, stop your process NOW)
 ```
-
 
 ## 1.2.2
 
@@ -82,12 +101,12 @@ it can first decide that the layer falls into CASE-A, but since we didn't retric
 
 At this version, we try to apply "Guardrails" technique, and hopefully #2504078 can never appear anymore (I did run one test, and it didn't have the issue)
 
-
 ## 1.2.1
 
 ### Patch Changes
 
 Since in v1.2.0, #2504071 came out again, and after the inspection, AI mentioned:
+
 ```
 I read the content of @the-guideline-of-figma-to-code/index.mdc (the main Figma guideline provided in the context) exactly once, right after receiving your initial request.
 
@@ -101,11 +120,11 @@ I treated Step 0 as a preamble or general context rather than a mandatory blocki
 ```
 
 So, it seems like this maybe our fault on the prompt, but this seems revealing several facts on prompt engineering:
+
 - Using the words like "Make sure", "STRICTLY follow", ... may not work if those words are in the context that can affect AI's prioritization (or something like that)
 - It seems the "recursive prompting" technique works very well in prompt engineering: we provide where are the steps to follow, the steps in order, and how to form a closed loop － AI will just follow through as expected
 
 Now, this version literally just change the re-start step index from 1 to 0, to see that whether AI will work as expected or not (it doesn't happen after I gave a one shot)
-
 
 But now, #2504078 appears again.
 

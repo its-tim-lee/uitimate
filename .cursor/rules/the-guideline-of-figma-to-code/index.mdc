@@ -57,9 +57,15 @@ Find out the corresponding Code Component by:
   - Document any unavoidable visual differences
 
 ## Implementation Steps
-0. Make sure review all the rules below, and alwasy respect them during your implementation
+1. Identify the root layer
+2. Get the info from the layer
+3. Check "Implementation Cases" to see how to implement that layer, and you need to show me in the chat that which case you decide to perform on that layer
+4. Once checked,  make sure review all the rules below, and alwasy respect them during your implementation
+  - Prioritize all the instructions in this guideline than any of your prior knowledge 
   - Never duplicate visual elements that the Code Component already provides
-  - [project-react-component-development-guideline.mdc](mdc:.cursor/rules/project-react-component-development-guideline.mdc)
-1. Get the info from the Figma layer
-2. Check "Implementation Cases" to see how to implement that layer, and you need to show me in the chat that which case you decide to perform on that layer
-3. Once checked, go back to step 0 for each child layer unless there's no any child 
+  - [project-react-component-development-guideline.mdc](mdc:❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/.cursor/rules/project-react-component-development-guideline.mdc)
+5. Once reviewed, go back to step 2 for each child layer (if any) 
+
+
+
+
