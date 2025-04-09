@@ -1,12 +1,14 @@
 import { startCase } from "lodash-es";
-import ComponentPageUsage from "./../../internal/ComponentPageUsage.tsx";
-import ComponentPageHero from "./../../internal/ComponentPageHero.tsx";
+import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
+import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "./../../ui/Heading/Heading";
-import VersatileTabs from "./../../internal/VersatileTabs";
+} from "#/components/ui/Heading/Heading";
+import VersatileTabs from "#/components/internal/VersatileTabs";
+
+
 const anatomy = `<Cta/>`;
 // // Should allow me to provide a tooltip on this link, cuz Cta is not just a Toggle
 const apiLink = "https://www.radix-ui.com/primitives/docs/components/toggle";
@@ -23,11 +25,10 @@ export default () => {
 
       <br />
 
-      <Heading
-        size="h2"
-        title="Usage"
-        subtitle="How you can play this component."
-      />
+      <Heading size="h2">
+        <HeadingTitle>Usage</HeadingTitle>
+        <HeadingSubtitle>How you can play this component.</HeadingSubtitle>
+      </Heading>
       <ComponentPageUsage
         demoId="cta-demo"
         anatomy={anatomy}
@@ -37,11 +38,10 @@ export default () => {
       <br />
       <br />
 
-      <Heading
-        size="h2"
-        title="Design Notes"
-        subtitle="The implementation details that some would appreciate."
-      />
+      <Heading size="h2">
+        <HeadingTitle>Design Notes</HeadingTitle>
+        <HeadingSubtitle>The implementation details that some would appreciate.</HeadingSubtitle>
+      </Heading>
       <p>
         "Bro, why on earth you merge all of them into one component?" I guess this
         could be the first biggest question you'd rise up. The short answer is:
@@ -53,11 +53,10 @@ export default () => {
       <br />
       <br />
 
-      <Heading
-        size="h2"
-        title="Introduction"
-        subtitle="The fastest way you can master this component."
-      />
+      <Heading size="h2">
+        <HeadingTitle>Introduction</HeadingTitle>
+        <HeadingSubtitle>The fastest way you can master this component.</HeadingSubtitle>
+      </Heading>
 
       Cta is a sophisticated component such that you can even decide what it
       should render into (eg., anchor), so it'd be helpful to just think it as
@@ -111,11 +110,10 @@ export default () => {
       <br />
       For all other API usage examples, simply review all the demos
 
-      <Heading
-        size="h2"
-        title="Example / API"
-        subtitle="This tries to show all the API/Component usages."
-      />
+      <Heading size="h2">
+        <HeadingTitle>Example / API</HeadingTitle>
+        <HeadingSubtitle>This tries to show all the API/Component usages.</HeadingSubtitle>
+      </Heading>
       <VersatileTabs
         settings={[
           {
@@ -145,11 +143,10 @@ export default () => {
       <br />
       <br />
 
-      <Heading
-        size="h2"
-        title="Example / Scenario"
-        subtitle="This lists common real-world use cases."
-      />
+      <Heading size="h2">
+        <HeadingTitle>Example / Scenario</HeadingTitle>
+        <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
+      </Heading>
       <VersatileTabs
         settings={[
           {
