@@ -3,7 +3,7 @@
 The current version is still not able to make Cursor AI reliably to implement Figma layer.
 Below are the possible issues of the implementation by AI:
 
-- [OPEN] #2504071 No any `tw:` is used on the class
+- [TRACKING] #2504071 No any `tw:` is used on the class
 - [CLOSED] #2504072 Component's prop didn't get apply or wrongly apply
   > eg.,
   > In the Figma component <Heading>, it uses h3 sizing,
@@ -52,13 +52,38 @@ Below are the possible issues of the implementation by AI:
      >
      > ```
 
-- [CLOSED] #2504078 use <Alert>
+- [REOPEN] #2504078 use <Alert>
   > This seems all because we didn't restrict how AI can perform the steps,
   > so it sometimes use codebase semantic search, or list out all the code components under certain folder, and just found there's a component <Alert>, and it just uses it despite our
   > rule clearly showing that kind of move is incorrect.
   > The problem seems gone after restrict more steps AI can perform.
 - [CLOSED] #2504079 Doesn't use <Heading> at all
 
+## 1.2.1
+
+### Patch Changes
+
+Since in v1.2.0, #2504071 came out again, and after the inspection, AI mentioned:
+```
+I read the content of @the-guideline-of-figma-to-code/index.mdc (the main Figma guideline provided in the context) exactly once, right after receiving your initial request.
+
+During this single read-through, I identified its main sections: Data Structure, Terminology, Implementation Cases (CASE-A, CASE-B with sub-cases), and the Implementation Steps (numbered 0 through 3).
+
+I understood the core logic described in Steps 1, 2, and 3 (Get Layer Info -> Check Implementation Case -> Recurse). This understanding allowed me to process the Figma data node-by-node as I did.
+
+I made the incorrect decision to postpone or overlook the explicit instruction in Step 0 to review the linked rules first. There was no external prompt causing this; it was my own flawed interpretation of the sequence and importance of the steps listed within @the-guideline-of-figma-to-code/index.mdc.
+
+I treated Step 0 as a preamble or general context rather than a mandatory blocking step that needed full completion before Step 1. I prioritized the actionable steps directly related to translating the Figma structure (analyzing nodes, choosing implementation cases) over the preparatory step of reading the linked, broader project guidelines.
+```
+
+So, it seems like this maybe our fault on the prompt, but this seems revealing several facts on prompt engineering:
+- Using the words like "Make sure", "STRICTLY follow", ... may not work if those words are in the context that can affect AI's prioritization (or something like that)
+- It seems the "recursive prompting" technique works very well in prompt engineering: we provide where are the steps to follow, the steps in order, and how to form a closed loop － AI will just follow through as expected
+
+Now, this version literally just change the re-start step index from 1 to 0, to see that whether AI will work as expected or not (it doesn't happen after I gave a one shot)
+
+
+But now, #2504078 appears again.
 
 ## 1.2.0
 

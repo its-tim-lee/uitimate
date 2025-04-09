@@ -62,4 +62,4 @@ Find out the corresponding Code Component by:
   - [project-react-component-development-guideline.mdc](mdc:.cursor/rules/project-react-component-development-guideline.mdc)
 1. Get the info from the Figma layer
 2. Check "Implementation Cases" to see how to implement that layer, and you need to show me in the chat that which case you decide to perform on that layer
-3. Once checked, go back to step 1 for each child layer unless there's no any child 
+3. Once checked, go back to step 0 for each child layer unless there's no any child 
