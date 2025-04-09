@@ -1,1 +1,9 @@
-{}
+{
+  "workbench.colorCustomizations": {
+    "tab.activeBackground": "#546E7A",
+    "list.inactiveSelectionBackground": "#fff",
+    "list.inactiveSelectionForeground": "#111",
+    "textCodeBlock.background": "#546E7A",
+    "textLink.foreground": "#22d3ee"
+  }
+}
