@@ -59,6 +59,20 @@ Below are the possible issues of the implementation by AI:
   > The problem seems gone after restrict more steps AI can perform.
 - [CLOSED] #2504079 Doesn't use <Heading> at all
 
+## 1.2.3
+
+### Patch Changes: Modify the entry prompt
+AI is too slow to even just build a pure Heading component (it needs at least 2:30m), so now remove the following part from the entry prompt as shown below to see whether it can speed up while having no mistakes to make:
+```
+  - You don't need to be efficient, provide quick solutions, and make assumptions about importance (or whatever), instead, you should slow down to make sure follow all the details in @the-guideline-of-figma-to-code/index.mdc
+```
+This version also improve the the first note in the entry prompt, since somtimes the MCP plugin can be unstable (eg., it's in red-light for some reasons), and AI may do other things to waste time:
+
+```
+   1. Call the MCP tool "Framelink Figma MCP" from your toolkit to fetch the data from <FIGMA_LINK> (if the MCP tool doesn't work, stop your process NOW)
+```
+
+
 ## 1.2.2
 
 ### Patch Changes
