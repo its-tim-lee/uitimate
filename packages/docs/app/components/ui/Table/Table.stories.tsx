@@ -29,7 +29,6 @@ import {
   getFilteredRowModel,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 import { Button } from "../Button/Button.tsx"
 import { useState } from "react"
 import { Input } from "../Input/Input.tsx"
