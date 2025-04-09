@@ -27,7 +27,7 @@ export default ({ settings }: VersatileTabsProps) => {
   const [codeBlockVisibility, setCodeBlockVisibility] = useState<Record<string, boolean>>(
     settings.reduce((acc, $s) => {
       if ($s.type === 'preview') {
-        acc[kebabCase(toLower($s.title))] = true;
+        acc[kebabCase(toLower($s.title))] = false;
       }
       return acc;
     }, {} as Record<string, boolean>)
