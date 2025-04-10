@@ -1,4 +1,3 @@
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "#/components/ui/Accordion/Accordion";
 import {
   Heading,
   HeadingSubtitle,
@@ -7,6 +6,7 @@ import {
 import VersatileTabs from "#/components/internal/VersatileTabs";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
+import QA from "#/components/internal/QA";
 
 export default () => {
   return (
@@ -46,11 +46,9 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">
-        <HeadingTitle>Quick Start</HeadingTitle>
-      </Heading>
+      <Heading size="h2">Quick Start</Heading>
       <p>
-        A heading is used under the anatomy of:
+        This component is used under the anatomy of:
       </p>
       <CodeBlock>
         {`
@@ -111,41 +109,27 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">
-        <HeadingTitle>Q&A</HeadingTitle>
-      </Heading>
+      <Heading size="h2">Q&A</Heading>
       <p>
         If you have the questions that's more like a design philosophy on this component,
         you actually can have a better answer by just checking the source code
         (we provide more context there using clear comments); for other questions, see below:
       </p>
       <br />
-      <QA />
+
+      <QA items={[
+        {
+          value: 'q1',
+          trigger: "Can we use <HeadingSubtitle> as the only child of <Heading>?",
+          content: (
+            <p>
+              You can, but, …it doesn't make sense.
+              Because the reason that a heading can get reader's more attention is mostly through the style impression from {`<HeadingTitle>`}, not {`<HeadingSubtitle>`}.
+            </p>
+          )
+        },
+      ]} />
     </>
   );
 };
 
-const QA = () => {
-  const items = [
-    {
-      value: 'q1',
-      trigger: "Can we use <HeadingSubtitle> as the only child of <Heading>?",
-      content: (
-        <p>
-          You can, but, …it doesn't make sense.
-          Because the reason that a heading can get reader's more attention is mostly through the style impression from {`<HeadingTitle>`}, not {`<HeadingSubtitle>`}.
-        </p>
-      )
-    },
-  ];
-  return (
-    <Accordion type="single" collapsible className="tw:w-[80%] tw:mx-auto">
-      {items.map($i => (
-        <AccordionItem key={$i.value} value={$i.value}>
-          <AccordionTrigger>{$i.trigger}</AccordionTrigger>
-          <AccordionContent>{$i.content}</AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
-  );
-}
