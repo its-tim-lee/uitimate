@@ -6,13 +6,14 @@ import {
 } from "#/components/ui/Heading/Heading";
 import VersatileTabs from "#/components/internal/VersatileTabs";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
+import { Link } from "react-router";
 
 export default () => {
   return (
     <>
       <Heading size="h1">
         <HeadingTitle>Introduction</HeadingTitle>
-        <HeadingSubtitle>Heading is when a title and an optional subtitle blend together to form the concept of "head up” that getting more reader's attention than the normal text.</HeadingSubtitle>
+        <HeadingSubtitle>Heading is a title and an optional subtitle blend together to form the concept of "heads up" for readers that getting more attention than the normal text.</HeadingSubtitle>
       </Heading>
 
 
@@ -78,7 +79,7 @@ export default () => {
         `}
       </CodeBlock>
       <p>
-        {`<HeadingTitle>`} can have 6 sizes (note: from h1 to h6), but what if you want to control the size while still use above’s ergonomic approach? Just specify that on the root component:
+        {`<HeadingTitle>`} can have 6 sizes (note: from h1 to h6), but what if you want to control the size while still use above's ergonomic approach? Just specify that on the root component:
       </p>
       <CodeBlock>
         {`
@@ -86,7 +87,7 @@ export default () => {
         `}
       </CodeBlock>
       <p>
-        Here is all the possible sizes demo (note that we don’t use any {` <HeadingSubtitle>`} in the demo):
+        Here is the demos for all the possible sizes:
       </p>
       <VersatileTabs
         settings={[
@@ -94,23 +95,18 @@ export default () => {
             title: "Only title",
             type: "preview",
             demoId: "heading-only-title",
+            content: <>note that we don't use any {`<HeadingSubtitle>`}</>
           },
-        ]}
-      />
-      <p>
-        {`<HeadingSubtitle>`} will keep the same style no matter which size is declared on {`<Heading>`}:
-      </p>
-      <VersatileTabs
-        settings={[
           {
             title: "6 Levels",
             type: "preview",
             demoId: "heading-6levels",
+            content: <>{`<HeadingSubtitle>`} will keep the same style no matter which size is declared on {`<Heading>`}</>
           },
         ]}
       />
       <p>
-        That's! <br /> Now go ahead to check more demos or read the source code!
+        That's! <br /> Now go ahead to check <Link className='tw:text-blue-500' to="/docs/components/core/heading/api">more demos</Link> or read the source code!
       </p>
       <br />
       <br />
@@ -119,10 +115,11 @@ export default () => {
         <HeadingTitle>Q&A</HeadingTitle>
       </Heading>
       <p>
-        If you have the questions that’s more like a design philosophy on this component,
+        If you have the questions that's more like a design philosophy on this component,
         you actually can have a better answer by just checking the source code
         (we provide more context there using clear comments); for other questions, see below:
       </p>
+      <br />
       <QA />
     </>
   );
@@ -135,14 +132,14 @@ const QA = () => {
       trigger: "Can we use <HeadingSubtitle> as the only child of <Heading>?",
       content: (
         <p>
-          You can, but, …it doesn’t make sense.
-          Because the reason that a heading can get reader’s more attention is mostly through the style impression from {`<HeadingTitle>`}, not {`<HeadingSubtitle>`}.
+          You can, but, …it doesn't make sense.
+          Because the reason that a heading can get reader's more attention is mostly through the style impression from {`<HeadingTitle>`}, not {`<HeadingSubtitle>`}.
         </p>
       )
     },
   ];
   return (
-    <Accordion type="single" collapsible className="tw:w-full">
+    <Accordion type="single" collapsible className="tw:w-[80%] tw:mx-auto">
       {items.map($i => (
         <AccordionItem key={$i.value} value={$i.value}>
           <AccordionTrigger>{$i.trigger}</AccordionTrigger>
