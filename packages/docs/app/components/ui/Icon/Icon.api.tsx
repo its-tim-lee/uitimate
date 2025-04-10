@@ -6,7 +6,7 @@ import {
 import VersatileTabs from "#/components/internal/VersatileTabs";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage";
 import meta from "./Icon.meta.tsx";
-
+import { Link } from "react-router";
 export default () => {
   return (
     <>
@@ -42,7 +42,18 @@ export default () => {
         ]}
       />
 
+      <br />
+      <br />
 
+      <Heading size="h2">
+        <HeadingTitle>Dependencies</HeadingTitle>
+        <HeadingSubtitle>Below lists out the 3rd-party libaries that this component depends on.</HeadingSubtitle>
+      </Heading>
+
+
+      <Link className="tw:link tw:w-fit" to="https://iconify.design/docs/icon-components/react/" target="_blank" rel="noopener noreferrer">@iconify/react</Link>
+      <br />
+      <br />
     </>
   )
 }
