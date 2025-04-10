@@ -1,8 +1,0 @@
----
-description: 
-globs: 
-alwaysApply: false
----
-Create a file using the base content from [Template.stories.tsx](mdc:packages/docs/app/components/ui/Template.stories.tsx) to the @prototyping folder,
-Then you should ask me what kind of file name I want to have,
-After I give you that you need to change the file name of that story file and also change the story `title` setting 
