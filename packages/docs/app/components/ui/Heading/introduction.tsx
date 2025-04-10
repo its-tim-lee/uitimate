@@ -7,13 +7,14 @@ import VersatileTabs from "#/components/internal/VersatileTabs";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
 import QA from "#/components/internal/QA";
+import meta from "./meta";
 
 export default () => {
   return (
     <>
       <Heading size="h1">
         <HeadingTitle>Introduction</HeadingTitle>
-        <HeadingSubtitle>Heading is a title and an optional subtitle blend together to form the concept of "heads up" for readers that getting more attention than the normal text.</HeadingSubtitle>
+        <HeadingSubtitle>{meta.description}</HeadingSubtitle>
       </Heading>
 
 
