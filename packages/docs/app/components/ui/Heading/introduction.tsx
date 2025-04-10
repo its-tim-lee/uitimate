@@ -59,6 +59,7 @@ export default () => {
           </Heading>
         `}
       </CodeBlock>
+      <br />
       <p>
         All the child components are optional, but if only title is needed, instead of the tedious:
       </p>
@@ -69,6 +70,7 @@ export default () => {
           </Heading>
         `}
       </CodeBlock>
+      <br />
       <p>
         This ergonomic approach will have the same result:
       </p>
@@ -77,6 +79,7 @@ export default () => {
           <Heading>...<Heading>
         `}
       </CodeBlock>
+      <br />
       <p>
         {`<HeadingTitle>`} can have 6 sizes (note: from h1 to h6), but what if you want to control the size while still use above's ergonomic approach? Just specify that on the root component:
       </p>
@@ -85,9 +88,11 @@ export default () => {
           <Heading size='h3'>...</Heading>
         `}
       </CodeBlock>
+      <br />
       <p>
         Here is the demos for all the possible sizes:
       </p>
+      <br />
       <VersatileTabs
         settings={[
           {
@@ -111,10 +116,13 @@ export default () => {
       <br />
 
       <Heading size="h2">Q&A</Heading>
-      <p>
+      <p className='tw:text-muted-foreground'>
         If you have the questions that's more like a design philosophy on this component,
         you actually can have a better answer by just checking the source code
-        (we provide more context there using clear comments); for other questions, see below:
+        (we provide more context there using clear comments).
+        <br />
+        <br />
+        For other questions, see below:
       </p>
       <br />
 
