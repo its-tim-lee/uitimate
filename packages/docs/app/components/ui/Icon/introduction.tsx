@@ -7,13 +7,14 @@ import VersatileTabs from "#/components/internal/VersatileTabs";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
 import QA from "#/components/internal/QA";
+import meta from "./meta";
 
 export default () => {
   return (
     <>
       <Heading size="h1">
         <HeadingTitle>Introduction</HeadingTitle>
-        <HeadingSubtitle>An wrapper of <Link className="tw:link" to="https://iconify.design/docs/icon-components/react/" target="_blank" rel="noopener noreferrer">@iconify/react</Link> to provide an accessible SVG icon</HeadingSubtitle>
+        <HeadingSubtitle>{meta.description}</HeadingSubtitle>
       </Heading>
       <br />
       <br />
@@ -44,8 +45,7 @@ export default () => {
         It also uses <Link className="tw:link" to="https://www.radix-ui.com/primitives/docs/utilities/accessible-icon" target="_blank" rel="noopener noreferrer">Radix's AccessibleIcon</Link>, so you can specify an accessibility label as:
       </p>
       <CodeBlock>
-        {`
-          <Icon icon="lucide:search" label="Search" />
+        {`          <Icon icon="lucide:search" label="Search" />
         `}
       </CodeBlock>
       <br />
