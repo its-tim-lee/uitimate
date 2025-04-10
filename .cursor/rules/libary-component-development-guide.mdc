@@ -3,12 +3,22 @@ description:
 globs: 
 alwaysApply: false
 ---
-- All the component's name, and any type in the file must be in upper camel case
+# Component
+
+## Design
+- All the components must have data-tag with the value to its `displayName` but in kebab case using lodash-es's kebabCase
+- All the component's name in the file must be in upper camel case
 - All the components' name must start with the same identifier (eg., In the heading component, there're: Heading, HeadingTitle, and HeadingSubtitle)
-- A props type of a component must be named in the form of "ComponentNameProps" (eg., A component "Heading" has a props type "HeadingProps")
+- All the family components must define `displayName` which literally just points to the name of the corresponding component
+- All the components must be in arrow function
+
+## Syntax
 - Only React v19 syntax should be used (eg., do not usse `forwardRef`)
-- When declare any component type, if you can use `ComponentProps`, do not use `HTMLAttributes`
-- The name of a variant (declared via tailwind-variant) must be in lower camel case, and the ending of the name must be "Variants"
+
+## Type
+- Each component must declare type for its props
+- When declaring any component type, prefer `ComponentProps` than `HTMLAttributes`
+- A props type of a component must be named in the form of "ComponentNameProps" (eg., A component "Heading" has a props type "HeadingProps")
 - All the types in the file should be aggregated in `namespace` under below pattern:
   ```
   namespace Type {
@@ -16,20 +26,36 @@ alwaysApply: false
     // ...
   }
   ```
-- All the family components must define `displayName` which literally just points to the name of the corresponding component
-- Each component must have data-tag with the value to its `displayName` but in kebab case using lodash-es's kebabCase
-- Each component must declare type for its props
+
+# Comment
+- All comments must have no grammar mistakes
+- All comment must be clear, concise, and no redundancy
+
+# Variant
+- The name of a variant (declared via tailwind-variant) must be in lower camel case, and the ending of the name must be "Variants"
+
+
+# Export
+- There's only one `export` will be used in the file to export everything that should be exported
 - All the components, variants, React contexts should be exported
 - Among all the types in the file, only `namespace Type` will be exported
-- There's only one `export` will be used in the file to export everything that should be exported
+
+
+# Convention
 - All the React APIs, including the type, should be used without via the namespace `React`
   > eg., instead of using `React.ComponentProps`, use `ComponentProps`
 - The code placement follows below rules:
   - from the file bottom to top, it'd be: `export`, `namespace Type`, stacks of displayName
   - the type of component's props will be placed just right before the component
+- [file-path-statement-guideline.mdc](mdc:❔  root/❔  root/❔  root/❔  root/.cursor/rules/file-path-statement-guideline.mdc)
 
+# Examples
+Below are files that strictly follow all rules above:
+- [Heading.tsx](mdc:❔  root/❔  root/❔  root/❔  root/❔  root/🌱  docs/app/components/ui/Heading/Heading.tsx)
 
-=========== WIP
+# Draft Rules
+Just ignore all below rules. Do not respect any of below in your thinking process.
+
 - The folder structure: 
   - doc
   - mapper
@@ -39,3 +65,6 @@ alwaysApply: false
   - all other files under the same folder (eg., doc, storybook)
   - all other files that use the source code
   If making the update is uncertain, warn me
+
+
+  
