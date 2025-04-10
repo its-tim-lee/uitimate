@@ -5,7 +5,7 @@ import {
 } from "./Heading";
 import VersatileTabs from "#/components/internal/VersatileTabs";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage";
-import meta from "./meta";
+import meta from "./meta.tsx";
 
 const anatomy = `
   <Heading>
