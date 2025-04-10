@@ -1,21 +1,20 @@
+import React from 'react';
 import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading"
 import { Icon } from "#/components/ui/Icon/Icon"
 import { Cta } from "#/components/ui/Cta/Cta"
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { generateGitHubUrl } from "#/helpers/uri";
 import repo from "#/data/repo";
+import { upperCamelCase } from "#/helpers/font";
+const ComponentPageHero = ({ title, subtitle }: { title: string; subtitle: React.ReactNode; }) => {
+  const location = useLocation();
+  const pathSegments = location.pathname.split('/');
 
-type ComponentPageHeroProps = {
-  title: string;
-  subtitle: string;
-  componentName: string;
-}
+  // Assuming the URL structure is /docs/components/{category}/{componentName}/api
+  const componentCategory = upperCamelCase(pathSegments[3]);
+  const componentName = upperCamelCase(pathSegments[4]);
+  const pageName = pathSegments[5].toLowerCase(); // api or introduction
 
-const ComponentPageHero = ({
-  title,
-  subtitle,
-  componentName,
-}: ComponentPageHeroProps) => {
   const branch = 'main';
   const basePath = 'packages/docs/app/components/ui';
   const filePath = `${basePath}/${componentName}/${componentName}.tsx`;
@@ -32,14 +31,14 @@ const ComponentPageHero = ({
     owner: repo.owner,
     repo: repo.name,
     action: 'issue' as const,
-    issueTitle: `Core Component / ${componentName} / concise-issue-title`,
+    issueTitle: `${componentCategory} Component / ${componentName} / concise-issue-title`,
   });
 
   const editPageUrl = generateGitHubUrl({
     owner: repo.owner,
     repo: repo.name,
     branch,
-    filePath,
+    filePath: `${basePath}/${componentName}/${componentName}.${pageName}.tsx`, // Adjusted for the API page
     action: 'edit'
   });
 
@@ -51,7 +50,7 @@ const ComponentPageHero = ({
     <div className="tw:flex tw:gap-2 tw:flex-wrap">
       <Link to={viewComponentUrl} target="_blank" >
         <Cta shapes={['badge']} variant="outline">
-          <Icon icon='lucide:github' /> View on Github
+          <Icon icon='lucide:github' /> View the component
         </Cta>
       </Link>
       <Link to={reportBugUrl} target="_blank" >
