@@ -5,7 +5,7 @@ import {
 } from "#/components/ui/Heading/Heading";
 import VersatileTabs from "#/components/internal/VersatileTabs";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage";
-import meta from "./meta";
+import meta from "./Icon.meta.tsx";
 
 export default () => {
   return (

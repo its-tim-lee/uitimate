@@ -7,7 +7,7 @@ import VersatileTabs from "#/components/internal/VersatileTabs";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
 import QA from "#/components/internal/QA";
-import meta from "./meta";
+import meta from "./Icon.meta.tsx";
 
 export default () => {
   return (
