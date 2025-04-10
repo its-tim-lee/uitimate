@@ -14,7 +14,7 @@ import lf from 'localforage';
 import VersatileTabs from "#/components/internal/VersatileTabs";
 
 type ComponentPageUsageProps = {
-  anatomy: string,
+  anatomy?: string,
   demoId: string,
   preview?: React.ReactNode
 }
@@ -72,11 +72,11 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
       demoId,
       content: preview
     },
-    {
+    ...(anatomy ? [{
       title: 'Anatomy',
       type: 'normal' as const,
       content: <CodeBlock>{anatomy}</CodeBlock>,
-    },
+    }] : []),
     {
       title: 'Download',
       type: 'link' as const,
