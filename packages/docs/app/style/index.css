@@ -13,6 +13,7 @@
 FIXME: currently, prefix with animation will not work. It has been fixed but hasn't released yet: https://github.com/tailwindlabs/tailwindcss/issues/16829
 */
 @plugin 'tailwindcss-animate';
+@plugin "@tailwindcss/typography";
 /* @import "tailwindcss-animated" prefix(tw); */
 @custom-variant dark (&:where(.dark, .dark *));
 
