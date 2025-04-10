@@ -1,18 +1,27 @@
-
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import data, { type DocTreeItem } from "../../data/site.ts";
 import { List, ListItem } from "#/components/ui/List/List.tsx";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible.tsx";
 import { Icon } from "#/components/ui/Icon/Icon.tsx";
 import type { ReactNode, JSX } from "react";
 
-const renderTreeItem = (item: DocTreeItem, depth: number = 0): JSX.Element | null => {
+const isPathActiveOrHasActiveChild = (item: DocTreeItem, currentPath: string): boolean => {
+  if (item.href && item.href === currentPath) {
+    return true;
+  }
+  if (item.items && item.items.length > 0) {
+    return item.items.some(subItem => isPathActiveOrHasActiveChild(subItem, currentPath));
+  }
+  return false;
+};
+
+const renderTreeItem = (item: DocTreeItem, pathname: string, depth: number = 0): JSX.Element | null => {
   if (item.type === 'link') {
     const isExternal = !item.href?.startsWith('\/')
     return (
       <ListItem
         key={item.href}
-        className={`${depth > 0 && 'tw:text-xs'} tw:hover:bg-muted tw:hover:rounded-md tw:p-2 tw:px-3 `}
+        className={`${depth > 0 && 'tw:text-xs'} tw:hover:underline tw:rounded-md tw:p-2 tw:px-3 tw:has-[.active]:bg-muted`}
       >
         <NavLink
           className='tw:relative tw:flex tw:w-full tw:items-center tw:justify-between'
@@ -26,9 +35,10 @@ const renderTreeItem = (item: DocTreeItem, depth: number = 0): JSX.Element | nul
     )
   }
   if (item.type === 'collapsible') {
+    const isInitiallyOpen = isPathActiveOrHasActiveChild(item, pathname);
     return (
       <ListItem key={`${item.title}-${depth}`}>
-        <Collapsible className='tw:w-full'>
+        <Collapsible className='tw:w-full' defaultOpen={isInitiallyOpen}>
           <span className={`tw:flex tw:items-center tw:justify-between tw:p-2 tw:px-3 tw:hover:bg-muted tw:rounded-md ${depth > 0 && 'tw:text-xs '}`}>
             <CollapsibleTrigger className='tw:group tw:flex tw:justify-between tw:w-full'>
               {item.title}{" "}
@@ -41,7 +51,7 @@ const renderTreeItem = (item: DocTreeItem, depth: number = 0): JSX.Element | nul
           <CollapsibleContent className="tw:pt-1">
             {item.items && item.items.length > 0 && (
               <List className={depth > 0 ? '' : ''} indentMargin={5} indentPadding={3}>
-                {item.items?.map(subItem => renderTreeItem(subItem, depth + 1))}
+                {item.items?.map(subItem => renderTreeItem(subItem, pathname, depth + 1))}
               </List>
             )}
           </CollapsibleContent>
@@ -53,23 +63,24 @@ const renderTreeItem = (item: DocTreeItem, depth: number = 0): JSX.Element | nul
   return null;
 }
 
-const renderSection = (section: DocTreeItem): JSX.Element => {
+const renderSection = (section: DocTreeItem, pathname: string): JSX.Element => {
   return (
     <div key={section.title}>
       <List className="tw:mb-4">
         {/* Section header as first ListItem */}
         <ListItem className='tw:font-bold tw:p-2 tw:px-3 tw:pl-2'>{section.title}</ListItem>
         {/* Section items with recursive rendering */}
-        {section.items?.map(i => renderTreeItem(i, 0))}
+        {section.items?.map(i => renderTreeItem(i, pathname, 0))}
       </List>
     </div>
   );
 }
 
 export default function DocsSidebar() {
+  const { pathname } = useLocation();
   return (
     <div className="tw:text-sm tw:flex tw:flex-col tw:gap-6">
-      {data.docsTree.map(s => renderSection(s))}
+      {data.docsTree.map(s => renderSection(s, pathname))}
     </div>
   );
 }
