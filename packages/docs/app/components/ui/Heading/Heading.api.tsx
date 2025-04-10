@@ -2,10 +2,10 @@ import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "./Heading";
+} from "./Heading.tsx";
 import VersatileTabs from "#/components/internal/VersatileTabs";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage";
-import meta from "./meta.tsx";
+import meta from "./Heading.meta.tsx";
 
 const anatomy = `
   <Heading>
