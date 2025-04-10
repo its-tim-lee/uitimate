@@ -13,6 +13,7 @@ export type CoreComponentKey = `${string}/${string}`;
 type ComponentRegistry = {
   core: Record<CoreComponentKey, React.ComponentType>;
   recipe: Record<string, React.ComponentType>;
+  changelog: Record<string, string>;
 };
 
 /**
@@ -23,8 +24,9 @@ type ComponentRegistry = {
  */
 const coreComponents = import.meta.glob('./../components/ui/**/*.{api,introduction}.tsx', { eager: true, import: 'default', });
 const recipeComponents = import.meta.glob('./../components/demo/recipe/*.tsx', { eager: true, import: 'default', });
+const changelogs = import.meta.glob('./../components/ui/**/CHANGELOG.md', { eager: true, as: 'raw' });
 
-export const componentRegistry: ComponentRegistry = { core: {}, recipe: {} };
+export const componentRegistry: ComponentRegistry = { core: {}, recipe: {}, changelog: {} };
 export const componentUris: string[] = [];
 
 // Process core components
@@ -48,6 +50,15 @@ Object.entries(recipeComponents).forEach(([path, component]) => {
   componentUris.push(`/docs/components/recipe/${name}`);
 });
 
+// Process changelog files
+Object.entries(changelogs).forEach(([path, content]) => {
+  const parts = path.split('/');
+  const name = parts[parts.length - 2].toLowerCase(); // component directory name, eg., "cta"
+  if (name) {
+    componentRegistry.changelog[name] = content
+    componentUris.push(`/docs/components/core/${name}/changelog`);
+  }
+});
 // Generate Core items for site navigation
 export const coreItems: DocTreeItem[] = [];
 export const recipeItems: DocTreeItem[] = [];
@@ -56,12 +67,32 @@ export const recipeItems: DocTreeItem[] = [];
 const componentPages = new Map<string, Set<string>>();
 
 // Process core components for navigation
+// eg., the `componentPages` will be like:
+// {
+//   cta: new Set(['api', 'introduction']),
+//   ...
+// }
+//
 Object.keys(componentRegistry.core).forEach(key => {
   const [name, page] = key.split('/');
   if (!componentPages.has(name)) {
     componentPages.set(name, new Set());
   }
   componentPages.get(name)?.add(page);
+});
+
+// Add changelog pages to navigation
+// eg., the `componentPages` will be like:
+// {
+//   cta: new Set(['api', 'introduction', 'changelog']),
+//   ...
+// }
+//
+Object.keys(componentRegistry.changelog).forEach(name => {
+  if (!componentPages.has(name)) {
+    componentPages.set(name, new Set());
+  }
+  componentPages.get(name)?.add('changelog');
 });
 
 componentPages.forEach((pages, name) => {
@@ -74,40 +105,34 @@ Object.keys(componentRegistry.recipe).forEach(name => {
 });
 
 function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
-  const hasApi = pages.has('api');
-  const hasIntro = pages.has('introduction');
-
-  if (hasApi && hasIntro) {
-    return {
-      type: 'collapsible',
-      title: name,
-      href: '',
-      labels: [],
-      items: [
-        {
-          type: 'link',
-          title: 'Introduction',
-          href: `/docs/components/core/${name}/introduction`,
-          labels: [],
-          items: []
-        },
-        {
-          type: 'link',
-          title: 'API',
-          href: `/docs/components/core/${name}/api`,
-          labels: [],
-          items: []
-        }
-      ]
-    };
-  }
-
   return {
-    type: 'link',
+    type: 'collapsible',
     title: name,
-    href: `/docs/components/core/${name}/${hasApi ? 'api' : 'introduction'}`,
+    href: '',
     labels: [],
-    items: []
+    items: [
+      {
+        type: 'link',
+        title: 'Introduction',
+        href: `/docs/components/core/${name}/introduction`,
+        labels: [],
+        items: []
+      },
+      {
+        type: 'link',
+        title: 'API',
+        href: `/docs/components/core/${name}/api`,
+        labels: [],
+        items: []
+      },
+      {
+        type: 'link',
+        title: 'Changelog',
+        href: `/docs/components/core/${name}/changelog`,
+        labels: [],
+        items: []
+      }
+    ]
   };
 }
 
