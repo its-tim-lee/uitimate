@@ -3,8 +3,9 @@ import {
   HeadingSubtitle,
   HeadingTitle,
 } from "./Heading";
-import VersatileTabs from "../../internal/VersatileTabs";
-import ComponentPageUsage from "../../internal/ComponentPageUsage";
+import VersatileTabs from "#/components/internal/VersatileTabs";
+import ComponentPageUsage from "#/components/internal/ComponentPageUsage";
+import meta from "./meta";
 
 const anatomy = `
   <Heading>
@@ -18,7 +19,7 @@ export default () => {
     <>
       <Heading size="h1">
         <HeadingTitle>API</HeadingTitle>
-        <HeadingSubtitle>Heading is a title and an optional subtitle blend together to form the concept of "heads up” for readers that getting more attention than the normal text.</HeadingSubtitle>
+        <HeadingSubtitle>{meta.description}</HeadingSubtitle>
       </Heading>
 
 
