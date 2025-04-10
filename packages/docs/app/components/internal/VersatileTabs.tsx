@@ -5,7 +5,7 @@ import PreviewBlock from '#/components/internal/PreviewBlock.tsx';
 import { kebabCase, toLower } from 'lodash-es';
 
 interface TabSetting {
-  title: string;
+  title?: string;
   type: 'link' | 'normal' | 'preview';
   /**
    * HACK:
@@ -80,7 +80,9 @@ export default ({ settings }: VersatileTabsProps) => {
     <Tabs variant="underline" value={activeTab} onValueChange={handleTabChange}>
       <TabsList>
         {settings.map($s => (
-          <TabsTrigger key={$s.title} value={kebabCase(toLower($s.title))}>{$s.title}</TabsTrigger>
+          $s.title && (
+            <TabsTrigger key={$s.title} value={kebabCase(toLower($s.title))}>{$s.title}</TabsTrigger>
+          )
         ))}
       </TabsList>
       {settings.map($s => {
