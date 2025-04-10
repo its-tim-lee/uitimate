@@ -104,7 +104,7 @@ export default () => {
         ]}
       />
       <p>
-        That's! <br /> Now go ahead to check <Link className='tw:text-blue-500' to="/docs/components/core/heading/api">more demos</Link> or read the source code!
+        That's! <br /> Now go ahead to check <Link className='tw:link' to="/docs/components/core/heading/api">more demos</Link> or read the source code!
       </p>
       <br />
       <br />
