@@ -1,30 +1,14 @@
-import { Icon } from "./Icon.tsx";
-import IconDemo from "../../demo/icon-demo.tsx";
-import IconSize from "../../demo/icon-size.tsx";
-import { default as githubSVG } from '@iconify/icons-lucide/github';
-const { body: github } = githubSVG as any;
+import IconDemo from "#/components/demo/icon-demo.tsx";
+import IconSize from "#/components/demo/icon-size.tsx";
+import type { Meta } from "@storybook/react";
 
 export default {
   title: 'Example/Icon',
-  includeStories: [],
   parameters: {
     layout: 'centered',
-    // docs: {
-    //   source: {
-    //     type: 'dynamic',
-    //   }
-    // }
   },
-  component: Icon,
-  displayName: 'Icon',
-  // tags: ['autodocs'],
-  argTypes: {
-    size: { control: 'select', options: ['sm', 'lg', 'icon'] },
-    variant: { control: 'select', options: ['default', 'secondary', 'destructive', 'outline', 'ghost', 'link'] },
-    asChild: { control: 'boolean' },
-  },
-
-}
+  tags: ['autodocs'],
+} as Meta;
 
 export const DEMO = {
   name: 'DEMO',
