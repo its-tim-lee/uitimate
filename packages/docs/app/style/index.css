@@ -226,6 +226,9 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+  .tw\:link {
+    @apply tw:bg-gradient-to-r tw:from-teal-200 tw:to-teal-200 tw:[background-size:100%_0.2em] tw:[background-position:0_88%] tw:bg-no-repeat tw:hover:[background-size:100%_100%] tw:focus:[background-size:100%_100%] tw:motion-safe:transition-all tw:motion-safe:duration-200;
+  }
 }
 
 /*
