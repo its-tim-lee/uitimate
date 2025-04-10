@@ -38,8 +38,8 @@ export default () => {
       <br />
 
       <Heading size="h2">
-        <HeadingTitle>DEMO/API</HeadingTitle>
-        <HeadingSubtitle>This tries to show all the API/Component usages.</HeadingSubtitle>
+        <HeadingTitle>DEMO / API</HeadingTitle>
+        <HeadingSubtitle>This tries to show all the API/Component usages, but this can be insufficient/impossible in some cases, and we'd then use "DEMO / Scenario" (see that section below on this page) to express.</HeadingSubtitle>
       </Heading>
       <VersatileTabs
         settings={[
@@ -60,7 +60,7 @@ export default () => {
       <br />
 
       <Heading size="h2">
-        <HeadingTitle>DEMO/Scenario</HeadingTitle>
+        <HeadingTitle>DEMO /  Scenario</HeadingTitle>
         <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
       </Heading>
       <VersatileTabs
