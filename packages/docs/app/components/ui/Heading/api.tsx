@@ -18,7 +18,7 @@ export default () => {
     <>
       <Heading size="h1">
         <HeadingTitle>API</HeadingTitle>
-        <HeadingSubtitle>Heading is when a title and an optional subtitle blend together to form the concept of "head up” that getting more reader's attention than the normal text.</HeadingSubtitle>
+        <HeadingSubtitle>Heading is a title and an optional subtitle blend together to form the concept of "heads up” for readers that getting more attention than the normal text.</HeadingSubtitle>
       </Heading>
 
 
@@ -37,7 +37,7 @@ export default () => {
       <br />
 
       <Heading size="h2">
-        <HeadingTitle>Example / API</HeadingTitle>
+        <HeadingTitle>DEMO/API</HeadingTitle>
         <HeadingSubtitle>This tries to show all the API/Component usages.</HeadingSubtitle>
       </Heading>
       <VersatileTabs
@@ -59,7 +59,7 @@ export default () => {
       <br />
 
       <Heading size="h2">
-        <HeadingTitle>Example / Scenario</HeadingTitle>
+        <HeadingTitle>DEMO/Scenario</HeadingTitle>
         <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
       </Heading>
       <VersatileTabs
