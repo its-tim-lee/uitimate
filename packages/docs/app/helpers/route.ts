@@ -21,7 +21,7 @@ type ComponentRegistry = {
  * (the filtered components will always be empty)
  * but at least it still allows the filtered files to use path alias
  */
-const coreComponents = import.meta.glob('./../components/ui/**/{api,introduction}.tsx', { eager: true, import: 'default', });
+const coreComponents = import.meta.glob('./../components/ui/**/*.{api,introduction}.tsx', { eager: true, import: 'default', });
 const recipeComponents = import.meta.glob('./../components/demo/recipe/*.tsx', { eager: true, import: 'default', });
 
 export const componentRegistry: ComponentRegistry = { core: {}, recipe: {} };
@@ -30,8 +30,11 @@ export const componentUris: string[] = [];
 // Process core components
 Object.entries(coreComponents).forEach(([path, component]) => {
   const parts = path.split('/');
-  const name = parts[parts.length - 2].toLowerCase(); // eg., result: "cta"
-  const page = parts[parts.length - 1].replace('.tsx', '').toLowerCase(); // eg., result: "api"
+  const name = parts[parts.length - 2].toLowerCase(); // component directory name, eg., "cta"
+  const filename = parts[parts.length - 1]; // eg., "Cta.api.tsx"
+  const pageMatch = filename.match(/\.?(api|introduction)\.tsx$/);
+  if (!pageMatch) return;
+  const page = pageMatch[1].toLowerCase(); // eg., "api"
 
   componentRegistry.core[`${name}/${page}`] = component as React.ComponentType;
   componentUris.push(`/docs/components/core/${name}/${page}`);
