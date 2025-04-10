@@ -1,7 +1,7 @@
 import { Root, List, Trigger, Content } from "@radix-ui/react-tabs"
 import { tv } from 'tailwind-variants'
 import React, { createContext, useContext } from 'react'
-
+import { kebabCase } from 'lodash-es'
 const TabsVariantContext = createContext<{ variant: 'pill' | 'underline' }>({ variant: 'pill' })
 
 const Tabs = ({ variant, ...props }: TabsProps) => (
@@ -11,7 +11,7 @@ const Tabs = ({ variant, ...props }: TabsProps) => (
 )
 
 const tabsListVariants = tv({
-  base: 'tw:mb-3',
+  base: 'tw:has-data-[tag=tabs-trigger]:mb-3',
   variants: {
     variant: {
       pill: "tw:inline-flex tw:h-9 tw:items-center tw:justify-center tw:rounded-lg tw:bg-muted tw:p-1 tw:text-muted-foreground",
@@ -49,6 +49,7 @@ const TabsTrigger = ({ className, ...props }: TabsTriggerProps) => {
   const { variant } = useContext(TabsVariantContext)
   return (
     <Trigger
+      data-tag={kebabCase(TabsTrigger.displayName)}
       className={tabsTriggerVariants({ variant, className })}
       {...props}
     />
