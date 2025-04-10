@@ -13,3 +13,4 @@ export const reflectiveClone = <T extends object>(source: T): T => {
   Reflect.ownKeys(source).forEach(k => (target as any)[k] = (source as any)[k]);
   return target;
 }
+
