@@ -1,14 +1,10 @@
-import {
-  Heading,
-  HeadingSubtitle,
-  HeadingTitle,
-} from "#/components/ui/Heading/Heading.tsx";
 import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
 import QA from "#/components/internal/QA.tsx";
 import meta from "./Heading.meta.tsx";
 import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
+import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
 
 export default () => {
   return (
@@ -17,10 +13,7 @@ export default () => {
 
       <br />
 
-      <Heading size="h2">
-        <HeadingTitle>Quick Demo</HeadingTitle>
-        <HeadingSubtitle>Heading is commonly found in below (but not limit to) cases:</HeadingSubtitle>
-      </Heading>
+      <QuickDemoSection />
       <VersatileTabs
         settings={[
           {
@@ -44,14 +37,7 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">
-        <HeadingTitle>
-          Quick Start
-        </HeadingTitle>
-        <HeadingSubtitle>
-          Walking you through the common usage of this component to get your start quickly.
-        </HeadingSubtitle>
-      </Heading>
+      <QuickStartSection />
       <p>
         This component is used under the anatomy of:
       </p>
@@ -112,7 +98,7 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">Q&A</Heading>
+      <QASection />
       <p className='tw:text-muted-foreground'>
         If you have the questions that's more like a design philosophy on this component,
         you actually can have a better answer by just checking the source code
