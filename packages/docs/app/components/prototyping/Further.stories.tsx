@@ -1,6 +1,5 @@
 import DevelopmentToolsDemo from "#/components/demo/development-tools-demo.tsx";
 import AllProductsDemo from "#/components/demo/all-products-demo.tsx";
-import AccordionFigma from '#/components/demo/accordion-figma.tsx';
 
 export default {
   title: 'Prototyping/Further',
@@ -23,9 +22,3 @@ export const AllProducts = {
   name: 'All Products',
   render: () => <AllProductsDemo />
 };
-
-
-export const FigmaDesign = {
-  name: 'Figma Design',
-  render: () => <AccordionFigma />
-}
