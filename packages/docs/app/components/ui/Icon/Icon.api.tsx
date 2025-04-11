@@ -2,18 +2,17 @@ import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "#/components/ui/Heading/Heading";
-import VersatileTabs from "#/components/internal/VersatileTabs";
-import ComponentPageUsage from "#/components/internal/ComponentPageUsage";
+} from "#/components/ui/Heading/Heading.tsx";
+import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Icon.meta.tsx";
 import { Link } from "react-router";
+import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 export default () => {
   return (
     <>
-      <Heading size="h1">
-        <HeadingTitle>API</HeadingTitle>
-        <HeadingSubtitle>{meta.description}</HeadingSubtitle>
-      </Heading>
+
+      <ComponentPageHero title='API' subtitle={meta.description} />
 
       <br />
 
