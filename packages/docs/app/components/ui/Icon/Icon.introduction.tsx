@@ -1,22 +1,17 @@
 import {
   Heading,
-  HeadingSubtitle,
-  HeadingTitle,
-} from "#/components/ui/Heading/Heading";
-import VersatileTabs from "#/components/internal/VersatileTabs";
+} from "#/components/ui/Heading/Heading.tsx";
+import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
-import QA from "#/components/internal/QA";
+import QA from "#/components/internal/QA.tsx";
 import meta from "./Icon.meta.tsx";
+import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 
 export default () => {
   return (
     <>
-      <Heading size="h1">
-        <HeadingTitle>Introduction</HeadingTitle>
-        <HeadingSubtitle>{meta.description}</HeadingSubtitle>
-      </Heading>
-      <br />
+      <ComponentPageHero title='Introduction' subtitle={meta.description} />
       <br />
       <Heading size="h2">Quick Demo</Heading>
 

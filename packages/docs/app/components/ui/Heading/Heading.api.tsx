@@ -3,24 +3,15 @@ import {
   HeadingSubtitle,
   HeadingTitle,
 } from "./Heading.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs";
-import ComponentPageUsage from "#/components/internal/ComponentPageUsage";
+import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Heading.meta.tsx";
-
-const anatomy = `
-  <Heading>
-    <HeadingTitle/>
-    <HeadingSubtitle/>
-  </Heading>
-`;
+import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 
 export default () => {
   return (
     <>
-      <Heading size="h1">
-        <HeadingTitle>API</HeadingTitle>
-        <HeadingSubtitle>{meta.description}</HeadingSubtitle>
-      </Heading>
+      <ComponentPageHero title='API' subtitle={meta.description} />
 
 
       <br />
@@ -31,7 +22,7 @@ export default () => {
       </Heading>
       <ComponentPageUsage
         demoId="heading-demo"
-        anatomy={anatomy}
+        anatomy={meta.anatomy}
       />
 
       <br />

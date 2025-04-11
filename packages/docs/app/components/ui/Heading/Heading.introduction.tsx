@@ -2,21 +2,18 @@ import {
   Heading,
   HeadingSubtitle,
   HeadingTitle,
-} from "#/components/ui/Heading/Heading";
-import VersatileTabs from "#/components/internal/VersatileTabs";
+} from "#/components/ui/Heading/Heading.tsx";
+import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
-import QA from "#/components/internal/QA";
+import QA from "#/components/internal/QA.tsx";
 import meta from "./Heading.meta.tsx";
+import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 
 export default () => {
   return (
     <>
-      <Heading size="h1">
-        <HeadingTitle>Introduction</HeadingTitle>
-        <HeadingSubtitle>{meta.description}</HeadingSubtitle>
-      </Heading>
-
+      <ComponentPageHero title='Introduction' subtitle={meta.description} />
 
       <br />
 
@@ -51,14 +48,7 @@ export default () => {
       <p>
         This component is used under the anatomy of:
       </p>
-      <CodeBlock>
-        {`
-          <Heading>
-            <HeadingTitle/>
-            <HeadingSubtitle/>
-          </Heading>
-        `}
-      </CodeBlock>
+      <CodeBlock>{meta.anatomy}</CodeBlock>
       <br />
       <p>
         All the child components are optional, but if only title is needed, instead of the tedious:
