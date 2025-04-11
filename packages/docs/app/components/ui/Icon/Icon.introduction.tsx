@@ -1,5 +1,7 @@
 import {
   Heading,
+  HeadingSubtitle,
+  HeadingTitle,
 } from "#/components/ui/Heading/Heading.tsx";
 import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
@@ -34,7 +36,14 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">Quick Start</Heading>
+      <Heading size="h2">
+        <HeadingTitle>
+          Quick Start
+        </HeadingTitle>
+        <HeadingSubtitle>
+          Walking you through the common usage of this component to get your start quickly.
+        </HeadingSubtitle>
+      </Heading>
       <p>
         This component uses <Link className="tw:link" to="https://iconify.design/docs/icon-components/react/" target="_blank" rel="noopener noreferrer">@iconify/react</Link> under the hood, so any prop from that is supported.
         It also uses <Link className="tw:link" to="https://www.radix-ui.com/primitives/docs/utilities/accessible-icon" target="_blank" rel="noopener noreferrer">Radix's AccessibleIcon</Link>, so you can specify an accessibility label as:
@@ -53,8 +62,12 @@ export default () => {
         `}
       </CodeBlock>
       <br />
-      <br />
 
+      <p>
+        Let's! For more its family components to use, check <Link className="tw:link" to="./../api">the API reference page</Link>.
+      </p>
+      <br />
+      <br />
       <Heading size="h2">Q&A</Heading>
 
       <QA items={[
