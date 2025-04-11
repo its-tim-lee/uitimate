@@ -40,6 +40,6 @@ export const Variant4 = {
 }
 
 export const FigmaAlert = {
-  name: 'Figma / Alert',
+  name: 'Scenario / Alert',
   render: () => <HeadingAlert />
 }
