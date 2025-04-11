@@ -2,7 +2,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "#/
 import { useState } from "react";
 
 export default () => {
-  const [value, setValue] = useState(['unique-id-2', 'unique-id-3'])
+  const [value, setValue] = useState(['unique-id-2'])
   const items = [
     {
       value: "unique-id-1",
@@ -13,19 +13,13 @@ export default () => {
     {
       value: "unique-id-2",
       disabled: false,
-      trigger: "This content will show up initially",
+      trigger: "This item will be toggled on initially",
       content: "This is because its `value` is included in `useState`",
     },
     {
       value: "unique-id-3",
       disabled: false,
-      trigger: "This content will show up initially",
-      content: "This is because its `value` is included in `useState`",
-    },
-    {
-      value: "unique-id-4",
-      disabled: false,
-      trigger: "This content will NOT show up initially",
+      trigger: "This item remains off initially",
       content: "This is because its `value` is NOT included in `useState`",
     },
   ];
