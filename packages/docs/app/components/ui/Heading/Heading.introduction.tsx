@@ -44,7 +44,14 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">Quick Start</Heading>
+      <Heading size="h2">
+        <HeadingTitle>
+          Quick Start
+        </HeadingTitle>
+        <HeadingSubtitle>
+          Walking you through the common usage of this component to get your start quickly.
+        </HeadingSubtitle>
+      </Heading>
       <p>
         This component is used under the anatomy of:
       </p>
@@ -100,7 +107,7 @@ export default () => {
         ]}
       />
       <p>
-        That's! <br /> Now go ahead to check <Link className='tw:link' to="/docs/components/core/heading/api">more demos</Link> or read the source code!
+        Let's! For more its family components to use, check <Link className="tw:link" to="./../api">the API reference page</Link>.
       </p>
       <br />
       <br />

@@ -30,7 +30,7 @@ export default () => {
 
       <Heading size="h2">
         <HeadingTitle>DEMO / API</HeadingTitle>
-        <HeadingSubtitle>This tries to show all the API/Component usages, but this can be insufficient/impossible in some cases, and we'd then use "DEMO / Scenario" (see that section below on this page) to express.</HeadingSubtitle>
+        <HeadingSubtitle>This tries to show all the API/Component usages, but this can be insufficient/impossible in some cases, and we'd then use "DEMO / Scenario" (see that section below on this page) to express more.</HeadingSubtitle>
       </Heading>
       <VersatileTabs
         settings={[
