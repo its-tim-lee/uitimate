@@ -1,4 +1,10 @@
-# @uitimate/accordion
+# Changelog
+
+## 1.0.2
+
+### Patch Changes
+
+- Fix: disabled prop has no effect
 
 ## 1.0.1
 
@@ -7,3 +13,7 @@
 - Showing underline effect when hovering on any accordion item can be annonying in some styling situations.
 
   So now only showing pointer when hovering.
+
+## 1.0.0
+
+First version passes the quality checker for the component

@@ -3,6 +3,7 @@ import { Root, Item, Trigger, Content, Header } from "@radix-ui/react-accordion"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import './index.css'
+import { kebabCase } from 'lodash-es'
 
 const accordionVariants = tv({
   slots: {
@@ -29,18 +30,14 @@ const { item, trigger, content, contentInner } = accordionVariants()
 type AccordionItemProps = ComponentProps<typeof Item>
 const AccordionItem = ({
   className,
-  disabled,
-  children,
   ...props
 }: AccordionItemProps) => {
   return (
     <Item
       className={item({ className })}
-      data-disabled={disabled}
+      data-tag={kebabCase(AccordionItem.displayName)}
       {...props}
-    >
-      {children}
-    </Item>
+    />
   )
 }
 
@@ -54,6 +51,7 @@ const AccordionTrigger = ({
     <Header className="tw:flex">
       <Trigger
         className={trigger({ className })}
+        data-tag={kebabCase(AccordionTrigger.displayName)}
         {...props}
       >
         {children}
@@ -75,6 +73,7 @@ const AccordionContent = ({
   return (
     <Content
       className={content()}
+      data-tag={kebabCase(AccordionContent.displayName)}
       {...props}
     >
       <div className={contentInner({ className })}>
@@ -88,19 +87,23 @@ AccordionItem.displayName = "AccordionItem"
 AccordionTrigger.displayName = "AccordionTrigger"
 AccordionContent.displayName = "AccordionContent"
 
+namespace Type {
+  export type AccordionItem = AccordionItemProps;
+  export type AccordionTrigger = AccordionTriggerProps;
+  export type AccordionContent = AccordionContentProps;
+}
 
 export {
   /**
-   * for some props of Accordion:
-   * - orientation='horizontal' seems not working
-   * - `defaultValue` can be replaced by `value`
+   * Usage Note:
+   *  for some props of Accordion,
+   *  - orientation='horizontal' seems not working
+   *  - `defaultValue` can be replaced by `value`
    */
   Root as Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
   accordionVariants,
-  type AccordionItemProps,
-  type AccordionTriggerProps,
-  type AccordionContentProps,
+  type Type
 }
