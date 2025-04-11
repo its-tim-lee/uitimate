@@ -206,6 +206,9 @@ importers:
       react-router:
         specifier: ^7.4.1
         version: 7.4.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react-scroll:
+        specifier: 1.9.3
+        version: 1.9.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-syntax-highlighter:
         specifier: ^15.6.1
         version: 15.6.1(react@19.0.0)
@@ -306,6 +309,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.0.1
         version: 19.0.3(@types/react@19.0.12)
+      '@types/react-scroll':
+        specifier: 1.8.10
+        version: 1.8.10
       '@types/react-syntax-highlighter':
         specifier: 15.5.13
         version: 15.5.13
@@ -3444,6 +3450,9 @@ packages:
     peerDependencies:
       '@types/react': '*'
 
+  '@types/react-scroll@1.8.10':
+    resolution: {integrity: sha512-RD4Z7grbdNGOKwKnUBKar6zNxqaW3n8m9QSrfvljW+gmkj1GArb8AFBomVr6xMOgHPD3v1uV3BrIf01py57daQ==}
+
   '@types/react-syntax-highlighter@15.5.13':
     resolution: {integrity: sha512-uLGJ87j6Sz8UaBAooU0T6lWJ0dBmjZgN1PZTrj05TNql2/XpC6+4HhMT5syIdFUUt+FASfCeLLv4kBygNU+8qA==}
 
@@ -6366,6 +6375,12 @@ packages:
     peerDependenciesMeta:
       react-dom:
         optional: true
+
+  react-scroll@1.9.3:
+    resolution: {integrity: sha512-xv7FXqF3k63aSLNu4/NjFvRNI0ge7DmmmsbeGarP7LZVAlJMSjUuW3dTtLxp1Afijyv0lS2qwC0GiFHvx1KBHQ==}
+    peerDependencies:
+      react: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   react-smooth@4.0.4:
     resolution: {integrity: sha512-gnGKTpYwqL0Iii09gHobNolvX4Kiq4PKx6eWBCYYix+8cdw+cGo3do906l1NBPKkSWx1DghC1dlWG9L2uGd61Q==}
@@ -11100,6 +11115,10 @@ snapshots:
     dependencies:
       '@types/react': 19.0.12
 
+  '@types/react-scroll@1.8.10':
+    dependencies:
+      '@types/react': 19.0.12
+
   '@types/react-syntax-highlighter@15.5.13':
     dependencies:
       '@types/react': 19.0.12
@@ -14440,6 +14459,13 @@ snapshots:
       set-cookie-parser: 2.7.1
       turbo-stream: 2.4.0
     optionalDependencies:
+      react-dom: 19.0.0(react@19.0.0)
+
+  react-scroll@1.9.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      lodash.throttle: 4.1.1
+      prop-types: 15.8.1
+      react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
   react-smooth@4.0.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
