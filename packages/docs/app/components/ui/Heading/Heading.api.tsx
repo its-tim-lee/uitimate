@@ -7,7 +7,7 @@ import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Heading.meta.tsx";
 import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
-import { Link as ScrollLink, Element } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 export default () => {
   return (
     <>
@@ -16,7 +16,7 @@ export default () => {
 
       <br />
 
-      <Heading size="h2">
+      <Heading size="h2" id="usage">
         <HeadingTitle>Usage</HeadingTitle>
         <HeadingSubtitle>How you can play this component.</HeadingSubtitle>
       </Heading>
@@ -27,12 +27,12 @@ export default () => {
 
       <br />
       <br />
-      <Heading size="h2">
+      <Heading size="h2" id='demo-api'>
         <HeadingTitle>DEMO / API</HeadingTitle>
       <HeadingSubtitle>Trying to show all the common API/Component usages below, but this can be insufficient/impossible in some cases, and we'd then use
         {' '}
         <ScrollLink
-          to="scenario-section"
+          to="demo-scenarios"
           spy={true}
           smooth={true}
           offset={-20}
@@ -58,12 +58,10 @@ export default () => {
       <br />
       <br />
 
-      <Element name="scenario-section">
-        <Heading size="h2">
+      <Heading size="h2" id="demo-scenarios">
           <HeadingTitle>DEMO / Scenario</HeadingTitle>
           <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
         </Heading>
-      </Element>
       <VersatileTabs
         settings={[
           {
