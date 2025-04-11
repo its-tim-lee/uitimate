@@ -41,6 +41,13 @@ const AccordionItem = ({
   )
 }
 
+/**
+ * Usage Note:
+ *  - in 99% of time, this is NOT recommended to be used directly, cuz we already encapsulate it in AccordionTrigger
+ */
+type AccordionHeaderProps = ComponentProps<typeof Header>
+const AccordionHeader = Header;
+
 type AccordionTriggerProps = ComponentProps<typeof Trigger>
 const AccordionTrigger = ({
   className,
@@ -48,7 +55,7 @@ const AccordionTrigger = ({
   ...props
 }: AccordionTriggerProps) => {
   return (
-    <Header className="tw:flex">
+    <AccordionHeader className="tw:flex">
       <Trigger
         className={trigger({ className })}
         data-tag={kebabCase(AccordionTrigger.displayName)}
@@ -60,7 +67,7 @@ const AccordionTrigger = ({
           className="tw:h-4 tw:w-4 tw:shrink-0 tw:text-muted-foreground tw:transition-transform tw:duration-200"
         />
       </Trigger>
-    </Header>
+    </AccordionHeader>
   )
 }
 
@@ -83,27 +90,35 @@ const AccordionContent = ({
   )
 }
 
+/**
+ * Usage Note:
+ *  for some props of Accordion,
+ *  - orientation='horizontal' seems not working
+ *  - `defaultValue` can be replaced by `value`
+ */
+type AccordionProps = ComponentProps<typeof Root>
+const Accordion = Root;
+
+Accordion.displayName = "Accordion"
 AccordionItem.displayName = "AccordionItem"
 AccordionTrigger.displayName = "AccordionTrigger"
 AccordionContent.displayName = "AccordionContent"
+AccordionHeader.displayName = "AccordionHeader"
 
 namespace Type {
   export type AccordionItem = AccordionItemProps;
   export type AccordionTrigger = AccordionTriggerProps;
   export type AccordionContent = AccordionContentProps;
+  export type AccordionHeader = AccordionHeaderProps;
+  export type Accordion = AccordionProps;
 }
 
 export {
-  /**
-   * Usage Note:
-   *  for some props of Accordion,
-   *  - orientation='horizontal' seems not working
-   *  - `defaultValue` can be replaced by `value`
-   */
-  Root as Accordion,
+  Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
+  AccordionHeader,
   accordionVariants,
   type Type
 }

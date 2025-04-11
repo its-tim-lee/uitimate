@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+
+### Patch Changes
+
+- just align the source code with the library component development quality
+
 ## 1.0.2
 
 ### Patch Changes
