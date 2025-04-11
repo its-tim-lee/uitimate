@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/react';
 
 export default {
   title: 'Example/Figma to Code',
+  includeStories: [],
   parameters: {
     layout: 'centered',
   },
