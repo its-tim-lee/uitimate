@@ -7,7 +7,7 @@ import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Heading.meta.tsx";
 import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
-
+import { Link as ScrollLink, Element } from "react-scroll";
 export default () => {
   return (
     <>
@@ -27,11 +27,19 @@ export default () => {
 
       <br />
       <br />
-
       <Heading size="h2">
         <HeadingTitle>DEMO / API</HeadingTitle>
-        <HeadingSubtitle>This tries to show all the API/Component usages, but this can be insufficient/impossible in some cases, and we'd then use "DEMO / Scenario" (see that section below on this page) to express more.</HeadingSubtitle>
-      </Heading>
+      <HeadingSubtitle>Trying to show all the common API/Component usages below, but this can be insufficient/impossible in some cases, and we'd then use
+        {' '}
+        <ScrollLink
+          to="scenario-section"
+          spy={true}
+          smooth={true}
+          offset={-20}
+          duration={0}
+          className="tw:link tw:cursor-pointer"
+        >DEMO / Scenario</ScrollLink> to express more.</HeadingSubtitle>
+    </Heading >
       <VersatileTabs
         settings={[
           {
@@ -50,10 +58,12 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">
-        <HeadingTitle>DEMO /  Scenario</HeadingTitle>
-        <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
-      </Heading>
+      <Element name="scenario-section">
+        <Heading size="h2">
+          <HeadingTitle>DEMO / Scenario</HeadingTitle>
+          <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
+        </Heading>
+      </Element>
       <VersatileTabs
         settings={[
           {
