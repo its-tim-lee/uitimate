@@ -17,7 +17,7 @@
     "typecheck": "react-router typegen && tsc",
     "typegen": "react-router typegen",
     "build:storybook": "storybook build",
-    "test:screenshots": "npx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server ./storybook-static --port 6006 --silent\" \"npx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook\"",
+    "test:screenshots": "npx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server ./storybook-static --port 6007 --silent\" \"npx wait-on tcp:127.0.0.1:6007 && pnpm test-storybook\"",
     "sb": "storybook dev -p 6006 --loglevel verbose --ci",
     "test-storybook": "NODE_ENV=production NODE_NO_WARNINGS=1 NODE_OPTIONS=--experimental-vm-modules test-storybook"
   },
