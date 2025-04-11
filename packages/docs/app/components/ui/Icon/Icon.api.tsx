@@ -16,7 +16,7 @@ export default () => {
 
       <br />
 
-      <Heading size="h2">
+      <Heading size="h2" id="usage">
         <HeadingTitle>Usage</HeadingTitle>
         <HeadingSubtitle>How you can play this component.</HeadingSubtitle>
       </Heading>
@@ -27,7 +27,7 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">
+      <Heading size="h2" id="demo-scenarios">
         <HeadingTitle>DEMO / Scenario</HeadingTitle>
         <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
       </Heading>
@@ -44,7 +44,7 @@ export default () => {
       <br />
       <br />
 
-      <Heading size="h2">
+      <Heading size="h2" id="dependencies">
         <HeadingTitle>Dependencies</HeadingTitle>
         <HeadingSubtitle>Below lists out the 3rd-party libaries that this component depends on.</HeadingSubtitle>
       </Heading>
