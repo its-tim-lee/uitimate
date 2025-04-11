@@ -1,12 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import AccordionDemo from '../../demo/accordion-demo.tsx';
-import AccordionOverview from '../../demo/accordion-overview.tsx';
-
-
+import type { Meta } from '@storybook/react';
+import AccordionDemo from '#/components/demo/accordion-demo.tsx';
+import AccordionOverview from '#/components/demo/accordion-overview.tsx';
 
 export default {
   title: 'Example/Accordion',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
@@ -16,12 +13,12 @@ export default {
   },
 } as Meta;
 
-export const DEMO = {
-  name: 'DEMO',
+export const Demo = {
+  name: 'Demo',
   render: () => <AccordionDemo />
-}
+};
 
 export const Multiple = {
   name: 'API / Overview',
   render: () => <AccordionOverview />
-}
+};
