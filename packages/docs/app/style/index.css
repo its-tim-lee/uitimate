@@ -233,6 +233,10 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
   .tw\:brand {
     @apply tw:font-bold tw:italic tw:underline
   }
+
+  .tw\:code {
+    @apply tw:bg-gray-100 tw:text-gray-800 tw:text-xs tw:font-medium tw:me-2 tw:px-2.5 tw:py-0.5 tw:rounded-sm tw:dark:bg-gray-700 tw:dark:text-gray-300;
+  }
 }
 
 /*
