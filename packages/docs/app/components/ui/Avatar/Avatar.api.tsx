@@ -19,6 +19,7 @@ export default () => {
       <UsageSection />
       <ComponentPageUsage
         demoId="avatar-demo"
+        anatomy={meta.anatomy}
       />
 
       <br />
