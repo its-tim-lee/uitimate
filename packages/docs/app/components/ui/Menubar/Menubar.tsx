@@ -1,13 +1,8 @@
-/**
- * TBD: doc:
- * `Label` is not imported, cuz it should be extreme rare to use.
- * `Arrow` is not imported, cuz it's almost redundant in terms of UX.
- * `Group` is not imported, cuz I can't see its value, and it seems redundant to use it.
- */
-import { ItemIndicator, Root, Trigger, SubTrigger, SubContent, Content, Item, CheckboxItem, RadioItem, Separator, Menu as MenubarMenu, Portal as MenubarPortal, Sub as MenubarSub, RadioGroup as MenubarRadioGroup } from "@radix-ui/react-menubar"
+import { Label, Arrow, Group, ItemIndicator, Root, Trigger, SubTrigger, SubContent, Content, Item, CheckboxItem, RadioItem, Separator, Menu as MenubarMenu, Portal as MenubarPortal, Sub as MenubarSub, RadioGroup as MenubarRadioGroup } from "@radix-ui/react-menubar"
 import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon"
+import { kebabCase } from "lodash-es"
 
 const itemBaseStyle = [
   "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:text-sm tw:outline-hidden",
@@ -19,7 +14,7 @@ const menubarVariants = tv({
     root: "tw:flex tw:h-9 tw:items-center tw:space-x-1 tw:rounded-md tw:border tw:bg-background tw:p-1 tw:shadow-sm",
     trigger: "tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:px-3 tw:py-1 tw:text-sm tw:font-medium tw:outline-hidden tw:focus:bg-accent tw:focus:text-accent-foreground tw:data-[state=open]:bg-accent tw:data-[state=open]:text-accent-foreground",
     subTrigger: [
-      "tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:px-2 tw:py-1.5 tw:text-sm tw:outline-hidden",
+      "tw:flex tw:cursor-default tw:select-none tw:items-center tw:justify-between tw:rounded-sm tw:px-2 tw:py-1.5 tw:text-sm tw:outline-hidden",
       "tw:focus:bg-accent tw:focus:text-accent-foreground",
       "tw:data-[state=open]:bg-accent tw:data-[state=open]:text-accent-foreground"
     ],
@@ -39,7 +34,11 @@ const menubarVariants = tv({
     formItem: ["tw:py-1.5 tw:pl-8 tw:pr-2", ...itemBaseStyle],
     itemIndicator: "tw:absolute tw:left-2 tw:flex tw:h-3.5 tw:w-3.5 tw:items-center tw:justify-center",
     separator: "tw:-mx-1 tw:my-1 tw:h-px tw:bg-muted",
-    shortcut: "tw:ml-auto tw:text-xs tw:tracking-widest tw:text-muted-foreground"
+    shortcut: "tw:ml-auto tw:text-xs tw:tracking-widest tw:text-muted-foreground",
+    label: "",
+    arrow: "",
+    group: "",
+
   }
 })
 
@@ -53,12 +52,16 @@ const {
   formItem,
   itemIndicator,
   separator,
-  shortcut
+  shortcut,
+  label,
+  arrow,
+  group
 } = menubarVariants()
 
 type MenubarProps = ComponentProps<typeof Root>;
 const Menubar = ({ className, ...props }: MenubarProps) => (
   <Root
+    data-tag={kebabCase(Menubar.displayName)}
     className={root({ className })}
     {...props}
   />
@@ -67,6 +70,7 @@ const Menubar = ({ className, ...props }: MenubarProps) => (
 type MenubarTriggerProps = ComponentProps<typeof Trigger>;
 const MenubarTrigger = ({ className, ...props }: MenubarTriggerProps) => (
   <Trigger
+    data-tag={kebabCase(MenubarTrigger.displayName)}
     className={trigger({ className })}
     {...props}
   />
@@ -75,6 +79,7 @@ const MenubarTrigger = ({ className, ...props }: MenubarTriggerProps) => (
 type MenubarSubTriggerProps = ComponentProps<typeof SubTrigger>;
 const MenubarSubTrigger = ({ className, children, ...props }: MenubarSubTriggerProps) => (
   <SubTrigger
+    data-tag={kebabCase(MenubarSubTrigger.displayName)}
     className={subTrigger({ className })}
     {...props}
   >
@@ -86,6 +91,7 @@ const MenubarSubTrigger = ({ className, children, ...props }: MenubarSubTriggerP
 type MenubarSubContentProps = ComponentProps<typeof SubContent>;
 const MenubarSubContent = ({ className, ...props }: MenubarSubContentProps) => (
   <SubContent
+    data-tag={kebabCase(MenubarSubContent.displayName)}
     className={subContent({ className })}
     {...props}
   />
@@ -95,6 +101,7 @@ type MenubarContentProps = ComponentProps<typeof Content>;
 const MenubarContent = ({ className, align = "start", alignOffset = -4, sideOffset = 8, ...props }: MenubarContentProps) => (
   <MenubarPortal>
     <Content
+      data-tag={kebabCase(MenubarContent.displayName)}
       align={align}
       alignOffset={alignOffset}
       sideOffset={sideOffset}
@@ -107,6 +114,7 @@ const MenubarContent = ({ className, align = "start", alignOffset = -4, sideOffs
 type MenubarItemProps = ComponentProps<typeof Item>;
 const MenubarItem = ({ className, ...props }: MenubarItemProps) => (
   <Item
+    data-tag={kebabCase(MenubarItem.displayName)}
     className={item({ className })}
     {...props}
   />
@@ -115,6 +123,7 @@ const MenubarItem = ({ className, ...props }: MenubarItemProps) => (
 type MenubarCheckboxItemProps = ComponentProps<typeof CheckboxItem>;
 const MenubarCheckboxItem = ({ className, children, checked, ...props }: MenubarCheckboxItemProps) => (
   <CheckboxItem
+    data-tag={kebabCase(MenubarCheckboxItem.displayName)}
     className={formItem({ className })}
     checked={checked}
     {...props}
@@ -131,6 +140,7 @@ const MenubarCheckboxItem = ({ className, children, checked, ...props }: Menubar
 type MenubarRadioItemProps = ComponentProps<typeof RadioItem>;
 const MenubarRadioItem = ({ className, children, ...props }: MenubarRadioItemProps) => (
   <RadioItem
+    data-tag={kebabCase(MenubarRadioItem.displayName)}
     className={formItem({ className })}
     {...props}
   >
@@ -146,6 +156,7 @@ const MenubarRadioItem = ({ className, children, ...props }: MenubarRadioItemPro
 type MenubarSeparatorProps = ComponentProps<typeof Separator>;
 const MenubarSeparator = ({ className, ...props }: MenubarSeparatorProps) => (
   <Separator
+    data-tag={kebabCase(MenubarSeparator.displayName)}
     className={separator({ className })}
     {...props}
   />
@@ -154,7 +165,35 @@ const MenubarSeparator = ({ className, ...props }: MenubarSeparatorProps) => (
 type MenubarShortcutProps = ComponentProps<"span">;
 const MenubarShortcut = ({ className, ...props }: MenubarShortcutProps) => (
   <span
+    data-tag={kebabCase(MenubarShortcut.displayName)}
     className={shortcut({ className })}
+    {...props}
+  />
+);
+
+type MenubarLabelProps = ComponentProps<typeof Label>;
+const MenubarLabel = ({ className, ...props }: MenubarLabelProps) => (
+  <Label
+    data-tag={kebabCase(MenubarLabel.displayName)}
+    className={label({ className })}
+    {...props}
+  />
+);
+
+type MenubarArrowProps = ComponentProps<typeof Arrow>;
+const MenubarArrow = ({ className, ...props }: MenubarArrowProps) => (
+  <Arrow
+    data-tag={kebabCase(MenubarArrow.displayName)}
+    className={arrow({ className })}
+    {...props}
+  />
+);
+
+type MenubarGroupProps = ComponentProps<typeof Group>;
+const MenubarGroup = ({ className, ...props }: MenubarGroupProps) => (
+  <Group
+    data-tag={kebabCase(MenubarGroup.displayName)}
+    className={group({ className })}
     {...props}
   />
 );
@@ -173,8 +212,28 @@ MenubarCheckboxItem.displayName = 'MenubarCheckboxItem';
 MenubarRadioItem.displayName = 'MenubarRadioItem';
 MenubarSeparator.displayName = 'MenubarSeparator';
 MenubarShortcut.displayName = "MenubarShortcut";
+MenubarLabel.displayName = "MenubarLabel";
+MenubarArrow.displayName = "MenubarArrow";
+MenubarGroup.displayName = "MenubarGroup";
+
+namespace Type {
+  export type Menubar = MenubarProps;
+  export type MenubarTrigger = MenubarTriggerProps;
+  export type MenubarSubTrigger = MenubarSubTriggerProps;
+  export type MenubarSubContent = MenubarSubContentProps;
+  export type MenubarContent = MenubarContentProps;
+  export type MenubarItem = MenubarItemProps;
+  export type MenubarCheckboxItem = MenubarCheckboxItemProps;
+  export type MenubarRadioItem = MenubarRadioItemProps;
+  export type MenubarSeparator = MenubarSeparatorProps;
+  export type MenubarShortcut = MenubarShortcutProps;
+  export type MenubarLabel = MenubarLabelProps;
+  export type MenubarArrow = MenubarArrowProps;
+  export type MenubarGroup = MenubarGroupProps;
+}
 
 export {
+  type Type,
   menubarVariants,
   Menubar,
   MenubarMenu,
@@ -190,14 +249,10 @@ export {
   MenubarRadioItem,
   MenubarSeparator,
   MenubarShortcut,
-  type MenubarProps,
-  type MenubarTriggerProps,
-  type MenubarSubTriggerProps,
-  type MenubarSubContentProps,
-  type MenubarContentProps,
-  type MenubarItemProps,
-  type MenubarCheckboxItemProps,
-  type MenubarRadioItemProps,
-  type MenubarSeparatorProps,
-  type MenubarShortcutProps,
+  /**
+   * These should be rare to be used, but exported anyway in case there're some edge cases.
+   */
+  MenubarLabel,
+  MenubarArrow,
+  MenubarGroup,
 }
