@@ -1,16 +1,12 @@
-import SkeletonDemo from "../../demo/skeleton-demo.tsx";
-
+import SkeletonDemo from "#/components/demo/skeleton-demo.tsx";
+import type { Meta } from '@storybook/react';
 export default {
   title: 'Example/Skeleton',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
 export const Variant1 = {
   name: 'Card',
