@@ -15,7 +15,7 @@ export default () => (
     </p>
     <br />
     <Heading size="h2">
-      <HeadingTitle>H2 Heading Title</HeadingTitle>
+      <HeadingTitle>H2 Heading Title!!!!!!!!!!!</HeadingTitle>
       <HeadingSubtitle>This is a short heading subtitle</HeadingSubtitle>
     </Heading>
     <p className="">

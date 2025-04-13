@@ -7,6 +7,7 @@ import type { Meta } from "@storybook/react";
 
 export default {
   title: 'Example/Heading',
+  includeStories: ['Variant1'],
   parameters: {
     layout: 'centered',
   },
