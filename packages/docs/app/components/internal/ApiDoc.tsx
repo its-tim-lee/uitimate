@@ -36,7 +36,17 @@ const DemoScenariosSection = () => {
   return (
     <Heading size="h2" id="demo-scenarios">
       <HeadingTitle>DEMO / Scenario</HeadingTitle>
-      <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
+      <HeadingSubtitle>This demostrates the commmon API/Component usages as well as some common real-world use cases.</HeadingSubtitle>
+    </Heading>
+  )
+}
+
+
+const DemoRecipeSection = () => {
+  return (
+    <Heading size="h2" id="demo-recipe">
+      <HeadingTitle>DEMO / Recipe</HeadingTitle>
+      <HeadingSubtitle>These are the ones that many other libraries might treat them as part of their core components, but we show how those can be implemented without futher encapsulation.</HeadingSubtitle>
     </Heading>
   )
 }
@@ -49,6 +59,7 @@ const DependenciesSection = () => {
     </Heading>
   )
 }
+
 export {
-  UsageSection, DemoApiSection, DemoScenariosSection, DependenciesSection
+  UsageSection, DemoApiSection, DemoScenariosSection, DemoRecipeSection, DependenciesSection
 }
