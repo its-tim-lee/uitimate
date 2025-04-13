@@ -1,25 +1,22 @@
-import HoverCardDemo from "../../demo/hovercard-demo.tsx";
-import HoverCardApiDoc from "../../demo/hovercard-api-doc.tsx";
+import type { Meta } from '@storybook/react';
+import HoverCardDemo from "#/components/demo/hovercard-demo.tsx";
+import HoverCardApiDoc from "#/components/demo/hovercard-api-doc.tsx";
 
 export default {
-  title: 'Components/HoverCard',
-  includeStories: [],
+  title: 'Example/HoverCard',
+  // includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
-export const DEMO = {
-  name: 'DEMO',
+export const Demo = {
+  name: 'Demo',
   render: () => <HoverCardDemo />
 };
 
-
-export const API_DOC = {
-  name: 'API / API DOC',
+export const ApiDoc = {
+  name: 'API Doc',
   render: () => <HoverCardApiDoc />
 };
