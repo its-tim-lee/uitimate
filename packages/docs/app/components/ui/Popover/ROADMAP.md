@@ -1,0 +1,1 @@
+[] Show the real world use case of using `open` and `onOpenChange` in the api doc

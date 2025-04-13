@@ -1,13 +1,11 @@
-import { useState } from "react"
 import { Popover, PopoverContent, PopoverTrigger } from "#/components/ui/Popover/Popover"
-import { Button } from "#/components/ui/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta"
 
 export default () => {
-  const [open, setOpen] = useState(false)
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover defaultOpen>
       <PopoverTrigger asChild>
-        <Button variant="outline">Open popover</Button>
+        <Cta variant="outline">Open popover</Cta>
       </PopoverTrigger>
       <PopoverContent onInteractOutside={e => console.log('clicked outside!')}><h1>Press ESC to close me</h1></PopoverContent>
     </Popover>

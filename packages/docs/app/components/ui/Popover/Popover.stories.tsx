@@ -1,25 +1,16 @@
-import {
-  Popover,
-  PopoverAnchor,
-  PopoverContent,
-  PopoverTrigger,
-} from "./Popover.tsx"
-import { Button } from "#/components/ui/Button/Button.tsx"
-import { useState } from "react";
-import PopoverDemo from "../../demo/popover-demo.tsx";
-import PopoverOpenControl from "../../demo/popover-open-control.tsx";
+import PopoverDemo from "#/components/demo/popover-demo.tsx";
+import PopoverOpenControl from "#/components/demo/popover-open-control.tsx";
+import PopoverCustomizedPosition from "#/components/demo/popover-customized-position.tsx";
+import type { Meta } from "@storybook/react";
 
 export default {
   title: 'Example/Popover',
-  includeStories: [],
+  includeStories: ['Variant1'],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
 export const Variant1 = {
   name: 'API / Open initially',
@@ -28,21 +19,7 @@ export const Variant1 = {
 
 export const Variant2 = {
   name: 'API / Customized Popover Position',
-  render: () => {
-    const [open, setOpen] = useState(true)
-    return (
-      <Popover defaultOpen open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button variant="outline">Open popover</Button>
-        </PopoverTrigger>
-        <PopoverAnchor asChild>
-          <h1 className="tw:w-[100px]">Popover will show up on the right side of this element with offset</h1>
-        </PopoverAnchor>
-        <PopoverContent side='right' sideOffset={30} align='start'>
-          <h1>Content</h1></PopoverContent>
-      </Popover>
-    )
-  },
+  render: () => <PopoverCustomizedPosition />
 };
 
 export const Demo = {
