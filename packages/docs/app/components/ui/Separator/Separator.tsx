@@ -1,8 +1,9 @@
 import { type ComponentProps } from "react"
 import { Root } from "@radix-ui/react-separator"
 import { tv, type VariantProps } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
-const variants = tv({
+const separatorVariants = tv({
   base: [
     "tw:shrink-0 tw:bg-border"
   ],
@@ -17,8 +18,7 @@ const variants = tv({
   }
 })
 
-type SeparatorProps = ComponentProps<typeof Root> & VariantProps<typeof variants>
-
+type SeparatorProps = ComponentProps<typeof Root> & VariantProps<typeof separatorVariants>
 const Separator = ({
   className,
   orientation = "horizontal",
@@ -27,17 +27,22 @@ const Separator = ({
 }: SeparatorProps) => {
   return (
     <Root
+      data-tag={kebabCase(Separator.displayName)}
       decorative={decorative}
       orientation={orientation}
-      className={variants({ orientation, className })}
+      className={separatorVariants({ orientation, className })}
       {...props}
     />
   )
 }
 
-Separator.displayName = 'Separator'
+Separator.displayName = "Separator"
+
+namespace Type {
+  export type Separator = SeparatorProps
+}
 
 export {
   Separator,
-  type SeparatorProps
+  type Type
 }

@@ -1,24 +1,21 @@
-import SeparatorDemo from "../../demo/separator-demo.tsx";
-import SeparatorVertical from "../../demo/separator-vertical.tsx";
+import type { Meta } from '@storybook/react';
+import SeparatorDemo from "#/components/demo/separator-demo.tsx";
+import SeparatorVertical from "#/components/demo/separator-vertical.tsx";
 
 export default {
   title: 'Example/Separator',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
-export const DEMO = {
-  name: 'DEMO',
+export const Demo = {
+  name: 'Demo',
   render: () => <SeparatorDemo />
 };
 
-export const VERTICAL = {
-  name: 'API / Vertical',
+export const Vertical = {
+  name: 'Vertical',
   render: () => <SeparatorVertical />
 };
