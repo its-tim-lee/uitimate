@@ -1,5 +1,4 @@
 import { useState, type ComponentProps } from "react"
-import type React from "react";
 import { Toggle } from "@radix-ui/react-toggle"
 import { Slot } from "@radix-ui/react-slot";
 import { Primitive } from '@radix-ui/react-primitive';
@@ -7,11 +6,7 @@ import {
   tv,
   type VariantProps,
 } from 'tailwind-variants';
-
-/**
- * WARN: Before change any CSS, check the design considerations:
- * - cta-base-case-badge-on-icon.tsx
- */
+import { kebabCase } from "lodash-es"
 
 const baseStyle = [
   "tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:whitespace-nowrap tw:rounded-md tw:transition-colors tw:data-hover:cursor-pointer",
@@ -21,39 +16,28 @@ const baseStyle = [
 ]
 const primaryBaseStyle = [
   "tw:bg-primary tw:text-primary-foreground",
-  // "tw:[&_*]:bg-primary tw:[&_*]:text-primary-foreground",
-  // "tw:data-hover:bg-primary/80 tw:data-hover:[&_*]:bg-primary/80"
   "tw:data-hover:bg-primary/80"
 ]
 const secondaryBaseStyle = [
   "tw:bg-secondary tw:text-secondary-foreground",
-  // "tw:[&_*]:bg-secondary tw:[&_*]:text-secondary-foreground",
-  // "tw:data-hover:bg-secondary/50 tw:data-hover:[&_*]:bg-secondary/50",
   "tw:data-hover:bg-secondary/50"
 ]
 const destructiveBaseStyle = [
   "tw:bg-destructive tw:text-destructive-foreground",
-  // "tw:[&_*]:bg-destructive tw:[&_*]:text-destructive-foreground",
-  // "tw:data-hover:bg-destructive/80 tw:data-hover:[&_*]:bg-destructive/80",
   "tw:data-hover:bg-destructive/80"
 ]
 const outlineBaseStyle = [
   "tw:bg-background tw:text-foreground",
-  // "tw:[&_*]:bg-background tw:[&_*]:text-foreground",
-  // "tw:data-hover:bg-secondary tw:data-hover:[&_*]:bg-secondary",
   "tw:data-hover:bg-secondary"
 ]
 const ghostBaseStyle = [
   "tw:bg-background tw:text-foreground",
-  // "tw:[&_*]:bg-background tw:[&_*]:text-foreground",
-  // "tw:data-hover:bg-secondary tw:data-hover:[&_*]:bg-secondary",
   "tw:data-hover:bg-secondary",
-  "tw:data-[state=on]:ring-0! tw:data-[state=on]:bg-muted " // "Toggle" style
+  "tw:data-[state=on]:ring-0! tw:data-[state=on]:bg-muted" // "Toggle" style
 ]
 const linkBaseStyle = [
   "tw:underline-offset-4",
   "tw:text-primary",
-  // "tw:[&_*]:text-primary", // TBD: do we really need this?
   "tw:data-hover:underline"
 ]
 
@@ -67,7 +51,7 @@ const buttonVariants = tv({
       outline:
         [
           "tw:shadow-sm",
-          "tw:border tw:border-secondary", // TBD: why not use outline?
+          "tw:border tw:border-secondary", // TODO: why not use outline?
           ...outlineBaseStyle
         ],
       ghost: ghostBaseStyle,
@@ -76,7 +60,6 @@ const buttonVariants = tv({
     mode: {
       icon: ["tw:p-0! tw:aspect-square"],
     },
-    // TBD: different size should have different sized icon: src/components/demo/dropdownmenu-mix2.tsx
     size: {
       sm: "tw:text-sm tw:h-9 tw:px-3 tw:[&_[data-icon]]:size-[0.865rem]",
       md: "tw:text-base tw:h-10 tw:px-4 tw:[&_[data-icon]]:size-[1rem]",
@@ -106,7 +89,7 @@ const buttonVariants = tv({
   },
 })
 
-export const badgeVariants = tv({
+const badgeVariants = tv({
   base: baseStyle,
   variants: {
     variant: {
@@ -119,7 +102,7 @@ export const badgeVariants = tv({
     },
     mode: {
       icon: ["tw:p-0! tw:aspect-square"],
-    }, // TBD: fixed-size seems not flexible when implementing Github start button
+    },
     size: {
       sm: 'tw:text-xs tw:px-2.5 tw:py-0.5  tw:[&_[data-avatar]]:size-5 tw:[&_[data-icon]]:size-[0.75rem]',
       md: 'tw:text-sm tw:px-3 tw:py-0.5 tw:[&_[data-avatar]]:size-6 tw:[&_[data-icon]]:size-[0.865rem]',
@@ -149,7 +132,7 @@ export const badgeVariants = tv({
   },
 })
 
-export type CtaProps = (
+type CtaProps = (
   ComponentProps<typeof Primitive.button> &
   Omit<VariantProps<typeof buttonVariants>, 'mode'> &
   {
@@ -162,30 +145,13 @@ export type CtaProps = (
     pressed?: boolean;
     defaultPressed?: boolean;
     onPressedChange?: (pressed: boolean) => void;
-    style?: React.CSSProperties & {
-      [key: `--${string}`]: string | number | boolean;
-    };
   }
 )
 
-// TBD: doc:
-//  - The benefits of using Cta:
-//    - One component to rule them all: button, badge, toggle, button group
-//    -
-//  - the facts of button vs. badge:
-//    - badge is usually smaller/compact, and sometimes it's uninteractive
-//    - badge has a special style: pill
-/**
- * Design Considerations:
- * - muted (why having such prop?)
- *   If we don't do this, there're some designs that would be very hard to use our component to implement
- *   (ie., Command Instruction)
- * - icon (why not create stuff like Icon Button as other libraries do?)
- */
 const Cta =
   ({
     variant, size, shapes = [], muted = false,
-    // TBD: comment more details: It's no harm to always use type = button even it's not really actally a button
+    // It's no harm to always use type = button even it's not really actally a button
     // but it's important to set this to `submit` to work with form properly
     type = 'button',
     unpressedOnBlur = false,
@@ -204,7 +170,7 @@ const Cta =
     const mode = shapes.find((s: any) => s !== 'badge') as 'icon' | undefined
     return <Comp
       type={type}
-      data-tag='cta'
+      data-tag={kebabCase(Cta.displayName)}
       data-disabled={props.disabled ? '' : undefined}
       onMouseEnter={(e) => !muted && (e.currentTarget.dataset.hover = '')}
       onMouseLeave={(e) => delete e.currentTarget.dataset.hover}
@@ -229,18 +195,19 @@ const Cta =
     >
       {children}
     </Comp>
-  }
+}
 
 Cta.displayName = "Cta"
+
+namespace Type {
+  export type Cta = CtaProps;
+  export type Toggle = ComponentProps<typeof Toggle>;
+}
 
 export {
   Cta,
   Toggle,
-  buttonVariants
+  buttonVariants,
+  badgeVariants,
+  type Type
 }
-
-//
-
-// Q&A
-// - Why not separate Badge, Toggle, Button, and even Icon-Button?
-// -
