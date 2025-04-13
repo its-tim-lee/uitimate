@@ -2,7 +2,7 @@ import * as ResizablePrimitive from "react-resizable-panels"
 import { tv, type VariantProps } from "tailwind-variants"
 import React from "react"
 import { Icon } from "#/components/ui/Icon/Icon"
-
+import { kebabCase } from "lodash-es"
 const resizableVariants = tv({
   slots: {
     panelGroup: "tw:flex tw:h-full tw:w-full tw:data-[panel-group-direction=vertical]:flex-col",
@@ -19,11 +19,12 @@ const resizableVariants = tv({
       "tw:data-[panel-group-direction=vertical]:after:translate-x-0",
       "tw:[&[data-panel-group-direction=vertical]>div]:rotate-90"
     ],
-    handleButton: "tw:z-10 tw:flex tw:h-4 tw:w-3 tw:items-center tw:justify-center tw:rounded-sm tw:border tw:bg-border"
+    handleButton: "tw:z-10 tw:flex tw:h-4 tw:w-3 tw:items-center tw:justify-center tw:rounded-sm tw:border tw:bg-border",
+    panel: ""
   }
 })
 
-const { panelGroup, handle, handleButton } = resizableVariants()
+const { panelGroup, handle, handleButton, panel } = resizableVariants()
 
 type ResizablePanelGroupProps = React.ComponentProps<typeof ResizablePrimitive.PanelGroup>;
 const ResizablePanelGroup = ({
@@ -32,12 +33,22 @@ const ResizablePanelGroup = ({
 }: ResizablePanelGroupProps) => (
   <ResizablePrimitive.PanelGroup
     className={panelGroup({ className })}
+    data-tag={kebabCase(ResizablePanelGroup.displayName)}
     {...props}
   />
 )
 
 type ResizablePanelProps = React.ComponentProps<typeof ResizablePrimitive.Panel>;
-const ResizablePanel = ResizablePrimitive.Panel
+const ResizablePanel = ({
+  className,
+  ...props
+}: ResizablePanelProps) => (
+  <ResizablePrimitive.Panel
+    className={panel({ className })}
+    data-tag={kebabCase(ResizablePanel.displayName)}
+    {...props}
+  />
+)
 
 type ResizableHandleProps = React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {
   withHandle?: boolean
@@ -49,6 +60,7 @@ const ResizableHandle = ({
 }: ResizableHandleProps) => (
   <ResizablePrimitive.PanelResizeHandle
     className={handle({ className })}
+    data-tag={kebabCase(ResizableHandle.displayName)}
     {...props}
   >
     {withHandle && (
@@ -63,12 +75,16 @@ ResizablePanelGroup.displayName = "ResizablePanelGroup"
 ResizablePanel.displayName = "ResizablePanel"
 ResizableHandle.displayName = "ResizableHandle"
 
+namespace Type {
+  export type ResizablePanelGroup = typeof ResizablePanelGroup;
+  export type ResizablePanel = typeof ResizablePanel;
+  export type ResizableHandle = typeof ResizableHandle;
+}
+
 export {
   resizableVariants,
   ResizablePanelGroup,
   ResizablePanel,
   ResizableHandle,
-  type ResizablePanelGroupProps,
-  type ResizablePanelProps,
-  type ResizableHandleProps
+  type Type
 }
