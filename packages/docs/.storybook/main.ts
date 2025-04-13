@@ -11,7 +11,8 @@ const config: StorybookConfig = {
     "storybook-addon-source-link",
     'storybook-dark-mode', // This doesn't change the theme in the preview
     '@storybook/addon-themes',
-    "@storybook/addon-viewport"
+    "@storybook/addon-viewport",
+    '@storybook/addon-storysource'
   ],
   core: {
     builder: {
