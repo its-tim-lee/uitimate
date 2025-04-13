@@ -1,4 +1,5 @@
-import AvatarDemo from '../../demo/avatar-demo.tsx';
+import type { Meta } from '@storybook/react';
+import AvatarDemo from '#/components/demo/avatar-demo.tsx';
 
 export default {
   title: 'Example/Avatar',
@@ -7,12 +8,9 @@ export default {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
-export const Default = {
-  name: 'Default',
+export const Demo = {
+  name: 'Demo',
   render: () => <AvatarDemo />
 };
