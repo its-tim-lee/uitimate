@@ -2,8 +2,9 @@ import "./index.css"
 import { type ComponentProps } from "react"
 import { Root, Indicator } from "@radix-ui/react-progress"
 import { tv } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
-const variants = tv({
+const progressVariants = tv({
   slots: {
     root: [
       "tw:relative tw:h-2 tw:w-full tw:overflow-hidden tw:rounded-full tw:bg-primary/20"
@@ -31,9 +32,11 @@ const Progress = ({
   indeterminate,
   ...props
 }: ProgressProps) => {
-  const { root, indicator } = variants({ indeterminate })
+  const { root, indicator } = progressVariants({ indeterminate })
+
   return (
     <Root
+      data-tag={kebabCase(Progress.displayName)}
       className={root({ className })}
       {...props}
     >
@@ -49,7 +52,12 @@ const Progress = ({
 
 Progress.displayName = 'Progress'
 
+namespace Type {
+  export type Progress = ProgressProps
+}
+
 export {
   Progress,
-  type ProgressProps
+  progressVariants,
+  type Type
 }

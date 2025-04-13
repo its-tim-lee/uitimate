@@ -1,5 +1,6 @@
-import ProgressDemo from '../../demo/progress-demo';
-import ProgressLoading from '../../demo/progress-loading';
+import type { Meta } from '@storybook/react';
+import ProgressDemo from '#/components/demo/progress-demo';
+import ProgressLoading from '#/components/demo/progress-loading';
 
 export default {
   title: 'Example/Progress',
@@ -8,11 +9,11 @@ export default {
     layout: 'centered',
   },
   tags: ['autodocs'],
-}
+} as Meta;
 
-export const DEMO = {
-  name: 'DEMO',
-  render: () => <ProgressDemo />,
+export const Demo = {
+  name: 'Demo',
+  render: () => <ProgressDemo />
 };
 
 export const Loading = {
