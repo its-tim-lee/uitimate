@@ -20,7 +20,7 @@ export default () => {
             </span>
           </header>
           <p className="tw:text-justify">
-            Founder & CEO of @theKeyPointer. The creator of keypointer/ui.
+            Founder & CEO of <b className="tw:brand">KeyPointer</b>. The creator of <b className="tw:brand">Uitimate</b>
           </p>
         </div>
       </HoverCardContent>
