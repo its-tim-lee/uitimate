@@ -99,20 +99,6 @@ export default () => {
             type: "preview",
             demoId: "button-dial",
           },
-        ]}
-      />
-
-      <br />
-      <br />
-
-      <DemoRecipeSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Ratings",
-            type: "preview",
-            demoId: "cta-ratings"
-          },
           {
             title: "Command Instruction",
             type: "preview",
@@ -129,6 +115,20 @@ export default () => {
                 <br />
               </p>
             )
+          },
+        ]}
+      />
+
+      <br />
+      <br />
+
+      <DemoRecipeSection />
+      <VersatileTabs
+        settings={[
+          {
+            title: "Ratings",
+            type: "preview",
+            demoId: "cta-ratings"
           },
           {
             title: "Toggle Group (Single Selection)",
