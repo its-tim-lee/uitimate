@@ -1,36 +1,36 @@
-import Ratings from "../../demo/cta-ratings.tsx";
-import BadgeOnIcon from "../../demo/cta-badge-on-icon.tsx";
-import BadgeOnIconEdgeCase from "../../demo/cta-edge-case-badge-on-icon.tsx";
-import ButtonRoundedBadge from "../../demo/cta-rounded-badge.tsx";
-import CtaAll from "../../demo/cta-all";
-import CtaProgress from "../../demo/button-progress.tsx";
-import CtaDial from "../../demo/button-dial.tsx";
+import CtaPossibleShapes from "#/components/demo/cta-possible-shapes.tsx";
+import Ratings from "#/components/demo/cta-ratings.tsx";
+import BadgeOnIcon from "#/components/demo/cta-badge-on-icon.tsx";
+import BadgeOnIconEdgeCase from "#/components/demo/cta-edge-case-badge-on-icon.tsx";
+import ButtonRoundedBadge from "#/components/demo/cta-rounded-badge.tsx";
+import CtaAll from "#/components/demo/cta-all";
+import CtaProgress from "#/components/demo/button-progress.tsx";
+import CtaDial from "#/components/demo/button-dial.tsx";
 import BadgeAPIDoc from "#/components/demo/badge-apidoc.tsx";
-import ButtonIncludeBadge from "../../demo/button-include-badge.tsx";
-import ButtonSearch from "../../demo/button-search.tsx";
-import Button3Sizes from "../../demo/button-3sizes.tsx";
-import ButtonAnchorIcon from "../../demo/button-anchor-icon.tsx";
-import Cta6Variants from "../../demo/button-6variants.tsx";
-import ButtonSwitch from "../../demo/button-switch.tsx";
-import ToggleButton from "../../demo/button-toggle.tsx";
-import ToggleGroupSingleSelection from "../../demo/button-group-single-selection.tsx";
-import ToggleGroupMultipleSelection from "../../demo/button-group-multiple-selection.tsx";
-import CtaCommandInstruction from "../../demo/cta-command-instruction.tsx";
+import ButtonIncludeBadge from "#/components/demo/button-include-badge.tsx";
+import ButtonSearch from "#/components/demo/button-search.tsx";
+import Button3Sizes from "#/components/demo/button-3sizes.tsx";
+import ButtonAnchorIcon from "#/components/demo/button-anchor-icon.tsx";
+import Cta6Variants from "#/components/demo/button-6variants.tsx";
+import ButtonSwitch from "#/components/demo/button-switch.tsx";
+import ToggleButton from "#/components/demo/button-toggle.tsx";
+import ToggleGroupSingleSelection from "#/components/demo/button-group-single-selection.tsx";
+import ToggleGroupMultipleSelection from "#/components/demo/button-group-multiple-selection.tsx";
+import CtaCommandInstruction from "#/components/demo/cta-command-instruction.tsx";
+import type { Meta } from '@storybook/react';
+
 export default {
   title: 'Example/Cta',
-  includeStories: [],
+  // includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
 export const DEMO = {
   name: 'Edge Cases / All',
-  render: () => CtaAll()
+  render: () => <CtaAll />
 };
 
 export const Variant2 = {
@@ -38,8 +38,6 @@ export const Variant2 = {
   render: () => <Cta6Variants />
 };
 
-// TBD: using asChild doesn't always mean you want it to be muted
-// This is where you can use stuff like Next.js Link
 export const Variant8 = {
   name: 'API / Anchor',
   render: () => <ButtonAnchorIcon />
@@ -48,11 +46,10 @@ export const Variant8 = {
 export const Variant9 = {
   name: 'API / 3 Sizes',
   render: () => <Button3Sizes />
-
 };
 
 export const Variant3 = {
-  name: 'Scenario / Progress Button', // Tag: disabled, loading
+  name: 'Scenario / Progress Button',
   render: () => <CtaProgress />
 };
 
@@ -61,33 +58,35 @@ export const Variant4 = {
   render: () => <ButtonSwitch />
 };
 
-// TBD: Doc: it's totally not worth it to expose this as API
-export const RoundedBadge = { // Tag: search-button
+export const RoundedBadge = {
   name: 'Scenario / Pill Badge',
   render: () => <ButtonRoundedBadge />
-}
+};
 
-// Doc: rounded Button
-export const Variant10 = { // Tag: search-button
+export const Variant10 = {
   name: 'Scenario / Search Button',
   render: () => <ButtonSearch />
-}
+};
 
-// Doc: remove so many effects (eg., cursor pointer, hover effect, ...)
-// Muted Badge
-export const MutedBadge = { // Tag: api-doc
+export const MutedBadge = {
   name: 'Scenario / API Doc',
   render: () => <BadgeAPIDoc />
 };
 
-// Tag: meta-info in button
-export const BadgeInButton = { // Nested Cta: Badge in button
+/**
+ * This happens to be an interesting case:
+ * a nested Cta － a badge in a button
+ */
+export const BadgeInButton = {
   name: 'Scenario / Meta-info Button',
   render: () => <ButtonIncludeBadge />
 };
 
-// Doc: parent don't want to be hovered, and only child want to be hovered, and when hovering, don't affect to parent
-export const ButtonInBadge = { // Nested Cta: Button in badge
+/**
+ * This happens to be an interesting case:
+ * a nested Cta － a button in a badge
+ */
+export const ButtonInBadge = {
   name: 'Scenario / Command Instruction',
   render: () => <CtaCommandInstruction />
 };
@@ -96,7 +95,7 @@ export const Variant12 = {
   name: 'Scenario / Circle Button',
   render: () => <CtaDial />
 };
-// Doc: you can only fully control the toggling status, which is a need when implementing a toggle group
+
 export const Variant13 = {
   name: 'API / Togglable Button',
   render: () => <ToggleButton />
@@ -123,6 +122,11 @@ export const Variant18 = {
 };
 
 export const Variant19 = {
-  name: 'Scenario / Ratings',
+  name: 'Recipe / Ratings',
   render: () => <Ratings />
+};
+
+export const Variant20 = {
+  name: 'Doc / Possible Shapes',
+  render: () => <CtaPossibleShapes />
 };
