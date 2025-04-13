@@ -1,8 +1,9 @@
 import { type ComponentProps } from "react"
 import { Root, Track, Range, Thumb } from "@radix-ui/react-slider"
 import { tv } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
-const variants = tv({
+const sliderVariants = tv({
   slots: {
     root: [
       "tw:touch-none tw:select-none tw:items-center tw:relative tw:flex tw:w-full",
@@ -20,30 +21,87 @@ const variants = tv({
     ]
   }
 })
-const { root, track, range, thumb } = variants()
+const { root, track, range, thumb } = sliderVariants()
+
+type SliderTrackProps = ComponentProps<typeof Track>
+const SliderTrack = ({
+  className,
+  children,
+  ...props
+}: SliderTrackProps) => {
+  return (
+    <Track
+      className={track({ className })}
+      data-tag={kebabCase(SliderTrack.displayName)}
+      {...props}
+    >
+      {children}
+    </Track>
+  )
+}
+
+type SliderRangeProps = ComponentProps<typeof Range>
+const SliderRange = ({
+  className,
+  ...props
+}: SliderRangeProps) => {
+  return (
+    <Range
+      className={range({ className })}
+      data-tag={kebabCase(SliderRange.displayName)}
+      {...props}
+    />
+  )
+}
+
+type SliderThumbProps = ComponentProps<typeof Thumb>
+const SliderThumb = ({
+  className,
+  ...props
+}: SliderThumbProps) => {
+  return (
+    <Thumb
+      className={thumb({ className })}
+      data-tag={kebabCase(SliderThumb.displayName)}
+      {...props}
+    />
+  )
+}
 
 type SliderProps = ComponentProps<typeof Root>
 const Slider = ({
   className,
   ...props
 }: SliderProps) => {
-
   return (
     <Root
       className={root({ className })}
+      data-tag={kebabCase(Slider.displayName)}
       {...props}
     >
-      <Track className={track()}>
-        <Range className={range()} />
-      </Track>
-      <Thumb className={thumb()} />
+      <SliderTrack><SliderRange /></SliderTrack>
+      <SliderThumb />
     </Root>
   )
 }
 
 Slider.displayName = 'Slider'
+SliderTrack.displayName = 'SliderTrack'
+SliderRange.displayName = 'SliderRange'
+SliderThumb.displayName = 'SliderThumb'
+
+namespace Type {
+  export type Slider = SliderProps;
+  export type SliderTrack = SliderTrackProps;
+  export type SliderRange = SliderRangeProps;
+  export type SliderThumb = SliderThumbProps;
+}
 
 export {
   Slider,
-  type SliderProps
+  SliderTrack,
+  SliderRange,
+  SliderThumb,
+  sliderVariants,
+  type Type
 }

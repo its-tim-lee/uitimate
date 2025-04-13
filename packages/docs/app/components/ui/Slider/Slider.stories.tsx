@@ -1,17 +1,15 @@
+import type { Meta } from '@storybook/react';
 import SliderDemo from "#/components/demo/slider-demo.tsx"
+
 export default {
   title: 'Example/Slider',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
-export const DEMO = {
-  name: 'DEMO',
+export const Demo = {
+  name: 'Demo',
   render: () => <SliderDemo />
 };
