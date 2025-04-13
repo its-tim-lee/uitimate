@@ -26,10 +26,11 @@ export default () => {
         anatomy={meta.anatomy}
       />
 
+
       <br />
       <br />
 
-      <DemoApiSection />
+      <DemoScenariosSection />
       <VersatileTabs
         settings={[
           {
@@ -42,15 +43,6 @@ export default () => {
             type: "preview",
             demoId: "heading-only-title",
           },
-        ]}
-      />
-
-      <br />
-      <br />
-
-      <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
           {
             title: "Article",
             type: "preview",
