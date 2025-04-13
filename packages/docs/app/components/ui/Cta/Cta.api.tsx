@@ -1,119 +1,33 @@
-import { startCase } from "lodash-es";
-import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import {
-  Heading,
-  HeadingSubtitle,
-  HeadingTitle,
-} from "#/components/ui/Heading/Heading";
-import VersatileTabs from "#/components/internal/VersatileTabs";
-
-
-const anatomy = `<Cta/>`;
-// // Should allow me to provide a tooltip on this link, cuz Cta is not just a Toggle
-const apiLink = "https://www.radix-ui.com/primitives/docs/components/toggle";
+  UsageSection,
+  DemoApiSection,
+  DemoScenariosSection,
+  DependenciesSection,
+  DemoRecipeSection,
+} from "#/components/internal/ApiDoc.tsx";
+import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
+import meta from "./Cta.meta.tsx";
+import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
+import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero
-
-        title={startCase('cta')}
-        subtitle="Call-to-action widget that can be a button, badge, or toggle."
-        apiLink={apiLink}
-      />
+      <ComponentPageHero title='API' subtitle={meta.description} />
 
       <br />
 
-      <Heading size="h2">
-        <HeadingTitle>Usage</HeadingTitle>
-        <HeadingSubtitle>How you can play this component.</HeadingSubtitle>
-      </Heading>
+      <UsageSection />
       <ComponentPageUsage
         demoId="cta-demo"
-        anatomy={anatomy}
-
+        anatomy="<Cta/>"
       />
 
       <br />
       <br />
 
-      <Heading size="h2">
-        <HeadingTitle>Design Notes</HeadingTitle>
-        <HeadingSubtitle>The implementation details that some would appreciate.</HeadingSubtitle>
-      </Heading>
-      <p>
-        "Bro, why on earth you merge all of them into one component?" I guess this
-        could be the first biggest question you'd rise up. The short answer is:
-        becausse you'll love it :) A bit longer answer is: to understand why this
-        approach can finally make you incredible productive, you must take a look
-        of introduction. For futher questions, head to Q/A.
-      </p>
-
-      <br />
-      <br />
-
-      <Heading size="h2">
-        <HeadingTitle>Introduction</HeadingTitle>
-        <HeadingSubtitle>The fastest way you can master this component.</HeadingSubtitle>
-      </Heading>
-
-      Cta is a sophisticated component such that you can even decide what it
-      should render into (eg., anchor), so it'd be helpful to just think it as
-      what its name represented: call-to-action; because it doesn't always need to
-      be a button.
-      <br />
-      What Cta will end up with is determined by 4 factors: size, variant, shape, and
-      behavior. Below we demo what these factos are in short:
-      <br />
-      Regarding sizes, there're 3: sm (small), md (medium), and lg (large), specify
-      by `size` prop. (note that, Cta can end up in many kinds of styles, so different
-      sizes on those styles might give you different looks and feels; below we only
-      show button and badge because right now, we only want you to get a sense of "size"
-      would look like)
-
-
-
-      Regarding variant, there're 6: (You may think about "variant" is certain
-      group of styles if such word is confusing to you)
-
-
-      Regarding shape, there're 2: icon, badge. Since you can even detemine the
-      shape of Cta is the combination of icon and badge, so the prop name is pural
-      "shapes" instead of singular "shape". If you don't specify `shapes`, the
-      default shape is the normal button.
-
-
-
-      Regarding behavior, I'd like to use different way to explain. First, we've
-      no problem about button, but what's badge? There're fair amount of design
-      situations that a badge shouldn't be an interactable thing like button, but
-      roughly speaking, you may imagine a badge can be seens as a thin and
-      no-shadow button.
-
-      <br />
-      So when a badge is not interactive, we may simply just use the word "badge",
-      and when it's just a different style of button, which is interactive, "badge
-      button" can be used. But note that, in some designs, a badge can look like a
-      plain badge, but in reality, it's rendered as an anchor, which has different
-      behavior from a normal plain badge (eg., span) and button.
-
-      <br />
-      Just one more thing: Toggle. It's just an advanced button that has some special
-      behaviors than the normal button. Cta will be shifted into a Toggle automatically
-      when you use Cta like a Toggle:
-
-
-      To wrap up, if now we want to create a Cta that is 1) rendered as an anchor,
-      2) secondary variant, 3) an icon in the shape of badge:
-
-      <br />
-      For all other API usage examples, simply review all the demos
-
-      <Heading size="h2">
-        <HeadingTitle>Example / API</HeadingTitle>
-        <HeadingSubtitle>This tries to show all the API/Component usages.</HeadingSubtitle>
-      </Heading>
+      <DemoScenariosSection />
       <VersatileTabs
         settings={[
           {
@@ -122,33 +36,30 @@ export default () => {
             demoId: "button-6variants",
           },
           {
-            title: "Anchor",
-            type: "preview",
-            demoId: "button-anchor-icon",
-          },
-          {
             title: "3 Sizes",
             type: "preview",
             demoId: "button-3sizes",
+          },
+          {
+            title: "Anchor",
+            type: "preview",
+            demoId: "button-anchor-icon",
           },
           {
             title: "Toggle Button",
             type: "preview",
             demoId: "button-toggle",
           },
-        ]}
-
-      />
-
-      <br />
-      <br />
-
-      <Heading size="h2">
-        <HeadingTitle>Example / Scenario</HeadingTitle>
-        <HeadingSubtitle>This lists common real-world use cases.</HeadingSubtitle>
-      </Heading>
-      <VersatileTabs
-        settings={[
+          {
+            title: "API Doc",
+            type: "preview",
+            demoId: "badge-apidoc",
+          },
+          {
+            title: "Tiny Badge",
+            type: "preview",
+            demoId: "cta-badge-on-icon"
+          },
           {
             title: "Progress Button",
             type: "preview",
@@ -163,6 +74,15 @@ export default () => {
             title: "Pill Badge",
             type: "preview",
             demoId: "cta-rounded-badge",
+            content: (
+              <p>
+                Side notes: there're some compoent libraries even expose a prop to just
+                implement such pill-outlook badge, but it's not making much sense when using our component,
+                since it can be implemented so easy.
+                <br />
+                <br />
+              </p>
+            )
           },
           {
             title: "Search Button",
@@ -170,24 +90,45 @@ export default () => {
             demoId: "button-search",
           },
           {
-            title: "API Doc",
-            type: "preview",
-            demoId: "badge-apidoc",
-          },
-          {
             title: "Meta-info Button",
             type: "preview",
             demoId: "button-include-badge",
           },
           {
-            title: "Command Instruction",
-            type: "preview",
-            demoId: "cta-command-instruction",
-          },
-          {
             title: "Circle Button",
             type: "preview",
             demoId: "button-dial",
+          },
+        ]}
+      />
+
+      <br />
+      <br />
+
+      <DemoRecipeSection />
+      <VersatileTabs
+        settings={[
+          {
+            title: "Ratings",
+            type: "preview",
+            demoId: "cta-ratings"
+          },
+          {
+            title: "Command Instruction",
+            type: "preview",
+            demoId: "cta-command-instruction",
+            content: (
+              <p>
+                This deserves some explanation in terms of the implementation:
+                so what we want here is that the parent don't want to be hovered,
+                but the only child want to be hovered, and when hovering, don't affect to the parent.
+                <br />
+                <br />
+                To achieve this, that's part of the reasons that why we invented the <code className='tw:code'>muted</code> prop.
+                <br />
+                <br />
+              </p>
+            )
           },
           {
             title: "Toggle Group (Single Selection)",
@@ -200,8 +141,23 @@ export default () => {
             demoId: "button-group-multiple-selection",
           },
         ]}
-
       />
+
+      <br />
+      <br />
+
+      <DependenciesSection />
+      <ul className="tw:list-disc tw:pl-5">
+        <li>
+          <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/toggle" target="_blank" rel="noopener noreferrer">@radix-ui/primitives</Link>
+        </li>
+        <li>
+          <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/utilities/slot" target="_blank" rel="noopener noreferrer">@radix-ui/react-slot</Link>
+        </li>
+        <li>
+          <Link className="tw:link tw:w-fit" to="https://www.npmjs.com/package/@radix-ui/react-primitive" target="_blank" rel="noopener noreferrer">@radix-ui/react-primitive</Link>
+        </li>
+      </ul>
     </>
-  );
-};
+  )
+}
