@@ -105,34 +105,44 @@ Object.keys(componentRegistry.recipe).forEach(name => {
 });
 
 function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
+  const items: DocTreeItem[] = [];
+
+  if (pages.has('introduction')) {
+    items.push({
+      type: 'link' as const,
+      title: 'Introduction',
+      href: `/docs/components/core/${name}/introduction`,
+      labels: [],
+      items: []
+    });
+  }
+
+  if (pages.has('api')) {
+    items.push({
+      type: 'link' as const,
+      title: 'API',
+      href: `/docs/components/core/${name}/api`,
+      labels: [],
+      items: []
+    });
+  }
+
+  if (pages.has('changelog')) {
+    items.push({
+      type: 'link' as const,
+      title: 'Changelog',
+      href: `/docs/components/core/${name}/changelog`,
+      labels: [],
+      items: []
+    });
+  }
+
   return {
-    type: 'collapsible',
+    type: 'collapsible' as const,
     title: name,
     href: '',
     labels: [],
-    items: [
-      {
-        type: 'link',
-        title: 'Introduction',
-        href: `/docs/components/core/${name}/introduction`,
-        labels: [],
-        items: []
-      },
-      {
-        type: 'link',
-        title: 'API',
-        href: `/docs/components/core/${name}/api`,
-        labels: [],
-        items: []
-      },
-      {
-        type: 'link',
-        title: 'Changelog',
-        href: `/docs/components/core/${name}/changelog`,
-        labels: [],
-        items: []
-      }
-    ]
+    items
   };
 }
 
