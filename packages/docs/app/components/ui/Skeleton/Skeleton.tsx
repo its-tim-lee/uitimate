@@ -1,17 +1,28 @@
 import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
-const variants = tv({
+const skeletonVariants = tv({
   base: "tw:animate-pulse tw:rounded-md tw:bg-primary/10",
 })
 
-type SkeletonProps = ComponentProps<"div"> & VariantProps<typeof variants>
-const Skeleton = ({ className, ...props }: SkeletonProps) => <div className={variants({ className })} {...props} />
+type SkeletonProps = ComponentProps<"div"> & VariantProps<typeof skeletonVariants>
+const Skeleton = ({ className, ...props }: SkeletonProps) => (
+  <div
+    className={skeletonVariants({ className })}
+    data-tag={kebabCase(Skeleton.displayName)}
+    {...props}
+  />
+)
 
 Skeleton.displayName = 'Skeleton'
 
+namespace Type {
+  export type Skeleton = SkeletonProps
+}
+
 export {
   Skeleton,
-  variants as skeletonVariants,
-  type SkeletonProps
+  skeletonVariants,
+  type Type
 }
