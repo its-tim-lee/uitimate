@@ -19,9 +19,10 @@ interface TabSetting {
 
 interface VersatileTabsProps {
   settings: TabSetting[];
+  className?: string;
 }
 
-export default ({ settings }: VersatileTabsProps) => {
+export default ({ settings, className }: VersatileTabsProps) => {
   const [activeTab, setActiveTab] = useState(kebabCase(toLower(settings[0]?.title)));
   const [demoCodeStrings, setDemoCodeStrings] = useState<Record<string, string>>({});
   const [codeBlockVisibility, setCodeBlockVisibility] = useState<Record<string, boolean>>(
@@ -77,7 +78,7 @@ export default ({ settings }: VersatileTabsProps) => {
   };
 
   return (
-    <Tabs variant="underline" value={activeTab} onValueChange={handleTabChange}>
+    <Tabs variant="underline" value={activeTab} onValueChange={handleTabChange} className={className}>
       <TabsList>
         {settings.map($s => (
           $s.title && (
