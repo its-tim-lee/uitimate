@@ -1,16 +1,13 @@
-import MenubarDemo from "../../demo/menubar-demo.tsx";
+import type { Meta } from '@storybook/react';
+import MenubarDemo from "#/components/demo/menubar-demo.tsx";
 
 export default {
   title: 'Example/Menubar',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
 export const Demo = {
   name: 'Demo',
