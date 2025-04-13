@@ -4,6 +4,32 @@ import { CodeBlock } from '#/components/internal/CodeBlock.tsx';
 import PreviewBlock from '#/components/internal/PreviewBlock.tsx';
 import { kebabCase, toLower } from 'lodash-es';
 
+// Helper function to try importing with fallbacks
+const tryImportComponent = async (demoId: string) => {
+  try {
+    return await import(`./../demo/${demoId}.tsx`);
+  } catch (error) {
+    try {
+      return await import(`./../demo/recipe/${demoId}.tsx`);
+    } catch (error) {
+      return { default: () => null };
+    }
+  }
+};
+
+// Helper function to try importing raw content with fallbacks
+const tryImportRawContent = async (demoId: string) => {
+  try {
+    return await import(`./../demo/${demoId}.tsx?raw`);
+  } catch (error) {
+    try {
+      return await import(`./../demo/recipe/${demoId}.tsx?raw`);
+    } catch (error) {
+      return { default: '' };
+    }
+  }
+};
+
 interface TabSetting {
   title?: string;
   type: 'link' | 'normal' | 'preview';
@@ -36,9 +62,7 @@ export default ({ settings, className }: VersatileTabsProps) => {
   const demoComponents = useMemo(() => {
     return settings.reduce((acc, $s) => {
       if ($s.type === 'preview' && $s.demoId) {
-        acc[kebabCase(toLower($s.title))] = lazy(() =>
-          import(`./../demo/${$s.demoId}.tsx`)
-        );
+        acc[kebabCase(toLower($s.title))] = lazy(() => tryImportComponent($s.demoId!));
       }
       return acc;
     }, {} as Record<string, React.LazyExoticComponent<any>>);
@@ -49,13 +73,9 @@ export default ({ settings, className }: VersatileTabsProps) => {
       const codeStrings: Record<string, string> = {};
       for (const setting of settings) {
         if (setting.type === 'preview' && setting.demoId) {
-          try {
-            const tabId = kebabCase(toLower(setting.title));
-            const module = await import(`./../demo/${setting.demoId}.tsx?raw`);
-            codeStrings[tabId] = module.default;
-          } catch (error) {
-            console.error(`Failed to load demo code for ${setting.demoId}:`, error);
-          }
+          const tabId = kebabCase(toLower(setting.title));
+          const module = await tryImportRawContent(setting.demoId);
+          codeStrings[tabId] = module.default;
         }
       }
       setDemoCodeStrings(codeStrings);
