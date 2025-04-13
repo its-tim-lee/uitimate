@@ -1,13 +1,4 @@
-import ButtonProgress from "../../demo/button-progress.tsx";
-import ButtonDial from "../../demo/button-dial.tsx";
-import ButtonIncludeBadge from "../../demo/button-include-badge.tsx";
-import ButtonSearch from "../../demo/button-search.tsx";
-import Button3Sizes from "../../demo/button-3sizes.tsx";
-import Button6Variants from "../../demo/button-6variants.tsx";
-import ButtonSwitch from "../../demo/button-switch.tsx";
-import ButtonToggle from "../../demo/button-toggle.tsx";
-import ButtonGroupSingleSelection from "../../demo/button-group-single-selection.tsx";
-import ButtonGroupMultipleSelection from "../../demo/button-group-multiple-selection.tsx";
+
 export default {
   title: 'Example/Cta',
   includeStories: [],
