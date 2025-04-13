@@ -1,6 +1,7 @@
 import { type ComponentProps } from "react"
 import * as PopoverPrimitive from "@radix-ui/react-popover"
 import { tv, type VariantProps } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
 const popoverVariants = tv({
   base: [
@@ -12,6 +13,14 @@ const popoverVariants = tv({
     "tw:data-[side=right]:slide-in-from-left-2 tw:data-[side=top]:slide-in-from-bottom-2",
   ],
 })
+
+type PopoverProps = ComponentProps<typeof PopoverPrimitive.Root>
+const Popover = ({ ...props }: PopoverProps) => (
+  <PopoverPrimitive.Root
+    data-tag={kebabCase(Popover.displayName)}
+    {...props}
+  />
+)
 
 type PopoverContentProps =
   ComponentProps<typeof PopoverPrimitive.Content> &
@@ -30,19 +39,39 @@ const PopoverContent = ({
     <PopoverPrimitive.Content
       align={align}
       sideOffset={sideOffset}
+      data-tag={kebabCase(PopoverContent.displayName)}
       className={popoverVariants({ className })}
       {...props}
     />
   </PopoverPrimitive.Portal>
 )
-const Popover = PopoverPrimitive.Root
-const PopoverTrigger = PopoverPrimitive.Trigger
-const PopoverAnchor = PopoverPrimitive.Anchor
+
+type PopoverTriggerProps = ComponentProps<typeof PopoverPrimitive.Trigger>
+const PopoverTrigger = ({ ...props }: PopoverTriggerProps) => (
+  <PopoverPrimitive.Trigger
+    data-tag={kebabCase(PopoverTrigger.displayName)}
+    {...props}
+  />
+)
+
+type PopoverAnchorProps = ComponentProps<typeof PopoverPrimitive.Anchor>
+const PopoverAnchor = ({ ...props }: PopoverAnchorProps) => (
+  <PopoverPrimitive.Anchor
+    data-tag={kebabCase(PopoverAnchor.displayName)}
+    {...props}
+  />
+)
 
 Popover.displayName = 'Popover';
 PopoverTrigger.displayName = 'PopoverTrigger';
-PopoverAnchor.displayName = 'PopoverAnchor';
 PopoverContent.displayName = 'PopoverContent';
+PopoverAnchor.displayName = 'PopoverAnchor';
+namespace Type {
+  export type Popover = PopoverProps;
+  export type PopoverTrigger = PopoverTriggerProps;
+  export type PopoverAnchor = PopoverAnchorProps;
+  export type PopoverContent = PopoverContentProps;
+}
 
 export {
   popoverVariants,
@@ -50,5 +79,5 @@ export {
   PopoverTrigger,
   PopoverAnchor,
   PopoverContent,
-  type PopoverContentProps,
+  type Type
 }
