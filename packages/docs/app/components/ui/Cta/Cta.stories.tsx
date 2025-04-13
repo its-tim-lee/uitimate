@@ -1,5 +1,5 @@
 import CtaPossibleShapes from "#/components/demo/cta-possible-shapes.tsx";
-import Ratings from "#/components/demo/cta-ratings.tsx";
+import Ratings from "#/components/demo/recipe/cta-ratings.tsx";
 import BadgeOnIcon from "#/components/demo/cta-badge-on-icon.tsx";
 import BadgeOnIconEdgeCase from "#/components/demo/cta-edge-case-badge-on-icon.tsx";
 import ButtonRoundedBadge from "#/components/demo/cta-rounded-badge.tsx";
@@ -14,8 +14,8 @@ import ButtonAnchorIcon from "#/components/demo/button-anchor-icon.tsx";
 import Cta6Variants from "#/components/demo/button-6variants.tsx";
 import ButtonSwitch from "#/components/demo/button-switch.tsx";
 import ToggleButton from "#/components/demo/button-toggle.tsx";
-import ToggleGroupSingleSelection from "#/components/demo/button-group-single-selection.tsx";
-import ToggleGroupMultipleSelection from "#/components/demo/button-group-multiple-selection.tsx";
+import ToggleGroupSingleSelection from "#/components/demo/recipe/button-group-single-selection.tsx";
+import ToggleGroupMultipleSelection from "#/components/demo/recipe/button-group-multiple-selection.tsx";
 import CtaCommandInstruction from "#/components/demo/cta-command-instruction.tsx";
 import type { Meta } from '@storybook/react';
 
