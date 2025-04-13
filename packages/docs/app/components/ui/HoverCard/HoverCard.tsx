@@ -1,8 +1,9 @@
 import { type ComponentProps } from "react"
 import { Root, Trigger, Content } from "@radix-ui/react-hover-card"
 import { tv } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
-const variants = tv({
+const hoverCardVariants = tv({
   base: [
     "tw:z-50 tw:w-64 tw:rounded-md tw:border tw:bg-popover tw:p-4 tw:text-popover-foreground tw:shadow-md tw:outline-hidden",
     "tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out",
@@ -13,10 +14,17 @@ const variants = tv({
   ]
 })
 
-type HoverCardContentProps = ComponentProps<typeof Content>
+type HoverCardProps = ComponentProps<typeof Root>
+const HoverCard = (props: HoverCardProps) => (
+  <Root data-tag={kebabCase(HoverCard.displayName)} {...props} />
+)
 
-const HoverCard = Root
-const HoverCardTrigger = Trigger
+type HoverCardTriggerProps = ComponentProps<typeof Trigger>
+const HoverCardTrigger = (props: HoverCardTriggerProps) => (
+  <Trigger data-tag={kebabCase(HoverCardTrigger.displayName)} {...props} />
+)
+
+type HoverCardContentProps = ComponentProps<typeof Content>
 const HoverCardContent = ({
   className,
   align = "center",
@@ -24,9 +32,10 @@ const HoverCardContent = ({
   ...props
 }: HoverCardContentProps) => (
   <Content
+    data-tag={kebabCase(HoverCardContent.displayName)}
     align={align}
     sideOffset={sideOffset}
-    className={variants({ className })}
+    className={hoverCardVariants({ className })}
     {...props}
   />
 )
@@ -35,10 +44,16 @@ HoverCard.displayName = 'HoverCard'
 HoverCardTrigger.displayName = 'HoverCardTrigger'
 HoverCardContent.displayName = 'HoverCardContent'
 
+namespace Type {
+  export type HoverCard = HoverCardProps
+  export type HoverCardTrigger = HoverCardTriggerProps
+  export type HoverCardContent = HoverCardContentProps
+}
+
 export {
-  variants as hoverCardVariants,
+  hoverCardVariants,
   HoverCard,
   HoverCardTrigger,
   HoverCardContent,
-  type HoverCardContentProps
+  type Type
 }
