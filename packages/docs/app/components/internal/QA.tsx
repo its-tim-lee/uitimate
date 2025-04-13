@@ -9,7 +9,7 @@ export default ({ items }: QAProps) => {
       {items.map($i => (
         <AccordionItem key={$i.value} value={$i.value}>
           <AccordionTrigger>{$i.trigger}</AccordionTrigger>
-          <AccordionContent>{$i.content}</AccordionContent>
+          <AccordionContent className="tw:text-muted-foreground">{$i.content}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
