@@ -85,7 +85,7 @@ export default () => {
       />
       <br />
       <p>
-        Let's! For more its family components to use, check <Link className="tw:link" to="./../api">the API reference page</Link>.
+        Let's! For more on its family components to use, and more demos on showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
       </p>
       <br />
       <br />
