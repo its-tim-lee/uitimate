@@ -24,8 +24,9 @@ export default () => {
       />
 
       <br />
+      <br />
 
-      <DemoApiSection />
+      <DemoScenariosSection />
       <VersatileTabs
         settings={[
           {
@@ -34,25 +35,6 @@ export default () => {
           },
         ]}
       />
-      <br />
-      <br />
-
-      <DemoScenariosSection />
-      <h1>WIP...</h1>
-      {/* <VersatileTabs
-        settings={[
-          {
-            title: "Disabled",
-            type: "preview",
-            demoId: "accordion-disabled",
-          },
-          {
-            title: "Single Item Disabled",
-            type: "preview",
-            demoId: "accordion-single-item-disabled",
-          },
-        ]}
-      /> */}
 
       <br />
       <br />
