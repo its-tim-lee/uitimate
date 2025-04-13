@@ -9,9 +9,5 @@ export default () => {
     }, 500);
     return () => clearInterval(timer)
   }, []);
-  return (
-    <div className='tw:w-[300px]'>
-      <Progress value={progress} />
-    </div>
-  );
+  return <Progress value={progress} className='tw:w-[300px]' />
 }
