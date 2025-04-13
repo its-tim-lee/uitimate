@@ -1,0 +1,1 @@
+[] Each menu's content from the story should also be visually snapshoted by Argos
