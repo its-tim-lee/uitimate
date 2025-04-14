@@ -45,6 +45,11 @@ export default () => {
             title: "Date Picker",
             type: "preview",
             demoId: "calendar-date-picker",
+          },
+          {
+            title: "Date Range Picker",
+            type: "preview",
+            demoId: "calendar-date-range-picker",
           }
         ]}
       />
