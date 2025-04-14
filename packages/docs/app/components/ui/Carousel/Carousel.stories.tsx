@@ -1,18 +1,15 @@
-import CarouselDemo from '../../demo/carousel-demo.tsx';
-import CarouselUseApi from '../../demo/carousel-use-api.tsx';
-import CarouselAutoLoop from '../../demo/carousel-auto-loop.tsx';
+import CarouselDemo from '#/components/demo/carousel-demo.tsx';
+import CarouselUseApi from '#/components/demo/carousel-use-api.tsx';
+import CarouselAutoLoop from '#/components/demo/carousel-auto-loop.tsx';
+import { type Meta } from '@storybook/react';
 
 export default {
   title: 'Example/Carousel',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta
 
 export const DEMO = {
   name: 'Demo',
