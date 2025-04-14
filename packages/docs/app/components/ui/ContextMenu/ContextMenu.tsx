@@ -1,4 +1,5 @@
 import { type ComponentProps } from "react"
+import { kebabCase } from "lodash-es"
 import {
   Root as ContextMenu,
   Trigger as ContextMenuTrigger,
@@ -36,7 +37,7 @@ const contextMenuVariants = tv({
   slots: {
     subTrigger: [
       " tw:px-2",
-      "tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:py-1.5 tw:text-sm tw:outline-hidden",
+      "tw:flex tw:cursor-default tw:select-none tw:justify-between tw:items-center tw:rounded-sm tw:py-1.5 tw:text-sm tw:outline-hidden",
       "tw:focus:bg-accent tw:focus:text-accent-foreground",
       "tw:data-[state=open]:bg-accent tw:data-[state=open]:text-accent-foreground"
     ],
@@ -68,6 +69,7 @@ const ContextMenuSubTrigger = ({
 }: ContextMenuSubTriggerProps) => (
   <SubTrigger
     className={contextMenuVariants({ inset }).subTrigger({ className })}
+    data-tag={kebabCase(ContextMenuSubTrigger.displayName)}
     {...props}
   >
     {children}
@@ -82,6 +84,7 @@ const ContextMenuSubContent = ({
 }: ContextMenuSubContentProps) => (
   <SubContent
     className={contextMenuVariants().subContent({ className })}
+    data-tag={kebabCase(ContextMenuSubContent.displayName)}
     {...props}
   />
 )
@@ -94,6 +97,7 @@ const ContextMenuContent = ({
   <ContextMenuPortal>
     <Content
       className={contextMenuVariants().content({ className })}
+      data-tag={kebabCase(ContextMenuContent.displayName)}
       {...props}
     />
   </ContextMenuPortal>
@@ -107,6 +111,7 @@ const ContextMenuItem = ({
 }: ContextMenuItemProps) => (
   <Item
     className={contextMenuVariants({ inset }).item({ className })}
+    data-tag={kebabCase(ContextMenuItem.displayName)}
     {...props}
   />
 )
@@ -120,6 +125,7 @@ const ContextMenuCheckboxItem = ({
 }: ContextMenuCheckboxItemProps) => (
   <CheckboxItem
     className={contextMenuVariants().formItem({ className })}
+    data-tag={kebabCase(ContextMenuCheckboxItem.displayName)}
     checked={checked}
     {...props}
   >
@@ -140,6 +146,7 @@ const ContextMenuRadioItem = ({
 }: ContextMenuRadioItemProps) => (
   <RadioItem
     className={contextMenuVariants().formItem({ className })}
+    data-tag={kebabCase(ContextMenuRadioItem.displayName)}
     {...props}
   >
     <span className="tw:absolute tw:left-2 tw:flex tw:h-3.5 tw:w-3.5 tw:items-center tw:justify-center">
@@ -159,6 +166,7 @@ const ContextMenuLabel = ({
 }: ContextMenuLabelProps) => (
   <Label
     className={contextMenuVariants({ inset }).label({ className })}
+    data-tag={kebabCase(ContextMenuLabel.displayName)}
     {...props}
   />
 )
@@ -170,6 +178,7 @@ const ContextMenuSeparator = ({
 }: ContextMenuSeparatorProps) => (
   <Separator
     className={contextMenuVariants().separator({ className })}
+    data-tag={kebabCase(ContextMenuSeparator.displayName)}
     {...props}
   />
 )
@@ -181,6 +190,7 @@ const ContextMenuShortcut = ({
 }: ContextMenuShortcutProps) => (
   <span
     className={contextMenuVariants().shortcut({ className })}
+    data-tag={kebabCase(ContextMenuShortcut.displayName)}
     {...props}
   />
 )
@@ -201,7 +211,20 @@ ContextMenuSubContent.displayName = "ContextMenuSubContent"
 ContextMenuSubTrigger.displayName = "ContextMenuSubTrigger"
 ContextMenuRadioGroup.displayName = "ContextMenuRadioGroup"
 
+namespace Type {
+  export type ContextMenu = typeof ContextMenu
+  export type ContextMenuTrigger = typeof ContextMenuTrigger
+  export type ContextMenuContent = typeof ContextMenuContent
+  export type ContextMenuItem = typeof ContextMenuItem
+  export type ContextMenuCheckboxItem = typeof ContextMenuCheckboxItem
+  export type ContextMenuRadioItem = typeof ContextMenuRadioItem
+  export type ContextMenuLabel = typeof ContextMenuLabel
+  export type ContextMenuSeparator = typeof ContextMenuSeparator
+  export type ContextMenuShortcut = typeof ContextMenuShortcut
+}
+
 export {
+  type Type,
   contextMenuVariants,
   ContextMenu,
   ContextMenuTrigger,
@@ -213,18 +236,12 @@ export {
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuGroup,
-  ContextMenuPortal,
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
-  type ContextMenuSubTriggerProps,
-  type ContextMenuSubContentProps,
-  type ContextMenuContentProps,
-  type ContextMenuItemProps,
-  type ContextMenuCheckboxItemProps,
-  type ContextMenuRadioItemProps,
-  type ContextMenuLabelProps,
-  type ContextMenuSeparatorProps,
-  type ContextMenuShortcutProps
+  /**
+   * These should be rare to be used, but exported anyway in case there're some edge cases.
+   */
+  ContextMenuPortal,
 }

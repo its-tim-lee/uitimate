@@ -37,7 +37,7 @@ export default () => {
         <ContextMenuSub>
           <ContextMenuSubTrigger inset>More Tools</ContextMenuSubTrigger>
           <ContextMenuSubContent className="tw:w-48">
-            <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+            <ContextMenuItem>Create Shortcut</ContextMenuItem>
           </ContextMenuSubContent>
         </ContextMenuSub>
         <ContextMenuSeparator />
