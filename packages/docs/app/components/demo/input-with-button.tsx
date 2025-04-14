@@ -1,6 +1,6 @@
 import { Label } from '../ui/Label/Label.tsx';
 import { Input } from '../ui/Input/Input.tsx';
-import { Button } from '../ui/Button/Button.tsx';
+import { Button } from '../improper/Button/Button.tsx';
 
 export default () => {
   return (

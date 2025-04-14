@@ -1,5 +1,5 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "../ui/DropdownMenu/DropdownMenu";
-import { Button } from "../ui/Button/Button";
+import { Button } from "../improper/Button/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar/Avatar";
 
 // TBD: ideally the avatar code can be re-used from button-avatar.tsx,

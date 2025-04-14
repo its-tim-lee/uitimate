@@ -10,7 +10,7 @@
 import * as React from "react"
 import { Root, Trigger, Portal, Close, Overlay, Content, Title, Description } from "@radix-ui/react-dialog"
 import { tv } from "tailwind-variants"
-import { Icon } from "../Icon/Icon"
+import { Icon } from "../../ui/Icon/Icon"
 
 export { type DialogProps } from "@radix-ui/react-dialog"
 

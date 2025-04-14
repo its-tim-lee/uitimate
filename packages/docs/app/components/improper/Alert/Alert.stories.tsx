@@ -1,4 +1,4 @@
-import { Icon } from "../Icon/Icon.tsx";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
 
 import {
   Alert,

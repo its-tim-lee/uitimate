@@ -1,6 +1,6 @@
 import React from "react"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible"
-import { Button } from "#/components/ui/Button/Button"
+import { Button } from "~/app/components/improper/Button/Button"
 import { Icon } from "#/components/ui/Icon/Icon"
 
 export default () => {

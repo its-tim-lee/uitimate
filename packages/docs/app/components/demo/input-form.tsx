@@ -1,6 +1,6 @@
 import { Label } from '../ui/Label/Label.tsx';
 import { Input } from '../ui/Input/Input.tsx';
-import { Button } from '../ui/Button/Button.tsx';
+import { Button } from '../improper/Button/Button.tsx';
 
 // TBD: doc: show the intergration with form and leave the msg:
 // since it's just a native input, for the APIs, consult the native input doc for more details
