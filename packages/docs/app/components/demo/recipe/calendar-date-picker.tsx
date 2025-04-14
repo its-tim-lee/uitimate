@@ -10,7 +10,8 @@ import {
 
 import { Calendar } from "#/components/ui/Calendar/Calendar.tsx"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
-import { cn } from "#/helpers/css"
+import { cn } from "#/helpers/css.ts" // WARN: turn this to "#/helpers" will cause the bug
+
 export default () => {
   const [date, setDate] = React.useState<Date>()
   return (

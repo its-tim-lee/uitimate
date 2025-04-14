@@ -1,23 +1,19 @@
-import CalendarDatePicker from "#/components/demo/calendar-date-picker"
-import CalendarDemo from "#/components/demo/calendar-demo"
-import CalendarDateRangePicker from "#/components/demo/calendar-date-range-picker"
+import CalendarDatePicker from "#/components/demo/recipe/calendar-date-picker.tsx"
+import CalendarDemo from "#/components/demo/calendar-demo.tsx"
+import CalendarDateRangePicker from "#/components/demo/calendar-date-range-picker.tsx"
+import type { Meta } from "@storybook/react";
 export default {
   title: 'Example/Calendar',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta
 
 export const DEMO = {
   name: 'DEMO',
   render: () => <CalendarDemo />
 };
-
 
 export const DatePicker = {
   name: 'Date Picker',
