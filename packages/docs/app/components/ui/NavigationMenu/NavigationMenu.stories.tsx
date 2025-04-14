@@ -1,8 +1,7 @@
 
 import NavigationMenuDemo from "#/components/demo/navigationmenu-demo.tsx"
 export default {
-  title: 'Components/NavigationMenu',
-  includeStories: [],
+  title: 'Example/NavigationMenu',
   parameters: {
     layout: 'centered',
   },
