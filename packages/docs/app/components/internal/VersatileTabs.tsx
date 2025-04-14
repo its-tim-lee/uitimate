@@ -120,10 +120,12 @@ export default ({ settings, className }: VersatileTabsProps) => {
             )}
             {$s.type === 'preview' && (
               <>
+                <div className='tw:text-sm tw:text-muted-foreground tw:leading-relaxed'>
                 {typeof $s.content === 'string'
                   ? <div dangerouslySetInnerHTML={{ __html: $s.content }} />
                   : $s.content
                 }
+                </div>
                 <PreviewBlock toggleCodeBlock={() => toggleCodeBlockVisibility(tabId)}>
                   {DemoComponent && <DemoComponent />}
                 </PreviewBlock>
