@@ -1,17 +1,15 @@
+import CommandDemo from "#/components/demo/command-demo.tsx"
+import CommandDialogDemo from "#/components/demo/command-dialog.tsx"
+import type { Meta } from "@storybook/react";
 
-import CommandDemo from "../../demo/command-demo.tsx"
-import CommandDialogDemo from "../../demo/command-dialog.tsx"
 export default {
   title: 'Example/Command',
-  includeStories: [],
+  includeStories: ['DEMO'],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta;
 
 export const DEMO = {
   name: 'DEMO',
