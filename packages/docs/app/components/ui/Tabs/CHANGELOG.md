@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- Enhance The entire tabs family quality
+
 ## 1.0.1
 
 ### Patch Changes
