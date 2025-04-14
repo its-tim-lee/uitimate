@@ -1,6 +1,7 @@
 import { type ComponentProps } from "react"
 import { Root, Viewport, Corner, Scrollbar, Thumb } from "@radix-ui/react-scroll-area"
 import { tv } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
 const scrollAreaVariants = tv({
   slots: {
@@ -17,13 +18,12 @@ const ScrollArea = ({
   ...props
 }: ScrollAreaProps) => (
   <Root
+    data-tag={kebabCase(ScrollArea.displayName)}
     className={root({ className })}
     {...props}
   >
-    <Viewport className={viewport()}>
-      {children}
-    </Viewport>
-    <ScrollBar />
+    <Viewport className={viewport()}>{children}</Viewport>
+    <ScrollAreaScrollBar />
     <Corner />
   </Root>
 )
@@ -44,36 +44,76 @@ const scrollBarVariants = tv({
     }
   }
 })
-type ScrollBarProps = ComponentProps<typeof Scrollbar>
-const ScrollBar = ({
+type ScrollAreaScrollBarProps = ComponentProps<typeof Scrollbar>
+const ScrollAreaScrollBar = ({
   className,
   orientation = "vertical",
   ...props
-}: ScrollBarProps) => {
+}: ScrollAreaScrollBarProps) => {
   const { scrollbar, thumb } = scrollBarVariants({ orientation })
   return (
     <Scrollbar
+      data-tag={kebabCase(ScrollAreaScrollBar.displayName)}
       orientation={orientation}
       className={scrollbar({ className })}
       {...props}
     >
       {/*
-      "Thumb" is literally a small draggable widget that
-      being used to drag-to-scroll on the scroll bar area
-    */}
+      Design Note:
+        "Thumb" is literally a small draggable widget that
+        being used to drag-to-scroll on the scroll bar area
+      */}
       <Thumb className={thumb()} />
     </Scrollbar>
   )
 }
 
+type ScrollAreaViewportProps = ComponentProps<typeof Viewport>
+const ScrollAreaViewport = ({
+  className,
+  ...props
+}: ScrollAreaViewportProps) => (
+  <Viewport
+    data-tag={kebabCase(ScrollAreaViewport.displayName)}
+    className={viewport({ className })}
+    {...props}
+  />
+)
+
+type ScrollAreaCornerProps = ComponentProps<typeof Corner>
+const ScrollAreaCorner = ({
+  className,
+  ...props
+}: ScrollAreaCornerProps) => (
+  <Corner
+    data-tag={kebabCase(ScrollAreaCorner.displayName)}
+    className={className}
+    {...props}
+  />
+)
+
 ScrollArea.displayName = "ScrollArea"
-ScrollBar.displayName = "ScrollBar"
+ScrollAreaScrollBar.displayName = "ScrollAreaScrollBar"
+ScrollAreaViewport.displayName = "ScrollAreaViewport"
+ScrollAreaCorner.displayName = "ScrollAreaCorner"
+
+namespace Type {
+  export type ScrollArea = ScrollAreaProps;
+  export type ScrollAreaScrollBar = ScrollAreaScrollBarProps;
+  export type ScrollAreaViewport = ScrollAreaViewportProps;
+  export type ScrollAreaCorner = ScrollAreaCornerProps;
+}
 
 export {
+  type Type,
   scrollAreaVariants,
+  scrollBarVariants,
   ScrollArea,
-  ScrollBar,
-  type ScrollAreaProps,
-  type ScrollBarProps
+  ScrollAreaScrollBar,
+  /**
+   * These should be rare to be used, but exported anyway in case there're some edge cases.
+   */
+  ScrollAreaViewport,
+  ScrollAreaCorner
 }
 
