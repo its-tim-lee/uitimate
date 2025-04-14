@@ -36,7 +36,18 @@ export default () => {
           }
         ]}
       />
-
+      <br />
+      <br />
+      <DemoRecipeSection />
+      <VersatileTabs
+        settings={[
+          {
+            title: "Date Picker",
+            type: "preview",
+            demoId: "calendar-date-picker",
+          }
+        ]}
+      />
       <br />
       <br />
 
