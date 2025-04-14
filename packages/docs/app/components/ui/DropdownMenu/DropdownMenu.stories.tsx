@@ -1,11 +1,10 @@
-import DropdownMenuMix1 from "../../demo/dropdownmenu-mix1.tsx";
-import DropdownMenuDemo from "../../demo/dropdownmenu-demo.tsx";
-import DropdownMenuMix2 from "../../demo/dropdownmenu-mix2.tsx";
-
+import DropdownMenuMix1 from "#/components/demo/dropdownmenu-mix1.tsx";
+import DropdownMenuDemo from "#/components/demo/dropdownmenu-demo.tsx";
+import DropdownMenuMix2 from "#/components/demo/dropdownmenu-mix2.tsx";
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'Example/DropdownMenu',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
@@ -13,7 +12,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-}
+} as Meta
 
 export const Demo = {
   name: 'Demo',
