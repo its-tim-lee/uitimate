@@ -1,23 +1,14 @@
-import TooltipDemo from "#/components/demo/tooltip-demo.tsx";
 import TooltipInstant from "#/components/demo/tooltip-instant.tsx";
+import type { Meta } from "@storybook/react";
 
 export default {
   title: 'Example/Tooltip',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
 
-export const DEMO = {
-  name: 'DEMO',
-  render: () => <TooltipDemo />
-};
-
+} as Meta
 
 export const INSTANT = {
   name: 'INSTANT',
