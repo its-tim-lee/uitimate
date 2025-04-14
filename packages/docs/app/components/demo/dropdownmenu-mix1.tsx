@@ -13,7 +13,7 @@ export default () => <DropdownMenu>
       </Avatar>
     </Button>
   </DropdownMenuTrigger>
-  <DropdownMenuContent className="w-56">
+  <DropdownMenuContent className="tw:w-[200px]">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuGroup>

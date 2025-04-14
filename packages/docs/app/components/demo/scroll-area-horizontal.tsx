@@ -1,4 +1,4 @@
-import { ScrollArea, ScrollBar } from "../ui/ScollArea/ScollArea";
+import { ScrollArea, ScrollAreaScrollBar } from "#/components/ui/ScollArea/ScollArea";
 import { Image } from '#/components/ui/Image/Image'
 
 interface Artwork {
@@ -22,7 +22,7 @@ const works: Artwork[] = [
 ]
 
 export default () => (
-  <ScrollArea className="tw:w-96 tw:whitespace-nowrap tw:rounded-md tw:border">
+  <ScrollArea type="scroll" className="tw:w-96 tw:whitespace-nowrap tw:rounded-md tw:border">
     <div className="tw:flex tw:w-max tw:space-x-4 tw:p-4">
       {works.map((artwork) => (
         <figure key={artwork.artist} className="tw:shrink-0">
@@ -45,6 +45,6 @@ export default () => (
       ))
       }
     </div >
-    <ScrollBar orientation="horizontal" />
+    <ScrollAreaScrollBar orientation="horizontal" />
   </ScrollArea >
 )
