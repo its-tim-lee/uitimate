@@ -6,6 +6,7 @@
  * For more info: see https://github.com/remix-run/remix/discussions/8048
  */
 import React from 'react';
+import { orderBy } from 'lodash-es';
 import type { DocTreeItem } from '../data/site';
 
 
@@ -103,6 +104,10 @@ componentPages.forEach((pages, name) => {
 Object.keys(componentRegistry.recipe).forEach(name => {
   recipeItems.push(createRecipeNavItem(name));
 });
+
+// Sort the arrays alphabetically by title
+coreItems.splice(0, coreItems.length, ...orderBy(coreItems, ['title'], ['asc']));
+recipeItems.splice(0, recipeItems.length, ...orderBy(recipeItems, ['title'], ['asc']));
 
 function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
   const items: DocTreeItem[] = [];
