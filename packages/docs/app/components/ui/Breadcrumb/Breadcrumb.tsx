@@ -1,9 +1,10 @@
 import { Slot } from "@radix-ui/react-slot"
-import { type ComponentProps, createContext, useContext } from "react"
+import { type ComponentProps } from "react"
 import { Icon } from "../Icon/Icon";
 import { tv, type VariantProps } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
-const variants = tv({
+const breadcrumbVariants = tv({
   slots: {
     nav: "tw:inline-block tw:[&_ol.tw\\:w-full]:w-full",
     list: "tw:flex tw:flex-wrap tw:items-center tw:gap-1.5 tw:break-words tw:text-sm tw:text-muted-foreground tw:sm:gap-2.5",
@@ -15,19 +16,22 @@ const variants = tv({
   }
 })
 
-const { nav, list, item, link, final, ellipsis, separator } = variants()
+const { nav, list, item, link, final, ellipsis, separator } = breadcrumbVariants()
 
 /**
+ * Design Note:
  * `nav` is like a ghost, and it shouldn't have problem for issues like styling such as:
  *  - styling on <nav>: in most of time, no need to style on <nav>
  *  - styling on <ol>: having full width will have problem due to the default style of <ol>, but such component shouldn't need to be full width
  */
+type BreadcrumbProps = ComponentProps<'ol'>;
 const Breadcrumb = ({
   className,
   children,
   ...props
 }: BreadcrumbProps) => (
   <nav
+    data-tag={kebabCase(Breadcrumb.displayName)}
     className={nav({})}
     aria-label="breadcrumb"
   >
@@ -40,13 +44,25 @@ const Breadcrumb = ({
   </nav>
 )
 
+type BreadcrumbItemProps = ComponentProps<'li'>;
 const BreadcrumbItem = ({ className, ...props }: BreadcrumbItemProps) => (
-  <li className={item({ className })} {...props} />
+  <li
+    data-tag={kebabCase(BreadcrumbItem.displayName)}
+    className={item({ className })}
+    {...props}
+  />
 )
 
+type BreadcrumbLinkProps = ComponentProps<'a'> & { asChild?: boolean };
 const BreadcrumbLink = ({ asChild, className, ...props }: BreadcrumbLinkProps) => {
   const Comp = asChild ? Slot : "a"
-  return <Comp className={link({ className })} {...props} />
+  return (
+    <Comp
+      data-tag={kebabCase(BreadcrumbLink.displayName)}
+      className={link({ className })}
+      {...props}
+    />
+  )
 }
 
 /**
@@ -54,12 +70,22 @@ const BreadcrumbLink = ({ asChild, className, ...props }: BreadcrumbLinkProps) =
  * that we usually use as the final item of the entire breadcrumb component composition
  * to indicate the current viewing page.
  */
+type BreadcrumbFinalProps = ComponentProps<'span'>;
 const BreadcrumbFinal = ({ className, ...props }: BreadcrumbFinalProps) => (
-  <span role="link" aria-disabled="true" aria-current="page" className={final({ className })} {...props} />
+  <span
+    data-tag={kebabCase(BreadcrumbFinal.displayName)}
+    role="link"
+    aria-disabled="true"
+    aria-current="page"
+    className={final({ className })}
+    {...props}
+  />
 )
 
+type BreadcrumbEllipsisProps = ComponentProps<'span'>;
 const BreadcrumbEllipsis = ({ className, ...props }: BreadcrumbEllipsisProps) => (
   <span
+    data-tag={kebabCase(BreadcrumbEllipsis.displayName)}
     className={ellipsis({ className })}
     {...props}
   >
@@ -68,8 +94,10 @@ const BreadcrumbEllipsis = ({ className, ...props }: BreadcrumbEllipsisProps) =>
   </span>
 )
 
+type BreadcrumbSeparatorProps = ComponentProps<'li'>;
 const BreadcrumbSeparator = ({ children, className, ...props }: BreadcrumbSeparatorProps) => (
   <li
+    data-tag={kebabCase(BreadcrumbSeparator.displayName)}
     role="presentation"
     aria-hidden="true"
     className={separator({ className })}
@@ -79,14 +107,25 @@ const BreadcrumbSeparator = ({ children, className, ...props }: BreadcrumbSepara
   </li>
 )
 
-export type BreadcrumbProps = ComponentProps<'ol'>;
-export type BreadcrumbItemProps = ComponentProps<'li'>;
-export type BreadcrumbLinkProps = ComponentProps<'a'> & { asChild?: boolean };
-export type BreadcrumbFinalProps = ComponentProps<'span'>;
-export type BreadcrumbEllipsisProps = ComponentProps<'span'>;
-export type BreadcrumbSeparatorProps = ComponentProps<'li'>;
+Breadcrumb.displayName = "Breadcrumb";
+BreadcrumbItem.displayName = "BreadcrumbItem";
+BreadcrumbLink.displayName = "BreadcrumbLink";
+BreadcrumbFinal.displayName = "BreadcrumbFinal";
+BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";
+BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
+
+namespace Type {
+  export type Breadcrumb = BreadcrumbProps;
+  export type BreadcrumbItem = BreadcrumbItemProps;
+  export type BreadcrumbLink = BreadcrumbLinkProps;
+  export type BreadcrumbFinal = BreadcrumbFinalProps;
+  export type BreadcrumbEllipsis = BreadcrumbEllipsisProps;
+  export type BreadcrumbSeparator = BreadcrumbSeparatorProps;
+}
 
 export {
+  type Type,
+  breadcrumbVariants,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,

@@ -5,19 +5,19 @@ export default () => {
     <Breadcrumb>
 
       <BreadcrumbItem>
-        <BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
+        <BreadcrumbLink href="/docs">Core</BreadcrumbLink>
       </BreadcrumbItem>
 
       <BreadcrumbSeparator />
 
       <BreadcrumbItem>
-        <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+        <BreadcrumbLink href="/docs/components">Breadcrumb</BreadcrumbLink>
       </BreadcrumbItem>
 
       <BreadcrumbSeparator />
 
       <BreadcrumbItem>
-        <BreadcrumbFinal>Breadcrumb</BreadcrumbFinal>
+        <BreadcrumbFinal>Api</BreadcrumbFinal>
       </BreadcrumbItem>
 
     </Breadcrumb>

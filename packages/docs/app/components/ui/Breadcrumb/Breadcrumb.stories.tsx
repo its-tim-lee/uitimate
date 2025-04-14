@@ -4,14 +4,10 @@ import BreadcrumbExpansibleCollapse from "../../demo/breadcrumb-expansible-colla
 
 export default {
   title: 'Example/Breadcrumb',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 }
 
 export const DEMO = {
