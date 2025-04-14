@@ -1,5 +1,5 @@
 import { type ComponentProps } from "react"
-import { type ButtonProps, buttonVariants } from "~/app/components/improper/Button/Button"
+import { buttonVariants } from "#/components/ui/Cta/Cta"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 
@@ -38,7 +38,7 @@ const Pagination = ({
 type PaginationItemProps = ComponentProps<"li">
 const PaginationItem = ({ ...props }: PaginationItemProps) => <li {...props} />
 
-type PaginationLinkProps = Pick<ButtonProps, "size"> & ComponentProps<"a"> & {
+type PaginationLinkProps = ComponentProps<"a"> & {
   isActive?: boolean
 }
 const PaginationLink = ({
@@ -106,14 +106,12 @@ PaginationNext.displayName = "PaginationNext"
 PaginationEllipsis.displayName = "PaginationEllipsis"
 
 namespace Type {
-  export type Pagination = ComponentProps<"nav">
-  export type PaginationItem = ComponentProps<"li">
-  export type PaginationLink = Pick<ButtonProps, "size"> & ComponentProps<"a"> & {
-    isActive?: boolean
-  }
+  export type Pagination = PaginationProps
+  export type PaginationItem = PaginationItemProps
+  export type PaginationLink = PaginationLinkProps
   export type PaginationPrevious = PaginationLink
   export type PaginationNext = PaginationLink
-  export type PaginationEllipsis = ComponentProps<"span">
+  export type PaginationEllipsis = PaginationEllipsisProps
 }
 
 export {
