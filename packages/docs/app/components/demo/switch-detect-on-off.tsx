@@ -1,6 +1,6 @@
 import { Switch } from "#/components/ui/Switch/Switch"
 import { Label } from "#/components/ui/Label/Label";
-import { Button } from "~/app/components/improper/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta";
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
 } from "#/components/ui/Dialog/Dialog.tsx"
@@ -26,8 +26,8 @@ export default () => {
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <p>Are you sure you want to disable sourcecode fetching for JavaScript events? This will affect Sentry's ability to aggregate issues if you're not already uploading sourcemaps as artifacts.</p>
         <DialogAction>
-          <Button onClick={() => setIsOpen(false)}>Cancel</Button>
-          <Button onClick={onConfirm}>Confirm</Button>
+          <Cta onClick={() => setIsOpen(false)}>Cancel</Cta>
+          <Cta onClick={onConfirm}>Confirm</Cta>
         </DialogAction>
       </Dialog>
 

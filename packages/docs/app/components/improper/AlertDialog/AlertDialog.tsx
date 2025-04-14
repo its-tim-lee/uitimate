@@ -1,7 +1,7 @@
 import type { ReactNode, ComponentProps, HTMLAttributes } from "react";
 import { Root as AlertDialog, Trigger as AlertDialogTrigger, Portal as AlertDialogPortal, Overlay, Content, Title, Description, Action, Cancel } from "@radix-ui/react-alert-dialog"
 import { cn } from "#/helpers"
-import { buttonVariants } from "~/app/components/improper/Button/Button"
+import { buttonVariants } from "#/components/ui/Cta/Cta"
 
 const AlertDialogOverlay = ({ className, ...props }: ComponentProps<typeof Overlay>) => (
   <Overlay

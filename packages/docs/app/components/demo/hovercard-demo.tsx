@@ -1,12 +1,12 @@
 import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar.tsx";
-import { Button } from "~/app/components/improper/Button/Button";
+import { Cta } from "#/components/ui/Cta/Cta";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "#/components/ui/HoverCard/HoverCard.tsx";
 
 export default () => {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button variant="link">@itistimlee</Button>
+        <Cta variant="link">@itistimlee</Cta>
       </HoverCardTrigger>
       <HoverCardContent className="tw:w-[360px]">
         <div className="tw:flex tw:flex-col tw:gap-4">

@@ -28,7 +28,6 @@ import { Separator } from '#/components/ui/Separator/Separator.tsx';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "#/components/ui/DropdownMenu/DropdownMenu.tsx";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible.tsx";
 import { useState } from "react";
-import { Button } from "~/app/components/improper/Button/Button.tsx";
 import { Cta } from "#/components/ui/Cta/Cta.tsx";
 import { DrawerHeading } from "#/components/ui/Drawer/Drawer.tsx";
 import { useIsMobile } from "#/helpers/hooks/use-mobile.tsx";
@@ -248,7 +247,7 @@ export const InWindowSidebar = {
             </SidebarInset>
           </SidebarLayout>
         </Dialog>
-        <Button onClick={() => setIsOpen(true)}>Open</Button>
+        <Cta onClick={() => setIsOpen(true)}>Open</Cta>
       </>
     )
 

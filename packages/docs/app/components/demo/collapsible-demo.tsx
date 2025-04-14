@@ -1,6 +1,6 @@
 import React from "react"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible"
-import { Button } from "~/app/components/improper/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta";
 import { Icon } from "#/components/ui/Icon/Icon"
 
 export default () => {
@@ -17,10 +17,10 @@ export default () => {
           @peduarte starred 3 repositories
         </h4>
         <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="sm">
+          <Cta variant="ghost" size="sm" shapes={['icon']}>
             <Icon icon="lucide:chevrons-up-down" className="tw:h-4 tw:w-4" />
             <span className="tw:sr-only">Toggle</span>
-          </Button>
+          </Cta>
         </CollapsibleTrigger>
       </div>
       <div className="tw:rounded-md tw:border tw:px-4 tw:py-2 tw:font-mono tw:text-sm tw:shadow-sm">

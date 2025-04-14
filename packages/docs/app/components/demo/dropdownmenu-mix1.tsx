@@ -2,7 +2,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 import { Button } from "../improper/Button/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar/Avatar";
 
-// TBD: ideally the avatar code can be re-used from button-avatar.tsx,
+// TBD: ideally the avatar code can be re-used from avatar-demo.tsx,
 // but the code is for demo, so better be the code block can have other tabs to show other code
 export default () => <DropdownMenu>
   <DropdownMenuTrigger asChild>

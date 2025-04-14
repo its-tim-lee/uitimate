@@ -1,5 +1,5 @@
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
-import { Button } from "~/app/components/improper/Button/Button";
+import { Cta } from "#/components/ui/Cta/Cta";
 import { memo, useState, lazy, useMemo, Suspense, type ComponentProps, useEffect } from "react";
 import { Checkbox, type CheckedState } from '#/components/ui/Checkbox/Checkbox.tsx';
 import {
@@ -9,7 +9,7 @@ import {
   DialogFooter,
   DialogClose,
   DialogTitle,
-} from "~/app/components/improper/DialogOld/Dialog"
+} from "#/components/improper/DialogOld/Dialog"
 import lf from 'localforage';
 import VersatileTabs from "#/components/internal/VersatileTabs";
 
@@ -101,7 +101,7 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
               <Checkbox checked={shouldNotRemindAgain} onCheckedChange={onToggleReminder} >
                 Don't remind me next time
               </Checkbox>
-              <DialogClose asChild><Button variant="primary" onClick={proceed}>Proceeed</Button></DialogClose>
+              <DialogClose asChild><Cta variant="primary" onClick={proceed}>Proceeed</Cta></DialogClose>
             </div>
           </DialogFooter>
         </DialogContent>

@@ -370,21 +370,25 @@ importers:
         specifier: 8.0.3
         version: 8.0.3
 
+  packages/docs/app/components/improper/Alert: {}
+
+  packages/docs/app/components/improper/AlertDialog: {}
+
+  packages/docs/app/components/improper/AspectRatio: {}
+
+  packages/docs/app/components/improper/Badge: {}
+
+  packages/docs/app/components/improper/Button: {}
+
+  packages/docs/app/components/improper/DialogOld: {}
+
+  packages/docs/app/components/improper/Sheet: {}
+
   packages/docs/app/components/ui/Accordion: {}
-
-  packages/docs/app/components/ui/Alert: {}
-
-  packages/docs/app/components/ui/AlertDialog: {}
-
-  packages/docs/app/components/ui/AspectRatio: {}
 
   packages/docs/app/components/ui/Avatar: {}
 
-  packages/docs/app/components/ui/Badge: {}
-
   packages/docs/app/components/ui/Breadcrumb: {}
-
-  packages/docs/app/components/ui/Button: {}
 
   packages/docs/app/components/ui/Calendar: {}
 
@@ -406,8 +410,6 @@ importers:
 
   packages/docs/app/components/ui/Dialog: {}
 
-  packages/docs/app/components/ui/DialogOld: {}
-
   packages/docs/app/components/ui/Drawer: {}
 
   packages/docs/app/components/ui/DropdownMenu: {}
@@ -415,8 +417,6 @@ importers:
   packages/docs/app/components/ui/Form: {}
 
   packages/docs/app/components/ui/Heading: {}
-
-  packages/docs/app/components/ui/HeadlessuiDialog: {}
 
   packages/docs/app/components/ui/HoverCard: {}
 
@@ -451,8 +451,6 @@ importers:
   packages/docs/app/components/ui/Select: {}
 
   packages/docs/app/components/ui/Separator: {}
-
-  packages/docs/app/components/ui/Sheet: {}
 
   packages/docs/app/components/ui/Sidebar: {}
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "~/app/components/improper/Button/Button";
+import { Cta } from "#/components/ui/Cta/Cta";
 import { Icon } from "#/components/ui/Icon/Icon.tsx";
 
 export default () => {
@@ -18,30 +18,30 @@ export default () => {
 
   return <div className='tw:flex tw:flex-col tw:gap-4'>
     <div className='tw:flex'>
-      <Button
-        mode='icon'
+      <Cta
+        shapes={['icon']}
         className='tw:rounded-none'
         pressed={selections.justify}
         onPressedChange={() => toggleSelection('justify')}
       >
         <Icon icon='lucide:align-justify' />
-      </Button>
-      <Button
-        mode='icon'
+      </Cta>
+      <Cta
+        shapes={['icon']}
         className='tw:rounded-none'
         pressed={selections.left}
         onPressedChange={() => toggleSelection('left')}
       >
         <Icon icon='lucide:align-left' />
-      </Button>
-      <Button
-        mode='icon'
+      </Cta>
+      <Cta
+        shapes={['icon']}
         className='tw:rounded-none'
         pressed={selections.right}
         onPressedChange={() => toggleSelection('right')}
       >
         <Icon icon='lucide:align-right' />
-      </Button>
+      </Cta>
     </div>
   </div>
 }

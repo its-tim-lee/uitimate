@@ -1,4 +1,4 @@
-import { Button } from "~/app/components/improper/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta";
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
 } from "#/components/ui/Dialog/Dialog.tsx"
@@ -16,10 +16,10 @@ export default () => {
         </DialogHeading>
         <p>Some content</p>
         <DialogAction>
-          <Button onClick={() => setIsOpen(false)}>Save changes</Button>
+          <Cta onClick={() => setIsOpen(false)}>Save changes</Cta>
         </DialogAction>
       </Dialog>
-      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <Cta onClick={() => setIsOpen(true)}>Open</Cta>
     </>
   )
 }

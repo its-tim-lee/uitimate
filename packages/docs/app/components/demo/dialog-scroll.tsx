@@ -1,4 +1,4 @@
-import { Button } from "~/app/components/improper/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta"
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
 
@@ -85,11 +85,11 @@ export default () => {
           )}
         </ListBox>
         <DialogAction>
-          <Button variant="ghost" className="tw:shadow-none">CLOSE</Button>
-          <Button variant="primary" className="tw:shadow-none">SAVE</Button>
+          <Cta variant="ghost" className="tw:shadow-none">CLOSE</Cta>
+          <Cta variant="primary" className="tw:shadow-none">SAVE</Cta>
         </DialogAction>
       </Dialog>
-      <Button onClick={() => setIsOpen(true)}>Create Database</Button>
+      <Cta onClick={() => setIsOpen(true)}>Create Database</Cta>
     </>
   )
 }
