@@ -1,12 +1,15 @@
 import { Root, List, Trigger, Content } from "@radix-ui/react-tabs"
 import { tv } from 'tailwind-variants'
-import React, { createContext, useContext } from 'react'
+import { createContext, useContext } from 'react'
+import type { ComponentProps } from 'react'
 import { kebabCase } from 'lodash-es'
+
 const TabsVariantContext = createContext<{ variant: 'pill' | 'underline' }>({ variant: 'pill' })
 
+type TabsProps = ComponentProps<typeof Root> & { variant: 'pill' | 'underline' }
 const Tabs = ({ variant, ...props }: TabsProps) => (
   <TabsVariantContext.Provider value={{ variant }}>
-    <Root {...props} />
+    <Root data-tag={kebabCase(Tabs.displayName)} {...props} />
   </TabsVariantContext.Provider>
 )
 
@@ -19,10 +22,12 @@ const tabsListVariants = tv({
     },
   },
 })
+type TabsListProps = ComponentProps<typeof List>
 const TabsList = ({ className, ...props }: TabsListProps) => {
   const { variant } = useContext(TabsVariantContext)
   return (
     <List
+      data-tag={kebabCase(TabsList.displayName)}
       className={tabsListVariants({ variant, className })}
       {...props}
     />
@@ -45,6 +50,7 @@ const tabsTriggerVariants = tv({
     },
   },
 })
+type TabsTriggerProps = ComponentProps<typeof Trigger>
 const TabsTrigger = ({ className, ...props }: TabsTriggerProps) => {
   const { variant } = useContext(TabsVariantContext)
   return (
@@ -62,8 +68,10 @@ const tabsContentVariants = tv({
     "tw:focus-visible:outline-hidden tw:focus-visible:ring-2 tw:focus-visible:ring-ring tw:focus-visible:ring-offset-2"
   ]
 })
+type TabsContentProps = ComponentProps<typeof Content>
 const TabsContent = ({ className, ...props }: TabsContentProps) => (
   <Content
+    data-tag={kebabCase(TabsContent.displayName)}
     className={tabsContentVariants({ className })}
     {...props}
   />
@@ -74,9 +82,21 @@ TabsList.displayName = 'TabsList'
 TabsTrigger.displayName = 'TabsTrigger'
 TabsContent.displayName = 'TabsContent'
 
-type TabsProps = React.ComponentProps<typeof Root> & { variant: 'pill' | 'underline' }
-type TabsListProps = React.ComponentProps<typeof List>;
-type TabsTriggerProps = React.ComponentProps<typeof Trigger>;
-type TabsContentProps = React.ComponentProps<typeof Content>;
+namespace Type {
+  export type Tabs = TabsProps
+  export type TabsList = TabsListProps
+  export type TabsTrigger = TabsTriggerProps
+  export type TabsContent = TabsContentProps
+}
 
-export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants, tabsTriggerVariants, tabsContentVariants, type TabsProps, type TabsListProps, type TabsTriggerProps, type TabsContentProps }
+export {
+  type Type,
+  TabsVariantContext,
+  tabsListVariants,
+  tabsTriggerVariants,
+  tabsContentVariants,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent
+}
