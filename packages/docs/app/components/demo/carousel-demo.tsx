@@ -3,7 +3,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 export default () => {
   return (
     <Carousel className="tw:w-full tw:max-w-xs">
-      <CarouselNext />
+        <CarouselPrevious />
       <CarouselContent >
         {Array.from({ length: 10 }).map((_, $i) => (
           <CarouselItem key={$i} className="tw:basis-1/2 tw:md:basis-1/3 tw:lg:basis-1/4">
@@ -13,7 +13,7 @@ export default () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
+        <CarouselNext />
     </Carousel>
   )
 }
