@@ -36,7 +36,7 @@ const Carousel = (
     ...props
   }: CarouselProps
 ) => {
-  const [carouselRef, api] = useEmblaCarousel(opts, plugins)
+  const [carouselRef, api] = useEmblaCarousel(opts as any, plugins as any)
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
   const handleKeyDown = ($e: KeyboardEvent<HTMLDivElement>) => {
