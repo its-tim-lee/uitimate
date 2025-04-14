@@ -6,8 +6,7 @@ import QA from "#/components/internal/QA.tsx";
 import meta from "./Cta.meta.tsx";
 import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
-import { Flat } from "#/components/preset/flat/index.tsx";
-import { Icon } from "#/components/ui/Icon/Icon.tsx";
+import InfoBanner from "#/components/internal/InfoBanner.tsx";
 
 export default () => {
   return (
@@ -55,10 +54,9 @@ export default () => {
         if that would help your understanding.
         <br />
         <br />
-        <Flat size="sm" className="tw:flex tw:items-center tw:gap-2 tw:border-primary">
-          <Icon icon='lucide:info' className='tw:mt-1 tw:size-5' />
-          <p>Please check the code snippet of each demo below during your reading</p>
-        </Flat >
+        <InfoBanner>
+          Please check the code snippet of each demo below during your reading
+        </InfoBanner>
         <br />
         <br />
       </p>
