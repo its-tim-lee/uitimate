@@ -14,15 +14,29 @@ import {
   RadioItem,
   Label,
   Separator,
-  ItemIndicator
+  ItemIndicator,
+  type DropdownMenuProps,
+  type DropdownMenuTriggerProps,
+  type DropdownMenuPortalProps,
+  type DropdownMenuSubProps,
+  type DropdownMenuGroupProps,
+  type DropdownMenuSubTriggerProps,
+  type DropdownMenuSubContentProps,
+  type DropdownMenuContentProps,
+  type DropdownMenuItemProps,
+  type DropdownMenuCheckboxItemProps,
+  type DropdownMenuRadioItemProps,
+  type DropdownMenuLabelProps,
+  type DropdownMenuSeparatorProps,
+  type DropdownMenuRadioGroupProps,
 } from "@radix-ui/react-dropdown-menu"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
-
+import { kebabCase } from "lodash-es"
 const dropdownMenuVariants = tv({
   slots: {
     subTrigger: [
-      "tw:flex tw:cursor-default tw:gap-2 tw:select-none tw:items-center tw:rounded-sm tw:px-2 tw:py-1.5 tw:text-sm tw:outline-hidden",
+      "tw:flex tw:cursor-default tw:gap-2 tw:select-none tw:justify-between tw:items-center tw:rounded-sm tw:px-2 tw:py-1.5 tw:text-sm tw:outline-hidden",
       "tw:focus:bg-accent tw:data-[state=open]:bg-accent",
       "tw:[&_svg]:pointer-events-none tw:[&_svg]:size-4 tw:[&_svg]:shrink-0"
     ],
@@ -76,9 +90,9 @@ const {
 } = dropdownMenuVariants()
 
 
-type DropdownMenuSubTriggerProps = ComponentProps<typeof SubTrigger>
 const DropdownMenuSubTrigger = ({ className, children, ...props }: DropdownMenuSubTriggerProps) => (
   <SubTrigger
+    data-tag={kebabCase(DropdownMenuSubTrigger.displayName)}
     className={subTrigger({ className })}
     {...props}
   >
@@ -87,18 +101,17 @@ const DropdownMenuSubTrigger = ({ className, children, ...props }: DropdownMenuS
   </SubTrigger>
 )
 
-type DropdownMenuSubContentProps = ComponentProps<typeof SubContent>
 const DropdownMenuSubContent = ({
   className,
   ...props
 }: DropdownMenuSubContentProps) => (
   <SubContent
+    data-tag={kebabCase(DropdownMenuSubContent.displayName)}
     className={subContent({ className })}
     {...props}
   />
 )
 
-type DropdownMenuContentProps = ComponentProps<typeof Content>
 const DropdownMenuContent = ({
   className,
   sideOffset = 4,
@@ -106,6 +119,7 @@ const DropdownMenuContent = ({
 }: DropdownMenuContentProps) => (
   <DropdownMenuPortal>
     <Content
+      data-tag={kebabCase(DropdownMenuContent.displayName)}
       sideOffset={sideOffset}
       className={content({ className })}
       {...props}
@@ -113,18 +127,17 @@ const DropdownMenuContent = ({
   </DropdownMenuPortal>
 )
 
-type DropdownMenuItemProps = ComponentProps<typeof Item>
 const DropdownMenuItem = ({
   className,
   ...props
 }: DropdownMenuItemProps) => (
   <Item
+    data-tag={kebabCase(DropdownMenuItem.displayName)}
     className={item({ className })}
     {...props}
   />
 )
 
-type DropdownMenuCheckboxItemProps = ComponentProps<typeof CheckboxItem>
 const DropdownMenuCheckboxItem = ({
   className,
   children,
@@ -132,6 +145,7 @@ const DropdownMenuCheckboxItem = ({
   ...props
 }: DropdownMenuCheckboxItemProps) => (
   <CheckboxItem
+    data-tag={kebabCase(DropdownMenuCheckboxItem.displayName)}
     className={checkboxItem({ className })}
     checked={checked}
     {...props}
@@ -143,13 +157,13 @@ const DropdownMenuCheckboxItem = ({
   </CheckboxItem>
 )
 
-type DropdownMenuRadioItemProps = ComponentProps<typeof RadioItem>
 const DropdownMenuRadioItem = ({
   className,
   children,
   ...props
 }: DropdownMenuRadioItemProps) => (
   <RadioItem
+    data-tag={kebabCase(DropdownMenuRadioItem.displayName)}
     className={radioItem({ className })}
     {...props}
   >
@@ -160,23 +174,23 @@ const DropdownMenuRadioItem = ({
   </RadioItem>
 )
 
-type DropdownMenuLabelProps = ComponentProps<typeof Label>
 const DropdownMenuLabel = ({
   className,
   ...props
 }: DropdownMenuLabelProps) => (
   <Label
+    data-tag={kebabCase(DropdownMenuLabel.displayName)}
     className={label({ className })}
     {...props}
   />
 )
 
-type DropdownMenuSeparatorProps = ComponentProps<typeof Separator>
 const DropdownMenuSeparator = ({
   className,
   ...props
 }: DropdownMenuSeparatorProps) => (
   <Separator
+    data-tag={kebabCase(DropdownMenuSeparator.displayName)}
     className={separator({ className })}
     {...props}
   />
@@ -188,6 +202,7 @@ const DropdownMenuShortcut = ({
   ...props
 }: DropdownMenuShortcutProps) => (
   <span
+    data-tag={kebabCase(DropdownMenuShortcut.displayName)}
     className={shortcut({ className })}
     {...props}
   />
@@ -208,6 +223,25 @@ DropdownMenuSub.displayName = "DropdownMenuSub"
 DropdownMenuSubContent.displayName = "DropdownMenuSubContent"
 DropdownMenuSubTrigger.displayName = "DropdownMenuSubTrigger"
 DropdownMenuRadioGroup.displayName = "DropdownMenuRadioGroup"
+DropdownMenuRadioItem.displayName = "DropdownMenuRadioItem"
+
+namespace Type {
+  export type DropdownMenu = DropdownMenuProps
+  export type DropdownMenuTrigger = DropdownMenuTriggerProps
+  export type DropdownMenuContent = DropdownMenuContentProps
+  export type DropdownMenuItem = DropdownMenuItemProps
+  export type DropdownMenuCheckboxItem = DropdownMenuCheckboxItemProps
+  export type DropdownMenuLabel = DropdownMenuLabelProps
+  export type DropdownMenuSeparator = DropdownMenuSeparatorProps
+  export type DropdownMenuShortcut = DropdownMenuShortcutProps
+  export type DropdownMenuGroup = DropdownMenuGroupProps
+  export type DropdownMenuPortal = DropdownMenuPortalProps
+  export type DropdownMenuSub = DropdownMenuSubProps
+  export type DropdownMenuSubContent = DropdownMenuSubContentProps
+  export type DropdownMenuSubTrigger = DropdownMenuSubTriggerProps
+  export type DropdownMenuRadioGroup = DropdownMenuRadioGroupProps
+  export type DropdownMenuRadioItem = DropdownMenuRadioItemProps
+}
 
 export {
   dropdownMenuVariants,
@@ -216,7 +250,6 @@ export {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuCheckboxItem,
-  DropdownMenuRadioItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
@@ -226,13 +259,6 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
-  type DropdownMenuSubTriggerProps,
-  type DropdownMenuSubContentProps,
-  type DropdownMenuContentProps,
-  type DropdownMenuItemProps,
-  type DropdownMenuCheckboxItemProps,
-  type DropdownMenuRadioItemProps,
-  type DropdownMenuLabelProps,
-  type DropdownMenuSeparatorProps,
-  type DropdownMenuShortcutProps
+  DropdownMenuRadioItem,
+  type Type
 }
