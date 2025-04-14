@@ -1,38 +1,21 @@
-import React from "react"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible"
-import { Cta } from "#/components/ui/Cta/Cta";
 import { Icon } from "#/components/ui/Icon/Icon"
 
 export default () => {
-  const [isOpen, setIsOpen] = React.useState(false)
-
   return (
-    <Collapsible
-      open={isOpen}
-      onOpenChange={setIsOpen}
-      className="tw:w-[350px] tw:space-y-2"
-    >
-      <div className="tw:flex tw:items-center tw:justify-between tw:space-x-4 tw:px-4">
-        <h4 className="tw:text-sm tw:font-semibold">
-          @peduarte starred 3 repositories
-        </h4>
+    <Collapsible className='tw:group tw:w-[260px]'>
+      <span className="tw:flex tw:items-center tw:justify-between tw:p-2">
         <CollapsibleTrigger asChild>
-          <Cta variant="ghost" size="sm" shapes={['icon']}>
-            <Icon icon="lucide:chevrons-up-down" className="tw:h-4 tw:w-4" />
-            <span className="tw:sr-only">Toggle</span>
-          </Cta>
+          <span>
+            <Icon icon="lucide:chevron-down" className="tw:inline tw:group-data-[state=open]:hidden" />
+            <Icon icon="lucide:chevron-up" className="tw:inline tw:group-data-[state=closed]:hidden" />
+          </span>
         </CollapsibleTrigger>
-      </div>
-      <div className="tw:rounded-md tw:border tw:px-4 tw:py-2 tw:font-mono tw:text-sm tw:shadow-sm">
-        @radix-ui/primitives
-      </div>
-      <CollapsibleContent className="tw:space-y-2">
-        <div className="tw:rounded-md tw:border tw:px-4 tw:py-2 tw:font-mono tw:text-sm tw:shadow-sm">
-          @radix-ui/colors
-        </div>
-        <div className="tw:rounded-md tw:border tw:px-4 tw:py-2 tw:font-mono tw:text-sm tw:shadow-sm">
-          @stitches/react
-        </div>
+        &nbsp;
+        Thought for 3 seconds
+      </span>
+      <CollapsibleContent className="tw:p-2">
+        This details how the AI thought about your question: .....
       </CollapsibleContent>
     </Collapsible>
   )
