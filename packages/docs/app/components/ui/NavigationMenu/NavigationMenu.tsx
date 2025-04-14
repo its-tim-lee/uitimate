@@ -1,7 +1,8 @@
 import { type ComponentProps } from "react"
-import { Root, List, Item, Trigger, Content, Link, Viewport, Indicator, Sub } from "@radix-ui/react-navigation-menu"
+import { Root, List, Item, Trigger, Content, Link, Viewport, Indicator, Sub as NavigationSubMenu } from "@radix-ui/react-navigation-menu"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { kebabCase } from "lodash-es"
 
 const navigationMenuVariants = tv({
   slots: {
@@ -36,7 +37,8 @@ const navigationMenuVariants = tv({
       "tw:data-[state=visible]:animate-in tw:data-[state=hidden]:animate-out",
       "tw:data-[state=hidden]:fade-out tw:data-[state=visible]:fade-in"
     ],
-    indicatorArrow: "tw:relative tw:top-[60%] tw:h-2 tw:w-2 tw:rotate-45 tw:rounded-tl-sm tw:bg-border tw:shadow-md"
+    indicatorArrow: "tw:relative tw:top-[60%] tw:h-2 tw:w-2 tw:rotate-45 tw:rounded-tl-sm tw:bg-border tw:shadow-md",
+    item: ""
   }
 })
 
@@ -49,8 +51,17 @@ const {
   viewportWrapper,
   viewport,
   indicator,
-  indicatorArrow
+  indicatorArrow,
+  item
 } = navigationMenuVariants()
+
+type NavigationMenuListProps = ComponentProps<typeof List>
+const NavigationMenuList = ({
+  className,
+  ...props
+}: NavigationMenuListProps) => (
+  <List data-tag={kebabCase(List.displayName)} className={list({ className })} {...props} />
+)
 
 type NavigationMenuProps = ComponentProps<typeof Root>
 const NavigationMenu = ({
@@ -59,20 +70,24 @@ const NavigationMenu = ({
   ...props
 }: NavigationMenuProps) => (
   <Root
+    data-tag={kebabCase(NavigationMenu.displayName)}
     className={root({ className })}
     {...props}
   >
-    <List
-      className={list({ className })}
-    >
+    <NavigationMenuList>
       {children}
-    </List>
+    </NavigationMenuList>
     <NavigationMenuViewport />
   </Root>
 )
 
 type NavigationMenuItemProps = ComponentProps<typeof Item>
-const NavigationMenuItem = Item
+const NavigationMenuItem = ({
+  className,
+  ...props
+}: NavigationMenuItemProps) => (
+  <Item data-tag={kebabCase(Item.displayName)} className={item({ className })} {...props} />
+)
 
 type NavigationMenuTriggerProps = ComponentProps<typeof Trigger>
 const NavigationMenuTrigger = ({
@@ -81,6 +96,7 @@ const NavigationMenuTrigger = ({
   ...props
 }: NavigationMenuTriggerProps) => (
   <Trigger
+    data-tag={kebabCase(NavigationMenuTrigger.displayName)}
     className={trigger({ className })}
     {...props}
   >
@@ -95,6 +111,7 @@ const NavigationMenuContent = ({
   ...props
 }: NavigationMenuContentProps) => (
   <Content
+    data-tag={kebabCase(NavigationMenuContent.displayName)}
     className={content({ className })}
     {...props}
   />
@@ -105,7 +122,7 @@ const NavigationMenuViewport = ({
   className,
   ...props
 }: NavigationMenuViewportProps) => (
-  <div className={viewportWrapper()}>
+  <div className={viewportWrapper()} data-tag={kebabCase(NavigationMenuViewport.displayName)}>
     <Viewport
       className={viewport({ className })}
       {...props}
@@ -119,6 +136,7 @@ const NavigationMenuIndicator = ({
   ...props
 }: NavigationMenuIndicatorProps) => (
   <Indicator
+    data-tag={kebabCase(NavigationMenuIndicator.displayName)}
     className={indicator({ className })}
     {...props}
   >
@@ -132,6 +150,7 @@ const NavigationMenuLink = ({
   ...props
 }: NavigationMenuLinkProps) => (
   <Link
+    data-tag={kebabCase(NavigationMenuLink.displayName)}
     className={trigger({ className })}
     {...props}
   />
@@ -141,28 +160,38 @@ NavigationMenu.displayName = "NavigationMenu"
 NavigationMenuItem.displayName = "NavigationMenuItem"
 NavigationMenuTrigger.displayName = "NavigationMenuTrigger"
 NavigationMenuContent.displayName = "NavigationMenuContent"
-// TBD:
-// - doc -> most of time, you really don't need these
-// - doc -> We don't expose NavigationSubMenu cuz we can implement that using Tabs
+NavigationMenuLink.displayName = "NavigationMenuLink"
+NavigationMenuList.displayName = "NavigationMenuList"
 NavigationMenuViewport.displayName = "NavigationMenuViewport"
 NavigationMenuIndicator.displayName = "NavigationMenuIndicator"
-NavigationMenuLink.displayName = "NavigationMenuLink"
+NavigationSubMenu.displayName = "NavigationSubMenu"
+
+namespace Type {
+  export type NavigationMenu = NavigationMenuProps
+  export type NavigationMenuItem = NavigationMenuItemProps
+  export type NavigationMenuTrigger = NavigationMenuTriggerProps
+  export type NavigationMenuContent = NavigationMenuContentProps
+  export type NavigationMenuLink = NavigationMenuLinkProps
+  export type NavigationMenuList = NavigationMenuListProps
+  export type NavigationMenuViewport = NavigationMenuViewportProps
+  export type NavigationMenuIndicator = NavigationMenuIndicatorProps
+  export type NavigationSubMenu = ComponentProps<typeof NavigationSubMenu>
+}
 
 export {
+  type Type,
   navigationMenuVariants,
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuTrigger,
   NavigationMenuContent,
+  NavigationMenuLink,
+  /**
+   * These should be rare to be used, but exported anyway in case there're some edge cases.
+  */
+  NavigationMenuList,
   NavigationMenuViewport,
   NavigationMenuIndicator,
-  NavigationMenuLink,
-  type NavigationMenuProps,
-  type NavigationMenuItemProps,
-  type NavigationMenuTriggerProps,
-  type NavigationMenuContentProps,
-  type NavigationMenuViewportProps,
-  type NavigationMenuIndicatorProps,
-  type NavigationMenuLinkProps
+  NavigationSubMenu, // this really doesn't make sense to be used, cuz we can implement that using Tabs
 }
 
