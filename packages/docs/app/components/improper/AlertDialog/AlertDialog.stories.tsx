@@ -8,7 +8,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./AlertDialog.tsx"
-import { Button } from "#/components/ui/Button/Button.tsx"
+import { Button } from "#/components/improper/Button/Button.tsx"
 
 export default {
   title: 'Example/AlertDialog',

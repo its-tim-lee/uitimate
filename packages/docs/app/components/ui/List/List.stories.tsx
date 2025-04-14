@@ -4,26 +4,7 @@ import ListIndentBasicDemo from '#/components/demo/list-indent-basic.tsx';
 import ListNoIndentDemo from '#/components/demo/list-no-indent.tsx';
 import ListOptionalIndentDemo from '#/components/demo/list-optional-indent.tsx';
 import FirebaseSettingList1Demo from '#/components/demo/list-firebase-setting-list-1.tsx';
-import InsetListDemo from '#/components/demo/list-inset.tsx';
-import { Image } from "../Image/Image.tsx";
-import { Avatar, AvatarFallback, AvatarImage } from "../Avatar/Avatar.tsx";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../Tooltip/Tooltip.tsx";
-import { Badge } from "../Badge/Badge.tsx";
-import { Collapsible, CollapsibleContent } from "../Collapsible/Collapsible.tsx";
-import { CollapsibleTrigger } from "../Collapsible/Collapsible.tsx";
-import { Cta } from "../Cta/Cta.tsx";
-import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../DropdownMenu/DropdownMenu.tsx";
-import { DropdownMenu } from "../DropdownMenu/DropdownMenu.tsx";
-import { Heading, HeadingTitle } from "../Heading/Heading.tsx";
-import { Icon } from "../Icon/Icon.tsx";
-import { Switch } from "../Switch/Switch.tsx";
-import { List, ListItem } from "./List.tsx";
-import { HeadingSubtitle } from '#/components/ui/Heading/Heading.tsx';
-import { ListBox, ListBoxItem } from 'react-aria-components';
-import React, { useState } from 'react';
-import { cn } from '#/helpers/css';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../Accordion/Accordion.tsx";
-import { Separator } from '#/components/ui/Separator/Separator';
+import InsetListDemo from '#/components/demo/list-inset.tsx'
 import FirebaseSidebarListDemo from '#/components/demo/list-firebase-sidebar-list.tsx';
 import ListDemo from '../../demo/list-demo.tsx';
 

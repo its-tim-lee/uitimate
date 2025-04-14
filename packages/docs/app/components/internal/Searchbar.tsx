@@ -1,8 +1,8 @@
 import { Dialog } from "#/components/ui/Dialog/Dialog"
 import * as React from "react"
-import { type DialogProps } from "#/components/ui/DialogOld/Dialog"
+import { type DialogProps } from "#/components/ui/Dialog/Dialog";
 import { cn } from "#/helpers/css"
-import { Button } from "#/components/ui/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta"
 import {
   Command,
   CommandEmpty,
@@ -16,7 +16,7 @@ import type { ComponentProps } from "react";
 import siteData, { type DocTreeItem } from "#/data/site";
 
 
-export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
+export default ({ ...props }: DialogProps & ComponentProps<typeof Cta>) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   React.useEffect(() => {
@@ -64,7 +64,7 @@ export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
 
   return (
     <>
-      <Button
+      <Cta
         variant='outline'
         size='sm'
         onClick={() => {
@@ -84,7 +84,7 @@ export default ({ ...props }: DialogProps & ComponentProps<typeof Button>) => {
         )}>
           <span className="tw:text-[16px]">⌘</span>K
         </kbd>
-      </Button>
+      </Cta>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <Command className='tw:p-0'>
           <CommandInput placeholder="Type a command or search..." />

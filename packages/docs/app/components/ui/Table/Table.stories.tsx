@@ -29,7 +29,7 @@ import {
   getFilteredRowModel,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { Button } from "../Button/Button.tsx"
+import { Button } from "../../improper/Button/Button.tsx"
 import { useState } from "react"
 import { Input } from "../Input/Input.tsx"
 import { Checkbox } from "../Checkbox/Checkbox.tsx"

@@ -1,5 +1,5 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "#/components/ui/DropdownMenu/DropdownMenu";
-import { Button } from "#/components/ui/Button/Button.tsx"
+import { Button } from "~/app/components/improper/Button/Button.tsx"
 import {
   Dialog,
   DialogContent,
@@ -10,13 +10,13 @@ import {
   DialogTrigger,
 } from "./Dialog.tsx"
 import { useState } from "react";
-import { Heading } from "../Heading/Heading.tsx";
+import { Heading } from "../../ui/Heading/Heading.tsx";
 import DialogDemo from "../../demo/dialog-demo.tsx";
 import DialogModal from "../../demo/dialog-modal.tsx";
 import { Badge } from "../Badge/Badge.tsx";
-import { Icon } from "../Icon/Icon.tsx";
+import { Icon } from "../../ui/Icon/Icon.tsx";
 import { Separator } from '#/components/ui/Separator/Separator.tsx';
-import { Input } from "../Input/Input.tsx";
+import { Input } from "../../ui/Input/Input.tsx";
 import DialogDropdownMenu from "../../demo/dialog-dropdown-menu.tsx";
 
 /**

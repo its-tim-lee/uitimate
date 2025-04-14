@@ -1,4 +1,4 @@
-import { Button } from "#/components/ui/Button/Button.tsx";
+import { Button } from "~/app/components/improper/Button/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar.tsx";
 
 export default () => (

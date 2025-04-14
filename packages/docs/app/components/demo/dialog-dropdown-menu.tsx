@@ -1,6 +1,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "#/components/ui/DropdownMenu/DropdownMenu";
 import { useState } from "react";
-import { Button } from "../ui/Button/Button";
+import { Button } from "../improper/Button/Button";
 import { Icon } from "../ui/Icon/Icon";
 import { Checkbox } from "../ui/Checkbox/Checkbox";
 import { Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle } from "../ui/Dialog/Dialog";

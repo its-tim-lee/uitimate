@@ -1,5 +1,5 @@
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
-import { Button } from "#/components/ui/Button/Button.tsx";
+import { Button } from "~/app/components/improper/Button/Button";
 import { memo, useState, lazy, useMemo, Suspense, type ComponentProps, useEffect } from "react";
 import { Checkbox, type CheckedState } from '#/components/ui/Checkbox/Checkbox.tsx';
 import {
@@ -9,7 +9,7 @@ import {
   DialogFooter,
   DialogClose,
   DialogTitle,
-} from "#/components/ui/DialogOld/Dialog.tsx"
+} from "~/app/components/improper/DialogOld/Dialog"
 import lf from 'localforage';
 import VersatileTabs from "#/components/internal/VersatileTabs";
 
