@@ -33,6 +33,11 @@ export default () => {
             title: "Indeterminate",
             type: "preview",
             demoId: "progress-demo",
+          },
+          {
+            title: "Dialog Loading",
+            type: "preview",
+            demoId: "dialog-loading",
           }
         ]}
       />
