@@ -1,4 +1,4 @@
-import { Button } from "~/app/components/improper/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta";
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
 
@@ -15,7 +15,7 @@ export default () => {
         <p>Downloading update 1 of 1...</p>
         <Progress value={50} />
       </Dialog>
-      <Button onClick={() => setIsOpen(true)}>Update</Button>
+      <Cta onClick={() => setIsOpen(true)}>Update</Cta>
     </>
   )
 }

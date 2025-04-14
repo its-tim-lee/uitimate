@@ -1,4 +1,4 @@
-import { Button } from "~/app/components/improper/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta"
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
 
@@ -17,17 +17,17 @@ export default () => {
         <DialogHeading>Delete GPT</DialogHeading>
         <p>Are you sure you want to delete this GPT? This cannot be undone.</p>
         <DialogAction>
-          <Button variant="outline" className='tw:rounded-full tw:shadow-none' onClick={() => {
+          <Cta variant="outline" className='tw:rounded-full tw:shadow-none' onClick={() => {
             console.log('cancel')
             setIsOpen(false)
-          }}>Cancel</Button>
-          <Button variant="destructive" className='tw:rounded-full tw:shadow-none' onClick={() => setIsOpen(false)}>Delete GPT</Button>
+          }}>Cancel</Cta>
+          <Cta variant="destructive" className='tw:rounded-full tw:shadow-none' onClick={() => setIsOpen(false)}>Delete GPT</Cta>
         </DialogAction>
       </Dialog>
-      <Button onClick={() => setIsOpen(true)} variant='ghost' className='tw:text-destructive'>
+      <Cta onClick={() => setIsOpen(true)} variant='ghost' className='tw:text-destructive'>
         <Icon icon='lucide:trash-2'></Icon>
         Delete GPT
-      </Button>
+      </Cta>
     </>
   )
 }

@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar.tsx";
-import { Button } from "~/app/components/improper/Button/Button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "#/components/ui/HoverCard/HoverCard.tsx";
 import { useRef, useState } from "react";
 import { Badge } from "../improper/Badge/Badge";
