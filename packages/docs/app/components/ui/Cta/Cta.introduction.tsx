@@ -179,7 +179,12 @@ export default () => {
 
 
       <br />
+      <Heading size='h3'>5️⃣ Wrapup</Heading>
       <p>
+        So, since <b>Cta</b> is a call-to-attention from certain small widget, to manifest it, think about what kind of <code className='tw:code'>shapes</code> you want?
+        and then decide its <code className='tw:code'>variant</code> and <code className='tw:code'>size</code>. This should all be straight and making sense!
+        <br />
+        <br />
         Let's! For more on its family components to use, and more demos on showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
       </p>
       <br />
