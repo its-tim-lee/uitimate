@@ -1,4 +1,4 @@
-import { ScrollArea } from "../ui/ScollArea/ScollArea";
+import { ScrollArea } from "#/components/ui/ScollArea/ScollArea";
 
 const tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`)
 
