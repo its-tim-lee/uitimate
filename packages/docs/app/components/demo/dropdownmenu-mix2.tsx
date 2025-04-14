@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Button } from "~/app/components/improper/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -10,11 +10,11 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  type DropdownMenuCheckboxItemProps
+  type Type
 } from "#/components/ui/DropdownMenu/DropdownMenu"
 import { Icon } from "../ui/Icon/Icon"
 
-type Checked = DropdownMenuCheckboxItemProps["checked"]
+type Checked = Type.DropdownMenuCheckboxItem["checked"]
 
 export default () => {
   const [theme, setTheme] = React.useState("light")
@@ -23,9 +23,9 @@ export default () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" mode="icon" size="lg">
+        <Cta variant="ghost" shapes={['icon']} size="lg">
           <Icon icon="lucide:settings" />
-        </Button>
+        </Cta>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className="w-56">
