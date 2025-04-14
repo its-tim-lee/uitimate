@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- Standardize the entire component ecosystem
+
 ## 1.0.1
 
 ### Patch Changes

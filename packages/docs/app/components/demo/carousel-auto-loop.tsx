@@ -1,6 +1,5 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "#/components/ui/Carousel/Carousel.tsx"
 import Autoplay from 'embla-carousel-autoplay'
-import { Flat } from "#/components/preset/flat/index.tsx"
 
 export default () => {
   return (
@@ -13,9 +12,9 @@ export default () => {
       <CarouselContent>
         {Array.from({ length: 10 }).map((_, $i) => (
           <CarouselItem key={$i} className="tw:basis-1/2 tw:md:basis-1/3 tw:lg:basis-1/4">
-            <Flat className="tw:aspect-square tw:p-1 tw:h-full tw:w-full tw:flex-center">
+            <div className="tw:bg-background tw:shadow-sm tw:border tw:border-solid tw:border-zinc-200 tw:rounded-[8px] tw:aspect-square tw:h-full tw:w-full tw:flex-center">
               {$i + 1}
-            </Flat>
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
