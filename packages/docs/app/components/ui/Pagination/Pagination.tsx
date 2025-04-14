@@ -105,6 +105,17 @@ PaginationPrevious.displayName = "PaginationPrevious"
 PaginationNext.displayName = "PaginationNext"
 PaginationEllipsis.displayName = "PaginationEllipsis"
 
+namespace Type {
+  export type Pagination = ComponentProps<"nav">
+  export type PaginationItem = ComponentProps<"li">
+  export type PaginationLink = Pick<ButtonProps, "size"> & ComponentProps<"a"> & {
+    isActive?: boolean
+  }
+  export type PaginationPrevious = PaginationLink
+  export type PaginationNext = PaginationLink
+  export type PaginationEllipsis = ComponentProps<"span">
+}
+
 export {
   paginationVariants,
   Pagination,
@@ -113,10 +124,5 @@ export {
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
-  type PaginationProps,
-  type PaginationItemProps,
-  type PaginationLinkProps,
-  type PaginationPreviousProps,
-  type PaginationNextProps,
-  type PaginationEllipsisProps
+  type Type
 }
