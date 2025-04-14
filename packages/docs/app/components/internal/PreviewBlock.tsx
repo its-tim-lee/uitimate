@@ -1,6 +1,6 @@
 import { Suspense, type HTMLAttributes } from "react"
 import { twMerge } from "tailwind-merge"
-import { Button } from "#/components/ui/Button/Button"
+import { Cta } from "#/components/ui/Cta/Cta"
 import { Icon } from "#/components/ui/Icon/Icon"
 type PreviewBlockProps = HTMLAttributes<HTMLDivElement> & {
   toggleCodeBlock?: () => void
@@ -12,9 +12,9 @@ export default ({ children, className, toggleCodeBlock, ...props }: PreviewBlock
       <Suspense fallback={<div>Loading...</div>}>
         {children}
       </Suspense>
-      <Button variant="ghost" size="sm" onClick={toggleCodeBlock} className='tw:shadow-none tw:absolute tw:top-2 tw:right-2'>
+      <Cta variant="ghost" size="sm" shapes={['icon']} onClick={toggleCodeBlock} className='tw:shadow-none tw:absolute tw:top-2 tw:right-2'>
         <Icon icon="lucide:code-xml" />
-      </Button>
+      </Cta>
     </div>
   )
 }

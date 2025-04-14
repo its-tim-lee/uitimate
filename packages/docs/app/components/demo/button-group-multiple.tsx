@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "#/components/ui/Button/Button.tsx";
+import { Button } from "~/app/components/improper/Button/Button";
 import { Icon } from "#/components/ui/Icon/Icon.tsx";
 
 export default () => {

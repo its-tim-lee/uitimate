@@ -1,4 +1,4 @@
-import { Button } from "#/components/ui/Button/Button.tsx"
+import { Button } from "~/app/components/improper/Button/Button"
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
 } from "#/components/ui/Dialog/Dialog.tsx"

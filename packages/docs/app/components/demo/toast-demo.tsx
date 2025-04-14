@@ -1,6 +1,6 @@
 import { Toaster } from "../ui/Toast/Toast"
 import { toast } from "sonner"
-import { Button } from "../ui/Button/Button"
+import { Button } from "../improper/Button/Button"
 
 export default () => {
   return (

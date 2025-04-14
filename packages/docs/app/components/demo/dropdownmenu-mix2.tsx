@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Button } from "#/components/ui/Button/Button"
+import { Button } from "~/app/components/improper/Button/Button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,

@@ -1,5 +1,5 @@
 import { type ComponentProps } from "react"
-import { type ButtonProps, buttonVariants } from "#/components/ui/Button/Button.tsx"
+import { type ButtonProps, buttonVariants } from "~/app/components/improper/Button/Button"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 

@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { useState } from "react";
-import { Button } from "../components/ui/Button/Button";
+import { Button } from "../components/improper/Button/Button";
 import { Icon } from "../components/ui/Icon/Icon";
 
 export default {

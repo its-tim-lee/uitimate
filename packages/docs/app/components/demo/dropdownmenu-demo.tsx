@@ -1,4 +1,4 @@
-import { Button } from "../ui/Button/Button"
+import { Button } from "../improper/Button/Button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/DropdownMenu/DropdownMenu"
 import { Icon } from "../ui/Icon/Icon"
 
