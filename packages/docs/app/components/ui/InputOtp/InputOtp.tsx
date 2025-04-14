@@ -3,7 +3,7 @@ import { type ComponentProps, useContext } from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import { tv } from "tailwind-variants"
-
+import { kebabCase } from "lodash-es"
 const inputOtpVariants = tv({
   slots: {
     root: [
@@ -35,9 +35,9 @@ const InputOTP = ({
   ...props
 }: InputOTPProps) => (
   <OTPInput
-    data-slot="input-otp"
-    containerClassName={container({ className: containerClassName })}
+    data-tag={kebabCase(InputOTP.displayName)}
     className={root({ className })}
+    containerClassName={container({ className: containerClassName })}
     {...props}
   />
 )
@@ -48,7 +48,7 @@ const InputOTPGroup = ({
   ...props
 }: InputOTPGroupProps) => (
   <div
-    data-slot="input-otp-group"
+    data-tag={kebabCase(InputOTPGroup.displayName)}
     className={group({ className })}
     {...props}
   />
@@ -67,7 +67,7 @@ const InputOTPSlot = ({
 
   return (
     <div
-      data-slot="input-otp-slot"
+      data-tag={kebabCase(InputOTPSlot.displayName)}
       data-active={isActive}
       className={slot({ className })}
       {...props}
@@ -87,7 +87,7 @@ const InputOTPSeparator = ({
   ...props
 }: InputOTPSeparatorProps) => (
   <div
-    data-slot="input-otp-separator"
+    data-tag={kebabCase(InputOTPSeparator.displayName)}
     role="separator"
     {...props}
   >
@@ -100,14 +100,19 @@ InputOTPGroup.displayName = "InputOTPGroup"
 InputOTPSlot.displayName = "InputOTPSlot"
 InputOTPSeparator.displayName = "InputOTPSeparator"
 
+namespace Type {
+  export type InputOTP = InputOTPProps
+  export type InputOTPGroup = InputOTPGroupProps
+  export type InputOTPSlot = InputOTPSlotProps
+  export type InputOTPSeparator = InputOTPSeparatorProps
+}
+
 export {
   inputOtpVariants,
+  OTPInputContext,
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
   InputOTPSeparator,
-  type InputOTPProps,
-  type InputOTPGroupProps,
-  type InputOTPSlotProps,
-  type InputOTPSeparatorProps
+  type Type
 }
