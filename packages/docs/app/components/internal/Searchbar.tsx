@@ -1,6 +1,6 @@
 import { Dialog } from "#/components/ui/Dialog/Dialog"
 import * as React from "react"
-import { type DialogProps } from "#/components/ui/Dialog/Dialog";
+import { type Type } from "#/components/ui/Dialog/Dialog";
 import { cn } from "#/helpers/css"
 import { Cta } from "#/components/ui/Cta/Cta"
 import {
@@ -16,7 +16,7 @@ import type { ComponentProps } from "react";
 import siteData, { type DocTreeItem } from "#/data/site";
 
 
-export default ({ ...props }: DialogProps & ComponentProps<typeof Cta>) => {
+export default ({ ...props }: Type.Dialog & ComponentProps<typeof Cta>) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   React.useEffect(() => {
