@@ -1,5 +1,4 @@
-import { Checkbox, type CheckedState } from "#/components/ui/Checkbox/Checkbox.tsx"
-import { useState } from "react"
+import { Checkbox } from "#/components/ui/Checkbox/Checkbox.tsx"
 import { Label } from "#/components/ui/Label/Label.tsx"
 
 export default () => {

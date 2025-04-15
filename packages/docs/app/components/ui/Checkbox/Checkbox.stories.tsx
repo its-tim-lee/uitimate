@@ -1,37 +1,32 @@
-import Checkbox2LabelOrientationsDemo from '../../demo/checkbox-2-label-orientations.tsx';
-import CheckboxMultipleLinesDemo from '../../demo/checkbox-multiple-lines.tsx';
-import CheckboxDemo from '../../demo/checkbox-demo.tsx';
+import Checkbox2LabelOrientationsDemo from '#/components/demo/checkbox-2-label-orientations.tsx';
+import CheckboxMultipleLinesDemo from '#/components/demo/checkbox-multiple-lines.tsx';
+import CheckboxDemo from '#/components/demo/checkbox-demo.tsx';
+import type { Meta } from '@storybook/react';
+
 export default {
   title: 'Example/Checkbox',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
+  includeStories: ['DEMO', 'Variant2'],
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+
+} as Meta
+
 export const DEMO = {
   name: 'DEMO',
   render: () => <CheckboxDemo />
 };
 
-// // TBD: using form compomnent with props of checkbox: `name`, `required`, and `value`; `disabled`
-// TBD: doc: if only having on child, which should be a label, then no need to use `CheckboxTitle`
 export const Variant2 = {
   name: 'Scenario / 2 Label Orientations',
   render: () => <Checkbox2LabelOrientationsDemo />
 };
 
-// TBD: doc:
-// This shows how to manage the style when the label is in multiple lines
-// It also reveals that you can put some stuff other than text in the label
+// This story seems redundant
 export const MULTIPLE_LINES = {
   name: 'Scenario / Multiple lines',
   render: () => <CheckboxMultipleLinesDemo />
 }
 
 
-
-// // TBD: using form compomnent with props of checkbox: `name`, `required`, and `value`; `disabled`
