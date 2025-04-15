@@ -34,20 +34,24 @@ const { root: headingRoot, title, subtitle } = headingVariants()
 
 type DialogProps = Omit<ComponentProps<typeof DialogRoot>, 'children' | 'onClose'> & {
   children: React.ReactNode;
-  modal?: boolean;
   onClose?: () => void;
 };
-const Dialog = ({ className, children, modal, onClose, ...props }: DialogProps) => {
+const Dialog = ({ className, children, onClose, ...props }: DialogProps) => {
+  const isAlert = props.role === 'alertdialog'
   return (
     <DialogRoot
-      {...props}
       className={root()}
-      role={modal ? 'alertdialog' : 'dialog'}
-      onClose={modal ? () => { } : onClose ?? (() => { })}
       data-tag={kebabCase(Dialog.displayName)}
+      role={isAlert ? 'alertdialog' : 'dialog'}
+      /**
+       * This aligns with the design definition: whenever it's not an alert,
+       * it should not have any other ways (eg., ESC, clicking outside, ...) than explict action(s) for user to dismiss/proceed the dialog.
+       */
+      onClose={isAlert ? () => { } : onClose ?? (() => { })}
+      {...props}
     >
       <DialogContent className={content({ className })}>
-        <DialogCtx.Provider value={{ modal }}>
+        <DialogCtx.Provider value={{ isAlert }}>
           {children}
         </DialogCtx.Provider>
       </DialogContent>
@@ -64,7 +68,7 @@ const Dialog = ({ className, children, modal, onClose, ...props }: DialogProps) 
   )
 }
 
-const DialogCtx = createContext<{ modal?: boolean }>({ modal: false })
+const DialogCtx = createContext<{ isAlert?: boolean }>({ isAlert: false })
 
 type DialogActionProps = ComponentProps<'div'>
 const DialogAction = ({
@@ -96,7 +100,7 @@ const DialogHeading = ({ size = 'h4', children, className, ...props }: DialogHea
       content = <DialogTitle>{children}</DialogTitle> // Normalization
     } else {
       // Possible cases (should all be extreme rare):
-      // 1. <DialogSubtitle>
+      // 1. only <DialogTitle> or <DialogSubtitle> is specified
       // 2. <DialogTitle> or <DialogSubtitle> in another element
       throw new Error('Invalid children provided to DialogHeading')
     }
@@ -117,7 +121,7 @@ const DialogHeading = ({ size = 'h4', children, className, ...props }: DialogHea
 type DialogTitleProps = ComponentProps<typeof Title>
 const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
   const { size } = useContext(HeadingContext);
-  const { modal } = useContext(DialogCtx);
+  const { isAlert } = useContext(DialogCtx);
   return (
     <Title
       className={title({ size, className })}
@@ -127,7 +131,7 @@ const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
       {typeof children === 'function' ? children : (
         <>
           {children}
-          {!modal && (
+          {!isAlert && (
             <DialogClose
               data-tag={kebabCase(DialogClose.displayName)}
               className={closeButton()}
