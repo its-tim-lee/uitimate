@@ -13,7 +13,8 @@ const dialogVariants = tv({
       "tw:min-w-[320px] tw:w-screen tw:h-screen tw:md:h-auto tw:md:max-w-lg tw:space-y-4 tw:p-6",
       "tw:md:rounded-lg tw:bg-background tw:relative tw:dark:md:border",
       "tw:flex tw:flex-col",
-      "tw:fixed tw:top-2/4 tw:left-2/4 tw:translate-x-[-50%] tw:translate-y-[-50%]"
+      "tw:fixed tw:top-2/4 tw:left-2/4 tw:translate-x-[-50%] tw:translate-y-[-50%]",
+      "tw:z-50" // make sure it's above the overlay, see #2504151
     ],
     closeButton: [
       "tw:absolute tw:right-0 tw:top-0 tw:rounded-sm tw:opacity-70 tw:ring-offset-background tw:transition-opacity",
@@ -45,12 +46,20 @@ const Dialog = ({ className, children, modal, onClose, ...props }: DialogProps) 
       onClose={modal ? () => { } : onClose ?? (() => { })}
       data-tag={kebabCase(Dialog.displayName)}
     >
-      <DialogOverlay className={overlay()} />
       <DialogContent className={content({ className })}>
         <DialogCtx.Provider value={{ modal }}>
           {children}
         </DialogCtx.Provider>
       </DialogContent>
+      {/*
+        #2504151
+        the only reason to make this as the DialogContent's next sibling is just allowing
+        the consumer to hide the overlay via Tailwind, so that we don't need to create another prop just for this matter.
+      */}
+      <DialogOverlay
+        data-tag={kebabCase(DialogOverlay.displayName)}
+        className={overlay()}
+      />
     </DialogRoot>
   )
 }
