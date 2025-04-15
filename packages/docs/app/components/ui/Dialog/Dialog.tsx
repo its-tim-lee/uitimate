@@ -12,7 +12,8 @@ const dialogVariants = tv({
     content: [
       "tw:min-w-[320px] tw:w-screen tw:h-screen tw:md:h-auto tw:md:max-w-lg tw:space-y-4 tw:p-6",
       "tw:md:rounded-lg tw:bg-background tw:relative tw:dark:md:border",
-      "tw:flex tw:flex-col"
+      "tw:flex tw:flex-col",
+      "tw:fixed tw:top-2/4 tw:left-2/4 tw:translate-x-[-50%] tw:translate-y-[-50%]"
     ],
     closeButton: [
       "tw:absolute tw:right-0 tw:top-0 tw:rounded-sm tw:opacity-70 tw:ring-offset-background tw:transition-opacity",
@@ -45,13 +46,11 @@ const Dialog = ({ className, children, modal, onClose, ...props }: DialogProps) 
       data-tag={kebabCase(Dialog.displayName)}
     >
       <DialogOverlay className={overlay()} />
-      <div className="tw:fixed tw:inset-0 tw:flex tw:items-center tw:justify-center">
-        <DialogContent className={content({ className })}>
-          <DialogCtx.Provider value={{ modal }}>
-            {children}
-          </DialogCtx.Provider>
-        </DialogContent>
-      </div>
+      <DialogContent className={content({ className })}>
+        <DialogCtx.Provider value={{ modal }}>
+          {children}
+        </DialogCtx.Provider>
+      </DialogContent>
     </DialogRoot>
   )
 }
