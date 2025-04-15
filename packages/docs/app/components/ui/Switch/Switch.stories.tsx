@@ -1,16 +1,15 @@
 import SwitchDemo from "#/components/demo/switch-demo.tsx";
 import SwitchDetectOnOff from "#/components/demo/switch-detect-on-off.tsx";
+import type { Meta } from "@storybook/react";
+
 export default {
   title: 'Example/Switch',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+
+} as Meta
 
 export const DEMO = {
   name: 'DEMO',

@@ -1,8 +1,9 @@
 import { type ComponentProps } from "react"
 import { Root, Thumb } from "@radix-ui/react-switch"
 import { tv } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
-const variants = tv({
+const switchVariants = tv({
   slots: {
     root: [
       "tw:ring-ring/10 tw:dark:ring-ring/20 tw:dark:outline-ring/40 tw:outline-ring/50 tw:inline-flex tw:h-5 tw:w-9 tw:shrink-0 tw:items-center tw:rounded-full tw:border-2 tw:border-transparent tw:shadow-xs tw:transition-[color,box-shadow]",
@@ -17,14 +18,25 @@ const variants = tv({
     ]
   }
 })
-const { root, thumb } = variants()
+const { root, thumb } = switchVariants()
 
-type SwitchProps = ComponentProps<typeof Root> & {
-  onChange?: (checked: boolean) => void
-}
 /**
- * #1, #2 see #20250318
+ * #20250318
+ * #1, #2
+ * This is literally for supporting the integration with React-hook-form (RHF).
+ * To allow RHF to control the Checkbox, the component must provide the standard props:
+ * - value
+ * - onChange
+ * - onBlur
+ *
+ * Since Radix uses the non-standard ones, here we need to manually connect them as shown in #1 and #2.
+ * Note that, #2 is special in this integration context, cuz both Radix and RHF define `value` prop,
+ * the former needs it a string, but RHF will feed it a boolean.
+ * This shouldn't be a problem, cuz RHF when using RHF, the needs to use the Radix `value` should be very rare,
+ * and the real value of the checkbox will be fully controlled by RHF.
+ *
  */
+type SwitchProps = ComponentProps<typeof Root> & { onChange?: (checked: boolean) => void }
 const Switch = ({
   className,
   onChange,
@@ -33,8 +45,9 @@ const Switch = ({
 }: SwitchProps) => {
   return (
     <Root
+      data-tag={kebabCase(Switch.displayName)}
       className={root({ className })}
-      checked={!!props.value} // #2
+      {...(props.value !== undefined && { checked: !!props.value })} // #2
       onCheckedChange={(v) => {
         onChange?.(v as boolean); // #1
         onCheckedChange?.(v as boolean);
@@ -48,7 +61,14 @@ const Switch = ({
 
 Switch.displayName = 'Switch'
 
+namespace Type {
+  export type Switch = SwitchProps
+}
+
+export * from "@radix-ui/react-switch";
+
 export {
+  type Type,
+  switchVariants,
   Switch,
-  type SwitchProps
 }
