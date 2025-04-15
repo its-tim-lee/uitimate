@@ -4,6 +4,7 @@ import BreadcrumbExpansibleCollapse from "../../demo/breadcrumb-expansible-colla
 
 export default {
   title: 'Example/Breadcrumb',
+  includeStories: ['Demo', 'Expansible'],
   parameters: {
     layout: 'centered',
   },
