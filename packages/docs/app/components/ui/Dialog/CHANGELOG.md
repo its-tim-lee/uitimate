@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+
+### Patch Changes
+
+- ✨ feat: Able to hide the overlay via Tailwind
+
 ## 1.0.2
 
 ### Patch Changes
