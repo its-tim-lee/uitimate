@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- Strictly aling with the design definition of dialog.
+  This version standardized the behavior of alertdialog to fit the definition from ARIA,
+  at the same time, still allow the consumers to customize the dialog whatever they want,
+  such as designing a modal having a X icon as a dialog-dismissable manner.
+
+  So this version gets the beauty of the balance between the strict rules from ARIA,
+  while allowing quite flexible customization in all other cases.
+
 ## 1.0.4
 
 ### Patch Changes
