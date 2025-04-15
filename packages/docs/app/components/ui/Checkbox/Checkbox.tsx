@@ -49,7 +49,7 @@ const Checkbox = ({
   return (
     <Root
       className={root({ className })}
-      checked={!!props.value} // #2
+      { ...(props.value !== undefined && { checked: !!props.value }) } // #2
       onCheckedChange={(v) => {
         onChange?.(v as boolean); // #1
         onCheckedChange?.(v as boolean);
