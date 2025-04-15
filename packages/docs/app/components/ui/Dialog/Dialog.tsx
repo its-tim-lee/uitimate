@@ -3,6 +3,7 @@ import { Dialog as DialogRoot, DialogPanel as DialogContent, DialogTitle as Titl
 import { tv, type VariantProps } from "tailwind-variants"
 import { kebabCase } from 'lodash-es'
 import { Icon } from '#/components/ui/Icon/Icon'
+import { Cta } from "#/components/ui/Cta/Cta"
 import { headingVariants, type HeadingSubtitle, HeadingContext } from '#/components/ui/Heading/Heading'
 
 const dialogVariants = tv({
@@ -16,12 +17,6 @@ const dialogVariants = tv({
       "tw:fixed tw:top-2/4 tw:left-2/4 tw:translate-x-[-50%] tw:translate-y-[-50%]",
       "tw:z-50" // make sure it's above the overlay, see #2504151
     ],
-    closeButton: [
-      "tw:absolute tw:right-0 tw:top-0 tw:rounded-sm tw:opacity-70 tw:ring-offset-background tw:transition-opacity",
-      "tw:hover:opacity-100",
-      "tw:focus:outline-hidden tw:focus:ring-2 tw:focus:ring-ring tw:focus:ring-offset-2",
-      "tw:disabled:pointer-events-none",
-    ],
     action: [
       "tw:mt-auto",
       "tw:flex tw:flex-col-reverse tw:sm:flex-row tw:sm:justify-end",
@@ -29,31 +24,42 @@ const dialogVariants = tv({
     ],
   }
 })
-const { root, overlay, content, action, closeButton } = dialogVariants()
+const { root, overlay, content, action } = dialogVariants()
 const { root: headingRoot, title, subtitle } = headingVariants()
 
-type DialogProps = Omit<ComponentProps<typeof DialogRoot>, 'children' | 'onClose'> & {
+/**
+ * - `implicit`: currently only 2 cases, 1) pressing the `Escape` key, 2) clicking outside the dialog
+ * - `x`: meaning the x-symbol icon button is clicked
+ */
+type CloseSource = { from: 'implicit' | 'x' };
+type BaseDialogProps = Omit<ComponentProps<typeof DialogRoot>, 'open' | 'onClose'> & {
   children: React.ReactNode;
-  onClose?: () => void;
+  open: boolean;
 };
-const Dialog = ({ className, children, onClose, ...props }: DialogProps) => {
-  const isAlert = props.role === 'alertdialog'
+type AlertDialogProps = BaseDialogProps & { role: 'alertdialog'; onClose?: (details: CloseSource) => void; };
+type StandardDialogProps = BaseDialogProps & {
+  role?: Exclude<ComponentProps<typeof DialogRoot>['role'], 'alertdialog'>;
+  onClose: (details: CloseSource) => void;
+};
+type DialogProps = AlertDialogProps | StandardDialogProps;
+
+const Dialog = ({ className, children, open, onClose, ...props }: DialogProps) => {
+  const isAlert = props.role === 'alertdialog';
+  // This aligns the dialog definition: when it's an alert, only the most explicit action can dismiss/proceed the dialog
+  const handleClose = () => !isAlert && onClose?.({ from: 'implicit' })
   return (
     <DialogRoot
+      open={open}
+      onClose={handleClose}
       className={root()}
       data-tag={kebabCase(Dialog.displayName)}
       role={isAlert ? 'alertdialog' : 'dialog'}
-      /**
-       * This aligns with the design definition: whenever it's not an alert,
-       * it should not have any other ways (eg., ESC, clicking outside, ...) than explict action(s) for user to dismiss/proceed the dialog.
-       */
-      onClose={isAlert ? () => { } : onClose ?? (() => { })}
       {...props}
     >
       <DialogContent className={content({ className })}>
-        <DialogCtx.Provider value={{ isAlert }}>
+        <DialogContext.Provider value={{ isAlert, onClose }}>
           {children}
-        </DialogCtx.Provider>
+        </DialogContext.Provider>
       </DialogContent>
       {/*
         #2504151
@@ -68,7 +74,13 @@ const Dialog = ({ className, children, onClose, ...props }: DialogProps) => {
   )
 }
 
-const DialogCtx = createContext<{ isAlert?: boolean }>({ isAlert: false })
+const DialogContext = createContext<{
+  isAlert: boolean;
+  onClose: ((details: CloseSource) => void) | undefined
+}>({
+  isAlert: false,
+  onClose: undefined
+})
 
 type DialogActionProps = ComponentProps<'div'>
 const DialogAction = ({
@@ -121,7 +133,7 @@ const DialogHeading = ({ size = 'h4', children, className, ...props }: DialogHea
 type DialogTitleProps = ComponentProps<typeof Title>
 const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
   const { size } = useContext(HeadingContext);
-  const { isAlert } = useContext(DialogCtx);
+  const { isAlert, onClose } = useContext(DialogContext);
   return (
     <Title
       className={title({ size, className })}
@@ -132,13 +144,17 @@ const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
         <>
           {children}
           {!isAlert && (
-            <DialogClose
+            <Cta
               data-tag={kebabCase(DialogClose.displayName)}
-              className={closeButton()}
+              variant="ghost"
+              size="sm"
+              shapes={['icon']}
+              className="tw:absolute tw:right-0 tw:top-0 tw:rounded-full tw:opacity-70 tw:ring-offset-background tw:data-hover:opacity-100"
+              onClick={() => onClose?.({ from: 'x' })}
             >
-              <Icon icon="lucide:x" className="tw:h-4 tw:w-4" />
+              <Icon icon="lucide:x" />
               <span className="tw:sr-only">Close</span>
-            </DialogClose>
+            </Cta>
           )}
         </>
       )}
@@ -185,10 +201,10 @@ export {
   DialogHeading,
   DialogTitle,
   DialogSubtitle,
-  DialogClose,
   /**
    * These should be rare to be used, but exported anyway in case there're some edge cases.
-   */
+  */
+  DialogClose, // Not recommended to be used, cuz it can be confusing from the definition of HeadlessUI
   DialogContent,
   DialogOverlay, // This is not suppose to be used directly, cuz it has been included by default in `Dialog`
   DialogDescription, // This is not suppose to be used directly; in most of time, just use `DialogSubtitle`
