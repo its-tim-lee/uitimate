@@ -6,7 +6,7 @@ export default () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <Cta variant="outline" onClick={() => setIsOpen(true)}>Open Drawer</Cta>
+      <Cta variant="outline" onClick={() => setIsOpen(true)}>Open</Cta>
       <Drawer direction={'left'} open={isOpen} onOpenChange={setIsOpen} className='tw:gap-4 tw:items-center tw:h-[90dvh] tw:my-auto tw:rounded-r-lg tw:bg-background tw:p-4'>
         <DrawerHeading size="h5">
           <DrawerTitle>Drawer Title</DrawerTitle>

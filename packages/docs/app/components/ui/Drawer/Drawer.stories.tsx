@@ -1,16 +1,12 @@
-
-import DrawerDemo from "../../demo/drawer-demo.tsx";
+import type { Meta } from "@storybook/react";
+import DrawerDemo from "#/components/demo/drawer-demo.tsx";
 export default {
   title: 'Example/Drawer',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta
 
 export const Variant1 = {
   name: 'Default',
