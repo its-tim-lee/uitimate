@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4
+
+### Patch Changes
+
+- Remove the modal concept to align with the design definition
+
 ## 1.0.3
 
 ### Patch Changes
