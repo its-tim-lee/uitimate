@@ -27,7 +27,7 @@ export default () => {
   return (
     <>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className='tw:text-sm tw:p-0'>
-        <DialogHeading size="h4" className='tw:bg-destructive/50 tw:text-destructive tw:p-4 tw:md:rounded-t-lg'>
+        <DialogHeading size="h4" className='tw:bg-destructive/20 tw:text-destructive tw:p-4 tw:md:rounded-t-lg'>
 
           <DialogTitle className='tw:flex tw:items-center tw:gap-2'>
             <Icon icon='lucide:triangle-alert'></Icon>
