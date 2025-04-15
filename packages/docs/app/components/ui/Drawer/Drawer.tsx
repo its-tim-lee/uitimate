@@ -1,8 +1,9 @@
 import { type ComponentProps } from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
 import { tv, type VariantProps } from "tailwind-variants"
-import { headingVariants, type HeadingSubtitleProps, HeadingContext } from '#/components/ui/Heading/Heading.tsx'
+import { headingVariants, HeadingContext } from '#/components/ui/Heading/Heading.tsx'
 import { Children, useContext } from "react"
+import { kebabCase } from 'lodash-es'
 
 const drawerVariants = tv({
   slots: {
@@ -47,6 +48,7 @@ const DrawerOverlay = ({
   ...props
 }: DrawerOverlayProps) => (
   <DrawerPrimitive.Overlay
+    data-tag={kebabCase(DrawerOverlay.displayName)}
     className={overlay({ className })}
     {...props}
   />
@@ -61,6 +63,7 @@ const DrawerContent = ({
   <DrawerPortal>
     <DrawerOverlay />
     <DrawerPrimitive.Content
+      data-tag={kebabCase(DrawerContent.displayName)}
       className={content({ className })}
       {...props}
     >
@@ -82,14 +85,15 @@ const DrawerHeading = ({ size = 'h4', children, className, ...props }: DrawerHea
       content = <DrawerTitle>{children}</DrawerTitle> // Normalization
     }
     // Possible cases (should all be extreme rare):
-    // 1. <DrawerDescription>
-    // 2. <DrawerTitle> or <DrawerDescription> in another element
+    // 1. <DrawerSubtitle>
+    // 2. <DrawerTitle> or <DrawerSubtitle> in another element
     else { throw new Error('You just use this component in a wrong way, check the source code.') }
   }
   return (
     <HeadingContext.Provider value={{ size }}>
       <div
         {...props}
+        data-tag={kebabCase(DrawerHeading.displayName)}
         className={headingRoot({ size, className })}
       >
         {content}
@@ -104,42 +108,56 @@ const DrawerTitle = ({
   ...props
 }: DrawerTitleProps) => {
   const { size } = useContext(HeadingContext);
-  return <DrawerPrimitive.Title className={title({ size, className })} {...props} />
+  return <DrawerPrimitive.Title
+    data-tag={kebabCase(DrawerTitle.displayName)}
+    className={title({ size, className })}
+    {...props}
+  />
 }
 
-type DrawerDescriptionProps = ComponentProps<typeof DrawerPrimitive.Description>
-const DrawerDescription = ({
+type DrawerSubtitleProps = ComponentProps<typeof DrawerPrimitive.Description>
+const DrawerSubtitle = ({
   className,
   ...props
-}: DrawerDescriptionProps) => {
+}: DrawerSubtitleProps) => {
   const { size } = useContext(HeadingContext);
-  return <DrawerPrimitive.Description className={subtitle({ size, className })} {...props} />
+  return <DrawerPrimitive.Description
+    data-tag={kebabCase(DrawerSubtitle.displayName)}
+    className={subtitle({ size, className })}
+    {...props}
+  />
 }
-
 DrawerTrigger.displayName = "DrawerTrigger"
-DrawerClose.displayName = "DrawerClose"
 DrawerContent.displayName = "DrawerContent"
-DrawerTitle.displayName = "DrawerTitle"
-DrawerOverlay.displayName = "DrawerOverlay"
-DrawerDescription.displayName = "DrawerDescription"
-DrawerHandle.displayName = "DrawerHandle"
 DrawerHeading.displayName = "DrawerHeading"
+DrawerTitle.displayName = "DrawerTitle"
+DrawerSubtitle.displayName = "DrawerSubtitle"
+DrawerClose.displayName = "DrawerClose"
+DrawerOverlay.displayName = "DrawerOverlay"
+DrawerHandle.displayName = "DrawerHandle"
 
 export {
+  type Type,
   drawerVariants,
   Drawer,
   DrawerTrigger,
-  DrawerClose,
   DrawerContent,
+  DrawerHeading,
   DrawerTitle,
+  DrawerSubtitle,
+  /**
+   * These should be rare to be used, but exported anyway in case there're some edge cases.
+  */
+  DrawerClose, // Not recommended to be used; instead, always control the open state manually
   DrawerOverlay,
-  DrawerDescription,
   DrawerHandle,
   DrawerPortal,
-  DrawerHeading,
-  type DrawerContentProps,
-  type DrawerDescriptionProps,
-  type DrawerHeadingProps,
-  type DrawerOverlayProps,
-  type DrawerTitleProps
+}
+
+namespace Type {
+  export type DialogContent = DrawerContentProps;
+  export type DialogHeading = DrawerHeadingProps;
+  export type DialogTitle = DrawerTitleProps;
+  export type DialogSubtitle = DrawerSubtitleProps;
+  export type DialogOverlay = DrawerOverlayProps;
 }
