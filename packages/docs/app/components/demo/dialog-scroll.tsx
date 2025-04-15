@@ -1,11 +1,10 @@
 import { Cta } from "#/components/ui/Cta/Cta"
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
-
 } from "#/components/ui/Dialog/Dialog.tsx"
 import { useState } from "react"
-import { Collection, Header, ListBox, ListBoxItem, ListBoxSection } from "react-aria-components";
-import { Separator } from "../ui/Separator/Separator";
+import { Separator } from "#/components/ui/Separator/Separator";
+import { List, ListItem } from "#/components/ui/List/List";
 
 // TBD: doc: why scrollable is user's duty to implement?
 const regions = [
@@ -57,10 +56,10 @@ const regions = [
 
 
 export default () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
   return (
     <>
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)} >
         <DialogHeading>
           <DialogTitle>
             Select Region
@@ -70,20 +69,20 @@ export default () => {
           </DialogSubtitle>
         </DialogHeading>
         <Separator></Separator>
-        <ListBox items={regions} className='tw:h-[50vh] tw:overflow-y-scroll tw:my-2'>
-          {section => (
-            <ListBoxSection id={section.name} className='tw:mb-2'>
-              <Header className='tw:text-muted-foreground tw:font-bold'>{section.name}</Header>
-              <Collection items={section.children}>
-                {item => (
-                  <ListBoxItem className='tw:p-2'>
+        <List className='tw:h-[50vh] tw:overflow-y-scroll tw:my-2'>
+          {regions.map(section => (
+            <ListItem key={section.name} className='tw:mb-2'>
+              <div className='tw:text-muted-foreground tw:font-bold'>{section.name}</div>
+              <List>
+                {section.children.map(item => (
+                  <ListItem key={item.id} className='tw:p-2'>
                     {item.name}
-                  </ListBoxItem>
-                )}
-              </Collection>
-            </ListBoxSection>
-          )}
-        </ListBox>
+                  </ListItem>
+                ))}
+              </List>
+            </ListItem>
+          ))}
+        </List>
         <DialogAction>
           <Cta variant="ghost" className="tw:shadow-none">CLOSE</Cta>
           <Cta variant="primary" className="tw:shadow-none">SAVE</Cta>
