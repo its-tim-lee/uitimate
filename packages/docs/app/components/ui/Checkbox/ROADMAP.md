@@ -1,0 +1,1 @@
+using form compomnent with props of checkbox: `name`, `required`, and `value`; `disabled`
