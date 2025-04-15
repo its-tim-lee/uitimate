@@ -13,8 +13,8 @@ const drawerVariants = tv({
       "tw:data-[state=closed]:fade-out-0 tw:data-[state=open]:fade-in-0"
     ],
     content: [
-      "tw:group/drawer-content tw:bg-background tw:fixed tw:z-50 tw:flex tw:h-auto tw:flex-col",
-
+      "tw:group/drawer-content tw:bg-background tw:fixed tw:flex tw:h-auto tw:flex-col",
+      "tw:z-100", // make sure it's above the overlay, see #2504151
       "tw:data-[vaul-drawer-direction=top]:inset-x-0 tw:data-[vaul-drawer-direction=top]:top-0",
       "tw:data-[vaul-drawer-direction=top]:mb-24 tw:data-[vaul-drawer-direction=top]:max-h-[80vh]",
       "tw:data-[vaul-drawer-direction=top]:rounded-b-lg",
@@ -61,7 +61,6 @@ const DrawerContent = ({
   ...props
 }: DrawerContentProps) => (
   <DrawerPortal>
-    <DrawerOverlay />
     <DrawerPrimitive.Content
       data-tag={kebabCase(DrawerContent.displayName)}
       className={content({ className })}
@@ -70,6 +69,12 @@ const DrawerContent = ({
       <div data-tag='handle' className={handle()} />
       {children}
     </DrawerPrimitive.Content>
+    {/*
+      #2504151
+      the only reason to make this as the Content's next sibling is just allowing
+      the consumer to hide the overlay via Tailwind, so that we don't need to create another prop just for this matter.
+    */}
+    <DrawerOverlay data-tag={kebabCase(DrawerOverlay.displayName)} />
   </DrawerPortal>
 )
 
