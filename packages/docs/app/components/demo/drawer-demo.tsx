@@ -1,13 +1,13 @@
-import { Drawer, DrawerContent, DrawerSubtitle, DrawerHeading, DrawerTitle, DrawerTrigger, DrawerClose } from "#/components/ui/Drawer/Drawer";
+import { DrawerSubtitle, DrawerHeading, DrawerTitle, Drawer } from "#/components/ui/Drawer/Drawer";
 import { Cta } from "#/components/ui/Cta/Cta";
+import { useState } from "react";
 
 export default () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Drawer direction={'left'}>
-      <DrawerTrigger asChild>
-        <Cta variant="outline">Open Drawer</Cta>
-      </DrawerTrigger>
-      <DrawerContent className="tw:w-full tw:flex tw:flex-col tw:gap-4 tw:items-center tw:h-[90dvh] tw:my-auto tw:rounded-r-lg tw:bg-background tw:p-4">
+    <div>
+      <Cta variant="outline" onClick={() => setIsOpen(true)}>Open Drawer</Cta>
+      <Drawer direction={'left'} open={isOpen} onOpenChange={setIsOpen} className='tw:gap-4 tw:items-center tw:h-[90dvh] tw:my-auto tw:rounded-r-lg tw:bg-background tw:p-4'>
         <DrawerHeading size="h5">
           <DrawerTitle>Drawer Title</DrawerTitle>
           <DrawerSubtitle>
@@ -15,10 +15,8 @@ export default () => {
           </DrawerSubtitle>
         </DrawerHeading>
         <span>Some content</span>
-        <DrawerClose asChild>
-          <Cta variant="outline">Close Drawer</Cta>
-        </DrawerClose>
-      </DrawerContent>
-    </Drawer>
+        <Cta variant="outline" onClick={() => setIsOpen(false)}>Close Drawer</Cta>
+      </Drawer>
+    </div>
   )
 }
