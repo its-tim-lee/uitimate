@@ -1,11 +1,10 @@
 import React, { Children, createContext, useContext, type ComponentProps } from 'react'
 import { Dialog as DialogRoot, DialogPanel as DialogContent, DialogTitle as Title, Description as DialogDescription, DialogBackdrop as DialogOverlay, CloseButton as DialogClose } from '@headlessui/react'
 import { tv, type VariantProps } from "tailwind-variants"
+import { kebabCase } from 'lodash-es'
 import { Icon } from '#/components/ui/Icon/Icon'
 import { headingVariants, type HeadingSubtitle, HeadingContext } from '#/components/ui/Heading/Heading'
-/**
- * TODO: doing nice transition just like Shadcn's Dialog
- */
+
 const dialogVariants = tv({
   slots: {
     root: 'tw:relative tw:z-10 tw:focus:outline-none',
@@ -30,10 +29,8 @@ const dialogVariants = tv({
 })
 const { root, overlay, content, action, closeButton } = dialogVariants()
 const { root: headingRoot, title, subtitle } = headingVariants()
-/**
- * TBD: doc: where the `className` and props will be applied
- */
-type DialogProps = Omit<React.ComponentProps<typeof DialogRoot>, 'children' | 'onClose'> & {
+
+type DialogProps = Omit<ComponentProps<typeof DialogRoot>, 'children' | 'onClose'> & {
   children: React.ReactNode;
   modal?: boolean;
   onClose?: () => void;
@@ -45,6 +42,7 @@ const Dialog = ({ className, children, modal, onClose, ...props }: DialogProps) 
       className={root()}
       role={modal ? 'alertdialog' : 'dialog'}
       onClose={modal ? () => { } : onClose ?? (() => { })}
+      data-tag={kebabCase(Dialog.displayName)}
     >
       <DialogOverlay className={overlay()} />
       <div className="tw:fixed tw:inset-0 tw:flex tw:items-center tw:justify-center">
@@ -60,16 +58,14 @@ const Dialog = ({ className, children, modal, onClose, ...props }: DialogProps) 
 
 const DialogCtx = createContext<{ modal?: boolean }>({ modal: false })
 
-/**
- * TBD: doc: This is meant to be used with some CTAs such as buttons due to this is a common pattern when using a dialog
- */
-type DialogActionProps = React.ComponentProps<'div'>
+type DialogActionProps = ComponentProps<'div'>
 const DialogAction = ({
   className,
   ...props
 }: DialogActionProps) => (
   <div
     className={action({ className })}
+    data-tag={kebabCase(DialogAction.displayName)}
     {...props}
   />
 )
@@ -83,25 +79,26 @@ const DialogAction = ({
  */
 type DialogHeadingProps = ComponentProps<'div'> & VariantProps<typeof headingVariants>
 const DialogHeading = ({ size = 'h4', children, className, ...props }: DialogHeadingProps) => {
-
   let content = children
   if (Children.count(children) === 1) {
     if (
-      typeof children === 'string' || // when passing literall a string
-      typeof (children as any)?.type === 'string' // a native element (eg., span)
+      typeof children === 'string' || // this is when passing a literal string
+      typeof (children as any)?.type === 'string' // this is when passing a native element (eg., span)
     ) {
       content = <DialogTitle>{children}</DialogTitle> // Normalization
+    } else {
+      // Possible cases (should all be extreme rare):
+      // 1. <DialogSubtitle>
+      // 2. <DialogTitle> or <DialogSubtitle> in another element
+      throw new Error('Invalid children provided to DialogHeading')
     }
-    // Possible cases (should all be extreme rare):
-    // 1. <DialogSubtitle>
-    // 2. <DialogTitle> or <DialogSubtitle> in another element
-    else { throw new Error('You just use this component in a wrong way, check the source code.') }
   }
   return (
     <HeadingContext.Provider value={{ size }}>
       <div
         {...props}
         className={headingRoot({ size, className })}
+        data-tag={kebabCase(DialogHeading.displayName)}
       >
         {content}
       </div>
@@ -109,62 +106,79 @@ const DialogHeading = ({ size = 'h4', children, className, ...props }: DialogHea
   )
 }
 
-type DialogTitleProps = React.ComponentProps<typeof Title>
+type DialogTitleProps = ComponentProps<typeof Title>
 const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
   const { size } = useContext(HeadingContext);
   const { modal } = useContext(DialogCtx);
-  if (typeof children === 'function') { // TODO: Since this should be extreme rare, the logic here hasn't integrated with the DialogClose yet
-    return (
-      <Title className={title({ size, className })} {...props}>
-        {children}
-      </Title>
-    );
-  }
   return (
-    <Title className={title({ size, className })} {...props}>
-      {children}
-      {!modal && (
-        <DialogClose className={closeButton()}>
-          <Icon icon="lucide:x" className="tw:h-4 tw:w-4" />
-          <span className="tw:sr-only">Close</span>
-        </DialogClose>
+    <Title
+      className={title({ size, className })}
+      data-tag={kebabCase(DialogTitle.displayName)}
+      {...props}
+    >
+      {typeof children === 'function' ? children : (
+        <>
+          {children}
+          {!modal && (
+            <DialogClose
+              data-tag={kebabCase(DialogClose.displayName)}
+              className={closeButton()}
+            >
+              <Icon icon="lucide:x" className="tw:h-4 tw:w-4" />
+              <span className="tw:sr-only">Close</span>
+            </DialogClose>
+          )}
+        </>
       )}
     </Title>
   )
 }
 
-type DialogSubtitleProps = React.ComponentProps<typeof HeadingSubtitle>
+type DialogSubtitleProps = ComponentProps<typeof HeadingSubtitle>
 const DialogSubtitle = ({ className, children, ...props }: DialogSubtitleProps) => {
   const { size } = useContext(HeadingContext);
   return (
     <DialogDescription
       className={subtitle({ size, className })}
-      {...props}>
+      data-tag={kebabCase(DialogSubtitle.displayName)}
+      {...props}
+    >
       {children}
     </DialogDescription>
   )
 }
 
+Dialog.displayName = 'Dialog'
+DialogAction.displayName = 'DialogAction'
+DialogHeading.displayName = 'DialogHeading'
+DialogTitle.displayName = 'DialogTitle'
+DialogSubtitle.displayName = 'DialogSubtitle'
+DialogClose.displayName = 'DialogClose'
+DialogContent.displayName = 'DialogContent'
+DialogOverlay.displayName = 'DialogOverlay'
+
+namespace Type {
+  export type Dialog = DialogProps;
+  export type DialogAction = DialogActionProps;
+  export type DialogHeading = DialogHeadingProps;
+  export type DialogTitle = DialogTitleProps;
+  export type DialogSubtitle = DialogSubtitleProps;
+}
+
 export {
+  type Type,
   dialogVariants,
   Dialog,
-  DialogContent,
-  DialogClose,
   DialogAction,
   DialogHeading,
   DialogTitle,
   DialogSubtitle,
+  DialogClose,
+  /**
+   * These should be rare to be used, but exported anyway in case there're some edge cases.
+   */
+  DialogContent,
+  DialogOverlay, // This is not suppose to be used directly, cuz it has been included by default in `Dialog`
   DialogDescription, // This is not suppose to be used directly; in most of time, just use `DialogSubtitle`
-  DialogOverlay, // This is not suppose to be used necessary, cuz it has been included by default in `Dialog`
-  type DialogProps,
-  type DialogTitleProps,
-  type DialogActionProps,
-  type DialogHeadingProps,
-  type DialogSubtitleProps
-};
-Dialog.displayName = 'Dialog'
-DialogContent.displayName = 'DialogContent'
-DialogAction.displayName = 'DialogAction'
-DialogClose.displayName = 'DialogClose'
-DialogOverlay.displayName = 'DialogOverlay'
+}
 
