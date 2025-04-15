@@ -1,5 +1,5 @@
 import { type ComponentProps } from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
+import { Drawer as Primitive } from "vaul"
 import { tv, type VariantProps } from "tailwind-variants"
 import { headingVariants, HeadingContext } from '#/components/ui/Heading/Heading.tsx'
 import { Children, useContext } from "react"
@@ -36,49 +36,61 @@ const drawerVariants = tv({
 const { overlay, content, handle } = drawerVariants()
 const { root: headingRoot, title, subtitle } = headingVariants()
 
-const Drawer = DrawerPrimitive.Root
-const DrawerTrigger = DrawerPrimitive.Trigger
-const DrawerClose = DrawerPrimitive.Close
-const DrawerHandle = DrawerPrimitive.Handle
-const DrawerPortal = DrawerPrimitive.Portal
+const DrawerTrigger = Primitive.Trigger
+const DrawerClose = Primitive.Close
+const DrawerHandle = Primitive.Handle
+const DrawerPortal = Primitive.Portal
 
-type DrawerOverlayProps = ComponentProps<typeof DrawerPrimitive.Overlay>
+type DrawerOverlayProps = ComponentProps<typeof Primitive.Overlay>
 const DrawerOverlay = ({
   className,
   ...props
 }: DrawerOverlayProps) => (
-  <DrawerPrimitive.Overlay
+  <Primitive.Overlay
     data-tag={kebabCase(DrawerOverlay.displayName)}
     className={overlay({ className })}
     {...props}
   />
 )
 
-type DrawerContentProps = ComponentProps<typeof DrawerPrimitive.Content>
-const DrawerContent = ({
+type DrawerContentProps = ComponentProps<typeof DrawerContent>
+const DrawerContent = Primitive.Content
+
+type DrawerProps = ComponentProps<typeof Primitive.Root> & { className?: string, asChild?: boolean }
+const Drawer = ({
   className,
   children,
+  asChild = false,
   ...props
-}: DrawerContentProps) => (
-  <DrawerPortal>
-    <DrawerPrimitive.Content
-      data-tag={kebabCase(DrawerContent.displayName)}
-      className={content({ className })}
-      {...props}
-    >
-      <div data-tag='handle' className={handle()} />
-      {children}
-    </DrawerPrimitive.Content>
-    {/*
-      #2504151
-      the only reason to make this as the Content's next sibling is just allowing
-      the consumer to hide the overlay via Tailwind, so that we don't need to create another prop just for this matter.
-    */}
-    <DrawerOverlay data-tag={kebabCase(DrawerOverlay.displayName)} />
-  </DrawerPortal>
-)
+}: DrawerProps) => {
+  return (
+    <Primitive.Root {...props}>
+      <DrawerPortal>
+        <DrawerContent
+          data-tag={kebabCase(DrawerContent.displayName)}
+          className={content({ className })}
+          asChild={asChild}
+          /**
+           * This is just a trick to avoid type error, but also, this has no problem physically,
+           * since the only prop of `DrawerContent` is just `asChild`, expanding the props here is just
+           * to get some forwarded attributes such as `data-*`
+           */
+          {...props as any}
+        >
+          <div data-tag='handle' className={handle()} />
+          {children}
+        </DrawerContent>
+        {/*
+        #2504151
+        the only reason to make this as the Content's next sibling is just allowing
+        the consumer to hide the overlay via Tailwind, so that we don't need to create another prop just for this matter.
+      */}
+        <DrawerOverlay data-tag={kebabCase(DrawerOverlay.displayName)} />
+      </DrawerPortal>
+    </Primitive.Root>
+  );
+}
 
-// TBD: doc: describe why not just allow user to use Heading directly
 type DrawerHeadingProps = ComponentProps<'div'> & VariantProps<typeof headingVariants>
 const DrawerHeading = ({ size = 'h4', children, className, ...props }: DrawerHeadingProps) => {
   let content = children
@@ -90,7 +102,7 @@ const DrawerHeading = ({ size = 'h4', children, className, ...props }: DrawerHea
       content = <DrawerTitle>{children}</DrawerTitle> // Normalization
     }
     // Possible cases (should all be extreme rare):
-    // 1. <DrawerSubtitle>
+    // 1. only <DrawerTitle> or <DrawerSubtitle> is specified
     // 2. <DrawerTitle> or <DrawerSubtitle> in another element
     else { throw new Error('You just use this component in a wrong way, check the source code.') }
   }
@@ -107,26 +119,26 @@ const DrawerHeading = ({ size = 'h4', children, className, ...props }: DrawerHea
   )
 }
 
-type DrawerTitleProps = ComponentProps<typeof DrawerPrimitive.Title>
+type DrawerTitleProps = ComponentProps<typeof Primitive.Title>
 const DrawerTitle = ({
   className,
   ...props
 }: DrawerTitleProps) => {
   const { size } = useContext(HeadingContext);
-  return <DrawerPrimitive.Title
+  return <Primitive.Title
     data-tag={kebabCase(DrawerTitle.displayName)}
     className={title({ size, className })}
     {...props}
   />
 }
 
-type DrawerSubtitleProps = ComponentProps<typeof DrawerPrimitive.Description>
+type DrawerSubtitleProps = ComponentProps<typeof Primitive.Description>
 const DrawerSubtitle = ({
   className,
   ...props
 }: DrawerSubtitleProps) => {
   const { size } = useContext(HeadingContext);
-  return <DrawerPrimitive.Description
+  return <Primitive.Description
     data-tag={kebabCase(DrawerSubtitle.displayName)}
     className={subtitle({ size, className })}
     {...props}
@@ -141,28 +153,29 @@ DrawerClose.displayName = "DrawerClose"
 DrawerOverlay.displayName = "DrawerOverlay"
 DrawerHandle.displayName = "DrawerHandle"
 
+namespace Type {
+  export type Drawer = DrawerProps;
+  export type DrawerContent = DrawerContentProps;
+  export type DrawerHeading = DrawerHeadingProps;
+  export type DrawerTitle = DrawerTitleProps;
+  export type DrawerSubtitle = DrawerSubtitleProps;
+  export type DrawerOverlay = DrawerOverlayProps;
+}
+
 export {
   type Type,
   drawerVariants,
   Drawer,
-  DrawerTrigger,
-  DrawerContent,
   DrawerHeading,
   DrawerTitle,
   DrawerSubtitle,
   /**
    * These should be rare to be used, but exported anyway in case there're some edge cases.
   */
+  DrawerTrigger, // Not recommended to be used; instead, always control the open state manually
   DrawerClose, // Not recommended to be used; instead, always control the open state manually
   DrawerOverlay,
   DrawerHandle,
   DrawerPortal,
-}
-
-namespace Type {
-  export type DialogContent = DrawerContentProps;
-  export type DialogHeading = DrawerHeadingProps;
-  export type DialogTitle = DrawerTitleProps;
-  export type DialogSubtitle = DrawerSubtitleProps;
-  export type DialogOverlay = DrawerOverlayProps;
+  DrawerContent,
 }
