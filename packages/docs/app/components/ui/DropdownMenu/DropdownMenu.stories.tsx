@@ -1,3 +1,4 @@
+import DialogDropdownMenu from "#/components/demo/dialog-dropdown-menu.tsx";
 import DropdownMenuMix1 from "#/components/demo/dropdownmenu-mix1.tsx";
 import DropdownMenuDemo from "#/components/demo/dropdownmenu-demo.tsx";
 import DropdownMenuMix2 from "#/components/demo/dropdownmenu-mix2.tsx";
@@ -29,3 +30,9 @@ export const Mix2 = {
   render: () => <DropdownMenuMix2 />
 };
 
+// this hasn't been referred in the relevant docs
+// This example has been built to show the huge differences from the inappropriate demo: https://ui.shadcn.com/docs/components/dialog
+export const WithDialog = {
+  name: 'With Dialog',
+  render: () => <DialogDropdownMenu />
+};
