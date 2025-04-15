@@ -95,9 +95,10 @@ const DialogAction = ({
 )
 
 /**
- * TBD: doc:
- * - describe why not just allow user to use Heading directly:
- *   cuz that way we can't easy to use the native <Title> and <Description> in the source code
+ * Design note:
+ * - The reason we re-implement the `Heading` family components in Dialog
+ *   is mainly becauses the better integration with the native <Title> and <Description>
+ *   provided by HeadlessUI.
  * - ARIA expectation: to keep accessibility friendly and keep the code clean,
  *   the balance is we'll only apply `aria-describedby` in `DialogSubtitle` and it'd be in certain style.
  */
@@ -191,6 +192,7 @@ namespace Type {
   export type DialogHeading = DialogHeadingProps;
   export type DialogTitle = DialogTitleProps;
   export type DialogSubtitle = DialogSubtitleProps;
+  export type CloseSource = { from: 'implicit' | 'x' };
 }
 
 export {
