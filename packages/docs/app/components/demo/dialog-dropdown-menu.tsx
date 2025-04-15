@@ -1,27 +1,28 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "#/components/ui/DropdownMenu/DropdownMenu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "#/components/ui/DropdownMenu/DropdownMenu";
 import { useState } from "react";
-import { Button } from "../improper/Button/Button";
-import { Icon } from "../ui/Icon/Icon";
-import { Checkbox } from "../ui/Checkbox/Checkbox";
-import { Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle } from "../ui/Dialog/Dialog";
-import { Input } from "../ui/Input/Input";
+import { Cta } from "#/components/ui/Cta/Cta";
+import { Icon } from "#/components/ui/Icon/Icon";
+import { Checkbox } from "#/components/ui/Checkbox/Checkbox";
+import { Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle } from "#/components/ui/Dialog/Dialog";
+import { Input } from "#/components/ui/Input/Input";
 
 export default () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   return (
     <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button mode='icon' variant='outline' size='sm'>
-            <Icon icon='icon-park-solid:down-one' ></Icon>
-          </Button>
+      <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
+        <DropdownMenuTrigger asChild  >
+          <Cta shapes={['icon']} variant='outline' size='sm' >
+            <Icon icon='icon-park-solid:down-one' />
+          </Cta>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent className="tw:w-56">
 
           <DropdownMenuLabel className='tw:flex tw:justify-between'>
             Lists
-            <Icon icon='lucide:x'></Icon>
+            <Icon icon='lucide:x' onClick={() => setIsDropdownOpen(false)}></Icon>
           </DropdownMenuLabel>
 
           <DropdownMenuSeparator />
@@ -37,7 +38,7 @@ export default () => {
 
           <DropdownMenuSeparator />
 
-          <DropdownMenuItem className='tw:flex tw:items-center tw:leading-none' onClick={() => setIsOpen(true)}>
+          <DropdownMenuItem className='tw:flex tw:items-center tw:leading-none' onClick={() => setIsDialogOpen(true)}>
             <Icon icon='lucide:plus'></Icon>
             Create list
           </DropdownMenuItem>
@@ -46,14 +47,14 @@ export default () => {
       </DropdownMenu>
 
 
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+      <Dialog open={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
         <DialogHeading size="h4">
           <DialogTitle>Create list</DialogTitle>
           <DialogSubtitle>Create a list to organize your starrted repositories.</DialogSubtitle>
         </DialogHeading>
         <Input placeholder="Name this list" />
         <DialogAction>
-          <Button variant='primary'>Create</Button>
+          <Cta variant='primary'>Create</Cta>
         </DialogAction>
       </Dialog>
     </>
