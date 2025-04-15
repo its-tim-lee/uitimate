@@ -3,16 +3,16 @@ import { useState } from "react"
 import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx"
 import { Label } from "#/components/ui/Label/Label.tsx"
 export default () => {
-  const [checked, setChecked] = useState<CheckedState>(true)
+  const [checkedRight, setCheckedRight] = useState<CheckedState>(true)
+  const [checkedLeft, setCheckedLeft] = useState<CheckedState>(false)
   return (
     <div className="tw:flex tw:gap-4">
 
-
       <div className="tw:flex tw:items-start tw:gap-2">
-        <Checkbox id='first' checked={checked} onCheckedChange={setChecked} />
+        <Checkbox id='right' checked={checkedRight} onCheckedChange={setCheckedRight} />
         <Heading size="h6">
           <HeadingTitle asChild>
-            <Label className='' htmlFor='first'>Label on the right</Label>
+            <Label className='' htmlFor='right'>Label on the right</Label>
           </HeadingTitle>
           <HeadingSubtitle>This is a description</HeadingSubtitle>
         </Heading>
@@ -24,11 +24,11 @@ export default () => {
       <div className="tw:flex tw:items-start tw:gap-2">
         <Heading size="h6">
           <HeadingTitle asChild>
-            <Label className='' htmlFor='first'>Label on the left</Label>
+            <Label className='' htmlFor='left'>Label on the left</Label>
           </HeadingTitle>
           <HeadingSubtitle>This is a description</HeadingSubtitle>
         </Heading>
-        <Checkbox id='first' checked={checked} onCheckedChange={setChecked} />
+        <Checkbox id='left' checked={checkedLeft} onCheckedChange={setCheckedLeft} />
       </div>
     </div>
   )

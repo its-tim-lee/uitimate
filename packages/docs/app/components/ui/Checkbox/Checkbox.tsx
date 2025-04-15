@@ -1,17 +1,16 @@
 import { type ComponentProps } from "react"
-import { Root, Indicator, type CheckedState } from "@radix-ui/react-checkbox"
+import { Root, Indicator, type CheckedState as _CheckedState } from "@radix-ui/react-checkbox"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import { tv } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
 
-const variants = tv({
+const checkboxVariants = tv({
   slots: {
     root: [
       "tw:peer tw:h-4 tw:w-4 tw:shrink-0",
       "tw:rounded-sm tw:border tw:border-primary tw:shadow",
-
       "tw:focus-visible:outline-hidden tw:focus-visible:ring-1 tw:focus-visible:ring-ring",
       "tw:disabled:cursor-not-allowed tw:disabled:opacity-50",
-
       "tw:data-[state=checked]:bg-primary tw:data-[state=checked]:text-primary-foreground"
     ],
     indicator: [
@@ -19,7 +18,7 @@ const variants = tv({
     ]
   }
 })
-const { root, indicator } = variants()
+const { root, indicator } = checkboxVariants()
 
 type CheckboxProps = ComponentProps<typeof Root> & {
   onChange?: (checked: boolean) => void
@@ -48,26 +47,51 @@ const Checkbox = ({
 }: CheckboxProps) => {
   return (
     <Root
+      data-tag={kebabCase(Checkbox.displayName)}
       className={root({ className })}
-      { ...(props.value !== undefined && { checked: !!props.value }) } // #2
+      {...(props.value !== undefined && { checked: !!props.value })} // #2
       onCheckedChange={(v) => {
         onChange?.(v as boolean); // #1
         onCheckedChange?.(v as boolean);
       }}
       {...props}
     >
-      <Indicator className={indicator()}>
-        <Icon icon="lucide:check" className="tw:size-4" />
-      </Indicator>
+      <CheckboxIndicator />
     </Root>
   )
 }
 
-Checkbox.displayName = 'Checkbox'
+type CheckboxIndicatorProps = ComponentProps<typeof Indicator>
+const CheckboxIndicator = ({
+  className,
+  children,
+  ...props
+}: CheckboxIndicatorProps) => {
+  return (
+    <Indicator
+      data-tag={kebabCase(CheckboxIndicator.displayName)}
+      className={indicator({ className })}
+      {...props}
+    >
+      {children ?? <Icon icon="lucide:check" className="tw:size-4" />}
+    </Indicator>
+  )
+}
+
+Checkbox.displayName = "Checkbox"
+CheckboxIndicator.displayName = "CheckboxIndicator"
+
+namespace Type {
+  export type Checkbox = CheckboxProps
+  export type CheckboxIndicator = CheckboxIndicatorProps
+  export type CheckedState = _CheckedState
+}
+
+export * from "@radix-ui/react-checkbox";
 
 export {
+  type Type,
   Checkbox,
-  variants as checkboxVariants,
-  type CheckboxProps,
-  type CheckedState
+  checkboxVariants,
+  CheckboxIndicator, // This is not meant to be used directly
 }
