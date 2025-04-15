@@ -1,5 +1,12 @@
 # @uitimate/drawer
 
+## 2.0.0
+
+### Major Changes
+
+- Always require the control of the open status from the consumer side, so that this just makes Drawer overwhelming better.
+  This just follows the same move as our Dialog such that, no DrawerContent and DrawerTrigger will be used anymore.
+
 ## 1.0.2
 
 ### Patch Changes

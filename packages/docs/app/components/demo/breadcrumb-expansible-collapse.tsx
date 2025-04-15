@@ -8,10 +8,7 @@ import {
 } from "#/components/ui/Breadcrumb/Breadcrumb";
 import {
   Drawer,
-  DrawerContent,
   DrawerHeading,
-  DrawerTitle,
-  DrawerTrigger
 } from "#/components/ui/Drawer/Drawer";
 import {
   DropdownMenu,
@@ -33,25 +30,22 @@ const EnpanededBreadcrumbEllipsis = ({ isOpen, setIsOpen }: { isOpen: boolean, s
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
-      <Drawer open={isOpen} onOpenChange={setIsOpen}>
-        <DrawerTrigger asChild><span /></DrawerTrigger>
-        <DrawerContent className="tw:p-3">
-          <DrawerHeading size="h5">
-            Navigate to:
-          </DrawerHeading>
-          <div className="tw:grid tw:gap-3">
-            {BREADCRUMB_ITEMS.map((item) => (
-              <a
-                href={item.href}
-                className="tw:py-1 tw:text-sm"
-                key={item.href}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.text}
-              </a>
-            ))}
-          </div>
-        </DrawerContent>
+      <Drawer open={isOpen} onOpenChange={setIsOpen} className="tw:p-3">
+        <DrawerHeading size="h5">
+          Navigate to:
+        </DrawerHeading>
+        <div className="tw:grid tw:gap-3">
+          {BREADCRUMB_ITEMS.map((item) => (
+            <a
+              href={item.href}
+              className="tw:py-1 tw:text-sm"
+              key={item.href}
+              onClick={() => setIsOpen(false)}
+            >
+              {item.text}
+            </a>
+          ))}
+        </div>
       </Drawer>
     );
   }

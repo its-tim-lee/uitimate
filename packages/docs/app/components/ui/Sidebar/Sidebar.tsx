@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import hotkeys from "hotkeys-js"
 import { useIsMobile } from "#/helpers/hooks/use-mobile"
 import { tv } from "tailwind-variants"
-import { Drawer, DrawerContent, DrawerDescription, DrawerHeading, DrawerTitle } from "#/components/ui/Drawer/Drawer.tsx"
+import { Drawer } from "#/components/ui/Drawer/Drawer.tsx"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -192,22 +192,20 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
         open={isOpen}
         onOpenChange={setIsOpen}
         direction={mobileSidebarDirection}
+        className={drawer({ className })}
+        data-sidebar
+        data-variant={variant}
+        data-toggle={isOpen ? "expanded" : "collapsed"}
         {...drawerProps}
       >
-        <DrawerContent
-          data-tag="sidebar"
-          data-variant={variant}
-          data-toggle={isOpen ? "expanded" : "collapsed"}
-          className={drawer({ className })}
-        >
-          {children}
-        </DrawerContent>
+        {children}
       </Drawer>
     )
   }
   return (
     <div
       className={base({ className })}
+      data-sidebar
       data-tag="sidebar"
       data-variant={variant}
       data-toggle={isOpen ? "expanded" : "collapsed"}
@@ -247,7 +245,7 @@ const sidebarVariants = tv({
     // and such "Wondering" (and the later debugging, of course) is really really bad in terms of DX.
     base: "tw:h-full tw:text-sidebar-foreground tw:h-svh",
     inner: "tw:flex tw:flex-col tw:h-full tw:w-full tw:relative",
-    drawer: "tw:bg-sidebar tw:text-sidebar-foreground tw:gap-4 tw:items-center"
+    drawer: "tw:bg-background tw:text-sidebar-foreground tw:gap-4 tw:items-center"
   },
   variants: {
     mobileSidebarDirection: {
