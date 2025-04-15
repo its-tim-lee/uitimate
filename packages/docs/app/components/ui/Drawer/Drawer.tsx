@@ -63,6 +63,16 @@ const Drawer = ({
   asChild = false,
   ...props
 }: DrawerProps) => {
+  // Only pass the relevant props to DrawerContent
+  const contentProps = Object.entries(props).reduce((acc, [key, value]) => {
+    // Pass any data-* attributes and non-event handler props that are safe
+    if (key.startsWith('data-') ||
+      (typeof value !== 'function' && !key.startsWith('on'))) {
+      acc[key] = value;
+    }
+    return acc;
+  }, {} as Record<string, any>);
+
   return (
     <Primitive.Root {...props}>
       <DrawerPortal>
@@ -71,11 +81,11 @@ const Drawer = ({
           className={content({ className })}
           asChild={asChild}
           /**
-           * This is just a trick to avoid type error, but also, this has no problem physically,
-           * since the only prop of `DrawerContent` is just `asChild`, expanding the props here is just
-           * to get some forwarded attributes such as `data-*`
+           * Unfortunately, `{...props as any}` can't be used here for simplicity,
+           * although it will not have any kind of physical issue, but it can throw an error due to
+           * receive an appropriate prop
            */
-          {...props as any}
+          {...contentProps}
         >
           <div data-tag='handle' className={handle()} />
           {children}
