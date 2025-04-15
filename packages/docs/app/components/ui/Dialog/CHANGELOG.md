@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- Cleaner encapsulation in <Dialog>
+
 ## 1.0.1
 
 ### Patch Changes
