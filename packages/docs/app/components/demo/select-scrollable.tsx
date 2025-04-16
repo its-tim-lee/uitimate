@@ -2,11 +2,10 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSepa
 
 export default () => {
   return (
-    <Select>
+    <Select >
 
-      <SelectTrigger >
-        <SelectValue placeholder="Select a region" asChild>
-        </SelectValue>
+      <SelectTrigger className="tw:w-[250px]">
+        <SelectValue placeholder="Select a region" />
       </SelectTrigger>
 
       <SelectContent>
