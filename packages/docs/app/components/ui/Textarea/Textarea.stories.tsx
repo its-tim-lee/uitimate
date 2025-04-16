@@ -1,16 +1,13 @@
 import TextareaDemo from "#/components/demo/textarea-demo.tsx";
+import type { Meta } from "@storybook/react";
 
 export default {
   title: 'Example/Textarea',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta
 
 export const DEMO = {
   name: 'DEMO',
