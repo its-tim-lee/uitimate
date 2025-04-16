@@ -74,10 +74,21 @@ const { trigger, scrollButton, content, viewport, label, item, itemIndicatorWrap
 type SelectProps = ComponentProps<typeof Root> & {
   onChange?: (value: string) => void
 }
+/**
+ * #20250318
+ * #1,
+ * This is literally for supporting the integration with React-hook-form (RHF).
+ * To allow RHF to control the Checkbox, the component must provide the standard props:
+ * - value
+ * - onChange
+ * - onBlur
+ *
+ * Since Radix uses the non-standard ones, here we need to manually connect them as shown in #1.
+ */
 const Select = ({ onChange, onValueChange, ...props }: SelectProps) => (
   <Root
     data-tag={kebabCase(Select.displayName)}
-    onValueChange={v => {
+    onValueChange={v => { // #1
       onChange?.(v)
       onValueChange?.(v)
     }}
