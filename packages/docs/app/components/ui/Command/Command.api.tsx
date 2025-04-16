@@ -2,6 +2,7 @@ import {
   UsageSection,
   DemoScenariosSection,
   DependenciesSection,
+  DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
 import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
@@ -32,6 +33,18 @@ export default () => {
             title: "Command Dialog",
             type: "preview",
             demoId: "command-dialog",
+          }
+        ]}
+      />
+      <br />
+      <br />
+      <DemoRecipeSection />
+      <VersatileTabs
+        settings={[
+          {
+            title: "Combobox",
+            type: "preview",
+            demoId: "combobox-demo",
           }
         ]}
       />
