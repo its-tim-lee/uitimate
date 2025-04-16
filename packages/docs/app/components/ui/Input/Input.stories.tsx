@@ -1,18 +1,14 @@
-import InputDemo from '../../demo/input-demo.tsx';
-import InputForm from '../../demo/input-form.tsx';
-import InputWithButton from '../../demo/input-with-button.tsx';
-
+import InputDemo from '#/components/demo/input-demo.tsx';
+import InputForm from '#/components/demo/input-form.tsx';
+import InputWithButton from '#/components/demo/input-with-button.tsx';
+import type { Meta } from "@storybook/react";
 export default {
   title: 'Example/Input',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta
 
 export const DEMO = {
   name: 'DEMO',
@@ -24,7 +20,8 @@ export const BUTTON = {
   render: () => <InputWithButton />
 };
 
+// This demo is still important, cuz it can test many types of Input to see whether our style has any issues
 export const FORM = {
-  name: 'SCENARIO / FORM',
+  name: 'SCENARIO / FILE UPLOAD',
   render: () => <InputForm />
 };

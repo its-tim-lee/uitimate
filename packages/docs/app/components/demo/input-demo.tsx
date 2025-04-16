@@ -1,5 +1,5 @@
-import { Label } from '../ui/Label/Label.tsx';
-import { Input } from '../ui/Input/Input.tsx';
+import { Label } from '#/components/ui/Label/Label.tsx';
+import { Input } from '#/components/ui/Input/Input.tsx';
 
 export default () => {
   return (
