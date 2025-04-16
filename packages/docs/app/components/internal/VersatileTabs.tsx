@@ -41,6 +41,7 @@ interface TabSetting {
   content?: string | React.ReactNode;
   onClick?: () => void;
   demoId?: string;
+  showCode?: boolean;
 }
 
 interface VersatileTabsProps {
@@ -121,12 +122,12 @@ export default ({ settings, className }: VersatileTabsProps) => {
             {$s.type === 'preview' && (
               <>
                 <div className='tw:text-sm tw:text-muted-foreground tw:leading-relaxed'>
-                {typeof $s.content === 'string'
-                  ? <div dangerouslySetInnerHTML={{ __html: $s.content }} />
-                  : $s.content
-                }
+                  {typeof $s.content === 'string'
+                    ? <div dangerouslySetInnerHTML={{ __html: $s.content }} />
+                    : $s.content
+                  }
                 </div>
-                <PreviewBlock toggleCodeBlock={() => toggleCodeBlockVisibility(tabId)}>
+                <PreviewBlock showCode={$s.showCode} toggleCodeBlock={() => toggleCodeBlockVisibility(tabId)}>
                   {DemoComponent && <DemoComponent />}
                 </PreviewBlock>
                 {codeBlockVisibility[tabId] && <CodeBlock>{demoCodeStrings[tabId]}</CodeBlock>}
