@@ -50,6 +50,11 @@ export default () => {
             title: "Date Range Picker",
             type: "preview",
             demoId: "calendar-date-range-picker",
+          },
+          {
+            title: "Combobox",
+            type: "preview",
+            demoId: "combobox-demo",
           }
         ]}
       />
