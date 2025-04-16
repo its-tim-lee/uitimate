@@ -17,7 +17,7 @@ export default () => {
             <span className="tw:flex tw:items-center tw:justify-between tw:p-2">
               {e.content}{" "}
               {e.dropdown && (
-                <CollapsibleTrigger asChild>
+                <CollapsibleTrigger asChild className='tw:cursor-pointer'>
                   <span>
                     <Icon icon="lucide:chevron-down" className="tw:inline tw:group-data-[state=open]:hidden" />
                     <Icon icon="lucide:chevron-up" className="tw:inline tw:group-data-[state=closed]:hidden" />
