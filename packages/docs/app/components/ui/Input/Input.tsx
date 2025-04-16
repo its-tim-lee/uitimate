@@ -1,5 +1,7 @@
 import { type ComponentProps } from "react"
 import { tv } from "tailwind-variants"
+import { kebabCase } from "lodash-es"
+import { Input as Primitive } from '@headlessui/react'
 
 const inputVariants = tv({
   base: [
@@ -37,14 +39,13 @@ const inputVariants = tv({
   ]
 })
 
-type InputProps = ComponentProps<"input">
+type InputProps = ComponentProps<"input"> & ComponentProps<typeof Primitive>
 const Input = ({
   className,
-  type,
   ...props
 }: InputProps) => (
-  <input
-    type={type}
+  <Primitive
+    data-tag={kebabCase(Input.displayName)}
     data-slot="input"
     className={inputVariants({ className })}
     {...props}
@@ -53,8 +54,12 @@ const Input = ({
 
 Input.displayName = "Input"
 
+namespace Type {
+  export type Input = InputProps
+}
+
 export {
+  type Type,
   inputVariants,
-  Input,
-  type InputProps
+  Input
 }
