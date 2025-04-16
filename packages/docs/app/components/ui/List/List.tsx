@@ -1,6 +1,7 @@
 import { Slot } from "@radix-ui/react-slot";
 import { createContext, useContext, type ComponentProps, type CSSProperties } from "react";
 import { tv } from "tailwind-variants";
+import { kebabCase } from "lodash-es";
 
 // TBD: doc:
 // It should make sense that putting the components other than ListItem inside List is considered inappropriate,
@@ -38,7 +39,7 @@ const List = ({
   return (
     <ListLevelContext.Provider value={level + 1}>
       <Comp
-        data-tag='list'
+        data-tag={kebabCase(List.displayName)}
         data-level={level}
         className={listVariants({ className })}
         style={{
@@ -120,7 +121,7 @@ const ListItem = ({
   const Comp = asChild ? Slot : 'div'
   return (
     <Comp
-      data-tag='list-item'
+      data-tag={kebabCase(ListItem.displayName)}
       className={listItemVariants({ className })}
       {...props}
     />)
@@ -129,11 +130,15 @@ const ListItem = ({
 List.displayName = 'List'
 ListItem.displayName = 'ListItem'
 
+namespace Type {
+  export type List = ListProps;
+  export type ListItem = ListItemProps;
+}
+
 export {
+  type Type,
   listVariants,
   listItemVariants,
   List,
   ListItem,
-  type ListProps,
-  type ListItemProps
 }
