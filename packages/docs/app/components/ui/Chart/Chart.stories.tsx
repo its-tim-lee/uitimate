@@ -1,16 +1,13 @@
 import ChartDemo from "#/components/demo/chart-demo";
+import type { Meta } from "@storybook/react";
 
 export default {
   title: 'Example/Chart',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
+} as Meta
 
 export const Demo = {
   name: 'Demo',

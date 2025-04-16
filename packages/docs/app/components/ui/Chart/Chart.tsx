@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"
+import kebabCase from "lodash-es/kebabCase"
 
 import { cn } from "#/helpers"
 
@@ -180,6 +181,7 @@ function ChartTooltipContent({
 
   return (
     <div
+      data-tag={kebabCase(ChartTooltipContent.displayName)}
       className={cn(
         "tw:border-border/50 tw:bg-background tw:grid tw:min-w-[8rem] tw:items-start tw:gap-1.5 tw:rounded-lg tw:border tw:px-2.5 tw:py-1.5 tw:text-xs tw:shadow-xl",
         className
