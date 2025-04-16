@@ -1,26 +1,24 @@
+
+import CollapsibleV1Demo from '#/components/demo/list-optional-indent-v1.tsx';
+import CollapsibleV2Demo from '#/components/demo/list-optional-indent-v2.tsx';
+import CollapsibleV3Demo from '#/components/demo/list-optional-indent-v3.tsx';
+import ListOptionalIndentV4Demo from '#/components/demo/list-optional-indent-v4.tsx';
 import VscGitDemo from '#/components/demo/list-vsc-git.tsx';
 import NotionSidebarListDemo from '#/components/demo/list-notion-sidebar.tsx';
-import ListIndentBasicDemo from '#/components/demo/list-indent-basic.tsx';
-import ListNoIndentDemo from '#/components/demo/list-no-indent.tsx';
-import ListOptionalIndentDemo from '#/components/demo/list-optional-indent.tsx';
+import ListIndentBasicDemo from '#/components/demo/list-indent-border.tsx';
 import FirebaseSettingList1Demo from '#/components/demo/list-firebase-setting-list-1.tsx';
 import InsetListDemo from '#/components/demo/list-inset.tsx'
 import FirebaseSidebarListDemo from '#/components/demo/list-firebase-sidebar-list.tsx';
-import ListDemo from '../../demo/list-demo.tsx';
+import ListDemo from '#/components/demo/list-demo.tsx';
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'Example/List',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
-
-
+} as Meta
 
 
 export const DEMO = {
@@ -33,7 +31,6 @@ export const ListIndentBasic = {
   render: () => <ListIndentBasicDemo />
 }
 
-
 export const InsetList = {
   name: 'Scenario / Inset List',
   render: () => <InsetListDemo />
@@ -44,34 +41,31 @@ export const FirebaseSettingList1 = {
   render: () => FirebaseSettingList1Demo()
 }
 
-export const ListNoIndent = {
-  name: 'Scenario / List No Indent',
-  render: () => <ListNoIndentDemo />
+export const CollapsibleV3 = {
+  name: 'Scenario / Collapsible v3',
+  render: () => <CollapsibleV3Demo />
 }
 
-export const ListOptionalIndent = {
-  name: 'Scenario / List Optional Indent',
-  render: () => <ListOptionalIndentDemo />
+export const CollapsibleV2 = {
+  name: 'Scenario / Collapsible v2',
+  render: () => <CollapsibleV2Demo />
 }
 
-// TBD: since building List can be very complicated (eg., Notion Style List), we still need to provide common scenarios of that situations for people to copy-paste.
+export const CollapsibleV1 = {
+  name: 'Scenario / Collapsible v1',
+  render: () => <CollapsibleV1Demo />
+}
+
+export const CollapsibleV4 = {
+  name: 'Scenario / Collapsible v4',
+  render: () => <ListOptionalIndentV4Demo />
+}
 
 export const VscGit = {
   name: 'Showcase / VSC Git',
   render: () => <VscGitDemo />
 };
 
-
-/**
- * This reveals the fact that it'd make no sense to build a collapse-to-icon feat into any relevant infra component,
- * cuz this kind of things can be very complicated in the real case, and to support such complexity while provide flexibiltiy
- * will only make the source code of the infra component extreme unnecessarily complex:
- * when implement a tricky design, it might need the consumer either do many configurations,
- * or composite tons of sub-components in certain way, both are still hard from the consumer side, frankly speaking.
- *
- * The right way is to implement such feat is on the consumer side,
- * and the recommended approach to do that is shown below.
- */
 export const FirebaseSidebarList = {
   name: 'Showcase / Firebase Sidebar List',
   render: () => <FirebaseSidebarListDemo />

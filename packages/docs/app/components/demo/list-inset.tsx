@@ -1,19 +1,8 @@
-import { HeadingSubtitle } from "../ui/Heading/Heading";
-
-import { Image } from "../ui/Image/Image.tsx";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar/Avatar.tsx";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/Tooltip/Tooltip.tsx";
-import { Collapsible, CollapsibleContent } from "../ui/Collapsible/Collapsible.tsx";
-import { CollapsibleTrigger } from "../ui/Collapsible/Collapsible.tsx";
-import { Cta } from "../ui/Cta/Cta.tsx";
-import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/DropdownMenu/DropdownMenu.tsx";
-import { DropdownMenu } from "../ui/DropdownMenu/DropdownMenu.tsx";
-import { Heading, HeadingTitle } from "../ui/Heading/Heading.tsx";
-import { Icon } from "../ui/Icon/Icon.tsx";
-import { List, ListItem } from "../ui/List/List.tsx";
-import React, { useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/Accordion/Accordion.tsx";
-import { Separator } from '#/components/ui/Separator/Separator';
+import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar.tsx";
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx";
+import { List, ListItem } from "#/components/ui/List/List.tsx";
+import React from 'react';
+import { Separator } from "#/components/ui/Separator/Separator.tsx";
 
 const items = [
   {
@@ -26,10 +15,8 @@ const items = [
   {
     avatarSrc: "https://ui.shadcn.com/avatars/02.png",
     avatarFallback: "SD",
-    title: "Summer BBQ",
-    subtitle: "to Scott, Alex, Jennifer — Wish I could come, but I'm out of town this…",
-    // TBD: doc: this tries to mimic the style of some similar lib that provide the prop like "inset" to do the underling padding to u
-    // but in our philosophy, you should do that urself.
+    title: "Breaking News",
+    subtitle: "This weekend, the largest deportations...",
     avatarVisible: false
   },
   {
@@ -40,7 +27,6 @@ const items = [
     avatarVisible: true
   }
 ];
-// TBD: doc: u need to add hover urself
 export default () => {
   return (
     <List>

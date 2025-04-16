@@ -1,22 +1,16 @@
-import { Image } from "../ui/Image/Image.tsx";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar/Avatar.tsx";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/Tooltip/Tooltip.tsx";
-import { Collapsible, CollapsibleContent } from "../ui/Collapsible/Collapsible.tsx";
-import { CollapsibleTrigger } from "../ui/Collapsible/Collapsible.tsx";
-import { Cta } from "../ui/Cta/Cta.tsx";
-import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/DropdownMenu/DropdownMenu.tsx";
-import { DropdownMenu } from "../ui/DropdownMenu/DropdownMenu.tsx";
-import { Heading, HeadingTitle } from "../ui/Heading/Heading.tsx";
-import { Icon } from "../ui/Icon/Icon.tsx";
-import { List, ListItem } from "../ui/List/List.tsx";
+import { Image } from "#/components/ui/Image/Image.tsx";
+import { Tooltip, TooltipContent, TooltipTrigger } from "#/components/ui/Tooltip/Tooltip.tsx";
+import { Cta } from "#/components/ui/Cta/Cta.tsx";
+import { Icon } from "#/components/ui/Icon/Icon.tsx";
+import { List, ListItem } from "#/components/ui/List/List.tsx";
 import React, { useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/Accordion/Accordion.tsx";
-import { Separator } from '#/components/ui/Separator/Separator';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "#/components/ui/Accordion/Accordion.tsx";
+import { Separator } from "#/components/ui/Separator/Separator.tsx";
 
 export default () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <div data-collapsed={toggle || undefined} className='tw:group/root tw:flex tw:flex-col tw:gap-4 tw:border-2 tw:border-muted tw:p-1 tw:pt-4 tw:text-sm tw:h-dvh'>
+    <div data-collapsed={toggle || undefined} className='tw:group/root tw:flex tw:flex-col tw:gap-4 tw:border-2 tw:border-muted tw:p-1 tw:pt-4 tw:text-sm tw:h-fit'>
 
       <div className='tw:hidden tw:group-data-collapsed/root:block'>
         <List>

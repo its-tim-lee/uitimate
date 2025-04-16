@@ -1,8 +1,6 @@
-import { Cta } from "../ui/Cta/Cta"
-import { Icon } from "../ui/Icon/Icon"
-import { ListItem } from "../ui/List/List"
-
-import { List } from "../ui/List/List"
+import { Cta } from "#/components/ui/Cta/Cta"
+import { Icon } from "#/components/ui/Icon/Icon"
+import { List, ListItem } from "#/components/ui/List/List"
 
 
 export default () => {
