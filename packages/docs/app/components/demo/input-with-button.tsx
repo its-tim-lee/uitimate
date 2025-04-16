@@ -1,7 +1,5 @@
-import { Label } from '../ui/Label/Label.tsx';
-import { Input } from '../ui/Input/Input.tsx';
-import { Button } from '../improper/Button/Button.tsx';
-
+import { Input } from '#/components/ui/Input/Input.tsx';
+import { Cta } from '#/components/ui/Cta/Cta.tsx';
 export default () => {
   return (
     <div className="tw:flex tw:gap-2 tw:items-center">
@@ -9,7 +7,7 @@ export default () => {
         type="email"
         placeholder="Email"
       />
-      <Button>Subscribe</Button>
+      <Cta>Subscribe</Cta>
     </div>
   )
 }
