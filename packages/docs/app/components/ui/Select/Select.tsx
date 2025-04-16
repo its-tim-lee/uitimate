@@ -7,7 +7,6 @@ import {
   ScrollUpButton,
   ScrollDownButton,
   Content,
-  Icon as SelectIcon,
   Portal,
   Viewport,
   Label,
@@ -18,6 +17,7 @@ import {
 } from "@radix-ui/react-select"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { kebabCase } from "lodash-es"
 
 const selectVariants = tv({
   slots: {
@@ -74,26 +74,21 @@ const { trigger, scrollButton, content, viewport, label, item, itemIndicatorWrap
 type SelectProps = ComponentProps<typeof Root> & {
   onChange?: (value: string) => void
 }
-
-const Select = ({ onChange, onValueChange, ...props }: SelectProps) => {
-  return (
-    <Root
-      onValueChange={v => { // see #20250318
-        onChange?.(v)
-        onValueChange?.(v)
-      }}
-      {...props}
-    />
-  )
-}
+const Select = ({ onChange, onValueChange, ...props }: SelectProps) => (
+  <Root
+    data-tag={kebabCase(Select.displayName)}
+    onValueChange={v => {
+      onChange?.(v)
+      onValueChange?.(v)
+    }}
+    {...props}
+  />
+)
 
 type SelectTriggerProps = ComponentProps<typeof Trigger>
-const SelectTrigger = ({
-  className,
-  children,
-  ...props
-}: SelectTriggerProps) => (
+const SelectTrigger = ({ className, children, ...props }: SelectTriggerProps) => (
   <Trigger
+    data-tag={kebabCase(SelectTrigger.displayName)}
     className={trigger({ className })}
     {...props}
   >
@@ -103,11 +98,9 @@ const SelectTrigger = ({
 )
 
 type SelectScrollUpButtonProps = ComponentProps<typeof ScrollUpButton>
-const SelectScrollUpButton = ({
-  className,
-  ...props
-}: SelectScrollUpButtonProps) => (
+const SelectScrollUpButton = ({ className, ...props }: SelectScrollUpButtonProps) => (
   <ScrollUpButton
+    data-tag={kebabCase(SelectScrollUpButton.displayName)}
     className={scrollButton({ className })}
     {...props}
   >
@@ -116,11 +109,9 @@ const SelectScrollUpButton = ({
 )
 
 type SelectScrollDownButtonProps = ComponentProps<typeof ScrollDownButton>
-const SelectScrollDownButton = ({
-  className,
-  ...props
-}: SelectScrollDownButtonProps) => (
+const SelectScrollDownButton = ({ className, ...props }: SelectScrollDownButtonProps) => (
   <ScrollDownButton
+    data-tag={kebabCase(SelectScrollDownButton.displayName)}
     className={scrollButton({ className })}
     {...props}
   >
@@ -129,22 +120,16 @@ const SelectScrollDownButton = ({
 )
 
 type SelectContentProps = ComponentProps<typeof Content>
-const SelectContent = ({
-  className,
-  children,
-  position = "popper",
-  ...props
-}: SelectContentProps) => (
+const SelectContent = ({ className, children, position = "popper", ...props }: SelectContentProps) => (
   <Portal>
     <Content
+      data-tag={kebabCase(SelectContent.displayName)}
       className={content({ position, className })}
       position={position}
       {...props}
     >
       <SelectScrollUpButton />
-      <Viewport
-        className={viewport({ position })}
-      >
+      <Viewport className={viewport({ position })}>
         {children}
       </Viewport>
       <SelectScrollDownButton />
@@ -153,23 +138,18 @@ const SelectContent = ({
 )
 
 type SelectLabelProps = ComponentProps<typeof Label>
-const SelectLabel = ({
-  className,
-  ...props
-}: SelectLabelProps) => (
+const SelectLabel = ({ className, ...props }: SelectLabelProps) => (
   <Label
+    data-tag={kebabCase(SelectLabel.displayName)}
     className={label({ className })}
     {...props}
   />
 )
 
 type SelectItemProps = ComponentProps<typeof Item>
-const SelectItem = ({
-  className,
-  children,
-  ...props
-}: SelectItemProps) => (
+const SelectItem = ({ className, children, ...props }: SelectItemProps) => (
   <Item
+    data-tag={kebabCase(SelectItem.displayName)}
     className={item({ className })}
     {...props}
   >
@@ -183,11 +163,9 @@ const SelectItem = ({
 )
 
 type SelectSeparatorProps = ComponentProps<typeof Separator>
-const SelectSeparator = ({
-  className,
-  ...props
-}: SelectSeparatorProps) => (
+const SelectSeparator = ({ className, ...props }: SelectSeparatorProps) => (
   <Separator
+    data-tag={kebabCase(SelectSeparator.displayName)}
     className={separator({ className })}
     {...props}
   />
@@ -204,7 +182,21 @@ SelectSeparator.displayName = "SelectSeparator"
 SelectScrollUpButton.displayName = "SelectScrollUpButton"
 SelectScrollDownButton.displayName = "SelectScrollDownButton"
 
+namespace Type {
+  export type Select = SelectProps
+  export type SelectTrigger = SelectTriggerProps
+  export type SelectScrollUpButton = SelectScrollUpButtonProps
+  export type SelectScrollDownButton = SelectScrollDownButtonProps
+  export type SelectContent = SelectContentProps
+  export type SelectLabel = SelectLabelProps
+  export type SelectItem = SelectItemProps
+  export type SelectSeparator = SelectSeparatorProps
+}
+
+export * from "@radix-ui/react-select";
+
 export {
+  type Type,
   selectVariants,
   Select,
   SelectGroup,
@@ -214,14 +206,9 @@ export {
   SelectLabel,
   SelectItem,
   SelectSeparator,
-  // TBD: doc: in most of time, you don't need to worry these, cuz it has been included in the normal usage
+  /**
+   * These should be rare to be used, but exported anyway in case there're some edge cases.
+   */
   SelectScrollUpButton,
-  SelectScrollDownButton,
-  type SelectTriggerProps,
-  type SelectContentProps,
-  type SelectLabelProps,
-  type SelectItemProps,
-  type SelectSeparatorProps,
-  type SelectScrollUpButtonProps,
-  type SelectScrollDownButtonProps
+  SelectScrollDownButton
 }
