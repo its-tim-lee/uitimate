@@ -3,11 +3,12 @@ import hotkeys from "hotkeys-js"
 import { useIsMobile } from "#/helpers/hooks/use-mobile"
 import { tv } from "tailwind-variants"
 import { Drawer } from "#/components/ui/Drawer/Drawer.tsx"
+import { kebabCase } from "lodash-es"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 
-type TSidebarContext = {
+type _SidebarContext = {
   isMobile: boolean;
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
@@ -17,7 +18,7 @@ type TSidebarContext = {
   mobileSidebarDirection: "left" | "right" | "top" | "bottom";
   enableMobileSidebar: boolean;
 }
-const SidebarContext = createContext<TSidebarContext | null>(null)
+const SidebarContext = createContext<_SidebarContext | null>(null)
 
 const useSidebar = () => {
   const context = useContext(SidebarContext)
@@ -83,8 +84,8 @@ const SidebarLayout = ({
   className,
   // There can have the usage cases like (see #20250324), the consumers don't want to control the open state out of the sidebar,
   // but still want to use shortcut to toggle the state, and they also want the sidebar is open in the initial state.
-  // Note that this will never be used for the embedded Radix drawer (aka. mobile sidebar),
-  // cuz in 99% of time, the mobile sidebar will NOT be opened initially.
+  // Note that this prop will never be used for the embedded drawer (aka. mobile sidebar),
+  // cuz in 99.9% of scenarios, the mobile sidebar will NOT be opened initially.
   defaultOpen = false,
   open,
   onOpenChange,
@@ -133,7 +134,7 @@ const SidebarLayout = ({
 
   useEffect(() => { if (runMobileSidebarIndependently) onOpenChange?.(false) }, [runMobileSidebarIndependently])
 
-  const ctx = useMemo<TSidebarContext>(() => ({
+  const ctx = useMemo<_SidebarContext>(() => ({
     isMobile,
     isOpen,
     setIsOpen,
@@ -150,12 +151,13 @@ const SidebarLayout = ({
         data-variant={variant}
         data-toggle={isOpen ? "expanded" : "collapsed"}
         data-direction={desktopSidebarDirection}
-        data-tag="sidebar-layout"
+        data-tag={kebabCase(SidebarLayout.displayName)}
         {...props}
       />
     </SidebarContext.Provider>
   )
 }
+
 const sidebarLayoutVariants = tv({
   base: "tw:relative tw:flex tw:h-full tw:w-full tw:overflow-hidden",
   variants: {
@@ -196,6 +198,7 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
         data-sidebar
         data-variant={variant}
         data-toggle={isOpen ? "expanded" : "collapsed"}
+        data-tag={kebabCase(Sidebar.displayName)}
         {...drawerProps}
       >
         {children}
@@ -206,7 +209,7 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
     <div
       className={base({ className })}
       data-sidebar
-      data-tag="sidebar"
+      data-tag={kebabCase(Sidebar.displayName)}
       data-variant={variant}
       data-toggle={isOpen ? "expanded" : "collapsed"}
       data-direction={desktopSidebarDirection}
@@ -287,12 +290,13 @@ const SidebarInset = ({ className, ...props }: SidebarInsetProps) => {
   const { variant: sidebarVariant, isOpen: isSidebarOpen, desktopSidebarDirection } = useSidebar()
   return (
     <main
-      data-tag="sidebar-inset"
+      data-tag={kebabCase(SidebarInset.displayName)}
       className={sidebarInsetVariants({ sidebarVariant, isSidebarOpen, desktopSidebarDirection, className })}
       {...props}
     />
   )
 }
+
 const sidebarInsetVariants = tv({
   base: "tw:relative tw:flex tw:flex-1 tw:flex-col",
   variants: {
@@ -336,16 +340,20 @@ SidebarLayout.displayName = "SidebarLayout"
 Sidebar.displayName = "Sidebar"
 SidebarInset.displayName = "SidebarInset"
 
+namespace Type {
+  export type SidebarLayout = SidebarLayoutProps;
+  export type Sidebar = SidebarProps;
+  export type SidebarInset = SidebarInsetProps;
+  export type SidebarContext = _SidebarContext;
+}
+
 export {
+  type Type,
   sidebarLayoutVariants,
   sidebarVariants,
   sidebarInsetVariants,
+  useSidebar,
   Sidebar,
   SidebarInset,
   SidebarLayout,
-  useSidebar,
-  type TSidebarContext,
-  type SidebarLayoutProps,
-  type SidebarProps,
-  type SidebarInsetProps
 }
