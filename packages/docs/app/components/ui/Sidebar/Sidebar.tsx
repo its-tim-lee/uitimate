@@ -221,15 +221,26 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
   )
 }
 /**
- * Below is more like a compromise, cuz in React, unlike Vue, the update of the component can be slightly asynchronized,
- * so that the consumer can't use `useIsMobile` in using with our sidebar component,
- * cuz it can violate React's "Single Source of Truth" principle in some cases,
- * and it'd cause some bugs.
+ * HACK: Below is more like a compromise solution.
  *
- * eg.,
- * Without below compound components, providing different UI in different breakpoints from the consumer side
- * using `useIsMobile` will only lead to errors.
+ * Basically, this is all about the React's nature, unlike Vue, "the update of the component can be slightly asynchronized".
+ * This can be emulated from doing below scenario:
+ * - the consumers use their breakpoint control independently from our Sidebar component (eg., they use our `useIsMobile` hook, or use the relevant Tailwind's classes)
+ * - the consumers provide their mobile UI implementation, which requires to use <DrawerHeading> due to the limitation from Radix's Dialog
+ *   ie., Vaul uses Radix's Dialog under the hood
+ * - because of the React's nature, it's possible that:
+ *   - when the consumers' <DrawerHeading> is rendered, but in that very moment,
+ *     it's not rendered in the context of <Drawer> in our Sidebar component,
+ *     which will make Radix's Dialog to throw an error (note: the error came from the root component from the family components of the Radix's Dialog)
+ *     to basically complain that "<DrawerHeading> is not used in the context of <Drawer>"
+ *   - when <Drawer> in our Sidebar component is rendered, but in that very moment, the consumer's <DrawerHeading> is not rendered yet,
+ *     and that will make Radix's Dialog to throw an error
+ *     to basically complain that "<Drawer> can't be used without <DrawerHeading>"
  *
+ * So, the solution is just making sure the breakpoint control is always "single source of truth"
+ * from both the consumer side and our Sidebar component side.
+ *
+ * There's no way to have other better solutions, unless we can change Vaul's underlying Dialog to others (eg., Headless UI Dialog)
  */
 Sidebar.Mobile = ({ children }: { children: React.ReactNode }) => {
   const { isMobile } = useSidebar();
@@ -286,11 +297,11 @@ const sidebarVariants = tv({
 })
 
 type SidebarInsetProps = ComponentProps<"main">
-const SidebarInset = ({ className, ...props }: SidebarInsetProps) => {
+const SidebarPeer = ({ className, ...props }: SidebarInsetProps) => {
   const { variant: sidebarVariant, isOpen: isSidebarOpen, desktopSidebarDirection } = useSidebar()
   return (
     <main
-      data-tag={kebabCase(SidebarInset.displayName)}
+      data-tag={kebabCase(SidebarPeer.displayName)}
       className={sidebarInsetVariants({ sidebarVariant, isSidebarOpen, desktopSidebarDirection, className })}
       {...props}
     />
@@ -338,12 +349,12 @@ const sidebarInsetVariants = tv({
 
 SidebarLayout.displayName = "SidebarLayout"
 Sidebar.displayName = "Sidebar"
-SidebarInset.displayName = "SidebarInset"
+SidebarPeer.displayName = "SidebarPeer"
 
 namespace Type {
   export type SidebarLayout = SidebarLayoutProps;
   export type Sidebar = SidebarProps;
-  export type SidebarInset = SidebarInsetProps;
+  export type SidebarPeer = SidebarInsetProps;
   export type SidebarContext = _SidebarContext;
 }
 
@@ -354,6 +365,6 @@ export {
   sidebarInsetVariants,
   useSidebar,
   Sidebar,
-  SidebarInset,
+  SidebarPeer,
   SidebarLayout,
 }
