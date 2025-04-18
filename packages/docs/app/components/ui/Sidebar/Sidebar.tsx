@@ -90,7 +90,7 @@ const SidebarLayout = ({
   open,
   onOpenChange,
   variant = "flat",
-  shortcut = 'ctrl+b, command+b',
+  shortcut = 'option+b',
   directions,
   enableMobileSidebar = true,
   ...props
