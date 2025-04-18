@@ -169,7 +169,7 @@ const sidebarLayoutVariants = tv({
   },
 })
 
-type SidebarProps = ComponentProps<"div">
+type SidebarProps = ComponentProps<"div"> & ComponentProps<typeof Drawer>
 const Sidebar = ({ className, children, ...props }: SidebarProps) => {
   const {
     isMobile,
@@ -179,7 +179,6 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
     desktopSidebarDirection,
     mobileSidebarDirection,
     enableMobileSidebar,
-    ...drawerProps
   } = useSidebar()
   const runMobileSidebarIndependently = isMobile && enableMobileSidebar
   const { base, inner, drawer } = sidebarVariants({
@@ -199,7 +198,7 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
         data-variant={variant}
         data-toggle={isOpen ? "expanded" : "collapsed"}
         data-tag={kebabCase(Sidebar.displayName)}
-        {...drawerProps}
+        {...props}
       >
         {children}
       </Drawer>
