@@ -1,7 +1,7 @@
 import { delay } from "lodash-es";
+import * as changeCase from 'change-case';
 
 export const sleep = (ms: number) => new Promise(resolve => delay(resolve, ms));
-
 
 /**
  * Just like structureClone, but for objects only and be able to clone non-enumerable properties
@@ -14,3 +14,8 @@ export const reflectiveClone = <T extends object>(source: T): T => {
   return target;
 }
 
+export const casing = {
+  ...changeCase,
+  lowerCase: (e: string) => e.toLowerCase(),
+  upperCase: (e: string) => e.toUpperCase(),
+}
