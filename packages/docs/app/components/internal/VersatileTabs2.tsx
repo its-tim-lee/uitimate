@@ -95,7 +95,7 @@ const VersatileTabs2 = ({ children, className, variant = 'underline', compact, .
 
   return (
     <VersatileTabs2Provider value={contextValue}>
-      <TabsPrimitive variant={variant} className={cn('not-prose', className)} {...props}>
+      <TabsPrimitive variant={variant} className={className} {...props}>
         {children}
       </TabsPrimitive>
     </VersatileTabs2Provider>
