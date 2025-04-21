@@ -24,7 +24,7 @@ export default () => {
           Shorts
         </ListItem>
       </List>
-      <SidebarLayout open={open} onOpenChange={onOpenChange} directions={["left", "left"]} className="tw:flex-1">
+      <SidebarLayout open={open} onOpenChange={onOpenChange} directions={["left", "left"]} className="tw:border tw:border-muted-foreground/50 tw:rounded-lg tw:flex-1">
         <Sidebar className='tw:w-[240px]!'>
           <List className='tw:p-4! tw:w-full'>
             <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>

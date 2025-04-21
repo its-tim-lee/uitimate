@@ -1,5 +1,5 @@
 ---
-component: test
+component: sidebar
 ---
 <QuickDemoSection />
 <VersatileTabs2 defaultValue="preview-sidebar-chatgpt">
@@ -87,7 +87,7 @@ Before we get into more details, how about playing with a very simple demo and b
 
 ### 1️⃣ The Sidebar
 
-Our `<Sidebar>` will use [Drawer](./../../drawer/introduction) (we call it "mobile sidebar")
+Our `<Sidebar>` will use [@uitimate/drawer](./../../drawer/introduction) (we call it "mobile sidebar")
 under the hood when in the small breakpoint, so this leads to below use cases:
 
 1. You only want to have a desktop sidebar (ie., the sidebar will be the same at any breakpoint)
@@ -141,19 +141,7 @@ It’s actually the easiest. You just need to provide the prop `enableMobileSide
   />
 </VersatileTabs2>
 Now, we need to explain where you should place `<Sidebar>` in `<SidebarLayout>`. It only matters in desktop breakpoint:
-```tsx
-
-   {/* To have the left Sidebar: */}
-    <SidebarLayout>
-      <Sidebar/>
-      <SidebarPeer/>
-    </SidebarLayout>
-
-    {/* To have the right Sidebar: */}
-    <SidebarLayout>
-      <SidebarPeer/>
-      <Sidebar/>
-    </SidebarLayout>
+```tsx file=./Sidebar.meta.tsx#L4-L14
 ```
 After the placement, you need to declare the directions you want for
 both desktop and mobile sidebars via the only one mandatory prop `directions` on `<SidebarLayout>`.

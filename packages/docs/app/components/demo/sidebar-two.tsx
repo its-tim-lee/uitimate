@@ -13,7 +13,7 @@ export default () => {
       directions={["right", "right"]}
       shortcut='ctrl+1, command+1'
       onOpenChange={setRightOpen}
-      className='tw:h-[500px]'
+      className='tw:h-[500px] tw:border tw:border-muted-foreground/50 tw:rounded-lg'
     >
       <SidebarPeer>
         <SidebarLayout
@@ -27,6 +27,7 @@ export default () => {
             className='tw:w-[320px]'
           >
             <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
+              Left Sidebar
               {Array.from({ length: 5 }).map((_, index) => (
                 <Skeleton key={index} className="tw:h-10 tw:w-full" />
               ))}
@@ -34,6 +35,7 @@ export default () => {
           </Sidebar>
           <SidebarPeer>
             <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
+              Main Content
               {Array.from({ length: 20 }).map((_, index) => (
                 <Skeleton key={index} className="tw:h-20 tw:w-full" />
               ))}
@@ -43,6 +45,7 @@ export default () => {
       </SidebarPeer>
       <Sidebar className='tw:w-[320px]'>
         <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
+          Right Sidebar
           {Array.from({ length: 30 }).map((_, index) => (
             <Skeleton key={index} className="tw:h-10 tw:w-full" />
           ))}
