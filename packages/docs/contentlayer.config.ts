@@ -1,6 +1,9 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import { casing } from '#/helpers/utils.ts';
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import codeImport from 'remark-code-import';
+import rehypeSlug from 'rehype-slug';
+// import remarkUnderline from 'remark-underline' // Temporarily commented out
 
 export const Doc = defineDocumentType(() => ({
   name: 'Doc',
@@ -37,6 +40,9 @@ export default makeSource({
   contentDirPath: './app/components/ui',
   documentTypes: [Doc],
   mdx: {
-    remarkPlugins: [codeImport],
+    remarkPlugins: [codeImport], // Removed remarkUnderline for testing
+    rehypePlugins: [
+      rehypeSlug // auto add ids to headings
+    ]
   }
 })
