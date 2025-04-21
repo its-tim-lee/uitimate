@@ -48,6 +48,13 @@ const AccordionItem = ({
 type AccordionHeaderProps = ComponentProps<typeof Header>
 const AccordionHeader = Header;
 
+/**
+ * FIXME: it seems like providing a wrapper <span> for children is a far more better idea,
+ * otherwise the flex context of Trigger will affect the children, and in some cases, the style will be very bad,
+ * so that the consumer needs to fix it by wrapping their children with <span> or so
+ *
+ * FIXME: Also, once apply the wrapper, it's a good idea to default have `tw:leading-loose` in case of the children can be a multiple lines
+ */
 type AccordionTriggerProps = ComponentProps<typeof Trigger>
 const AccordionTrigger = ({
   className,

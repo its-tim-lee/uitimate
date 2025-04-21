@@ -35,7 +35,7 @@ const DefinitionSection = ({ children, ref }: ComponentProps<'div'>) => {
           Definition
         </HeadingTitle>
         <HeadingSubtitle>
-          A high-level spec of a blueprint to correctly define what is meant to be such component.
+          A high-level spec (or a blueprint) to correctly define what is meant to be such component.
         </HeadingSubtitle>
       </Heading>
       <Collapsible>

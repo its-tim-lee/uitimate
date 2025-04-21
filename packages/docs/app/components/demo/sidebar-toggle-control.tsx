@@ -3,7 +3,7 @@ import { Cta } from "#/components/ui/Cta/Cta"
 import { Icon } from "#/components/ui/Icon/Icon"
 import { Sidebar, SidebarLayout, SidebarPeer } from "#/components/ui/Sidebar/Sidebar"
 
-export default function SidebarToggleControl() {
+export default () => {
   const [open, setOpen] = useState(true)
   return (
     <SidebarLayout
