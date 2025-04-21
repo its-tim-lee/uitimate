@@ -5,9 +5,6 @@ import { tv } from "tailwind-variants"
 import { Drawer } from "#/components/ui/Drawer/Drawer.tsx"
 import { kebabCase } from "lodash-es"
 
-const SIDEBAR_COOKIE_NAME = "sidebar_state"
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
-
 type _SidebarContext = {
   isMobile: boolean;
   isOpen: boolean;
@@ -220,7 +217,7 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
   )
 }
 /**
- * HACK: Below is more like a compromise solution.
+ * HACK: Below is more like a compromise solution, although React ecosystem will claim this is legit.
  *
  * Basically, this is all about the React's nature, unlike Vue, "the update of the component can be slightly asynchronized".
  * This can be emulated from doing below scenario:
