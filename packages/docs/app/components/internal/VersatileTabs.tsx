@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, useMemo } from 'react';
+import React, { useState, useEffect, lazy, useMemo, type ComponentProps } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '#/components/ui/Tabs/Tabs.tsx';
 import { CodeBlock } from '#/components/internal/CodeBlock.tsx';
 import PreviewBlock from '#/components/internal/PreviewBlock.tsx';
@@ -42,25 +42,34 @@ interface TabSetting {
   onClick?: () => void;
   demoId?: string;
   showCode?: boolean;
+  showCodeFirst?: boolean;
   caption?: string;
 }
 
-interface VersatileTabsProps {
+type VersatileTabsProps = {
   settings: TabSetting[];
   className?: string;
   compact?: boolean;
-}
+} & ComponentProps<typeof Tabs>;
 
 /**
  * TODO: able to show code at first, but still allowed to check the preview
  */
-export default ({ settings, className, compact = false }: VersatileTabsProps) => {
+export default ({ settings, className, compact = false, variant = 'underline', ...props }: VersatileTabsProps) => {
   const [activeTab, setActiveTab] = useState(kebabCase(toLower(settings[0]?.title)));
   const [demoCodeStrings, setDemoCodeStrings] = useState<Record<string, string>>({});
   const [codeBlockVisibility, setCodeBlockVisibility] = useState<Record<string, boolean>>(
     settings.reduce((acc, $s) => {
       if ($s.type === 'preview') {
-        acc[kebabCase(toLower($s.title))] = false;
+        acc[kebabCase(toLower($s.title))] = $s.showCodeFirst ?? false;
+      }
+      return acc;
+    }, {} as Record<string, boolean>)
+  );
+  const [previewVisibility, setPreviewVisibility] = useState<Record<string, boolean>>(
+    settings.reduce((acc, $s) => {
+      if ($s.type === 'preview') {
+        acc[kebabCase(toLower($s.title))] = !($s.showCodeFirst ?? false);
       }
       return acc;
     }, {} as Record<string, boolean>)
@@ -96,6 +105,13 @@ export default ({ settings, className, compact = false }: VersatileTabsProps) =>
     }));
   };
 
+  const togglePreviewVisibility = (tabId: string) => {
+    setPreviewVisibility(prev => ({
+      ...prev,
+      [tabId]: !prev[tabId]
+    }));
+  };
+
   const handleTabChange = (tabId: string) => {
     const selectedSetting = settings.find($s => kebabCase(toLower($s.title)) === tabId);
     selectedSetting?.onClick && selectedSetting.onClick();
@@ -104,7 +120,7 @@ export default ({ settings, className, compact = false }: VersatileTabsProps) =>
   };
 
   return (
-    <Tabs variant="underline" value={activeTab} onValueChange={handleTabChange} className={cn('not-prose', className)}>
+    <Tabs variant={variant} value={activeTab} onValueChange={handleTabChange} className={cn('not-prose', className)} {...props}>
       <TabsList>
         {settings.map($s => (
           $s.title && (
@@ -132,13 +148,41 @@ export default ({ settings, className, compact = false }: VersatileTabsProps) =>
                     : $s.content
                   }
                 </div>
-                <PreviewBlock showCode={$s.showCode} toggleCodeBlock={() => toggleCodeBlockVisibility(tabId)} compact={compact}>
-                  {DemoComponent && <DemoComponent />}
-                </PreviewBlock>
-                {$s.caption && <div className="tw:text-sm tw:text-muted-foreground tw:mt-2 tw:text-center">
-                  {$s.caption}
-                </div>}
-                {codeBlockVisibility[tabId] && <CodeBlock>{demoCodeStrings[tabId]}</CodeBlock>}
+                {$s.showCodeFirst ? (
+                  <>
+                    <CodeBlock
+                      showPreviewToggle={$s.showCodeFirst}
+                      previewVisible={previewVisibility[tabId]}
+                      onTogglePreview={() => togglePreviewVisibility(tabId)}
+                    >
+                      {demoCodeStrings[tabId]}
+                    </CodeBlock>
+                    {previewVisibility[tabId] && (
+                      <>
+                        <PreviewBlock compact={compact} showCode={false}>
+                          {DemoComponent && <DemoComponent />}
+                        </PreviewBlock>
+                        {$s.caption && (
+                          <div className="tw:text-sm tw:text-muted-foreground tw:my-2 tw:mb-4 tw:text-center">
+                            {$s.caption}
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <PreviewBlock showCode={$s.showCode} toggleCodeBlock={() => toggleCodeBlockVisibility(tabId)} compact={compact}>
+                      {DemoComponent && <DemoComponent />}
+                    </PreviewBlock>
+                    {$s.caption && (
+                      <div className="tw:text-sm tw:text-muted-foreground tw:my-2 tw:mb-4 tw:text-center">
+                        {$s.caption}
+                      </div>
+                    )}
+                    {codeBlockVisibility[tabId] && <CodeBlock>{demoCodeStrings[tabId]}</CodeBlock>}
+                  </>
+                )}
               </>
             )}
           </TabsContent>

@@ -8,19 +8,11 @@ export default () => {
       <Sidebar className='tw:p-0 tw:md:p-4'>
         <Sidebar.Mobile>
           <div className='tw:pb-4 tw:px-5 tw:overflow-y-scroll'>
-            <DrawerHeading className='tw:text-center'>
-              Mobile Sidebar
-            </DrawerHeading>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
+            <DrawerHeading className='tw:text-center'>Mobile Sidebar</DrawerHeading>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </Sidebar.Mobile>
-        <Sidebar.Desktop>
-          <div className="tw:p-4">
-            <h3 className="tw:font-bold">Desktop Sidebar</h3>
-          </div>
-        </Sidebar.Desktop>
+        <Sidebar.Desktop>Desktop<br />Sidebar</Sidebar.Desktop>
       </Sidebar>
       <SidebarPeer>
         <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
