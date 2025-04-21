@@ -8,7 +8,7 @@
 import React from 'react';
 import { orderBy } from 'lodash-es';
 import type { DocTreeItem } from '../data/site';
-
+import { allDocs } from '#/lib/contentlayer';
 
 export type CoreComponentKey = `${string}/${string}`;
 type ComponentRegistry = {
@@ -23,6 +23,7 @@ type ComponentRegistry = {
  * (the filtered components will always be empty)
  * but at least it still allows the filtered files to use path alias
  */
+// Legacy TSX components
 const coreComponents = import.meta.glob('./../components/ui/**/*.{api,introduction}.tsx', { eager: true, import: 'default', });
 const recipeComponents = import.meta.glob('./../components/demo/recipe/*.tsx', { eager: true, import: 'default', });
 const changelogs = import.meta.glob('./../components/ui/**/CHANGELOG.md', { eager: true, as: 'raw' });
@@ -60,6 +61,7 @@ Object.entries(changelogs).forEach(([path, content]) => {
     componentUris.push(`/docs/components/core/${name}/changelog`);
   }
 });
+
 // Generate Core items for site navigation
 export const coreItems: DocTreeItem[] = [];
 export const recipeItems: DocTreeItem[] = [];
@@ -94,6 +96,24 @@ Object.keys(componentRegistry.changelog).forEach(name => {
     componentPages.set(name, new Set());
   }
   componentPages.get(name)?.add('changelog');
+});
+
+// Process MDX files from contentlayer for navigation
+// This ensures MDX files are included in the sidebar
+allDocs.forEach(doc => {
+  const name = doc.component?.toLowerCase();
+  if (!name) return;
+
+  const fileType = doc._raw?.flattenedPath?.split('.')?.pop()?.toLowerCase(); // e.g., "introduction" or "api"
+  if (!fileType || !['introduction', 'api'].includes(fileType)) return;
+
+  if (!componentPages.has(name)) {
+    componentPages.set(name, new Set());
+  }
+  componentPages.get(name)?.add(fileType);
+
+  // Add URI for MDX content
+  componentUris.push(`/docs/components/core/${name}/${fileType}`);
 });
 
 componentPages.forEach((pages, name) => {

@@ -4,7 +4,7 @@ import { Skeleton } from "#/components/ui/Skeleton/Skeleton.tsx";
 
 export default () => {
   return (
-    <SidebarLayout defaultOpen directions={["left", "bottom"]} className="tw:h-[500px]">
+    <SidebarLayout defaultOpen directions={["left", "bottom"]} className="tw:h-[500px] tw:border tw:border-muted-foreground/50 tw:rounded-lg">
       <Sidebar className='tw:p-0 tw:md:p-4'>
         <Sidebar.Mobile>
           <div className='tw:pb-4 tw:px-5 tw:overflow-y-scroll'>
