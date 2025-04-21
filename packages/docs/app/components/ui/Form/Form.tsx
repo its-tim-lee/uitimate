@@ -1,21 +1,18 @@
-import React, { useId, useContext, createContext, type Ref, type ReactNode, type ComponentProps, memo, type HTMLAttributes, type ReactElement, useEffect, useRef } from "react"
+import { useId, useContext, createContext, type ComponentProps, useEffect, useRef } from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
-import { isEqual, cloneDeep, omit, mapValues, isEmpty } from "lodash-es"
+import { isEqual, omit, mapValues, isEmpty, kebabCase } from "lodash-es"
 import {
   Controller,
   type ControllerProps,
   type ControllerRenderProps,
-  type Field,
   type FieldError,
-  type FieldPath,
   type FieldValues,
   type UseFormReturn,
   FormProvider,
   useForm,
   useFormContext,
   type UseFormProps,
-  type DefaultValues,
   type SubmitErrorHandler,
   type FormState,
 } from "react-hook-form"
@@ -123,6 +120,7 @@ const Form = <T extends ZodObject<ZodRawShape>>({
         className={className}
         data-disabled={props.disabled || undefined}
         onSubmit={form.handleSubmit(onSubmit, onSubmitError)}
+        data-tag={kebabCase(Form.displayName)}
       >
         {children}
       </form>
@@ -164,7 +162,7 @@ const FormItem = ({
       <Controller {...props} render={({ field }) => { // to see what `field` is, check the comments in `FormControl`
         return (
           <FormControlCtx.Provider value={{ field }}>
-            <div className={cn("tw:space-y-2", className)}>{children}</div>
+            <div data-tag={kebabCase(FormItem.displayName)} className={cn("tw:space-y-2", className)}>{children}</div>
           </FormControlCtx.Provider>
         )
       }} />
@@ -199,6 +197,7 @@ const FormControl = ({ maskedInput, ...props }: FormControlProps) => {
   if (!field) { throw new Error("FormControl must be used within a FormItem"); }
   return (
     <Slot
+      data-tag={kebabCase(FormControl.displayName)}
       id={formItemId}
       aria-describedby={
         !error
@@ -229,7 +228,12 @@ const FormControl = ({ maskedInput, ...props }: FormControlProps) => {
 type FormDescriptionProps = ComponentProps<'div'>
 const FormDescription = ({ className, ...props }: FormDescriptionProps) => {
   const { formDescriptionId } = useContext(FormItemCtx)
-  return <div id={formDescriptionId} className={cn("tw:text-[0.8rem] tw:text-muted-foreground", className)} {...props} />
+  return <div
+    className={cn("tw:text-[0.8rem] tw:text-muted-foreground", className)}
+    data-tag={kebabCase(FormDescription.displayName)}
+    id={formDescriptionId}
+    {...props}
+  />
 }
 
 type FormMessageProps = ComponentProps<'div'>
@@ -238,6 +242,7 @@ const FormMessage = ({ className, children, ...props }: FormMessageProps) => {
   const body = error ? String(error?.message) : children
   return !body ? null : (
     <div
+      data-tag={kebabCase(FormMessage.displayName)}
       id={formMessageId}
       className={cn("tw:text-[0.8rem] tw:font-medium tw:text-destructive", className)}
       {...props}
@@ -266,7 +271,20 @@ type FormControlCtxType = { field: ControllerRenderProps<FieldValues, string> };
  */
 const FormControlCtx = createContext({} as FormControlCtxType);
 
+namespace Type {
+  export type Form<T extends ZodObject<ZodRawShape>> = FormProps<T>;
+  export type FormItem = FormItemProps;
+  export type FormLabel = FormLabelProps;
+  export type FormControl = FormControlProps;
+  export type FormDescription = FormDescriptionProps;
+  export type FormMessage = FormMessageProps;
+  export type FormItemCtx = FormItemCtxType;
+  export type FormControlCtx = FormControlCtxType;
+}
+
+export * from "react-hook-form";
 export {
+  type Type,
   Form,
   FormItem,
   FormLabel,
@@ -275,9 +293,8 @@ export {
   FormMessage,
   FormItemCtx,
   FormControlCtx,
-  type FormItemCtxType,
-  type FormControlCtxType
 }
+
 Form.displayName = "Form"
 FormItem.displayName = "FormItem"
 FormLabel.displayName = "FormLabel"
