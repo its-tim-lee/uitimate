@@ -1,26 +1,10 @@
+import SidebarChatGPT from "#/components/demo/sidebar-chatgpt"
 import { Icon } from "../Icon/Icon"
 import {
   Sidebar,
-  SidebarInset,
+  SidebarPeer,
   SidebarLayout,
   useSidebar
-  // SidebarContent,
-  // SidebarFooter,
-  // SidebarGroup,
-  // SidebarGroupAction,
-  // SidebarGroupContent,
-  // SidebarGroupLabel,
-  // SidebarHeader,
-  // SidebarMenu,
-  // SidebarMenuAction,
-  // SidebarMenuBadge,
-  // SidebarMenuButton,
-  // SidebarMenuItem,
-  // SidebarMenuSkeleton,
-  // SidebarMenuSub,
-  // SidebarMenuSubButton,
-  // SidebarMenuSubItem,
-  // SidebarSeparator,
 
 } from "./Sidebar.tsx"
 
@@ -37,6 +21,8 @@ import { Dialog, DialogTitle } from "#/components/ui/Dialog/Dialog.tsx";
 import { Skeleton } from "#/components/ui/Skeleton/Skeleton.tsx";
 import { List, ListItem } from "#/components/ui/List/List.tsx";
 import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx";
+import SidebarToggleControl from "#/components/demo/sidebar-toggle-control"
+import SidebarRwdMinimumDemo from "../../demo/sidebar-rwd-minimum-demo.tsx";
 
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
@@ -101,7 +87,7 @@ export default {
       return <Story />;
     },
   ],
-  includeStories: [],
+  // includeStories: [],
   parameters: {
     layout: 'centered',
   },
@@ -115,44 +101,9 @@ export default {
 //    - can provide different style to different breakpoints, just make sure to use Tailwind
 //      - cuz Tailwind's default breakpoint matches to our `useIsMobile`
 // #20250324
-export const DEMO = {
-  name: 'DEMO / Left Sidebar',
-  render: () => {
-    return (
-      <SidebarLayout defaultOpen directions={["left", "bottom"]}>
-        <Sidebar className='tw:p-0 tw:md:p-4'>
-          <Sidebar.Mobile>
-            <div className='tw:pb-4 tw:px-5 tw:overflow-y-scroll'>
-              <DrawerHeading className='tw:text-center'>
-                Mobile Sidebar
-              </DrawerHeading>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-
-                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
-
-                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam.
-
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet.
-              </p>
-            </div>
-          </Sidebar.Mobile>
-          <Sidebar.Desktop>
-            <div className="tw:p-4">
-              <h3 className="tw:font-bold">Desktop Sidebar</h3>
-            </div>
-          </Sidebar.Desktop>
-        </Sidebar>
-        <SidebarInset>
-          <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
-            {Array.from({ length: 20 }).map((_, index) => (
-              <Skeleton key={index} className="tw:h-20 tw:w-full" />
-            ))}
-          </div>
-        </SidebarInset >
-      </SidebarLayout >
-    )
-  }
+export const RWDMinimum = {
+  name: 'RWD Minimum Demo',
+  render: () => <SidebarRwdMinimumDemo />
 }
 // - TBD: doc
 //  - Scrollable,
@@ -172,7 +123,7 @@ export const Scenario2Sidebars = {
         shortcut='ctrl+1, command+1'
         onOpenChange={setRightOpen}
       >
-        <SidebarInset>
+        <SidebarPeer>
           <SidebarLayout
             variant="inset"
             open={leftOpen}
@@ -189,15 +140,15 @@ export const Scenario2Sidebars = {
                 ))}
               </div>
             </Sidebar>
-            <SidebarInset>
+            <SidebarPeer>
               <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
                 {Array.from({ length: 20 }).map((_, index) => (
                   <Skeleton key={index} className="tw:h-20 tw:w-full" />
                 ))}
               </div>
-            </SidebarInset>
+            </SidebarPeer>
           </SidebarLayout>
-        </SidebarInset>
+        </SidebarPeer>
         <Sidebar className='tw:w-[320px]'>
           <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
             {Array.from({ length: 30 }).map((_, index) => (
@@ -233,7 +184,7 @@ export const InWindowSidebar = {
                 </ListItem>
               </List>
             </Sidebar>
-            <SidebarInset className='tw:p-6'>
+            <SidebarPeer className='tw:p-6'>
               <DialogHeading size="h4">
                 <DialogTitle>Edit profile</DialogTitle>
                 <DialogSubtitle>Make changes to your profile here. Click save when you're done.</DialogSubtitle>
@@ -244,7 +195,7 @@ export const InWindowSidebar = {
                   <Skeleton key={index} className="tw:h-5 tw:w-full" />
                 ))}
               </div>
-            </SidebarInset>
+            </SidebarPeer>
           </SidebarLayout>
         </Dialog>
         <Cta onClick={() => setIsOpen(true)}>Open</Cta>
@@ -261,31 +212,7 @@ export const InWindowSidebar = {
 //  - shortcut
 export const ToggleControl = {
   name: 'API / Toggle Control',
-  render: () => {
-    const [open, setOpen] = useState(true)
-    return (
-      <SidebarLayout
-        enableMobileSidebar={false}
-        open={open}
-        shortcut='ctrl+s, command+s'
-        variant="floating"
-        onOpenChange={setOpen}
-        directions={["left", "bottom"]}
-      >
-        <Sidebar className="tw:w-[200px]" />
-        <SidebarInset>
-          <Cta
-            variant="ghost"
-            shapes={['icon']}
-            size="lg"
-            onClick={() => setOpen(!open)}
-          >
-            <Icon icon='lucide:panel-left' />
-          </Cta>
-        </SidebarInset>
-      </SidebarLayout>
-    )
-  }
+  render: () => <SidebarToggleControl />
 }
 
 
@@ -325,9 +252,11 @@ export const YT = {
               </ListItem>
             </List>
           </Sidebar>
-          <SidebarInset>
-
-          </SidebarInset>
+          <SidebarPeer className='tw:flex tw:flex-col tw:items-center tw:justify-center'>
+            <p className='tw:px-20'>
+              Press <kbd className='tw:code'>ctrl b</kbd> (or <kbd className='tw:code'>command b</kbd>) to toggle the sidebar whenever you want during the breakpoint changing.
+            </p>
+          </SidebarPeer>
         </SidebarLayout>
       </div>
     )
@@ -336,86 +265,5 @@ export const YT = {
 
 export const ChatGPT = {
   name: 'Showcase / GPT Sidebar',
-  render: () => {
-    const [open, setOpen] = useState(true)
-    return (
-      <SidebarLayout open={open} onOpenChange={setOpen} directions={["left", "left"]}>
-        <Sidebar className='tw:w-[260px] tw:p-2'>
-          <div className='tw:w-full tw:flex tw:flex-col tw:h-full'>
-            <div className='tw:flex tw:justify-between tw:items-center'>
-              <Cta
-                variant="ghost"
-                shapes={['icon']}
-                size="lg"
-                onClick={() => setOpen(!open)}
-              >
-                <Icon icon='lucide:panel-left' />
-              </Cta>
-              <div>
-                <Cta
-                  variant="ghost"
-                  shapes={['icon']}
-                  size="lg"
-                >
-                  <Icon icon='lucide:search' />
-                </Cta>
-                <Cta
-                  variant="ghost"
-                  shapes={['icon']}
-                  size="lg"
-                >
-                  <Icon icon='lucide:edit' />
-                </Cta>
-              </div>
-            </div>
-
-            <List className='tw:mt-6'>
-              <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>
-                <Icon icon='hugeicons:chat-gpt' className='tw:size-5' />
-                ChatGPT
-              </ListItem>
-            </List>
-
-            <List className='tw:mt-6'>
-              <ListItem className='tw:text-muted-foreground tw:font-bold tw:p-3'>
-                Projects
-              </ListItem>
-              <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer'>
-                <Icon icon='mdi:folder-plus-outline' className='tw:size-5' />
-                New project
-              </ListItem>
-            </List>
-            <List className='tw:mt-6'>
-              <ListItem className='tw:text-muted-foreground tw:font-bold tw:p-3'>
-                Today
-              </ListItem>
-              <ListItem className='tw:p-3 tw:gap-3 tw:hover:bg-muted tw:rounded-lg tw:cursor-pointer tw:overflow-hidden tw:whitespace-nowrap'>
-                CCP Taiwan Threat
-              </ListItem>
-            </List>
-            <div className='tw:p-3 tw:mt-auto tw:flex tw:items-center tw:gap-3'>
-              <Icon icon='hugeicons:chat-gpt' className='tw:size-7' />
-              <Heading size="h5" className='tw:mb-0'>
-                <HeadingTitle>View plans</HeadingTitle>
-                <HeadingSubtitle className='tw:whitespace-nowrap'>Unlimited access, team....</HeadingSubtitle>
-              </Heading>
-            </div>
-          </div>
-        </Sidebar>
-        <SidebarInset className='tw:flex tw:flex-col tw:p-2'>
-          {!open && (
-            <Cta
-              variant="ghost"
-              shapes={['icon']}
-              size="lg"
-              onClick={() => setOpen(!open)}
-            >
-              <Icon icon='lucide:panel-left' />
-            </Cta>
-          )}
-          <h1 className='tw:text-2xl tw:font-extrabold tw:flex-1 tw:flex tw:items-center tw:justify-center'>What can i help with?</h1>
-        </SidebarInset>
-      </SidebarLayout>
-    )
-  }
+  render: () => <SidebarChatGPT />
 }

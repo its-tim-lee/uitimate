@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+- if it's a link, tw:link + Link from React-router must be used
+- Grammatically correct 

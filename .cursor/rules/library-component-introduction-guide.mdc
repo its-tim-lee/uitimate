@@ -1,0 +1,90 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Implementation Steps
+Decide the request from user is creating a whole new file or refactoring an existing file
+
+If it's to create a new file:
+  1. Create a template by following the instruction "Template Starter" below
+  2. Modify the created template by following the instruction "Template modification" below
+  3. The template file should be placed as a sibling of the corresponding component
+
+If it's to refactor the existing file:
+  1. Use the template from the following instruction "Template Starter" as a desired structure to refactor the corresponding file
+  2. Follow the instruction "Template modification" below if it makes sense
+
+Please note the file "ComponentName.meta.tsx" used in below template,
+the "ComponentName" should be modified accordingly,
+and if such file is not existed, you must create one (you may check the example such as [Heading.meta.tsx](mdc:packages/docs/app/components/ui/Heading/Heading.meta.tsx))
+
+# Template Starter
+When asking to create a introduction doc for the correponding component, use below as a starter:
+```tsx
+import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
+import { Link } from "react-router";
+import QA from "#/components/internal/QA.tsx";
+import meta from "./ComponentName.meta.tsx";
+import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
+import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
+
+export default () => {
+  return (
+    <>
+      <ComponentPageHero title='Introduction' subtitle={meta.description} />
+
+      <br />
+
+     <QuickDemoSection />Refactor Refactor
+
+      <VersatileTabs
+        settings={[
+          {
+            title: "demo-purpose",
+            type: "preview",
+            demoId: "demo-file-name",
+          },
+        ]}
+      />
+
+      <br />
+      <br />
+
+  <QuickStartSection />Refactor Refactor
+      <p>
+        This component is used under the anatomy of:
+      </p>
+      <CodeBlock>{meta.anatomy}</CodeBlock>
+
+      <br />
+      <p>
+        Let's! For more on its family components to use, and more demos on showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
+      </p>
+      <br />Refactor
+      <br />
+
+      <QASection />Refactor
+
+      <QA items={[
+        {
+          value: '...',
+          trigger: "question",
+          content: (
+            <p>
+              answer
+            </p>
+          )
+        },
+      ]} />
+    </>
+  )
+}
+
+```
+
+# Template modification
+- The file name must be ComponentName.introduction.tsx
+- You may check an example: [Heading.introduction.tsx](mdc:🌱  docs/app/components/ui/Heading/Heading.introduction.tsx)
+

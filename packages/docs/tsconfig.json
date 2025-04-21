@@ -7,6 +7,7 @@
     "**/.client/**/*",
     ".react-router/types/**/*",
     ".storybook/**/*",
+    ".contentlayer/generated"
   ],
   "compilerOptions": {
     "lib": [

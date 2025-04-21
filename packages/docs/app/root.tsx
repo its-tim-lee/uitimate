@@ -83,7 +83,6 @@ export function HydrateFallback({ loaderData }: Route.ComponentProps) {
 export default function App() {
   const navigation = useNavigation();
   const isNavigating = Boolean(navigation.location);
-  console.log("🔥 isNavigating", isNavigating);
   return <Outlet />
 }
 

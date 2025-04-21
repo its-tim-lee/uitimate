@@ -3,11 +3,11 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/component
 import { Icon } from "#/components/ui/Icon/Icon"
 
 type InfoDetailsProps = {
-  title: ReactNode
-  children: ReactNode
+  title: ReactNode;
+  children: ReactNode;
+  content?: string | ReactNode;
 }
-
-export default ({ title, children }: InfoDetailsProps) => {
+export default ({ title, children, content }: InfoDetailsProps) => {
   return (
     <Collapsible>
       <CollapsibleTrigger>
@@ -17,7 +17,7 @@ export default ({ title, children }: InfoDetailsProps) => {
         </span>
       </CollapsibleTrigger>
       <CollapsibleContent className='tw:p-4 tw:pt-0 tw:text-muted-foreground'>
-        {children}
+        {content ? content : children}
       </CollapsibleContent>
     </Collapsible>
   )

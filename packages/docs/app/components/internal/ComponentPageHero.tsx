@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router';
 import { generateGitHubUrl } from "#/helpers/uri";
 import repo from "#/data/repo";
 import { upperCamelCase } from "#/helpers/font";
-const ComponentPageHero = ({ title, subtitle }: { title: string; subtitle: React.ReactNode; }) => {
+const ComponentPageHero = ({ title, subtitle, prefix }: { title: string; subtitle: React.ReactNode; prefix?: string }) => {
   const location = useLocation();
   const pathSegments = location.pathname.split('/');
 
@@ -44,7 +44,7 @@ const ComponentPageHero = ({ title, subtitle }: { title: string; subtitle: React
 
   return <div className='tw:mb-6'>
     <Heading size="h1" className="tw:mb-4">
-      <HeadingTitle className="tw:mb-2">{title}</HeadingTitle>
+      <HeadingTitle className="tw:mb-2">{`${prefix ? `${prefix}/` : ''}${title}`}</HeadingTitle>
       <HeadingSubtitle>{subtitle}</HeadingSubtitle>
     </Heading>
     <div className="tw:flex tw:gap-2 tw:flex-wrap">

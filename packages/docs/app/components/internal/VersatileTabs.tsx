@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '#/components/ui/Tabs/T
 import { CodeBlock } from '#/components/internal/CodeBlock.tsx';
 import PreviewBlock from '#/components/internal/PreviewBlock.tsx';
 import { kebabCase, toLower } from 'lodash-es';
-
+import { cn } from '#/helpers/css.ts';
 // Helper function to try importing with fallbacks
 const tryImportComponent = async (demoId: string) => {
   try {
@@ -42,14 +42,19 @@ interface TabSetting {
   onClick?: () => void;
   demoId?: string;
   showCode?: boolean;
+  caption?: string;
 }
 
 interface VersatileTabsProps {
   settings: TabSetting[];
   className?: string;
+  compact?: boolean;
 }
 
-export default ({ settings, className }: VersatileTabsProps) => {
+/**
+ * TODO: able to show code at first, but still allowed to check the preview
+ */
+export default ({ settings, className, compact = false }: VersatileTabsProps) => {
   const [activeTab, setActiveTab] = useState(kebabCase(toLower(settings[0]?.title)));
   const [demoCodeStrings, setDemoCodeStrings] = useState<Record<string, string>>({});
   const [codeBlockVisibility, setCodeBlockVisibility] = useState<Record<string, boolean>>(
@@ -99,7 +104,7 @@ export default ({ settings, className }: VersatileTabsProps) => {
   };
 
   return (
-    <Tabs variant="underline" value={activeTab} onValueChange={handleTabChange} className={className}>
+    <Tabs variant="underline" value={activeTab} onValueChange={handleTabChange} className={cn('not-prose', className)}>
       <TabsList>
         {settings.map($s => (
           $s.title && (
@@ -113,7 +118,7 @@ export default ({ settings, className }: VersatileTabsProps) => {
         return (
           <TabsContent
             key={tabId} value={tabId}
-            className={$s.type === 'preview' ? 'tw:p-4' : ''}>
+            className={$s.type === 'preview' ? 'tw:p-4 tw:py-0' : ''}>
             {$s.type === 'normal' && (
               typeof $s.content === 'string'
                 ? <div dangerouslySetInnerHTML={{ __html: $s.content }} />
@@ -127,9 +132,12 @@ export default ({ settings, className }: VersatileTabsProps) => {
                     : $s.content
                   }
                 </div>
-                <PreviewBlock showCode={$s.showCode} toggleCodeBlock={() => toggleCodeBlockVisibility(tabId)}>
+                <PreviewBlock showCode={$s.showCode} toggleCodeBlock={() => toggleCodeBlockVisibility(tabId)} compact={compact}>
                   {DemoComponent && <DemoComponent />}
                 </PreviewBlock>
+                {$s.caption && <div className="tw:text-sm tw:text-muted-foreground tw:mt-2 tw:text-center">
+                  {$s.caption}
+                </div>}
                 {codeBlockVisibility[tabId] && <CodeBlock>{demoCodeStrings[tabId]}</CodeBlock>}
               </>
             )}

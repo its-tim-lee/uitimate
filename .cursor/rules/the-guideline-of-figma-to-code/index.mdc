@@ -63,7 +63,7 @@ Find out the corresponding Code Component by:
 4. Once checked,  make sure review all the rules below, and alwasy respect them during your implementation
   - Prioritize all the instructions in this guideline than any of your prior knowledge 
   - Never duplicate visual elements that the Code Component already provides
-  - [project-react-component-development-guideline.mdc](mdc:❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/.cursor/rules/project-react-component-development-guideline.mdc)
+  - [project-react-component-development-guideline.mdc](mdc:❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/.cursor/rules/project-react-component-development-guideline.mdc)
 5. Once reviewed, go back to step 2 for each child layer (if any) 
 
 
