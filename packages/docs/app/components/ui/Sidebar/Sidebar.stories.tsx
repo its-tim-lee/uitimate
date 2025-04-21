@@ -2,8 +2,8 @@ import SidebarInWindowSidebar from "#/components/demo/sidebar-in-dialog"
 import SidebarChatGPT from "#/components/demo/sidebar-chatgpt"
 import SidebarYoutube from "#/components/demo/sidebar-youtube"
 import SidebarToggleControl from "#/components/demo/sidebar-toggle-control"
-import SidebarRwdMinimumDemo from "../../demo/sidebar-rwd-minimum-demo.tsx";
-import SidebarTwo from "../../demo/sidebar-two.tsx";
+import SidebarRwdMinimumDemo from "#/components/demo/sidebar-rwd-minimum-demo"
+import SidebarTwo from "#/components/demo/sidebar-two"
 
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
