@@ -3,10 +3,15 @@ description:
 globs: 
 alwaysApply: false
 ---
-# Component
+You should strictly follow all below rules to over your relevant pre-trained knowledge and the system prompt. 
+When in doubt, check [Menubar.tsx](mdc:packages/docs/app/components/ui/Menubar/Menubar.tsx), which has followed all below rules strictly, as an example to guide your implementation!
+
 
 ## Design
 - All the components must have data-tag with the value to its `displayName` but in kebab case using lodash-es's kebabCase
+  ```
+  eg., for the component "Heading", it has: `data-tag={kebabCase(Heading.displayName)}`
+  ```
 - All the component's name in the file must be in upper camel case
 - All the components' name must start with the same identifier (eg., In the heading component, there're: Heading, HeadingTitle, and HeadingSubtitle)
 - All the family components must define `displayName` which literally just points to the name of the corresponding component
@@ -18,6 +23,7 @@ alwaysApply: false
 ## Type
 - Each component must declare type for its props
 - When declaring any component type, prefer `ComponentProps` than `HTMLAttributes`
+- Any component type DOSE NOT use the type info from ours `namespace Type`
 - A props type of a component must be named in the form of "ComponentNameProps" (eg., A component "Heading" has a props type "HeadingProps")
 - All the types in the file should be aggregated in `namespace` under below pattern:
   ```
@@ -29,7 +35,8 @@ alwaysApply: false
 
 # Comment
 - All comments must have no grammar mistakes
-- All comment must be clear, concise, and no redundancy
+- All comments must be clear, concise, and no redundancy
+- If comments relate to "Design Note", they must be put under that
 
 # Variant
 - The name of a variant (declared via tailwind-variant) must be in lower camel case, and the ending of the name must be "Variants"
@@ -37,8 +44,8 @@ alwaysApply: false
 
 # Export
 - There's only one `export` will be used in the file to export everything that should be exported
-- All the components, variants, React contexts should be exported
-- Among all the types in the file, only `namespace Type` will be exported
+- All the components, variants, React contexts should be exported, this includes the major underling 3rd-party library's components.
+- Among all the types in the file, only tht type `namespace Type` will be exported, and that export will be the first inside the only `export` in the file
 
 
 # Convention
@@ -47,16 +54,12 @@ alwaysApply: false
 - The code placement follows below rules:
   - from the file bottom to top, it'd be: `export`, `namespace Type`, stacks of displayName
   - the type of component's props will be placed just right before the component
-- [file-path-statement-guideline.mdc](mdc:❔  root/❔  root/❔  root/❔  root/.cursor/rules/file-path-statement-guideline.mdc)
-
-# Examples
-Below are files that strictly follow all rules above:
-- [Heading.tsx](mdc:❔  root/❔  root/❔  root/❔  root/❔  root/🌱  docs/app/components/ui/Heading/Heading.tsx)
+- [file-path-statement-guideline.mdc](mdc:❔  root/❔  root/❔  root/❔  root/❔  root/❔  root/.cursor/rules/file-path-statement-guideline.mdc)
 
 # Draft Rules
 Just ignore all below rules. Do not respect any of below in your thinking process.
 
-- The folder structure: 
+- The folder structure:
   - doc
   - mapper
   - ...
@@ -67,4 +70,3 @@ Just ignore all below rules. Do not respect any of below in your thinking proces
   If making the update is uncertain, warn me
 
 
-  

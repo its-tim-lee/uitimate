@@ -7,7 +7,7 @@ import { Link as ScrollLink } from "react-scroll";
 
 const UsageSection = () => {
   return (
-    <Heading size="h2" id="usage">
+    <Heading size="h2" id="usage" className="not-prose">
       <HeadingTitle>Usage</HeadingTitle>
       <HeadingSubtitle>How you can play this component.</HeadingSubtitle>
     </Heading>
@@ -16,7 +16,7 @@ const UsageSection = () => {
 
 const DemoApiSection = () => {
   return (
-    <Heading size="h2" id='demo-api'>
+    <Heading size="h2" id='demo-api' className="not-prose">
       <HeadingTitle>DEMO / API</HeadingTitle>
       <HeadingSubtitle>Trying to show all the common API/Component usages below, but this can be insufficient/impossible in some cases, and we'd then use
         {' '}
@@ -34,7 +34,7 @@ const DemoApiSection = () => {
 
 const DemoScenariosSection = () => {
   return (
-    <Heading size="h2" id="demo-scenarios">
+    <Heading size="h2" id="demo-scenarios" className="not-prose">
       <HeadingTitle>DEMO / Scenario</HeadingTitle>
       <HeadingSubtitle>This demostrates the commmon API/Component usages as well as some common real-world use cases.</HeadingSubtitle>
     </Heading>
@@ -44,7 +44,7 @@ const DemoScenariosSection = () => {
 
 const DemoRecipeSection = () => {
   return (
-    <Heading size="h2" id="demo-recipe">
+    <Heading size="h2" id="demo-recipe" className="not-prose">
       <HeadingTitle>DEMO / Recipe</HeadingTitle>
       <HeadingSubtitle>These are the ones that many other libraries might treat them as part of their core components, but we show how those can be implemented without futher encapsulation.</HeadingSubtitle>
     </Heading>
@@ -53,7 +53,7 @@ const DemoRecipeSection = () => {
 
 const DependenciesSection = () => {
   return (
-    <Heading size="h2" id="dependencies">
+    <Heading size="h2" id="dependencies" className="not-prose">
       <HeadingTitle>Dependencies</HeadingTitle>
       <HeadingSubtitle>Below lists out the 3rd-party libaries that this component depends on.</HeadingSubtitle>
     </Heading>
@@ -61,5 +61,5 @@ const DependenciesSection = () => {
 }
 
 export {
-  UsageSection, DemoApiSection, DemoScenariosSection, DemoRecipeSection, DependenciesSection
+  UsageSection, DemoScenariosSection, DemoRecipeSection, DependenciesSection
 }

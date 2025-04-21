@@ -1,0 +1,46 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Implementation Steps
+Decide the request from user is creating a whole new file or refactoring an existing file:
+
+If it's to create a new file, you must STRICTLY follow all the steps here:
+  1. Create a template by following the instruction "Template Starter" below
+  2. Modify the created template by following the instruction "Template modification" below
+  3. The template file should be placed as a sibling of the corresponding component
+
+If it's to refactor the existing file, you must STRICTLY follow all the steps here:
+  1. Use the template from the following instruction "Template Starter" as a prefer coding style to refactor the existing file
+  2. Follow the instruction "Template modification"
+
+# Template Starter
+Below is a storybook file template for the correponding component:
+```tsx
+import type { Meta } from '@storybook/react';
+import ComponentDemo from "#/components/demo/component-demo.tsx";
+
+export default {
+  title: 'Example/ComponentName',
+  includeStories: [],
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+} as Meta;
+
+export const Demo = {
+  name: 'Demo',
+  render: () => <ComponentDemo />
+};
+```
+
+# Template modification
+- The storybook file name must be in the form of ComponentName.stories.tsx
+- The `title` must be modified to align with the corresponding component name
+- There's usually having a dedicated demo component that you can find out under the path #/components/demo/
+  - once got the demo, modify the Demo story accordingly
+- You may check an example: [Heading.stories.tsx](mdc:❔  root/🌱  docs/app/components/ui/Heading/Heading.stories.tsx)
+- follow [file-path-statement-guideline.mdc](mdc:.cursor/rules/file-path-statement-guideline.mdc)
+

@@ -12,14 +12,18 @@ import {
 } from "#/components/improper/DialogOld/Dialog"
 import lf from 'localforage';
 import VersatileTabs from "#/components/internal/VersatileTabs";
+import { UsageSection } from "#/components/internal/ApiDoc.tsx";
 
 type ComponentPageUsageProps = {
   anatomy?: string,
   demoId: string,
-  preview?: React.ReactNode
+  preview?: React.ReactNode,
+  enableHeading?: boolean
 }
 
-export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
+export default ({ demoId, anatomy, preview, enableHeading = false }: ComponentPageUsageProps) => {
+  console.log('anatomy', anatomy)
+  console.log('demoId', demoId)
   const [activeTab, setActveTab] = useState('preview');
   const [touchedTab, setTouchedTab] = useState(activeTab);
   const [isDialogOpening, setIsDialogOpening] = useState(false);
@@ -89,7 +93,9 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
     },
   ];
   return (
-    <>
+    <div className='not-prose'>
+      {enableHeading && <UsageSection />}
+
       <VersatileTabs settings={tabSettings} />
 
       <Dialog open={isDialogOpening} onOpenChange={handleDialogOpenChange}>
@@ -106,6 +112,6 @@ export default ({ demoId, anatomy, preview }: ComponentPageUsageProps) => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 };
