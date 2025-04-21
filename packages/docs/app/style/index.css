@@ -235,7 +235,7 @@ FIXME: currently, prefix with animation will not work. It has been fixed but has
   }
 
   .tw\:code {
-    @apply tw:bg-gray-100 tw:text-gray-800 tw:text-xs tw:font-medium tw:me-2 tw:px-2.5 tw:py-0.5 tw:rounded-sm tw:dark:bg-gray-700 tw:dark:text-gray-300;
+    @apply tw:bg-muted/50 tw:rounded-sm tw:px-2 tw:py-0.5 tw:font-mono tw:text-sm tw:border tw:border-border/50 tw:dark:bg-muted/20;
   }
 }
 

@@ -5,7 +5,7 @@ import {
 } from "./Heading.tsx";
 import {
   UsageSection,
-  DemoApiSection,
+
   DemoScenariosSection,
 } from "#/components/internal/ApiDoc.tsx";
 import VersatileTabs from "#/components/internal/VersatileTabs.tsx";

@@ -1,0 +1,97 @@
+import { useMDXComponent } from '#/helpers/hooks/useMDXComponent'
+import { type ComponentProps } from 'react';
+import ComponentPageUsage from './ComponentPageUsage.tsx';
+import { DemoScenariosSection, DemoRecipeSection, DependenciesSection } from './ApiDoc.tsx';
+import { cn } from '#/helpers/css.ts';
+import { Link } from 'react-router';
+import VersatileTabs from './VersatileTabs.tsx';
+import ComponentPageHero from './ComponentPageHero.tsx';
+import { QA, DefinitionSection, QASection, QuickDemoSection, QuickStartSection } from './IntroductionDoc.tsx';
+import Banner from './InfoBanner.tsx';
+import { LinkScrollTo } from './LinkScrollTo.tsx';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/Collapsible/Collapsible.tsx';
+import { Icon } from '../ui/Icon/Icon.tsx';
+const components = {
+  ComponentPageHero,
+  ComponentPageUsage,
+  DemoScenariosSection,
+  DemoRecipeSection,
+  DependenciesSection,
+  QuickStartSection,
+  QuickDemoSection,
+  DefinitionSection,
+  QASection,
+  Banner,
+  QA,
+  VersatileTabs,
+  Details: ({ ...props }: ComponentProps<typeof Collapsible>) => <Collapsible {...props} />,
+  DetailsTrigger: ({ children, ...props }: ComponentProps<typeof CollapsibleTrigger>) => {
+    return (
+      <CollapsibleTrigger {...props} className='tw:cursor-pointer tw:flex tw:items-center tw:gap-2 tw:p-4 tw:pl-0 tw:text-muted-foreground'>
+        <Icon icon='lucide:chevron-right' className='tw:in-data-[state=open]:rotate-90' />
+        {children}
+      </CollapsibleTrigger>
+    )
+  },
+  DetailsContent: ({ ...props }: ComponentProps<typeof CollapsibleContent>) => <CollapsibleContent className='tw:p-4 tw:pt-0 tw:text-muted-foreground' {...props} />,
+  code: ({ className, ...props }: { className?: string } & React.HTMLAttributes<HTMLElement>) => {
+    // Don't apply styling if it's within a pre (code block)
+    const isInPre = className?.includes('language-') || false;
+    if (isInPre) return <code className={className} {...props} />;
+    return (
+      <code
+        className={cn(
+          "tw:code not-prose",
+          className
+        )}
+        {...props}
+      />
+    );
+  },
+  a: ({ className, ...props }: ComponentProps<'a'>) => {
+    if (!props.href) {
+      return <a className={cn("tw:link", className)} {...props} />;
+    }
+    // if it's an external link...
+    if (props.href.startsWith('http') || props.href.startsWith('https')) {
+      return (
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn("tw:link", className)}
+          to={props.href}
+          {...props}
+        />
+      );
+    }
+
+    // If it starts with /, ./, or ../ treat it as a path
+    if (props.href.startsWith('/') || props.href.startsWith('./') || props.href.startsWith('../')) {
+      const relativePath = props.href.startsWith('/') ? `.${props.href}` : props.href;
+      return (
+        <Link
+          className={cn("tw:link", className)}
+          to={relativePath}
+          {...props}
+        />
+      );
+    }
+
+    // Otherwise, treat it as a scroll target
+    return (
+      <LinkScrollTo
+        to={props.href}
+        className={className}
+      >
+        {props.children}
+      </LinkScrollTo>
+    );
+  },
+}
+type MdxProps = ComponentProps<'div'> & {
+  code: string
+}
+export const Mdx = ({ code }: MdxProps) => {
+  const Component = useMDXComponent(code)
+  return <Component components={components} />
+}

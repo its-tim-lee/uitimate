@@ -1,6 +1,6 @@
 import {
   UsageSection,
-  DemoApiSection,
+
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,

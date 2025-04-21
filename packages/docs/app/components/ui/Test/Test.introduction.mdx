@@ -1,0 +1,153 @@
+---
+component: test
+---
+{/* <ComponentPageHero title='API' subtitle={meta.description} /> */}
+import meta from '#/components/ui/Avatar/Avatar.meta.tsx';
+
+<QuickDemoSection />
+<VersatileTabs
+  settings={[
+    {
+      type: "preview",
+      demoId: "sidebar-chatgpt",
+      showCode: false,
+    }
+  ]}
+/>
+
+<DefinitionSection>
+The word "sidebar" actually has at least two different meanings. It can be:
+* A context, or
+* A physical card (to represent the shape of "sidebar")
+
+Physically, a sidebar itself is actually just a card, and nothing more.
+But since it is called "sidebar", it's obvious that people use such "card" in a narrow use cases compare to the infinite use cases of a general card.
+
+The "narrow use cases" are actually reflected on:
+- How usually the sidebar affects the surround elements?
+- What're the usual things inside the sidebar?
+
+In fact, such use cases just came from the usage experience of human being:
+
+- For sidebar's outside world
+  - When it shows up, it may or may not affect the size of the surrounding elements (eg., if the sidebar is floating, it usually don't affect any kind of other stuff)
+  - It can be always there, or can choose to be hidden
+  - On desktop, the sidebar will only be presented horizontally (ie., it's incredible extreme rare that a desktop sidebar is showing up vertically, like, from the bottom of the page)
+  - On mobile, the sidebar can appear from any edge (ie., top, right, bottom, left), although from the top is almost not the case.
+  - There can have more than one sidebar, but it's usually just two, and it's hard to see more than two at the same time. Even if a page has more than two, usually many of them are only meant to be showing up under certain scenarios.
+  - There's no any restriction that how sidebars can be stacked together, or how the next/previous sidebar should be showing up
+  - That's. Probably no other patterns
+
+- For sidebar's inside world
+  - Beside the fact that list(s) is almost always there, no other patterns are really fixed or just as common as list(s), but people really can put any kind of stuff inside the sidebar.
+  - Note that, even thought the list(s) are common elements in the sidebar, DOES NOT mean that it'd not be a sidebar if it doesn't have such elements
+
+Now, these observed patterns are only happened/used under certain context,
+so it's important to give the name to the context, and we can simply just call it "sidebar (context)".
+</DefinitionSection>
+
+
+<QuickStartSection />
+<Banner>
+Without fully understanding [the definition](definition) first, you might hit a wall when reading below, because it can refer any concept/jargon that has been explained well there.
+</Banner>
+
+Our sidebar component exposes 3 family components:
+- SidebarLayout
+  - Usually contains exactly two child components: <code>Sidebar</code> and <code>SidebarPeer</code>
+  - Implements the core functionality of the "sidebar context"
+- Sidebar
+  - From the high level view, you may imagine that it's just like a card in the sidebar context, nothing special.
+  - Since it's just a card, you can put anything you want into it; no restriction.
+- SidebarPeer
+  - The name of this component should already explain everything. It's… the peer of the Sidebar, the most boring one.
+  - Typically contains the main content of your application, but in fact, there's no any kind of restriction that what kind of thing you can put it in.
+
+Before we get into more details, how about playing with a very simple demo and briefly looking into the corresponding code snippet:
+      <VersatileTabs
+        compact
+        settings={[
+          {
+            type: "preview",
+            demoId: "sidebar-toggle-control",
+          }
+        ]}
+      />
+
+<Details>
+  <DetailsTrigger>
+    If now you have a little voice in your mind: *“Wow! This is very different from _**<u>Shadcn</u>**_’s Sidebar!”*
+  </DetailsTrigger>
+  <DetailsContent>
+    Yes, you’re right about your keen sense!
+
+    Again, anything in our sidebar component all come from [the definition](definition),
+    but in fact, all the statements there are just common sense / practical observation.
+
+    Without a strong spec, a component design will never be right,
+    and it might look fancy at certain time, but it’d have the devastating consequences.
+  </DetailsContent>
+</Details>
+
+### 1️⃣ The Sidebar
+
+Our Sidebar will use [Drawer](./../../drawer/introduction) (we call it "mobile sidebar")
+under the hood when in the small breakpoint, so this leads to below use cases:
+
+1. You only want to have a desktop sidebar (ie., the sidebar will be the same at any breakpoint)
+2. You just want to use our solution anyway
+3. There're probably other cases, but should be rare or just easy to come up with the solutions
+
+The first case will be explained in the next section. Below I explain what you need to know in the 2nd case:
+
+So any prop or class you pass into Sidebar will be forwarded to both desktop and mobile sidebar (note: the desktop sidebar is just a div with some styles; nothing special.)
+
+Since the inner layout in the mobile sidebar can be different from the desktop’s (actually, it’s very common to have different designs),
+so our policy is: whenever you use Sidebar, you must explicit specify what kinds of inner layout you want in each sidebar by using
+`Sidebar.Mobile` and `Sidebar.Desktop`:
+
+      <VersatileTabs
+        compact
+        settings={[
+          {
+            type: "preview",
+            demoId: "sidebar-rwd-minimum-demo",
+            caption: "resize the viewport to see the mobile sidebar."
+          }
+        ]}
+      />
+
+<Banner>
+  As you can see in the code snippet, you must also declare {`<DrawerHeader>`} inside {`<Sidebar.Mobile>`}
+</Banner>
+
+```tsx
+
+   {/* To have the left Sidebar: */}
+    <SidebarLayout>
+      <SidebarPeer/>
+    </SidebarLayout>
+
+    {/* To have the right Sidebar: */}
+    <SidebarLayout>
+      <SidebarPeer/>
+      <Sidebar/>
+    </SidebarLayout>
+```
+
+
+
+
+<QASection />
+      <QA items={[
+        {
+          value: 'vertical-desktop-sidebar',
+          trigger: "Why the desktop sidebar can't be in direction vertically?",
+          content: (
+            <p>
+              fork
+            </p>
+          )
+        }
+      ]} />
+<DependenciesSection />
