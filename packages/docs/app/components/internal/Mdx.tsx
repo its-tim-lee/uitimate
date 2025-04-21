@@ -5,8 +5,10 @@ import { DemoScenariosSection, DemoRecipeSection, DependenciesSection } from './
 import { cn } from '#/helpers/css.ts';
 import { Link } from 'react-router';
 import VersatileTabs from './VersatileTabs.tsx';
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from './VersatileTabs2.tsx';
 import ComponentPageHero from './ComponentPageHero.tsx';
 import { QA, DefinitionSection, QASection, QuickDemoSection, QuickStartSection } from './IntroductionDoc.tsx';
+import { QA2, QA2Item, QA2Trigger, QA2Content } from './QA2.tsx';
 import Banner from './InfoBanner.tsx';
 import { LinkScrollTo } from './LinkScrollTo.tsx';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/Collapsible/Collapsible.tsx';
@@ -23,7 +25,15 @@ const components = {
   QASection,
   Banner,
   QA,
+  QA2,
+  QA2Item,
+  QA2Trigger,
+  QA2Content,
   VersatileTabs,
+  VersatileTabs2,
+  VersatileTabs2List,
+  VersatileTabs2Trigger,
+  VersatileTabs2Content,
   Details: ({ ...props }: ComponentProps<typeof Collapsible>) => <Collapsible {...props} />,
   DetailsTrigger: ({ children, ...props }: ComponentProps<typeof CollapsibleTrigger>) => {
     return (
@@ -33,7 +43,7 @@ const components = {
       </CollapsibleTrigger>
     )
   },
-  DetailsContent: ({ ...props }: ComponentProps<typeof CollapsibleContent>) => <CollapsibleContent className='tw:p-4 tw:pt-0 tw:text-muted-foreground' {...props} />,
+  DetailsContent: ({ ...props }: ComponentProps<typeof CollapsibleContent>) => <CollapsibleContent className='tw:p-4 tw:pt-0 tw:-mt-10 tw:text-muted-foreground' {...props} />,
   code: ({ className, ...props }: { className?: string } & React.HTMLAttributes<HTMLElement>) => {
     // Don't apply styling if it's within a pre (code block)
     const isInPre = className?.includes('language-') || false;

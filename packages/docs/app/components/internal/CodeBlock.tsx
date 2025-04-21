@@ -5,7 +5,13 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { Icon } from "#/components/ui/Icon/Icon"
 import { useState } from "react"
 
-export const CodeBlock = (props: ComponentProps<typeof SyntaxHighlighter>) => {
+interface CodeBlockProps extends ComponentProps<typeof SyntaxHighlighter> {
+  showPreviewToggle?: boolean;
+  previewVisible?: boolean;
+  onTogglePreview?: () => void;
+}
+
+export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, ...props }: CodeBlockProps) => {
   const [isCopied, setIsCopied] = useState(false)
 
   const handleCopy = async () => {
@@ -21,15 +27,28 @@ export const CodeBlock = (props: ComponentProps<typeof SyntaxHighlighter>) => {
       <SyntaxHighlighter language="tsx" style={vscDarkPlus} {...props}>
         {props.children}
       </SyntaxHighlighter>
-      <Cta
-        size='sm'
-        variant='ghost'
-        shapes={['icon']}
-        className='tw:absolute tw:top-2 tw:right-2 tw:shadow-none tw:bg-transparent tw:text-white tw:dark:text-black'
-        onClick={handleCopy}
-      >
-        <Icon icon={isCopied ? 'lucide:check' : 'lucide:copy'} />
-      </Cta>
+      <div className="tw:absolute tw:top-2 tw:right-2 tw:flex tw:gap-2">
+        {showPreviewToggle && (
+          <Cta
+            size='sm'
+            variant='ghost'
+            shapes={['icon']}
+            className='tw:shadow-none tw:bg-transparent tw:text-white tw:dark:text-black'
+            onClick={onTogglePreview}
+          >
+            <Icon icon="lucide:eye" />
+          </Cta>
+        )}
+        <Cta
+          size='sm'
+          variant='ghost'
+          shapes={['icon']}
+          className='tw:shadow-none tw:bg-transparent tw:text-white tw:dark:text-black'
+          onClick={handleCopy}
+        >
+          <Icon icon={isCopied ? 'lucide:check' : 'lucide:copy'} />
+        </Cta>
+      </div>
     </div>
   )
 }
