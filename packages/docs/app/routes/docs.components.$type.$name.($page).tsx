@@ -14,10 +14,13 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   const page = params.page?.toLowerCase() || 'api';
   const key = type === 'core' ? `${name}/${page}` : name;
   const doc = allDocs.find(d => {
-    const fileType = d._raw?.flattenedPath?.split('.')?.pop(); // eg., "Test/Test.introduction" -> "introduction"
-    return d.component === name && fileType === page;
+    const fileType = d._raw?.flattenedPath?.split('.')?.pop()?.toLowerCase(); // eg., "Test/Test.introduction" -> "introduction"
+    return d.component?.toLowerCase() === name && fileType === page;
   });
-  const metaFilePath = Object.keys(componentMetas).find(path => path.toLowerCase().includes(`/${name}/${name}.meta`));
+
+  const metaFilePath = Object.keys(componentMetas).find(path =>
+    path.toLowerCase().includes(`/${name}/${name}.meta`)
+  );
   const meta = metaFilePath ? componentMetas[metaFilePath] : null;
   return { type, key, page, name, doc, meta };
 };

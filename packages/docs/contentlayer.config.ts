@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import { casing } from '#/helpers/utils.ts';
+import codeImport from 'remark-code-import';
+
 export const Doc = defineDocumentType(() => ({
   name: 'Doc',
   filePathPattern: `**/*.mdx`,
@@ -33,5 +35,8 @@ export const Doc = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: './app/components/ui',
-  documentTypes: [Doc]
+  documentTypes: [Doc],
+  mdx: {
+    remarkPlugins: [codeImport],
+  }
 })
