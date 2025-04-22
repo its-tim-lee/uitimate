@@ -5,7 +5,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 import { kebabCase } from "lodash-es"
 
 const HeadingContext = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' }>({ size: 'h1' })
-
+// FIXME: intergate with https://github.com/tailwindlabs/tailwindcss-typography
 const headingVariants = tv({
   slots: {
     root: "tw:flex tw:flex-col tw:gap-1.5 tw:text-left tw:mb-3 tw:relative",

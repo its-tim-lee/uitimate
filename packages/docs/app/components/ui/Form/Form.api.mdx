@@ -1,0 +1,59 @@
+---
+component: form
+---
+import meta from './Form.meta.tsx';
+
+<ComponentPageUsage
+  demoId="form-damn-easy-demo"
+  enableHeading
+  anatomy={meta.anatomy}
+/>
+
+<br />
+<br />
+
+<DemoScenariosSection />
+<VersatileTabs2 defaultValue="form-radiogroup-demo">
+  <VersatileTabs2List>
+    <VersatileTabs2Trigger value="form-radiogroup-demo">RadioGroup</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-input-demo">Input</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-select-demo">Select</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-switch-demo">Switch</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-textarea-demo">Textarea</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-datepicker-demo">DatePicker</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-combobox-demo">Combobox</VersatileTabs2Trigger>
+  </VersatileTabs2List>
+  <VersatileTabs2Content value="form-radiogroup-demo" demoId="form-radiogroup-demo"/>
+  <VersatileTabs2Content value="form-input-demo" demoId="form-input-demo"/>
+  <VersatileTabs2Content value="form-select-demo" demoId="form-select-demo"/>
+  <VersatileTabs2Content value="form-switch-demo" demoId="form-switch-demo"/>
+  <VersatileTabs2Content value="form-textarea-demo" demoId="form-textarea-demo"/>
+  <VersatileTabs2Content value="form-datepicker-demo" demoId="form-datepicker-demo"/>
+  <VersatileTabs2Content value="form-combobox-demo" demoId="form-combobox-demo"/>
+</VersatileTabs2>
+
+
+<br />
+<br />
+
+<DemoRecipeSection />
+<VersatileTabs2 defaultValue="form-remove-app-from-project">
+  <VersatileTabs2List>
+    <VersatileTabs2Trigger value="form-remove-app-from-project">In Dialog</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-firebase-register-app">Firebase App Registration</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="stripe-billing-info">Stripe Billing Info</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="stripe-payment-method">Stripe Payment Method</VersatileTabs2Trigger>
+  </VersatileTabs2List>
+  <VersatileTabs2Content value="form-remove-app-from-project" demoId="form-remove-app-from-project"/>
+  <VersatileTabs2Content value="form-firebase-register-app" demoId="form-firebase-register-app"/>
+  <VersatileTabs2Content value="stripe-billing-info" demoId="stripe-billing-info"/>
+  <VersatileTabs2Content value="stripe-payment-method" demoId="stripe-payment-method"/>
+</VersatileTabs2>
+
+<br />
+<br />
+
+<DependenciesSection/>
+- [react-hook-form](https://react-hook-form.com/)
+- [zod](https://zod.dev/)
+- [@uitimate/label](./../../label/introduction)
