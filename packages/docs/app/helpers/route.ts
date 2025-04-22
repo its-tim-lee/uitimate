@@ -104,8 +104,8 @@ allDocs.forEach(doc => {
   const name = doc.component?.toLowerCase();
   if (!name) return;
 
-  const fileType = doc._raw?.flattenedPath?.split('.')?.pop()?.toLowerCase(); // e.g., "introduction" or "api"
-  if (!fileType || !['introduction', 'api'].includes(fileType)) return;
+  const fileType = doc._raw?.flattenedPath?.split('.')?.[1]?.toLowerCase(); // e.g., "introduction", "api", or "tutorial"
+  if (!fileType || !['introduction', 'api', 'tutorial'].includes(fileType)) return;
 
   if (!componentPages.has(name)) {
     componentPages.set(name, new Set());
@@ -137,6 +137,16 @@ function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
       type: 'link' as const,
       title: 'Introduction',
       href: `/docs/components/core/${name}/introduction`,
+      labels: [],
+      items: []
+    });
+  }
+
+  if (pages.has('tutorial')) {
+    items.push({
+      type: 'link' as const,
+      title: 'Tutorial',
+      href: `/docs/components/core/${name}/tutorial`,
       labels: [],
       items: []
     });

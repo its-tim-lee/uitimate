@@ -1,0 +1,62 @@
+---
+component: form
+---
+# Tutorial 1: Firebase App Registration
+Let's first take a look of what we gonna build just visually:
+
+<VersatileTabs2 defaultValue="form-firebase-register-app">
+  <VersatileTabs2Content value="form-firebase-register-app" demoId="form-firebase-register-app" caption="I don't suggest you to review the corresponding code at least now." />
+</VersatileTabs2>
+
+It looks damn simple from the surface, right? But it's not in terms of the implementation complexity.
+To be fair, it's quite complicated!
+
+It's in fact, however, a great example to show how to build a complex form with RHF in the right way!
+
+## 1️⃣ RHF's `form` & `formState`
+If you are really heavily playing the demo incredibly carefully in many scenarios,
+you will find out lots of states are going on in the background; to well control those states,
+we need to access RHF's `form` and [`formState`](https://react-hook-form.com/docs/useform/formstate) by using `setForm` and `setFormState` props on the `<Form>`:
+
+> Note: we use [`useForm`](https://react-hook-form.com/docs/useform) under the hood, and `form` is just the return value from that.
+
+```tsx
+const [form, setForm] = useState(undefined);
+const [formState, setFormState] = useState(undefined);
+// ...
+<Form
+  setForm={setForm}
+  setFormState={setFormState}
+  // ...
+>
+```
+
+<Banner>
+If you're experienced with RHF, you might already know `formState` can be accessed from `form`,
+but in fact the `formState` getting from that way is different than what we're doing here (yeah, shocking),
+so you can't do so, otherwise things will break.
+</Banner>
+
+## 2️⃣ The challengs
+
+- Async validation/Schema
+- Disabling state control
+- ...
+
+WIP...
+
+(this tutorial is just fu*king hard to write, and I'm just still working on it, but in the mean time, you can review the code yourself in the demo 😂)
+
+
+<br />
+<br />
+
+# Tutorial 2: Stripe Payment Method
+<VersatileTabs2 defaultValue="stripe-payment-method">
+  <VersatileTabs2Content value="stripe-payment-method" demoId="stripe-payment-method" caption="I don't suggest you to review the corresponding code at least now." />
+</VersatileTabs2>
+WIP....
+- Different validation scenarios (onBlur, onChange)
+- RHF: global error handling (serverError)
+- Mask
+  - how it makes error handling & schema declaration just easier
