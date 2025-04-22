@@ -6,6 +6,10 @@ export type DocTreeItem = {
   labels: string[];
   href: string;
   items: DocTreeItem[];
+  tags?: {
+    root?: string[];
+    tutorial?: string[];
+  };
 }
 
 export default {

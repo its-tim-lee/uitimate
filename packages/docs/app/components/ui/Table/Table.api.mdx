@@ -1,0 +1,22 @@
+---
+component: table
+---
+import meta from './Table.meta.tsx';
+
+<ComponentPageUsage
+  demoId="table-default-demo"
+  enableHeading
+  anatomy={meta.anatomy}
+/>
+
+<br />
+
+<DemoScenariosSection />
+<VersatileTabs2 defaultValue="table-data-demo" compact>
+  <VersatileTabs2List>
+    <VersatileTabs2Trigger value="table-data-demo">With TanStack</VersatileTabs2Trigger>
+  </VersatileTabs2List>
+  <VersatileTabs2Content value="table-data-demo" demoId="table-data-demo" />
+</VersatileTabs2>
+
+
