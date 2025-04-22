@@ -62,6 +62,21 @@ Object.entries(changelogs).forEach(([path, content]) => {
   }
 });
 
+// Add meta files to the imports
+const metaFiles = import.meta.glob('./../components/ui/**/*.meta.tsx', { eager: true, import: 'default', });
+
+// Add meta registry to store component meta information
+const metaRegistry: Record<string, { tags?: { root?: string[], tutorial?: string[] } }> = {};
+
+// Process meta files
+Object.entries(metaFiles).forEach(([path, meta]) => {
+  const parts = path.split('/');
+  const name = parts[parts.length - 2].toLowerCase(); // component directory name, eg., "cta"
+  if (name && meta && typeof meta === 'object' && 'tags' in meta) {
+    metaRegistry[name] = meta as { tags?: { root?: string[], tutorial?: string[] } };
+  }
+});
+
 // Generate Core items for site navigation
 export const coreItems: DocTreeItem[] = [];
 export const recipeItems: DocTreeItem[] = [];
@@ -131,6 +146,7 @@ recipeItems.splice(0, recipeItems.length, ...orderBy(recipeItems, ['title'], ['a
 
 function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
   const items: DocTreeItem[] = [];
+  const meta = metaRegistry[name];
 
   if (pages.has('introduction')) {
     items.push({
@@ -148,7 +164,9 @@ function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
       title: 'Tutorial',
       href: `/docs/components/core/${name}/tutorial`,
       labels: [],
-      items: []
+      items: [],
+      // Only add tutorial tags to the tutorial page
+      tags: meta?.tags?.tutorial ? { tutorial: meta.tags.tutorial } : undefined
     });
   }
 
@@ -177,7 +195,9 @@ function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
     title: name,
     href: '',
     labels: [],
-    items
+    items,
+    // Only add root tags to the collapsible parent
+    tags: meta?.tags?.root ? { root: meta.tags.root } : undefined
   };
 }
 
