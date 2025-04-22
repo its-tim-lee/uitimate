@@ -1,33 +1,25 @@
-import { type CheckedState } from "#/components/ui/Checkbox/Checkbox"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "./Form.tsx"
-import { Cta } from "#/components/ui/Cta/Cta.tsx"
-import { z } from "zod"
-import { Input } from "#/components/ui/Input/Input.tsx"
-import { useEffect, useRef, useState, useId } from "react";
-import { sleep } from "#/helpers/utils";
-import { Icon } from "#/components/ui/Icon/Icon.tsx";
-import { TooltipContent, TooltipTrigger } from "#/components/ui/Tooltip/Tooltip.tsx";
-import { Tooltip } from "#/components/ui/Tooltip/Tooltip.tsx";
-import { Checkbox } from "#/components/ui/Checkbox/Checkbox.tsx";
-import {
-  type FormState,
-  type UseFormReturn,
-  type FieldValues,
-  useFormContext
-} from "react-hook-form";
-import { nanoid } from "nanoid";
-import { Label } from "#/components/ui/Label/Label.tsx"
+import RadioGroupForm from "#/components/demo/form-radiogroup-demo.tsx";
+import FormInputDemo from '#/components/demo/form-input-demo.tsx';
+import FormSelectDemo from '#/components/demo/form-select-demo.tsx';
+import FormSwitchDemo from '#/components/demo/form-switch-demo.tsx';
+import FormTextareaDemo from '#/components/demo/form-textarea-demo.tsx';
+import FormDatePickerDemo from '#/components/demo/form-datepicker-demo.tsx';
+import FormComboboxDemo from '#/components/demo/form-combobox-demo.tsx';
+import ShadcnForm from "#/components/demo/form-shadcn-just-test.tsx";
 import FormFirebaseRegisterApp from "#/components/demo/form-firebase-register-app.tsx";
 import FormRemoveAppFromProject from "#/components/demo/form-remove-app-from-project.tsx"
+import FormDamnEasyDemo from "#/components/demo/form-damn-easy-demo.tsx"
 import StripeBillingInfo from "#/components/demo/stripe-billing-info.tsx";
 import StripePaymentMethod from "#/components/demo/stripe-payment-method.tsx"
+import { type Meta } from "@storybook/react";
+export default {
+  title: 'Example/Form',
+  // includeStories: [],
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+} as Meta
 
 export const RegisterApp = {
   name: 'Showcase / Firebase Register App',
@@ -39,26 +31,9 @@ export const RemoveAppFromProject = {
   render: () => <FormRemoveAppFromProject />
 };
 
-
-export default {
-  title: 'Example/Form',
-  includeStories: [],
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-}
-
-export const Variant1 = {
-  name: 'Default',
-  render: () => {
-    return (
-      <></>
-    )
-  },
+export const DamnEasyForm = {
+  name: 'Showcase / Damn Easy Form',
+  render: () => <FormDamnEasyDemo />
 };
 
 export const STRIPE_BILLING_INFO = {
@@ -69,4 +44,45 @@ export const STRIPE_BILLING_INFO = {
 export const STRIPE_PAYMENT_METHOD = {
   name: 'Showcase / Stripe Payment Method',
   render: () => <StripePaymentMethod />
+};
+
+// Just for testing
+// export const SHADCN_FORM = {
+//   name: 'Showcase / Shadcn Form',
+//   render: () => <ShadcnForm />
+// };
+
+export const RADIO_GROUP_FORM = {
+  name: 'Showcase / Radio Group Form',
+  render: () => <RadioGroupForm />
+};
+
+export const SELECT_FORM = {
+  name: 'Showcase / Select Form',
+  render: () => <FormSelectDemo />
+};
+
+export const FORM_INTEGRATION = {
+  name: 'SCENARIO / FORM INTEGRATION',
+  render: () => <FormInputDemo />
+};
+
+export const SWITCH_FORM = {
+  name: 'Showcase / Switch Form',
+  render: () => <FormSwitchDemo />
+};
+
+export const TEXTAREA_FORM = {
+  name: 'Showcase / Textarea Form',
+  render: () => <FormTextareaDemo />
+};
+
+export const DATE_PICKER_FORM = {
+  name: 'Showcase / Date Picker Form',
+  render: () => <FormDatePickerDemo />
+};
+
+export const COMBOBOX_FORM = {
+  name: 'Showcase / Combobox Form',
+  render: () => <FormComboboxDemo />
 };

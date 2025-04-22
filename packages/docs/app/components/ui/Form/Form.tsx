@@ -1,5 +1,4 @@
 import { useId, useContext, createContext, type ComponentProps, useEffect, useRef } from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import { isEqual, omit, mapValues, isEmpty, kebabCase } from "lodash-es"
 import {
@@ -135,7 +134,7 @@ const FormItem = ({
   ...props
 }: FormItemProps) => {
   const id = useId();
-  const { getFieldState, formState } = useFormContext() // corresponds to `FormProvider` that we can access the result from `useForm`
+  const { getFieldState, formState, control } = useFormContext() // corresponds to `FormProvider` that we can access the result from `useForm`
   // getting the state of the form control element
   // it's expressed as `{ isDirty, isTouched, invalid, error }`
   const fieldState = getFieldState(props.name, formState)
@@ -158,8 +157,11 @@ const FormItem = ({
       formMessageId: `${id}-form-item-message`,
       ...fieldState
     }}>
-      {/* The offical doc mentioned that when `Controller` is used with FormProvider, passing `control` to `Controller` is optional */}
-      <Controller {...props} render={({ field }) => { // to see what `field` is, check the comments in `FormControl`
+      {/*
+        The offical doc mentioned that when `Controller` is used with FormProvider,
+        passing `control` to `Controller` is optional, but we pass it anyway in case of any future changes.
+      */}
+      <Controller {...props} control={control} render={({ field }) => { // to see what `field` is, check the comments in `FormControl`
         return (
           <FormControlCtx.Provider value={{ field }}>
             <div data-tag={kebabCase(FormItem.displayName)} className={cn("tw:space-y-2", className)}>{children}</div>
@@ -170,7 +172,7 @@ const FormItem = ({
   );
 };
 
-type FormLabelProps = ComponentProps<typeof LabelPrimitive.Root>
+type FormLabelProps = ComponentProps<typeof Label>
 const FormLabel = ({ className, ...props }: FormLabelProps) => {
   const { error, formItemId } = useContext(FormItemCtx)
   return <Label className={cn(error && "tw:text-destructive", className)} htmlFor={formItemId} {...props} />
@@ -226,6 +228,11 @@ const FormControl = ({ maskedInput, ...props }: FormControlProps) => {
 }
 
 type FormDescriptionProps = ComponentProps<'div'>
+/**
+ * Usage Notes:
+ * Compare to `<FormMessage>`, this is usually used to display always-visible description for the form control element.
+ * eg., some checkbox not only have a label, but also have a description below the label.
+ */
 const FormDescription = ({ className, ...props }: FormDescriptionProps) => {
   const { formDescriptionId } = useContext(FormItemCtx)
   return <div
@@ -237,6 +244,11 @@ const FormDescription = ({ className, ...props }: FormDescriptionProps) => {
 }
 
 type FormMessageProps = ComponentProps<'div'>
+/**
+ * Usage Notes:
+ * It's used to display some hints just below the form control element,
+ * such as the error message, or some helpful things to basically help the consumer to successfully fill-up the form
+ */
 const FormMessage = ({ className, children, ...props }: FormMessageProps) => {
   const { error, formMessageId } = useContext(FormItemCtx)
   const body = error ? String(error?.message) : children

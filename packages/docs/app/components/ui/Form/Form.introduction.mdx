@@ -1,0 +1,230 @@
+---
+component: form
+---
+<QuickDemoSection />
+<VersatileTabs2 defaultValue="form-remove-app-from-project">
+  <VersatileTabs2List>
+    <VersatileTabs2Trigger value="form-remove-app-from-project">Preview</VersatileTabs2Trigger>
+  </VersatileTabs2List>
+  <VersatileTabs2Content value="form-remove-app-from-project" demoId="form-remove-app-from-project" showCode={false} />
+</VersatileTabs2>
+
+<br /><br />
+
+
+
+<QuickStartSection />
+Form-building will be incredible hard without a proper framework on both coding and guidence.
+So we provide the proper framework RHF (aka. [*<u>React Hook Form</u>*](https://github.com/react-hook-form/react-hook-form)) on the coding side,
+and the most importantly, we'll teach you how to use it right.
+
+<details>
+<summary>**DEEP DIVE**: Why building form is hard?</summary>
+
+   In the front-end world, there are several classic applications are hard to build, including form.
+   (frankly, comparing to the others, form is actually not that hard to build)
+   but they all share the basic difficulty to overcome when things get tough: tons of states to manage.
+
+   When number of states exceed certain limit, it's tough to manage them, and so people then create another layer of solution for better do the management.
+   RHF is one of seveal layers in the field of form-building.
+
+   RHF is great, but it's quite flexible, such that without proper guidence,
+   it is very easy to get into so many problems, including, but not limited to:
+   - RHF seems incompetent. Maybe I need to use another framework.
+   - There are still just too many states that are hard to manage, maybe I need to add another complextiy like RxJS.
+   - After using RHF, the code seems becoming more messy and complex.
+   - I just have no idea how to even use RHF to implement certain features
+   - ...
+
+   So the takeaway here is that, building a form needs you to choose an appropriate framework,
+   but at the same time, and probably more importantly, you need to learn how to use it right,
+   and this can be a bit long journey to go if you expected that building a forum is not hard.
+   <br /><br />
+</details>
+<details>
+  <summary>**DEEP DIVE**: What's RHF?</summary>
+
+   I think the introduction in RHF's site is inappropriate for the beginners.
+
+   So I'll try to explain it better at here.
+
+  Simply put. It's a headless UI framework.
+  The longer answer is:
+   - It's more like a framework instead of a library, because adopting it means that you will build a form in a unique way provided by RHF,
+   and since it is a framework, it's quite big to learn, and migrate it to other similar libraries will not be trivial.
+   - It's also a headless UI, but it is more like the one that mainly provides many control toolkits for form states management instead of React components;
+   so it's different from **Radix**'s approach (because **Radix**'s is so called "headless UI component"), and more like the fashion of **TanStack Table**.
+   <br /><br />
+</details>
+
+Since teaching of building-a-form via RHF is a non-trivial task, learning things progressively becomes a must:
+
+On this page, you'll learn the very basic concepts of RHF,
+and once you've learned the fundamentals, in the tutorial pages,
+you'll see how RHF can be used to solve a tough design problem while still keeping you being able to manage everything well.
+
+
+#### 1️⃣ Form Jargons
+Fully understanding below jargons are critical, because many APIs (including ours components, and RHF's documentation) and concepts will refer to them in many ways.
+
+- **form control**: sometimes also called "control element", which is just the elements that are oftenly be used in a form such as input, textarea, select, etc.
+- RHF's (API/Concept) Jargons
+  - **form**:
+    - the form representation managed by RHF.
+    - think of it's like your form's agent, such that you can interact with it to do so many things on the form (kind of like for you do to CRUD):
+      - reset all values of all form fields
+      - eg., set a value for a certain field
+      - ...
+  - **form state**:
+    - this stores many kinds of states of the form, including:
+      - whether the entire form is submitting
+      - what are the fields of the form are touched
+      - is the entire form considered valid (usually because of all fields are valid)?
+      - ...
+  - **field**: it just represents certain **form control**
+  - **field state**:
+    - just like **form** will have **form state**, **field** will have **field state**
+    - this maintains the states specific to a certain field, like:
+      - is the field having any error?
+      - whether the field is touched?
+      - ...
+
+
+#### 2️⃣ Anatomy
+Typically, composing a form involves the relevant family components like below:
+
+```tsx file=./Form.meta.tsx#L5-L13
+```
+
+
+#### 3️⃣ Your first form
+Let's look at a damn easy demo:
+<VersatileTabs2 defaultValue="form-damn-easy-demo">
+  <VersatileTabs2List>
+    <VersatileTabs2Trigger value="form-damn-easy-demo">Preview</VersatileTabs2Trigger>
+  </VersatileTabs2List>
+  <VersatileTabs2Content value="form-damn-easy-demo" demoId="form-damn-easy-demo"/>
+</VersatileTabs2>
+
+From there, we have:
+- 4 HARD rules:
+  - `<Form>`: MUST declare `schema` & `onSubmit` props.
+  - `<FormItem>`: MUST have a unique `name`
+  - `<FormControl>`: MUST only have one child － the control element.
+  - Submit-button MUST have `type="submit"`
+- `<FormLabel>`: When using it, the underling system will automatically register `htmlFor` for you (ie., like what you'll do in using [Label](./../../label/introduction))
+- `<FormMessage>`: It's used to display some hints just below the form control element, such as the error message, or some helpful things to basically help the consumer to successfully fill-up the form.
+
+And here is more details:
+- `onSubmit`: it's called AFTER the form is validated successfully, and whether the form is valid or not is usually determined by the `schema`.
+- Except for `<FormControl>`, you may put anything inside any other family components.
+  - eg., like we put `<Cta>` as the direct child of `<Form>`
+
+Now, here are some of the beauties of using RHF: on the demo above,
+if you submit the form without checking the checkbox, you'll see the error message.
+You don't manually validate the form, and it just works by againsting the `schema` you provided!
+
+On the other hand, if the submit is successful, you'll get the beautiful `data` in the `onSubmit` callback －
+the cleanest representation of "What user has filled-up?":
+```ts
+{
+  tos: true
+}
+```
+
+Everything is quite straight in RHF world, doesn't it?
+You'll see deeper concepts in the tutorial pages.
+
+
+
+#### 4️⃣ Before moving forward...
+
+Before moving to the tutorial pages,
+let's learn other fundamentals by going through the demos for integration of all kinds of form controls:
+
+<VersatileTabs2 defaultValue="form-radiogroup-demo">
+  <VersatileTabs2List>
+    <VersatileTabs2Trigger value="form-radiogroup-demo">RadioGroup</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-input-demo">Input</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-select-demo">Select</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-switch-demo">Switch</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-textarea-demo">Textarea</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-datepicker-demo">DatePicker</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-combobox-demo">Combobox</VersatileTabs2Trigger>
+    <VersatileTabs2Trigger value="form-damn-easy-demo-2">Checkbox</VersatileTabs2Trigger>
+  </VersatileTabs2List>
+  <VersatileTabs2Content value="form-radiogroup-demo" demoId="form-radiogroup-demo"/>
+  <VersatileTabs2Content value="form-input-demo" demoId="form-input-demo"/>
+  <VersatileTabs2Content value="form-select-demo" demoId="form-select-demo"/>
+  <VersatileTabs2Content value="form-switch-demo" demoId="form-switch-demo"/>
+  <VersatileTabs2Content value="form-textarea-demo" demoId="form-textarea-demo"/>
+  <VersatileTabs2Content value="form-datepicker-demo" demoId="form-datepicker-demo">
+    This form control is an unsual one such that it's handelded differently from the others,
+    and the handling needs us to know more about how RHF works.
+
+    So the reason that why RHF can read or write to any field is that,
+    it basically injects these props into each form control:
+    ```ts
+    // copied from RHF's source code
+    export type ControllerRenderProps<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = {
+      onChange: (...event: any[]) => void;
+      onBlur: Noop;
+      value: FieldPathValue<TFieldValues, TName>;
+      disabled?: boolean;
+      name: TName;
+      ref: RefCallBack;
+    };
+    ```
+    By injecting so, RHF can know any change from the form control (eg., `onChange`), and at the same time,
+    it can change that whatever it want (ie., `value`).
+
+    The reason that you don't need to know such things for other form controls is that,
+    we just integrate them well. We don't do the same integration for the datepicker, however,
+    is because it's not considered as a core component, but more like a recipe component,
+    and that's why such integration needs to be handled by hand.
+
+  </VersatileTabs2Content>
+  <VersatileTabs2Content value="form-combobox-demo" demoId="form-combobox-demo">
+    This is just the same integration challenge with RHF as the datepicker.
+  </VersatileTabs2Content>
+  <VersatileTabs2Content value="form-damn-easy-demo-2" demoId="form-damn-easy-demo-2">
+
+  This demo gets preseted again because of the educational purpose: how **Zod** work with RHF.
+
+  In this version of the code snippet, `defaultValues` specifies the initial value of the form field.
+
+  Without it, it will work this way:
+  in the very beginning, the value of the checkbox is actually `undefined`; while submitting in that moment will lead to an error,
+  but the error message will be a generic one "Required" instead of the one we defined in the schema.
+
+  Why?
+
+  Because it didn't have any value, so it actually will trigger the basic validation of Zod,
+  instead of hitting whatever you defined in `refine`.
+
+  Another important concept is understanding the impact of `default` on the schema and `defaultValues` on the RHF:
+  `defaultValues` will really be reflected on the UI, but `default` will only potential affect the form data.
+  For example, you actually can define `.default(true)` on the schema, but no provided `defaultValues`,
+  and you can submit successfully even though the checkbox is not checked on the UI, and the submitted data will be `{ tos: true }`.
+
+  </VersatileTabs2Content>
+
+</VersatileTabs2>
+
+___
+
+Let's! For more on its family components to use, and more demos on showing how versatile this component can be, heading to the [tutorial](./../tutorial).
+Or if you're experienced enough, check [the API reference page](./../api).
+
+___
+
+<QASection />
+<QA2>
+  <QA2Item >
+    <QA2Trigger>**@uitimate/form** vs. **<u>Shadcn</u>**'s form ?</QA2Trigger>
+     <QA2Content>
+        I believe that I encapsulate RHF so f*cking good such that it'd highly boost your DX when building a form, period.
+     </QA2Content>
+   </QA2Item>
+
+</QA2>
