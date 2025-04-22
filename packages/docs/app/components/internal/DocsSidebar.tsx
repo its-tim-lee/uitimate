@@ -3,6 +3,7 @@ import data, { type DocTreeItem } from "../../data/site.ts";
 import { List, ListItem } from "#/components/ui/List/List.tsx";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible.tsx";
 import { Icon } from "#/components/ui/Icon/Icon.tsx";
+import { DocTreeItemTags } from "#/components/ui/DocTree/DocTreeItemTags";
 import type { ReactNode, JSX } from "react";
 
 const isPathActiveOrHasActiveChild = (item: DocTreeItem, currentPath: string): boolean => {
@@ -24,12 +25,13 @@ const renderTreeItem = (item: DocTreeItem, pathname: string, depth: number = 0):
         className={`${depth > 0 && 'tw:text-xs'} tw:hover:underline tw:rounded-md tw:p-2 tw:px-3 tw:has-[.active]:bg-muted`}
       >
         <NavLink
-          className='tw:relative tw:flex tw:w-full tw:items-center tw:justify-between'
+          className='tw:relative tw:flex tw:w-full tw:items-center'
           to={item.href}
           target={isExternal ? '_blank' : undefined}
           rel={isExternal ? 'noopener noreferrer' : undefined}
         >
-          {item.title}
+          {item.title} {" "}
+          <DocTreeItemTags tags={item.tags} />
         </NavLink>
       </ListItem>
     )
@@ -41,7 +43,10 @@ const renderTreeItem = (item: DocTreeItem, pathname: string, depth: number = 0):
         <Collapsible className='tw:w-full' defaultOpen={isInitiallyOpen}>
           <span className={`tw:flex tw:items-center tw:justify-between tw:p-2 tw:px-3 tw:hover:bg-muted tw:rounded-md ${depth > 0 && 'tw:text-xs '}`}>
             <CollapsibleTrigger className='tw:group tw:flex tw:justify-between tw:w-full'>
-              {item.title}{" "}
+              <span className='tw:flex tw:items-center tw:gap-2'>
+                {item.title} {" "}
+                <DocTreeItemTags tags={item.tags} />
+              </span>
               <span>
                 <Icon icon="lucide:chevron-down" className="tw:inline tw:group-data-[state=open]:hidden" />
                 <Icon icon="lucide:chevron-up" className="tw:inline tw:group-data-[state=closed]:hidden" />
