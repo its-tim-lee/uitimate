@@ -3,7 +3,6 @@ import AvatarDemo from '#/components/demo/avatar-demo.tsx';
 
 export default {
   title: 'Example/Avatar',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
