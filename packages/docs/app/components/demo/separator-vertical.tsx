@@ -4,7 +4,7 @@ import { Image } from "#/components/ui/Image/Image"
 
 export default () => {
   return (
-    <div className="tw:flex tw:flex-col tw:gap-4 ">
+    <div className="tw:flex tw:flex-col tw:gap-4 not-prose">
       <span className="tw:flex tw:items-center tw:gap-3 tw:px-6">
         <Image
           className='tw:h-[28px]'
