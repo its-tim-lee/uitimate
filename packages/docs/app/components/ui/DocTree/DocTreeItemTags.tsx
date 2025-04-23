@@ -32,8 +32,9 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
                     size="sm"
                     variant="secondary"
                     className="tw:cursor-help tw:bg-yellow-400 tw:dark:text-black tw:leading-none tw:h-5"
+                    asChild
                   >
-                    {tag}
+                    <span>{tag}</span>
                   </Cta>
                 </TooltipTrigger>
                 <TooltipContent>
