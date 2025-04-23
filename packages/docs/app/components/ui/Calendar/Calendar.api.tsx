@@ -1,46 +1,30 @@
 import {
-  UsageSection,
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
-import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
-import meta from "./Calendar.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
+import { VersatileTabs2, VersatileTabs2Content, VersatileTabs2List, VersatileTabs2Trigger } from "#/components/internal/VersatileTabs2.tsx";
+import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="calendar-demo"
+        enableHeading
       />
 
-      <br />
-      <br />
       <DemoRecipeSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Date Picker",
-            type: "preview",
-            demoId: "calendar-date-picker",
-          },
-          {
-            title: "Date Range Picker",
-            type: "preview",
-            demoId: "calendar-date-range-picker",
-          },
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 defaultValue="calendar-date-picker" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="calendar-date-picker">Date Picker</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="calendar-date-range-picker">Range Picker</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="calendar-date-picker" demoId="calendar-date-picker" />
+        <VersatileTabs2Content value="calendar-date-range-picker" demoId="calendar-date-range-picker" />
+      </VersatileTabs2>
+
 
       <DependenciesSection />
       <Link className="tw:link tw:w-fit" to="https://react-day-picker.js.org/" target="_blank" rel="noopener noreferrer">react-day-picker</Link>
