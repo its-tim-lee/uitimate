@@ -10,18 +10,13 @@ import { Link } from "react-router";
 export default () => {
   return (
     <>
-      <ComponentPageHero title="API" subtitle={meta.description} />
 
-      <br />
 
-      <UsageSection />
       <ComponentPageUsage
+        enableHeading
         demoId="resizable-demo"
         anatomy={meta.anatomy}
       />
-
-      <br />
-      <br />
 
       <DependenciesSection />
       <Link className="tw:link tw:w-fit" to="https://github.com/bvaughn/react-resizable-panels" target="_blank" rel="noopener noreferrer">
