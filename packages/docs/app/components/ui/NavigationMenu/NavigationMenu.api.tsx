@@ -1,30 +1,21 @@
 import {
-  UsageSection,
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./NavigationMenu.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="navigationmenu-demo"
+        enableHeading
         anatomy={meta.anatomy}
       />
-
-      <br />
-      <br />
 
       <DependenciesSection />
 

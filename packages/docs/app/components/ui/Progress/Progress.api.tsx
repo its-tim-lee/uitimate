@@ -1,48 +1,31 @@
 import {
-  UsageSection,
-
   DemoScenariosSection,
   DependenciesSection,
-  DemoRecipeSection,
 } from "#/components/internal/ApiDoc";
-import VersatileTabs from "#/components/internal/VersatileTabs";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage";
 import meta from "./Progress.meta";
-import ComponentPageHero from "#/components/internal/ComponentPageHero";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="progress-loading"
+        enableHeading
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Indeterminate",
-            type: "preview",
-            demoId: "progress-demo",
-          },
-          {
-            title: "Dialog Loading",
-            type: "preview",
-            demoId: "dialog-loading",
-          }
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 defaultValue="progress-demo" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="progress-demo">Indeterminate</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="dialog-loading">Dialog Loading</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="progress-demo" demoId="progress-demo" />
+        <VersatileTabs2Content value="dialog-loading" demoId="dialog-loading" />
+      </VersatileTabs2>
+
 
       <DependenciesSection />
       <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/progress" target="_blank" rel="noopener noreferrer">@radix-ui/react-progress</Link>
