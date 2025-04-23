@@ -1,55 +1,34 @@
 import {
-  UsageSection,
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2Content, VersatileTabs2List, VersatileTabs2Trigger } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Command.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="command-demo"
+        enableHeading
         anatomy={meta.anatomy}
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Command Dialog",
-            type: "preview",
-            demoId: "command-dialog",
-          }
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 variant="underline" defaultValue="command-dialog">
+        <VersatileTabs2Content value="command-dialog" demoId="command-dialog" />
+      </VersatileTabs2>
+
+
       <DemoRecipeSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Combobox",
-            type: "preview",
-            demoId: "combobox-demo",
-          }
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 variant="underline" defaultValue="combobox-demo">
+        <VersatileTabs2Content value="combobox-demo" demoId="combobox-demo" />
+      </VersatileTabs2>
+
 
       <DependenciesSection />
       <Link className="tw:link tw:w-fit" to="https://github.com/pacocoursey/cmdk" target="_blank" rel="noopener noreferrer">cmdk</Link>

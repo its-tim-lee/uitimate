@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
 import {
   Root as DropdownMenu,
-  Trigger as DropdownMenuTrigger,
+  Trigger,
   Group as DropdownMenuGroup,
   Portal as DropdownMenuPortal,
   Sub as DropdownMenuSub,
@@ -204,6 +204,16 @@ const DropdownMenuShortcut = ({
   <span
     data-tag={kebabCase(DropdownMenuShortcut.displayName)}
     className={shortcut({ className })}
+    {...props}
+  />
+)
+
+const DropdownMenuTrigger = ({
+  className,
+  ...props
+}: DropdownMenuTriggerProps) => (
+  <Trigger
+    data-tag={kebabCase(DropdownMenuTrigger.displayName)}
     {...props}
   />
 )
