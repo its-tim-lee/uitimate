@@ -1,98 +1,72 @@
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
-import QA from "#/components/internal/QA.tsx";
+import { QA2, QA2Item, QA2Trigger, QA2Content } from "#/components/internal/QA2.tsx";
 import meta from "./Carousel.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
-import { Heading } from "../Heading/Heading.tsx";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='Introduction' subtitle={meta.description} />
-
-      <br />
-
       <QuickDemoSection />
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "carousel-demo",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="carousel-demo" variant="pill">
+        <VersatileTabs2Content value="carousel-demo" demoId="carousel-demo" />
+      </VersatileTabs2>
 
-      <br />
-      <br />
 
       <QuickStartSection />
       <p>
-        This component is used under the anatomy of:
+        This component follows this anatomy:
       </p>
       <CodeBlock>{meta.anatomy}</CodeBlock>
 
       <br />
-      <Heading size='h3'>1️⃣ CarouselContent vs. CarouselItem</Heading>
+      <h3>1️⃣ CarouselContent vs. CarouselItem</h3>
       <p>
-        The reason that slides (in this case, <code className="tw:code">CarouselItem</code>), can be managed horizontally by <code className="tw:code">CarouselContent</code> is just because of using Flexbox,
-        so you can imagine <code className="tw:code">CarouselContent</code> is a Flexbox container, and <code className="tw:code">CarouselItem</code> is a Flexbox item.
+        Slides (aka <code className="tw:code">CarouselItem</code>) are managed horizontally by <code className="tw:code">CarouselContent</code> using Flexbox.
+        Think of <code className="tw:code">CarouselContent</code> as a Flexbox container and <code className="tw:code">CarouselItem</code> as a Flexbox item.
         <br />
         <br />
-        And now it should all make sense to you that why, the code in <b>Quick Demo</b>, we use <code className="tw:code">flex-basis</code> to control the width of each <code className="tw:code">CarouselItem</code>.
+        That's why in the <b>Quick Demo</b>, we use <code className="tw:code">flex-basis</code> to control each <code className="tw:code">CarouselItem</code>'s width.
       </p>
-      <br />
 
-      <Heading size='h3'>2️⃣ Carousel</Heading>
+      <h3>2️⃣ Carousel</h3>
       <p>
-        Since <Link className='tw:link' to="https://github.com/davidjerleke/embla-carousel" target="_blank">Embla</Link> is used under the hood,
-        to pass the configuration or/and plugins to the Embla instance, you can use the <code className="tw:code">opts</code> and <code className="tw:code">plugins</code> props:
+        We use <Link className='tw:link' to="https://github.com/davidjerleke/embla-carousel" target="_blank">Embla</Link> under the hood.
+        You can pass config options and plugins to Embla using the <code className="tw:code">opts</code> and <code className="tw:code">plugins</code> props:
       </p>
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "carousel-auto-loop",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="carousel-auto-loop" variant="pill">
+        <VersatileTabs2Content value="carousel-auto-loop" demoId="carousel-auto-loop" />
+      </VersatileTabs2>
       <p>
-
-        In case more control is needed, you can even access the <b className='tw:brand'>Embla</b>'s instance (so that you may start to use <Link className='tw:link' to='https://www.embla-carousel.com/api/' target="_blank">their API</Link>) by using the <code className="tw:code">setApi</code> prop:
+        Need more control? Access <b className='tw:brand'>Embla</b>'s instance directly with the <code className="tw:code">setApi</code> prop to use <Link className='tw:link' to='https://www.embla-carousel.com/api/' target="_blank">their full API</Link>:
       </p>
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "carousel-use-api",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="carousel-use-api" variant="pill">
+        <VersatileTabs2Content value="carousel-use-api" demoId="carousel-use-api" />
+      </VersatileTabs2>
 
       <QASection />
 
-      <QA items={[
-        {
-          value: 'embla-api',
-          trigger: "Any caveats to be aware of?",
-          content: (
+      <QA2>
+        <QA2Item value="embla-api">
+          <QA2Trigger>Any caveats to be aware of?</QA2Trigger>
+          <QA2Content>
             <p>
-              Yes, there's a one (see below), but that's more about the consequence from <b className='tw:brand'>Embla</b>'s design, it doesn't necessarily be considered as a caveat.
+              Yes, but it's more about Embla's design than a true caveat.
               <br />
               <br />
-              Basically, if you somehow extract <code className="tw:code">CarouselItem</code>out of <code className="tw:code">CarouselContent</code>,
-              (ie., You put <code className="tw:code">CarouselItem</code>into a dedicated component), you will encounter some animation issue.
+              If you extract <code className="tw:code">CarouselItem</code> out of <code className="tw:code">CarouselContent</code>
+              (by putting <code className="tw:code">CarouselItem</code> into its own component), you'll hit animation issues.
               <br />
               <br />
-              This is because now the CarouselItem is a new instance in every render, but <b className='tw:brand'>Embla</b>expects an exact the same DOM node in every render to animate properly.
+              Why? Because now CarouselItem becomes a new instance on every render, but <b className='tw:brand'>Embla</b> needs the exact same DOM node across renders for smooth animations.
               <br />
               <br />
-              So if you really want to extract the <code className="tw:code">CarouselItem</code>as a separate component, make sure to use <b className='tw:brand'>React</b>'s <code className="tw:code">memo</code>to memoize it.
+              Solution: If you really need to extract <code className="tw:code">CarouselItem</code> into a separate component, wrap it with <b className='tw:brand'>React</b>'s <code className="tw:code">memo</code>.
             </p>
-          )
-        },
-      ]} />
+          </QA2Content>
+        </QA2Item>
+      </QA2>
     </>
   )
 }
