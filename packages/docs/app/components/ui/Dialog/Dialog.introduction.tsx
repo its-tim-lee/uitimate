@@ -1,9 +1,8 @@
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2Content, VersatileTabs2List, VersatileTabs2Trigger } from "#/components/internal/VersatileTabs2.tsx";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
-import QA from "#/components/internal/QA.tsx";
+import { QA2, QA2Item, QA2Trigger, QA2Content } from "#/components/internal/QA2.tsx";
 import meta from "./Dialog.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
 import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx";
 import InfoBanner from "../../internal/InfoBanner.tsx";
@@ -11,33 +10,21 @@ import InfoBanner from "../../internal/InfoBanner.tsx";
 export default () => {
   return (
     <>
-      <ComponentPageHero title='Introduction' subtitle={meta.description} />
-
-      <br />
-
       <QuickDemoSection />
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "dialog-demo",
-          },
-        ]}
-      />
+      <VersatileTabs2 variant="underline" defaultValue="dialog-demo">
+        <VersatileTabs2Content value="dialog-demo" demoId="dialog-demo" showCode={false} />
+      </VersatileTabs2>
 
-      <br />
-      <br />
 
       <QuickStartSection />
       <p>
-        This component is used under the anatomy of:
+        Here's how the component is structured:
       </p>
       <CodeBlock>{meta.anatomy}</CodeBlock>
-      <br />
-      <Heading size='h3'>1️⃣ Dialog</Heading>
+      <h3>1️⃣ {`<Dialog/>`}</h3>
       <p className="tw:leading-loose">
-        Our <code className='tw:code'>{`<dialog>`}</code> heavily relies on <Link className="tw:link" to='https://headlessui.com/react/dialog' >the relevant components</Link>
-        {` `} of dialog from <b className='tw:brand'>HeadlessUI</b>:
+        Our <code className='tw:code'>{`<dialog>`}</code> is built on top of <Link className="tw:link" to='https://headlessui.com/react/dialog' >these 3 core components</Link>
+        {` `} from <b className='tw:brand'>HeadlessUI</b>:
         <ul className="tw:list-disc tw:list-inside">
           <li>
             <code className='tw:code'>DialogBackdrop</code>
@@ -49,139 +36,99 @@ export default () => {
             <code className='tw:code'>Dialog</code>
           </li>
         </ul>
-        <br />
-        All of them are always included, but you still can customize the style on the entire dialog content (ie., <code className='tw:code'>DialogPanel</code>) via <b className='tw:brand'>Tailwind</b>,
-        and all the props will be forwarded to the last one (ie., <code className='tw:code'>Dialog</code>). For example, you can always opt out the overlay effect:
+        All 3 are always included. You can style the dialog content (<code className='tw:code'>DialogPanel</code>) with <b className='tw:brand'>Tailwind</b>,
+        and all props go to <code className='tw:code'>Dialog</code>. Here's how to remove the overlay:
       </p>
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "dialog-optional-overlay",
-          },
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 variant="underline" defaultValue="dialog-optional-overlay">
+        <VersatileTabs2Content value="dialog-optional-overlay" demoId="dialog-optional-overlay" />
+      </VersatileTabs2>
 
-      <Heading size='h3'>
-        <HeadingTitle>2️⃣ Dialog vs. Modal vs. Alert Dialog</HeadingTitle>
-        <HeadingSubtitle>
-          Almost all the component libraries really don't clearly explain the differences, but it's overwhelming important to know that before coding.
-        </HeadingSubtitle>
-
-      </Heading>
+      <h3>2️⃣ Dialog vs. Modal vs. Alert Dialog</h3>
+      <p>
+        Most libraries don't explain these differences well, but it's super important to know before you code.
+      </p>
       <p className="tw:leading-loose">
-        Both <b>Modal</b> and <b>Alert Dialog</b> are dialogs that block interaction with the rest of the interface, until the user makes an explicit decision;
-        so the differences are:
+        Both <b>Modal</b> and <b>Alert Dialog</b> block user interaction until they make a choice. Here's how they differ:
         <ul className="tw:list-disc tw:list-inside">
           <li>
-            <b>Alert Dialog</b> is very strict, so implicit dismissing techniques like 1) pressing-esc, 2) clicking-outside,
-            and even using 3) "right-upper corner 'canceling' icon" are extreme uncommon for this type.
+            <b>Alert Dialog</b> is super strict - no ESC key, no outside clicks, and no 'X' button in the corner. 0 implicit dismissal.
           </li>
           <li>
-            <b>Modal</b> is not that strict, so some might apply 1) "right-upper corner 'canceling' icon" in the design.
-            It might because some people think about the icon is still represeting a partial explicit action.
+            <b>Modal</b> is more chill - usually has an 'X' button since it's seen as a semi-explicit action.
           </li>
         </ul>
         <br />
-        The strict nature of <b>Alert Dialog</b> gives us the opportunity to simplify any dialog into 2 types － either it's an <b>Alert Dialog</b> or not (tip: try any dismissing techniques you can think of when playing around the demos below):
+        Thanks to <b>Alert Dialog</b>'s strict nature, we can simplify dialogs into just 2 types: Alert or not. Try the dismissal tricks in these demos:
         <br />
       </p>
-      <VersatileTabs
-        settings={[
-          {
-            title: "Alert",
-            type: "preview",
-            demoId: "dialog-alert",
+      <VersatileTabs2 variant="underline" defaultValue="dialog-alert">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="dialog-alert">Alert</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="dialog-modal-a">Modal</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="dialog-alert" demoId="dialog-alert" />
+        <VersatileTabs2Content value="dialog-modal-a" demoId="dialog-modal-a">
+          <p>
+            We've extended <b className="tw:brand">HeadlessUI</b>'s <code className="tw:code">onClose</code> to tell you exactly how the dialog was closed:
+            <br />
+            <br />
+            <ul className="tw:list-disc tw:list-inside">
+              <li>
+                <code className="tw:code">x</code>: User clicked the X button
+              </li>
+              <li>
+                <code className="tw:code">implicit</code>: ESC key or outside click
+              </li>
+            </ul>
+            <br />
+            Check the code snippet below to see how <code className="tw:code">from</code> works in <code className="tw:code">onClose</code>
+            <br />
+            <br />
+          </p>
+        </VersatileTabs2Content>
+      </VersatileTabs2>
 
-          },
-          {
-            title: "Modal",
-            type: "preview",
-            demoId: "dialog-modal-a",
-            content: <p>
-              <code className="tw:code">onClose</code>comes from <b className="tw:brand">HeadlessUI</b>'s, but we extend it, so that you will better know that where the closing source is.
-              Currently, it'd be triggered under 2 categories:
-              <br />
-              <br />
-              <ul className="tw:list-disc tw:list-inside">
-                <li>
-                  <code className="tw:code">x</code>: "x-icon" is clicked
-                </li>
-                <li>
-                  <code className="tw:code">implicit</code>: "esc" is pressed, or click outside the dialog
-                </li>
-              </ul>
-              <br />
-              The category corresponds to the value of <code className="tw:code">from</code>in <code className="tw:code">onClose</code> (toggle on the code snippet below for more details)
-              <br />
-              <br />
-            </p>
-          },
-        ]}
-      />
-      <br />
-      <br />
-
-      <Heading size='h3'>2️⃣ DialogHeading</Heading>
+      <h3>3️⃣ {`<DialogHeading/>`}</h3>
       <p>
-        This family component is just the same as <Link className="tw:link" to="./../../heading/introduction">Heading</Link> component,
-        so the API usage is just the same, but it's re-implemented to better suit the context of dialog.
-        <br />
-        <br />
-        So whenever this component is used, the relevant ARIA attributes will be applied automatically
-        (you may inspect the rendered result from any demos on the page to see the attributes via the browser's DevTools)
+        Works just like the <Link className="tw:link" to="./../../heading/introduction">Heading</Link> component,
+        but it's rebuilt for dialogs. It auto-adds all the right ARIA attributes
+        (check any demo's DevTools to see them in action).
         <br />
         <br />
       </p>
-      <br />
-      <br />
-      <Heading size='h3'>3️⃣ DialogAction</Heading>
+      <h3>4️⃣ {`<DialogAction/>`}</h3>
       <p>
-
-        Since it's extremely common to have some call-to-actions in a dialog, and oftenly they stack in certain fashion in different breakpoints to provide a better UX,
-        so, <code className="tw:code">DialogAction</code>is the component that is meant to include such things (you may try to adjust the breakpoint of any demos on this page)
+        Since dialogs often need buttons that stack differently on mobile/desktop for better UX,
+        we made <code className="tw:code">DialogAction</code> to handle this. Try resizing any demo to see it in action!
       </p>
-      <br />
-      <br />
 
       <p>
-        For more examples and detailed API documentation, check <Link className="tw:link" to="./../api">the API reference page</Link>.
+        Want more examples? Check out the <Link className="tw:link" to="./../api">API docs</Link>.
       </p>
-      <br />
-      <br />
 
       <QASection />
 
-      <QA items={[
-        {
-          value: 'dialog-vs-modal',
-          trigger: <span>Why not just use <b className='tw:brand'>Radix</b>'s dialog?</span>,
-          content: (
+      <QA2>
+        <QA2Item value="dialog-vs-modal">
+          <QA2Trigger>Why not just use <b className='tw:brand'>Radix</b>'s dialog?</QA2Trigger>
+          <QA2Content>
             <p>
-              Because they just have too much issues and design flaws which incredibly hurts DX.
-              Frankly, unless you're using it in an extreme simple case, it's just too hard to be used.
+              TBH, their DX is pretty rough. Unless you're doing something super basic,
+              it's just too painful to use.
             </p>
-          )
-        },
-        {
-          value: 'open-control',
-          trigger: <span>Why <code className='tw:code'>open</code> always needs to be provided on the <code className='tw:code'>Dialog</code>component?</span>,
-          content: (
+          </QA2Content>
+        </QA2Item>
+        <QA2Item value="open-control">
+          <QA2Trigger>Why do I always need to provide <code className='tw:code'>open</code> to the <code className='tw:code'>Dialog</code>?</QA2Trigger>
+          <QA2Content>
             <p>
-              This turns out to be the best practice when designing a dialog component.
-              Many component libraries will promote their dialog can be self-controlled (ie., the open status can be controlled by the component itself),
-              so that the consumer no need to maintain such states themselves, and make the code a bit clean.
-              <br />
-              <br />
-              But this is a huge mistake in terms of software design, because providing such little value (ie., make the code a "bit" clean)
-              actually will sacrifice the scalability of the component
-              (ie., in some cases, the component will have problem in some use cases, so now user might need to do workaround or so)
+              This is 100% best practice. Sure, other libraries let dialogs control themselves to save you a few lines of code.
+              But that's a trap - it kills component scalability and you'll hit weird edge cases.
+              You'll end up with hacky workarounds. Trust us on this one!
             </p>
-          )
-        },
-      ]} />
+          </QA2Content>
+        </QA2Item>
+      </QA2>
     </>
   )
 }

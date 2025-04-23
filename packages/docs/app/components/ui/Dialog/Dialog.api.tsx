@@ -1,72 +1,48 @@
 import {
-  UsageSection,
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2Content, VersatileTabs2List, VersatileTabs2Trigger } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Dialog.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="dialog-demo"
+        enableHeading
         anatomy={meta.anatomy}
       />
 
-      <br />
-      <br />
-
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Alert Dialog",
-            type: "preview",
-            demoId: "dialog-alert",
-          },
-          {
-            title: "Undismissable Loading",
-            type: "preview",
-            demoId: "dialog-loading",
-            content: <p>
-              There are some cases that you really don't want user to interrupt your dialog (eg., <b className="tw:brand">Discord</b>'s "Downloading update")
-              <br />
-              <br />
-            </p>
-          },
-          {
-            title: "Optional Overlay",
-            type: "preview",
-            demoId: "dialog-optional-overlay",
-          },
-          {
-            title: "Modal Dialog",
-            type: "preview",
-            demoId: "dialog-modal-a",
-          },
-          {
-            title: "Scrollable Content",
-            type: "preview",
-            demoId: "dialog-scroll",
-          },
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 variant="underline" defaultValue="dialog-alert">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="dialog-alert">Alert Dialog</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="dialog-loading">Undismissable Loading</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="dialog-optional-overlay">Optional Overlay</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="dialog-modal-a">Modal Dialog</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="dialog-scroll">Scrollable Content</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="dialog-alert" demoId="dialog-alert" />
+        <VersatileTabs2Content value="dialog-loading" demoId="dialog-loading">
+          <p>
+            Sometimes you need to block all dialog dismissal (like <b className="tw:brand">Discord</b>'s "Downloading update" screen)
+            <br />
+            <br />
+          </p>
+        </VersatileTabs2Content>
+        <VersatileTabs2Content value="dialog-optional-overlay" demoId="dialog-optional-overlay" />
+        <VersatileTabs2Content value="dialog-modal-a" demoId="dialog-modal-a" />
+        <VersatileTabs2Content value="dialog-scroll" demoId="dialog-scroll" />
+      </VersatileTabs2>
+
 
       <DependenciesSection />
       <span>
-        The dialog component from <Link className="tw:link tw:w-fit" to="https://headlessui.com/react/dialog" target="_blank" rel="noopener noreferrer">@headlessui/react</Link>
+        Built with <Link className="tw:link tw:w-fit" to="https://headlessui.com/react/dialog" target="_blank" rel="noopener noreferrer">@headlessui/react</Link>'s dialog
       </span>
     </>
   )
