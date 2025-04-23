@@ -1,3 +1,5 @@
+import type { ComponentMeta } from "#/types/index.ts";
+
 export default {
   description: 'browse through a collection of items with navigation controls.',
   anatomy: `
@@ -10,4 +12,4 @@ export default {
       <CarouselNext />
     </Carousel>
   `,
-}
+} as ComponentMeta;

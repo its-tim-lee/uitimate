@@ -1,3 +1,5 @@
+import type { ComponentMeta } from "#/types/index.ts";
+
 export default {
   description: `
     Make a content collapsible: unlike simple visibility toggling, the collapsing will affect the surrounding layout space.
@@ -8,4 +10,4 @@ export default {
       <CollapsibleContent/>
     </Collapsible>
   `,
-}
+} as ComponentMeta;
