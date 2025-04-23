@@ -1,7 +1,17 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: false
 ---
-- if it's a link, tw:link + Link from React-router must be used
-- Grammatically correct 
+
+- Grammatically correct
+
+- Make the content concise, short, and easier to understand:
+  - Strategy A: if there is a chance to replace some of it into "number" , you should do so
+    - eg., "completely sure" may be replaced by "100% sure".
+  - You may come up with other strategies
+
+- Make the content as a popular developer-focus article:
+  - Do not make it like a formal essay
+  - Make it more like an extreme popular Medium-like post
+  - Using internet wordings if applicable (eg., TLDR;)
