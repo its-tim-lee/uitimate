@@ -28,19 +28,17 @@ export default () => {
         <br />
         It's an incredible component that deserves a few words so you can understand its potential and use cases.
         <br />
-        <br />
       </p>
       <p>
         This component uses this simple anatomy:
       </p>
       <CodeBlock>{meta.anatomy}</CodeBlock>
-      <br />
       <p>
         Simple, right? The key thing to understand is that <code className="tw:code">CollapsibleContent</code>
-        takes up space in the layout - whether it's collapsed or not, it will affect the surrounding elements and spacing.
+        takes up space in the layout - whether it's collapsed or not, it will affect the surrounding elements and spacing!
         <br />
         <br />
-        I encourage you to open your browser's devtools and inspect how <code className="tw:code">CollapsibleContent</code>
+        Now, open your browser's devtools and inspect how <code className="tw:code">CollapsibleContent</code>
         is rendered in the DOM.
         <br />
         <br />
@@ -53,7 +51,7 @@ export default () => {
       </VersatileTabs2>
       <br />
       <p>
-        For more family components and demos showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
+        For more family components and the demos showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
       </p>
     </>
   );

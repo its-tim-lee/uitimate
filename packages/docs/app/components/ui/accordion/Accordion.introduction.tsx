@@ -1,94 +1,56 @@
-import VersatileTabs from "#/components/internal/VersatileTabs";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
-import QA from "#/components/internal/QA";
 import meta from "./Accordion.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
-import { QuickDemoSection, QuickStartSection } from "#/components/internal/IntroductionDoc.tsx";
+import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='Introduction' subtitle={meta.description} />
-
-      <br />
-      <br />
-
       <QuickDemoSection />
+      <VersatileTabs2 defaultValue="accordion-demo" variant="pill">
+        <VersatileTabs2Content value="accordion-demo" demoId="accordion-demo" />
+      </VersatileTabs2>
 
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "accordion-demo",
-          },
-        ]}
-      />
-
-      <br />
-      <br />
 
       <QuickStartSection />
       <p>
-        This component is used under the anatomy of:
+        This component uses the anatomy:
       </p>
       <CodeBlock>
         {meta.anatomy}
       </CodeBlock>
 
+      <p>
+        The most important props are <code className='tw:code'>type</code> and <code className='tw:code'>collapsible</code>.
+        They're tricky to explain with words, so the best way to understand is to try the demos:
+      </p>
+      <VersatileTabs2 defaultValue="accordion-single" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="accordion-single">type=single</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="accordion-multiple">type=multiple</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="accordion-single-collapsible">type=single, collapsible</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="accordion-single" demoId="accordion-single" />
+        <VersatileTabs2Content value="accordion-multiple" demoId="accordion-multiple" />
+        <VersatileTabs2Content value="accordion-single-collapsible" demoId="accordion-single-collapsible" />
+      </VersatileTabs2>
       <br />
       <p>
-
-      The first and the most important props are <code className='tw:code'>type</code> and <code className='tw:code'>collapsible</code>.
-      They are tricky to describe by words, so the best way to learn them is playing around the demos:
+        You can make specific items non-interactive (disabled), or disable the entire component:
       </p>
-      <br />
-      <VersatileTabs
-        settings={[
-          {
-            title: "type=single",
-            type: "preview",
-            demoId: "accordion-single",
-          },
-          {
-            title: "type=multiple",
-            type: "preview",
-            demoId: "accordion-multiple",
-          },
-          {
-            title: "type=single, collapsible",
-            type: "preview",
-            demoId: "accordion-single-collapsible",
-          },
-        ]}
-      />
-      <br />
-      <p>
-
-      You can even decide that which item to be disabled (ie., non-interactive),
-      or disable the entire component:
-      </p>
-      <br />
-      <VersatileTabs
-        settings={[
-          {
-            title: "disabled",
-            type: "preview",
-            demoId: "accordion-disabled",
-          },
-          {
-            title: "single item disabled",
-            type: "preview",
-            demoId: "accordion-single-item-disabled",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="accordion-disabled" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="accordion-disabled">disabled</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="accordion-single-item-disabled">single item disabled</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="accordion-disabled" demoId="accordion-disabled" />
+        <VersatileTabs2Content value="accordion-single-item-disabled" demoId="accordion-single-item-disabled" />
+      </VersatileTabs2>
       <br />
       <p>
         Let's! For more on its family components to use, and more demos on showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
       </p>
-      <br />
-      <br />
     </>
   )
 }

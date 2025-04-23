@@ -12,7 +12,6 @@ export default () => {
         Thought for 3 seconds
       </span>
       <Collapsible open={open} onOpenChange={setOpen} className='tw:w-[260px]'>
-        <CollapsibleTrigger><span /></CollapsibleTrigger>
         <CollapsibleContent className="tw:p-2">
           This details how the AI thought about your question: .....
         </CollapsibleContent>
