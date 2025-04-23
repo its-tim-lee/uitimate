@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
   type Type
 } from "#/components/ui/DropdownMenu/DropdownMenu"
-import { Icon } from "../ui/Icon/Icon"
+import { Icon } from "#/components/ui/Icon/Icon"
 
 type Checked = Type.DropdownMenuCheckboxItem["checked"]
 

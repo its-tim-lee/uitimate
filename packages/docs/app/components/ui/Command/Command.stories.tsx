@@ -4,7 +4,6 @@ import type { Meta } from "@storybook/react";
 
 export default {
   title: 'Example/Command',
-  includeStories: ['DEMO'],
   parameters: {
     layout: 'centered',
   },

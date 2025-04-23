@@ -10,7 +10,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-  tags: ['qa'],
+  tags: ['qa', 'fullpage'],
 } as Meta;
 
 export const normal: StoryObj = {
