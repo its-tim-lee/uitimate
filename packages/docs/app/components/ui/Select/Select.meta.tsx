@@ -1,4 +1,5 @@
-const meta = {
+import type { ComponentMeta } from "#/types/index.ts";
+const meta: ComponentMeta = {
   description: `A dropdown triggered by a button to display a list of options to pick from.`,
   anatomy: `
 {/*

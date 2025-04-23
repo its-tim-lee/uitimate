@@ -1,5 +1,7 @@
 // WARN: Changing any thing from this file,
 // especially creating a new line, will interrupt the reference of `anatomy` below from the documentation
+import type { ComponentMeta } from "#/types/index.ts";
+
 export default {
   tags: {
     tutorial: ['WIP']
@@ -16,4 +18,4 @@ export default {
       {/* more <FormItem/> ... */}
     </Form>
   `,
-}
+} as ComponentMeta;

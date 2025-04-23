@@ -1,3 +1,5 @@
+import type { ComponentMeta } from "#/types/index.ts";
+
 export default {
   description: 'Displays a vertical menu when right-clicking for managing a consistent set of commands via a hierarchical structure',
   anatomy: `
@@ -11,4 +13,4 @@ export default {
   <ContextMenuContent/>
 </ContextMenu>
   `,
-}
+} as ComponentMeta;

@@ -1,3 +1,5 @@
+import type { ComponentMeta } from "#/types/index.ts";
+
 export default {
   description: 'Use to provide links for website navigation.',
   anatomy: `
@@ -9,4 +11,4 @@ export default {
       {/* More <NavigationMenuItem>... */}
     </NavigationMenu>
   `,
-}
+} as ComponentMeta;
