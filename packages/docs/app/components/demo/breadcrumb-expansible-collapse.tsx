@@ -26,7 +26,7 @@ const BREADCRUMB_ITEMS = [
   { href: "/docs/get-started", text: "Get started" }
 ];
 
-const EnpanededBreadcrumbEllipsis = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (isOpen: boolean) => void }) => {
+const ExpanededBreadcrumbEllipsis = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (isOpen: boolean) => void }) => {
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
@@ -71,7 +71,7 @@ const EnpanededBreadcrumbEllipsis = ({ isOpen, setIsOpen }: { isOpen: boolean, s
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <Breadcrumb>
+    <Breadcrumb className='not-prose'>
 
       <BreadcrumbItem>
         <BreadcrumbLink href="/">Firebase</BreadcrumbLink>
@@ -90,7 +90,7 @@ export default () => {
       {/* Too more items, show ellipsis to express "collapse" */}
       <BreadcrumbItem>
         <BreadcrumbEllipsis onClick={() => setIsOpen(!isOpen)} className="tw:cursor-pointer" />
-        <EnpanededBreadcrumbEllipsis isOpen={isOpen} setIsOpen={setIsOpen} />
+        <ExpanededBreadcrumbEllipsis isOpen={isOpen} setIsOpen={setIsOpen} />
       </BreadcrumbItem>
 
       <BreadcrumbSeparator><Icon icon="lucide:slash" /></BreadcrumbSeparator>

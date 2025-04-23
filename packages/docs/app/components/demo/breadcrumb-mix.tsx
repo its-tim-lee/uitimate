@@ -3,7 +3,7 @@ import { Icon } from "#/components/ui/Icon/Icon.tsx";
 
 export default () => {
   return (
-    <Breadcrumb>
+    <Breadcrumb className='not-prose'>
 
       <BreadcrumbItem>
         <BreadcrumbLink href="/">Firebase</BreadcrumbLink>
