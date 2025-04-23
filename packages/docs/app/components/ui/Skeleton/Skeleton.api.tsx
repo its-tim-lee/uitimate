@@ -10,6 +10,7 @@ export default () => {
     <>
       <ComponentPageUsage
         demoId="skeleton-demo"
+        enableHeading
       />
 
       <br />

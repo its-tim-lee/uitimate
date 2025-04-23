@@ -1,48 +1,30 @@
 import {
-  UsageSection,
   DemoScenariosSection,
   DependenciesSection,
-  DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
-import meta from "./Input.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="input-demo"
+        enableHeading
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "With Button",
-            type: "preview",
-            demoId: "input-with-button",
-          },
-          {
-            title: "File Upload",
-            type: "preview",
-            demoId: "input-form",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="input-with-button" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="input-with-button">With Button</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="input-form">File Upload</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="input-with-button" demoId="input-with-button" />
+        <VersatileTabs2Content value="input-form" demoId="input-form" />
+      </VersatileTabs2>
 
-      <br />
-      <br />
 
       <DependenciesSection />
       <span>The input component from <Link className="tw:link tw:w-fit" to="https://headlessui.com/react/input" target="_blank" rel="noopener noreferrer">@headlessui/react</Link></span>
