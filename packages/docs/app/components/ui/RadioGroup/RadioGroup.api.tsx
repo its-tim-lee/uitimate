@@ -10,18 +10,14 @@ import { Link } from "react-router";
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
 
-      <br />
 
-      <UsageSection />
       <ComponentPageUsage
         demoId="radio-group-demo"
+        enableHeading
         anatomy={meta.anatomy}
       />
 
-      <br />
-      <br />
 
       <DependenciesSection />
 
