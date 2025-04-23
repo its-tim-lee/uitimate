@@ -1,61 +1,42 @@
 import {
-  UsageSection,
   DemoScenariosSection,
-  DependenciesSection,
-  DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Breadcrumb.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="breadcrumb-demo"
+        enableHeading
         anatomy={meta.anatomy}
         preview={
           <p>
-            Note that <code className='tw:code'>{`<BreadcrumbFinal>`}</code> is optional, because what it does is literally just indicating the current viewingpage using more eye-catching style
+            <code className='tw:code'>{`<BreadcrumbFinal>`}</code> is optional - it just highlights the current page with a more eye-catching style
             <br />
             <br />
           </p>
         }
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Advanced",
-            type: "preview",
-            demoId: "breadcrumb-mix",
-          },
-          {
-            title: "Expansible",
-            type: "preview",
-            demoId: "breadcrumb-expansible-collapse",
-            content: (
-              <p>
-                Now the hidden menu under the ellipsis can be show up on click, and the menu style will be different in desktop and in mobile.
-                <br />
-                <br />
-              </p>
-            )
-          },
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 defaultValue="breadcrumb-mix" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="breadcrumb-mix">Advanced</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="breadcrumb-expansible-collapse">Expansible</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="breadcrumb-mix" demoId="breadcrumb-mix" />
+        <VersatileTabs2Content value="breadcrumb-expansible-collapse" demoId="breadcrumb-expansible-collapse">
+          <p>
+            The hidden menu under the ellipsis shows up on click, with different styles for desktop and mobile
+            <br />
+          </p>
+        </VersatileTabs2Content>
+      </VersatileTabs2>
+
     </>
   )
 }
