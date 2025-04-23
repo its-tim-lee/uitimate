@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar.tsx";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "#/components/ui/HoverCard/HoverCard.tsx";
 import { useRef, useState } from "react";
 import { Badge } from "../improper/Badge/Badge";
@@ -6,7 +5,7 @@ import { Badge } from "../improper/Badge/Badge";
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <div className="not-prose">
       <h5 className="tw:font-bold">Events:  'select-bluetooth-device'</h5>
       <br />
       <p className="tw:text-muted-foreground">

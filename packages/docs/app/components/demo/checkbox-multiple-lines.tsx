@@ -9,7 +9,7 @@ import { useState } from "react"
 export default () => {
   const [checked, setChecked] = useState<CheckedState>(true)
   return (
-    <Flat className='tw:w-[500px] tw:flex tw:flex-col tw:gap-4'>
+    <Flat className='tw:w-[500px] tw:flex tw:flex-col tw:gap-4 not-prose'>
 
       <p>After permanent deletion of the app:</p>
 

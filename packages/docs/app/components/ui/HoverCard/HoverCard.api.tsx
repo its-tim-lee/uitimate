@@ -1,47 +1,36 @@
+import meta from './HoverCard.meta.tsx';
 import {
-  UsageSection,
-
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import {
+  VersatileTabs2,
+  VersatileTabs2Content,
+  VersatileTabs2List,
+  VersatileTabs2Trigger
+} from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
-import meta from "./HoverCard.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="hovercard-demo"
+        enableHeading
         anatomy={meta.anatomy}
       />
 
-      <br />
-      <br />
-      <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "API Doc",
-            type: "preview",
-            demoId: "hovercard-api-doc",
-          },
-        ]}
-      />
 
-      <br />
-      <br />
+      <DemoScenariosSection />
+      <VersatileTabs2 defaultValue="hovercard-api-doc" variant="underline">
+        <VersatileTabs2Content value="hovercard-api-doc" demoId="hovercard-api-doc" />
+      </VersatileTabs2>
+
 
       <DependenciesSection />
       <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/hover-card" target="_blank" rel="noopener noreferrer">@radix-ui/react-hover-card</Link>
     </>
-  )
+  );
 }
