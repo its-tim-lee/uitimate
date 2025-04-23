@@ -18,10 +18,11 @@ type ComponentPageUsageProps = {
   anatomy?: string,
   demoId: string,
   preview?: React.ReactNode,
-  enableHeading?: boolean
+  enableHeading?: boolean,
+  setup?: string | React.ReactNode
 }
 
-export default ({ demoId, anatomy, preview, enableHeading = false }: ComponentPageUsageProps) => {
+export default ({ demoId, anatomy, preview, enableHeading = false, setup }: ComponentPageUsageProps) => {
   console.log('anatomy', anatomy)
   console.log('demoId', demoId)
   const [activeTab, setActveTab] = useState('preview');
@@ -81,16 +82,21 @@ export default ({ demoId, anatomy, preview, enableHeading = false }: ComponentPa
       type: 'normal' as const,
       content: <CodeBlock>{anatomy}</CodeBlock>,
     }] : []),
-    {
-      title: 'Download',
-      type: 'link' as const,
-      onClick: () => handleTabChange('download'),
-    },
-    {
-      title: 'Playground',
-      type: 'link' as const,
-      onClick: () => handleTabChange('playground'),
-    },
+    // {
+    //   title: 'Setup',
+    //   type: 'normal' as const,
+    //   content: setup,
+    // }
+    // {
+    //   title: 'Download',
+    //   type: 'link' as const,
+    //   onClick: () => handleTabChange('download'),
+    // },
+    // {
+    //   title: 'Playground',
+    //   type: 'link' as const,
+    //   onClick: () => handleTabChange('playground'),
+    // },
   ];
   return (
     <div>
