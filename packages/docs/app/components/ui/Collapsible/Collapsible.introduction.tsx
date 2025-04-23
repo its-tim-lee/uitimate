@@ -1,78 +1,60 @@
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
 import meta from "./Collapsible.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { QuickDemoSection, QuickStartSection } from "#/components/internal/IntroductionDoc.tsx";
 import InfoBanner from "#/components/internal/InfoBanner.tsx";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='Introduction' subtitle={meta.description} />
-
-      <br />
-
       <QuickDemoSection />
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "collapsible-demo",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="collapsible-demo" variant="underline">
+        <VersatileTabs2Content value="collapsible-demo" demoId="collapsible-demo" />
+      </VersatileTabs2>
 
-      <br />
-      <br />
 
       <QuickStartSection />
       <InfoBanner>
-        If you 100% sure that you are fully understand how <b className='tw:brand'>Radix</b>'s Collapsible works, you may skip this introduction.
+        If you're 100% sure you fully understand how <b className='tw:brand'>Radix</b>'s Collapsible works, you can skip this introduction.
       </InfoBanner>
       <br />
 
       <p>
-        Collapsible is one of the components from <b className='tw:brand'>Radix</b> that I believe is heavily depreciated due to the
-        inappropriate demo and the relevant argubly misleading introduction from their documentation.
+        Collapsible is one of the components from <b className='tw:brand'>Radix</b> that I believe is heavily underappreciated due to
+        its inadequate demo and somewhat misleading introduction in their documentation.
 
         <br />
         <br />
-        It's, however, an incredible component that I think it's really worth to says with a few words, so that you will know more its potential, and the use cases.
+        It's an incredible component that deserves a few words so you can understand its potential and use cases.
         <br />
         <br />
       </p>
       <p>
-        This component is used under the anatomy of:
+        This component uses this simple anatomy:
       </p>
       <CodeBlock>{meta.anatomy}</CodeBlock>
       <br />
       <p>
-        It's quite simple, huh? But the key is understanding that <code className="tw:code">CollapsibleContent</code>
-        will take a space from the layout, so that no matter it's collapsed or not, it will always affect the surrounding elements/spaces.
+        Simple, right? The key thing to understand is that <code className="tw:code">CollapsibleContent</code>
+        takes up space in the layout - whether it's collapsed or not, it will affect the surrounding elements and spacing.
         <br />
         <br />
-        So now I encourage you to turn on the devtool from the browser and just try to inspect how <code className="tw:code">CollapsibleContent</code>
-        would be rendered in the DOM.
+        I encourage you to open your browser's devtools and inspect how <code className="tw:code">CollapsibleContent</code>
+        is rendered in the DOM.
         <br />
         <br />
-        I hope the demo above will not limit your imagination on what you can do with this component.
-        If now you have high level understanding of how it works, I bet it shouldn't be hard for you to understand that it can be used in the following situation:
+        Don't let the demo above limit your imagination. Once you grasp how it works, you'll see it can be used in many situations like:
       </p>
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "collapsible-stepper",
-          },
-        ]}
-      />
+      <br />
+
+      <VersatileTabs2 defaultValue="collapsible-stepper" variant="underline">
+        <VersatileTabs2Content value="collapsible-stepper" demoId="collapsible-stepper" />
+      </VersatileTabs2>
       <br />
       <p>
-        For more on its family components to use, and more demos on showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
+        For more family components and demos showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
       </p>
-      <br />
-      <br />
     </>
   );
 };

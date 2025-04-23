@@ -65,7 +65,10 @@ export default () => {
   return (
     <DocPageLayout>
       {Component ? (
-        <Component />
+        <div className="tw:prose tw:dark:prose-invert tw:max-w-none">
+          {meta && <ComponentPageHero title={`${name}/${page}`} subtitle={(meta as any).description} />}
+          <Component />
+        </div>
       ) : (
         <div>Component not found: {type}/{key}</div>
       )}

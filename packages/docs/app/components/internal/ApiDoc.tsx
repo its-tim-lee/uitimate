@@ -1,62 +1,72 @@
 import {
-  Heading,
-  HeadingSubtitle,
-  HeadingTitle,
-} from "#/components/ui/Heading/Heading.tsx";
-import { Link as ScrollLink } from "react-scroll";
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "#/components/ui/Tooltip/Tooltip";
+import { Icon } from "#/components/ui/Icon/Icon";
 
 const UsageSection = () => {
   return (
-    <Heading size="h2" id="usage" className="not-prose">
-      <HeadingTitle>Usage</HeadingTitle>
-      <HeadingSubtitle>How you can play this component.</HeadingSubtitle>
-    </Heading>
-  )
-}
+    <span className="tw:flex tw:items-center tw:gap-2">
+      <h2 id="usage">Usage</h2>
 
-const DemoApiSection = () => {
-  return (
-    <Heading size="h2" id='demo-api' className="not-prose">
-      <HeadingTitle>DEMO / API</HeadingTitle>
-      <HeadingSubtitle>Trying to show all the common API/Component usages below, but this can be insufficient/impossible in some cases, and we'd then use
-        {' '}
-        <ScrollLink
-          to="demo-scenarios"
-          spy={true}
-          smooth={true}
-          offset={-20}
-          duration={0}
-          className="tw:link tw:cursor-pointer"
-        >DEMO / Scenario</ScrollLink> to express more.</HeadingSubtitle>
-    </Heading>
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+
+        <TooltipContent className="tw:w-[400px] tw:p-4">
+          <p className="tw:text-justify">How you can play this component.</p>
+        </TooltipContent>
+      </Tooltip>
+    </span>
   )
 }
 
 const DemoScenariosSection = () => {
   return (
-    <Heading size="h2" id="demo-scenarios" className="not-prose">
-      <HeadingTitle>DEMO / Scenario</HeadingTitle>
-      <HeadingSubtitle>This demostrates the commmon API/Component usages as well as some common real-world use cases.</HeadingSubtitle>
-    </Heading>
+    <span className="tw:flex tw:items-center tw:gap-2">
+      <h2 id="demo-scenarios">DEMO / Scenario</h2>
+
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+
+        <TooltipContent className="tw:w-[400px] tw:p-4">
+          <p className="tw:text-justify">This demostrates the commmon API/Component usages as well as some common real-world use cases.</p>
+        </TooltipContent>
+      </Tooltip>
+    </span>
   )
 }
 
 
 const DemoRecipeSection = () => {
   return (
-    <Heading size="h2" id="demo-recipe" className="not-prose">
-      <HeadingTitle>DEMO / Recipe</HeadingTitle>
-      <HeadingSubtitle>These are the ones that many other libraries might treat them as part of their core components, but we show how those can be implemented without futher encapsulation.</HeadingSubtitle>
-    </Heading>
+    <span className="tw:flex tw:items-center tw:gap-2">
+      <h2 id="demo-recipe">DEMO / Recipe</h2>
+
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+
+        <TooltipContent className="tw:w-[400px] tw:p-4">
+          <p className="tw:text-justify">These are the ones that many other libraries might treat them as part of their core components, but we show how those can be implemented without futher encapsulation.</p>
+        </TooltipContent>
+      </Tooltip>
+    </span>
   )
 }
 
 const DependenciesSection = () => {
   return (
-    <Heading size="h2" id="dependencies" className="not-prose">
-      <HeadingTitle>Dependencies</HeadingTitle>
-      <HeadingSubtitle>Below lists out the 3rd-party libaries that this component depends on.</HeadingSubtitle>
-    </Heading>
+    <span className="tw:flex tw:items-center tw:gap-2">
+      <h2 id="dependencies">Dependencies</h2>
+
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+
+        <TooltipContent className="tw:w-[400px] tw:p-4">
+          <p className="tw:text-justify">Below lists out the 3rd-party libaries that this component depends on.</p>
+        </TooltipContent>
+      </Tooltip>
+    </span>
   )
 }
 
