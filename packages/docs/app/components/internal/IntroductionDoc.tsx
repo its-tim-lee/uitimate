@@ -1,43 +1,46 @@
-import {
-  Heading,
-  HeadingSubtitle,
-  HeadingTitle,
-} from "#/components/ui/Heading/Heading.tsx";
 import type { ComponentProps } from "react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/Collapsible/Collapsible";
-import { Cta } from "../ui/Cta/Cta";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible";
+import { Cta } from "#/components/ui/Cta/Cta";
 import QA from "#/components/internal/QA.tsx";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "#/components/ui/Tooltip/Tooltip";
+import { Icon } from "#/components/ui/Icon/Icon";
 
-const QuickDemoSection = () => {
-  return (
-    <Heading size="h2" id='quick-demo' className="not-prose tw:pt-10">Quick Demo</Heading>
-  )
-}
+const QuickDemoSection = () => <h2 id='quick-demo'>Quick Demo</h2>
 
 const QuickStartSection = () => {
   return (
-    <Heading size="h2" id='quick-start' className="not-prose">
-      <HeadingTitle>
-        Quick Start
-      </HeadingTitle>
-      <HeadingSubtitle>
-        Walking you through the common usage of this component to get your start quickly.
-      </HeadingSubtitle>
-    </Heading>
+    <span className="tw:flex tw:items-center tw:gap-2">
+      <h2 id='quick-start'>Quick Start</h2>
+
+      <Tooltip delayDuration={0}>
+        <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+
+        <TooltipContent className="tw:w-[400px] tw:p-4">
+          <p className="tw:text-justify">Walking you through the common usage of this component to get your start quickly.</p>
+        </TooltipContent>
+      </Tooltip>
+    </span>
   )
 }
 
 const DefinitionSection = ({ children, ref }: ComponentProps<'div'>) => {
   return (
-    <div className="tw:py-10">
-      <Heading ref={ref} size="h2" id='definition' className="not-prose">
-        <HeadingTitle>
-          Definition
-        </HeadingTitle>
-        <HeadingSubtitle>
-          A high-level spec (or a blueprint) to correctly define what is meant to be such component.
-        </HeadingSubtitle>
-      </Heading>
+    <div>
+      <span className="tw:flex tw:items-center tw:gap-2">
+        <h2 ref={ref} id='definition'>Definition</h2>
+
+        <Tooltip delayDuration={0}>
+          <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+
+          <TooltipContent className="tw:w-[400px] tw:p-4">
+            <p className="tw:text-justify">A high-level spec (or a blueprint) to correctly define what is meant to be such component.</p>
+          </TooltipContent>
+        </Tooltip>
+      </span>
       <Collapsible>
         <CollapsibleTrigger asChild>
           <Cta shapes={["badge"]} variant="outline" size="lg" className="tw:data-[state=open]:hidden">
@@ -52,11 +55,7 @@ const DefinitionSection = ({ children, ref }: ComponentProps<'div'>) => {
   )
 }
 
-const QASection = () => {
-  return (
-    <Heading size="h2" id='qa' className="not-prose">Q&A</Heading>
-  )
-}
+const QASection = () => <h2 id='qa'>Q&A</h2>
 
 export {
   QuickDemoSection, QuickStartSection, QASection, DefinitionSection, QA

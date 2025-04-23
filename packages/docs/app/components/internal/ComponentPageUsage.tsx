@@ -93,10 +93,10 @@ export default ({ demoId, anatomy, preview, enableHeading = false }: ComponentPa
     },
   ];
   return (
-    <div className='not-prose'>
+    <div>
       {enableHeading && <UsageSection />}
 
-      <VersatileTabs settings={tabSettings} />
+      <VersatileTabs settings={tabSettings} variant="underline" />
 
       <Dialog open={isDialogOpening} onOpenChange={handleDialogOpenChange}>
         <DialogContent>

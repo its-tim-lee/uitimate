@@ -1,7 +1,7 @@
 import CollapsibleDemo from "#/components/demo/collapsible-demo"
 import CollapsibleOpenControl from "#/components/demo/collapsible-open-control"
 import CollapsibleStepper from "#/components/demo/recipe/collapsible-stepper"
-import type { Meta } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 export default {
   title: 'Example/Collapsible',
@@ -11,9 +11,9 @@ export default {
   tags: ['autodocs'],
 } as Meta
 
-export const DEMO = {
+export const DEMO: StoryObj = {
   name: 'DEMO',
-  render: () => <CollapsibleDemo />
+  render: () => <CollapsibleDemo />,
 };
 
 export const OpenControl = {
