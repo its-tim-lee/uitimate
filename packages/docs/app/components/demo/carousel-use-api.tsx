@@ -15,7 +15,7 @@ export default () => {
   return (
     <div className="tw:flex-center tw:flex-col tw:gap-2">
       <Carousel className="tw:w-full tw:max-w-xs" setApi={setApi}>
-        <CarouselNext />
+        <CarouselPrevious />
         <CarouselContent>
           {Array.from({ length: 10 }).map((_, $i) => (
             <CarouselItem key={$i} className="tw:basis-1/2 tw:md:basis-1/3 tw:lg:basis-1/4">
@@ -25,7 +25,7 @@ export default () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
+        <CarouselNext />
       </Carousel>
       <br />
       <div className="py-2 text-center text-sm text-muted-foreground">Slide {current} of {count}</div>

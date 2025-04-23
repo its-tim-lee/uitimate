@@ -1,48 +1,32 @@
 import {
-  UsageSection,
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Carousel.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="carousel-demo"
+        enableHeading
         anatomy={meta.anatomy}
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Auto-loop",
-            type: "preview",
-            demoId: "carousel-auto-loop",
-          },
-          {
-            title: "Use API",
-            type: "preview",
-            demoId: "carousel-use-api",
-          },
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 defaultValue="carousel-auto-loop" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="carousel-auto-loop">Auto-loop</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="carousel-use-api">Use API</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="carousel-auto-loop" demoId="carousel-auto-loop" />
+        <VersatileTabs2Content value="carousel-use-api" demoId="carousel-use-api" />
+      </VersatileTabs2>
 
       <DependenciesSection />
 
