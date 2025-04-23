@@ -8,11 +8,6 @@ import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="skeleton-demo"
       />
