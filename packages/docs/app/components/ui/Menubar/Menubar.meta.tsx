@@ -1,3 +1,4 @@
+import type { ComponentMeta } from "#/types/index.ts";
 export default {
   description: 'A horizontal menu bar with dropdown menus for managing a consistent set of commands via a hierarchical structure.',
   anatomy: `
@@ -18,4 +19,4 @@ export default {
 
     </Menubar>
   `,
-}
+} as ComponentMeta;

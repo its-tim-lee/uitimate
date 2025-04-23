@@ -1,3 +1,5 @@
+import type { ComponentMeta } from "#/types/index.ts";
+
 export default {
   description: 'A panel that slides out from the edge of the screen, mostly used as a dialog replacement on mobile devices.',
   anatomy: `
@@ -9,4 +11,4 @@ export default {
       {/* Content */}
     </Drawer>
   `,
-}
+} as ComponentMeta;

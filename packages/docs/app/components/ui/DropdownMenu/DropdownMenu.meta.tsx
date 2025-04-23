@@ -1,3 +1,5 @@
+import type { ComponentMeta } from "#/types/index.ts";
+
 export default {
   description: 'A vertically stacked menu that appears when a user interacts with the trigger.',
   anatomy: `
@@ -12,4 +14,4 @@ export default {
   <DropdownMenuContent/>
 </DropdownMenu>
   `,
-}
+} as ComponentMeta;
