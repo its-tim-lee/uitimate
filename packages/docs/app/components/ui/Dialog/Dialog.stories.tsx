@@ -44,7 +44,6 @@ export const SCROLL = {
   render: () => DialogScroll()
 }
 
-// this hasn't been referred in the relevant docs
 export const REMOVE_APP_FROM_PROJECT = {
   name: 'Showcase / DialogRemoveAppFromProject',
   render: () => DialogRemoveAppFromProject()

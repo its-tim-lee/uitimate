@@ -12,7 +12,6 @@ export default () => {
           <DialogTitle>Edit profile</DialogTitle>
           <DialogSubtitle>Make changes to your profile here. Click save when you're done.</DialogSubtitle>
         </DialogHeading>
-        <p>Some content</p>
         <DialogAction>
           <Cta onClick={() => setIsOpen(false)}>Save changes</Cta>
         </DialogAction>
