@@ -21,7 +21,6 @@ import type { Meta } from '@storybook/react';
 
 export default {
   title: 'Example/Cta',
-  // includeStories: [],
   parameters: {
     layout: 'centered',
   },

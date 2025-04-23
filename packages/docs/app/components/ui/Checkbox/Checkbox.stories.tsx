@@ -8,7 +8,6 @@ export default {
   parameters: {
     layout: 'centered',
   },
-  includeStories: ['DEMO', 'Variant2'],
   tags: ['autodocs'],
 
 } as Meta

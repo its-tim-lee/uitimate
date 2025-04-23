@@ -1,150 +1,77 @@
 import {
-  UsageSection,
-
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
-import meta from "./Cta.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="cta-demo"
-        anatomy="<Cta/>"
+        enableHeading
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "6 Variants",
-            type: "preview",
-            demoId: "button-6variants",
-          },
-          {
-            title: "3 Sizes",
-            type: "preview",
-            demoId: "button-3sizes",
-          },
-          {
-            title: "Anchor",
-            type: "preview",
-            demoId: "button-anchor-icon",
-          },
-          {
-            title: "Toggle Button",
-            type: "preview",
-            demoId: "button-toggle",
-          },
-          {
-            title: "API Doc",
-            type: "preview",
-            demoId: "badge-apidoc",
-          },
-          {
-            title: "Tiny Badge",
-            type: "preview",
-            demoId: "cta-badge-on-icon"
-          },
-          {
-            title: "Progress Button",
-            type: "preview",
-            demoId: "button-progress",
-          },
-          {
-            title: "Switch Button",
-            type: "preview",
-            demoId: "button-switch",
-          },
-          {
-            title: "Pill Badge",
-            type: "preview",
-            demoId: "cta-rounded-badge",
-            content: (
-              <p>
-                Side notes: there're some compoent libraries even expose a prop to just
-                implement such pill-outlook badge, but it's not making much sense when using our component,
-                since it can be implemented so easy.
-                <br />
-                <br />
-              </p>
-            )
-          },
-          {
-            title: "Search Button",
-            type: "preview",
-            demoId: "button-search",
-          },
-          {
-            title: "Meta-info Button",
-            type: "preview",
-            demoId: "button-include-badge",
-          },
-          {
-            title: "Circle Button",
-            type: "preview",
-            demoId: "button-dial",
-          },
-          {
-            title: "Command Instruction",
-            type: "preview",
-            demoId: "cta-command-instruction",
-            content: (
-              <p>
-                This deserves some explanation in terms of the implementation:
-                so what we want here is that the parent don't want to be hovered,
-                but the only child want to be hovered, and when hovering, don't affect to the parent.
-                <br />
-                <br />
-                To achieve this, that's part of the reasons that why we invented the <code className='tw:code'>muted</code> prop.
-                <br />
-                <br />
-              </p>
-            )
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="button-6variants" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="button-6variants">6 Variants</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-3sizes">3 Sizes</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-anchor-icon">Anchor</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-toggle">Toggle Button</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="badge-apidoc">API Doc</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="cta-badge-on-icon">Tiny Badge</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-progress">Progress Button</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-switch">Switch Button</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="cta-rounded-badge">Pill Badge</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-search">Search Button</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-include-badge">Meta-info Button</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-dial">Circle Button</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="cta-command-instruction">Command Instruction</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="button-6variants" demoId="button-6variants" />
+        <VersatileTabs2Content value="button-3sizes" demoId="button-3sizes" />
+        <VersatileTabs2Content value="button-anchor-icon" demoId="button-anchor-icon" />
+        <VersatileTabs2Content value="button-toggle" demoId="button-toggle" />
+        <VersatileTabs2Content value="badge-apidoc" demoId="badge-apidoc" />
+        <VersatileTabs2Content value="cta-badge-on-icon" demoId="cta-badge-on-icon" />
+        <VersatileTabs2Content value="button-progress" demoId="button-progress" />
+        <VersatileTabs2Content value="button-switch" demoId="button-switch" />
+        <VersatileTabs2Content value="cta-rounded-badge" demoId="cta-rounded-badge">
+          <p>
+            Side note: Some component libraries expose a prop just to implement this pill-style badge, but that's overkill with our component - it's super easy to implement!
+          </p>
+        </VersatileTabs2Content>
+        <VersatileTabs2Content value="button-search" demoId="button-search" />
+        <VersatileTabs2Content value="button-include-badge" demoId="button-include-badge" />
+        <VersatileTabs2Content value="button-dial" demoId="button-dial" />
+        <VersatileTabs2Content value="cta-command-instruction" demoId="cta-command-instruction">
+          <p>
+            Quick implementation note: Here we want the parent not to be hovered, but the child should be hoverable without affecting the parent.
+            <br />
+            <br />
+            This is one of the reasons why we created the <code className='tw:code'>muted</code> prop.
+          </p>
+        </VersatileTabs2Content>
+      </VersatileTabs2>
 
-      <br />
-      <br />
 
       <DemoRecipeSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Ratings",
-            type: "preview",
-            demoId: "cta-ratings"
-          },
-          {
-            title: "Toggle Group (Single Selection)",
-            type: "preview",
-            demoId: "button-group-single-selection",
-          },
-          {
-            title: "Toggle Group (Multiple Selection)",
-            type: "preview",
-            demoId: "button-group-multiple-selection",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="cta-ratings" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="cta-ratings">Ratings</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-group-single-selection">Toggle Group (Single Selection)</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-group-multiple-selection">Toggle Group (Multiple Selection)</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="cta-ratings" demoId="cta-ratings" />
+        <VersatileTabs2Content value="button-group-single-selection" demoId="button-group-single-selection" />
+        <VersatileTabs2Content value="button-group-multiple-selection" demoId="button-group-multiple-selection" />
+      </VersatileTabs2>
 
-      <br />
-      <br />
 
       <DependenciesSection />
       <ul className="tw:list-disc tw:pl-5">
