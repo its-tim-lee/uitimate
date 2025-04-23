@@ -1,5 +1,4 @@
 import { Switch } from "#/components/ui/Switch/Switch"
-import { Label } from "#/components/ui/Label/Label";
 import { Cta } from "#/components/ui/Cta/Cta";
 import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle

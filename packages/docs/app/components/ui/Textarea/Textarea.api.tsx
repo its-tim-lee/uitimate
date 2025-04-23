@@ -12,17 +12,11 @@ import { Link } from "react-router";
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
 
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="textarea-demo"
+        enableHeading
       />
-
-      <br />
-      <br />
 
       <DependenciesSection />
       <Link className="tw:link tw:w-fit" to="https://headlessui.com/react/textarea" target="_blank" rel="noopener noreferrer">@headlessui/react</Link>

@@ -1,42 +1,28 @@
 import {
-  UsageSection,
   DemoScenariosSection,
   DependenciesSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2 } from "#/components/internal/VersatileTabs2.tsx";
+import { VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Switch.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="switch-demo"
+        enableHeading
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "With Dialog",
-            type: "preview",
-            demoId: "switch-detect-on-off",
-          }
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 defaultValue="switch-detect-on-off" variant="underline">
+        <VersatileTabs2Content value="switch-detect-on-off" demoId="switch-detect-on-off" />
+      </VersatileTabs2>
+
 
       <DependenciesSection />
       <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/switch" target="_blank" rel="noopener noreferrer">@radix-ui/react-switch</Link>
