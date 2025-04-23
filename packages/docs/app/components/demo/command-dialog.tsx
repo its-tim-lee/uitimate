@@ -7,11 +7,11 @@ import { Dialog } from "#/components/ui/Dialog/Dialog"
 export default () => {
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
-    hotkeys('command+j, ctrl+j', e => (e.preventDefault(), setIsOpen(t => !t)))
+    hotkeys('alt+b', e => (e.preventDefault(), setIsOpen(t => !t)))
     return () => hotkeys.unbind()
   }, [])
-  return (<>
-    <h1>Press command+j or ctrl+j</h1>
+  return (<div className="not-prose">
+    <h1>Press alt+b</h1>
     <Dialog open={isOpen} onClose={() => setIsOpen(false)} className='tw:p-0'>
       <Command>
         <CommandInput placeholder="Type a command or search..." />
@@ -35,6 +35,6 @@ export default () => {
         </CommandList>
       </Command>
     </Dialog>
-  </>
+  </div>
   )
 }

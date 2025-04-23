@@ -1,17 +1,17 @@
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "../ui/DropdownMenu/DropdownMenu";
-import { Button } from "../improper/Button/Button";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar/Avatar";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "#/components/ui/DropdownMenu/DropdownMenu";
+import { Cta } from "#/components/ui/Cta/Cta";
+import { Avatar, AvatarFallback, AvatarImage } from "#/components/ui/Avatar/Avatar";
 
 // TBD: ideally the avatar code can be re-used from avatar-demo.tsx,
 // but the code is for demo, so better be the code block can have other tabs to show other code
 export default () => <DropdownMenu>
   <DropdownMenuTrigger asChild>
-    <Button variant="ghost" mode="icon" className="tw:rounded-full">
+    <Cta variant="ghost" shapes={['icon']} className="tw:rounded-full not-prose">
       <Avatar>
         <AvatarImage src="https://bitl.to/44ls" alt="@itistimlee" />
         <AvatarFallback>TL</AvatarFallback>
       </Avatar>
-    </Button>
+    </Cta>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="tw:w-[200px]">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>

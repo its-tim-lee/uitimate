@@ -6,7 +6,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-  tags: ['qa'],
+  tags: ['qa', 'fullpage'],
 } as Meta
 
 export const SCENARIO_USE_API = {
