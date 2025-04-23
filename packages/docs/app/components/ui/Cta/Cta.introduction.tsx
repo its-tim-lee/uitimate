@@ -1,277 +1,185 @@
 import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
-import QA from "#/components/internal/QA.tsx";
+import { QA2, QA2Item, QA2Trigger, QA2Content } from "#/components/internal/QA2.tsx";
 import meta from "./Cta.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
 import InfoBanner from "#/components/internal/InfoBanner.tsx";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='Introduction' subtitle={meta.description} />
-
-      <br />
-
       <QuickDemoSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Button",
-            type: "preview",
-            demoId: "button-progress",
-          },
-          {
-            title: "Badge",
-            type: "preview",
-            demoId: "cta-rounded-badge",
-          },
-          {
-            title: "Toggle",
-            type: "preview",
-            demoId: "button-toggle",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="button-progress" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="button-progress">Button</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="cta-rounded-badge">Badge</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-toggle">Toggle</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="button-progress" demoId="button-progress" />
+        <VersatileTabs2Content value="cta-rounded-badge" demoId="cta-rounded-badge" />
+        <VersatileTabs2Content value="button-toggle" demoId="button-toggle" />
+      </VersatileTabs2>
 
-      <br />
 
       <QuickStartSection />
       <p>
-        First, you shouldn't think about that this component is just something like "an advanced version of a button".
-        because such understanding will only fall you short quickly,
-        and finally will affect your productivity on using this component.
+        First, don't think of this component as just "an advanced button" - that mindset will limit your productivity with it.
         <br />
         <br />
-        Instead, think about it's a concept of: a call-to-attention from certain small widget;
-        once user got the attention, he may or may not perform the action to interact with the widget.
+        Instead, think of it as: a call-to-attention widget that may or may not require user interaction.
         <br />
         <br />
-        If you thought the description here is a bit vague, it'd become very clear through the following explanation.
-        Right now, since the "small widget" will only be certain kind, it's fine to think about that it can only be either a button, badge, or toggle,
-        if that would help your understanding.
+        If that sounds vague, don't worry - it'll become clear through the examples below. For now, it helps to know it can take the form of a button, badge, or toggle.
         <br />
         <br />
         <InfoBanner>
-          Please check the code snippet of each demo below during your reading
+          Check the code snippets in each demo as you read!
         </InfoBanner>
+      </p>
+      <h3>1️⃣ Button vs. Badge</h3>
+      <p>
+        Understanding the difference between button and badge is surprisingly important.
         <br />
         <br />
+        Compared to buttons, badges are typically flat, smaller, and non-interactive by default (that's what makes them badges).
       </p>
-      <Heading size='h3'>1️⃣ button vs. badge</Heading>
+
       <p>
-      Understanding the differences between button and badge is counter-intuitively extreme important at first.
+        Here are all possible variants and sizes:
+      </p>
+      <VersatileTabs2 defaultValue="button-6variants" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="button-6variants">6 variants</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-3sizes">3 sizes</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="button-6variants" demoId="button-6variants" />
+        <VersatileTabs2Content value="button-3sizes" demoId="button-3sizes" />
+      </VersatileTabs2>
+      <p>
+        Key takeaway: While they share the same <code className='tw:code'>variant</code> and <code className='tw:code'>size</code> API,
+        the visual differences are clear. The badges shown here are interactive, which is fine for some designs - we'll show how to make them non-interactive later.
+      </p>
+
+
+      <h3>2️⃣ Icon (CTA)</h3>
+      <p>
+        From the previous section, you've seen that the default shape of <b>Cta</b> is a button,
+        which you can override via the <code className='tw:code'>shapes</code> prop. Currently, there are 4 options:
+      </p>
+      <VersatileTabs2 defaultValue="cta-possible-shapes" variant="underline">
+        <VersatileTabs2Content value="cta-possible-shapes" demoId="cta-possible-shapes" />
+      </VersatileTabs2>
+      <p>
+        These are mostly self-explanatory, but worth noting: "icon" is considered a unique shape because it forces <b>Cta</b> to have equal width and height, earning its place in the <code className='tw:code'>shapes</code> API.
+      </p>
+
+      <h3>3️⃣ Toggle</h3>
+
+      <p>
+        By default, <b>Cta</b> is stateless and won't remain pressed after being clicked.
+        If you need this state persistence, that's where "toggle" comes in.
+      </p>
+      <p>
+        Enabling toggle behavior is straightforward - for example, to create a <b>Cta</b> that's initially pressed,
+        just use the <code className='tw:code'>defaultPressed</code> prop and it will manage the toggle state internally:
+      </p>
+
+      <VersatileTabs2 defaultValue="button-toggle" variant="underline">
+        <VersatileTabs2Content value="button-toggle" demoId="button-toggle" />
+      </VersatileTabs2>
+      <p>
+        Using <code className='tw:code'>pressed</code> and/or <code className='tw:code'>onPressedChange</code>
+        will also make <b>Cta</b> a toggle:
+      </p>
+      <VersatileTabs2 defaultValue="button-group-single-selection" variant="underline">
+        <VersatileTabs2Content value="button-group-single-selection" demoId="button-group-single-selection" />
+      </VersatileTabs2>
+
+
       <br />
+
+      <h3>4️⃣ Muted</h3>
+
+      <p>
+        Sometimes you need a <b>Cta</b> that's not interactive but also not disabled.
+        That's exactly when to use the <code className='tw:code'>muted</code> prop to make it non-interactive.
+      </p>
+      <VersatileTabs2 defaultValue="cta-command-instruction" variant="underline">
+        <VersatileTabs2Content value="cta-command-instruction" demoId="cta-command-instruction" />
+      </VersatileTabs2>
+
+
       <br />
-      Comparing to button, on the surface, normally badge is flat, smaller, and uninteractive by default (because that's why it's called badge).
+      <h3>5️⃣ Wrapup</h3>
+      <p>
+        Since <b>Cta</b> is a call-to-attention widget, start by choosing what <code className='tw:code'>shapes</code> you want,
+        then decide its <code className='tw:code'>variant</code> and <code className='tw:code'>size</code>. Simple!
         <br />
         <br />
+        For more examples showing how versatile this component can be, check out <Link className="tw:link" to="./../api">the API reference page</Link>.
       </p>
-
-      <p>
-      Here is the listing of all the possible variants and sizes they can have:
-      </p>
-      <br />
-      <VersatileTabs
-        settings={[
-          {
-            title: "6 variants",
-            type: "preview",
-            demoId: "button-6variants",
-          },
-          {
-            title: "3 sizes",
-            type: "preview",
-            demoId: "button-3sizes",
-          },
-        ]}
-      />
-        <p>
-          The take-away here is that, while they share the same API of <code className='tw:code'>variant</code> and <code className='tw:code'>size</code>,
-          the visual comparison clearly dipicts the difference between button and badge. You might find out the badges showing here are interactive,
-          that's NOT the problem in some UI design, but later we'll show how to make it non-interactive.
-</p>
-
-
-      <br />
-      <br />
-
-      <Heading size='h3'>2️⃣ icon (cta)</Heading>
-      <p>
-      Through the previous section, you can see that, the default shape of <b>Cta</b> is button,
-        and you can override that by providing the option(s) via <code className='tw:code'>shapes</code>. Currently, it has 4 possibilities:
-        <br />
-
-      </p>
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "cta-possible-shapes",
-          },
-        ]}
-      />
-      <p>
-
-      They're quite self-explanatory, but one thing to note is the "icon". The reason that why "icon" is considered as a unique shape is because,
-        it forces <b>Cta</b> to be in even dimension, so it deserves its seat in <code className='tw:code'>shapes</code> in terms of API design.
-      </p>
-      <br />
-      <br />
-
-      <Heading size='h3'>3️⃣ toggle</Heading>
-
-      <p>
-        Since <b>Cta</b> is stateless by default, it can't remain in pressed state after being clicked.
-        So, in case the such state is important to you, that's where the "toggle" comes in.
-      </p>
-      <br />
-      <p>
-
-      Enabling the toggle behavior is straightforward, for example,
-      if somehow you want to implement a <b>Cta</b> that is pressed initially,
-      by intuitively using the prop <code className='tw:code'>defaultPressed</code>,
-      now your <b>Cta</b> will manage the toggle state internally:
-      </p>
-
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "button-toggle",
-          },
-        ]}
-      />
-      <p>
-        Using <code className='tw:code'>pressed</code>and/or <code className='tw:code'>onPressedChange</code>
-        will also make the <b>Cta</b> a toggle:
-      </p>
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "button-group-single-selection",
-          },
-        ]}
-      />
-
-
-<br />
-
-      <Heading size='h3'>4️⃣ muted</Heading>
-
-      <p>
-        There will be the case that when a <b>Cta</b> is not interactive, but it's NOT disabled,
-        then we can use the <code className='tw:code'>muted</code> prop to make it a non-interactive element.
-      </p>
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "cta-command-instruction",
-          },
-        ]}
-      />
-
-
-      <br />
-      <Heading size='h3'>5️⃣ Wrapup</Heading>
-      <p>
-        So, since <b>Cta</b> is a call-to-attention from certain small widget, to manifest it, think about what kind of <code className='tw:code'>shapes</code> you want?
-        and then decide its <code className='tw:code'>variant</code> and <code className='tw:code'>size</code>. This should all be straight and making sense!
-        <br />
-        <br />
-        Let's! For more on its family components to use, and more demos on showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
-      </p>
-      <br />
-      <br />
 
       <QASection />
 
-      <QA items={[
-        {
-          value: 'why-one-component',
-          trigger: "Why using one component instead of separate button, badge, and toggle components?",
-          content: (
+      <QA2>
+        <QA2Item value="why-one-component">
+          <QA2Trigger>Why using one component instead of separate button, badge, and toggle components?</QA2Trigger>
+          <QA2Content>
             <p>
               Short answer: because they share the same essence.
               <br />
               <br />
               Long answer:
-              To be fair, this is actually an essay question, so it deserves an article of words, but at here,
-              only high level perpsepective will be used.
+              This is really an essay-worthy question, but I'll stick to the high-level perspective here.
               <br />
               <br />
-              <Heading size='h5'>The problem</Heading>
-              Even though almost all the component libraries not clearly define the differences between button, badge, and toggle
-              (note that, the library creator might prefer different naming such as "chip"),
-              those differences are in their mind either explicitly or implicitly,
-              and (interestingly) finally lead to the design: a separate button, badge, and toggle components
-              (again, the naming here are quite common, but still not the universal standard, and some might finally land on the design such as "icon button").
+              <h5># The problem</h5>
+              <br />
+              Most component libraries don't clearly define the differences between buttons, badges, and toggles
+              (some might call them "chips" or other names). These differences exist in the creators' minds
+              implicitly or explicitly, leading to separate components for each.
               <br />
               <br />
-              The "differences" is actually a part of the design definition, and if it's inappropriate,
-              the component design will never be right, and that will lead to the burn on DX sonner or later.
+              These "differences" form part of the design definition, and if they're inappropriate,
+              the component design will never be quite right, hurting DX sooner or later.
               <br />
               <br />
-              Most of the programmer just don't care about this, and they just use the library anyway,
-              and some of them are smart and senstitive enough to see that, from the usage experience,
-              they still fight a lots on the default styles from those components,
-              or/and sometimes customize them heavily due to some kind of UI patterns that those components can't cover,
-              despect "the fact" that they think those components are common to have.
+              Most devs don't overthink this - they just use the library. But the smart ones notice
+              they constantly fight against default styles or need heavy customization for UI patterns
+              these separate components can't handle, despite those components are seeming "common to use".
               <br />
               <br />
-              <Heading size='h5'>The solution</Heading>
+              <h5># The solution</h5>
               <p>
-
-              Some might think that by providing the minimum styles for those component (eg., the solution from <b className="tw:brand">Shadcn</b>)
-              will alleviate the problem, and to some extent, it's true. But it's still entirely not enough.
-              <br />
-                <br />
-                This again hits the classical problem of software design, and without the design principle such as <Link className="tw:link" to="https://en.wikipedia.org/wiki/SOLID">SOLID</Link>,
-                simply using someone's intuitive sense to do the design doesn't work well.
-              <br />
-                <br />
-                The sophisticated engineers who understanding those design principle deeply in heart can oftenly "feel" something is wrong from the design,
-                and know when to do coupling, and when to do separation. And here, simply put (again, thousand words can be put on here due to this is acually an essay question),
-                coupling them is the way to go.
+                Some think providing minimal styles (like <b className="tw:brand">Shadcn</b>) solves this,
+                and it helps, but it's still not enough.
                 <br />
                 <br />
+                This hits the classic software design challenge - without principles like <Link className="tw:link" to="https://en.wikipedia.org/wiki/SOLID">SOLID</Link>,
+                intuition-based design falls short.
+                <br />
+                <br />
+                Engineers who deeply understand design principles can "feel" when something's off
+                and know when to couple vs. separate concerns. In this case, coupling these components makes 100% sense.
               </p>
             </p>
-          )
-        },
-        {
-          value: 'why-not-icon-button',
-          trigger: 'Some component libraries invented "Icon Button", why not just follow through?',
-          content: (
+          </QA2Content>
+        </QA2Item>
+        <QA2Item value="why-not-icon-button">
+          <QA2Trigger>Some component libraries invented "Icon Button", why not just follow through?</QA2Trigger>
+          <QA2Content>
             <p>
-              This again, relates to the previous question "Why using one component instead of separate button, badge, and toggle components?".
-              I've explained everything there on high level, so these are actually the same question.
+              This relates to the previous question about separate components.
               <br />
               <br />
-              There's actually a hard way for you to realize this inapporpriate design in pain:
-              you can just use such "Icon Button" in the daily development,
-              and unless you're always developing something too simple,
-              otherwise you'll encounter the obstacle(s) very soon.
-              <br />
-              <br />
+              Want proof? Try using an "Icon Button" component in real projects.
+              Unless you're building something super simple, you'll hit limitations fast.
             </p>
-
-          )
-        },
-        {
-          value: 'pointer-events-none-vs-muted',
-          trigger: <span>Why not just use <code className='tw:code'>pointer-events-none</code>from <b className='tw:brand'>Tailwind</b>, but <code className='tw:code'>muted</code>?</span>,
-          content: (
-            <p>
-              Because <code className='tw:code'>pointer-events-none</code> has its limitation, and using that will make the implementation on some UI designs extremely hard, and even impossible.
-            </p>
-          )
-        },
-      ]} />
+          </QA2Content>
+        </QA2Item>
+      </QA2>
     </>
   )
 }

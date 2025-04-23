@@ -4,7 +4,6 @@ import HoverCardApiDoc from "#/components/demo/hovercard-api-doc.tsx";
 
 export default {
   title: 'Example/HoverCard',
-  // includeStories: [],
   parameters: {
     layout: 'centered',
   },
