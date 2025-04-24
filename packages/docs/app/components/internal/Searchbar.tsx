@@ -15,9 +15,20 @@ import { Icon } from "../ui/Icon/Icon";
 import type { ComponentProps } from "react";
 import siteData, { type DocTreeItem } from "#/data/site";
 
+// Define a type for the structured search results
+type SearchablePage = {
+  href: string;
+  title: string; // Original title for display
+  fullTitle: string; // Title including context for searching
+  context: string; // Parent context string
+  icon: string;
+};
 
 export default ({ ...props }: Type.Dialog & ComponentProps<typeof Cta>) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const listRef = React.useRef<HTMLDivElement>(null);
+  const [search, setSearch] = React.useState('');
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -39,26 +50,63 @@ export default ({ ...props }: Type.Dialog & ComponentProps<typeof Cta>) => {
     return () => document.removeEventListener("keydown", down)
   }, [])
 
+  React.useEffect(() => {
+    // Ensure CommandList scrolls to top when dialog opens or search changes
+    if (listRef.current) {
+      listRef.current.scrollTop = 0;
+    }
+  }, [isOpen, search]);
+
+  const autoFocusOnInputWhenOpen = () => {
+    if (isOpen) {
+      const timer = setTimeout(() => { // Delay focus slightly to ensure the input is rendered and visible
+        inputRef.current?.focus();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }
+  React.useEffect(autoFocusOnInputWhenOpen, [isOpen]);
+
   const runCommand = (command: () => unknown) => {
     setIsOpen(false)
     command()
   }
 
-  // Extract all pages from siteData docsTree recursively
+  // Extract all pages from siteData docsTree recursively, building context
   const allPages = React.useMemo(() => {
-    const result: DocTreeItem[] = [];
+    const result: SearchablePage[] = [];
 
-    const extractLinks = (items: DocTreeItem[]) => {
+    const extractLinksRecursive = (items: DocTreeItem[], contextParts: string[]) => {
       items.forEach(item => {
+        const currentContextParts = [...contextParts];
+
+        // Add collapsible/subheader title to context if it's not a direct link
+        if (item.type === 'collapsible' || item.type === 'subheader') {
+          if (item.title) {
+            currentContextParts.push(item.title);
+          }
+        }
+
         if (item.type === 'link' && item.href) {
-          result.push(item);
-        } else if (item.type === 'group' && item.items) {
-          extractLinks(item.items);
+          const fullTitle = [...currentContextParts, item.title].join(' > ');
+          const context = currentContextParts.join(' > ');
+          result.push({
+            href: item.href,
+            title: item.title,
+            fullTitle: fullTitle,
+            context: context,
+            icon: item.href?.includes('/components/') ? 'lucide:component' : 'lucide:file',
+          });
+        }
+
+        // Recurse if items exist (covers collapsible and subheader)
+        if (item.items && item.items.length > 0) {
+          extractLinksRecursive(item.items, currentContextParts);
         }
       });
     };
 
-    extractLinks(siteData.docsTree);
+    extractLinksRecursive(siteData.docsTree, []);
     return result;
   }, []);
 
@@ -86,22 +134,49 @@ export default ({ ...props }: Type.Dialog & ComponentProps<typeof Cta>) => {
         </kbd>
       </Cta>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <Command className='tw:p-0'>
-          <CommandInput placeholder="Type a command or search..." />
-          <CommandList>
+        <Command className='tw:p-0 not-prose'>
+          <CommandInput
+            ref={inputRef}
+            placeholder="Type a command or search..."
+            value={search}
+            onValueChange={setSearch}
+          />
+          <CommandList ref={listRef}>
             <CommandEmpty>No results found.</CommandEmpty>
-
-
 
             <CommandGroup heading="Pages">
               {allPages.map((page) => (
                 <CommandItem
                   key={page.href}
+                  value={page.fullTitle}
+                  onSelect={(value) => {
+                    // Close the dialog regardless of navigation method
+                    setIsOpen(false);
+
+                    // Use a link element to handle the navigation instead
+                    // This lets the browser handle Ctrl/Cmd+Click naturally
+                    const a = document.createElement('a');
+                    a.href = page.href;
+                    // Make it behave like a normal link for accessibility
+                    a.rel = 'noopener noreferrer';
+                    // For screen readers
+                    a.setAttribute('aria-label', page.title);
+                    // Let the browser decide how to open it based on user's click behavior
+                    // The browser naturally handles Ctrl/Cmd+Click to open in new tab
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                  }}
                 >
-                  <Icon icon={page.href?.includes('/components/') ? 'lucide:component' : 'lucide:file'} className="tw:mr-2" />
-                  <a href={page.href} rel="noopener noreferrer">
-                    {page.title}
-                  </a>
+                  <Icon icon={page.icon} className="tw:mr-2" />
+                  <div className="tw:flex tw:flex-col tw:truncate">
+                    <span className="tw:truncate">{page.title}</span>
+                    {page.context && (
+                      <span className="tw:text-xs tw:text-muted-foreground tw:truncate">
+                        {page.context}
+                      </span>
+                    )}
+                  </div>
                 </CommandItem>
               ))}
             </CommandGroup>

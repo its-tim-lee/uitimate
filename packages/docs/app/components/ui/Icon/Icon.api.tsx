@@ -1,48 +1,30 @@
 import {
-  UsageSection,
-
   DemoScenariosSection,
   DependenciesSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./Icon.meta.tsx";
 import { Link } from "react-router";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="icon-size"
+        anatomy={meta.anatomy}
+        enableHeading
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Search",
-            type: "preview",
-            demoId: "icon-demo",
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="icon-demo" variant="underline">
+        <VersatileTabs2Content value="icon-demo" demoId="icon-demo" />
+      </VersatileTabs2>
 
-      <br />
-      <br />
 
       <DependenciesSection />
       <Link className="tw:link tw:w-fit" to="https://iconify.design/docs/icon-components/react/" target="_blank" rel="noopener noreferrer">@iconify/react</Link>
-      <br />
-      <br />
     </>
   )
 }
