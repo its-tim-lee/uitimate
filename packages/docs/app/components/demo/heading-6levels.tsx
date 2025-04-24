@@ -5,7 +5,7 @@ import {
 } from "#/components/ui/Heading/Heading";
 
 export default () => (
-  <div className="tw:flex tw:flex-col tw:gap-2">
+  <div className="tw:flex tw:flex-col tw:gap-2 not-prose">
     <Heading size="h1">
       <HeadingTitle>H1 Heading Title</HeadingTitle>
       <HeadingSubtitle>This is a short heading subtitle</HeadingSubtitle>
