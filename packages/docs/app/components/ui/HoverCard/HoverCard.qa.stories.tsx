@@ -10,6 +10,7 @@ export default {
   tags: ['qa', 'fullpage'],
 } as Meta;
 
+// #20250424A
 export const ApiDoc: StoryObj = {
   render: () => <HoverCardApiDoc />,
   play: async ({ canvasElement }) => {

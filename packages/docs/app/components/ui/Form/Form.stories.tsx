@@ -14,7 +14,6 @@ import StripePaymentMethod from "#/components/demo/stripe-payment-method.tsx"
 import { type Meta } from "@storybook/react";
 export default {
   title: 'Example/Form',
-  // includeStories: [],
   parameters: {
     layout: 'centered',
   },
