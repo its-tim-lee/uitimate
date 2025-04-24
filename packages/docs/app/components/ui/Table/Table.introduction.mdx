@@ -12,29 +12,26 @@ component: table
 <br />
 
 
-Our table family components are just a minimal theme wrapper over the native HTML table elements,
-the source code is quite straight and simple, so I would just recommend you to adhead to the [API reference page](./../api)
+Our table family components are just minimal theme wrappers over native HTML table elements.
+The source code is straightforward and simple, so I recommend heading to the [API reference page](./../api)
 to see how to use it with **TanStack Table**.
-
-___
 
 
 <QASection />
 <QA2>
   <QA2Item >
-    <QA2Trigger>Why don't encapsulate **<u>TanStack Table</u>**?</QA2Trigger>
+    <QA2Trigger>Why don't we encapsulate **<u>TanStack Table</u>**?</QA2Trigger>
      <QA2Content>
-       You might see us of encapsulating RHF (**React Hook Form**) in our [form component](./../../form/introduction),
-       but that doesn't mean that one should always do the encapsulation for this kind of headless UI things.
+       You might see us encapsulating RHF (**React Hook Form**) in our [form component](./../../form/introduction),
+       but that doesn't mean we should always encapsulate headless UI frameworks.
 
-       In fact, whether to do so is still somewhat related to how a headless UI framework is designed.
+       It really depends on how the headless UI framework is designed.
 
-       Basically, besides providing hooks, RHF also offers few React components.
-       By directly using RHF, it would require us to set up non-trivial boilerplate code, especially in the building of complicated forms,
-       but most importantly, it would seriously affect how smooth one could use whatever form components in the composition fashion,
-       and that's why encapsulation is needed.
+       RHF provides hooks and a few React components. Using RHF directly requires setting up non-trivial boilerplate code,
+       especially for complex forms. More importantly, it would impact how smoothly you can use form components in a compositional way -
+       that's why encapsulation makes sense there.
 
-       **TanStack Table**, however, basically just provides hooks. There's not much benefit for the consumer to use the encapsulated version of it and being more productive.
+       **TanStack Table**, however, mainly provides hooks. There's little benefit for users with an encapsulated version, and it won't make you 10x more productive.
      </QA2Content>
    </QA2Item>
 </QA2>

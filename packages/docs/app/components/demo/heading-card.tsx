@@ -6,7 +6,7 @@ import {
 import { Flat } from "#/components/preset/flat/index.tsx";
 
 export default () => (
-  <Flat className='tw:w-xl'>
+  <Flat className='tw:w-xl not-prose'>
     <Heading size="h4">
       <HeadingTitle>Shrimp and Chorizo Paella</HeadingTitle>
       <HeadingSubtitle>September 14, 2016</HeadingSubtitle>

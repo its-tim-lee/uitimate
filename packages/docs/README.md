@@ -18,3 +18,4 @@ $ npm exec -- argos upload --token <ARGOS_TOKEN> ./screenshots
 - [] Formalize site's versioning workflow
 - Argos:
   - test Date Picker and Range Picker
+- [] Some places use flat component which is still an experimental component, so the refactoring might need to be performed there
