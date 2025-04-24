@@ -4,15 +4,19 @@ import '#/style/index.css';
 import { type Preview } from "@storybook/react";
 import { themes } from '@storybook/theming';
 import { withThemeByClassName } from '@storybook/addon-themes';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 const preview: Preview = {
   parameters: {
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+    },
     /**
      * This only applies when Argos is going to take a snapshot of any story,
      * and the way it works is that depends on the number of modes declared below,
      * it will take a snapshot for each mode.
      *
-     * eg.,
+     * eg., for the case of dark/light mode:
      * before it takes the snapshot of a story in dark mode,
      * it'd first manipulate the theme global variable injected by the `withThemeByClassName` addon,
      * and then take the snapshot.

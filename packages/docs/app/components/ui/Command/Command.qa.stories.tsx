@@ -9,6 +9,7 @@ export default {
   tags: ['qa', 'fullpage'],
 } as Meta;
 
+// #20250424
 export const CommandDialog: StoryObj = {
   render: () => <CommandDialogDemo />,
   play: async ({ canvasElement }) => {

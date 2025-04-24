@@ -7,28 +7,10 @@ import SidebarTwo from "#/components/demo/sidebar-two"
 
 export default {
   title: 'Example/Sidebar',
-  decorators: [
-    /**
-     * Storybook has a default style on the root element, which creates style issues on this very component.
-     * So below is a workaround to prevent the styling issues.
-     */
-    (Story: any) => {
-      const rootElement = document.getElementById('storybook-root');
-      if (rootElement) {
-        rootElement.style.width = '100%';
-        rootElement.style.padding = 'unset';
-        rootElement.style.height = '100dvh';
-        rootElement.style.display = 'flex';
-        rootElement.style.justifyContent = 'center';
-        rootElement.style.alignItems = 'center';
-      }
-      return <Story />;
-    },
-  ],
-  // includeStories: [],
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
 }
 
 /** #20250324

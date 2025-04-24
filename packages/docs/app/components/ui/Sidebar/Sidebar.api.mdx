@@ -22,31 +22,31 @@ import meta from './Sidebar.meta.tsx';
     demoId="sidebar-two"
     compact
     >
-  * Note that we’ve customized the shortcut for different sidebar layout (the underling library for the shortcut syntax is [hotkeys-js](https://github.com/jaywcjlove/hotkeys-js))
-  * The style difference of the 2 variants can be seen as who is “higher” than another from the perspective of the same direction as your eye-viewing.
+  * Note: We've customized the shortcut for different sidebar layouts (using [hotkeys-js](https://github.com/jaywcjlove/hotkeys-js)).
+  * The style difference between the 2 variants can be understood this way: which one appears "higher" from your eye-level view.
   </VersatileTabs2Content>
   <VersatileTabs2Content
     value="sidebar-in-dialog"
     demoId="sidebar-in-dialog"
     compact
     >
-  - `defaultOpen`: this is ONLY for desktop sidebar, because no one will want to have default open the mobile sidebar.
-  - `variant=flat`: the most common and boring style of the sidebar. it basically just means that the sidebar and its peer are on the same level from the perspective of the same direction as your eye-viewing.
+  - `defaultOpen`: ONLY for desktop sidebars (who wants a mobile sidebar open by default?)
+  - `variant=flat`: The basic, kinda boring style. It just means the sidebar and its peer are visually on the same level.
   </VersatileTabs2Content>
   <VersatileTabs2Content
     value="sidebar-toggle-control"
     demoId="sidebar-toggle-control"
     compact
    >
-    This shows the sidebar will be the same among any breakpoint.
+    Shows the sidebar staying the same across all breakpoints.
   </VersatileTabs2Content>
   <VersatileTabs2Content
     value="sidebar-rwd-minimum-demo"
     demoId="sidebar-rwd-minimum-demo"
     compact
     >
-    - To have different layouts in the desktop and mobile sidebars, you must use `<Sidebar.Mobile>` & `<Sidebar.Desktop>`
-    - Once you use `<Sidebar.Mobile>`, you must also declare `<DrawerHeader>` inside it.
+    - To have different layouts for desktop and mobile, you MUST use `<Sidebar.Mobile>` & `<Sidebar.Desktop>`.
+    - If you use `<Sidebar.Mobile>`, you MUST also include `<DrawerHeader>` inside it.
   </VersatileTabs2Content>
 </VersatileTabs2>
 
@@ -60,11 +60,12 @@ import meta from './Sidebar.meta.tsx';
     demoId="sidebar-youtube"
     compact
     >
-    Now open Youtube, and watch out VERY CAREFULLY how their sidebar will transit during breakpoint change, and during that change, please also toggle on/off the sidebar, and just observe!
+    Go check out YouTube's homepage, and pay VERY close attention to how their sidebar transitions during breakpoint changes.
+    Toggle it on/off frequently while resizing and just watch!
 
-    The example below just shows that you can do the same!
+    This example shows you can totally replicate that!
 
-    Because our sidebar component does lots of similar heavy lifting for you!
+    Why? Because our sidebar component does a ton of the heavy lifting for you!
   </VersatileTabs2Content>
 </VersatileTabs2>
 

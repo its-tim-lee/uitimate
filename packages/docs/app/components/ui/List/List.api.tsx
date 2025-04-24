@@ -1,173 +1,120 @@
 import {
-  UsageSection,
   DemoScenariosSection,
   DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
 import meta from "./List.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { Heading } from "../Heading/Heading.tsx";
-
+import { Link } from "react-router";
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
-
-      <br />
-
-      <UsageSection />
       <ComponentPageUsage
         demoId="list-indent-border"
+        enableHeading
         anatomy={meta.anatomy}
       />
 
-      <br />
-      <br />
 
       <DemoScenariosSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "Simple 1",
-            type: "preview",
-            demoId: "list-demo",
-          },
-          {
-            title: "Simple 2",
-            type: "preview",
-            demoId: "list-firebase-setting-list-1",
-          },
-          {
-            title: "With Dropdown",
-            type: "preview",
-            demoId: "list-optional-indent-v4"
-          },
-          {
-            title: "Inset",
-            type: "preview",
-            demoId: "list-inset",
-            content: (
-              <p>
-                The 2nd indented item below is by intention.
-                <br />
-                <br />
-                What we want to show here is that,
-                while some component libraries provide the prop like {` `}
-                <code className='tw:code'>inset</code>to just help you to do the indent things (usually it's very simple) for you,
-                we'll never provide that kind of stuff, because if you can just use <b className='tw:brand'>Tailwind</b> to do so, which is the extreme common CSS knowledge that too many companies including the big techs like Google, Netflix, ...,
-                and you even can see more and more AI tools that use <b className='tw:brand'>Tailwind</b> by default (because AI really like it),
-                why in the world that you'll think such prop-design is a good idea? And what's the point to learn that?
-                <br />
-                <br />
-                So here, we don't do such <code className='tw:code'>inset</code> thing, but still can achieve the same result.
-                <br />
+      <VersatileTabs2 defaultValue="list-demo" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="list-demo">Simple 1</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="list-firebase-setting-list-1">Simple 2</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="list-optional-indent-v4">With Dropdown</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="list-inset">Inset</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="list-optional-indent-v1">Collapsible v1</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="list-optional-indent-v2">Collapsible v2</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="list-optional-indent-v3">Collapsible v3</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="list-demo" demoId="list-demo" />
+        <VersatileTabs2Content value="list-firebase-setting-list-1" demoId="list-firebase-setting-list-1" />
+        <VersatileTabs2Content value="list-optional-indent-v4" demoId="list-optional-indent-v4" />
+        <VersatileTabs2Content value="list-inset" demoId="list-inset">
+          <p>
+            Heads up: The indent on the 2nd item below is intentional.
+            <br />
+            <br />
+            Here's the deal: Some UI libs give you an <code className='tw:code'>inset</code> prop to handle simple indentation.
+            We'll never do that. Why? Because you can achieve the exact same thing with basic <b className='tw:brand'>Tailwind</b> classes.
+            <b className='tw:brand'>Tailwind</b> is industry standard (Google, Netflix, etc., use it), and even AI coding tools love it (and more and more Big tech's AI are using it).
+            So, why learn a one-off prop when you can use standard CSS knowledge?
+            <br />
+            <br />
+            Point is: We skip the unnecessary <code className='tw:code'>inset</code> prop, and you still get the same result easily.
+            <br />
+            <br />
+          </p>
+        </VersatileTabs2Content>
+        <VersatileTabs2Content value="list-optional-indent-v1" demoId="list-optional-indent-v1" />
+        <VersatileTabs2Content value="list-optional-indent-v2" demoId="list-optional-indent-v2">
+          <p>
+            Same functionality as v1, but uses <code className='tw:code'>Collapsible</code> in a more decoupled way. See if this clicks better with the approach outlined in the intro!
+            <br />
+            <br />
+          </p>
+        </VersatileTabs2Content>
+        <VersatileTabs2Content value="list-optional-indent-v3" demoId="list-optional-indent-v3">
+          <p>
+            Still works the same as other versions, just without the indent.
+            <br />
+            <br />
+          </p>
+        </VersatileTabs2Content>
+      </VersatileTabs2>
 
-                <br /></p>
-            )
-          },
-          {
-            title: "Collapsible v1",
-            type: "preview",
-            demoId: "list-optional-indent-v1",
-          },
-          {
-            title: "Collapsible v2",
-            type: "preview",
-            demoId: "list-optional-indent-v2",
-            content: (
-              <p>
-                This functions the same as the v1, but just use the <code className='tw:code'>Collapsible</code> in a more decoupling fashion if this approach makes more sense to you to align with our instructions
-                <br />
-                <br />
-              </p>
-            )
-          },
-          {
-            title: "Collapsible v3",
-            type: "preview",
-            demoId: "list-optional-indent-v3",
-            content: (
-              <p>
-                This functions still the same as other versions, but with no indent.
-                <br />
-                <br />
-              </p>
-            )
-          },
-        ]}
-      />
-      <br />
-      <br />
+
       <DemoRecipeSection />
-      <VersatileTabs
-        settings={[
-          {
-            title: "File Tree 1",
-            type: "preview",
-            demoId: "list-notion-sidebar",
-          },
-
-          {
-            title: "File Tree 2",
-            type: "preview",
-            demoId: "list-vsc-git",
-          },
-
-          {
-            title: "Collapse-To-Icon",
-            type: "preview",
-            demoId: "list-firebase-sidebar-list",
-            content: (
-              <div>
-                Lots of concepts are packed here:
-                <br />
-                <br />
-                <Heading size='h5'>Why not create a sidebar component for this?</Heading>
-                <p>
-                  If what you're thinking is kind of providing the list feature in a sidebar, then unfortunatelly, that is the wrong move.
-                  <br />
-                  <br />
-                  If you don't believe it, then, ask youself honestly:
-                  <i>"Do you really think that the sidebar component provided by <b className='tw:brand'>Shadcn</b> is really easy to learn and use?"</i>
-                  <br />
-                  <br />
-                  If you being butely honest, the answer will only be very straight: NO!
-                  <br />
-                  <br />
-                  In fact, we wrote a didicated article on how a sidebar component should be designed, so we'll not repeat it here.
-                  <br />
-                  <br />
-                </p>
-                <Heading size='h5'>Why not embed the collapse-to-icon feature into List component?</Heading>
-                <p>
-                  By interacting with this demo, you can collapse it into the "icon list".
-                  Some component libraries provide such thing to you, and make people think about that it's awesome.
-                  But in reality, it's a fantasy, and such out-of-the-box feature will never be scalable.
-                  <br />
-                  <br />
-                  Unless your implementation target is very specific (and usually very simple),
-                  then yes, out-of-the-box feature works great. But in the real world,
-                  there're just way more cases that are far more complicated than that
-                  (look carefully on the demo to see the differences between before-collapse and after-collapse),
-                  which the out-of-the-box approach will never work.
-                  <br />
-                  <br />
-                  So, you need to implement collapse-to-icon manually. Here, we showed a clean way to do so (please check the code snippet);
-                  the downside is that, you can't have a nice transition during collapse/expand.
-                  But let's face it, it's really really not a big deal!
-                  In fact, there're so many great products out there that they just don't have such nice transition,
-                  and they still work extreme well, and people like them anyway!
-                  <br />
-                  <br />
-                </p>
-              </div>
-            )
-          },
-        ]}
-      />
-      <br />
-      <br />
+      <VersatileTabs2 defaultValue="list-notion-sidebar" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="list-notion-sidebar">File Tree 1</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="list-vsc-git">File Tree 2</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="list-firebase-sidebar-list">Collapse-To-Icon</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="list-notion-sidebar" demoId="list-notion-sidebar" />
+        <VersatileTabs2Content value="list-vsc-git" demoId="list-vsc-git" />
+        <VersatileTabs2Content value="list-firebase-sidebar-list" demoId="list-firebase-sidebar-list">
+          <div>
+            <Heading size='h5'>Why not create a dedicated Sidebar component for this?</Heading>
+            <p>
+              Thinking of wrapping list features into a Sidebar component? Yeah, that's probably the wrong move, sorry!
+              <br />
+              <br />
+              Don't believe us? Ask yourself honestly:
+              <i>"Is the Sidebar component from <b className='tw:brand'>Shadcn</b> actually easy to learn and use?"</i>
+              <br />
+              <br />
+              If you're 100% honest, the answer is a straight-up NO.
+              <br />
+              <br />
+              We actually wrote <Link to="./../../sidebar/introduction" className="tw:link">a whole article</Link> about how sidebar components *should* be designed, so we won't rehash it here.
+              <br />
+              <br />
+            </p>
+            <Heading size='h5'>Why not build the collapse-to-icon feature *into* the List component?</Heading>
+            <p>
+              Play with this demo – you can collapse it down to just icons.
+              Some libs offer this out-of-the-box (usually via props) and make it seem awesome.
+              But honestly? It's mostly smoke and mirrors. That kind of built-in feature rarely scales well.
+              <br />
+              <br />
+              Sure, if your target implementation is super specific and simple, an out-of-the-box solution might work.
+              But the real world is messy. You'll encounter far more complex scenarios
+              (look closely at the demo – notice the differences before and after collapsing).
+              <br />
+              <br />
+              Bottom line: You often need to implement collapse-to-icon manually.
+              We show a clean way to do it here (check the code snippet).
+              The only minor downside? No fancy transition animation during collapse/expand.
+              But let's be real: it's really, really NOT A BIG DEAL!
+              Tons of great products skip fancy transitions, work extremely well, and people love 'em anyway!
+              <br />
+              <br />
+            </p>
+          </div>
+        </VersatileTabs2Content>
+      </VersatileTabs2>
     </>
   )
 }
