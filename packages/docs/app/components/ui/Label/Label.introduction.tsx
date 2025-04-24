@@ -1,50 +1,50 @@
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
-import meta from "./Label.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
+import { VersatileTabs2, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
+import Banner from "#/components/internal/InfoBanner.tsx";
 import { QuickDemoSection, QuickStartSection } from "#/components/internal/IntroductionDoc.tsx";
-import { Flat } from "#/components/preset/flat/index.tsx";
-import { Icon } from "#/components/ui/Icon/Icon.tsx";
+import { DependenciesSection } from "#/components/internal/ApiDoc";
+import { Link } from "react-router";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='Introduction' subtitle={meta.description} />
-
-      <br />
-
       <QuickDemoSection />
+      <VersatileTabs2 variant="underline" defaultValue="checkbox-demo">
+        <VersatileTabs2Content value="checkbox-demo" demoId="checkbox-demo" />
+      </VersatileTabs2>
 
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "checkbox-demo",
-          },
-        ]}
-      />
-      <br />
 
       <QuickStartSection />
-      <Flat size="sm" className="tw:flex tw:items-center tw:gap-2 tw:border-primary">
-        <Icon icon='lucide:info' className='tw:mt-1 tw:size-5' />
-        <p>You may ignore this componen if you don't care about the accessibility it provides.</p>
-      </Flat >
-      <br />
       <p>
-
-      Label, in most of the times, is used with the form control elements (eg., text area, input, ... ) to handle the accessibility.
-      <br />
-      <br />
-      To allow it to provide accessibility features, just make sure match the <code className='tw:code'>htmlFor</code>prop to the id of the associated form control element.
-      <br />
-      <br />
-        Note that:
-        <ul className="tw:list-disc tw:pl-5">
-          <li>one label can only associate with one form control element.</li>
-          <li>ensure the form control element use the native element such as <b>input</b>, <b>textarea</b> as a base.</li>
-        </ul>
+        Label, in most of the times, is used with the form control elements (eg., text area, input, ... ) to handle the accessibility.
       </p>
-
+      <p>
+        To allow it to provide accessibility features, just make sure match the <code className='tw:code'>htmlFor</code> prop to the id of the associated form control element.
+        Note that:
+      </p>
+      <ul className="tw:list-disc tw:pl-5">
+        <li>one label can only associate with one form control element.</li>
+        <li>ensure the form control element use the native element such as <b>input</b>, <b>textarea</b> as a base.</li>
+      </ul>
+      <p>
+        Since Label is usually used with form controls, it's probably often used in the {` `}
+        <Link
+          className="tw:link tw:w-fit"
+          to="./../../form/introduction"
+        >
+          form context
+        </Link>,
+        and in that case, you will use <code className='tw:code'>{`<FormLabel>`}</code> inside <code className='tw:code'>{`<Label>`}</code>,
+        and then the matching thing we mentioned will just be handled automatically under the hood.
+      </p>
+      <DependenciesSection />
+      <Link
+        className="tw:link tw:w-fit"
+        to="https://www.radix-ui.com/primitives/docs/components/label"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @radix-ui/react-label
+      </Link>
     </>
   )
 }

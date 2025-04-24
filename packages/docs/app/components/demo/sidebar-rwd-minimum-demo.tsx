@@ -14,8 +14,8 @@ export default () => {
         </Sidebar.Mobile>
         <Sidebar.Desktop>Desktop<br />Sidebar</Sidebar.Desktop>
       </Sidebar>
-      <SidebarPeer>
-        <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4'>
+      <SidebarPeer className='tw:relative'>
+        <div className='tw:p-6 tw:overflow-y-scroll tw:space-y-4 tw:w-full tw:min-w-[200px]'>
           {Array.from({ length: 20 }).map((_, index) => (
             <Skeleton key={index} className="tw:h-20 tw:w-full" />
           ))}

@@ -29,7 +29,7 @@ const items = [
 ];
 export default () => {
   return (
-    <List>
+    <List className='not-prose'>
       {items.map((e, i) => (
         <React.Fragment key={i}>
           <ListItem className='tw:items-start tw:hover:bg-muted tw:p-3'>

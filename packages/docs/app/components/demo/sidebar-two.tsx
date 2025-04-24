@@ -13,7 +13,7 @@ export default () => {
       directions={["right", "right"]}
       shortcut='ctrl+1, command+1'
       onOpenChange={setRightOpen}
-      className='tw:h-[500px] tw:border tw:border-muted-foreground/50 tw:rounded-lg'
+      className='tw:h-[500px] tw:border tw:border-muted-foreground/50 tw:rounded-lg tw:w-full tw:min-w-[500px]'
     >
       <SidebarPeer>
         <SidebarLayout

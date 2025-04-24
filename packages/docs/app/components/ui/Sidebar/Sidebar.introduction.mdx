@@ -3,136 +3,117 @@ component: sidebar
 ---
 <QuickDemoSection />
 <VersatileTabs2 defaultValue="preview-sidebar-chatgpt">
-  <VersatileTabs2List>
-    <VersatileTabs2Trigger value="preview-sidebar-chatgpt">Preview</VersatileTabs2Trigger>
-  </VersatileTabs2List>
   <VersatileTabs2Content value="preview-sidebar-chatgpt" demoId="sidebar-chatgpt" showCode={false} />
 </VersatileTabs2>
 
-
-
 <DefinitionSection>
-The word "sidebar" actually has at least two different meanings. It can be:
+The word "sidebar" actually has at least 2 different meanings:
 * A context, or
-* A physical card (to represent the shape of "sidebar")
+* A physical card (representing the "sidebar" shape)
 
-Physically, a sidebar itself is actually just a card, and nothing more.
-But since it is called "sidebar", it's obvious that people use such "card" in a narrow use cases compare to the infinite use cases of a general card.
+Physically, a sidebar is just a card, plain and simple.
+But since it's called "sidebar", people obviously use this "card" in fewer ways compared to a generic card.
 
-The "narrow use cases" are actually reflected on:
-- How usually the sidebar affects the surround elements?
-- What're the usual things inside the sidebar?
+These "fewer ways" usually boil down to:
+- How does the sidebar affect surrounding elements?
+- What stuff usually goes inside a sidebar?
 
-In fact, such use cases just came from the usage experience of human being:
+Those can be answered by literally looking at how people use sidebars:
 
-- For sidebar's outside world
-  - When it shows up, it may or may not affect the size of the surrounding elements (eg., if the sidebar is floating, it usually don't affect any kind of other stuff)
-  - Sidebar can be always there, or can choose to be hidden
-  - On desktop, the sidebar will only be presented horizontally (ie., it's incredible extreme rare that a desktop sidebar is in an opposite direction)
-  - On mobile, the sidebar can appear from any edge (ie., top, right, bottom, left), although from the top is almost not the case.
-  - There can have more than one sidebar, but it's usually just two, and it's hard to see more than two at the same time. Even if a page has more than two, usually many of them are only meant to be showing up under certain scenarios.
-  - There's no any restriction that how sidebars can be stacked together, or how the next/previous sidebar should be showing up
-  - That's. Probably no other patterns
+- Outside the sidebar:
+  - When sidebar appears, it might or might not change the size of nearby elements (e.g., floating sidebars usually don't mess with other stuff).
+  - Sidebars can be always visible or hideable.
+  - On desktop, sidebars are almost always vertical (horizontal sidebars are super rare).
+  - On mobile, sidebars can slide in from any edge (top, right, bottom, left), though top is uncommon.
+  - You can have multiple sidebars, but usually just 2, and rarely more than 2 visible at once. Even pages with >2 sidebars often only show extras in specific situations.
+  - There are no strict rules on how sidebars stack or how the next/previous one appears.
+  - That's pretty much it. Probably no other major patterns.
 
-- For sidebar's inside world
-  - Beside the fact that list(s) is almost always there, no other patterns are really fixed or just as common as list(s), but people really can put any kind of stuff inside the sidebar.
-  - Note that, even thought the list(s) are common elements in the sidebar, DOES NOT mean that it'd not be a sidebar if it doesn't have such elements
+- Inside the sidebar:
+  - Lists are almost always there, but besides that, no other patterns are super fixed or common. People can put pretty much anything inside.
+  - Just because lists are common doesn't mean it's *not* a sidebar without them!
 
-Now, these observed patterns are only happened/used under certain context,
-so it's important to give the name to the context, and we can simply just call it "sidebar (context)".
+These patterns only happen in certain contexts, so it's important to name the context. Let's just call it "sidebar (context)".
 </DefinitionSection>
-
-
 
 <QuickStartSection />
 <Banner>
-Without fully understanding [the definition](definition) first, you might hit a wall when reading below, because it can refer any concept/jargon that has been explained well there.
+Make sure you fully get [the definition](definition) first! Otherwise, you might get lost reading this, as it uses concepts explained there.
 </Banner>
 
-Our sidebar component exposes 3 family components:
+Our sidebar component has 3 family members:
 - `<SidebarLayout>`
-  - Usually contains exactly two child components: `<Sidebar>` and `<SidebarPeer>`
-  - Implements the core functionality of the "sidebar context"
+  - Usually contains exactly 2 children: `<Sidebar>` and `<SidebarPeer>`.
+  - Handles the core logic of the "sidebar context".
 - `<Sidebar>`
-  - From the high level view, you may imagine that it's just like a card in the sidebar context, nothing special.
-  - Since it's just a card, you can put anything you want into it; no restriction.
+  - High-level view: Think of it as just a card within the sidebar context. Nothing fancy.
+  - Since it's just a card, put whatever you want inside. No limits.
 - `<SidebarPeer>`
-  - The name of this component should already explain everything. It's… the peer of the `<Sidebar>`, the most boring one.
-  - Typically contains the main content of your application, but in fact, there's no any kind of restriction that what kind of thing you can put it in.
+  - The name says it all. It's the `<Sidebar>`'s peer. The boring one.
+  - Typically holds your app's main content, but honestly, you can put anything here.
 
-Before we get into more details, how about playing with a very simple demo and briefly looking into the corresponding code snippet:
+Before diving deeper, let's play with a simple demo and peek at the code:
 <VersatileTabs2 defaultValue="preview-sidebar-toggle-control" compact>
-  <VersatileTabs2List>
-      <VersatileTabs2Trigger value="preview-sidebar-toggle-control">Preview</VersatileTabs2Trigger>
-  </VersatileTabs2List>
   <VersatileTabs2Content value="preview-sidebar-toggle-control" demoId="sidebar-toggle-control" compact />
 </VersatileTabs2>
 
+<Banner>
+Remember: the default shortcut for toggling the sidebar is `option/alt + b`.
+</Banner>
+
 <Details>
   <DetailsTrigger>
-    **DEEP DIVE**: If you notice that this is very different from **<u>Shadcn</u>**’s Sidebar...*
+    **DEEP DIVE**: Noticed this is very different from [**<u>Shadcn</u>**'s Sidebar](https://ui.shadcn.com/docs/components/sidebar)?
   </DetailsTrigger>
   <DetailsContent>
-    Yes, you’re right about your keen sense!
+    Yep, sharp eye!
 
-    Again, anything in our sidebar component all come from [the definition](definition),
-    but in fact, all the statements there are just common sense / practical observation.
+    Again, everything in our sidebar component stems from [the definition](definition),
+    which is really just common sense / practical observations.
 
-    Without a strong spec, a component design will never be right,
-    and it might look fancy at certain time, but it’d have the devastating consequences.
+    Without a solid spec, component design goes wrong.
+    It might look cool initially, but can lead to disaster later.
   </DetailsContent>
 </Details>
 
-
-
 #### 1️⃣ The Sidebar
 
-Our `<Sidebar>` will use [@uitimate/drawer](./../../drawer/introduction) (we call it "mobile sidebar")
-under the hood when in the small breakpoint, so this leads to below use cases:
+Our `<Sidebar>` uses [@uitimate/drawer](./../../drawer/introduction) (we call it the "mobile sidebar")
+on small screens. This leads to these scenarios:
 
-1. You only want to have a desktop sidebar (ie., the sidebar will be the same at any breakpoint)
-2. You just want to use our solution anyway
-3. There're probably other cases, but should be rare or just easy to come up with the solutions
+1. You only want a desktop sidebar (i.e., it looks the same on all screen sizes).
+2. You just want to use our solution regardless.
+3. Other cases are probably rare or have straightforward solutions.
 
-The first case will be explained in the next section. Below I explain what you need to know in the 2nd case:
+The first case is covered next. Here's what you need for the 2nd case:
 
-So any prop or class you pass into `<Sidebar>` will be forwarded to both desktop and mobile sidebar (note: the desktop sidebar is just a div with some styles; nothing special.)
+Any prop or class you pass to `<Sidebar>` gets forwarded to *both* the desktop and mobile sidebars (FYI: the desktop sidebar is just a styled `div`).
 
-Since in many UI design that the inner layout in the mobile sidebar can be different from the desktop’s,
-our policy is: whenever you use `<Sidebar>`, you must explicit specify what kinds of inner layout you want in each sidebar by using
+Since mobile and desktop sidebar layouts often differ, our policy is: when using `<Sidebar>`, you MUST explicitly define the inner layout for each using
 `<Sidebar.Mobile>` and `<Sidebar.Desktop>`:
 
 <VersatileTabs2 defaultValue="sidebar-rwd-minimum-demo" compact>
-  <VersatileTabs2List>
-      <VersatileTabs2Trigger value="sidebar-rwd-minimum-demo">Preview</VersatileTabs2Trigger>
-  </VersatileTabs2List>
   <VersatileTabs2Content
     value="sidebar-rwd-minimum-demo"
     demoId="sidebar-rwd-minimum-demo"
-    caption="resize the viewport to see the mobile sidebar."
+    caption="Resize the viewport to see the mobile sidebar (of course, pressing `option/alt + b`)"
     compact
   />
 </VersatileTabs2>
 
 <Banner>
-  As you can see in the code snippet, you must also declare `<DrawerHeader>` inside `<Sidebar.Mobile>`.
-  For those who wonders why of that and why create the `<Sidebar.Mobile>` & `<Sidebar.Desktop>`, check the source code.
+  As the code snippet shows, you MUST also include `<DrawerHeader>` inside `<Sidebar.Mobile>`.
+  Wondering why, or why `<Sidebar.Mobile>` & `<Sidebar.Desktop>` even exist? Check the source code!
 </Banner>
 
-
-
 #### 2️⃣ The SidebarLayout
-This component does the most heavy liftings (we’ll reveal some later) under the hood to make the entire sidebar works great,
-so some efforts will be put below for explaining; but first,
-let’s referring back to the 1st case we’ve left from the last section.
+This component does most of the heavy lifting (more on that later) to make the sidebar work smoothly.
+Let's cover some key points, starting with case #1 from the previous section.
 
-It’s actually the easiest. You just need to provide the prop `enableMobileSidebar` to `false` on `<SidebarLayout>`
-(so no need to use either `<Sidebar.Mobile>` or `<Sidebar.Desktop>` anymore).
+It's actually the easiest: just set `enableMobileSidebar={false}` on `<SidebarLayout>`
+(then you don't need `<Sidebar.Mobile>` or `<Sidebar.Desktop>` anymore).
 
 <VersatileTabs2 defaultValue="sidebar-toggle-control" id="no-mobile-sidebar-demo" compact>
-  <VersatileTabs2List>
-    <VersatileTabs2Trigger value="sidebar-toggle-control">Preview</VersatileTabs2Trigger>
-  </VersatileTabs2List>
   <VersatileTabs2Content
     value="sidebar-toggle-control"
     demoId="sidebar-toggle-control"
@@ -140,12 +121,11 @@ It’s actually the easiest. You just need to provide the prop `enableMobileSide
     compact
   />
 </VersatileTabs2>
-Now, we need to explain where you should place `<Sidebar>` in `<SidebarLayout>`. It only matters in desktop breakpoint:
-```tsx file=./Sidebar.meta.tsx#L4-L14
+Now, placement: where should `<Sidebar>` go inside `<SidebarLayout>`? This only matters for desktop:
+```tsx file=./Sidebar.meta.tsx#L6-L16
 ```
-After the placement, you need to declare the directions you want for
-both desktop and mobile sidebars via the only one mandatory prop `directions` on `<SidebarLayout>`.
-Below is its **Typescript** definition (and you may check the relevant demo as the [previous one](no-mobile-sidebar-demo)):
+After placing it, you MUST declare the directions for both desktop and mobile sidebars using the mandatory `directions` prop on `<SidebarLayout>`.
+Here's the **TypeScript** definition (check the [previous demo](no-mobile-sidebar-demo) for an example):
 
 ```ts
   directions: [
@@ -156,27 +136,23 @@ Below is its **Typescript** definition (and you may check the relevant demo as t
 
 <Details>
   <DetailsTrigger>
-    **DEEP DIVE**: The placement and `directions` seem redundant?
+    **DEEP DIVE**: The placement and `directions` seem kinda redundant?
   </DetailsTrigger>
   <DetailsContent>
-    Yeah, it’s kind of redundant.
+    Yeah, a bit.
 
-    But many other component libraries which provide sidebar will also require you to specify similar prop.
-    The reason is simple, if the component detect that automatically for you without you to specify the direction,
-    it’d only make the component source code extreme complicated and can become unreliable.
+    But many sidebar libraries require a similar prop.
+    Why? Auto-detecting direction makes the component code way too complex and unreliable.
 
-    On the other hand, always specifying the direction for the mobile sidebar make much more sense,
-    since it’s totally possible that sidebar direction on mobile is different from the desktop’s (it’s actually quite common).
+    Plus, explicitly setting the mobile sidebar direction makes sense, since it often differs from the desktop direction (pretty common, actually).
 
-    Just because you really need to specify the direction for the mobile sidebar,
-    I mean, why not just specify both together? This way of the declaration,
-    just make both directions very explicit and clear!
+    Since you *have* to specify the mobile direction anyway, why not just declare both together? It makes both directions super explicit and clear!
 
-    On this sense, do you still think it’s redundant?
+    Seen this way, still think it's redundant?
   </DetailsContent>
 </Details>
 
-For all other props and the relevant concepts, see below demos and the corresponding code snippet:
+For other props and concepts, check out these demos and their code snippets:
 <VersatileTabs2 defaultValue="sidebar-in-dialog">
   <VersatileTabs2List>
     <VersatileTabs2Trigger value="sidebar-in-dialog">In Dialog</VersatileTabs2Trigger>
@@ -188,95 +164,61 @@ For all other props and the relevant concepts, see below demos and the correspon
     demoId="sidebar-in-dialog"
     compact
     >
-  - `defaultOpen`: this is ONLY for desktop sidebar, because no one will want to have default open the mobile sidebar.
-  - `variant=flat`: the most common and boring style of the sidebar. it basically just means that the sidebar and its peer are on the same level from the perspective of the same direction as your eye-viewing.
+  - `defaultOpen`: ONLY for desktop sidebars. Who wants a mobile sidebar open by default, right?
+  - `variant=flat`: The basic, kinda boring style. It just means the sidebar and its peer are visually on the same level.
   </VersatileTabs2Content>
   <VersatileTabs2Content
     value="sidebar-two"
     demoId="sidebar-two"
     compact
     >
-  - Note that we’ve customized the shortcut for different sidebar layout (the underling library for the shortcut syntax is [hotkeys-js](https://github.com/jaywcjlove/hotkeys-js))
-  - The style difference of the 2 variants can be seen as who is “higher” than another from the perspective of the same direction as your eye-viewing.
+  - Note: We've customized the shortcut for different sidebar layouts (using [hotkeys-js](https://github.com/jaywcjlove/hotkeys-js)).
+  - The style difference between the 2 variants is basically which one appears "higher" from your eye-level view.
   </VersatileTabs2Content>
   <VersatileTabs2Content
     value="sidebar-youtube"
     demoId="sidebar-youtube"
     compact
     >
-    Now open Youtube, and watch out VERY CAREFULLY how their sidebar will transit during breakpoint change, and during that change, please also toggle on/off the sidebar, and just observe!
+    Go check out YouTube. Pay VERY close attention to how their sidebar transitions during breakpoint changes. Toggle it on/off while resizing and just watch!
 
-    The example below just shows that you can do the same!
+    This example shows you can totally replicate that!
 
-    Because our sidebar component does lots of similar heavy lifting for you!
+    Why? Because our sidebar component does a ton of the heavy lifting for you!
     </VersatileTabs2Content>
 </VersatileTabs2>
 
 <br />
 
-
 #### 3️⃣ Tip
-Some helpful `data-* `attributes are added onto all the family components to reflect the relevant states,
-so feel free to inspect them to learn more!
-
-
+Helpful `data-* `attributes are added to all family components reflecting their states.
+Inspect them in your browser's dev tools to learn more!
 
 ___
 
-Let's! For more on its family components to use, and more demos on showing how versatile this component can be, check [the API reference page](./../api)
+Let's go! For more on the components and cool demos, check the [API reference page](./../api).
 
 ___
 
 <QASection />
 <QA2>
   <QA2Item >
-    <QA2Trigger>Can I put more than one `<Sidebar>` or/and `<SidebarPeer>` in `<SidebarLayout>`?</QA2Trigger>
+    <QA2Trigger>Can I put more than one `<Sidebar>` or `<SidebarPeer>` in `<SidebarLayout>`?</QA2Trigger>
      <QA2Content>
-        You can! But it violates sidebar's implementation policy, and might break things!
+        You can! But it breaks the implementation policy and might cause issues!
 
-        You might think that is the limitation of the design, but frankly, that’s not true,
-        because you only consider that literally from the consumer side, but the design process is actually considering more than that.
+        You might think that's a design limitation, but honestly, it's not.
+You're only looking at it from the consumer side; the design considers more.
 
-        Let’s repeat the policy: Only ONE `<Sidebar>` and ONE `<SidebarPeer>` in a `<SidebarLayout>`.
+        Let's repeat the policy: Only ONE `<Sidebar>` and ONE `<SidebarPeer>` per `<SidebarLayout>`.
 
-         “Why?” you asked.
+         "Why?" you ask.
 
-         I really can’t speak all the details, because that’d be an article, and here is just a short Q&A. So I’ll pick the major points to explain.
+         I can't cover *all* the details here (that'd be a whole article!), but here are the main points:
 
-        First, I can't tell that why that would be a problem from the consumer side,
-        simply because you can nest `<SidebarLayout>` in another `<SidebarPeer>`, and usually, the nested sidebars will be not too deep and too much,
-        because it’s freaking rare to have such UI design that you need to implement.
+        1. It's rarely a problem for consumers. You can nest `<SidebarLayout>` inside `<SidebarPeer>`. Usually, nested sidebars aren't super deep or numerous because complex UIs like that are rare.
 
-        Second, being able to handle more than one `<Sidebar>` in `<SidebarLayout>` will only make the source code extreme unnecessary complex,
-        but the benefit from that is the opposite － very little, most just for a little better convenience in terms of DX from the consumer side.
-     </QA2Content>
-   </QA2Item>
-  <QA2Item >
-    <QA2Trigger>Why not integrate the components like `<List>` or provide other family components such as `<SidebarFooter>`?</QA2Trigger>
-     <QA2Content>
-        I'd encourage you to look into [the definition](definition) first,
-        but embedding the stuff like `<List>` is not only overwhelming violate [SOLID](https://en.wikipedia.org/wiki/SOLID),
-        but would dramatically hurt DX.
-
-        Maintaining and using them separately simply just make them scalable:
-        now the code is doing one thing (ie., [SRP](https://en.wikipedia.org/wiki/Single-responsibility_principle)), and the component is easier to learn and use, …
-         it just makes everybody’s life better!
-
-        Regarding other stuff like `<SidebarFooter>`, again, this still relates to [our definition](definition),
-        there’re many real world sidebars that they don’t have such things, and even many of others do have,
-         there’re no really fixed patterns, but in fact,
-        if what you want is just a space that put stuff on the bottom of the `<Sidebar>`,
-         that’s insanely easy to implement using ***Tailwind***!
-     </QA2Content>
-   </QA2Item>
-  <QA2Item >
-     <QA2Trigger>Why the desktop sidebar can't be in direction vertically?</QA2Trigger>
-     <QA2Content>
-         Because probably no one does that (I haven’t see any real world example), so supporting it doesn’t make sense.
-
-        *“But why no one does that?” *you asked. The reason is quite straight, unless the sidebar is floating,
-        otherwise there’re always better solutions. In fact, this more relates to UI design question,
-        so asking your designers about why in the design world that people don’t do such thing, and I’m sure they will give a good answer!
+        2. Handling multiple `<Sidebar>` elements in `<SidebarLayout>` makes the source code unnecessarily complex and brittle.
      </QA2Content>
    </QA2Item>
 </QA2>
