@@ -10,7 +10,7 @@ import { Separator } from "#/components/ui/Separator/Separator.tsx";
 export default () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <div data-collapsed={toggle || undefined} className='tw:group/root tw:flex tw:flex-col tw:gap-4 tw:border-2 tw:border-muted tw:p-1 tw:pt-4 tw:text-sm tw:h-fit'>
+    <div data-collapsed={toggle || undefined} className='tw:group/root tw:flex tw:flex-col tw:gap-4 tw:border-2 tw:border-muted tw:p-1 tw:pt-4 tw:text-sm tw:h-fit not-prose'>
 
       <div className='tw:hidden tw:group-data-collapsed/root:block'>
         <List>

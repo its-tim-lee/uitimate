@@ -13,18 +13,14 @@ import { Link } from "react-router";
 export default () => {
   return (
     <>
-      <ComponentPageHero title='API' subtitle={meta.description} />
 
-      <br />
 
-      <UsageSection />
       <ComponentPageUsage
+        enableHeading
         demoId="inputotp-demo"
         anatomy={meta.anatomy}
       />
 
-      <br />
-      <br />
 
       <DependenciesSection />
 
