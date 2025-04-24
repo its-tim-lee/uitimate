@@ -1,43 +1,24 @@
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
-import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
-import QA from "#/components/internal/QA.tsx";
-import meta from "./Chart.meta.tsx";
-import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
+import { VersatileTabs2, VersatileTabs2Content } from "#/components/internal/VersatileTabs2.tsx";
 
 export default () => {
   return (
     <>
-      <ComponentPageHero title='Introduction' subtitle={meta.description} />
-
-      <br />
 
       <QuickDemoSection />
 
-      <VersatileTabs
-        settings={[
-          {
-            type: "preview",
-            demoId: "chart-demo",
-          },
-        ]}
-      />
-
-      <br />
-      <br />
+      <VersatileTabs2 defaultValue="chart-demo" variant="underline">
+        <VersatileTabs2Content value="chart-demo" demoId="chart-demo" />
+      </VersatileTabs2>
 
       <QuickStartSection />
       <p>
-        What this componet does is literally just providing some helpful tools around the charts you built via <b className="tw:brand"><Link to='https://recharts.org/en-US/' className="tw:link" target="_blank">Recharts</Link></b>.
-        (eg., tooltip), so all these tools are optional, and they don't really change anything on any chart.
-        <br />
-        <br />
-        This is the only component in our library that literally just borrows from <b className="tw:brand">Shadcn</b> without any change,
-        so for more example usages, refer to <Link className="tw:link" to='https://ui.shadcn.com/charts' target="_blank">their chart demos</Link>.
+        This component just adds some helpful extras (like tooltips) to the charts you build with <b className="tw:brand"><Link to='https://recharts.org/en-US/' className="tw:link" target="_blank">Recharts</Link></b>. They're optional and won't mess with your chart's core functionality.
       </p>
-      <br />
-      <br />
+      <p>
+        This is the <i>only</i> component in our library that's almost just copy-paste from <b className="tw:brand">Shadcn</b>. So, for more usage examples, definitely check out <Link className="tw:link" to='https://ui.shadcn.com/charts' target="_blank">their chart demos</Link>.
+      </p>
 
     </>
   )

@@ -1,7 +1,12 @@
-import VersatileTabs from "#/components/internal/VersatileTabs.tsx";
+import {
+  VersatileTabs2,
+  VersatileTabs2Content,
+  VersatileTabs2List,
+  VersatileTabs2Trigger,
+} from "#/components/internal/VersatileTabs2";
 import { CodeBlock } from "#/components/internal/CodeBlock.tsx";
 import { Link } from "react-router";
-import QA from "#/components/internal/QA.tsx";
+import { QA2, QA2Content, QA2Item, QA2Trigger } from "#/components/internal/QA2";
 import meta from "./Icon.meta.tsx";
 import ComponentPageHero from "#/components/internal/ComponentPageHero.tsx";
 import { QuickDemoSection, QuickStartSection, QASection } from "#/components/internal/IntroductionDoc.tsx";
@@ -9,29 +14,18 @@ import { QuickDemoSection, QuickStartSection, QASection } from "#/components/int
 export default () => {
   return (
     <>
-      <ComponentPageHero title='Introduction' subtitle={meta.description} />
-      <br />
 
       <QuickDemoSection />
 
-      <VersatileTabs
-        settings={[
-          {
-            title: "Sizing",
-            type: "preview",
-            demoId: "icon-size",
-          },
-          {
-            title: "Search",
-            type: "preview",
-            demoId: "icon-demo",
-            content: ''
-          },
-        ]}
-      />
+      <VersatileTabs2 defaultValue="icon-size" variant="underline">
+        <VersatileTabs2List>
+          <VersatileTabs2Trigger value="icon-size">Sizing</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="icon-demo">Search</VersatileTabs2Trigger>
+        </VersatileTabs2List>
+        <VersatileTabs2Content value="icon-size" demoId="icon-size" />
+        <VersatileTabs2Content value="icon-demo" demoId="icon-demo" />
+      </VersatileTabs2>
 
-      <br />
-      <br />
 
       <QuickStartSection />
       <p>
@@ -42,7 +36,6 @@ export default () => {
         {`          <Icon icon="lucide:search" label="Search" />
         `}
       </CodeBlock>
-      <br />
       <p>
         To adjust the size of the icon, simply use <b className="tw:brand">Tailwind</b>:
       </p>
@@ -51,31 +44,38 @@ export default () => {
           <Icon icon="lucide:search" label="Search" className="tw:size-6" />
         `}
       </CodeBlock>
-      <br />
 
       <p>
         Let's! For more on its family components to use, and more demos on showing how versatile this component can be, check <Link className="tw:link" to="./../api">the API reference page</Link>.
       </p>
-      <br />
-      <br />
 
       <QASection />
 
-      <QA items={[
-
-        {
-          value: 'icon-naming',
-          trigger: <span>Why even use <b className="tw:brand">Iconify</b>?</span>,
-          content: (
+      <QA2>
+        <QA2Item value="icon-naming">
+          <QA2Trigger>
+            <span>
+              Why even use <b className="tw:brand">Iconify</b>?
+            </span>
+          </QA2Trigger>
+          <QA2Content>
             <p className="tw:text-muted-foreground">
-              It's <Link className="tw:link" to="https://icon-sets.iconify.design" target="_blank" rel="noopener noreferrer">the largest icon library</Link> in the world, period.
+              It's{" "}
+              <Link
+                className="tw:link"
+                to="https://icon-sets.iconify.design"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                the largest icon library
+              </Link>{" "}
+              in the world, period.
             </p>
-          )
-        },
-        {
-          value: 'accessibility',
-          trigger: "SSR support?",
-          content: (
+          </QA2Content>
+        </QA2Item>
+        <QA2Item value="accessibility">
+          <QA2Trigger>SSR support?</QA2Trigger>
+          <QA2Content>
             <p className="tw:text-muted-foreground">
               You can use the approach something like:
               <CodeBlock>
@@ -83,11 +83,10 @@ export default () => {
                 import { default as githubSVG } from '@iconify/icons-lucide/github'
                 `}
               </CodeBlock>
-
             </p>
-          )
-        },
-      ]} />
+          </QA2Content>
+        </QA2Item>
+      </QA2>
     </>
   )
 }

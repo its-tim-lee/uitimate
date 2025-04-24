@@ -1,5 +1,4 @@
-import { Cta } from "#/components/ui/Cta/Cta"
-import { Icon } from "#/components/ui/Icon/Icon";
+import Switcher from "#/components/demo/button-switch";
 
 /**
  * This file is only meant to be used with @fout-preventer.ts
@@ -14,10 +13,6 @@ export default () => {
       ?.setAttribute("content", finalScheme === "dark" ? "#09090b" : "#fff");
   }
   return (
-    <Cta variant="ghost" className='tw:shadow-none' shapes={['icon']} onClick={setColorScheme}>
-      <Icon icon="lucide:sun" className="tw:hidden tw:dark:block tw:h-[1.2rem] tw:w-[1.2rem] tw:rotate-0 tw:transition-all tw:dark:rotate-90" />
-      <Icon icon="lucide:moon" className="tw:block tw:dark:hidden tw:h-[1.2rem] tw:w-[1.2rem] tw:transition-all" />
-      <span className="tw:sr-only">Switch between dark and light mode</span>
-    </Cta>
+    <Switcher onClick={setColorScheme} className="tw:shadow-none tw:border-none" size="sm" />
   )
 }
