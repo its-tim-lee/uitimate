@@ -1,7 +1,7 @@
 import { Dialog } from "#/components/ui/Dialog/Dialog"
 import * as React from "react"
 import { type Type } from "#/components/ui/Dialog/Dialog";
-import { cn } from "#/helpers/css"
+import { cn } from "#/helpers/utils"
 import { Cta } from "#/components/ui/Cta/Cta"
 import {
   Command,
@@ -24,7 +24,7 @@ type SearchablePage = {
   icon: string;
 };
 
-export default ({ ...props }: Type.Dialog & ComponentProps<typeof Cta>) => {
+export default ({ ...props }: ComponentProps<typeof Cta>) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const inputRef = React.useRef<HTMLInputElement>(null);
   const listRef = React.useRef<HTMLDivElement>(null);

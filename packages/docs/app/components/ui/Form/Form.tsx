@@ -57,7 +57,7 @@ const Form = <T extends ZodObject<ZodRawShape>>({
 }: FormProps<T>) => {
   const prevFormState = useRef<any>({});
   const form = useForm<z.infer<T>>({
-    resolver: zodResolver(schema) as any,
+    resolver: zodResolver(schema),
     ...props
   });
   useEffect(() => setForm?.(form), [form, setForm]); // Expose `form`

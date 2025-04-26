@@ -60,7 +60,7 @@ const NavigationMenuList = ({
   className,
   ...props
 }: NavigationMenuListProps) => (
-  <List data-tag={casing.kebabCase(List.displayName)} className={list({ className })} {...props} />
+  <List data-tag={casing.kebabCase(NavigationMenuList.displayName)} className={list({ className })} {...props} />
 )
 
 type NavigationMenuProps = ComponentProps<typeof Root>
@@ -86,7 +86,7 @@ const NavigationMenuItem = ({
   className,
   ...props
 }: NavigationMenuItemProps) => (
-  <Item data-tag={casing.kebabCase(Item.displayName)} className={item({ className })} {...props} />
+  <Item data-tag={casing.kebabCase(NavigationMenuItem.displayName)} className={item({ className })} {...props} />
 )
 
 type NavigationMenuTriggerProps = ComponentProps<typeof Trigger>
