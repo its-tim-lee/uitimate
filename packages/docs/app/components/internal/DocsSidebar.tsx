@@ -3,7 +3,7 @@ import data, { type DocTreeItem } from "../../data/site.ts";
 import { List, ListItem } from "#/components/ui/List/List.tsx";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible.tsx";
 import { Icon } from "#/components/ui/Icon/Icon.tsx";
-import { DocTreeItemTags } from "#/components/ui/DocTree/DocTreeItemTags";
+import { DocTreeItemTags } from "#/components/internal/DocTree/DocTreeItemTags.tsx";
 import type { ReactNode, JSX } from "react";
 
 const isPathActiveOrHasActiveChild = (item: DocTreeItem, currentPath: string): boolean => {
