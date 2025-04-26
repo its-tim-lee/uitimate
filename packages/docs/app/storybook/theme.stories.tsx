@@ -1,18 +1,14 @@
 import type { Meta } from '@storybook/react';
 import { useState } from "react";
-import { Button } from "../components/improper/Button/Button";
-import { Icon } from "../components/ui/Icon/Icon";
+import { Cta } from "#/components/ui/Cta/Cta";
+import { Icon } from "#/components/ui/Icon/Icon";
 
 export default {
   title: 'Theme',
-  includeStories: [],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as Meta;
 
 const ThemeSwitch = () => {
@@ -22,13 +18,13 @@ const ThemeSwitch = () => {
     document.documentElement.classList.toggle('dark');
   }
   return (
-    <Button
-      variant='outline' mode="icon" size='lg'
+    <Cta
+      variant='outline' size='lg' shapes={['icon']}
       onClick={toggle}
     >
       <Icon icon={themeIcon} />
       <span className="tw:sr-only">Switch between dark and light mode</span>
-    </Button>
+    </Cta>
   )
 }
 

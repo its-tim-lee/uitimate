@@ -5,7 +5,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/Table/Table.tsx"
+} from "#/components/ui/Table/Table.tsx"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -14,7 +14,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/DropdownMenu/DropdownMenu.tsx"
+} from "#/components/ui/DropdownMenu/DropdownMenu.tsx"
 import {
   type ColumnDef,
   flexRender,
@@ -27,11 +27,11 @@ import {
   getFilteredRowModel,
   type VisibilityState,
 } from "@tanstack/react-table"
-import { Button } from "../improper/Button/Button.tsx"
 import { useState } from "react"
-import { Input } from "../ui/Input/Input.tsx"
-import { Checkbox } from "../ui/Checkbox/Checkbox.tsx"
-import { Icon } from "../ui/Icon/Icon.tsx"
+import { Input } from "#/components/ui/Input/Input.tsx"
+import { Checkbox } from "#/components/ui/Checkbox/Checkbox.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { Cta } from "#/components/ui/Cta/Cta.tsx"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -77,13 +77,13 @@ export default function TableDataDemo() {
       accessorKey: "email",
       header: ({ column }) => {
         return (
-          <Button
+          <Cta
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
             Email
             <Icon icon="lucide:arrow-up-down" className="tw:ml-2 tw:h-4 tw:w-4" />
-          </Button>
+          </Cta>
         )
       },
     },
@@ -108,10 +108,10 @@ export default function TableDataDemo() {
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="tw:h-8 tw:w-8 tw:p-0">
+              <Cta variant="ghost" className="tw:h-8 tw:w-8 tw:p-0">
                 <span className="tw:sr-only">Open menu</span>
                 <Icon icon="lucide:more-horizontal" className="tw:h-4 tw:w-4" />
-              </Button>
+              </Cta>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
@@ -203,9 +203,9 @@ function DataTable<TData, TValue>({
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="tw:ml-auto">
+            <Cta variant="outline" className="tw:ml-auto">
               Columns
-            </Button>
+            </Cta>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {table
@@ -273,22 +273,22 @@ function DataTable<TData, TValue>({
         </Table>
       </div>
       <div className="tw:flex tw:items-center tw:justify-end tw:space-x-2 tw:py-4">
-        <Button
+        <Cta
           variant="outline"
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
           Previous
-        </Button>
-        <Button
+        </Cta>
+        <Cta
           variant="outline"
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
           Next
-        </Button>
+        </Cta>
       </div>
     </div>
   )

@@ -188,20 +188,6 @@ export default () => {
               will be forever grateful.
             </p>
           </div>
-          {/* <Button
-            className="bg-[#ff5f5f] text-destructive-foreground hover:bg-[#ff5f5f]"
-            asChild
-          >
-            <Link
-              // <a href='https://ko-fi.com/E1E2JREDN' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-              href="https://ko-fi.com/E1E2JREDN"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Coffee className="size-4" />
-              Buy me a coffee
-            </Link>
-          </Button> */}
         </TimelineContent>
       </TimelineItem>
     </Timeline>)
