@@ -1,8 +1,8 @@
 import { type ComponentProps } from "react"
-import { Root, List, Item, Trigger, Content, Link, Viewport, Indicator, Sub as NavigationSubMenu } from "@radix-ui/react-navigation-menu"
+import { Root, List, Item, Trigger, Content, Link, Viewport, Indicator, Sub as NavigationSubMenu } from "@uitimate/lib-navigation-menu"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const navigationMenuVariants = tv({
   slots: {
@@ -60,7 +60,7 @@ const NavigationMenuList = ({
   className,
   ...props
 }: NavigationMenuListProps) => (
-  <List data-tag={kebabCase(List.displayName)} className={list({ className })} {...props} />
+  <List data-tag={casing.kebabCase(List.displayName)} className={list({ className })} {...props} />
 )
 
 type NavigationMenuProps = ComponentProps<typeof Root>
@@ -70,7 +70,7 @@ const NavigationMenu = ({
   ...props
 }: NavigationMenuProps) => (
   <Root
-    data-tag={kebabCase(NavigationMenu.displayName)}
+    data-tag={casing.kebabCase(NavigationMenu.displayName)}
     className={root({ className })}
     {...props}
   >
@@ -86,7 +86,7 @@ const NavigationMenuItem = ({
   className,
   ...props
 }: NavigationMenuItemProps) => (
-  <Item data-tag={kebabCase(Item.displayName)} className={item({ className })} {...props} />
+  <Item data-tag={casing.kebabCase(Item.displayName)} className={item({ className })} {...props} />
 )
 
 type NavigationMenuTriggerProps = ComponentProps<typeof Trigger>
@@ -96,7 +96,7 @@ const NavigationMenuTrigger = ({
   ...props
 }: NavigationMenuTriggerProps) => (
   <Trigger
-    data-tag={kebabCase(NavigationMenuTrigger.displayName)}
+    data-tag={casing.kebabCase(NavigationMenuTrigger.displayName)}
     className={trigger({ className })}
     {...props}
   >
@@ -111,7 +111,7 @@ const NavigationMenuContent = ({
   ...props
 }: NavigationMenuContentProps) => (
   <Content
-    data-tag={kebabCase(NavigationMenuContent.displayName)}
+    data-tag={casing.kebabCase(NavigationMenuContent.displayName)}
     className={content({ className })}
     {...props}
   />
@@ -122,7 +122,7 @@ const NavigationMenuViewport = ({
   className,
   ...props
 }: NavigationMenuViewportProps) => (
-  <div className={viewportWrapper()} data-tag={kebabCase(NavigationMenuViewport.displayName)}>
+  <div className={viewportWrapper()} data-tag={casing.kebabCase(NavigationMenuViewport.displayName)}>
     <Viewport
       className={viewport({ className })}
       {...props}
@@ -136,7 +136,7 @@ const NavigationMenuIndicator = ({
   ...props
 }: NavigationMenuIndicatorProps) => (
   <Indicator
-    data-tag={kebabCase(NavigationMenuIndicator.displayName)}
+    data-tag={casing.kebabCase(NavigationMenuIndicator.displayName)}
     className={indicator({ className })}
     {...props}
   >
@@ -150,7 +150,7 @@ const NavigationMenuLink = ({
   ...props
 }: NavigationMenuLinkProps) => (
   <Link
-    data-tag={kebabCase(NavigationMenuLink.displayName)}
+    data-tag={casing.kebabCase(NavigationMenuLink.displayName)}
     className={trigger({ className })}
     {...props}
   />
@@ -178,6 +178,7 @@ namespace Type {
   export type NavigationSubMenu = ComponentProps<typeof NavigationSubMenu>
 }
 
+export * from "@uitimate/lib-navigation-menu"
 export {
   type Type,
   navigationMenuVariants,

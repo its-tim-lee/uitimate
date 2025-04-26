@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
-import * as PopoverPrimitive from "@radix-ui/react-popover"
+import * as PopoverPrimitive from "@uitimate/lib-popover"
 import { tv, type VariantProps } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const popoverVariants = tv({
   base: [
@@ -17,7 +17,7 @@ const popoverVariants = tv({
 type PopoverProps = ComponentProps<typeof PopoverPrimitive.Root>
 const Popover = ({ ...props }: PopoverProps) => (
   <PopoverPrimitive.Root
-    data-tag={kebabCase(Popover.displayName)}
+    data-tag={casing.kebabCase(Popover.displayName)}
     {...props}
   />
 )
@@ -39,7 +39,7 @@ const PopoverContent = ({
     <PopoverPrimitive.Content
       align={align}
       sideOffset={sideOffset}
-      data-tag={kebabCase(PopoverContent.displayName)}
+      data-tag={casing.kebabCase(PopoverContent.displayName)}
       className={popoverVariants({ className })}
       {...props}
     />
@@ -49,7 +49,7 @@ const PopoverContent = ({
 type PopoverTriggerProps = ComponentProps<typeof PopoverPrimitive.Trigger>
 const PopoverTrigger = ({ ...props }: PopoverTriggerProps) => (
   <PopoverPrimitive.Trigger
-    data-tag={kebabCase(PopoverTrigger.displayName)}
+    data-tag={casing.kebabCase(PopoverTrigger.displayName)}
     {...props}
   />
 )
@@ -57,7 +57,7 @@ const PopoverTrigger = ({ ...props }: PopoverTriggerProps) => (
 type PopoverAnchorProps = ComponentProps<typeof PopoverPrimitive.Anchor>
 const PopoverAnchor = ({ ...props }: PopoverAnchorProps) => (
   <PopoverPrimitive.Anchor
-    data-tag={kebabCase(PopoverAnchor.displayName)}
+    data-tag={casing.kebabCase(PopoverAnchor.displayName)}
     {...props}
   />
 )
@@ -73,6 +73,7 @@ namespace Type {
   export type PopoverContent = PopoverContentProps;
 }
 
+export * from "@uitimate/lib-popover"
 export {
   popoverVariants,
   Popover,

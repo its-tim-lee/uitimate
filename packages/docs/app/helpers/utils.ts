@@ -1,6 +1,9 @@
+import clsx, { type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
 import { delay } from "lodash-es";
 import * as changeCase from 'change-case';
 
+export * from "lodash-es";
 export const sleep = (ms: number) => new Promise(resolve => delay(resolve, ms));
 
 /**
@@ -19,3 +22,5 @@ export const casing = {
   lowerCase: (e: string) => e.toLowerCase(),
   upperCase: (e: string) => e.toUpperCase(),
 }
+
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))

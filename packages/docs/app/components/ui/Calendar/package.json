@@ -1,5 +1,9 @@
 {
   "name": "@uitimate/calendar",
-  "version": "1.0.0",
-  "private": true
+  "version": "1.0.1",
+  "private": true,
+  "dependencies": {
+    "date-fns": "4.1.0",
+    "react-day-picker": "9.6.7"
+  }
 }

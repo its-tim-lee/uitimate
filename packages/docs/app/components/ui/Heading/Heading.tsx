@@ -1,8 +1,7 @@
-import { type HTMLAttributes, type ReactNode, type ComponentProps, Children, isValidElement, type ReactElement } from "react"
-import { createContext, useContext } from 'react'
-import { Slot } from "@radix-ui/react-slot"
+import { createContext, useContext, type ReactNode, type ComponentProps, Children, isValidElement, type ReactElement } from "react"
+import { Slot } from "#/components/ui/Slot/Slot.tsx"
 import { tv, type VariantProps } from 'tailwind-variants'
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const HeadingContext = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' }>({ size: 'h1' })
 // FIXME: intergate with https://github.com/tailwindlabs/tailwindcss-typography
@@ -93,7 +92,7 @@ const Heading = ({ className, size = 'h1', children, ...props }: HeadingProps) =
   return (
     <HeadingContext.Provider value={{ size }}>
       <div
-        data-tag={kebabCase(Heading.displayName)}
+        data-tag={casing.kebabCase(Heading.displayName)}
         className={root({ size, className })}
         {...props}
       >
@@ -135,7 +134,7 @@ const HeadingTitle = ({
   const Comp = asChild ? Slot : Size
   return (
     <Comp
-      data-tag={kebabCase(HeadingTitle.displayName)}
+      data-tag={casing.kebabCase(HeadingTitle.displayName)}
       className={title({ size: Size, className })}
       {...props}
     />
@@ -152,7 +151,7 @@ const HeadingSubtitle = ({
   const Comp = asChild ? Slot : 'div'
   return (
     <Comp
-      data-tag={kebabCase(HeadingSubtitle.displayName)}
+      data-tag={casing.kebabCase(HeadingSubtitle.displayName)}
       className={subtitle({ size, className })}
       {...props}
     />

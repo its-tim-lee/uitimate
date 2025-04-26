@@ -1,8 +1,8 @@
 import { type ComponentProps } from "react"
-import { Command as CommandPrimitive, CommandInput as CommandInputPrimitive, CommandList as CommandListPrimitive, CommandEmpty as CommandEmptyPrimitive, CommandGroup as CommandGroupPrimitive, CommandSeparator as CommandSeparatorPrimitive, CommandItem as CommandItemPrimitive } from "cmdk"
+import { Command as CommandPrimitive, CommandInput as CommandInputPrimitive, CommandList as CommandListPrimitive, CommandEmpty as CommandEmptyPrimitive, CommandGroup as CommandGroupPrimitive, CommandSeparator as CommandSeparatorPrimitive, CommandItem as CommandItemPrimitive } from "@uitimate/lib-command"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const commandVariants = tv({
   slots: {
@@ -36,7 +36,7 @@ const { root, input, list, empty, group, separator, item, shortcut } = commandVa
 type CommandProps = ComponentProps<typeof CommandPrimitive>
 const Command = ({ className, ...props }: CommandProps) => (
   <CommandPrimitive
-    data-tag={kebabCase(Command.displayName)}
+    data-tag={casing.kebabCase(Command.displayName)}
     className={root({ className })}
     {...props}
   />
@@ -50,7 +50,7 @@ const CommandInput = ({
   <div className="tw:flex tw:items-center tw:border-b tw:px-3" cmdk-input-wrapper="">
     <Icon icon='lucide:search' className="tw:mr-2 tw:h-4 tw:w-4 tw:shrink-0 tw:opacity-50" />
     <CommandInputPrimitive
-      data-tag={kebabCase(CommandInput.displayName)}
+      data-tag={casing.kebabCase(CommandInput.displayName)}
       className={input({ className })}
       {...props}
     />
@@ -63,7 +63,7 @@ const CommandList = ({
   ...props
 }: CommandListProps) => (
   <CommandListPrimitive
-    data-tag={kebabCase(CommandList.displayName)}
+    data-tag={casing.kebabCase(CommandList.displayName)}
     className={list({ className })}
     {...props}
   />
@@ -74,7 +74,7 @@ const CommandEmpty = ({
   ...props
 }: CommandEmptyProps) => (
   <CommandEmptyPrimitive
-    data-tag={kebabCase(CommandEmpty.displayName)}
+    data-tag={casing.kebabCase(CommandEmpty.displayName)}
     className={empty()}
     {...props}
   />
@@ -86,7 +86,7 @@ const CommandGroup = ({
   ...props
 }: CommandGroupProps) => (
   <CommandGroupPrimitive
-    data-tag={kebabCase(CommandGroup.displayName)}
+    data-tag={casing.kebabCase(CommandGroup.displayName)}
     className={group({ className })}
     {...props}
   />
@@ -98,7 +98,7 @@ const CommandSeparator = ({
   ...props
 }: CommandSeparatorProps) => (
   <CommandSeparatorPrimitive
-    data-tag={kebabCase(CommandSeparator.displayName)}
+    data-tag={casing.kebabCase(CommandSeparator.displayName)}
     className={separator({ className })}
     {...props}
   />
@@ -110,7 +110,7 @@ const CommandItem = ({
   ...props
 }: CommandItemProps) => (
   <CommandItemPrimitive
-    data-tag={kebabCase(CommandItem.displayName)}
+    data-tag={casing.kebabCase(CommandItem.displayName)}
     className={item({ className })}
     {...props}
   />
@@ -122,7 +122,7 @@ const CommandShortcut = ({
   ...props
 }: CommandShortcutProps) => (
   <span
-    data-tag={kebabCase(CommandShortcut.displayName)}
+    data-tag={casing.kebabCase(CommandShortcut.displayName)}
     className={shortcut({ className })}
     {...props}
   />
@@ -148,6 +148,7 @@ namespace Type {
   export type CommandSeparator = typeof CommandSeparator
 }
 
+export * from "@uitimate/lib-command";
 export {
   Command,
   CommandInput,

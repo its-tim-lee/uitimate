@@ -1,8 +1,9 @@
 import { type ComponentProps } from "react"
-import { Root, Item, type RadioGroupItemProps, type RadioGroupIndicatorProps, RadioGroupIndicator } from "@radix-ui/react-radio-group"
+import { Root, Item, type RadioGroupItemProps, type RadioGroupIndicatorProps, RadioGroupIndicator } from "@uitimate/lib-radio-group"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
+
 const radioGroupVariants = tv({
   slots: {
     root: "tw:grid tw:gap-3",
@@ -35,9 +36,9 @@ const RadioGroup = ({
 }: RadioGroupProps) => (
   <Root
     data-slot="radio-group"
-    data-tag={kebabCase(RadioGroup.displayName)}
+    data-tag={casing.kebabCase(RadioGroup.displayName)}
     className={root({ className })}
-    onValueChange={(v) => { // see #20250318
+    onValueChange={(v: any) => { // see #20250318
       onChange?.(v as any);
       onValueChange?.(v);
     }}
@@ -51,13 +52,13 @@ const RadioGroupItem = ({
 }: RadioGroupItemProps) => (
   <Item
     data-slot="radio-group-item"
-    data-tag={kebabCase(RadioGroupItem.displayName)}
+    data-tag={casing.kebabCase(RadioGroupItem.displayName)}
     className={item({ className })}
     {...props}
   >
     <RadioGroupIndicator
       data-slot="radio-group-indicator"
-      data-tag={kebabCase(RadioGroupIndicator.displayName)}
+      data-tag={casing.kebabCase(RadioGroupIndicator.displayName!)}
       className={indicator()}
     >
       <Icon
@@ -78,6 +79,7 @@ namespace Type {
   export type RadioGroupIndicator = RadioGroupIndicatorProps
 }
 
+export * from "@uitimate/lib-radio-group"
 export {
   radioGroupVariants,
   RadioGroup,

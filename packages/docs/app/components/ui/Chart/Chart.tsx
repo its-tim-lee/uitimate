@@ -1,8 +1,6 @@
 import * as React from "react"
-import * as RechartsPrimitive from "recharts"
-import kebabCase from "lodash-es/kebabCase"
-
-import { cn } from "#/helpers"
+import * as RechartsPrimitive from "@uitimate/lib-chart"
+import { cn, casing } from "#/helpers/utils.ts"
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const
@@ -49,6 +47,7 @@ function ChartContainer({
   return (
     <ChartContext.Provider value={{ config }}>
       <div
+        data-tag={casing.kebabCase(ChartContainer.displayName)}
         data-slot="chart"
         data-chart={chartId}
         className={cn(
@@ -77,6 +76,7 @@ function ChartContainer({
     </ChartContext.Provider>
   )
 }
+ChartContainer.displayName = "ChartContainer";
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
@@ -112,6 +112,7 @@ ${colorConfig
 }
 
 const ChartTooltip = RechartsPrimitive.Tooltip
+ChartTooltip.displayName = "ChartTooltip";
 
 function ChartTooltipContent({
   active,
@@ -181,7 +182,7 @@ function ChartTooltipContent({
 
   return (
     <div
-      data-tag={kebabCase(ChartTooltipContent.displayName)}
+      data-tag={casing.kebabCase(ChartTooltipContent.displayName)}
       className={cn(
         "tw:border-border/50 tw:bg-background tw:grid tw:min-w-[8rem] tw:items-start tw:gap-1.5 tw:rounded-lg tw:border tw:px-2.5 tw:py-1.5 tw:text-xs tw:shadow-xl",
         className
@@ -257,8 +258,10 @@ function ChartTooltipContent({
     </div>
   )
 }
+ChartTooltipContent.displayName = "ChartTooltipContent";
 
 const ChartLegend = RechartsPrimitive.Legend
+ChartLegend.displayName = "ChartLegend";
 
 function ChartLegendContent({
   className,
@@ -278,7 +281,7 @@ function ChartLegendContent({
   }
   return (
     <div
-      data-tag='chart-legend-content'
+      data-tag={casing.kebabCase(ChartLegendContent.displayName)}
       className={cn(
         "tw:flex tw:items-center tw:justify-center tw:gap-4",
         verticalAlign === "top" ? "tw:pb-3" : "tw:pt-3",
@@ -312,6 +315,7 @@ function ChartLegendContent({
     </div>
   )
 }
+ChartLegendContent.displayName = "ChartLegendContent";
 
 // Helper to extract item config from a payload.
 function getPayloadConfigFromPayload(
@@ -351,6 +355,8 @@ function getPayloadConfigFromPayload(
     ? config[configLabelKey]
     : config[key as keyof typeof config]
 }
+
+export * from "@uitimate/lib-chart"
 
 export {
   ChartContainer,

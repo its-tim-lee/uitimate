@@ -1,8 +1,9 @@
-import * as ResizablePrimitive from "react-resizable-panels"
+import * as ResizablePrimitive from "@uitimate/lib-resizable"
 import { tv, type VariantProps } from "tailwind-variants"
 import React from "react"
-import { Icon } from "#/components/ui/Icon/Icon"
-import { kebabCase } from "lodash-es"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { casing } from "#/helpers/utils.ts"
+
 const resizableVariants = tv({
   slots: {
     panelGroup: "tw:flex tw:h-full tw:w-full tw:data-[panel-group-direction=vertical]:flex-col",
@@ -33,7 +34,7 @@ const ResizablePanelGroup = ({
 }: ResizablePanelGroupProps) => (
   <ResizablePrimitive.PanelGroup
     className={panelGroup({ className })}
-    data-tag={kebabCase(ResizablePanelGroup.displayName)}
+    data-tag={casing.kebabCase(ResizablePanelGroup.displayName)}
     {...props}
   />
 )
@@ -45,7 +46,7 @@ const ResizablePanel = ({
 }: ResizablePanelProps) => (
   <ResizablePrimitive.Panel
     className={panel({ className })}
-    data-tag={kebabCase(ResizablePanel.displayName)}
+    data-tag={casing.kebabCase(ResizablePanel.displayName)}
     {...props}
   />
 )
@@ -60,7 +61,7 @@ const ResizableHandle = ({
 }: ResizableHandleProps) => (
   <ResizablePrimitive.PanelResizeHandle
     className={handle({ className })}
-    data-tag={kebabCase(ResizableHandle.displayName)}
+    data-tag={casing.kebabCase(ResizableHandle.displayName)}
     {...props}
   >
     {withHandle && (
@@ -81,6 +82,7 @@ namespace Type {
   export type ResizableHandle = typeof ResizableHandle;
 }
 
+export * from "@uitimate/lib-resizable"
 export {
   resizableVariants,
   ResizablePanelGroup,

@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
-import { Root, Track, Range, Thumb } from "@radix-ui/react-slider"
+import { Root, Track, Range, Thumb } from "@uitimate/lib-slider"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const sliderVariants = tv({
   slots: {
@@ -32,7 +32,7 @@ const SliderTrack = ({
   return (
     <Track
       className={track({ className })}
-      data-tag={kebabCase(SliderTrack.displayName)}
+      data-tag={casing.kebabCase(SliderTrack.displayName)}
       {...props}
     >
       {children}
@@ -48,7 +48,7 @@ const SliderRange = ({
   return (
     <Range
       className={range({ className })}
-      data-tag={kebabCase(SliderRange.displayName)}
+      data-tag={casing.kebabCase(SliderRange.displayName)}
       {...props}
     />
   )
@@ -62,7 +62,7 @@ const SliderThumb = ({
   return (
     <Thumb
       className={thumb({ className })}
-      data-tag={kebabCase(SliderThumb.displayName)}
+      data-tag={casing.kebabCase(SliderThumb.displayName)}
       {...props}
     />
   )
@@ -76,7 +76,7 @@ const Slider = ({
   return (
     <Root
       className={root({ className })}
-      data-tag={kebabCase(Slider.displayName)}
+      data-tag={casing.kebabCase(Slider.displayName)}
       {...props}
     >
       <SliderTrack><SliderRange /></SliderTrack>
@@ -97,6 +97,7 @@ namespace Type {
   export type SliderThumb = SliderThumbProps;
 }
 
+export * from "@uitimate/lib-slider"
 export {
   Slider,
   SliderTrack,

@@ -1,8 +1,8 @@
 import "./index.css"
 import { type ComponentProps } from "react"
-import { Root, Indicator } from "@radix-ui/react-progress"
+import { Root, Indicator } from "@uitimate/lib-progress"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const progressVariants = tv({
   slots: {
@@ -36,7 +36,7 @@ const Progress = ({
 
   return (
     <Root
-      data-tag={kebabCase(Progress.displayName)}
+      data-tag={casing.kebabCase(Progress.displayName)}
       className={root({ className })}
       {...props}
     >
@@ -56,6 +56,7 @@ namespace Type {
   export type Progress = ProgressProps
 }
 
+export * from "@uitimate/lib-progress"
 export {
   Progress,
   progressVariants,

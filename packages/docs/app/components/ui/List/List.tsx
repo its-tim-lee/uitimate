@@ -1,7 +1,7 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "@uitimate/lib-slot";
 import { createContext, useContext, type ComponentProps, type CSSProperties } from "react";
 import { tv } from "tailwind-variants";
-import { kebabCase } from "lodash-es";
+import { casing } from "#/helpers/utils.ts"
 
 const ListLevelContext = createContext(0);
 
@@ -33,7 +33,7 @@ const List = ({
   return (
     <ListLevelContext.Provider value={level + 1}>
       <Comp
-        data-tag={kebabCase(List.displayName)}
+        data-tag={casing.kebabCase(List.displayName)}
         data-level={level}
         className={listVariants({ className })}
         style={{
@@ -70,7 +70,7 @@ const ListItem = ({
   const Comp = asChild ? Slot : 'div'
   return (
     <Comp
-      data-tag={kebabCase(ListItem.displayName)}
+      data-tag={casing.kebabCase(ListItem.displayName)}
       className={listItemVariants({ className })}
       {...props}
     />)

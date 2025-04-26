@@ -1,0 +1,8 @@
+{
+  "name": "@uitimate/slot",
+  "version": "1.2.0",
+  "private": true,
+  "dependencies": {
+    "@radix-ui/react-slot": "1.2.0"
+  }
+}

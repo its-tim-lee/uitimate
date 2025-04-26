@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
-import { Root, Thumb } from "@radix-ui/react-switch"
+import { Root, Thumb } from "@uitimate/lib-switch"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const switchVariants = tv({
   slots: {
@@ -45,7 +45,7 @@ const Switch = ({
 }: SwitchProps) => {
   return (
     <Root
-      data-tag={kebabCase(Switch.displayName)}
+      data-tag={casing.kebabCase(Switch.displayName)}
       className={root({ className })}
       {...(props.value !== undefined && { checked: !!props.value })} // #2
       onCheckedChange={(v) => {
@@ -65,8 +65,7 @@ namespace Type {
   export type Switch = SwitchProps
 }
 
-export * from "@radix-ui/react-switch";
-
+export * from "@uitimate/lib-switch"
 export {
   type Type,
   switchVariants,

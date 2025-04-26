@@ -1,11 +1,4 @@
-
-
-
-
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
-
-import { ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, type ChartConfig, ChartContainer } from "#/components/ui/Chart/Chart.tsx"
+import { Bar, BarChart, CartesianGrid, XAxis, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, type ChartConfig, ChartContainer } from "#/components/ui/Chart/Chart.tsx"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

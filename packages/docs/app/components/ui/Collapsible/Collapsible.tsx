@@ -1,11 +1,11 @@
-import type { CollapsibleProps, CollapsibleTriggerProps, CollapsibleContentProps } from "@radix-ui/react-collapsible"
-import * as Primitive from "@radix-ui/react-collapsible"
-import { kebabCase } from "lodash-es";
+import type { CollapsibleProps, CollapsibleTriggerProps, CollapsibleContentProps } from "@uitimate/lib-collapsible"
+import * as Primitive from "@uitimate/lib-collapsible"
+import { casing } from "#/helpers/utils.ts"
 
 const Collapsible =
   ({ ...props }: CollapsibleProps) => (
     <Primitive.Root
-      data-tag={kebabCase(Collapsible.displayName)}
+      data-tag={casing.kebabCase(Collapsible.displayName)}
       {...props}
     />
   );
@@ -13,7 +13,7 @@ const Collapsible =
 const CollapsibleTrigger =
   ({ ...props }: CollapsibleTriggerProps) => (
     <Primitive.CollapsibleTrigger
-      data-tag={kebabCase(CollapsibleTrigger.displayName)}
+      data-tag={casing.kebabCase(CollapsibleTrigger.displayName)}
       {...props}
     />
   );
@@ -21,7 +21,7 @@ const CollapsibleTrigger =
 const CollapsibleContent =
   ({ ...props }: CollapsibleContentProps) => (
     <Primitive.CollapsibleContent
-      data-tag={kebabCase(CollapsibleContent.displayName)}
+      data-tag={casing.kebabCase(CollapsibleContent.displayName)}
       {...props}
     />
   );
@@ -36,4 +36,5 @@ namespace Type {
   export type CollapsibleContent = CollapsibleContentProps
 }
 
+export * from "@uitimate/lib-collapsible";
 export { Collapsible, CollapsibleTrigger, CollapsibleContent, type Type }

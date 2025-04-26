@@ -1,8 +1,8 @@
-import { Label, Arrow, Group, ItemIndicator, Root, Trigger, SubTrigger, SubContent, Content, Item, CheckboxItem, RadioItem, Separator, Menu as MenubarMenu, Portal as MenubarPortal, Sub as MenubarSub, RadioGroup as MenubarRadioGroup } from "@radix-ui/react-menubar"
+import { Label, Arrow, Group, ItemIndicator, Root, Trigger, SubTrigger, SubContent, Content, Item, CheckboxItem, RadioItem, Separator, Menu as MenubarMenu, Portal as MenubarPortal, Sub as MenubarSub, RadioGroup as MenubarRadioGroup } from "@uitimate/lib-menubar"
 import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Icon } from "#/components/ui/Icon/Icon"
-import { kebabCase } from "lodash-es"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { casing } from "#/helpers/utils.ts"
 
 const itemBaseStyle = [
   "tw:relative tw:flex tw:cursor-default tw:select-none tw:items-center tw:rounded-sm tw:text-sm tw:outline-hidden",
@@ -61,7 +61,7 @@ const {
 type MenubarProps = ComponentProps<typeof Root>;
 const Menubar = ({ className, ...props }: MenubarProps) => (
   <Root
-    data-tag={kebabCase(Menubar.displayName)}
+    data-tag={casing.kebabCase(Menubar.displayName)}
     className={root({ className })}
     {...props}
   />
@@ -70,7 +70,7 @@ const Menubar = ({ className, ...props }: MenubarProps) => (
 type MenubarTriggerProps = ComponentProps<typeof Trigger>;
 const MenubarTrigger = ({ className, ...props }: MenubarTriggerProps) => (
   <Trigger
-    data-tag={kebabCase(MenubarTrigger.displayName)}
+    data-tag={casing.kebabCase(MenubarTrigger.displayName)}
     className={trigger({ className })}
     {...props}
   />
@@ -79,7 +79,7 @@ const MenubarTrigger = ({ className, ...props }: MenubarTriggerProps) => (
 type MenubarSubTriggerProps = ComponentProps<typeof SubTrigger>;
 const MenubarSubTrigger = ({ className, children, ...props }: MenubarSubTriggerProps) => (
   <SubTrigger
-    data-tag={kebabCase(MenubarSubTrigger.displayName)}
+    data-tag={casing.kebabCase(MenubarSubTrigger.displayName)}
     className={subTrigger({ className })}
     {...props}
   >
@@ -91,7 +91,7 @@ const MenubarSubTrigger = ({ className, children, ...props }: MenubarSubTriggerP
 type MenubarSubContentProps = ComponentProps<typeof SubContent>;
 const MenubarSubContent = ({ className, ...props }: MenubarSubContentProps) => (
   <SubContent
-    data-tag={kebabCase(MenubarSubContent.displayName)}
+    data-tag={casing.kebabCase(MenubarSubContent.displayName)}
     className={subContent({ className })}
     {...props}
   />
@@ -101,7 +101,7 @@ type MenubarContentProps = ComponentProps<typeof Content>;
 const MenubarContent = ({ className, align = "start", alignOffset = -4, sideOffset = 8, ...props }: MenubarContentProps) => (
   <MenubarPortal>
     <Content
-      data-tag={kebabCase(MenubarContent.displayName)}
+      data-tag={casing.kebabCase(MenubarContent.displayName)}
       align={align}
       alignOffset={alignOffset}
       sideOffset={sideOffset}
@@ -114,7 +114,7 @@ const MenubarContent = ({ className, align = "start", alignOffset = -4, sideOffs
 type MenubarItemProps = ComponentProps<typeof Item>;
 const MenubarItem = ({ className, ...props }: MenubarItemProps) => (
   <Item
-    data-tag={kebabCase(MenubarItem.displayName)}
+    data-tag={casing.kebabCase(MenubarItem.displayName)}
     className={item({ className })}
     {...props}
   />
@@ -123,7 +123,7 @@ const MenubarItem = ({ className, ...props }: MenubarItemProps) => (
 type MenubarCheckboxItemProps = ComponentProps<typeof CheckboxItem>;
 const MenubarCheckboxItem = ({ className, children, checked, ...props }: MenubarCheckboxItemProps) => (
   <CheckboxItem
-    data-tag={kebabCase(MenubarCheckboxItem.displayName)}
+    data-tag={casing.kebabCase(MenubarCheckboxItem.displayName)}
     className={formItem({ className })}
     checked={checked}
     {...props}
@@ -140,7 +140,7 @@ const MenubarCheckboxItem = ({ className, children, checked, ...props }: Menubar
 type MenubarRadioItemProps = ComponentProps<typeof RadioItem>;
 const MenubarRadioItem = ({ className, children, ...props }: MenubarRadioItemProps) => (
   <RadioItem
-    data-tag={kebabCase(MenubarRadioItem.displayName)}
+    data-tag={casing.kebabCase(MenubarRadioItem.displayName)}
     className={formItem({ className })}
     {...props}
   >
@@ -156,7 +156,7 @@ const MenubarRadioItem = ({ className, children, ...props }: MenubarRadioItemPro
 type MenubarSeparatorProps = ComponentProps<typeof Separator>;
 const MenubarSeparator = ({ className, ...props }: MenubarSeparatorProps) => (
   <Separator
-    data-tag={kebabCase(MenubarSeparator.displayName)}
+    data-tag={casing.kebabCase(MenubarSeparator.displayName)}
     className={separator({ className })}
     {...props}
   />
@@ -165,7 +165,7 @@ const MenubarSeparator = ({ className, ...props }: MenubarSeparatorProps) => (
 type MenubarShortcutProps = ComponentProps<"span">;
 const MenubarShortcut = ({ className, ...props }: MenubarShortcutProps) => (
   <span
-    data-tag={kebabCase(MenubarShortcut.displayName)}
+    data-tag={casing.kebabCase(MenubarShortcut.displayName)}
     className={shortcut({ className })}
     {...props}
   />
@@ -174,7 +174,7 @@ const MenubarShortcut = ({ className, ...props }: MenubarShortcutProps) => (
 type MenubarLabelProps = ComponentProps<typeof Label>;
 const MenubarLabel = ({ className, ...props }: MenubarLabelProps) => (
   <Label
-    data-tag={kebabCase(MenubarLabel.displayName)}
+    data-tag={casing.kebabCase(MenubarLabel.displayName)}
     className={label({ className })}
     {...props}
   />
@@ -183,7 +183,7 @@ const MenubarLabel = ({ className, ...props }: MenubarLabelProps) => (
 type MenubarArrowProps = ComponentProps<typeof Arrow>;
 const MenubarArrow = ({ className, ...props }: MenubarArrowProps) => (
   <Arrow
-    data-tag={kebabCase(MenubarArrow.displayName)}
+    data-tag={casing.kebabCase(MenubarArrow.displayName)}
     className={arrow({ className })}
     {...props}
   />
@@ -192,7 +192,7 @@ const MenubarArrow = ({ className, ...props }: MenubarArrowProps) => (
 type MenubarGroupProps = ComponentProps<typeof Group>;
 const MenubarGroup = ({ className, ...props }: MenubarGroupProps) => (
   <Group
-    data-tag={kebabCase(MenubarGroup.displayName)}
+    data-tag={casing.kebabCase(MenubarGroup.displayName)}
     className={group({ className })}
     {...props}
   />
@@ -232,6 +232,7 @@ namespace Type {
   export type MenubarGroup = MenubarGroupProps;
 }
 
+export * from "@uitimate/lib-menubar"
 export {
   type Type,
   menubarVariants,

@@ -1,6 +1,6 @@
 import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const skeletonVariants = tv({
   base: "tw:animate-pulse tw:rounded-md tw:bg-primary/10",
@@ -10,7 +10,7 @@ type SkeletonProps = ComponentProps<"div"> & VariantProps<typeof skeletonVariant
 const Skeleton = ({ className, ...props }: SkeletonProps) => (
   <div
     className={skeletonVariants({ className })}
-    data-tag={kebabCase(Skeleton.displayName)}
+    data-tag={casing.kebabCase(Skeleton.displayName)}
     {...props}
   />
 )

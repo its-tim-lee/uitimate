@@ -1,5 +1,8 @@
 {
   "name": "@uitimate/tooltip",
-  "version": "1.0.0",
-  "private": true
+  "version": "1.0.1",
+  "private": true,
+  "dependencies": {
+    "@radix-ui/react-tooltip": "1.2.4"
+  }
 }

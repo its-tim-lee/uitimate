@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
-import { Root, Image, Fallback } from "@radix-ui/react-avatar"
+import { Root, Image, Fallback } from "@uitimate/lib-avatar"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const avatarVariants = tv({
   slots: {
@@ -20,7 +20,7 @@ const Avatar = ({
   return (
     <Root
       data-avatar
-      data-tag={kebabCase(Avatar.displayName)}
+      data-tag={casing.kebabCase(Avatar.displayName)}
       className={root({ className })}
       {...props}
     />
@@ -35,7 +35,7 @@ const AvatarImage = ({
 }: AvatarImageProps) => {
   return (
     <Image
-      data-tag={kebabCase(AvatarImage.displayName)}
+      data-tag={casing.kebabCase(AvatarImage.displayName)}
       className={image({ className })}
       {...props}
     />
@@ -49,7 +49,7 @@ const AvatarFallback = ({
 }: AvatarFallbackProps) => {
   return (
     <Fallback
-      data-tag={kebabCase(AvatarFallback.displayName)}
+      data-tag={casing.kebabCase(AvatarFallback.displayName)}
       className={fallback({ className })}
       {...props}
     />
@@ -65,6 +65,8 @@ namespace Type {
   export type AvatarImage = ComponentProps<typeof Image>
   export type AvatarFallback = ComponentProps<typeof Fallback>
 }
+
+export * from "@uitimate/lib-avatar";
 
 export {
   Avatar,
