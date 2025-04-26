@@ -1,10 +1,10 @@
 import React, { Children, createContext, useContext, type ComponentProps } from 'react'
-import { Dialog as DialogRoot, DialogPanel as DialogContent, DialogTitle as Title, Description as DialogDescription, DialogBackdrop as DialogOverlay, CloseButton as DialogClose } from '@headlessui/react'
+import { Dialog as DialogRoot, DialogPanel as DialogContent, DialogTitle as Title, Description as DialogDescription, DialogBackdrop as DialogOverlay, CloseButton as DialogClose } from '@uitimate/lib-headlessui'
 import { tv, type VariantProps } from "tailwind-variants"
-import { kebabCase } from 'lodash-es'
-import { Icon } from '#/components/ui/Icon/Icon'
-import { Cta } from "#/components/ui/Cta/Cta"
-import { headingVariants, type HeadingSubtitle, HeadingContext } from '#/components/ui/Heading/Heading'
+import { casing } from "#/helpers/utils.ts"
+import { Icon } from '#/components/ui/Icon/Icon.tsx'
+import { Cta } from "#/components/ui/Cta/Cta.tsx"
+import { headingVariants, type HeadingSubtitle, HeadingContext } from '#/components/ui/Heading/Heading.tsx'
 
 const dialogVariants = tv({
   slots: {
@@ -52,7 +52,7 @@ const Dialog = ({ className, children, open, onClose, ...props }: DialogProps) =
       open={open}
       onClose={handleClose}
       className={root()}
-      data-tag={kebabCase(Dialog.displayName)}
+      data-tag={casing.kebabCase(Dialog.displayName)}
       role={isAlert ? 'alertdialog' : 'dialog'}
       {...props}
     >
@@ -67,7 +67,7 @@ const Dialog = ({ className, children, open, onClose, ...props }: DialogProps) =
         the consumer to hide the overlay via Tailwind, so that we don't need to create another prop just for this matter.
       */}
       <DialogOverlay
-        data-tag={kebabCase(DialogOverlay.displayName)}
+        data-tag={casing.kebabCase(DialogOverlay.displayName)}
         className={overlay()}
       />
     </DialogRoot>
@@ -89,7 +89,7 @@ const DialogAction = ({
 }: DialogActionProps) => (
   <div
     className={action({ className })}
-    data-tag={kebabCase(DialogAction.displayName)}
+    data-tag={casing.kebabCase(DialogAction.displayName)}
     {...props}
   />
 )
@@ -123,7 +123,7 @@ const DialogHeading = ({ size = 'h4', children, className, ...props }: DialogHea
       <div
         {...props}
         className={headingRoot({ size, className })}
-        data-tag={kebabCase(DialogHeading.displayName)}
+        data-tag={casing.kebabCase(DialogHeading.displayName)}
       >
         {content}
       </div>
@@ -138,7 +138,7 @@ const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
   return (
     <Title
       className={title({ size, className })}
-      data-tag={kebabCase(DialogTitle.displayName)}
+      data-tag={casing.kebabCase(DialogTitle.displayName)}
       {...props}
     >
       {typeof children === 'function' ? children : (
@@ -146,7 +146,7 @@ const DialogTitle = ({ className, children, ...props }: DialogTitleProps) => {
           {children}
           {!isAlert && (
             <Cta
-              data-tag={kebabCase(DialogClose.displayName)}
+              data-tag={casing.kebabCase(DialogClose.displayName)}
               variant="ghost"
               size="sm"
               shapes={['icon']}
@@ -169,7 +169,7 @@ const DialogSubtitle = ({ className, children, ...props }: DialogSubtitleProps) 
   return (
     <DialogDescription
       className={subtitle({ size, className })}
-      data-tag={kebabCase(DialogSubtitle.displayName)}
+      data-tag={casing.kebabCase(DialogSubtitle.displayName)}
       {...props}
     >
       {children}
@@ -195,6 +195,7 @@ namespace Type {
   export type CloseSource = { from: 'implicit' | 'x' };
 }
 
+export * from "@uitimate/lib-headlessui";
 export {
   type Type,
   dialogVariants,

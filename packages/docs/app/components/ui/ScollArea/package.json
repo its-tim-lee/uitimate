@@ -1,5 +1,8 @@
 {
   "name": "@uitimate/scollarea",
-  "version": "1.0.0",
-  "private": true
+  "version": "1.0.1",
+  "private": true,
+  "dependencies": {
+    "@radix-ui/react-scroll-area": "1.2.6"
+  }
 }

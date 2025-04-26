@@ -14,10 +14,10 @@ import {
   ItemIndicator,
   ItemText,
   Separator
-} from "@radix-ui/react-select"
+} from "@uitimate/lib-select"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const selectVariants = tv({
   slots: {
@@ -87,7 +87,7 @@ type SelectProps = ComponentProps<typeof Root> & {
  */
 const Select = ({ onChange, onValueChange, ...props }: SelectProps) => (
   <Root
-    data-tag={kebabCase(Select.displayName)}
+    data-tag={casing.kebabCase(Select.displayName)}
     onValueChange={v => { // #1
       onChange?.(v)
       onValueChange?.(v)
@@ -99,7 +99,7 @@ const Select = ({ onChange, onValueChange, ...props }: SelectProps) => (
 type SelectTriggerProps = ComponentProps<typeof Trigger>
 const SelectTrigger = ({ className, children, ...props }: SelectTriggerProps) => (
   <Trigger
-    data-tag={kebabCase(SelectTrigger.displayName)}
+    data-tag={casing.kebabCase(SelectTrigger.displayName)}
     className={trigger({ className })}
     {...props}
   >
@@ -111,7 +111,7 @@ const SelectTrigger = ({ className, children, ...props }: SelectTriggerProps) =>
 type SelectScrollUpButtonProps = ComponentProps<typeof ScrollUpButton>
 const SelectScrollUpButton = ({ className, ...props }: SelectScrollUpButtonProps) => (
   <ScrollUpButton
-    data-tag={kebabCase(SelectScrollUpButton.displayName)}
+    data-tag={casing.kebabCase(SelectScrollUpButton.displayName)}
     className={scrollButton({ className })}
     {...props}
   >
@@ -122,7 +122,7 @@ const SelectScrollUpButton = ({ className, ...props }: SelectScrollUpButtonProps
 type SelectScrollDownButtonProps = ComponentProps<typeof ScrollDownButton>
 const SelectScrollDownButton = ({ className, ...props }: SelectScrollDownButtonProps) => (
   <ScrollDownButton
-    data-tag={kebabCase(SelectScrollDownButton.displayName)}
+    data-tag={casing.kebabCase(SelectScrollDownButton.displayName)}
     className={scrollButton({ className })}
     {...props}
   >
@@ -134,7 +134,7 @@ type SelectContentProps = ComponentProps<typeof Content>
 const SelectContent = ({ className, children, position = "popper", ...props }: SelectContentProps) => (
   <Portal>
     <Content
-      data-tag={kebabCase(SelectContent.displayName)}
+      data-tag={casing.kebabCase(SelectContent.displayName)}
       className={content({ position, className })}
       position={position}
       {...props}
@@ -151,7 +151,7 @@ const SelectContent = ({ className, children, position = "popper", ...props }: S
 type SelectLabelProps = ComponentProps<typeof Label>
 const SelectLabel = ({ className, ...props }: SelectLabelProps) => (
   <Label
-    data-tag={kebabCase(SelectLabel.displayName)}
+    data-tag={casing.kebabCase(SelectLabel.displayName)}
     className={label({ className })}
     {...props}
   />
@@ -160,7 +160,7 @@ const SelectLabel = ({ className, ...props }: SelectLabelProps) => (
 type SelectItemProps = ComponentProps<typeof Item>
 const SelectItem = ({ className, children, ...props }: SelectItemProps) => (
   <Item
-    data-tag={kebabCase(SelectItem.displayName)}
+    data-tag={casing.kebabCase(SelectItem.displayName)}
     className={item({ className })}
     {...props}
   >
@@ -176,7 +176,7 @@ const SelectItem = ({ className, children, ...props }: SelectItemProps) => (
 type SelectSeparatorProps = ComponentProps<typeof Separator>
 const SelectSeparator = ({ className, ...props }: SelectSeparatorProps) => (
   <Separator
-    data-tag={kebabCase(SelectSeparator.displayName)}
+    data-tag={casing.kebabCase(SelectSeparator.displayName)}
     className={separator({ className })}
     {...props}
   />
@@ -204,8 +204,7 @@ namespace Type {
   export type SelectSeparator = SelectSeparatorProps
 }
 
-export * from "@radix-ui/react-select";
-
+export * from "@uitimate/lib-select"
 export {
   type Type,
   selectVariants,

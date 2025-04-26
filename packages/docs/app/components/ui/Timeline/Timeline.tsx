@@ -1,7 +1,6 @@
-// https://github.dev/flixlix/shadcn-date-picker
 import { type ComponentProps } from "react"
 import { tv, type VariantProps } from "tailwind-variants"
-import { Separator } from "../Separator/Separator"
+import { Separator } from "#/components/ui/Separator/Separator.tsx"
 
 const timelineVariants = tv({
   base: "tw:flex tw:flex-col tw:gap-y-2"

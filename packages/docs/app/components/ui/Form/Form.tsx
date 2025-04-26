@@ -1,6 +1,4 @@
 import { useId, useContext, createContext, type ComponentProps, useEffect, useRef } from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { isEqual, omit, mapValues, isEmpty, kebabCase } from "lodash-es"
 import {
   Controller,
   type ControllerProps,
@@ -14,13 +12,12 @@ import {
   type UseFormProps,
   type SubmitErrorHandler,
   type FormState,
-} from "react-hook-form"
-
-import { cn } from "#/helpers/css"
+} from "@uitimate/lib-form"
+import { Slot } from "#/components/ui/Slot/Slot.tsx"
 import { Label } from "#/components/ui/Label/Label.tsx"
-import { z, type ZodObject, type ZodRawShape } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { reflectiveClone } from "#/helpers/utils"
+import { isEqual, omit, mapValues, isEmpty, casing, cn, reflectiveClone } from "#/helpers/utils.ts"
+import { z, type ZodObject, type ZodRawShape } from "@uitimate/lib-zod"
+import { zodResolver } from "@uitimate/lib-rhf-resolvers/zod"
 
 type FormProps<T extends ZodObject<ZodRawShape>> =
   (
@@ -60,7 +57,7 @@ const Form = <T extends ZodObject<ZodRawShape>>({
 }: FormProps<T>) => {
   const prevFormState = useRef<any>({});
   const form = useForm<z.infer<T>>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema) as any,
     ...props
   });
   useEffect(() => setForm?.(form), [form, setForm]); // Expose `form`
@@ -119,7 +116,7 @@ const Form = <T extends ZodObject<ZodRawShape>>({
         className={className}
         data-disabled={props.disabled || undefined}
         onSubmit={form.handleSubmit(onSubmit, onSubmitError)}
-        data-tag={kebabCase(Form.displayName)}
+        data-tag={casing.kebabCase(Form.displayName)}
       >
         {children}
       </form>
@@ -164,7 +161,7 @@ const FormItem = ({
       <Controller {...props} control={control} render={({ field }) => { // to see what `field` is, check the comments in `FormControl`
         return (
           <FormControlCtx.Provider value={{ field }}>
-            <div data-tag={kebabCase(FormItem.displayName)} className={cn("tw:space-y-2", className)}>{children}</div>
+            <div data-tag={casing.kebabCase(FormItem.displayName)} className={cn("tw:space-y-2", className)}>{children}</div>
           </FormControlCtx.Provider>
         )
       }} />
@@ -199,7 +196,7 @@ const FormControl = ({ maskedInput, ...props }: FormControlProps) => {
   if (!field) { throw new Error("FormControl must be used within a FormItem"); }
   return (
     <Slot
-      data-tag={kebabCase(FormControl.displayName)}
+      data-tag={casing.kebabCase(FormControl.displayName)}
       id={formItemId}
       aria-describedby={
         !error
@@ -237,7 +234,7 @@ const FormDescription = ({ className, ...props }: FormDescriptionProps) => {
   const { formDescriptionId } = useContext(FormItemCtx)
   return <div
     className={cn("tw:text-[0.8rem] tw:text-muted-foreground", className)}
-    data-tag={kebabCase(FormDescription.displayName)}
+    data-tag={casing.kebabCase(FormDescription.displayName)}
     id={formDescriptionId}
     {...props}
   />
@@ -254,7 +251,7 @@ const FormMessage = ({ className, children, ...props }: FormMessageProps) => {
   const body = error ? String(error?.message) : children
   return !body ? null : (
     <div
-      data-tag={kebabCase(FormMessage.displayName)}
+      data-tag={casing.kebabCase(FormMessage.displayName)}
       id={formMessageId}
       className={cn("tw:text-[0.8rem] tw:font-medium tw:text-destructive", className)}
       {...props}
@@ -294,7 +291,7 @@ namespace Type {
   export type FormControlCtx = FormControlCtxType;
 }
 
-export * from "react-hook-form";
+export * from "@uitimate/lib-form";
 export {
   type Type,
   Form,

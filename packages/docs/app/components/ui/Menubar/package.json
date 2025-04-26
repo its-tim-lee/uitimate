@@ -1,5 +1,8 @@
 {
   "name": "@uitimate/menubar",
-  "version": "1.0.0",
-  "private": true
+  "version": "1.0.1",
+  "private": true,
+  "dependencies": {
+    "@radix-ui/react-menubar": "1.1.12"
+  }
 }

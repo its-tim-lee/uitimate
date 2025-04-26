@@ -1,13 +1,11 @@
 import type { ComponentProps } from "react"
-import { kebabCase } from "lodash-es";
-
-import { cn } from "#/helpers/css"
+import { casing, cn } from "#/helpers/utils.ts"
 
 type TableProps = ComponentProps<"table">;
 const Table = ({ className, ...props }: TableProps) => (
   <div className="tw:relative tw:w-full tw:overflow-auto">
     <table
-      data-tag={kebabCase(Table.displayName!)}
+      data-tag={casing.kebabCase(Table.displayName!)}
       className={cn("tw:w-full tw:caption-bottom tw:text-sm", className)}
       {...props}
     />
@@ -22,7 +20,7 @@ const Table = ({ className, ...props }: TableProps) => (
 type TableHeaderProps = ComponentProps<"thead">;
 const TableHeader = ({ className, ...props }: TableHeaderProps) => (
   <thead
-    data-tag={kebabCase(TableHeader.displayName!)}
+    data-tag={casing.kebabCase(TableHeader.displayName!)}
     className={cn("tw:[&_tr]:border-b", className)}
     {...props}
   />
@@ -31,7 +29,7 @@ const TableHeader = ({ className, ...props }: TableHeaderProps) => (
 type TableBodyProps = ComponentProps<"tbody">;
 const TableBody = ({ className, ...props }: TableBodyProps) => (
   <tbody
-    data-tag={kebabCase(TableBody.displayName!)}
+    data-tag={casing.kebabCase(TableBody.displayName!)}
     className={cn("tw:[&_tr:last-child]:border-0", className)}
     {...props}
   />
@@ -40,7 +38,7 @@ const TableBody = ({ className, ...props }: TableBodyProps) => (
 type TableFooterProps = ComponentProps<"tfoot">;
 const TableFooter = ({ className, ...props }: TableFooterProps) => (
   <tfoot
-    data-tag={kebabCase(TableFooter.displayName!)}
+    data-tag={casing.kebabCase(TableFooter.displayName!)}
     className={cn(
       "tw:bg-muted/50 tw:border-t tw:font-medium tw:[&>tr]:last:border-b-0",
       className
@@ -56,7 +54,7 @@ type TableRowProps = ComponentProps<"tr">;
 
 const TableRow = ({ className, ...props }: TableRowProps) => (
   <tr
-    data-tag={kebabCase(TableRow.displayName!)}
+    data-tag={casing.kebabCase(TableRow.displayName!)}
     className={cn(
       "tw:hover:bg-muted/50 tw:data-[state=selected]:bg-muted tw:border-b tw:transition-colors",
       className
@@ -71,7 +69,7 @@ const TableRow = ({ className, ...props }: TableRowProps) => (
 type TableHeadProps = ComponentProps<"th">;
 const TableHead = ({ className, ...props }: TableHeadProps) => (
   <th
-    data-tag={kebabCase(TableHead.displayName!)}
+    data-tag={casing.kebabCase(TableHead.displayName!)}
     className={cn(
       "tw:text-muted-foreground tw:h-10 tw:px-2 tw:text-left tw:align-middle tw:font-medium tw:[&:has([role=checkbox])]:pr-0 tw:[&>[role=checkbox]]:translate-y-[2px]",
       className
@@ -87,7 +85,7 @@ const TableHead = ({ className, ...props }: TableHeadProps) => (
 type TableCellProps = ComponentProps<"td">;
 const TableCell = ({ className, ...props }: TableCellProps) => (
   <td
-    data-tag={kebabCase(TableCell.displayName!)}
+    data-tag={casing.kebabCase(TableCell.displayName!)}
     className={cn(
       "tw:p-2 tw:align-middle tw:[&:has([role=checkbox])]:pr-0 tw:[&>[role=checkbox]]:translate-y-[2px]",
       className
@@ -99,7 +97,7 @@ const TableCell = ({ className, ...props }: TableCellProps) => (
 type TableCaptionProps = ComponentProps<"caption">;
 const TableCaption = ({ className, ...props }: TableCaptionProps) => (
   <caption
-    data-tag={kebabCase(TableCaption.displayName!)}
+    data-tag={casing.kebabCase(TableCaption.displayName!)}
     className={cn("tw:text-muted-foreground tw:mt-4 tw:text-sm", className)}
     {...props}
   />

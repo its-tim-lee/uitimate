@@ -1,11 +1,10 @@
-import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react"
-import { type KeyboardEvent, type ComponentProps, useCallback, useContext, useEffect, useState, createContext } from "react"
-import { cn } from "#/helpers"
-import { Icon } from "#/components/ui/Icon/Icon"
-import { Cta } from "#/components/ui/Cta/Cta"
-import { type EmblaOptionsType, type EmblaPluginType } from 'embla-carousel'
+import { type KeyboardEvent, type ComponentProps, useContext, useEffect, useState, createContext } from "react"
+import useEmblaCarousel, { type UseEmblaCarouselType } from "@uitimate/lib-carousel"
+import { type EmblaOptionsType, type EmblaPluginType } from '@uitimate/lib-carousel-core'
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { Cta } from "#/components/ui/Cta/Cta.tsx"
+import { casing, cn } from "#/helpers/utils.ts"
 
 const carouselVariants = tv({
   slots: {
@@ -85,7 +84,7 @@ const Carousel = ({
       }}
     >
       <div
-        data-tag={kebabCase(Carousel.displayName)}
+        data-tag={casing.kebabCase(Carousel.displayName)}
         onKeyDownCapture={handleKeyDown}
         className={root({ className })}
         role="region"
@@ -104,7 +103,7 @@ const CarouselContent = ({ className, ...props }: CarouselContentProps) => {
   return (
     // This is called "overflow wrapper", one of the base requirements from Embla
     // `ref` is also part of setup
-    <div data-tag={kebabCase(CarouselContent.displayName)} ref={carouselRef} className={overflowWrapper()}>
+    <div data-tag={casing.kebabCase(CarouselContent.displayName)} ref={carouselRef} className={overflowWrapper()}>
       <div
         className={cn(
           scrollContainer(), // "scroll container" is required from Embla
@@ -122,7 +121,7 @@ const CarouselItem = ({ className, ...props }: CarouselItemProps) => {
   const { opts } = useCarousel()
   return (
     <div
-      data-tag={kebabCase(CarouselItem.displayName)}
+      data-tag={casing.kebabCase(CarouselItem.displayName)}
       role="group"
       aria-roledescription="slide"
       className={cn(
@@ -142,7 +141,7 @@ const CarouselPrevious = (
   const { api, canScrollPrev, opts } = useCarousel()
   return (
     <Cta
-      data-tag={kebabCase(CarouselPrevious.displayName)}
+      data-tag={casing.kebabCase(CarouselPrevious.displayName)}
       variant={variant}
       className={cn(
         navigator(),
@@ -169,7 +168,7 @@ const CarouselNext = (
   const { api, canScrollNext, opts } = useCarousel()
   return (
     <Cta
-      data-tag={kebabCase(CarouselNext.displayName)}
+      data-tag={casing.kebabCase(CarouselNext.displayName)}
       variant={variant}
       className={cn(
         navigator(),
@@ -205,7 +204,8 @@ namespace Type {
   export type CarouselApi = UseEmblaCarouselType[1];
 }
 
-export * from 'embla-carousel-react';
+export * from "@uitimate/lib-carousel-core";
+export * from "@uitimate/lib-carousel";
 
 export {
   type Type,

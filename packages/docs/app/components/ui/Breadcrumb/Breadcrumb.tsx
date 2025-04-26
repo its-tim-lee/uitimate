@@ -1,8 +1,8 @@
-import { Slot } from "@radix-ui/react-slot"
+import { Slot } from "#/components/ui/Slot/Slot.tsx"
 import { type ComponentProps } from "react"
-import { Icon } from "../Icon/Icon";
-import { tv, type VariantProps } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { tv } from "tailwind-variants"
+import { casing } from "#/helpers/utils.ts"
 
 const breadcrumbVariants = tv({
   slots: {
@@ -31,7 +31,7 @@ const Breadcrumb = ({
   ...props
 }: BreadcrumbProps) => (
   <nav
-    data-tag={kebabCase(Breadcrumb.displayName)}
+    data-tag={casing.kebabCase(Breadcrumb.displayName)}
     className={nav({})}
     aria-label="breadcrumb"
   >
@@ -47,7 +47,7 @@ const Breadcrumb = ({
 type BreadcrumbItemProps = ComponentProps<'li'>;
 const BreadcrumbItem = ({ className, ...props }: BreadcrumbItemProps) => (
   <li
-    data-tag={kebabCase(BreadcrumbItem.displayName)}
+    data-tag={casing.kebabCase(BreadcrumbItem.displayName)}
     className={item({ className })}
     {...props}
   />
@@ -58,7 +58,7 @@ const BreadcrumbLink = ({ asChild, className, ...props }: BreadcrumbLinkProps) =
   const Comp = asChild ? Slot : "a"
   return (
     <Comp
-      data-tag={kebabCase(BreadcrumbLink.displayName)}
+      data-tag={casing.kebabCase(BreadcrumbLink.displayName)}
       className={link({ className })}
       {...props}
     />
@@ -73,7 +73,7 @@ const BreadcrumbLink = ({ asChild, className, ...props }: BreadcrumbLinkProps) =
 type BreadcrumbFinalProps = ComponentProps<'span'>;
 const BreadcrumbFinal = ({ className, ...props }: BreadcrumbFinalProps) => (
   <span
-    data-tag={kebabCase(BreadcrumbFinal.displayName)}
+    data-tag={casing.kebabCase(BreadcrumbFinal.displayName)}
     role="link"
     aria-disabled="true"
     aria-current="page"
@@ -85,7 +85,7 @@ const BreadcrumbFinal = ({ className, ...props }: BreadcrumbFinalProps) => (
 type BreadcrumbEllipsisProps = ComponentProps<'span'>;
 const BreadcrumbEllipsis = ({ className, ...props }: BreadcrumbEllipsisProps) => (
   <span
-    data-tag={kebabCase(BreadcrumbEllipsis.displayName)}
+    data-tag={casing.kebabCase(BreadcrumbEllipsis.displayName)}
     className={ellipsis({ className })}
     {...props}
   >
@@ -97,7 +97,7 @@ const BreadcrumbEllipsis = ({ className, ...props }: BreadcrumbEllipsisProps) =>
 type BreadcrumbSeparatorProps = ComponentProps<'li'>;
 const BreadcrumbSeparator = ({ children, className, ...props }: BreadcrumbSeparatorProps) => (
   <li
-    data-tag={kebabCase(BreadcrumbSeparator.displayName)}
+    data-tag={casing.kebabCase(BreadcrumbSeparator.displayName)}
     role="presentation"
     aria-hidden="true"
     className={separator({ className })}

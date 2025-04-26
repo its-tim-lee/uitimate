@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
-import { Root, Viewport, Corner, Scrollbar, Thumb } from "@radix-ui/react-scroll-area"
+import { Root, Viewport, Corner, Scrollbar, Thumb } from "@uitimate/lib-scroll-area"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const scrollAreaVariants = tv({
   slots: {
@@ -18,7 +18,7 @@ const ScrollArea = ({
   ...props
 }: ScrollAreaProps) => (
   <Root
-    data-tag={kebabCase(ScrollArea.displayName)}
+    data-tag={casing.kebabCase(ScrollArea.displayName)}
     className={root({ className })}
     {...props}
   >
@@ -53,7 +53,7 @@ const ScrollAreaScrollBar = ({
   const { scrollbar, thumb } = scrollBarVariants({ orientation })
   return (
     <Scrollbar
-      data-tag={kebabCase(ScrollAreaScrollBar.displayName)}
+      data-tag={casing.kebabCase(ScrollAreaScrollBar.displayName)}
       orientation={orientation}
       className={scrollbar({ className })}
       {...props}
@@ -74,7 +74,7 @@ const ScrollAreaViewport = ({
   ...props
 }: ScrollAreaViewportProps) => (
   <Viewport
-    data-tag={kebabCase(ScrollAreaViewport.displayName)}
+    data-tag={casing.kebabCase(ScrollAreaViewport.displayName)}
     className={viewport({ className })}
     {...props}
   />
@@ -86,7 +86,7 @@ const ScrollAreaCorner = ({
   ...props
 }: ScrollAreaCornerProps) => (
   <Corner
-    data-tag={kebabCase(ScrollAreaCorner.displayName)}
+    data-tag={casing.kebabCase(ScrollAreaCorner.displayName)}
     className={className}
     {...props}
   />
@@ -104,6 +104,7 @@ namespace Type {
   export type ScrollAreaCorner = ScrollAreaCornerProps;
 }
 
+export * from "@uitimate/lib-scroll-area"
 export {
   type Type,
   scrollAreaVariants,

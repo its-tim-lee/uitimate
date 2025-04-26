@@ -29,10 +29,11 @@ import {
   type DropdownMenuLabelProps,
   type DropdownMenuSeparatorProps,
   type DropdownMenuRadioGroupProps,
-} from "@radix-ui/react-dropdown-menu"
+} from "@uitimate/lib-dropdown-menu"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
+
 const dropdownMenuVariants = tv({
   slots: {
     subTrigger: [
@@ -92,7 +93,7 @@ const {
 
 const DropdownMenuSubTrigger = ({ className, children, ...props }: DropdownMenuSubTriggerProps) => (
   <SubTrigger
-    data-tag={kebabCase(DropdownMenuSubTrigger.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuSubTrigger.displayName)}
     className={subTrigger({ className })}
     {...props}
   >
@@ -106,7 +107,7 @@ const DropdownMenuSubContent = ({
   ...props
 }: DropdownMenuSubContentProps) => (
   <SubContent
-    data-tag={kebabCase(DropdownMenuSubContent.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuSubContent.displayName)}
     className={subContent({ className })}
     {...props}
   />
@@ -119,7 +120,7 @@ const DropdownMenuContent = ({
 }: DropdownMenuContentProps) => (
   <DropdownMenuPortal>
     <Content
-      data-tag={kebabCase(DropdownMenuContent.displayName)}
+      data-tag={casing.kebabCase(DropdownMenuContent.displayName)}
       sideOffset={sideOffset}
       className={content({ className })}
       {...props}
@@ -132,7 +133,7 @@ const DropdownMenuItem = ({
   ...props
 }: DropdownMenuItemProps) => (
   <Item
-    data-tag={kebabCase(DropdownMenuItem.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuItem.displayName)}
     className={item({ className })}
     {...props}
   />
@@ -145,7 +146,7 @@ const DropdownMenuCheckboxItem = ({
   ...props
 }: DropdownMenuCheckboxItemProps) => (
   <CheckboxItem
-    data-tag={kebabCase(DropdownMenuCheckboxItem.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuCheckboxItem.displayName)}
     className={checkboxItem({ className })}
     checked={checked}
     {...props}
@@ -163,7 +164,7 @@ const DropdownMenuRadioItem = ({
   ...props
 }: DropdownMenuRadioItemProps) => (
   <RadioItem
-    data-tag={kebabCase(DropdownMenuRadioItem.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuRadioItem.displayName)}
     className={radioItem({ className })}
     {...props}
   >
@@ -179,7 +180,7 @@ const DropdownMenuLabel = ({
   ...props
 }: DropdownMenuLabelProps) => (
   <Label
-    data-tag={kebabCase(DropdownMenuLabel.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuLabel.displayName)}
     className={label({ className })}
     {...props}
   />
@@ -190,7 +191,7 @@ const DropdownMenuSeparator = ({
   ...props
 }: DropdownMenuSeparatorProps) => (
   <Separator
-    data-tag={kebabCase(DropdownMenuSeparator.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuSeparator.displayName)}
     className={separator({ className })}
     {...props}
   />
@@ -202,7 +203,7 @@ const DropdownMenuShortcut = ({
   ...props
 }: DropdownMenuShortcutProps) => (
   <span
-    data-tag={kebabCase(DropdownMenuShortcut.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuShortcut.displayName)}
     className={shortcut({ className })}
     {...props}
   />
@@ -213,7 +214,7 @@ const DropdownMenuTrigger = ({
   ...props
 }: DropdownMenuTriggerProps) => (
   <Trigger
-    data-tag={kebabCase(DropdownMenuTrigger.displayName)}
+    data-tag={casing.kebabCase(DropdownMenuTrigger.displayName)}
     {...props}
   />
 )
@@ -253,6 +254,7 @@ namespace Type {
   export type DropdownMenuRadioItem = DropdownMenuRadioItemProps
 }
 
+export * from "@uitimate/lib-dropdown-menu";
 export {
   dropdownMenuVariants,
   DropdownMenu,

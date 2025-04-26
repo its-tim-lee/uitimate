@@ -1,5 +1,5 @@
 import { type ComponentProps } from "react"
-import { kebabCase } from "lodash-es"
+import { casing } from '#/helpers/utils.ts'
 import {
   Root as ContextMenu,
   Trigger as ContextMenuTrigger,
@@ -16,9 +16,10 @@ import {
   Label,
   Separator,
   ItemIndicator
-} from "@radix-ui/react-context-menu"
+} from "@uitimate/lib-context-menu"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
+
 const baseContentStyle = [
   "tw:z-50 tw:min-w-[8rem] tw:overflow-hidden tw:rounded-md tw:border tw:bg-popover tw:p-1 tw:text-popover-foreground",
   "tw:data-[state=open]:animate-in tw:data-[state=closed]:animate-out",
@@ -69,7 +70,7 @@ const ContextMenuSubTrigger = ({
 }: ContextMenuSubTriggerProps) => (
   <SubTrigger
     className={contextMenuVariants({ inset }).subTrigger({ className })}
-    data-tag={kebabCase(ContextMenuSubTrigger.displayName)}
+    data-tag={casing.kebabCase(ContextMenuSubTrigger.displayName)}
     {...props}
   >
     {children}
@@ -84,7 +85,7 @@ const ContextMenuSubContent = ({
 }: ContextMenuSubContentProps) => (
   <SubContent
     className={contextMenuVariants().subContent({ className })}
-    data-tag={kebabCase(ContextMenuSubContent.displayName)}
+    data-tag={casing.kebabCase(ContextMenuSubContent.displayName)}
     {...props}
   />
 )
@@ -97,7 +98,7 @@ const ContextMenuContent = ({
   <ContextMenuPortal>
     <Content
       className={contextMenuVariants().content({ className })}
-      data-tag={kebabCase(ContextMenuContent.displayName)}
+      data-tag={casing.kebabCase(ContextMenuContent.displayName)}
       {...props}
     />
   </ContextMenuPortal>
@@ -111,7 +112,7 @@ const ContextMenuItem = ({
 }: ContextMenuItemProps) => (
   <Item
     className={contextMenuVariants({ inset }).item({ className })}
-    data-tag={kebabCase(ContextMenuItem.displayName)}
+    data-tag={casing.kebabCase(ContextMenuItem.displayName)}
     {...props}
   />
 )
@@ -125,7 +126,7 @@ const ContextMenuCheckboxItem = ({
 }: ContextMenuCheckboxItemProps) => (
   <CheckboxItem
     className={contextMenuVariants().formItem({ className })}
-    data-tag={kebabCase(ContextMenuCheckboxItem.displayName)}
+    data-tag={casing.kebabCase(ContextMenuCheckboxItem.displayName)}
     checked={checked}
     {...props}
   >
@@ -146,7 +147,7 @@ const ContextMenuRadioItem = ({
 }: ContextMenuRadioItemProps) => (
   <RadioItem
     className={contextMenuVariants().formItem({ className })}
-    data-tag={kebabCase(ContextMenuRadioItem.displayName)}
+    data-tag={casing.kebabCase(ContextMenuRadioItem.displayName)}
     {...props}
   >
     <span className="tw:absolute tw:left-2 tw:flex tw:h-3.5 tw:w-3.5 tw:items-center tw:justify-center">
@@ -166,7 +167,7 @@ const ContextMenuLabel = ({
 }: ContextMenuLabelProps) => (
   <Label
     className={contextMenuVariants({ inset }).label({ className })}
-    data-tag={kebabCase(ContextMenuLabel.displayName)}
+    data-tag={casing.kebabCase(ContextMenuLabel.displayName)}
     {...props}
   />
 )
@@ -178,7 +179,7 @@ const ContextMenuSeparator = ({
 }: ContextMenuSeparatorProps) => (
   <Separator
     className={contextMenuVariants().separator({ className })}
-    data-tag={kebabCase(ContextMenuSeparator.displayName)}
+    data-tag={casing.kebabCase(ContextMenuSeparator.displayName)}
     {...props}
   />
 )
@@ -190,7 +191,7 @@ const ContextMenuShortcut = ({
 }: ContextMenuShortcutProps) => (
   <span
     className={contextMenuVariants().shortcut({ className })}
-    data-tag={kebabCase(ContextMenuShortcut.displayName)}
+    data-tag={casing.kebabCase(ContextMenuShortcut.displayName)}
     {...props}
   />
 )
@@ -223,6 +224,7 @@ namespace Type {
   export type ContextMenuShortcut = typeof ContextMenuShortcut
 }
 
+export * from "@uitimate/lib-context-menu";
 export {
   type Type,
   contextMenuVariants,

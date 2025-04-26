@@ -1,16 +1,12 @@
 import { useState, useRef, useEffect } from "react"
-import { BreadcrumbFinal, Breadcrumb } from "../ui/Breadcrumb/Breadcrumb"
-import { BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "../ui/Breadcrumb/Breadcrumb"
 import { maskitoDateOptionsGenerator } from '@maskito/kit';
-import { Cta } from "../ui/Cta/Cta"
-import { Heading } from "../ui/Heading/Heading"
-import { Icon } from "../ui/Icon/Icon"
-import type { FormState, FieldError } from "react-hook-form"
+import { Cta } from "#/components/ui/Cta/Cta"
+import { Heading } from "#/components/ui/Heading/Heading"
 import { z } from "zod"
-import { Form, FormControl, FormItem, FormLabel, FormMessage } from "../ui/Form/Form"
-import { Input } from "../ui/Input/Input"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/Select/Select"
-import { Checkbox } from "../ui/Checkbox/Checkbox"
+import { Form, FormControl, FormItem, FormLabel, FormMessage, type FormState, type FieldError } from "#/components/ui/Form/Form"
+import { Input } from "#/components/ui/Input/Input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "#/components/ui/Select/Select"
+import { Checkbox } from "#/components/ui/Checkbox/Checkbox"
 
 import type { MaskitoOptions } from '@maskito/core';
 import { useMaskito } from '@maskito/react';
