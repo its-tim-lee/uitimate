@@ -1,13 +1,13 @@
 import { type ComponentProps } from "react"
-import { kebabCase } from "lodash-es"
 import {
   Provider,
   Root,
   Trigger,
   Content,
   Portal
-} from "@radix-ui/react-tooltip"
+} from "@uitimate/lib-tooltip"
 import { tv } from "tailwind-variants"
+import { casing } from "#/helpers/utils.ts"
 
 const tooltipVariants = tv({
   base: [
@@ -20,18 +20,18 @@ const tooltipVariants = tv({
 })
 
 type TooltipProviderProps = ComponentProps<typeof Provider>
-const TooltipProvider = ({ ...props }: TooltipProviderProps) => <Provider data-tag={kebabCase(TooltipProvider.displayName)} {...props} />
+const TooltipProvider = ({ ...props }: TooltipProviderProps) => <Provider data-tag={casing.kebabCase(TooltipProvider.displayName)} {...props} />
 
 type TooltipProps = ComponentProps<typeof Root>
 const Tooltip = ({ ...props }: TooltipProps) => (
   <TooltipProvider>
-    <Root data-tag={kebabCase(Tooltip.displayName)} {...props} />
+    <Root data-tag={casing.kebabCase(Tooltip.displayName)} {...props} />
   </TooltipProvider>
 )
 
 type TooltipTriggerProps = ComponentProps<typeof Trigger>
 const TooltipTrigger = ({ ...props }: TooltipTriggerProps) => (
-  <Trigger data-tag={kebabCase(TooltipTrigger.displayName)} {...props} />
+  <Trigger data-tag={casing.kebabCase(TooltipTrigger.displayName)} {...props} />
 )
 
 type TooltipContentProps = ComponentProps<typeof Content>
@@ -42,7 +42,7 @@ const TooltipContent = ({
 }: TooltipContentProps) => (
   <Portal>
     <Content
-      data-tag={kebabCase(TooltipContent.displayName)}
+      data-tag={casing.kebabCase(TooltipContent.displayName)}
       sideOffset={sideOffset}
       className={tooltipVariants({ className })}
       {...props}
@@ -62,6 +62,7 @@ namespace Type {
   export type TooltipProvider = TooltipProviderProps
 }
 
+export * from "@uitimate/lib-tooltip"
 export {
   type Type,
   tooltipVariants,

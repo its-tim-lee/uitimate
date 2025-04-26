@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
 import { tv } from "tailwind-variants"
-import { Textarea as TextareaPrimitive } from '@headlessui/react'
-import { kebabCase } from 'lodash-es'
+import { Textarea as TextareaPrimitive } from '@uitimate/lib-headlessui'
+import { casing } from '#/helpers/utils.ts'
 
 const textareaVariants = tv({
   base: [
@@ -30,7 +30,7 @@ const Textarea = ({
 }: TextareaProps) => {
   return (
     <TextareaPrimitive
-      data-tag={kebabCase(Textarea.displayName)}
+      data-tag={casing.kebabCase(Textarea.displayName)}
       className={textareaVariants({ className })}
       {...props}
     />
@@ -43,6 +43,7 @@ namespace Type {
   export type Textarea = TextareaProps;
 }
 
+export * from "@uitimate/lib-headlessui"
 export {
   type Type,
   Textarea,

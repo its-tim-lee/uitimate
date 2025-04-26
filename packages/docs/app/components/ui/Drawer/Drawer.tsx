@@ -1,9 +1,8 @@
-import { type ComponentProps } from "react"
-import { Drawer as Primitive } from "vaul"
+import { Children, useContext, type ComponentProps } from "react"
+import { Drawer as Primitive } from "@uitimate/lib-drawer"
 import { tv, type VariantProps } from "tailwind-variants"
 import { headingVariants, HeadingContext } from '#/components/ui/Heading/Heading.tsx'
-import { Children, useContext } from "react"
-import { kebabCase } from 'lodash-es'
+import { casing } from "#/helpers/utils.ts"
 
 const drawerVariants = tv({
   slots: {
@@ -47,7 +46,7 @@ const DrawerOverlay = ({
   ...props
 }: DrawerOverlayProps) => (
   <Primitive.Overlay
-    data-tag={kebabCase(DrawerOverlay.displayName)}
+    data-tag={casing.kebabCase(DrawerOverlay.displayName)}
     className={overlay({ className })}
     {...props}
   />
@@ -77,7 +76,7 @@ const Drawer = ({
     <Primitive.Root {...props}>
       <DrawerPortal>
         <DrawerContent
-          data-tag={kebabCase(DrawerContent.displayName)}
+          data-tag={casing.kebabCase(DrawerContent.displayName!)}
           className={content({ className })}
           asChild={asChild}
           /**
@@ -95,7 +94,7 @@ const Drawer = ({
         the only reason to make this as the Content's next sibling is just allowing
         the consumer to hide the overlay via Tailwind, so that we don't need to create another prop just for this matter.
       */}
-        <DrawerOverlay data-tag={kebabCase(DrawerOverlay.displayName)} />
+        <DrawerOverlay data-tag={casing.kebabCase(DrawerOverlay.displayName)} />
       </DrawerPortal>
     </Primitive.Root>
   );
@@ -120,7 +119,7 @@ const DrawerHeading = ({ size = 'h4', children, className, ...props }: DrawerHea
     <HeadingContext.Provider value={{ size }}>
       <div
         {...props}
-        data-tag={kebabCase(DrawerHeading.displayName)}
+        data-tag={casing.kebabCase(DrawerHeading.displayName)}
         className={headingRoot({ size, className })}
       >
         {content}
@@ -136,7 +135,7 @@ const DrawerTitle = ({
 }: DrawerTitleProps) => {
   const { size } = useContext(HeadingContext);
   return <Primitive.Title
-    data-tag={kebabCase(DrawerTitle.displayName)}
+    data-tag={casing.kebabCase(DrawerTitle.displayName)}
     className={title({ size, className })}
     {...props}
   />
@@ -149,7 +148,7 @@ const DrawerSubtitle = ({
 }: DrawerSubtitleProps) => {
   const { size } = useContext(HeadingContext);
   return <Primitive.Description
-    data-tag={kebabCase(DrawerSubtitle.displayName)}
+    data-tag={casing.kebabCase(DrawerSubtitle.displayName)}
     className={subtitle({ size, className })}
     {...props}
   />
@@ -172,6 +171,7 @@ namespace Type {
   export type DrawerOverlay = DrawerOverlayProps;
 }
 
+export * from "@uitimate/lib-drawer";
 export {
   type Type,
   drawerVariants,

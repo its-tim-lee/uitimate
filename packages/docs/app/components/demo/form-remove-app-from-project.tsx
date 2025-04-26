@@ -3,10 +3,9 @@ import { Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle } from
 import { Icon } from "#/components/ui/Icon/Icon"
 import { Cta } from "#/components/ui/Cta/Cta"
 import { Separator } from "#/components/ui/Separator/Separator"
-import { Form, FormLabel, FormControl, FormItem } from "#/components/ui/Form/Form"
+import { type FormState, Form, FormLabel, FormControl, FormItem } from "#/components/ui/Form/Form"
 import { Checkbox } from "#/components/ui/Checkbox/Checkbox"
 import { z } from "zod"
-import type { FormState } from "react-hook-form"
 
 export default () => {
   const [isOpen, setIsOpen] = React.useState(false)

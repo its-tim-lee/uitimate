@@ -1,5 +1,8 @@
 {
   "name": "@uitimate/chart",
-  "version": "1.0.0",
-  "private": true
+  "version": "1.0.1",
+  "private": true,
+  "dependencies": {
+    "recharts": "2.15.3"
+  }
 }

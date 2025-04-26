@@ -1,1 +1,1 @@
-export * from "sonner"
+export * from "@uitimate/lib-toast"

@@ -1,8 +1,8 @@
 import { type ComponentProps } from "react"
-import { Root, Indicator, type CheckedState as _CheckedState } from "@radix-ui/react-checkbox"
+import { Root, Indicator, type CheckedState as _CheckedState } from "@uitimate/lib-checkbox"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const checkboxVariants = tv({
   slots: {
@@ -47,7 +47,7 @@ const Checkbox = ({
 }: CheckboxProps) => {
   return (
     <Root
-      data-tag={kebabCase(Checkbox.displayName)}
+      data-tag={casing.kebabCase(Checkbox.displayName)}
       className={root({ className })}
       {...(props.value !== undefined && { checked: !!props.value })} // #2
       onCheckedChange={(v) => {
@@ -69,7 +69,7 @@ const CheckboxIndicator = ({
 }: CheckboxIndicatorProps) => {
   return (
     <Indicator
-      data-tag={kebabCase(CheckboxIndicator.displayName)}
+      data-tag={casing.kebabCase(CheckboxIndicator.displayName)}
       className={indicator({ className })}
       {...props}
     >
@@ -87,7 +87,7 @@ namespace Type {
   export type CheckedState = _CheckedState
 }
 
-export * from "@radix-ui/react-checkbox";
+export * from "@uitimate/lib-checkbox";
 
 export {
   type Type,

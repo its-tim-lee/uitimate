@@ -1,7 +1,7 @@
 import { type ComponentProps } from "react"
-import { Root, Trigger, Content } from "@radix-ui/react-hover-card"
+import { Root, Trigger, Content } from "@uitimate/lib-hover-card"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const hoverCardVariants = tv({
   base: [
@@ -16,12 +16,12 @@ const hoverCardVariants = tv({
 
 type HoverCardProps = ComponentProps<typeof Root>
 const HoverCard = (props: HoverCardProps) => (
-  <Root data-tag={kebabCase(HoverCard.displayName)} {...props} />
+  <Root data-tag={casing.kebabCase(HoverCard.displayName)} {...props} />
 )
 
 type HoverCardTriggerProps = ComponentProps<typeof Trigger>
 const HoverCardTrigger = (props: HoverCardTriggerProps) => (
-  <Trigger data-tag={kebabCase(HoverCardTrigger.displayName)} {...props} />
+  <Trigger data-tag={casing.kebabCase(HoverCardTrigger.displayName)} {...props} />
 )
 
 type HoverCardContentProps = ComponentProps<typeof Content>
@@ -32,7 +32,7 @@ const HoverCardContent = ({
   ...props
 }: HoverCardContentProps) => (
   <Content
-    data-tag={kebabCase(HoverCardContent.displayName)}
+    data-tag={casing.kebabCase(HoverCardContent.displayName)}
     align={align}
     sideOffset={sideOffset}
     className={hoverCardVariants({ className })}
@@ -50,6 +50,7 @@ namespace Type {
   export type HoverCardContent = HoverCardContentProps
 }
 
+export * from "@uitimate/lib-hover-card";
 export {
   hoverCardVariants,
   HoverCard,

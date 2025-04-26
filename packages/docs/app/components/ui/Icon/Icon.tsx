@@ -1,6 +1,6 @@
-import { Icon as Root, type IconProps as _IconProps } from "@iconify/react";
-import { AccessibleIcon } from "@radix-ui/react-accessible-icon";
-import { kebabCase } from "lodash-es";
+import { Icon as Root, type IconProps as _IconProps } from "@uitimate/lib-icon";
+import { AccessibleIcon } from "#/components/ui/AccessibleIcon/AccessibleIcon.tsx";
+import { casing } from "#/helpers/utils.ts";
 /**
  * Design note:
  *  span-wrapper:
@@ -18,7 +18,7 @@ type IconProps = _IconProps & { label?: string }
 const Icon = ({ label, ...props }: IconProps) => (
   <AccessibleIcon label={label || ''}>
     <span>
-      <Root data-icon data-tag={kebabCase(Icon.displayName)} {...props} />
+      <Root data-icon data-tag={casing.kebabCase(Icon.displayName)} {...props} />
     </span>
   </AccessibleIcon>
 )
@@ -29,6 +29,7 @@ namespace Type {
   export type Icon = IconProps;
 }
 
+export * from "@uitimate/lib-icon";
 export {
   Icon,
   AccessibleIcon,

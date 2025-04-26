@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
+import * as LabelPrimitive from "@uitimate/lib-label"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const labelVariants = tv({
   base: [
@@ -19,7 +19,7 @@ const Label = ({
   return (
     <LabelPrimitive.Root
       data-label
-      data-tag={kebabCase(Label.displayName)}
+      data-tag={casing.kebabCase(Label.displayName)}
       className={labelVariants({ className })}
       {...props}
     />
@@ -32,4 +32,5 @@ namespace Type {
   export type Label = ComponentProps<typeof LabelPrimitive.Root>
 }
 
+export * from "@uitimate/lib-label"
 export { Label, labelVariants, type Type }

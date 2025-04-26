@@ -1,4 +1,4 @@
-import { type CheckedState } from "#/components/ui/Checkbox/Checkbox"
+import { Checkbox, type CheckedState } from "#/components/ui/Checkbox/Checkbox"
 import {
   Form,
   FormControl,
@@ -6,6 +6,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  type FormState,
+  type UseFormReturn,
 } from "#/components/ui/Form/Form.tsx"
 import { Cta } from "#/components/ui/Cta/Cta.tsx"
 import { z } from "zod"
@@ -13,15 +15,7 @@ import { Input } from "#/components/ui/Input/Input.tsx"
 import { useEffect, useRef, useState, useId } from "react";
 import { sleep } from "#/helpers/utils";
 import { Icon } from "#/components/ui/Icon/Icon.tsx";
-import { TooltipContent, TooltipTrigger } from "#/components/ui/Tooltip/Tooltip.tsx";
-import { Tooltip } from "#/components/ui/Tooltip/Tooltip.tsx";
-import { Checkbox } from "#/components/ui/Checkbox/Checkbox.tsx";
-import {
-  type FormState,
-  type UseFormReturn,
-  type FieldValues,
-  useFormContext
-} from "react-hook-form";
+import { Tooltip, TooltipContent, TooltipTrigger } from "#/components/ui/Tooltip/Tooltip.tsx";
 import { nanoid } from "nanoid";
 import { Label } from "#/components/ui/Label/Label.tsx";
 

@@ -1,9 +1,9 @@
-import { type ComponentProps } from "react"
-import { Root, Item, Trigger, Content, Header } from "@radix-ui/react-accordion"
+import { type ComponentProps } from "react";
+import { Root, Item, Trigger, Content, Header } from "@uitimate/lib-accordion"
 import { tv } from "tailwind-variants"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import './index.css'
-import { kebabCase } from 'lodash-es'
+import { casing } from "#/helpers/utils.ts"
 
 const accordionVariants = tv({
   slots: {
@@ -35,7 +35,7 @@ const AccordionItem = ({
   return (
     <Item
       className={item({ className })}
-      data-tag={kebabCase(AccordionItem.displayName)}
+      data-tag={casing.kebabCase(AccordionItem.displayName)}
       {...props}
     />
   )
@@ -65,7 +65,7 @@ const AccordionTrigger = ({
     <AccordionHeader className="tw:flex">
       <Trigger
         className={trigger({ className })}
-        data-tag={kebabCase(AccordionTrigger.displayName)}
+        data-tag={casing.kebabCase(AccordionTrigger.displayName)}
         {...props}
       >
         {children}
@@ -87,7 +87,7 @@ const AccordionContent = ({
   return (
     <Content
       className={content()}
-      data-tag={kebabCase(AccordionContent.displayName)}
+      data-tag={casing.kebabCase(AccordionContent.displayName)}
       {...props}
     >
       <div className={contentInner({ className })}>
@@ -119,6 +119,8 @@ namespace Type {
   export type AccordionHeader = AccordionHeaderProps;
   export type Accordion = AccordionProps;
 }
+
+export * from "@uitimate/lib-accordion";
 
 export {
   Accordion,

@@ -1,5 +1,8 @@
 {
   "name": "@uitimate/resizable",
-  "version": "1.0.0",
-  "private": true
+  "version": "1.0.1",
+  "private": true,
+  "dependencies": {
+    "react-resizable-panels": "2.1.8"
+  }
 }

@@ -1,15 +1,14 @@
-import { Root, List, Trigger, Content } from "@radix-ui/react-tabs"
+import { Root, List, Trigger, Content } from "@uitimate/lib-tabs"
 import { tv } from 'tailwind-variants'
-import { createContext, useContext } from 'react'
-import type { ComponentProps } from 'react'
-import { kebabCase } from 'lodash-es'
+import { createContext, useContext, type ComponentProps } from 'react'
+import { casing } from '#/helpers/utils.ts'
 
 const TabsVariantContext = createContext<{ variant: 'pill' | 'underline' }>({ variant: 'pill' })
 
 type TabsProps = ComponentProps<typeof Root> & { variant: 'pill' | 'underline' }
 const Tabs = ({ variant, ...props }: TabsProps) => (
   <TabsVariantContext.Provider value={{ variant }}>
-    <Root data-tag={kebabCase(Tabs.displayName)} {...props} />
+    <Root data-tag={casing.kebabCase(Tabs.displayName)} {...props} />
   </TabsVariantContext.Provider>
 )
 
@@ -27,7 +26,7 @@ const TabsList = ({ className, ...props }: TabsListProps) => {
   const { variant } = useContext(TabsVariantContext)
   return (
     <List
-      data-tag={kebabCase(TabsList.displayName)}
+      data-tag={casing.kebabCase(TabsList.displayName)}
       className={tabsListVariants({ variant, className })}
       {...props}
     />
@@ -55,7 +54,7 @@ const TabsTrigger = ({ className, ...props }: TabsTriggerProps) => {
   const { variant } = useContext(TabsVariantContext)
   return (
     <Trigger
-      data-tag={kebabCase(TabsTrigger.displayName)}
+      data-tag={casing.kebabCase(TabsTrigger.displayName)}
       className={tabsTriggerVariants({ variant, className })}
       {...props}
     />
@@ -71,7 +70,7 @@ const tabsContentVariants = tv({
 type TabsContentProps = ComponentProps<typeof Content>
 const TabsContent = ({ className, ...props }: TabsContentProps) => (
   <Content
-    data-tag={kebabCase(TabsContent.displayName)}
+    data-tag={casing.kebabCase(TabsContent.displayName)}
     className={tabsContentVariants({ className })}
     {...props}
   />
@@ -89,6 +88,7 @@ namespace Type {
   export type TabsContent = TabsContentProps
 }
 
+export * from "@uitimate/lib-tabs"
 export {
   type Type,
   TabsVariantContext,

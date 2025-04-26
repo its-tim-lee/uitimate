@@ -1,9 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ComponentProps } from "react"
-import hotkeys from "hotkeys-js"
-import { useIsMobile } from "#/helpers/hooks/use-mobile"
+import hotkeys from "@uitimate/lib-hotkeys"
+import { useIsMobile } from "#/helpers/hooks/use-mobile.ts"
 import { tv } from "tailwind-variants"
 import { Drawer } from "#/components/ui/Drawer/Drawer.tsx"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 type _SidebarContext = {
   isMobile: boolean;
@@ -148,7 +148,7 @@ const SidebarLayout = ({
         data-variant={variant}
         data-toggle={isOpen ? "expanded" : "collapsed"}
         data-direction={desktopSidebarDirection}
-        data-tag={kebabCase(SidebarLayout.displayName)}
+        data-tag={casing.kebabCase(SidebarLayout.displayName)}
         {...props}
       />
     </SidebarContext.Provider>
@@ -194,7 +194,7 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
         data-sidebar
         data-variant={variant}
         data-toggle={isOpen ? "expanded" : "collapsed"}
-        data-tag={kebabCase(Sidebar.displayName)}
+        data-tag={casing.kebabCase(Sidebar.displayName)}
         {...props}
       >
         {children}
@@ -205,7 +205,7 @@ const Sidebar = ({ className, children, ...props }: SidebarProps) => {
     <div
       className={base({ className })}
       data-sidebar
-      data-tag={kebabCase(Sidebar.displayName)}
+      data-tag={casing.kebabCase(Sidebar.displayName)}
       data-variant={variant}
       data-toggle={isOpen ? "expanded" : "collapsed"}
       data-direction={desktopSidebarDirection}
@@ -297,7 +297,7 @@ const SidebarPeer = ({ className, ...props }: SidebarInsetProps) => {
   const { variant: sidebarVariant, isOpen: isSidebarOpen, desktopSidebarDirection } = useSidebar()
   return (
     <main
-      data-tag={kebabCase(SidebarPeer.displayName)}
+      data-tag={casing.kebabCase(SidebarPeer.displayName)}
       className={sidebarInsetVariants({ sidebarVariant, isSidebarOpen, desktopSidebarDirection, className })}
       {...props}
     />

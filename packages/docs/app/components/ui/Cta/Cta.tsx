@@ -1,12 +1,12 @@
 import { useState, type ComponentProps } from "react"
-import { Toggle } from "@radix-ui/react-toggle"
-import { Slot } from "@radix-ui/react-slot";
-import { Primitive } from '@radix-ui/react-primitive';
+import { Toggle } from "@uitimate/lib-toggle"
+import { Slot } from "#/components/ui/Slot/Slot.tsx";
+import { Primitive } from '@uitimate/lib-primitive';
 import {
   tv,
   type VariantProps,
 } from 'tailwind-variants';
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
 
 const baseStyle = [
   "tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:whitespace-nowrap tw:rounded-md tw:transition-colors tw:data-hover:cursor-pointer",
@@ -170,7 +170,7 @@ const Cta =
     const mode = shapes.find((s: any) => s !== 'badge') as 'icon' | undefined
     return <Comp
       type={type}
-      data-tag={kebabCase(Cta.displayName)}
+      data-tag={casing.kebabCase(Cta.displayName)}
       data-disabled={props.disabled ? '' : undefined}
       onMouseEnter={(e) => !muted && (e.currentTarget.dataset.hover = '')}
       onMouseLeave={(e) => delete e.currentTarget.dataset.hover}
@@ -195,7 +195,7 @@ const Cta =
     >
       {children}
     </Comp>
-}
+  }
 
 Cta.displayName = "Cta"
 
@@ -204,9 +204,11 @@ namespace Type {
   export type Toggle = ComponentProps<typeof Toggle>;
 }
 
+// Igore to export '@uitimate/lib-primitive', cuz it should be super rare to be useful,
+// plus, exporting that will conflict with the the export of "@uitimate/lib-toggle"
+export * from "@uitimate/lib-toggle";
 export {
   Cta,
-  Toggle,
   buttonVariants,
   badgeVariants,
   type Type

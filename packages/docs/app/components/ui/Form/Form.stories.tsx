@@ -5,7 +5,6 @@ import FormSwitchDemo from '#/components/demo/form-switch-demo.tsx';
 import FormTextareaDemo from '#/components/demo/form-textarea-demo.tsx';
 import FormDatePickerDemo from '#/components/demo/form-datepicker-demo.tsx';
 import FormComboboxDemo from '#/components/demo/form-combobox-demo.tsx';
-import ShadcnForm from "#/components/demo/form-shadcn-just-test.tsx";
 import FormFirebaseRegisterApp from "#/components/demo/form-firebase-register-app.tsx";
 import FormRemoveAppFromProject from "#/components/demo/form-remove-app-from-project.tsx"
 import FormDamnEasyDemo from "#/components/demo/form-damn-easy-demo.tsx"
@@ -44,12 +43,6 @@ export const STRIPE_PAYMENT_METHOD = {
   name: 'Showcase / Stripe Payment Method',
   render: () => <StripePaymentMethod />
 };
-
-// Just for testing
-// export const SHADCN_FORM = {
-//   name: 'Showcase / Shadcn Form',
-//   render: () => <ShadcnForm />
-// };
 
 export const RADIO_GROUP_FORM = {
   name: 'Showcase / Radio Group Form',

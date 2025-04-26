@@ -1,17 +1,17 @@
-import { Cta, buttonVariants } from "#/components/ui/Cta/Cta"
-import { cn } from "#/helpers/css.ts"
-import { differenceInCalendarDays } from "date-fns"
-import { Icon } from "#/components/ui/Icon/Icon"
 import React from "react"
+import { differenceInCalendarDays } from "@uitimate/lib-date-fns"
+import { Cta, buttonVariants } from "#/components/ui/Cta/Cta.tsx"
+import { Icon } from "#/components/ui/Icon/Icon.tsx"
+import { cn } from "#/helpers/utils.ts"
 import {
   DayPicker,
   labelNext,
   labelPrevious,
   useDayPicker,
   type DayPickerProps,
-} from "react-day-picker"
+} from "@uitimate/lib-calendar"
 
-export type CalendarProps = DayPickerProps & {
+type CalendarProps = DayPickerProps & {
   /**
    * In the year view, the number of years to display at once.
    * @default 12
@@ -507,5 +507,5 @@ function YearGrid({
     </div>
   )
 }
-
-export { Calendar }
+export * from "@uitimate/lib-calendar";
+export { type CalendarProps, Calendar }

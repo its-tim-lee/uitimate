@@ -1,9 +1,10 @@
 import "./index.css"
 import { type ComponentProps, useContext } from "react"
-import { OTPInput, OTPInputContext } from "input-otp"
+import { OTPInput, OTPInputContext } from "@uitimate/lib-input-otp"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import { tv } from "tailwind-variants"
-import { kebabCase } from "lodash-es"
+import { casing } from "#/helpers/utils.ts"
+
 const inputOtpVariants = tv({
   slots: {
     root: [
@@ -35,7 +36,7 @@ const InputOTP = ({
   ...props
 }: InputOTPProps) => (
   <OTPInput
-    data-tag={kebabCase(InputOTP.displayName)}
+    data-tag={casing.kebabCase(InputOTP.displayName)}
     className={root({ className })}
     containerClassName={container({ className: containerClassName })}
     {...props}
@@ -48,7 +49,7 @@ const InputOTPGroup = ({
   ...props
 }: InputOTPGroupProps) => (
   <div
-    data-tag={kebabCase(InputOTPGroup.displayName)}
+    data-tag={casing.kebabCase(InputOTPGroup.displayName)}
     className={group({ className })}
     {...props}
   />
@@ -67,7 +68,7 @@ const InputOTPSlot = ({
 
   return (
     <div
-      data-tag={kebabCase(InputOTPSlot.displayName)}
+      data-tag={casing.kebabCase(InputOTPSlot.displayName)}
       data-active={isActive}
       className={slot({ className })}
       {...props}
@@ -87,7 +88,7 @@ const InputOTPSeparator = ({
   ...props
 }: InputOTPSeparatorProps) => (
   <div
-    data-tag={kebabCase(InputOTPSeparator.displayName)}
+    data-tag={casing.kebabCase(InputOTPSeparator.displayName)}
     role="separator"
     {...props}
   >
@@ -107,6 +108,7 @@ namespace Type {
   export type InputOTPSeparator = InputOTPSeparatorProps
 }
 
+export * from "@uitimate/lib-input-otp"
 export {
   inputOtpVariants,
   OTPInputContext,
