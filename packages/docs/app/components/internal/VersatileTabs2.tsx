@@ -2,7 +2,7 @@ import React, { useState, useEffect, lazy, useMemo, useCallback, type ComponentP
 import { Tabs as TabsPrimitive, TabsContent as TabsContentPrimitive, TabsList as TabsListPrimitive, TabsTrigger as TabsTriggerPrimitive } from '#/components/ui/Tabs/Tabs.tsx';
 import { CodeBlock } from '#/components/internal/CodeBlock.tsx';
 import PreviewBlock from '#/components/internal/PreviewBlock.tsx';
-import { cn } from '#/helpers/css.ts';
+import { cn } from '#/helpers/utils.ts';
 import { VersatileTabs2Provider, useVersatileTabs2Context } from './VersatileTabs2Context';
 
 // --- Helper functions for dynamic imports (copied from VersatileTabs) ---

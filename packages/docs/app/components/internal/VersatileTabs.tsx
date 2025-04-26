@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '#/components/ui/Tabs/T
 import { CodeBlock } from '#/components/internal/CodeBlock.tsx';
 import PreviewBlock from '#/components/internal/PreviewBlock.tsx';
 import { kebabCase, toLower } from 'lodash-es';
-import { cn } from '#/helpers/css.ts';
+import { cn } from '#/helpers/utils.ts';
 // Helper function to try importing with fallbacks
 const tryImportComponent = async (demoId: string) => {
   try {

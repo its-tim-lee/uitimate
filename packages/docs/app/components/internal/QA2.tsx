@@ -1,7 +1,7 @@
 import type { ComponentProps, ReactNode } from "react";
 import { useId } from "react";
 import { Accordion, AccordionItem as AccordionItemPrimitive, AccordionTrigger as AccordionTriggerPrimitive, AccordionContent as AccordionContentPrimitive } from "#/components/ui/Accordion/Accordion";
-import { cn } from "#/helpers/css";
+import { cn } from "#/helpers/utils";
 
 type QA2Props = {
   value?: string;

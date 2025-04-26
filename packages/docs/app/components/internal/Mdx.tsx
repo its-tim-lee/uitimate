@@ -2,7 +2,7 @@ import { useMDXComponent } from '#/helpers/hooks/useMDXComponent'
 import { type ComponentProps } from 'react';
 import ComponentPageUsage from './ComponentPageUsage.tsx';
 import { DemoScenariosSection, DemoRecipeSection, DependenciesSection } from './ApiDoc.tsx';
-import { cn } from '#/helpers/css.ts';
+import { cn } from '#/helpers/utils.ts';
 import { Link } from 'react-router';
 import VersatileTabs from './VersatileTabs.tsx';
 import { VersatileTabs2, VersatileTabs2List, VersatileTabs2Trigger, VersatileTabs2Content } from './VersatileTabs2.tsx';
