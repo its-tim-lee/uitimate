@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ComponentProps } from "react"
 import hotkeys from "@uitimate/lib-hotkeys"
-import { useIsMobile } from "#/helpers/hooks/use-mobile.ts"
+import { useIsMobile } from "#/helpers/hooks/use-mobile.tsx"
 import { tv } from "tailwind-variants"
 import { Drawer } from "#/components/ui/Drawer/Drawer.tsx"
 import { casing } from "#/helpers/utils.ts"

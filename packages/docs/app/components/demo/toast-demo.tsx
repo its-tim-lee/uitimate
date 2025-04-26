@@ -1,5 +1,4 @@
-import { Toaster } from "#/components/ui/Toast/Toast"
-import { toast } from "sonner"
+import { toast, Toaster } from "#/components/ui/Toast/Toast"
 import { Cta } from "#/components/ui/Cta/Cta"
 
 export default () => {
@@ -13,7 +12,7 @@ export default () => {
             action: {
               label: "Undo",
               onClick: () => console.log("Undo"),
-            },
+            }
           })
         }>
         Click repeatedly

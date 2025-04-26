@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "#/helpers/css"
+import { cn } from "#/helpers/utils"
 import { Cta } from "#/components/ui/Cta/Cta.tsx"
 import {
   Command,
