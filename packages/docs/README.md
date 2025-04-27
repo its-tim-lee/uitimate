@@ -1,7 +1,9 @@
 # Argos
 ```
 $ np build:storybook
-$ np test:screenshots
+$ npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+    "npx http-server ./storybook-static --port 6006 --silent" \
+    "npx wait-on tcp:127.0.0.1:6006 && npm run test-storybook"
 $ npm exec -- argos upload --token <ARGOS_TOKEN> ./screenshots
 
 ```
@@ -10,7 +12,6 @@ $ npm exec -- argos upload --token <ARGOS_TOKEN> ./screenshots
 # Todos
 - [] Develop auto-copy-paste mechanism
 - [] Fix the Heading component
-- [] Understand that how we can interpret testing result from Argos, especially sometimes some tests will fail
 - [] Fix the index.css
   - [] Fix the font
 - [] Verify the site still work in the mobile
@@ -21,6 +22,7 @@ Tests
   > The sol: using ESLint with the import/no-unresolved rule (and the eslint-import-resolver-typescript plugin)
 
 - [] Argos
+  > note: If sometime the storybook production build is failed, simply re-run the build may fix it
 
 breakpoint
 - [] Setup GA
