@@ -1,0 +1,1 @@
+Weird issues: all the ui component files better all have file extensions in the import statements, otherwise the dev-build can fail for some unknown reason
