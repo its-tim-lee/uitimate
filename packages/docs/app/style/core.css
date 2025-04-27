@@ -1,0 +1,175 @@
+@import 'tailwindcss' prefix(tw);
+@plugin 'tailwindcss-animate';
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+  The reason we link the vars defined under `@layer base` is simply because the current limitation of `@theme`:
+  cuz we can't declare a class under `@theme` such as `.dark {...}`, otherwise we can simply do stuff like:
+  ```
+  .dark {
+    --color-background: var(--tw-color-white);
+  }
+  ```
+*/
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+/**
+  Currently, all the Shadcn vars defined under :root and .dark are only meant to be used in the `@theme` block.
+  So you don't really access these vars in other places.
+*/
+@layer base {
+  /**
+  Once the var is defined at here, it can be used literally anywhere,
+  even in `@theme` which could be declared before this; this is because
+  the var-resolving works at runtime.
+  It doesn't matter where you define it, cuz it gets evaluated when the style is applied.
+  eg.,
+  For below declartion in `@theme`,
+  ```
+  --color-sidebar: hsl(var(--sidebar-background))
+  ```
+  `--sidebar-background` will only be resolved when browser is rendering `--color-sidebar`
+  */
+  :root {
+    --popover: var(--tw-color-white);
+    --popover-foreground: var(--tw-color-zinc-950);
+
+    --background: var(--tw-color-white);
+    --foreground: var(--tw-color-zinc-950);
+
+    --primary: var(--tw-color-zinc-900);
+    --primary-foreground: var(--tw-color-zinc-50);
+    --secondary: var(--tw-color-zinc-100);
+    --secondary-foreground: var(--tw-color-zinc-900);
+    --muted: var(--tw-color-zinc-100);
+    --muted-foreground: var(--tw-color-zinc-500);
+    --accent: var(--tw-color-zinc-100);
+    --accent-foreground: var(--tw-color-zinc-900);
+    --destructive: var(--tw-color-red-500);
+    --destructive-foreground: var(--tw-color-zinc-50);
+
+    --border: var(--tw-color-zinc-200);
+    --input: var(--tw-color-zinc-200);
+    --ring: var(--tw-color-zinc-950);
+
+    --chart-1: var(--tw-color-sky-600);
+    --chart-2: var(--tw-color-green-600);
+    --chart-3: var(--tw-color-orange-600);
+    --chart-4: var(--tw-color-indigo-600);
+    --chart-5: var(--tw-color-red-600);
+
+    --radius: 0.5rem;
+  }
+  /**
+   This means that when html element has class `dark`, the following vars will be applied.
+  */
+  .dark {
+    --popover: var(--tw-color-zinc-950);
+    --popover-foreground: var(--tw-color-zinc-50);
+
+    --background: var(--tw-color-zinc-950);
+    --foreground: var(--tw-color-zinc-50);
+
+    --primary: var(--tw-color-zinc-50);
+    --primary-foreground: var(--tw-color-zinc-900);
+    --secondary: var(--tw-color-zinc-800);
+    --secondary-foreground: var(--tw-color-zinc-50);
+    --muted: var(--tw-color-zinc-800);
+    --muted-foreground: var(--tw-color-zinc-400);
+    --accent: var(--tw-color-zinc-800);
+    --accent-foreground: var(--tw-color-zinc-50);
+    --destructive: var(--tw-color-red-900);
+    --destructive-foreground: var(--tw-color-zinc-50);
+
+    --border: var(--tw-color-zinc-800);
+    --input: var(--tw-color-zinc-800);
+    --ring: var(--tw-color-zinc-300);
+
+    --chart-1: var(--tw-color-sky-400);
+    --chart-2: var(--tw-color-green-400);
+    --chart-3: var(--tw-color-orange-400);
+    --chart-4: var(--tw-color-indigo-400);
+    --chart-5: var(--tw-color-red-400);
+  }
+  /*
+    After upgraded to Tailwind v4, this is one of few styles provided by Tailwind as default:
+
+    The default border color has changed to `currentColor` in v4,
+    so we've added these compatibility styles to make sure everything still
+    looks the same as it did with v3.
+
+    If we ever want to remove these styles, we need to add an explicit border
+    color utility to any element that depends on these defaults.
+  */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--tw-color-gray-200, currentColor);
+  }
+  /*
+    This can be confused, but "the 2nd border" comes from `--color-border`
+  */
+  * {
+    @apply tw:border-border;
+  }
+  /* Below are all from Shadcn Doc Site source code */
+  html {
+    @apply tw:scroll-smooth;
+  }
+  body {
+    @apply tw:overscroll-none;
+    @apply tw:antialiased;
+    @apply tw:[font-synthesis-weight:none];
+    @apply tw:[text-rendering:optimizeLegibility];
+    @apply tw:font-sans;
+    @apply tw:bg-background tw:text-foreground;
+  }
+  code, pre {
+    @apply tw:font-mono;
+  }
+}
+
+/*
+  Only use this way that the custom class can be used with the prefix: `tw:flex-center`.
+  (ie., you can't use `@layer utilities` to have the prefix)
+*/
+@utility flex-center {
+  @apply tw:flex tw:items-center tw:justify-center;
+}
