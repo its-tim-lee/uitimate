@@ -1,4 +1,4 @@
-import { Slot } from "@uitimate/lib-slot";
+import { Slot } from "#/components/ui/Slot/Slot.tsx";
 import { createContext, useContext, type ComponentProps, type CSSProperties } from "react";
 import { tv } from "tailwind-variants";
 import { casing } from "#/helpers/utils.ts"
