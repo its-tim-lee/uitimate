@@ -22,9 +22,9 @@ export default {
       href: '',
       items: [
         {
-          type: 'collapsible',
+          type: 'link',
           title: 'Introduction',
-          href: '',
+          href: '/docs/get-started/introduction',
           labels: [],
           items: []
         },
