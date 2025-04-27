@@ -10,7 +10,7 @@ export default () => {
     {
       value: 'unique-id-2',
       trigger: "How do you keep the AI models up-to-date with the latest documentation?",
-      content: "Cursor leverages powerful foundational models like Claude 3.5 and GPT-4. For the most current library information, you can use our @web search feature. Since core language concepts rarely change dramatically, the models maintain their effectiveness over time.",
+      content: "Cursor leverages powerful foundational models like Claude 3.5 and GPT-4. For the most current library information, you can use our @web search feature.",
     },
   ];
   return (
