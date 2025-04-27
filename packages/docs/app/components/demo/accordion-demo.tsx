@@ -5,7 +5,7 @@ export default () => {
     {
       value: 'unique-id-1',
       trigger: "What's the purpose of the MCP server?",
-      content: "The MCP server serves as a bridge for bringing external context into Cursor. ",
+      content: "The MCP server serves as a bridge for bringing external context into Cursor. It enables connections to services like Google Drive and Notion, helping you incorporate documentation and requirements from these sources into your workflow.",
     },
     {
       value: 'unique-id-2',
