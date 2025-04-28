@@ -36,14 +36,14 @@ export default {
             {
               type: 'link',
               title: 'Read Me First',
-              href: '/docs/getting-started/readme',
+              href: '/docs/get-started/setup/read-me-first',
               labels: [],
               items: []
             },
             {
               type: 'link',
               title: 'Component Lib Integration',
-              href: '/docs/getting-started/component-lib-integration',
+              href: '/docs/get-started/component-lib-integration',
               labels: [],
               items: []
             }
