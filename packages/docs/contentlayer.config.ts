@@ -8,10 +8,11 @@ export const Doc = defineDocumentType(() => ({
   name: 'Doc',
   filePathPattern: `**/*.mdx`,
   fields: {
-    // title: {
-    //   type: "string",
-    //   required: false,
-    // },
+    title: {
+      type: "string",
+      default: '',
+      required: false,
+    },
     // description: {
     //   type: "string",
     //   required: false,
@@ -22,8 +23,10 @@ export const Doc = defineDocumentType(() => ({
     },
     component: {
       type: "string",
-      required: true,
+      default: '',
+      required: false,
     },
+
     // date: { type: 'date', required: true },
   },
   // FIXME:??????
@@ -36,7 +39,8 @@ export const Doc = defineDocumentType(() => ({
 
 
 export default makeSource({
-  contentDirPath: './app/components/ui',
+  contentDirPath: './app',
+  contentDirInclude: ['components/ui', 'docs'], // This means that only these folders will be processed by Contentlayer
   documentTypes: [Doc],
   mdx: {
     remarkPlugins: [remarkGfm, codeImport],
