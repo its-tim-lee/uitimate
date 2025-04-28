@@ -4,6 +4,9 @@
     "list.inactiveSelectionBackground": "#fff",
     "list.inactiveSelectionForeground": "#111",
     "textCodeBlock.background": "#546E7A",
-    "textLink.foreground": "#22d3ee"
+    "textLink.foreground": "#22d3ee",
+    "tab.activeForeground": "#fff",
+    "minimap.background": "#00000000",
+    "scrollbar.shadow": "#00000000"
   }
 }
