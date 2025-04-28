@@ -131,6 +131,15 @@ allDocs.forEach(doc => {
   componentUris.push(`/docs/components/core/${name}/${fileType}`);
 });
 
+// Find all setup.mdx files and track which components have them
+const setupMdxFiles = import.meta.glob('./../components/ui/**/*.setup.mdx', { eager: false });
+const componentsWithSetup = new Set<string>();
+Object.keys(setupMdxFiles).forEach(path => {
+  const parts = path.split('/');
+  const name = parts[parts.length - 2].toLowerCase();
+  componentsWithSetup.add(name);
+});
+
 componentPages.forEach((pages, name) => {
   coreItems.push(createComponentNavItem(name, pages));
 });
@@ -147,6 +156,17 @@ recipeItems.splice(0, recipeItems.length, ...orderBy(recipeItems, ['title'], ['a
 function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
   const items: DocTreeItem[] = [];
   const meta = metaRegistry[name];
+
+  // Only add Setup link if the setup.mdx file exists for this component
+  if (componentsWithSetup.has(name)) {
+    items.push({
+      type: 'link' as const,
+      title: 'Setup',
+      href: `/docs/components/core/${name}/setup`,
+      labels: [],
+      items: []
+    });
+  }
 
   if (pages.has('introduction')) {
     items.push({

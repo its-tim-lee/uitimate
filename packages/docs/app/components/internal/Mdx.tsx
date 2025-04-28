@@ -13,7 +13,13 @@ import Banner from './InfoBanner.tsx';
 import { LinkScrollTo } from './LinkScrollTo.tsx';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/Collapsible/Collapsible.tsx';
 import { Icon } from '../ui/Icon/Icon.tsx';
+import ComponentDependencyNotice from './ComponentDependencyNotice';
+import OneClickSetup from './OneClickSetup';
+import { DependenciesListingSection, OneClickSetupSection } from './SetupDoc.tsx';
 const components = {
+  DependenciesListingSection,
+  OneClickSetupSection,
+  OneClickSetup,
   ComponentPageHero,
   ComponentPageUsage,
   DemoScenariosSection,
@@ -97,7 +103,10 @@ const components = {
       </LinkScrollTo>
     );
   },
+  ComponentDependencyNotice,
 }
+
+
 type MdxProps = ComponentProps<'div'> & {
   code: string
 }
