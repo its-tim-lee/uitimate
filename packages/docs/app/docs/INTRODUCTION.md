@@ -8,7 +8,7 @@ Uitimate is the next generation of UI component library authoring.
 
 It’s the replacement of [shadcn/ui](https://github.com/shadcn-ui/ui) with big improvements to greatly enhance DX in terms of engineering best practices & new innovations.
 
-You may use it to build your design system, or just use it to develop UI faster and easier: It’s the solution of the dilemma on choosing component library types: traditional (eg., MUI) or headless (eg., Radix).
+You may use it to build your design system, or just use it to develop UI faster and easier: It’s the solution of the dilemma on choosing component libraries: traditional (eg., MUI) or headless (eg., Radix).
 
 `
 
