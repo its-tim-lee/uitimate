@@ -1,5 +1,5 @@
 import { Separator } from "#/components/ui/Separator/Separator"
-import { Icon } from "../ui/Icon/Icon"
+import { Icon } from "#/components/ui/Icon/Icon"
 import { Image } from "#/components/ui/Image/Image"
 
 export default () => {

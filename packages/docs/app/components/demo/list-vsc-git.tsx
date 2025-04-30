@@ -6,7 +6,7 @@ import { List, ListItem } from "#/components/ui/List/List.tsx";
 import { Tooltip, TooltipContent, TooltipTrigger } from '#/components/ui/Tooltip/Tooltip.tsx';
 import React from 'react';
 
-// Define the file system node type
+// Define the file system node <type></type>
 type FileSystemNode = {
   name: string;
   type: 'file' | 'folder' | 'section';

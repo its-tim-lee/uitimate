@@ -87,9 +87,10 @@ async function collectDeps(
 interface OneClickSetupProps {
   component: string;
   additionalFiles?: string[];
+  children?: React.ReactNode;
 }
 
-export default function OneClickSetup({ component, additionalFiles = [] }: OneClickSetupProps) {
+export default function OneClickSetup({ component, additionalFiles = [], children }: OneClickSetupProps) {
   const [cli, setCli] = useState('');
   const [files, setFiles] = useState<ComponentFile[]>([]);
   const [error, setError] = useState('');
@@ -168,7 +169,7 @@ export default function OneClickSetup({ component, additionalFiles = [] }: OneCl
       </ul>
       <strong>2️⃣ &nbsp; Install vendor dependencies:</strong>
       {cli && cli.trim() !== 'pnpm add' ? (
-        <TerminalCommandInstructor cli={cli} />
+        <TerminalCommandInstructor cli={cli}>{children}</TerminalCommandInstructor>
       ) : (
         <div className="tw:pt-4">Nothing needed to install.</div>
       )}

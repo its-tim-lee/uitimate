@@ -1,8 +1,8 @@
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/Collapsible/Collapsible"
-import { Cta } from "../ui/Cta/Cta"
-import { Icon } from "../ui/Icon/Icon"
-import { List, ListItem } from "../ui/List/List"
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/Tooltip/Tooltip"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/components/ui/Collapsible/Collapsible"
+import { Cta } from "#/components/ui/Cta/Cta"
+import { Icon } from "#/components/ui/Icon/Icon"
+import { List, ListItem } from "#/components/ui/List/List"
+import { Tooltip, TooltipContent, TooltipTrigger } from "#/components/ui/Tooltip/Tooltip"
 
 export default () => {
   return (

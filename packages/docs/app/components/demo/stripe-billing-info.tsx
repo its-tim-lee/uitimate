@@ -70,47 +70,47 @@ export default () => {
             disabled={isDisabled}
             onSubmit={() => { }}
           >
-            <FormItem name='name' className='tw:flex tw:flex-col tw:gap-0.5'>
+            <FormItem name='name' className='tw:flex tw:flex-col tw:gap-0.5 tw:align-start'>
               <FormLabel className='tw:pl-1'> Name</FormLabel>
               <FormControl><Input placeholder="John Doe" /></FormControl>
             </FormItem>
             <br />
-            <FormItem name='email' className='tw:flex tw:flex-col tw:gap-0.5'>
+            <FormItem name='email' className='tw:flex tw:flex-col tw:gap-0.5 tw:align-start'>
               <FormLabel className='tw:pl-1'> Email</FormLabel>
               <FormControl><Input placeholder="john.doe@example.com" /></FormControl>
             </FormItem>
 
             <br />
-            <FormItem name='country' className='tw:flex tw:flex-col tw:gap-0.5'>
+            <FormItem name='country' className='tw:flex tw:flex-col tw:gap-0.5 tw:align-start'>
               <FormLabel className='tw:pl-1'>Address</FormLabel>
               <FormControl><CountryCombobox /></FormControl>
             </FormItem>
 
             <div className="tw:flex tw:flex-col tw:gap-2 tw:my-2">
-              <FormItem name='adr1' className='tw:flex tw:gap-3'>
+              <FormItem name='adr1' className='tw:flex tw:gap-3 tw:align-start'>
                 <FormControl>
                   <Input placeholder="Address line 1" />
                 </FormControl>
               </FormItem>
-              <FormItem name='adr2' className='tw:flex tw:gap-3'>
+              <FormItem name='adr2' className='tw:flex tw:gap-3 tw:align-start'>
                 <FormControl>
                   <Input placeholder="Address line 2" />
                 </FormControl>
               </FormItem>
-              <FormItem name='zip' className='tw:flex tw:gap-3'>
+              <FormItem name='zip' className='tw:flex tw:gap-3 tw:align-start'>
                 <FormControl>
                   <Input placeholder="Postal code (40304)" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
-              <FormItem name='city' className='tw:flex tw:gap-3'>
+              <FormItem name='city' className='tw:flex tw:gap-3 tw:align-start'>
                 <FormControl>
                   <Input placeholder="City" />
                 </FormControl>
               </FormItem>
             </div>
             <br />
-            <FormItem name='phone' className='tw:flex tw:flex-col tw:gap-0.5'>
+            <FormItem name='phone' className='tw:flex tw:flex-col tw:gap-0.5 tw:align-start'>
               <FormLabel className='tw:pl-1'>Phone number</FormLabel>
               <div className='tw:flex tw:items-center tw:gap-3 tw:border tw:rounded-md tw:shadow-xs'>
                 <Select disabled={isDisabled}>

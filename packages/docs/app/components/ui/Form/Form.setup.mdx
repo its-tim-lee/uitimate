@@ -1,6 +1,13 @@
 ---
 component: form
 ---
-<OneClickSetupSection component="Form" />
+<OneClickSetupSection component="Form">
+<Npm>
+<Banner className="tw:border-destructive">
+  For NPM users: due to the architecture limitation/flaw of NPM, you need to install one more dependency manually: `npm add @hookform/resolvers@5.0.1`
+</Banner>
+</Npm>
+</OneClickSetupSection>
+
 <DependenciesListingSection component="Form" />
 

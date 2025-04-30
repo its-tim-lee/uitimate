@@ -29,10 +29,12 @@ const DependenciesListingSection = ({ component }: { component: string }) => {
 
 const OneClickSetupSection = ({
   component,
-  additionalFiles = []
+  additionalFiles = [],
+  children
 }: {
   component: string;
   additionalFiles?: string[];
+  children?: React.ReactNode;
 }) => {
   return (
     <div>
@@ -49,7 +51,7 @@ const OneClickSetupSection = ({
       </span>
 
       <PathPreferencesProvider>
-        <OneClickSetup component={component} additionalFiles={additionalFiles} />
+        <OneClickSetup component={component} additionalFiles={additionalFiles}>{children}</OneClickSetup>
       </PathPreferencesProvider>
     </div>
   );

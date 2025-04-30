@@ -3,7 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "#/components/ui/Tooltip/Tooltip";
-import { Icon } from "../ui/Icon/Icon";
+import { Icon } from "#/components/ui/Icon/Icon";
 
 export default () => (
   <span className="tw:flex tw:items-center tw:gap-2">

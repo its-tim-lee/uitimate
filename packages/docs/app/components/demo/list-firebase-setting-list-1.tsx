@@ -1,19 +1,6 @@
-import { HeadingSubtitle } from "../ui/Heading/Heading";
-
-import { Image } from "../ui/Image/Image.tsx";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/Avatar/Avatar.tsx";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/Tooltip/Tooltip.tsx";
-import { Collapsible, CollapsibleContent } from "../ui/Collapsible/Collapsible.tsx";
-import { CollapsibleTrigger } from "../ui/Collapsible/Collapsible.tsx";
-import { Cta } from "../ui/Cta/Cta.tsx";
-import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/DropdownMenu/DropdownMenu.tsx";
-import { DropdownMenu } from "../ui/DropdownMenu/DropdownMenu.tsx";
-import { Heading, HeadingTitle } from "../ui/Heading/Heading.tsx";
-import { Icon } from "../ui/Icon/Icon.tsx";
-import { List, ListItem } from "../ui/List/List.tsx";
-import React, { useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/Accordion/Accordion.tsx";
-import { Separator } from '#/components/ui/Separator/Separator';
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading";
+import { Icon } from "#/components/ui/Icon/Icon";
+import { List, ListItem } from "#/components/ui/List/List";
 export default () => {
   const items = [
     {

@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/Table/Table.tsx"
+} from "#/components/ui/Table/Table.tsx"
 
 const invoices = [
   {

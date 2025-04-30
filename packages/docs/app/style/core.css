@@ -1,7 +1,7 @@
 @import 'tailwindcss' prefix(tw);
 @plugin 'tailwindcss-animate';
+@plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
-
 /**
   The reason we link the vars defined under `@layer base` is simply because the current limitation of `@theme`:
   cuz we can't declare a class under `@theme` such as `.dark {...}`, otherwise we can simply do stuff like:
