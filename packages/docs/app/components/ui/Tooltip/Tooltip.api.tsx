@@ -27,8 +27,6 @@ export default () => {
         </VersatileTabs2Content>
       </VersatileTabs2>
 
-      <DependenciesSection />
-      <a className="tw:link tw:w-fit" href="https://www.radix-ui.com/primitives/docs/components/tooltip" target="_blank" rel="noopener noreferrer">@radix-ui/react-tooltip</a>
     </>
   )
 }

@@ -21,8 +21,6 @@ export default () => {
         <VersatileTabs2Content value="checkbox-2-label-orientations" demoId="checkbox-2-label-orientations" />
       </VersatileTabs2>
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/checkbox" target="_blank" rel="noopener noreferrer">@radix-ui/react-checkbox</Link>
     </>
   );
 }

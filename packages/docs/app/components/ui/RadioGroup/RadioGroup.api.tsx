@@ -19,9 +19,7 @@ export default () => {
       />
 
 
-      <DependenciesSection />
 
-      <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/radio-group" target="_blank" rel="noopener noreferrer">@radix-ui/react-radio-group</Link>
     </>
   )
 }

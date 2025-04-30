@@ -18,8 +18,6 @@ export default () => {
         <VersatileTabs2Content value="toast-demo" demoId="toast-demo" />
       </VersatileTabs2>
 
-      <DependenciesSection />
-      <Link className="tw:link" to="https://sonner.emilkowal.ski/" target="_blank" rel="noopener noreferrer">sonner</Link>
 
     </>
   );

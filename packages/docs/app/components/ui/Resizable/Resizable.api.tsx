@@ -18,10 +18,6 @@ export default () => {
         anatomy={meta.anatomy}
       />
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://github.com/bvaughn/react-resizable-panels" target="_blank" rel="noopener noreferrer">
-        react-resizable-panels
-      </Link>
     </>
   )
 }
