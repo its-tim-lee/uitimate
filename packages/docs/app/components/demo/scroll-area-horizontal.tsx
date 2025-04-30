@@ -1,4 +1,4 @@
-import { ScrollArea, ScrollAreaScrollBar } from "#/components/ui/ScollArea/ScollArea";
+import { ScrollArea, ScrollAreaScrollBar } from "#/components/ui/ScrollArea/ScrollArea";
 import { Image } from '#/components/ui/Image/Image'
 
 interface Artwork {
