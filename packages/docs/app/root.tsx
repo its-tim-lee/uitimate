@@ -61,7 +61,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className='tw:h-[1000px]!'>
         <Toaster />
-        <SiteHeader />
         <main className='tw:h-[1000px]!'>
           {/* children will be the root Component, ErrorBoundary, or HydrateFallback */}
           {children}

@@ -1,3 +1,4 @@
+import { Sidebar } from "#/components/ui/Sidebar/Sidebar.tsx";
 import { NavLink, useLocation } from "react-router";
 import data, { type DocTreeItem } from "../../data/site.ts";
 import { List, ListItem } from "#/components/ui/List/List.tsx";
@@ -19,7 +20,7 @@ const isPathActiveOrHasActiveChild = (item: DocTreeItem, currentPath: string): b
 
 const renderTreeItem = (item: DocTreeItem, pathname: string, depth: number = 0): JSX.Element | null => {
   if (item.type === 'link') {
-    const isExternal = !item.href?.startsWith('\/')
+    const isExternal = !item.href?.startsWith('/')
     return (
       <ListItem
         key={item.href}
@@ -82,11 +83,20 @@ const renderSection = (section: DocTreeItem, pathname: string): JSX.Element => {
   );
 }
 
-export default function DocsSidebar({ className }: { className?: string }) {
+export default function DocsSidebar() {
   const { pathname } = useLocation();
   return (
-    <div className={cn("tw:text-sm tw:flex tw:flex-col tw:gap-6", className)}>
-      {data.docsTree.map(s => renderSection(s, pathname))}
-    </div>
+    <>
+      <Sidebar.Mobile>
+        <div className="tw:w-full tw:text-sm tw:flex tw:flex-col tw:gap-6 tw:pt-4 tw:px-10 tw:h-svh tw:overflow-y-scroll">
+          {data.docsTree.map(s => renderSection(s, pathname))}
+        </div>
+      </Sidebar.Mobile>
+      <Sidebar.Desktop>
+        <div className="tw:w-fit tw:text-sm tw:flex tw:flex-col tw:gap-6 tw:pt-4 tw:px-2">
+          {data.docsTree.map(s => renderSection(s, pathname))}
+        </div>
+      </Sidebar.Desktop>
+    </>
   );
 }
