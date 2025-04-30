@@ -12,7 +12,6 @@ $ npm exec -- argos upload --token <ARGOS_TOKEN> ./screenshots
 # Todos
 - [] Create setup and test in each component
 - [] Test all the component's setup
-- [] Write down global setup page
 - [] Render the site's changelog on the site and on github
 - [] Formalize site's versioning workflow
 - [] Fix the Heading component

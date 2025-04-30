@@ -27,10 +27,15 @@ const DependenciesListingSection = ({ component }: { component: string }) => {
   )
 }
 
-const OneClickSetupSection = ({ component }: { component: string }) => {
+const OneClickSetupSection = ({
+  component,
+  additionalFiles = []
+}: {
+  component: string;
+  additionalFiles?: string[];
+}) => {
   return (
     <div>
-
       <span className="tw:flex tw:items-center tw:gap-2">
         <h2 id='dependencies'>Steps</h2>
 
@@ -44,7 +49,7 @@ const OneClickSetupSection = ({ component }: { component: string }) => {
       </span>
 
       <PathPreferencesProvider>
-        <OneClickSetup component={component} />
+        <OneClickSetup component={component} additionalFiles={additionalFiles} />
       </PathPreferencesProvider>
     </div>
   );

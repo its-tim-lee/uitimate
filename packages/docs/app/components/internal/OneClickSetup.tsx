@@ -37,11 +37,25 @@ async function fetchComponentSource(component: string): Promise<string> {
   return await res.text();
 }
 
+async function fetchAdditionalFile(component: string, filename: string): Promise<string> {
+  const url = `${GITHUB_RAW_BASE}/${component}/${filename}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch ${filename}`);
+  return await res.text();
+}
+
+interface ComponentFile {
+  name: string;
+  code: string;
+  filename?: string;
+}
+
 async function collectDeps(
   component: string,
   pkgDeps: Record<string, string>,
+  additionalFiles: string[] = [],
   visited = new Set<string>()
-): Promise<{ vendor: Record<string, string>; files: { name: string; code: string }[] }> {
+): Promise<{ vendor: Record<string, string>; files: ComponentFile[] }> {
   if (visited.has(component)) return { vendor: {}, files: [] };
   visited.add(component);
 
@@ -49,10 +63,20 @@ async function collectDeps(
   const { vendor, native } = generate(code, pkgDeps);
 
   let allVendor = { ...vendor };
-  let allFiles = [{ name: component, code }];
+  let allFiles: ComponentFile[] = [{ name: component, code }];
+
+  // Fetch additional files
+  for (const filename of additionalFiles) {
+    try {
+      const additionalCode = await fetchAdditionalFile(component, filename);
+      allFiles.push({ name: component, code: additionalCode, filename });
+    } catch (error) {
+      console.error(`Failed to fetch additional file ${filename}:`, error);
+    }
+  }
 
   for (const nativeComp of native) {
-    const { vendor: v, files: f } = await collectDeps(nativeComp, pkgDeps, visited);
+    const { vendor: v, files: f } = await collectDeps(nativeComp, pkgDeps, [], visited);
     allVendor = { ...allVendor, ...v };
     allFiles = [...allFiles, ...f];
   }
@@ -60,9 +84,14 @@ async function collectDeps(
   return { vendor: allVendor, files: allFiles };
 }
 
-export default function OneClickSetup({ component }: { component: string }) {
+interface OneClickSetupProps {
+  component: string;
+  additionalFiles?: string[];
+}
+
+export default function OneClickSetup({ component, additionalFiles = [] }: OneClickSetupProps) {
   const [cli, setCli] = useState('');
-  const [files, setFiles] = useState<{ name: string; code: string }[]>([]);
+  const [files, setFiles] = useState<ComponentFile[]>([]);
   const [error, setError] = useState('');
   const [downloading, setDownloading] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -71,12 +100,12 @@ export default function OneClickSetup({ component }: { component: string }) {
   useEffect(() => {
     handleAnalyze();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [component]);
+  }, [component, additionalFiles]);
 
   async function handleAnalyze() {
     setError('');
     try {
-      const { vendor, files } = await collectDeps(component, pkg.dependencies);
+      const { vendor, files } = await collectDeps(component, pkg.dependencies, additionalFiles);
       setFiles(files);
       // Build CLI command
       const cliCmd =
@@ -105,10 +134,11 @@ export default function OneClickSetup({ component }: { component: string }) {
       const dirHandle = await window.showDirectoryPicker();
 
       // Process each file, replacing paths according to user preferences
-      for (const { name, code } of files) {
+      for (const { name, code, filename } of files) {
         const adjustedCode = replacePathsInCode(code, preferences);
         const folder = await dirHandle.getDirectoryHandle(name, { create: true });
-        const fileHandle = await folder.getFileHandle(`${name}.tsx`, { create: true });
+        const actualFilename = filename || `${name}.tsx`;
+        const fileHandle = await folder.getFileHandle(actualFilename, { create: true });
         const writable = await fileHandle.createWritable();
         await writable.write(adjustedCode);
         await writable.close();
@@ -147,7 +177,7 @@ export default function OneClickSetup({ component }: { component: string }) {
       <Banner className='tw:my-3'>
         Since you've accepted <span className='tw:code'>{preferences.componentsPath}</span> as the path to store all our components in
         {` `} <a href='/docs/get-started/setup/read-me-first' className='tw:link'>Setup Uitimate</a>,
-        so, after pressing the button below, make sure you pick the same path!
+        so, after pressing the button below, you <span className='tw:text-destructive'>MUST</span> pick the same path!
       </Banner>
       <Cta onClick={handleDownload} disabled={downloading} className="tw:mt-2 tw:w-fit tw:relative">
         <Icon icon='lucide:cloud-download' />

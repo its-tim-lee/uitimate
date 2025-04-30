@@ -32,13 +32,11 @@ export function generate(code: string, pkgDeps: Record<string, string>): LockInf
       }
       // Native: #/components/ui/*
       if (source.startsWith("#/components/ui/")) {
-        // Only ImportDeclaration can have specifiers
-        if (node.type === "ImportDeclaration") {
-          for (const spec of node.specifiers) {
-            if (spec.type === "ImportSpecifier" || spec.type === "ImportDefaultSpecifier") {
-              native.push(spec.local.name);
-            }
-          }
+        // Extract the component name from the import path
+        const match = source.match(/^#\/components\/ui\/([^/]+)/);
+        if (match) {
+          const compName = match[1];
+          if (!native.includes(compName)) native.push(compName);
         }
       }
     }
