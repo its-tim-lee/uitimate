@@ -1,4 +1,4 @@
-# Changelog
+## Changelog
 
 > Note that, any change to the entire site will contribute to this changelog, and it's maintained independently from the component's.
 > (ie., any component source code change will contribute to the component's changelog)
