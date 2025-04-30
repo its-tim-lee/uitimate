@@ -1,1 +1,0 @@
-- #20250423 For some reasons, just can't get Argos to capture the triggered menu, so we currently don't have the visual testing for this component
