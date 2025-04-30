@@ -40,10 +40,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <span>
-        Built with <Link className="tw:link tw:w-fit" to="https://headlessui.com/react/dialog" target="_blank" rel="noopener noreferrer">@headlessui/react</Link>'s dialog
-      </span>
     </>
   )
 }

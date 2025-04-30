@@ -26,8 +26,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <span>The input component from <Link className="tw:link tw:w-fit" to="https://headlessui.com/react/input" target="_blank" rel="noopener noreferrer">@headlessui/react</Link></span>
     </>
   )
 }

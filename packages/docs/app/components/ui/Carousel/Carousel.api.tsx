@@ -28,9 +28,7 @@ export default () => {
         <VersatileTabs2Content value="carousel-use-api" demoId="carousel-use-api" />
       </VersatileTabs2>
 
-      <DependenciesSection />
 
-      <Link className="tw:link tw:w-fit" to="https://github.com/davidjerleke/embla-carousel" target="_blank" rel="noopener noreferrer">embla-carousel</Link>
     </>
   )
 }

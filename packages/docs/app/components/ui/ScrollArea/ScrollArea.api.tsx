@@ -33,8 +33,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <a className="tw:link tw:w-fit" href="https://www.radix-ui.com/primitives/docs/components/scroll-area" target="_blank" rel="noopener noreferrer">@radix-ui/react-scroll-area</a>
     </>
   )
 }

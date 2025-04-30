@@ -23,9 +23,7 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
 
-      <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/tabs" target="_blank" rel="noopener noreferrer">@radix-ui/react-tabs</Link>
     </>
   )
 }

@@ -18,8 +18,6 @@ export default () => {
         enableHeading
       />
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://headlessui.com/react/textarea" target="_blank" rel="noopener noreferrer">@headlessui/react</Link>
     </>
   )
 }

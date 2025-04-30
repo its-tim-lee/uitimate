@@ -22,8 +22,6 @@ export default () => {
       />
 
 
-      <DependenciesSection />
-      <a className="tw:link tw:w-fit" href="https://www.radix-ui.com/primitives/docs/components/menubar" target="_blank" rel="noopener noreferrer">@radix-ui/react-menubar</a>
     </>
   )
 }

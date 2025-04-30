@@ -17,9 +17,7 @@ export default () => {
         anatomy={meta.anatomy}
       />
 
-      <DependenciesSection />
 
-      <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/navigation-menu" target="_blank" rel="noopener noreferrer">@radix-ui/react-navigation-menu</Link>
     </>
   )
 }

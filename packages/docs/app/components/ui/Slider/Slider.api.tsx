@@ -19,8 +19,6 @@ export default () => {
         demoId="slider-demo"
       />
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/slider" target="_blank" rel="noopener noreferrer">@radix-ui/react-slider</Link>
     </>
   );
 };

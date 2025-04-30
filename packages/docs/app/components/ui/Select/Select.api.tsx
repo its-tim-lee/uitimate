@@ -22,8 +22,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <a className="tw:link tw:w-fit" href="https://www.npmjs.com/package/@radix-ui/react-select" target="_blank" rel="noopener noreferrer">@radix-ui/react-select</a>
     </>
   )
 }

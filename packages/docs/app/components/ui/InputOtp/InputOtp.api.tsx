@@ -22,16 +22,6 @@ export default () => {
       />
 
 
-      <DependenciesSection />
-
-      <Link
-        className="tw:link tw:w-fit"
-        to="https://github.com/guilherme-n/input-otp"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        input-otp
-      </Link>
     </>
   )
 }

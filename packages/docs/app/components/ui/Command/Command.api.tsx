@@ -30,8 +30,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://github.com/pacocoursey/cmdk" target="_blank" rel="noopener noreferrer">cmdk</Link>
     </>
   )
 }

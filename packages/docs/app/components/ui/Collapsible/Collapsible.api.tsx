@@ -36,8 +36,6 @@ export default () => {
       <br />
       <br />
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/collapsible" target="_blank" rel="noopener noreferrer">@radix-ui/react-collapsible</Link>
     </>
   )
 }

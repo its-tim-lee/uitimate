@@ -29,8 +29,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/dropdown-menu" target="_blank" rel="noopener noreferrer">@radix-ui/react-dropdown-menu</Link>
     </>
   )
 }

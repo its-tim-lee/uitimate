@@ -26,8 +26,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://react-day-picker.js.org/" target="_blank" rel="noopener noreferrer">react-day-picker</Link>
     </>
   )
 }

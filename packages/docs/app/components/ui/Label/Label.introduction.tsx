@@ -36,15 +36,6 @@ export default () => {
         and in that case, you will use <code className='tw:code'>{`<FormLabel>`}</code> inside <code className='tw:code'>{`<Label>`}</code>,
         and then the matching thing we mentioned will just be handled automatically under the hood.
       </p>
-      <DependenciesSection />
-      <Link
-        className="tw:link tw:w-fit"
-        to="https://www.radix-ui.com/primitives/docs/components/label"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @radix-ui/react-label
-      </Link>
     </>
   )
 }

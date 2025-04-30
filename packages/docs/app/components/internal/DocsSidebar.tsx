@@ -48,7 +48,7 @@ const renderTreeItem = (item: DocTreeItem, pathname: string, depth: number = 0):
                 {item.title} {" "}
                 <DocTreeItemTags tags={item.tags} />
               </span>
-              <span>
+              <span className='tw:cursor-pointer'>
                 <Icon icon="lucide:chevron-down" className="tw:inline tw:group-data-[state=open]:hidden" />
                 <Icon icon="lucide:chevron-up" className="tw:inline tw:group-data-[state=closed]:hidden" />
               </span>

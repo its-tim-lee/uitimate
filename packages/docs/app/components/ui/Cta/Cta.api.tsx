@@ -73,18 +73,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <ul className="tw:list-disc tw:pl-5">
-        <li>
-          <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/components/toggle" target="_blank" rel="noopener noreferrer">@radix-ui/primitives</Link>
-        </li>
-        <li>
-          <Link className="tw:link tw:w-fit" to="https://www.radix-ui.com/primitives/docs/utilities/slot" target="_blank" rel="noopener noreferrer">@radix-ui/react-slot</Link>
-        </li>
-        <li>
-          <Link className="tw:link tw:w-fit" to="https://www.npmjs.com/package/@radix-ui/react-primitive" target="_blank" rel="noopener noreferrer">@radix-ui/react-primitive</Link>
-        </li>
-      </ul>
     </>
   )
 }

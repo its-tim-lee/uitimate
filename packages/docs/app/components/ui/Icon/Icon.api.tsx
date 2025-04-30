@@ -23,8 +23,6 @@ export default () => {
       </VersatileTabs2>
 
 
-      <DependenciesSection />
-      <Link className="tw:link tw:w-fit" to="https://iconify.design/docs/icon-components/react/" target="_blank" rel="noopener noreferrer">@iconify/react</Link>
     </>
   )
 }
