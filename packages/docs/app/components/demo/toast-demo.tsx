@@ -4,7 +4,6 @@ import { Cta } from "#/components/ui/Cta/Cta"
 export default () => {
   return (
     <>
-      <Toaster />
       <Cta
         onClick={() =>
           toast("Event has been created", {

@@ -5,6 +5,7 @@ import { type Preview } from "@storybook/react";
 import { themes } from '@storybook/theming';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { Toaster } from '#/components/ui/Toast/Toast';
 
 const preview: Preview = {
   parameters: {
@@ -47,9 +48,15 @@ import { listenSidebarTogglingInCanvas } from './lib/toggling-sidebar';
 
 const withStrictMode = (Story: any) => <React.StrictMode><Story /></React.StrictMode>;
 
-
+const withToaster = (Story: any) => (
+  <>
+    <Toaster />
+    <Story />
+  </>
+);
 
 export const decorators = [
+  withToaster,
   /**
    * In strict mode, React will call many things twice to find out accidental impurities:
    * - The component function
