@@ -1,10 +1,8 @@
 import {
   DemoScenariosSection,
   DependenciesSection,
-  DemoRecipeSection,
 } from "#/components/internal/ApiDoc.tsx";
 import ComponentPageUsage from "#/components/internal/ComponentPageUsage.tsx";
-import meta from "./ScollArea.meta.tsx";
 import {
   VersatileTabs2,
   VersatileTabs2Content,
