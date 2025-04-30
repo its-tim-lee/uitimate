@@ -1,6 +1,6 @@
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "#/components/ui/HoverCard/HoverCard.tsx";
 import { useRef, useState } from "react";
-import { Badge } from "../improper/Badge/Badge";
+import { Cta } from "#/components/ui/Cta/Cta";
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,9 +13,9 @@ export default () => {
       </p>
       <br />
       <ul className="tw:list-disc tw:list-inside tw:space-y-2">
-        <li><Badge variant="secondary">event</Badge> Event</li>
+        <li><Cta shapes={['badge']} variant="secondary">event</Cta> Event</li>
         <li>
-          <Badge variant="secondary">devices</Badge> {''}
+          <Cta shapes={['badge']} variant="secondary">devices</Cta> {''}
           <span
             onMouseEnter={() => setIsOpen(true)}
             onMouseLeave={() => setIsOpen(false)}
@@ -29,8 +29,8 @@ export default () => {
                 <div className="tw:flex tw:flex-col tw:gap-4">
                   <h3 className="tw:font-extrabold">BluetoothDevice Object</h3>
                   <ul className="tw:list-disc tw:list-inside tw:space-y-2 tw:pl-4">
-                    <li><Badge variant="secondary">deviceName</Badge> string</li>
-                    <li><Badge variant="secondary">deviceId</Badge> string</li>
+                    <li><Cta shapes={['badge']} variant="secondary">deviceName</Cta> string</li>
+                    <li><Cta shapes={['badge']} variant="secondary">deviceId</Cta> string</li>
                   </ul>
                 </div>
               </HoverCardContent>

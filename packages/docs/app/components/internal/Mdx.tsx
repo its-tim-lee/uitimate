@@ -16,7 +16,7 @@ import { Icon } from '../ui/Icon/Icon.tsx';
 import ComponentDependencyNotice from './ComponentDependencyNotice';
 import OneClickSetup from './OneClickSetup';
 import { DependenciesListingSection, OneClickSetupSection } from './SetupDoc.tsx';
-import TerminalCommandInstructor from './TerminalCommandInstructor';
+import TerminalCommandInstructor, { Pnpm, Yarn, Npm } from './TerminalCommandInstructor';
 import { CodeBlock } from './CodeBlock';
 import PathAdjuster from './PathAdjusterWrapper';
 import DownloadHelpers from './DownloadHelpers';
@@ -25,6 +25,9 @@ import { HelpersPathSection, ComponentsPathSection } from './PathPreferenceSecti
 const components = {
   PathAdjuster,
   TerminalCommandInstructor,
+  Pnpm,
+  Yarn,
+  Npm,
   DependenciesListingSection,
   OneClickSetupSection,
   OneClickSetup,

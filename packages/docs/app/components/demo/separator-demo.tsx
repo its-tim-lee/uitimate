@@ -1,5 +1,5 @@
 import { Separator } from "#/components/ui/Separator/Separator"
-import { Heading, HeadingSubtitle, HeadingTitle } from "../ui/Heading/Heading"
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading"
 
 export default () => (
   <div>

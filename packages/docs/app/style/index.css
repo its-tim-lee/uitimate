@@ -11,4 +11,3 @@
  * and that's why we instead import them into the global.
  */
 @import './../components/ui/Sidebar/index.css';
-@plugin "@tailwindcss/typography";

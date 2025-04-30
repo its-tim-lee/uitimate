@@ -56,7 +56,7 @@ const regions = [
 
 
 export default () => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} >

@@ -22,13 +22,18 @@ export function generate(code: string, pkgDeps: Record<string, string>): LockInf
 
   for (const node of (ast.program.body as any[])) {
     if (node.type === "ImportDeclaration" || node.type === "ExportAllDeclaration") {
-      const source: string = node.source.value;
+      const source: string = node.source.value; // @2025-04-30A
       // Vendor: @uitimate/*
       if (source.startsWith("@uitimate/")) {
-        // eg., maybe the `source` is '@uitimate/lib-rhf-resolvers/zod', but now the `base` will be '@uitimate/lib-rhf-resolvers'
+        /**
+         * @2025-04-30A
+         * maybe we have the import statement like '@uitimate/lib-rhf-resolvers/zod' in our source code,
+         * and that's literally what `source` above would be, but since a valid NPM package name can only have one slash,
+         * that's what we're doing below, `base` will be '@uitimate/lib-rhf-resolvers'
+         */
         const base = source.split("/").slice(0, 2).join("/");
         const depKey = Object.keys(pkgDeps).find(k => k === base);
-        vendor[source] = depKey ? pkgDeps[depKey].replace(/^npm:/, "") : "UNKNOWN";
+        vendor[base] = depKey ? pkgDeps[depKey].replace(/^npm:/, "") : "UNKNOWN";
       }
       // Native: #/components/ui/*
       if (source.startsWith("#/components/ui/")) {

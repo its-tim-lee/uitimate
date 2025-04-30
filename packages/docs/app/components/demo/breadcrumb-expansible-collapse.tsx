@@ -18,7 +18,7 @@ import {
 } from "#/components/ui/DropdownMenu/DropdownMenu";
 import { Icon } from "#/components/ui/Icon/Icon";
 import { useState } from "react";
-import { useIsMobile } from "~/app/helpers/hooks/use-mobile";
+import { useIsMobile } from "#/helpers/hooks/use-mobile";
 
 const BREADCRUMB_ITEMS = [
   { href: "/docs", text: "Documentation" },

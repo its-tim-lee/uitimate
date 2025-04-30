@@ -1,5 +1,5 @@
 import { Icon } from "#/components/ui/Icon/Icon"
-import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, CommandShortcut } from "../ui/Command/Command"
+import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, CommandShortcut } from "#/components/ui/Command/Command"
 export default () => {
   return (
     <Command className="tw:rounded-lg tw:border tw:shadow-md tw:md:min-w-[450px]">

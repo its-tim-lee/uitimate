@@ -28,8 +28,8 @@ export default () => {
     <>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)} className='tw:text-sm tw:p-0'>
 
-        <DialogHeading size="h4" className='tw:bg-destructive/20 tw:text-destructive tw:p-4 tw:md:rounded-t-lg'>
-          <DialogTitle className='tw:flex tw:items-center tw:gap-2'>
+        <DialogHeading size="h4" className='tw:bg-destructive/20 tw:p-4 tw:md:rounded-t-lg'>
+          <DialogTitle className='tw:flex tw:items-center tw:gap-2 tw:text-destructive!'>
             <Icon icon='lucide:triangle-alert'></Icon>
             Remove app from project
           </DialogTitle>

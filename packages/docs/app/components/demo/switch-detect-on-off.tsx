@@ -4,7 +4,7 @@ import {
   Dialog, DialogAction, DialogHeading, DialogSubtitle, DialogTitle
 } from "#/components/ui/Dialog/Dialog.tsx"
 import React from "react"
-import { Heading, HeadingSubtitle, HeadingTitle } from "../ui/Heading/Heading";
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading";
 
 export default () => {
   const [isOpen, setIsOpen] = React.useState(false)

@@ -10,9 +10,9 @@ import { Separator } from "#/components/ui/Separator/Separator.tsx";
 export default () => {
   const [toggle, setToggle] = useState(false);
   return (
-    <div data-collapsed={toggle || undefined} className='tw:group/root tw:flex tw:flex-col tw:gap-4 tw:border-2 tw:border-muted tw:p-1 tw:pt-4 tw:text-sm tw:h-fit not-prose'>
+    <div data-collapsed={toggle || undefined} className='tw:group/root tw:flex tw:flex-col tw:gap-4 tw:border-2 tw:border-muted tw:p-1 tw:pt-4 tw:text-sm tw:h-fit not-prose tw:w-fit'>
 
-      <div className='tw:hidden tw:group-data-collapsed/root:block'>
+      <div className='tw:hidden tw:group-data-collapsed/root:block tw:w-fit'>
         <List>
           <ListItem className='tw:hover:bg-muted tw:hover:rounded-full tw:justify-center tw:p-2'>
             <Image
@@ -167,7 +167,7 @@ export default () => {
           </ListItem>
         </List>
 
-        <div className='tw:text-muted-foreground tw:text-xs tw:p-2 tw:pl-6'>Product categories</div>
+        <div className='tw:text-muted-foreground tw:text-xs tw:p-2 tw:pl-6 tw:text-left'>Product categories</div>
 
         <Accordion type="single" className="tw:mx-2 tw:px-3 tw:bg-muted/50 tw:rounded-lg">
           <AccordionItem key='build' value='build'>
@@ -202,14 +202,14 @@ export default () => {
         </Accordion>
 
 
-        <Cta variant='ghost' className='tw:rounded-full tw:gap-4 tw:justify-start tw:hover:bg-muted tw:text-sm'>
+        <Cta variant='ghost' className='tw:rounded-full tw:mr-[100%] tw:gap-4 tw:text-left tw:justify-start tw:hover:bg-muted tw:text-sm'>
           <Icon icon='mage:dots-menu'></Icon>
           All products
         </Cta>
 
         <Separator />
 
-        <Cta variant='ghost' shapes={['icon']} className='tw:ml-auto' onClick={() => setToggle(!toggle)}>
+        <Cta variant='ghost' shapes={['icon']} className='tw:mr-[100%]' onClick={() => setToggle(!toggle)}>
           <Icon icon='lucide:chevron-left'></Icon>
         </Cta>
       </div>
