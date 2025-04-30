@@ -64,10 +64,15 @@ const recipeComponents = import.meta.glob('./../components/demo/recipe/*.tsx', {
 // Process recipe components
 Object.entries(recipeComponents).forEach(([path, component]) => {
   const parts = path.split('/');
-  const componentName = casing.kebabCase(parts[parts.length - 1].replace('.tsx', '')); // eg., result: "cta-ratings"
-  if (componentName) {
-    componentRegistry.recipe[componentName] = component as React.ComponentType;
-    componentUris.push(`/docs/components/recipe/${componentName}`);
+  const filename = parts[parts.length - 1];
+  const componentName = casing.kebabCase(filename.replace('.tsx', '')); // eg., result: "ratings"
+  const displayName = (component as any).displayName || componentName;
+  if (displayName) {
+    const baseName = casing.kebabCase(displayName);
+    componentRegistry.recipe[baseName] = component as React.ComponentType;
+    // Store displayName for sidebar use
+    (componentRegistry.recipe[baseName] as any).displayName = displayName;
+    componentUris.push(`/docs/components/recipe/${baseName}`);
   }
 });
 
@@ -203,10 +208,13 @@ function createComponentNavItem(
 }
 
 function createRecipeNavItem(name: string): DocTreeItem {
+  // Use displayName if present
+  const component = componentRegistry.recipe[name] as any;
+  const displayName = component?.displayName || name;
   return {
     type: 'link',
-    title: name,
-    href: `/docs/components/recipe/${name}`,
+    title: displayName,
+    href: `/docs/components/recipe/${casing.kebabCase(displayName)}`,
     labels: [],
     items: []
   };

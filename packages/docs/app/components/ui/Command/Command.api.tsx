@@ -25,8 +25,8 @@ export default () => {
 
 
       <DemoRecipeSection />
-      <VersatileTabs2 variant="underline" defaultValue="combobox-demo">
-        <VersatileTabs2Content value="combobox-demo" demoId="combobox-demo" />
+      <VersatileTabs2 variant="underline" defaultValue="combobox">
+        <VersatileTabs2Content value="combobox" demoId="combobox" />
       </VersatileTabs2>
 
 

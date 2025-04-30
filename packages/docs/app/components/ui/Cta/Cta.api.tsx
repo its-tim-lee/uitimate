@@ -61,15 +61,15 @@ export default () => {
 
 
       <DemoRecipeSection />
-      <VersatileTabs2 defaultValue="cta-ratings" variant="underline">
+      <VersatileTabs2 defaultValue="ratings" variant="underline">
         <VersatileTabs2List>
-          <VersatileTabs2Trigger value="cta-ratings">Ratings</VersatileTabs2Trigger>
-          <VersatileTabs2Trigger value="button-group-single-selection">Toggle Group (Single Selection)</VersatileTabs2Trigger>
-          <VersatileTabs2Trigger value="button-group-multiple-selection">Toggle Group (Multiple Selection)</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="ratings">Ratings</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-group-single-select">Toggle Group (Single Selection)</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="button-group-multiple-select">Toggle Group (Multiple Selection)</VersatileTabs2Trigger>
         </VersatileTabs2List>
-        <VersatileTabs2Content value="cta-ratings" demoId="cta-ratings" />
-        <VersatileTabs2Content value="button-group-single-selection" demoId="button-group-single-selection" />
-        <VersatileTabs2Content value="button-group-multiple-selection" demoId="button-group-multiple-selection" />
+        <VersatileTabs2Content value="ratings" demoId="ratings" />
+        <VersatileTabs2Content value="button-group-single-select" demoId="button-group-single-select" />
+        <VersatileTabs2Content value="button-group-multiple-select" demoId="button-group-multiple-select" />
       </VersatileTabs2>
 
 

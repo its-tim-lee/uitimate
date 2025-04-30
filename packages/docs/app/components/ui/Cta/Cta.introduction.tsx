@@ -93,8 +93,8 @@ export default () => {
         Using <code className='tw:code'>pressed</code> and/or <code className='tw:code'>onPressedChange</code>
         will also make <b>Cta</b> a toggle:
       </p>
-      <VersatileTabs2 defaultValue="button-group-single-selection" variant="underline">
-        <VersatileTabs2Content value="button-group-single-selection" demoId="button-group-single-selection" />
+      <VersatileTabs2 defaultValue="button-group-single-select" variant="underline">
+        <VersatileTabs2Content value="button-group-single-select" demoId="button-group-single-select" />
       </VersatileTabs2>
 
 

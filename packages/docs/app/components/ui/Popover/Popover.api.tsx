@@ -25,15 +25,15 @@ export default () => {
 
 
       <DemoRecipeSection />
-      <VersatileTabs2 defaultValue="calendar-date-picker" variant="underline">
+      <VersatileTabs2 defaultValue="date-picker" variant="underline">
         <VersatileTabs2List>
-          <VersatileTabs2Trigger value="calendar-date-picker">Date Picker</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="date-picker">Date Picker</VersatileTabs2Trigger>
           <VersatileTabs2Trigger value="calendar-date-range-picker">Range Picker</VersatileTabs2Trigger>
-          <VersatileTabs2Trigger value="combobox-demo">Combobox</VersatileTabs2Trigger>
+          <VersatileTabs2Trigger value="combobox">Combobox</VersatileTabs2Trigger>
         </VersatileTabs2List>
-        <VersatileTabs2Content value="calendar-date-picker" demoId="calendar-date-picker" />
+        <VersatileTabs2Content value="date-picker" demoId="date-picker" />
         <VersatileTabs2Content value="calendar-date-range-picker" demoId="calendar-date-range-picker" />
-        <VersatileTabs2Content value="combobox-demo" demoId="combobox-demo" />
+        <VersatileTabs2Content value="combobox" demoId="combobox" />
       </VersatileTabs2>
 
 

@@ -7,6 +7,9 @@ import { allDocs } from '#/lib/contentlayer'
 import { Mdx } from '#/components/internal/Mdx'
 import ComponentPageHero from "#/components/internal/ComponentPageHero";
 import { casing } from "#/helpers/utils";
+import PreviewBlock from "#/components/internal/PreviewBlock";
+import { CodeBlock } from "#/components/internal/CodeBlock";
+import { useEffect, useState } from "react";
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
   const type = (casing.kebabCase(params.type || '') || 'core') as 'core' | 'recipe';
@@ -24,6 +27,15 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   });
   const meta = metaFilePath ? componentMeta[metaFilePath] : null;
   return { type, key, page, name: componentName, doc, meta };
+};
+
+// Helper to dynamically import raw code for a recipe component
+const tryImportRawContent = async (demoId: string) => {
+  try {
+    return await import(`../components/demo/recipe/${demoId}.tsx?raw`);
+  } catch (error) {
+    return { default: '' };
+  }
 };
 
 /**
@@ -63,13 +75,31 @@ export default () => {
     Component = componentRegistry.recipe[key];
   }
 
+  // Recipe code preview logic
+  const [rawCode, setRawCode] = useState<string | null>(null);
+  useEffect(() => {
+    if (type === 'recipe' && name) {
+      tryImportRawContent(name).then((mod: any) => setRawCode(mod.default || mod));
+    }
+  }, [type, name]);
+
   return (
     <DocPageLayout>
       {Component ? (
-        <div className="tw:prose tw:dark:prose-invert tw:max-w-none">
-          {meta && <ComponentPageHero title={`${name}/${page}`} subtitle={(meta as any).description} />}
-          <Component />
-        </div>
+        type === 'recipe' ? (
+          <div className="tw:prose tw:dark:prose-invert tw:max-w-none">
+            {meta && <ComponentPageHero title={name} subtitle={(meta as any).description} />}
+            <PreviewBlock showCode={false}>
+              <Component />
+            </PreviewBlock>
+            {rawCode && <CodeBlock>{rawCode}</CodeBlock>}
+          </div>
+        ) : (
+          <div className="tw:prose tw:dark:prose-invert tw:max-w-none">
+            {meta && <ComponentPageHero title={`${name}/${page}`} subtitle={(meta as any).description} />}
+            <Component />
+          </div>
+        )
       ) : (
         <div>Component not found: {type}/{key}</div>
       )}
