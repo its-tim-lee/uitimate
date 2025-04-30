@@ -167,9 +167,11 @@ export default function OneClickSetup({ component, additionalFiles = [] }: OneCl
         </li>
       </ul>
       <strong>2️⃣ &nbsp; Install vendor dependencies:</strong>
-      <TerminalCommandInstructor
-        cli={cli}
-      />
+      {cli && cli.trim() !== 'pnpm add' ? (
+        <TerminalCommandInstructor cli={cli} />
+      ) : (
+        <div className="tw:pt-4">Nothing needed to install.</div>
+      )}
 
       <br />
       <strong>3️⃣ &nbsp; Install relevant files:</strong>
