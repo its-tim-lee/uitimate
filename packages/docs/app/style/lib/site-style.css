@@ -1,0 +1,29 @@
+@layer base {
+  html {
+    @apply tw:scroll-smooth;
+  }
+  body {
+    @apply tw:min-h-svh;
+    @apply tw:overscroll-none;
+    @apply tw:font-sans;
+    @apply tw:bg-background tw:text-foreground;
+    @apply tw:antialiased tw:[font-synthesis-weight:none] tw:[text-rendering:optimizeLegibility];
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 5px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  code, pre {
+    @apply tw:font-mono;
+  }
+}

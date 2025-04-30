@@ -143,26 +143,14 @@
   ::file-selector-button {
     border-color: var(--tw-color-gray-200, currentColor);
   }
-  /*
-    This can be confused, but "the 2nd border" comes from `--color-border`
-  */
   * {
+    /*
+      This can be confused, but "the 2nd border" comes from `--color-border`
+    */
     @apply tw:border-border;
   }
-  /* Below are all from Shadcn Doc Site source code */
-  html {
-    @apply tw:scroll-smooth;
-  }
   body {
-    @apply tw:overscroll-none;
-    @apply tw:antialiased;
-    @apply tw:[font-synthesis-weight:none];
-    @apply tw:[text-rendering:optimizeLegibility];
-    @apply tw:font-sans;
     @apply tw:bg-background tw:text-foreground;
-  }
-  code, pre {
-    @apply tw:font-mono;
   }
 }
 

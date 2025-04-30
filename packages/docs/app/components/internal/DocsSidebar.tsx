@@ -5,6 +5,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "#/component
 import { Icon } from "#/components/ui/Icon/Icon.tsx";
 import { DocTreeItemTags } from "#/components/internal/DocTree/DocTreeItemTags.tsx";
 import type { ReactNode, JSX } from "react";
+import { cn } from "#/helpers/utils.ts";
 
 const isPathActiveOrHasActiveChild = (item: DocTreeItem, currentPath: string): boolean => {
   if (item.href && item.href === currentPath) {
@@ -81,10 +82,10 @@ const renderSection = (section: DocTreeItem, pathname: string): JSX.Element => {
   );
 }
 
-export default function DocsSidebar() {
+export default function DocsSidebar({ className }: { className?: string }) {
   const { pathname } = useLocation();
   return (
-    <div className="tw:text-sm tw:flex tw:flex-col tw:gap-6">
+    <div className={cn("tw:text-sm tw:flex tw:flex-col tw:gap-6", className)}>
       {data.docsTree.map(s => renderSection(s, pathname))}
     </div>
   );

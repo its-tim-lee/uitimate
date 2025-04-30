@@ -10,11 +10,27 @@ $ npm exec -- argos upload --token <ARGOS_TOKEN> ./screenshots
 
 
 # Todos
-- [] Develop auto-copy-paste mechanism
+- [] Create setup and test in each component
+- [] Test all the component's setup
+- [] Write down global setup page
+- [] Render the site's changelog on the site and on github
+- [] Formalize site's versioning workflow
 - [] Fix the Heading component
-- [] Fix the index.css
-  - [] Fix the font
 - [] Verify the site still work in the mobile
+- [] Setup GA
+- [] Run differnt kind of changelogs
+- [] Think about whether we should provide :
+```
+  * {
+    /*
+      This can be confused, but "the 2nd border" comes from `--color-border`
+    */
+    @apply tw:border-border;
+  }
+  body {
+    @apply tw:bg-background tw:text-foreground;
+  }
+```
 
 Tests
 - [] Typecheck
@@ -22,15 +38,20 @@ Tests
   > The sol: using ESLint with the import/no-unresolved rule (and the eslint-import-resolver-typescript plugin)
 
 - [] Argos
-  > note: If sometime the storybook production build is failed, simply re-run the build may fix it
 
-breakpoint
-- [] Setup GA
-- [] Exclude the things I don't want people to see
-- [] Render the site's changelog on the site and on github
-- [] Formalize site's versioning workflow
-- Argos:
+
+Argos:
   - test some indendent Recipe components: Date Picker and Range Picker
-- Nice to have
+
+Nice to have
   - [] Some places use flat component which is still an experimental component, so the refactoring might need to be performed there
   - [] Use some better ideas from Shadcn (eg., tw-animate-css)
+  - [] Use a better font
+
+
+Finally check:
+  - [] Exclude the things i don't want people to see
+  - [] Launch KeyPointer again
+  - [] Sharp all my social stuff (Githib, Twitter, LinkedIn, ...)
+  - [] Run example PR
+  - [] Check all the possible links

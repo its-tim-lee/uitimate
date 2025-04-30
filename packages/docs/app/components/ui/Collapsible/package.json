@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/collapsible",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-collapsible": "1.1.8"
-  }
+  "private": true
 }

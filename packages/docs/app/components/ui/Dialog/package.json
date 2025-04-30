@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/dialog",
   "version": "1.1.1",
-  "private": true,
-  "dependencies": {
-    "@headlessui/react": "2.2.2"
-  }
+  "private": true
 }

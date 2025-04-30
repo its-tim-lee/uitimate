@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/accordion",
   "version": "1.0.4",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-accordion": "1.2.8"
-  }
+  "private": true
 }

@@ -1,5 +1,6 @@
 @import './core.css';
 @import './lib/site-utilities.css';
+@import './lib/site-style.css';
 /**
  * This is literally for better code organization. But there's a concept worth to be mentioned:
  * Baiscally, it's about how Tailwind v4 deals with traditional style scoping (eg., CSS modules, or the local style provided by frameworks like Vue)

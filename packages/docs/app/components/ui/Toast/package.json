@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/toast",
   "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "sonner": "2.0.3"
-  }
+  "private": true
 }

@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/textarea",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@headlessui/react": "2.2.2"
-  }
+  "private": true
 }

@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/drawer",
   "version": "2.0.1",
-  "private": true,
-  "dependencies": {
-    "vaul": "1.1.2"
-  }
+  "private": true
 }

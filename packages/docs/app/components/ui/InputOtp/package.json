@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/inputotp",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "input-otp": "1.4.2"
-  }
+  "private": true
 }

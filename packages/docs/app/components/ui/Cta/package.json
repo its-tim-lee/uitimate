@@ -1,9 +1,5 @@
 {
   "name": "@uitimate/cta",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-primitive": "2.1.0",
-    "@radix-ui/react-toggle": "1.1.6"
-  }
+  "private": true
 }

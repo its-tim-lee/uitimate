@@ -6,7 +6,7 @@ import {
 import { Icon } from "#/components/ui/Icon/Icon";
 import OneClickSetup from './OneClickSetup';
 import ComponentDependencyNotice from "./ComponentDependencyNotice";
-
+import { PathPreferencesProvider } from './PathPreferencesContext';
 
 const DependenciesListingSection = ({ component }: { component: string }) => {
   return (
@@ -18,7 +18,7 @@ const DependenciesListingSection = ({ component }: { component: string }) => {
           <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
 
           <TooltipContent className="tw:w-[400px] tw:p-4 tw:text-lg">
-            <p className="tw:text-justify">The dependencies that this component relies on. Note that you don't need to worry about this in most of time if you just follow the setup instruction to use the component.</p>
+            <p className="tw:text-justify">The direct dependencies that this component relies on. Note that you don't need to worry about this in most of time if you just follow the setup instruction to use the component.</p>
           </TooltipContent>
         </Tooltip>
       </span>
@@ -43,8 +43,9 @@ const OneClickSetupSection = ({ component }: { component: string }) => {
         </Tooltip>
       </span>
 
-
-      <OneClickSetup component={component} />
+      <PathPreferencesProvider>
+        <OneClickSetup component={component} />
+      </PathPreferencesProvider>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import LightDarkSwitcher from "#/components/internal/color-scheme-control/light-dark-switcher";
 import Searchbar from "./Searchbar";
 import GithubButton from "./GithubButton";
-
+import TwitterButton from "./TwitterButton";
 
 export default () => {
   return (
@@ -13,19 +13,19 @@ export default () => {
           <div
             className="tw:flex tw:flex-1 tw:items-center tw:justify-between tw:gap-2 tw:md:justify-end"
           >
-            <a href="/" className="tw:mr-4 tw:flex tw:items-center tw:gap-2 tw:lg:mr-6">
+            <a href="/docs/get-started/introduction" className="tw:mr-4 tw:flex tw:items-center tw:gap-2 tw:lg:mr-6">
               {/* <Logo className="tw:h-6 tw:w-6" /> */}
               <span className="tw:font-bold tw:inline-block"> Uitimate </span>
             </a>
 
-            <nav className="tw:flex tw:items-center tw:gap-4 tw:text-sm tw:xl:gap-6">
+            {/* <nav className="tw:flex tw:items-center tw:gap-4 tw:text-sm tw:xl:gap-6">
               <a
-                href="/docs/getting-started/introduction"
+                href="/docs/get-started/introduction"
                 className="tw:transition-colors tw:hover:text-foreground/80"
               >
                 Docs
               </a>
-            </nav>
+            </nav> */}
 
             <div
               className="tw:flex tw:flex-1 tw:items-center tw:justify-between tw:gap-2 tw:md:justify-end"
@@ -33,6 +33,7 @@ export default () => {
               <Searchbar className="tw:flex-none" />
 
               <nav className="tw:flex tw:items-center tw:gap-0.5">
+                <TwitterButton />
                 <GithubButton />
                 <LightDarkSwitcher />
               </nav>

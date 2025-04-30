@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/label",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-label": "2.1.4"
-  }
+  "private": true
 }

@@ -1,28 +1,29 @@
 import DocPageLayout from "#/components/internal/layout/DocPageLayout";
 import { useLoaderData } from "react-router";
 import type { Route } from "../+types/root";
-import { componentRegistry, type CoreComponentKey } from "#/helpers/route";
+import { componentRegistry, type CoreComponentKey, componentMeta, POSSIBLE_PAGES_FOR_CORE_COMPONENT } from "#/helpers/route";
 import ReactMarkdown from "react-markdown";
 import { allDocs } from '#/lib/contentlayer'
 import { Mdx } from '#/components/internal/Mdx'
 import ComponentPageHero from "#/components/internal/ComponentPageHero";
+import { casing } from "#/helpers/utils";
 
-const componentMetas = import.meta.glob('./../components/ui/**/*.meta.tsx', { eager: true, import: 'default' });
 export const loader = async ({ params }: Route.LoaderArgs) => {
-  const type = (params.type?.toLowerCase() || 'core') as 'core' | 'recipe';
-  const name = params.name?.toLowerCase() || '';
-  const page = params.page?.toLowerCase() || 'api';
-  const key = type === 'core' ? `${name}/${page}` : name;
+  const type = (casing.kebabCase(params.type || '') || 'core') as 'core' | 'recipe';
+  const componentName = casing.kebabCase(params.name || '');
+  const page = casing.kebabCase(params.page || '') as (typeof POSSIBLE_PAGES_FOR_CORE_COMPONENT)[number];
+  const key = type === 'core' ? `${componentName}/${page}` : componentName;
   const doc = allDocs.find(d => {
-    const fileType = d._raw?.flattenedPath?.split('.')?.pop()?.toLowerCase(); // eg., "Test/Test.introduction" -> "introduction"
-    return d.component?.toLowerCase() === name && fileType === page;
+    const fileType = casing.kebabCase(d._raw?.flattenedPath?.split('.')?.pop() || ''); // eg., "Test/Test.introduction" -> "introduction"
+    return casing.kebabCase(d.component) === componentName && fileType === page;
   });
-
-  const metaFilePath = Object.keys(componentMetas).find(path =>
-    path.toLowerCase().includes(`/${name}/${name}.meta`)
-  );
-  const meta = metaFilePath ? componentMetas[metaFilePath] : null;
-  return { type, key, page, name, doc, meta };
+  const metaFilePath = Object.keys(componentMeta).find(path => {
+    const parts = path.split('/');
+    const fileName = parts[parts.length - 1]
+    return fileName.includes(`${casing.pascalCase(componentName)}.meta`)
+  });
+  const meta = metaFilePath ? componentMeta[metaFilePath] : null;
+  return { type, key, page, name: componentName, doc, meta };
 };
 
 /**
@@ -33,7 +34,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
  */
 export default () => {
   const { type, key, name, page, doc, meta } = useLoaderData<typeof loader>();
-
+  console.log('meta', meta);
   if (type === 'core' && page === 'changelog') {
     return (
       <DocPageLayout>

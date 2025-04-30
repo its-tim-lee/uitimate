@@ -38,13 +38,34 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
                   </Cta>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>We&apos;re working on this doc to make it more friendly to read!</p>
+                  <p className="tw:text-lg">We&apos;re working on this doc to make it more friendly to read!</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
           )
         }
-
+        if (tag === 'ALPHA') {
+          return (
+            <TooltipProvider key={tag}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Cta
+                    shapes={['badge']}
+                    size="sm"
+                    variant="destructive"
+                    className="tw:cursor-help tw:leading-none tw:h-5"
+                    asChild
+                  >
+                    <span>{tag}</span>
+                  </Cta>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="tw:text-lg">It&apos;s still in development and is only meant to be used for early adopters.</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )
+        }
         return (
           <Cta
             key={tag}

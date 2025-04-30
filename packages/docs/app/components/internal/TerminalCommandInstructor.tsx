@@ -7,20 +7,21 @@ const CLI_TABS = ["pnpm", "yarn", "npm"];
 
 export default function TerminalCommandInstructor({
   cli,
-  onCopy,
-  copied,
 }: {
   cli: string,
-  onCopy: (tab: string) => void,
-  copied: boolean,
 }) {
   const [cliTab, setCliTab] = useState('pnpm');
+  const [copied, setCopied] = useState(false);
 
   function cliForTab(tab: string) {
     if (!cli) return '';
     return cli.replace(/^\w+/, tab);
   }
-
+  const copy = () => {
+    navigator.clipboard.writeText(cliForTab(cliTab));
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
   return (
     cli ? (
       <div className='tw:flex tw:flex-col'>
@@ -33,7 +34,7 @@ export default function TerminalCommandInstructor({
         </Tabs>
         <Cta muted shapes={['badge']} variant="outline" size="lg" className="tw:cursor-default tw:p-4 tw:font-mono tw:w-full tw:max-w-[450px] tw:justify-between">
           <span className="tw:py-2 tw:overflow-x-scroll tw:break-all">{cliForTab(cliTab)}</span>
-          <Cta shapes={['icon']} variant="ghost" size="sm" className="tw:shadow-none tw:pointer-events-auto" onClick={() => onCopy(cliForTab(cliTab))}>
+          <Cta shapes={['icon']} variant="ghost" size="sm" className="tw:shadow-none tw:pointer-events-auto" onClick={copy}>
             <Icon icon={copied ? 'lucide:check' : 'lucide:copy'} />
           </Cta>
         </Cta>
