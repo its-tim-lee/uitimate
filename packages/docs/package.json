@@ -83,6 +83,7 @@
     "clsx": "2.1.1",
     "date-fns": "4.1.0",
     "embla-carousel-autoplay": "^8.5.2",
+    "exponential-backoff": "3.1.2",
     "hotkeys-js": "3.13.9",
     "isbot": "^5.1.17",
     "localforage": "^1.10.0",

@@ -9,6 +9,7 @@ import { TooltipTrigger, TooltipContent, Tooltip } from '../ui/Tooltip/Tooltip.t
 import Banner from './InfoBanner.tsx';
 import FileSystemApiDialog from './FileSystemApiDialog';
 import { usePathPreferences } from './PathPreferencesContext';
+import { backOff } from 'exponential-backoff';
 
 const GITHUB_RAW_BASE =
   'https://raw.githubusercontent.com/its-tim-lee/uitimate/main/packages/docs/app/components/ui';
@@ -32,16 +33,34 @@ function replacePathsInCode(code: string, preferences: { helpersPath: string; co
 
 async function fetchComponentSource(component: string): Promise<string> {
   const url = `${GITHUB_RAW_BASE}/${component}/${component}.tsx`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to fetch ${component}.tsx`);
-  return await res.text();
+  try {
+    return await backOff(async () => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to fetch ${component}.tsx`);
+      return await res.text();
+    }, { numOfAttempts: 3 });
+  } catch (e) {
+    toast('Failed to fetch component source', {
+      description: `We couldn't fetch ${component}.tsx after 3 attempts. Please try again or contact support.`
+    });
+    throw e;
+  }
 }
 
 async function fetchAdditionalFile(component: string, filename: string): Promise<string> {
   const url = `${GITHUB_RAW_BASE}/${component}/${filename}`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to fetch ${filename}`);
-  return await res.text();
+  try {
+    return await backOff(async () => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to fetch ${filename}`);
+      return await res.text();
+    }, { numOfAttempts: 3 });
+  } catch (e) {
+    toast('Failed to fetch additional file', {
+      description: `We couldn't fetch ${filename} after 3 attempts. Please try again or contact support.`
+    });
+    throw e;
+  }
 }
 
 interface ComponentFile {
@@ -97,6 +116,7 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
   const [downloading, setDownloading] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const { preferences } = usePathPreferences();
+  const [analyzing, setAnalyzing] = useState(true);
 
   useEffect(() => {
     handleAnalyze();
@@ -105,6 +125,7 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
 
   async function handleAnalyze() {
     setError('');
+    setAnalyzing(true);
     try {
       const { vendor, files } = await collectDeps(component, pkg.dependencies, additionalFiles);
       setFiles(files);
@@ -118,6 +139,7 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
     } catch (e: any) {
       setError(e.message);
     }
+    setAnalyzing(false);
   }
 
   async function handleDownload() {
@@ -168,7 +190,12 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
         </li>
       </ul>
       <strong>2️⃣ &nbsp; Install vendor dependencies:</strong>
-      {cli && cli.trim() !== 'pnpm add' ? (
+      {analyzing ? (
+        <div className="tw:flex tw:items-center tw:gap-2 tw:pt-4">
+          <span className="tw:animate-spin">🔄</span>
+          <span>Analyzing what dependencies to be installed...</span>
+        </div>
+      ) : cli && cli.trim() !== 'pnpm add' ? (
         <TerminalCommandInstructor cli={cli}>{children}</TerminalCommandInstructor>
       ) : (
         <div className="tw:pt-4">Nothing needed to install.</div>

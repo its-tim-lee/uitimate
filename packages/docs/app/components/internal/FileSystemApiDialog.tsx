@@ -25,7 +25,6 @@ export default function FileSystemApiDialog({ open, onClose, featureName = '' }:
           <Cta onClick={onClose} variant="primary">OK</Cta>
         </DialogAction>
       </Dialog>
-      <Toaster />
     </>
   );
 }
