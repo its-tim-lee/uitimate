@@ -1,9 +1,5 @@
 {
   "name": "@uitimate/image",
   "version": "1.6.3",
-  "private": true,
-  "dependencies": {
-    "@types/react-lazy-load-image-component": "1.6.4",
-    "react-lazy-load-image-component": "1.6.3"
-  }
+  "private": true
 }

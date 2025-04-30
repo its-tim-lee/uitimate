@@ -1,30 +1,27 @@
-# What it’s?
+# What is it?
 
 ### Short answer
 
-Uitimate is the next generation of UI component library authoring.
+**Uitimate** is the next generation of UI component library authoring.
 
 ### Longer answer
 
-It’s the replacement of [shadcn/ui](https://github.com/shadcn-ui/ui) with big improvements to greatly enhance DX in terms of engineering best practices & new innovations.
+It's a replacement for [shadcn/ui](https://github.com/shadcn-ui/ui) with major improvements to greatly enhance DX through engineering best practices and new innovations.
 
-You may use it to build your design system, or just use it to develop UI faster and easier: It’s the solution of the dilemma on choosing component libraries: traditional (eg., MUI) or headless (eg., Radix).
+You can use it to build your design system, or to develop UI faster and more easily. It solves the dilemma of choosing between traditional component libraries (e.g., **MUI**) and headless ones (e.g., **Radix**).
 
-`
+# Why was it created?
 
-# Why created it?
+The ultimate goal is to enable Vibe Coding for UI development directly from **Figma**, integrated with your existing codebase. Depending on your experience, you might be surprised by the relationship between that goal and **Uitimate**.
 
-Being able to do Vibe Coding on UI development from Figma with the integration on the existing codebase is the ultimate goal. Depends on you experience, you might surprise on the relationship between that goal and Uitimate.
+Frankly, building UIs REALLY, REALLY SUCKS ⎯ and even feels pointless in this AI era. While AI tends to prefer component libraries that aren't published on NPM (I call this "VPM": Virtual Package Management), we're still far from the goal I just mentioned.
 
-Frankly, building UI REALLY REALLY SUCKS and even is stupid in this AI era. Despite AI quite likes the component library that doesn’t be published on NPM (note: I called it “VPM” : Virtual Package Management), it’s still far away from the goal I just mentioned.
+So I'm building an AI system ⎯ a visual CMS that lets developers auto-replicate UI from **Figma** by interacting with AI, without coding, and without the many limitations imposed by big players (e.g., **Builder.io**) in this field. Our "major improvements" over **shadcn/ui** are actually a necessary part of the infrastructure for this system.
 
-So I’m building a AI system  ⎯  A visual CMS that a developer can auto-replicate the UI from Figma by interacting with AI without coding, and at the same time, doesn’t have the limitations from the big players (eg., Builder.io) in the same field. Our "big improvements" from [shadcn/ui](https://github.com/shadcn-ui/ui) is actually the necessary part of the infrastructure in the system.
+I believe **Uitimate** will be extremely helpful for people to use directly, even without AI, because…
 
-I think that it’d be extremely helpful for people to use Uitimate directly even without the help from AI, because…
+- The overall software design quality of **Uitimate** should be good enough to make development delightful, with no major hassles compared to using **shadcn/ui**.
+- We'll show you how we make the component library "scalable," so you don't suffer from the dilemma ⎯ the pain of using a traditional component library, or being overwhelmed by the complexity of building one based on a headless library. The solution is the relevant concepts based on VPM. Since it's a new paradigm, it may take time for people to fully understand its power, but we'll release more articles to address that!
 
-- The overall software design quality should be already good enough from Uitimate that should just make you delightful to develop with. So basically no major hassles from using [shadcn/ui](https://github.com/shadcn-ui/ui) in our case.
-- I gonna greatly clarify many things from the field of UI component development: there’re actually quite of concepts in the existing old fashion that really need to be explained well, not to mention the pioneer move of VPM from [shadcn/ui](https://github.com/shadcn-ui/ui); people really are bad at sinking-in the new paradigm quickly, so they often ask questions / misunderstand on the new paradigm using the outdated / old (fashion) knowledge, which in many cases, don’t make sense at all
 
-`
-# The project progress?
-WIP...
+And that's why I public **Uitimate**.

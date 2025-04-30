@@ -3,7 +3,7 @@ type GitHubUriParams = {
   repo: string;
   branch?: string;
   filePath?: string;
-  action: 'view' | 'edit' | 'issue';
+  action: 'view' | 'edit' | 'issue' | 'base';
   issueTitle?: string;
   issueBody?: string;
 };
@@ -11,6 +11,8 @@ type GitHubUriParams = {
 export const generateGitHubUrl = ({ owner, repo, branch, filePath, action, issueTitle, issueBody }: GitHubUriParams) => {
   const baseUrl = `https://github.com/${owner}/${repo}`;
   switch (action) {
+    case 'base':
+      return baseUrl;
     case 'view':
       return `${baseUrl}/blob/${branch}/${filePath}`;
     case 'edit':

@@ -1,9 +1,5 @@
 {
   "name": "@uitimate/carousel",
   "version": "1.0.3",
-  "private": true,
-  "dependencies": {
-    "embla-carousel": "8.6.0",
-    "embla-carousel-react": "8.6.0"
-  }
+  "private": true
 }

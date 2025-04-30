@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/slider",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-slider": "1.3.2"
-  }
+  "private": true
 }

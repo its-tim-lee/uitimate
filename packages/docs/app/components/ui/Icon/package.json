@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/icon",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@iconify/react": "5.2.1"
-  }
+  "private": true
 }

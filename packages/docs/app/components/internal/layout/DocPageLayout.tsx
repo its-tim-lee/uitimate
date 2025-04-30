@@ -9,14 +9,15 @@ export default function DocPageLayout({ children }: { children: React.ReactNode 
         <aside
           className="border-grid tw:fixed tw:top-14 tw:hidden tw:h-[calc(100vh-3.5rem)] tw:w-full tw:shrink-0 tw:border-r tw:md:sticky tw:md:block"
         >
-          <div
-            className="no-scrollbar tw:h-full tw:overflow-auto tw:py-6 tw:pr-4 tw:lg:py-8"
-          >
-            <DocsSidebar />
+          <div className='no-scrollbar tw:h-full tw:overflow-auto tw:py-6 tw:pr-4 tw:lg:py-8'>
+
+            <DocsSidebar className=" " />
           </div>
         </aside>
+        <div className='tw:pt-8'>
 
-        <div className="tw:flex tw:flex-col tw:py-10">{children}</div>
+          {children}
+        </div>
       </div>
     </div>
   )

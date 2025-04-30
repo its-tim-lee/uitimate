@@ -9,6 +9,7 @@ import React from 'react';
 import { orderBy } from 'lodash-es';
 import type { DocTreeItem } from '../data/site';
 import { allDocs } from '#/lib/contentlayer';
+import { casing } from './utils';
 
 export type CoreComponentKey = `${string}/${string}`;
 type ComponentRegistry = {
@@ -18,62 +19,84 @@ type ComponentRegistry = {
 };
 
 /**
- * WARN:
+ * WARN: #2025-04-29A
  * for some reasons, path alias can't work with `meta.glob`,
  * (the filtered components will always be empty)
  * but at least it still allows the filtered files to use path alias
  */
-// Legacy TSX components
-const coreComponents = import.meta.glob('./../components/ui/**/*.{api,introduction}.tsx', { eager: true, import: 'default', });
-const recipeComponents = import.meta.glob('./../components/demo/recipe/*.tsx', { eager: true, import: 'default', });
-const changelogs = import.meta.glob('./../components/ui/**/CHANGELOG.md', { eager: true, as: 'raw' });
+
+
+const ALLOWED_MDX_FILE_TYPES = ['introduction', 'api', 'tutorial', 'setup'] as const;
+export const POSSIBLE_PAGES_FOR_CORE_COMPONENT = [...ALLOWED_MDX_FILE_TYPES, 'changelog'] as const;
+/**
+  * eg., the `coreComponentHasWhatPages` can have the item that has the most pages as:
+  * {
+  *   cta: new Set(['api', 'introduction', 'changelog', 'tutorial', 'setup']),
+  *   ...
+  * }
+ */
+const coreComponentHasWhatPages = new Map<string, Set<typeof POSSIBLE_PAGES_FOR_CORE_COMPONENT[number]>>();
 
 export const componentRegistry: ComponentRegistry = { core: {}, recipe: {}, changelog: {} };
 export const componentUris: string[] = [];
 
+// #2025-04-29A
+const coreComponents = import.meta.glob('./../components/ui/**/*.{api,introduction}.tsx', { eager: true, import: 'default', });
 // Process core components
 Object.entries(coreComponents).forEach(([path, component]) => {
   const parts = path.split('/');
-  const name = parts[parts.length - 2].toLowerCase(); // component directory name, eg., "cta"
+  const componentName = casing.kebabCase(parts[parts.length - 2]); // eg., "dropdown-menu"
   const filename = parts[parts.length - 1]; // eg., "Cta.api.tsx"
   const pageMatch = filename.match(/\.?(api|introduction)\.tsx$/);
   if (!pageMatch) return;
-  const page = pageMatch[1].toLowerCase(); // eg., "api"
+  const page = casing.lowerCase(pageMatch[1]) as Extract<typeof POSSIBLE_PAGES_FOR_CORE_COMPONENT[number], 'api' | 'introduction'>; // eg., "api" or "introduction"
 
-  componentRegistry.core[`${name}/${page}`] = component as React.ComponentType;
-  componentUris.push(`/docs/components/core/${name}/${page}`);
+  componentRegistry.core[`${componentName}/${page}`] = component as React.ComponentType;
+  componentUris.push(`/docs/components/core/${componentName}/${page}`);
+  if (!coreComponentHasWhatPages.has(componentName)) {
+    coreComponentHasWhatPages.set(componentName, new Set());
+  }
+  coreComponentHasWhatPages.get(componentName)?.add(page);
 });
 
+// #2025-04-29A
+const recipeComponents = import.meta.glob('./../components/demo/recipe/*.tsx', { eager: true, import: 'default', });
 // Process recipe components
 Object.entries(recipeComponents).forEach(([path, component]) => {
   const parts = path.split('/');
-  const name = parts[parts.length - 1].replace('.tsx', '').toLowerCase(); // eg., result: "cta-ratings"
-  componentRegistry.recipe[name] = component as React.ComponentType;
-  componentUris.push(`/docs/components/recipe/${name}`);
-});
-
-// Process changelog files
-Object.entries(changelogs).forEach(([path, content]) => {
-  const parts = path.split('/');
-  const name = parts[parts.length - 2].toLowerCase(); // component directory name, eg., "cta"
-  if (name) {
-    componentRegistry.changelog[name] = content
-    componentUris.push(`/docs/components/core/${name}/changelog`);
+  const componentName = casing.kebabCase(parts[parts.length - 1].replace('.tsx', '')); // eg., result: "cta-ratings"
+  if (componentName) {
+    componentRegistry.recipe[componentName] = component as React.ComponentType;
+    componentUris.push(`/docs/components/recipe/${componentName}`);
   }
 });
 
-// Add meta files to the imports
-const metaFiles = import.meta.glob('./../components/ui/**/*.meta.tsx', { eager: true, import: 'default', });
+// #2025-04-29A
+const changelogs = import.meta.glob('./../components/ui/**/CHANGELOG.md', { eager: true, as: 'raw' });
+// Process changelog files
+Object.entries(changelogs).forEach(([path, content]) => {
+  const parts = path.split('/');
+  const componentName = casing.kebabCase(parts[parts.length - 2]); // eg., "dropdown-menu"
+  if (componentName) {
+    componentRegistry.changelog[componentName] = content
+    componentUris.push(`/docs/components/core/${componentName}/changelog`);
+    if (!coreComponentHasWhatPages.has(componentName)) {
+      coreComponentHasWhatPages.set(componentName, new Set());
+    }
+    coreComponentHasWhatPages.get(componentName)?.add('changelog');
+  }
+});
 
 // Add meta registry to store component meta information
 const metaRegistry: Record<string, { tags?: { root?: string[], tutorial?: string[] } }> = {};
-
+// #2025-04-29A
+export const componentMeta = import.meta.glob('./../components/ui/**/*.meta.tsx', { eager: true, import: 'default', });
 // Process meta files
-Object.entries(metaFiles).forEach(([path, meta]) => {
+Object.entries(componentMeta).forEach(([path, meta]) => {
   const parts = path.split('/');
-  const name = parts[parts.length - 2].toLowerCase(); // component directory name, eg., "cta"
-  if (name && meta && typeof meta === 'object' && 'tags' in meta) {
-    metaRegistry[name] = meta as { tags?: { root?: string[], tutorial?: string[] } };
+  const componentName = casing.kebabCase(parts[parts.length - 2]); // eg., "dropdown-menu"
+  if (componentName && meta && typeof meta === 'object' && 'tags' in meta) {
+    metaRegistry[componentName] = meta as { tags?: { root?: string[], tutorial?: string[] } };
   }
 });
 
@@ -81,67 +104,23 @@ Object.entries(metaFiles).forEach(([path, meta]) => {
 export const coreItems: DocTreeItem[] = [];
 export const recipeItems: DocTreeItem[] = [];
 
-// Track which components have which pages
-const componentPages = new Map<string, Set<string>>();
-
-// Process core components for navigation
-// eg., the `componentPages` will be like:
-// {
-//   cta: new Set(['api', 'introduction']),
-//   ...
-// }
-//
-Object.keys(componentRegistry.core).forEach(key => {
-  const [name, page] = key.split('/');
-  if (!componentPages.has(name)) {
-    componentPages.set(name, new Set());
-  }
-  componentPages.get(name)?.add(page);
-});
-
-// Add changelog pages to navigation
-// eg., the `componentPages` will be like:
-// {
-//   cta: new Set(['api', 'introduction', 'changelog']),
-//   ...
-// }
-//
-Object.keys(componentRegistry.changelog).forEach(name => {
-  if (!componentPages.has(name)) {
-    componentPages.set(name, new Set());
-  }
-  componentPages.get(name)?.add('changelog');
-});
-
 // Process MDX files from contentlayer for navigation
 // This ensures MDX files are included in the sidebar
 allDocs.forEach(doc => {
-  const name = doc.component?.toLowerCase();
-  if (!name) return;
+  const componentName = casing.kebabCase(doc.component?.toLowerCase()); // eg., dropdown-menu
+  if (!componentName) return;
 
-  const fileType = doc._raw?.flattenedPath?.split('.')?.[1]?.toLowerCase(); // e.g., "introduction", "api", or "tutorial"
-  if (!fileType || !['introduction', 'api', 'tutorial'].includes(fileType)) return;
-
-  if (!componentPages.has(name)) {
-    componentPages.set(name, new Set());
+  const fileType = casing.lowerCase(doc._raw?.flattenedPath?.split('.')?.[1]) as typeof ALLOWED_MDX_FILE_TYPES[number]; // e.g., "introduction", "api", "tutorial", or "setup"
+  if (!fileType || !ALLOWED_MDX_FILE_TYPES.includes(fileType as typeof ALLOWED_MDX_FILE_TYPES[number])) return;
+  if (!coreComponentHasWhatPages.has(componentName)) {
+    coreComponentHasWhatPages.set(componentName, new Set());
   }
-  componentPages.get(name)?.add(fileType);
-
-  // Add URI for MDX content
-  componentUris.push(`/docs/components/core/${name}/${fileType}`);
+  coreComponentHasWhatPages.get(componentName)?.add(fileType);
+  componentUris.push(`/docs/components/core/${componentName}/${fileType}`);
 });
 
-// Find all setup.mdx files and track which components have them
-const setupMdxFiles = import.meta.glob('./../components/ui/**/*.setup.mdx', { eager: false });
-const componentsWithSetup = new Set<string>();
-Object.keys(setupMdxFiles).forEach(path => {
-  const parts = path.split('/');
-  const name = parts[parts.length - 2].toLowerCase();
-  componentsWithSetup.add(name);
-});
-
-componentPages.forEach((pages, name) => {
-  coreItems.push(createComponentNavItem(name, pages));
+coreComponentHasWhatPages.forEach((pages, componentName) => {
+  coreItems.push(createComponentNavItem(componentName, pages));
 });
 
 // Process recipe components for navigation
@@ -153,16 +132,18 @@ Object.keys(componentRegistry.recipe).forEach(name => {
 coreItems.splice(0, coreItems.length, ...orderBy(coreItems, ['title'], ['asc']));
 recipeItems.splice(0, recipeItems.length, ...orderBy(recipeItems, ['title'], ['asc']));
 
-function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
+function createComponentNavItem(
+  coreComponentName: string,
+  pages: Set<typeof POSSIBLE_PAGES_FOR_CORE_COMPONENT[number]>
+): DocTreeItem {
   const items: DocTreeItem[] = [];
-  const meta = metaRegistry[name];
+  const meta = metaRegistry[coreComponentName];
 
-  // Only add Setup link if the setup.mdx file exists for this component
-  if (componentsWithSetup.has(name)) {
+  if (pages.has('setup')) {
     items.push({
       type: 'link' as const,
       title: 'Setup',
-      href: `/docs/components/core/${name}/setup`,
+      href: `/docs/components/core/${coreComponentName}/setup`,
       labels: [],
       items: []
     });
@@ -172,7 +153,7 @@ function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
     items.push({
       type: 'link' as const,
       title: 'Introduction',
-      href: `/docs/components/core/${name}/introduction`,
+      href: `/docs/components/core/${coreComponentName}/introduction`,
       labels: [],
       items: []
     });
@@ -182,7 +163,7 @@ function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
     items.push({
       type: 'link' as const,
       title: 'Tutorial',
-      href: `/docs/components/core/${name}/tutorial`,
+      href: `/docs/components/core/${coreComponentName}/tutorial`,
       labels: [],
       items: [],
       // Only add tutorial tags to the tutorial page
@@ -194,7 +175,7 @@ function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
     items.push({
       type: 'link' as const,
       title: 'API',
-      href: `/docs/components/core/${name}/api`,
+      href: `/docs/components/core/${coreComponentName}/api`,
       labels: [],
       items: []
     });
@@ -204,7 +185,7 @@ function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
     items.push({
       type: 'link' as const,
       title: 'Changelog',
-      href: `/docs/components/core/${name}/changelog`,
+      href: `/docs/components/core/${coreComponentName}/changelog`,
       labels: [],
       items: []
     });
@@ -212,7 +193,7 @@ function createComponentNavItem(name: string, pages: Set<string>): DocTreeItem {
 
   return {
     type: 'collapsible' as const,
-    title: name,
+    title: casing.camelCase(coreComponentName),
     href: '',
     labels: [],
     items,

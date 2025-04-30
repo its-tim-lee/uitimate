@@ -1,11 +1,11 @@
 import { Cta } from "#/components/ui/Cta/Cta";
 import { Icon } from "#/components/ui/Icon/Icon";
-
+import data from "#/data/site";
 export default () => {
   return (
     <Cta variant="ghost" size="sm" shapes={['icon']} asChild>
       <a
-        href="https://github.com/keypointer/keypointer-ui"
+        href={data.github}
         target="_blank"
         rel="noreferrer"
       >

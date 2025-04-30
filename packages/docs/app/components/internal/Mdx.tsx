@@ -16,10 +16,19 @@ import { Icon } from '../ui/Icon/Icon.tsx';
 import ComponentDependencyNotice from './ComponentDependencyNotice';
 import OneClickSetup from './OneClickSetup';
 import { DependenciesListingSection, OneClickSetupSection } from './SetupDoc.tsx';
+import TerminalCommandInstructor from './TerminalCommandInstructor';
+import { CodeBlock } from './CodeBlock';
+import PathAdjuster from './PathAdjusterWrapper';
+import DownloadHelpers from './DownloadHelpers';
+import { HelpersPathSection, ComponentsPathSection } from './PathPreferenceSection';
+
 const components = {
+  PathAdjuster,
+  TerminalCommandInstructor,
   DependenciesListingSection,
   OneClickSetupSection,
   OneClickSetup,
+  DownloadHelpers,
   ComponentPageHero,
   ComponentPageUsage,
   DemoScenariosSection,
@@ -40,6 +49,8 @@ const components = {
   VersatileTabs2List,
   VersatileTabs2Trigger,
   VersatileTabs2Content,
+  HelpersPathSection,
+  ComponentsPathSection,
   Details: ({ ...props }: ComponentProps<typeof Collapsible>) => <Collapsible {...props} />,
   DetailsTrigger: ({ children, ...props }: ComponentProps<typeof CollapsibleTrigger>) => {
     return (
@@ -50,6 +61,16 @@ const components = {
     )
   },
   DetailsContent: ({ ...props }: ComponentProps<typeof CollapsibleContent>) => <CollapsibleContent className='tw:p-4 tw:pt-0 tw:-mt-10 tw:text-muted-foreground' {...props} />,
+  pre: (preProps: any) => { // code block
+    const codeElement = preProps.children;
+    const codeString = codeElement?.props?.children || '';
+    const className = codeElement?.props?.className || '';
+    return (
+      <CodeBlock className={className} {...preProps}>
+        {codeString}
+      </CodeBlock>
+    );
+  },
   code: ({ className, ...props }: { className?: string } & React.HTMLAttributes<HTMLElement>) => {
     // Don't apply styling if it's within a pre (code block)
     const isInPre = className?.includes('language-') || false;
@@ -104,6 +125,7 @@ const components = {
     );
   },
   ComponentDependencyNotice,
+  CodeBlock,
 }
 
 

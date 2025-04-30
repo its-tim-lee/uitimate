@@ -1,4 +1,6 @@
 import { coreItems, recipeItems } from '../helpers/route';
+import { generateGitHubUrl } from '../helpers/uri';
+import repo from './repo';
 
 export type DocTreeItem = {
   type: 'link' | 'subheader' | 'collapsible';
@@ -15,6 +17,11 @@ export type DocTreeItem = {
 export default {
   domain: 'https://uitimate.web.app',
   twitter: 'https://twitter.com/itistimlee',
+  github: generateGitHubUrl({
+    owner: repo.owner,
+    repo: repo.name,
+    action: 'base'
+  }),
   docsTree: [
     {
       type: 'subheader',
@@ -40,15 +47,37 @@ export default {
               labels: [],
               items: []
             },
-            {
-              type: 'link',
-              title: 'Component Lib Integration',
-              href: '/docs/get-started/component-lib-integration',
-              labels: [],
-              items: []
-            }
+            // {
+            //   type: 'link',
+            //   title: 'Component Lib Integration',
+            //   href: '/docs/get-started/component-lib-integration',
+            //   labels: [],
+            //   items: []
+            // }
           ],
           labels: []
+        },
+      ],
+      labels: []
+    },
+    {
+      type: 'subheader',
+      title: 'Extra Topics',
+      href: '',
+      items: [
+        {
+          type: 'link',
+          title: 'Changelog',
+          href: '/docs/extra-topics/changelog',
+          labels: [],
+          items: []
+        },
+        {
+          type: 'link',
+          title: 'Get Help',
+          href: '/docs/extra-topics/get-help',
+          labels: [],
+          items: []
         },
       ],
       labels: []
@@ -71,28 +100,6 @@ export default {
           href: '',
           items: recipeItems,
           labels: []
-        },
-      ],
-      labels: []
-    },
-    {
-      type: 'subheader',
-      title: 'Extra Topics',
-      href: '',
-      items: [
-        {
-          type: 'link',
-          title: 'Changelog',
-          href: '/docs/extra-topics/changelog',
-          labels: [],
-          items: []
-        },
-        {
-          type: 'link',
-          title: 'Q&A',
-          href: '/docs/extra-topics/qa',
-          labels: [],
-          items: []
         },
       ],
       labels: []

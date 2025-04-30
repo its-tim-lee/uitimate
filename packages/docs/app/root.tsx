@@ -17,7 +17,6 @@ const colorSchemeCode = await import(
   "#/components/internal/color-scheme-control/fout-preventer.ts?raw"
 );
 import SiteHeader from "#/components/internal/SiteHeader.tsx";
-import SiteFooter from "#/components/internal/SiteFooter.tsx";
 
 /**
  * This will always be called on the server even if no ssr (ie., in no-ssr case, server = build time server)
@@ -59,13 +58,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
         <title>Uitimate</title>
       </head>
-      <body>
+      <body className='tw:h-[1000px]!'>
         <SiteHeader />
-        <main>
+        <main className='tw:h-[1000px]!'>
           {/* children will be the root Component, ErrorBoundary, or HydrateFallback */}
           {children}
         </main>
-        <SiteFooter />
         <ScrollRestoration />
         <Scripts />
       </body>

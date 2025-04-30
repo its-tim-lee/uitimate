@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/avatar",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-avatar": "1.1.7"
-  }
+  "private": true
 }

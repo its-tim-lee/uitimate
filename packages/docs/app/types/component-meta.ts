@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+type Status = 'WIP' | 'NEW' | 'ALPHA';
 
 /**
  * Type definition for component metadata files (.meta.tsx)
@@ -8,11 +9,11 @@ export interface ComponentMeta {
    * Tags for categorizing or identifying special features of the component
    */
   tags?: {
-    root?: ('WIP' | 'NEW')[];
-    tutorial?: ('WIP' | 'NEW')[];
-    introduction?: ('WIP' | 'NEW')[];
-    api?: ('WIP' | 'NEW')[];
-    [key: string]: ('WIP' | 'NEW')[] | undefined;
+    root?: Status[];
+    tutorial?: Status[];
+    introduction?: Status[];
+    api?: Status[];
+    [key: string]: Status[] | undefined;
   };
 
   /**

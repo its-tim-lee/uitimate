@@ -21,7 +21,7 @@ export function generate(code: string, pkgDeps: Record<string, string>): LockInf
   const native: string[] = [];
 
   for (const node of (ast.program.body as any[])) {
-    if (node.type === "ImportDeclaration") {
+    if (node.type === "ImportDeclaration" || node.type === "ExportAllDeclaration") {
       const source: string = node.source.value;
       // Vendor: @uitimate/*
       if (source.startsWith("@uitimate/")) {
@@ -32,9 +32,12 @@ export function generate(code: string, pkgDeps: Record<string, string>): LockInf
       }
       // Native: #/components/ui/*
       if (source.startsWith("#/components/ui/")) {
-        for (const spec of node.specifiers) {
-          if (spec.type === "ImportSpecifier" || spec.type === "ImportDefaultSpecifier") {
-            native.push(spec.local.name);
+        // Only ImportDeclaration can have specifiers
+        if (node.type === "ImportDeclaration") {
+          for (const spec of node.specifiers) {
+            if (spec.type === "ImportSpecifier" || spec.type === "ImportDefaultSpecifier") {
+              native.push(spec.local.name);
+            }
           }
         }
       }

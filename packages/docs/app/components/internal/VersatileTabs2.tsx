@@ -4,6 +4,8 @@ import { CodeBlock } from '#/components/internal/CodeBlock.tsx';
 import PreviewBlock from '#/components/internal/PreviewBlock.tsx';
 import { cn } from '#/helpers/utils.ts';
 import { VersatileTabs2Provider, useVersatileTabs2Context } from './VersatileTabs2Context';
+import { usePathPreferences } from './PathPreferencesContext';
+import { PathPreferencesProvider } from './PathPreferencesContext';
 
 // --- Helper functions for dynamic imports (copied from VersatileTabs) ---
 const tryImportComponent = async (demoId: string) => {
@@ -32,6 +34,23 @@ const tryImportRawContent = async (demoId: string) => {
   }
 };
 // --- End Helper Functions ---
+
+// New helper function to replace paths in code
+function replacePathsInCode(code: string, preferences: { helpersPath: string; componentsPath: string }) {
+  let result = code;
+
+  // Replace helpers path (e.g., "#/helpers/utils" -> "#/lib/utils")
+  if (preferences.helpersPath) {
+    result = result.replace(/#\/helpers\//g, `#/${preferences.helpersPath}/`);
+  }
+
+  // Replace components path (e.g., "#/components/ui/Button" -> "#/ui/Button")
+  if (preferences.componentsPath) {
+    result = result.replace(/#\/components\/ui\//g, `#/${preferences.componentsPath}/`);
+  }
+
+  return result;
+}
 
 // Main Tabs Component (Provider)
 type VersatileTabs2Props = ComponentProps<typeof TabsPrimitive> & {
@@ -94,11 +113,13 @@ const VersatileTabs2 = ({ children, className, variant = 'underline', compact, .
   }), [demoCodeStrings, demoComponents, codeBlockVisibility, previewVisibility, toggleCodeBlockVisibility, togglePreviewVisibility, registerDemo, compact]);
 
   return (
-    <VersatileTabs2Provider value={contextValue}>
-      <TabsPrimitive variant={variant} className={className} {...props}>
-        {children}
-      </TabsPrimitive>
-    </VersatileTabs2Provider>
+    <PathPreferencesProvider>
+      <VersatileTabs2Provider value={contextValue}>
+        <TabsPrimitive variant={variant} className={className} {...props}>
+          {children}
+        </TabsPrimitive>
+      </VersatileTabs2Provider>
+    </PathPreferencesProvider>
   );
 };
 
@@ -127,10 +148,10 @@ interface VersatileTabs2PreviewContentProps extends ComponentProps<typeof TabsCo
 
 const VersatileTabs2Content = ({
   demoId,
-  showCode = true, // Default to true like PreviewBlock
+  showCode = true,
   showCodeFirst = false,
   caption,
-  compact, // Get compact from props
+  compact,
   children,
   value,
   className,
@@ -144,8 +165,11 @@ const VersatileTabs2Content = ({
     toggleCodeBlockVisibility,
     togglePreviewVisibility,
     registerDemo,
-    compact: contextCompact // Get compact from context
+    compact: contextCompact
   } = useVersatileTabs2Context();
+
+  // Get path preferences to replace paths in code examples
+  const { preferences } = usePathPreferences();
 
   // Use compact from props or context, with props taking precedence
   const resolvedCompact = compact !== undefined ? compact : contextCompact;
@@ -156,10 +180,12 @@ const VersatileTabs2Content = ({
     }
   }, [registerDemo, value, demoId, showCodeFirst]);
 
-  if (!value) return null; // Required for context operations
+  if (!value) return null;
 
   const DemoComponent = demoComponents[value];
-  const codeString = demoCodeStrings[value] || '// Loading code...';
+  const rawCodeString = demoCodeStrings[value] || '// Loading code...';
+  // Replace paths in code string with user preferences
+  const codeString = replacePathsInCode(rawCodeString, preferences);
   const isCodeVisible = codeBlockVisibility[value] ?? showCodeFirst;
   const isPreviewVisible = previewVisibility[value] ?? !showCodeFirst;
 

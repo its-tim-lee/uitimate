@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/hovercard",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-hover-card": "1.1.11"
-  }
+  "private": true
 }

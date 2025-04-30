@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/progress",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-progress": "1.1.4"
-  }
+  "private": true
 }

@@ -11,7 +11,7 @@ import { casing } from "#/helpers/utils.ts"
 const baseStyle = [
   "tw:inline-flex tw:items-center tw:justify-center tw:gap-2 tw:whitespace-nowrap tw:rounded-md tw:transition-colors tw:data-hover:cursor-pointer",
   "tw:data-disabled:pointer-events-none tw:data-disabled:opacity-50",
-  "tw:[&_[data-icon]]:pointer-events-none tw:[&_[data-icon]]:size-4 tw:[&_[data-icon]]:shrink-0",
+  "tw:[&_[data-icon]]:size-4 tw:[&_[data-icon]]:shrink-0",
   'tw:data-[state=on]:ring-2 tw:data-[state=on]:ring-primary/50' // "Toggle" style
 ]
 const primaryBaseStyle = [

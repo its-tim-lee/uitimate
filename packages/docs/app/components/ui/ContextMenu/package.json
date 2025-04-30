@@ -1,8 +1,5 @@
 {
   "name": "@uitimate/contextmenu",
   "version": "1.0.1",
-  "private": true,
-  "dependencies": {
-    "@radix-ui/react-context-menu": "2.2.12"
-  }
+  "private": true
 }
