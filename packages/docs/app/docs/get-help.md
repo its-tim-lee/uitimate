@@ -1,4 +1,4 @@
-# Get Help
+## Get Help
 
 Encounter any issue or have some questions?
 Feel free to reach out by heading either channel below:

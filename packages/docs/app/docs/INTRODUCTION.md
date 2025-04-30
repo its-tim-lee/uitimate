@@ -1,16 +1,16 @@
-# What is it?
+## What is it?
 
-### Short answer
+#### Short answer
 
 **Uitimate** is the next generation of UI component library authoring.
 
-### Longer answer
+#### Longer answer
 
 It's a replacement for [shadcn/ui](https://github.com/shadcn-ui/ui) with major improvements to greatly enhance DX through engineering best practices and new innovations.
 
 You can use it to build your design system, or to develop UI faster and more easily. It solves the dilemma of choosing between traditional component libraries (e.g., **MUI**) and headless ones (e.g., **Radix**).
 
-# Why was it created?
+## Why was it created?
 
 The ultimate goal is to enable Vibe Coding for UI development directly from **Figma**, integrated with your existing codebase. Depending on your experience, you might be surprised by the relationship between that goal and **Uitimate**.
 
