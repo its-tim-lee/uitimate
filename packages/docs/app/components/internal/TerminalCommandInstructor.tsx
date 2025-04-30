@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Cta } from '../ui/Cta/Cta.tsx';
 import { Icon } from "../ui/Icon/Icon.tsx";
 import { Tabs, TabsList, TabsTrigger } from '../ui/Tabs/Tabs.tsx';
@@ -12,6 +12,25 @@ export default function TerminalCommandInstructor({
 }) {
   const [cliTab, setCliTab] = useState('pnpm');
   const [copied, setCopied] = useState(false);
+
+  // On mount, check localStorage for saved tab
+  useEffect(() => {
+    const savedTab = localStorage.getItem('terminal-cli-tab');
+    console.log('savedTab', savedTab);
+    if (savedTab && CLI_TABS.includes(savedTab)) {
+      setCliTab(savedTab);
+    }
+  }, []);
+
+  // When cliTab changes, save to localStorage
+  useEffect(() => {
+    console.log('cliTab', cliTab);
+    if (cliTab !== 'pnpm') {
+      localStorage.setItem('terminal-cli-tab', cliTab);
+    } else {
+      localStorage.removeItem('terminal-cli-tab');
+    }
+  }, [cliTab]);
 
   function cliForTab(tab: string) {
     if (!cli) return '';
