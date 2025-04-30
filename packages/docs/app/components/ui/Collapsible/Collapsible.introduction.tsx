@@ -46,8 +46,8 @@ export default () => {
       </p>
       <br />
 
-      <VersatileTabs2 defaultValue="collapsible-stepper" variant="underline">
-        <VersatileTabs2Content value="collapsible-stepper" demoId="collapsible-stepper" />
+      <VersatileTabs2 defaultValue="stepper" variant="underline">
+        <VersatileTabs2Content value="stepper" demoId="stepper" />
       </VersatileTabs2>
       <br />
       <p>

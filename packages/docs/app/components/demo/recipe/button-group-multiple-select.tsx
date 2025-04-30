@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Cta } from '#/components/ui/Cta/Cta.tsx';
 import { Icon } from '#/components/ui/Icon/Icon.tsx';
 
-export default () => {
+const Comp = () => {
   const [selections, setSelections] = useState<Record<string, boolean>>({
     justify: false,
     left: false,
@@ -48,3 +48,5 @@ export default () => {
     </div>
   </div>
 }
+Comp.displayName = 'ButtonGroup(Multiple Select)';
+export default Comp;

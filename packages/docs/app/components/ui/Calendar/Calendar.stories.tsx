@@ -1,4 +1,4 @@
-import CalendarDatePicker from "#/components/demo/recipe/calendar-date-picker.tsx"
+import CalendarDatePicker from "#/components/demo/recipe/date-picker.tsx"
 import CalendarDemo from "#/components/demo/calendar-demo.tsx"
 import CalendarDateRangePicker from "#/components/demo/calendar-date-range-picker.tsx"
 import type { Meta } from "@storybook/react";

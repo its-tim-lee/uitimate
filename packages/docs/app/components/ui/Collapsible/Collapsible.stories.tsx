@@ -1,6 +1,6 @@
 import CollapsibleDemo from "#/components/demo/collapsible-demo"
 import CollapsibleOpenControl from "#/components/demo/collapsible-open-control"
-import CollapsibleStepper from "#/components/demo/recipe/collapsible-stepper"
+import CollapsibleStepper from "#/components/demo/recipe/stepper"
 import type { Meta, StoryObj } from "@storybook/react";
 
 export default {

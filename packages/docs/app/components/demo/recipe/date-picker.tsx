@@ -12,7 +12,7 @@ import { Calendar } from "#/components/ui/Calendar/Calendar.tsx"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import { cn } from "#/helpers/utils.ts" // WARN: turn this to "#/helpers" will cause the bug
 
-export default () => {
+const Comp = () => {
   const [date, setDate] = React.useState<Date>()
   return (
     <Popover>
@@ -31,3 +31,7 @@ export default () => {
     </Popover>
   )
 }
+
+Comp.displayName = 'DatePicker';
+
+export default Comp;

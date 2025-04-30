@@ -10,14 +10,8 @@ $ npm exec -- argos upload --token <ARGOS_TOKEN> ./screenshots
 
 
 # Todos
-- [] Create setup and test in each component
-- [] Test all the component's setup
-- [] Render the site's changelog on the site and on github
-- [] Formalize site's versioning workflow
 - [] Fix the Heading component
 - [] Verify the site still work in the mobile
-- [] Setup GA
-- [] Run differnt kind of changelogs
 - [] Think about whether we should provide :
 ```
   * {
@@ -42,11 +36,6 @@ Tests
 Argos:
   - test some indendent Recipe components: Date Picker and Range Picker
 
-Nice to have
-  - [] Some places use flat component which is still an experimental component, so the refactoring might need to be performed there
-  - [] Use some better ideas from Shadcn (eg., tw-animate-css)
-  - [] Use a better font
-
 
 Finally check:
   - [] Exclude the things i don't want people to see
@@ -54,3 +43,10 @@ Finally check:
   - [] Sharp all my social stuff (Githib, Twitter, LinkedIn, ...)
   - [] Run example PR
   - [] Check all the possible links
+  - [] Run different kind of versioning and check changelog rendering in all the places (eg., Github)
+
+
+Nice to have
+  - [] Some places use flat component which is still an experimental component, so the refactoring might need to be performed there
+  - [] Use some better ideas from Shadcn (eg., tw-animate-css)
+  - [] Use a better font

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Cta } from '#/components/ui/Cta/Cta.tsx';
 import { Icon } from '#/components/ui/Icon/Icon.tsx';
 
-export default () => {
+const Comp = () => {
   const [rating, setRating] = useState<number | null>(null);
   const rate = ($v: number) => setRating(prev => prev !== $v ? $v : ($v > 1 ? $v - 1 : null));
   const isStarFilled = (v: number) => rating !== null && v <= rating;
@@ -27,3 +27,6 @@ export default () => {
     </div>
   );
 }
+Comp.displayName = 'Ratings';
+
+export default Comp;

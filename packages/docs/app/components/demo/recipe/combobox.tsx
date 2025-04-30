@@ -39,7 +39,7 @@ const frameworks = [
   },
 ]
 
-export default () => {
+const ComboboxDemo = () => {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
 
@@ -88,4 +88,5 @@ export default () => {
     </Popover>
   )
 }
-
+ComboboxDemo.displayName = 'Combobox';
+export default ComboboxDemo;

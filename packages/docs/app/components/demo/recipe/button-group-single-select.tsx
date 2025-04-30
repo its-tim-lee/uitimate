@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Cta } from '#/components/ui/Cta/Cta.tsx';
 import { Icon } from '#/components/ui/Icon/Icon.tsx';
 
-export default () => {
+const Comp = () => {
   const [align, setAlign] = useState<string>('');
   return (
     <div className='tw:flex'>
@@ -18,3 +18,5 @@ export default () => {
     </div>
   )
 }
+Comp.displayName = 'ButtonGroup(Single Select)';
+export default Comp;
