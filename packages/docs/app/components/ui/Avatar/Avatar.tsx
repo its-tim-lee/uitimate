@@ -5,7 +5,7 @@ import { casing } from "#/helpers/utils.ts"
 
 const avatarVariants = tv({
   slots: {
-    root: ["tw:relative tw:h-10 tw:w-10 tw:shrink-0 tw:overflow-hidden tw:rounded-full"],
+    root: ["tw:relative tw:h-10 tw:w-10 tw:block tw:overflow-hidden tw:rounded-full"],
     image: ["tw:aspect-square tw:h-full tw:w-full"],
     fallback: ["tw:flex tw:h-full tw:w-full tw:items-center tw:justify-center tw:rounded-full tw:bg-muted"],
   }
