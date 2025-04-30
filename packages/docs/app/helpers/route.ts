@@ -193,7 +193,7 @@ function createComponentNavItem(
 
   return {
     type: 'collapsible' as const,
-    title: casing.camelCase(coreComponentName),
+    title: casing.pascalCase(coreComponentName),
     href: '',
     labels: [],
     items,

@@ -25,7 +25,7 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
         if (tag === 'WIP') {
           return (
             <TooltipProvider key={tag}>
-              <Tooltip>
+              <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Cta
                     shapes={['badge']}
@@ -47,7 +47,7 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
         if (tag === 'ALPHA') {
           return (
             <TooltipProvider key={tag}>
-              <Tooltip>
+              <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Cta
                     shapes={['badge']}
@@ -69,7 +69,7 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
         if (tag === 'SEALED') {
           return (
             <TooltipProvider key={tag}>
-              <Tooltip>
+              <Tooltip delayDuration={0}>
                 <TooltipTrigger asChild>
                   <Cta
                     shapes={['badge']}
