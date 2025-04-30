@@ -38,7 +38,7 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
                   </Cta>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="tw:text-lg">We&apos;re working on this doc to make it more friendly to read!</p>
+                  <p className="tw:text-lg tw:w-[280px]">We&apos;re working on this doc to make it more friendly to read!</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -60,7 +60,32 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
                   </Cta>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="tw:text-lg">It&apos;s still in development and is only meant to be used for early adopters.</p>
+                  <p className="tw:text-lg tw:w-[280px]">It&apos;s still in development and is only meant to be used for early adopters.</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )
+        }
+        if (tag === 'SEALED') {
+          return (
+            <TooltipProvider key={tag}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Cta
+                    shapes={['badge']}
+                    size="sm"
+                    className="tw:cursor-help tw:leading-none tw:h-5"
+                    asChild
+                  >
+                    <span>{tag}</span>
+                  </Cta>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="tw:text-lg tw:w-[280px]">
+                    This is, in most of time, not meant to be installed manually and directly, but some our components do use this under the hood,
+                    so when you install those components, this component will be setup automatically for you.
+
+                  </p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>

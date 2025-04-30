@@ -1,5 +1,5 @@
-import { Heading, HeadingSubtitle, HeadingTitle } from "../ui/Heading/Heading.tsx";
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "../ui/InputOtp/InputOtp.tsx";
+import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx";
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "#/components/ui/InputOtp/InputOtp.tsx";
 import { useState } from "react";
 
 export default () => {

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-type Status = 'WIP' | 'NEW' | 'ALPHA';
+type Status = 'WIP' | 'NEW' | 'ALPHA' | 'SEALED';
 
 /**
  * Type definition for component metadata files (.meta.tsx)
