@@ -116,7 +116,6 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
         variant='outline'
         size='sm'
         onClick={() => {
-          console.log("clicked")
           setIsOpen(true)
         }}
         {...props}

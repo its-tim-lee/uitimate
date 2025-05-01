@@ -23,7 +23,6 @@ export default function TerminalCommandInstructor({
   // On mount, check localStorage for saved tab
   useEffect(() => {
     const savedTab = localStorage.getItem('terminal-cli-tab');
-    console.log('savedTab', savedTab);
     if (savedTab && CLI_TABS.includes(savedTab)) {
       setCliTab(savedTab);
     }
@@ -31,7 +30,6 @@ export default function TerminalCommandInstructor({
 
   // When cliTab changes, save to localStorage
   useEffect(() => {
-    console.log('cliTab', cliTab);
     if (cliTab !== 'pnpm') {
       localStorage.setItem('terminal-cli-tab', cliTab);
     } else {

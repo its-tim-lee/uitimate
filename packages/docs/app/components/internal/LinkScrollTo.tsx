@@ -74,7 +74,6 @@ const LinkScrollTo = ({
   // Attempt to find and scroll to the target element
   const attemptScroll = useCallback(() => {
     const targetElement = document.getElementById(to);
-    console.log('Attempt', retryCount, 'looking for', to, '- found:', !!targetElement);
 
     if (targetElement) {
       // Element found, perform the scroll

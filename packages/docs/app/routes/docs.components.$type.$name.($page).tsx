@@ -46,7 +46,6 @@ const tryImportRawContent = async (demoId: string) => {
  */
 export default () => {
   const { type, key, name, page, doc, meta } = useLoaderData<typeof loader>();
-  console.log('meta', meta);
   if (type === 'core' && page === 'changelog') {
     return (
       <DocPageLayout>
