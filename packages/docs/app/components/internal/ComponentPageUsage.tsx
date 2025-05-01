@@ -23,8 +23,6 @@ type ComponentPageUsageProps = {
 }
 
 export default ({ demoId, anatomy, preview, enableHeading = false, setup }: ComponentPageUsageProps) => {
-  console.log('anatomy', anatomy)
-  console.log('demoId', demoId)
   const [activeTab, setActveTab] = useState('preview');
   const [touchedTab, setTouchedTab] = useState(activeTab);
   const [isDialogOpening, setIsDialogOpening] = useState(false);
