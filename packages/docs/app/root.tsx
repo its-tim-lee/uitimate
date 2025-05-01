@@ -14,9 +14,10 @@ import pkg from "../package.json";
 import type { Route } from "./+types/root";
 import cssHref from "./style/index.css?url";
 import { Toaster } from "#/components/ui/Toast/Toast";
-const colorSchemeCode = await import(
-  "#/components/internal/color-scheme-control/fout-preventer.ts?raw"
-);
+// WARN: currently, enabling this will not only cause hydration error, but fail the production build
+// const colorSchemeCode = await import(
+//   "#/components/internal/color-scheme-control/fout-preventer.ts?raw"
+// );
 import SiteHeader from "#/components/internal/SiteHeader.tsx";
 
 /**
@@ -73,7 +74,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export function HydrateFallback({ loaderData }: Route.ComponentProps) {
-  console.log("🔥 HydrateFallback", loaderData);
   return <p>Loading...{loaderData.version}</p>;
 }
 
