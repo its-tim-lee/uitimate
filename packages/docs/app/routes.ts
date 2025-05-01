@@ -9,7 +9,7 @@ import { flatRoutes } from "@react-router/fs-routes";
 export default [
   ...(await flatRoutes({
     rootDirectory: "routes",
-    ignoredRouteFiles: ["routes/not-a-route.tsx", "routes/**/*.test.{ts,tsx}"],
+    ignoredRouteFiles: ["routes/**/*.test.{ts,tsx}"],
   }))
 ] satisfies RouteConfig;
 
