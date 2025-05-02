@@ -199,6 +199,7 @@ const VersatileTabs2Content = ({
       {showCodeFirst ? (
         <>
           <CodeBlock
+            id={demoId}
             showPreviewToggle={true} // Always allow toggling back to preview
             previewVisible={isPreviewVisible}
             onTogglePreview={() => togglePreviewVisibility(value)}
@@ -228,7 +229,7 @@ const VersatileTabs2Content = ({
               {caption}
             </div>
           )}
-          {isCodeVisible && showCode && <CodeBlock>{codeString}</CodeBlock>}
+          {isCodeVisible && showCode && <CodeBlock id={demoId}>{codeString}</CodeBlock>}
         </>
       )}
     </TabsContentPrimitive>
