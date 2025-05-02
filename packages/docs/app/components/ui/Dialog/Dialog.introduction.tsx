@@ -20,7 +20,7 @@ export default () => {
       <p>
         Here's how the component is structured:
       </p>
-      <CodeBlock>{meta.anatomy}</CodeBlock>
+      <CodeBlock>{meta.anatomy ? String(meta.anatomy) : ''}</CodeBlock>
       <h3>1️⃣ {`<Dialog/>`}</h3>
       <p className="tw:leading-loose">
         Our <code className='tw:code'>{`<dialog>`}</code> is built on top of <Link className="tw:link" to='https://headlessui.com/react/dialog' >these 3 core components</Link>

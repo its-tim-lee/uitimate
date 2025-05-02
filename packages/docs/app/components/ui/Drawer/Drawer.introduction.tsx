@@ -18,7 +18,7 @@ export default () => {
       <p>
         Here's how the component is structured:
       </p>
-      <CodeBlock>{meta.anatomy}</CodeBlock>
+      <CodeBlock>{meta.anatomy ? String(meta.anatomy) : ''}</CodeBlock>
 
       <br />
       <p>

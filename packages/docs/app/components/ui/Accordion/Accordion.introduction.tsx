@@ -18,7 +18,7 @@ export default () => {
         This component uses the anatomy:
       </p>
       <CodeBlock>
-        {meta.anatomy}
+        {meta.anatomy ? String(meta.anatomy) : ''}
       </CodeBlock>
 
       <p>
