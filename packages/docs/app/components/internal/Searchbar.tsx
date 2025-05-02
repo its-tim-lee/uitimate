@@ -130,6 +130,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
             ref={inputRef}
             placeholder="Type a command or search..."
             value={search}
+            onBlur={() => track('search', { search_term: search })}
             onValueChange={setSearch}
           />
           <CommandList ref={listRef}>
@@ -140,7 +141,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
                 <CommandItem
                   key={page.href}
                   value={page.fullTitle}
-                  onSelect={() => setIsOpen(false)}
+                  onSelect={() => track('select_content', { content_id: page.fullTitle })}
                 >
                   <a
                     href={page.href}
