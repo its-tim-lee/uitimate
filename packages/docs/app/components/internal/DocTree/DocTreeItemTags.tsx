@@ -19,10 +19,33 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
   const allTags = [...(tags.root || []), ...(tags.tutorial || [])]
   if (allTags.length === 0) return null
 
+  // Mapping for special tags
+  const tagConfig: Record<string, {
+    variant?: string
+    className?: string
+    tooltip?: string
+  }> = {
+    WIP: {
+      variant: 'secondary',
+      className: 'tw:cursor-help tw:bg-yellow-400 tw:dark:text-black tw:leading-none tw:h-5',
+      tooltip: `This doc is still in construction to be more friendly to read.`,
+    },
+    ALPHA: {
+      variant: 'destructive',
+      className: 'tw:cursor-help tw:leading-none tw:h-5',
+      tooltip: `It's still in development and is only meant to be used for early adopters.`,
+    },
+    SEALED: {
+      className: 'tw:cursor-help tw:leading-none tw:h-5',
+      tooltip: `This is, in most of time, not meant to be installed manually and directly, but some our components do use this under the hood, so when you install those components, this component will be setup automatically for you.`,
+    },
+  }
+
   return (
     <div className="tw:flex tw:gap-1 tw:ml-2">
       {allTags.map((tag) => {
-        if (tag === 'WIP') {
+        const config = tagConfig[tag]
+        if (config) {
           return (
             <TooltipProvider key={tag}>
               <Tooltip delayDuration={0}>
@@ -30,62 +53,15 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
                   <Cta
                     shapes={['badge']}
                     size="sm"
-                    variant="secondary"
-                    className="tw:cursor-help tw:bg-yellow-400 tw:dark:text-black tw:leading-none tw:h-5"
+                    variant={config.variant as any}
+                    className={config.className}
                     asChild
                   >
                     <span>{tag}</span>
                   </Cta>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="tw:text-lg tw:w-[280px]">We&apos;re working on this doc to make it more friendly to read!</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          )
-        }
-        if (tag === 'ALPHA') {
-          return (
-            <TooltipProvider key={tag}>
-              <Tooltip delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <Cta
-                    shapes={['badge']}
-                    size="sm"
-                    variant="destructive"
-                    className="tw:cursor-help tw:leading-none tw:h-5"
-                    asChild
-                  >
-                    <span>{tag}</span>
-                  </Cta>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="tw:text-lg tw:w-[280px]">It&apos;s still in development and is only meant to be used for early adopters.</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          )
-        }
-        if (tag === 'SEALED') {
-          return (
-            <TooltipProvider key={tag}>
-              <Tooltip delayDuration={0}>
-                <TooltipTrigger asChild>
-                  <Cta
-                    shapes={['badge']}
-                    size="sm"
-                    className="tw:cursor-help tw:leading-none tw:h-5"
-                    asChild
-                  >
-                    <span>{tag}</span>
-                  </Cta>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="tw:text-lg tw:w-[280px]">
-                    This is, in most of time, not meant to be installed manually and directly, but some our components do use this under the hood,
-                    so when you install those components, this component will be setup automatically for you.
-
-                  </p>
+                  <p className="tw:text-lg tw:w-[280px]">{config.tooltip}</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
