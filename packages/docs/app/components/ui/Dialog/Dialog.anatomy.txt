@@ -1,0 +1,10 @@
+<Dialog>
+  <DialogHeading>
+    <DialogTitle/>
+    <DialogSubtitle/>
+  </DialogHeading>
+
+  {/* some content */}
+
+  <DialogAction/>
+</Dialog>
