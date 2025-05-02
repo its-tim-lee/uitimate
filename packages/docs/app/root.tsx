@@ -14,7 +14,7 @@ import pkg from "../package.json";
 import type { Route } from "./+types/root";
 import cssHref from "./style/index.css?url";
 import { Toaster } from "#/components/ui/Toast/Toast";
-import '#/helpers/firebase/index.ts'
+import { InitializeGA } from "#/helpers/analytics/ga/index.ts";
 // WARN: currently, enabling this will not only cause hydration error, but fail the production build
 // const colorSchemeCode = await import(
 //   "#/components/internal/color-scheme-control/fout-preventer.ts?raw"
@@ -60,6 +60,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <title>Uitimate</title>
       </head>
       <body className='tw:h-[1000px]!'>
+        <InitializeGA />
         <Toaster />
         <main className='tw:h-[1000px]!'>
           {/* children will be the root Component, ErrorBoundary, or HydrateFallback */}
