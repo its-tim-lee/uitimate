@@ -29,17 +29,16 @@ export const InitializeGA = () => {
 
 export const track = (event: string, params?: Record<string, any>) => {
   if (typeof window === 'undefined') return; // Only run client-side
+  if (process.env.NODE_ENV !== 'production') {
+    console.group('TRACKING')
+    console.log('Event = ', event)
+    console.log('Params = ', params)
+    console.groupEnd()
+    return;
+  }
   if (!window.gtag) return;
   try {
-    if (process.env.NODE_ENV !== 'production') {
-      console.group('TRACKING')
-      console.log('Event = ', event)
-      console.log('Params = ', params)
-      console.groupEnd()
-    }
-    else {
-      window.gtag('event', event, params);
-    }
+    window.gtag('event', event, params);
   } catch (e) {
     console.error('Error tracking event:', e);
   }
