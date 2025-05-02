@@ -14,6 +14,8 @@ import {
 import { Icon } from "../ui/Icon/Icon";
 import type { ComponentProps } from "react";
 import siteData, { type DocTreeItem } from "#/data/site";
+import hotkeys from "hotkeys-js"
+import { track } from "#/helpers/analytics/ga/index.ts";
 
 // Define a type for the structured search results
 type SearchablePage = {
@@ -31,24 +33,13 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
   const [search, setSearch] = React.useState('');
 
   React.useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
-        if (
-          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
-          e.target instanceof HTMLInputElement ||
-          e.target instanceof HTMLTextAreaElement ||
-          e.target instanceof HTMLSelectElement
-        ) {
-          return
-        }
-
-        e.preventDefault()
-        setIsOpen((open) => !open)
-      }
-    }
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
-  }, [])
+    hotkeys('alt+k', (e) => {
+      e.preventDefault();
+      setIsOpen((open) => !open);
+      track('open_searchbar_by_hotkey')
+    });
+    return () => hotkeys.unbind('alt+k');
+  }, []);
 
   React.useEffect(() => {
     // Ensure CommandList scrolls to top when dialog opens or search changes
@@ -129,7 +120,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
           'tw:pointer-events-none tw:select-none tw:gap-1 tw:rounded tw:border tw:bg-muted tw:px-1.5 tw:font-mono tw:text-[12px] tw:font-medium',
           'tw:sm:flex tw:items-center'
         )}>
-          <span className="tw:text-[16px]">⌘</span>K
+          <span className="tw:text-[16px]">⌥</span>K
         </kbd>
       </Cta>
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
