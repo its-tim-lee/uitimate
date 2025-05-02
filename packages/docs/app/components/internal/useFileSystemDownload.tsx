@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { serializeError, deserializeError } from 'serialize-error';
+import { track } from '#/helpers/analytics/ga/index.ts';
 
 export interface FileToDownload {
   // path relative to the root chosen by the user, e.g. 'helpers/utils.ts' or 'helpers/hooks/index.ts'
@@ -40,6 +42,7 @@ export function useFileSystemDownload() {
       }
       return true;
     } catch (e: any) {
+      track('exception', { error: serializeError(e), description: 'failed to perform File System API' });
       setError(e.message);
       return false;
     } finally {

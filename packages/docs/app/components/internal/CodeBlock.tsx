@@ -3,9 +3,9 @@ import { nightOwl } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Cta } from "#/components/ui/Cta/Cta"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { Icon } from "#/components/ui/Icon/Icon"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/Collapsible/Collapsible'
-import { cn } from "#/helpers/utils"
+import { track } from "#/helpers/analytics/ga/index.ts"
 
 interface CodeBlockProps extends Omit<ComponentProps<typeof SyntaxHighlighter>, 'children'> {
   showPreviewToggle?: boolean;
@@ -13,23 +13,40 @@ interface CodeBlockProps extends Omit<ComponentProps<typeof SyntaxHighlighter>, 
   onTogglePreview?: () => void;
   children: string;
   expandButtonTitle?: string;
+  file?: string;
 }
 
-export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, children, expandButtonTitle = 'View Code', ...props }: CodeBlockProps) => {
+export const CodeBlock = ({ id, showPreviewToggle, previewVisible, onTogglePreview, children, expandButtonTitle = 'View Code', file, ...props }: CodeBlockProps) => {
   const [isCopied, setIsCopied] = useState(false)
   const [isOpened, setIsOpened] = useState(false)
+  const [codeString, setCodeString] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    if (file) {
+      import(/* @vite-ignore */ `./../../${file}?raw`)
+        .then(mod => {
+          if (isMounted) setCodeString(mod.default || mod);
+        })
+        .catch(() => {
+          if (isMounted) setCodeString('// Failed to load file');
+        });
+    } else {
+      setCodeString(children as string);
+    }
+    return () => { isMounted = false; };
+  }, [file, children]);
 
   const handleCopy = async () => {
-    const codeToCopy = children as string;
-    if (codeToCopy) {
-      await navigator.clipboard.writeText(codeToCopy);
+    if (codeString) {
+      track('copy_code', { id });
+      await navigator.clipboard.writeText(codeString);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     }
-  }
+  };
 
-  const content = children as string;
-  const lineCount = (content.match(/\n/g)?.length ?? 0) + 1;
+  const lineCount = (codeString?.match(/\n/g)?.length ?? 0) + 1;
   const shouldExpand = lineCount > 10;
 
   if (!shouldExpand) {
@@ -37,7 +54,7 @@ export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, 
     return (
       <div className="tw:relative tw:overflow-hidden tw:rounded-md">
         <div className="tw:absolute tw:top-2 tw:right-2 tw:z-10 tw:flex tw:gap-2">
-          <Cta
+          {id && <Cta
             size='sm'
             variant='ghost'
             shapes={['icon']}
@@ -45,7 +62,7 @@ export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, 
             onClick={handleCopy}
           >
             <Icon icon={isCopied ? 'lucide:check' : 'lucide:copy'} />
-          </Cta>
+          </Cta>}
         </div>
         <SyntaxHighlighter
           language="tsx"
@@ -53,7 +70,7 @@ export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, 
           {...props}
           customStyle={{ margin: 0, borderRadius: 0 }}
         >
-          {content}
+          {codeString ?? ''}
         </SyntaxHighlighter>
       </div>
     );
@@ -63,7 +80,7 @@ export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, 
     <Collapsible className="tw:relative tw:overflow-hidden tw:rounded-md" open={isOpened} onOpenChange={setIsOpened}>
       {/* Copy button always top right */}
       <div className="tw:absolute tw:top-2 tw:right-2 tw:z-10 tw:flex tw:gap-2">
-        <Cta
+        {id && <Cta
           size='sm'
           variant='ghost'
           shapes={['icon']}
@@ -71,11 +88,11 @@ export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, 
           onClick={handleCopy}
         >
           <Icon icon={isCopied ? 'lucide:check' : 'lucide:copy'} />
-        </Cta>
+        </Cta>}
         {/* Expand/Collapse button at top right when expanded */}
         {isOpened && (
           <CollapsibleTrigger asChild>
-            <Cta variant='ghost' size="sm" className='tw:shadow-none tw:bg-white tw:text-black '>
+            <Cta variant='ghost' size="sm" className='tw:shadow-none tw:bg-white tw:text-black' onClick={() => id && track('collapse_code', { id })}>
               Collapse
             </Cta>
           </CollapsibleTrigger>
@@ -90,7 +107,7 @@ export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, 
             {...props}
             customStyle={{ margin: 0, borderRadius: 0 }}
           >
-            {content}
+            {codeString ?? ''}
           </SyntaxHighlighter>
         </div>
       </CollapsibleContent>
@@ -99,7 +116,7 @@ export const CodeBlock = ({ showPreviewToggle, previewVisible, onTogglePreview, 
         <div className="tw:pointer-events-none tw:absolute tw:inset-x-0 tw:bottom-0 tw:h-16 tw:bg-gradient-to-b tw:from-transparent tw:to-zinc-950/90 tw:rounded-b-md tw:flex tw:items-end tw:justify-center">
           <div className="tw:pb-2 tw:pointer-events-auto">
             <CollapsibleTrigger asChild>
-              <Cta variant='ghost' size="sm" className='tw:shadow-none tw:bg-white tw:text-black '>
+              <Cta variant='ghost' size="sm" className='tw:shadow-none tw:bg-white tw:text-black ' onClick={() => id && track('expand_code', { id })}>
                 {expandButtonTitle}
               </Cta>
             </CollapsibleTrigger>

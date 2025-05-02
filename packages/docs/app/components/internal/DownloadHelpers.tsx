@@ -7,6 +7,9 @@ import FileSystemApiDialog from './FileSystemApiDialog';
 import { useFileSystemDownload } from './useFileSystemDownload';
 import { usePathPreferences } from './PathPreferencesContext';
 import type { FileToDownload } from './useFileSystemDownload';
+import { serializeError, deserializeError } from 'serialize-error';
+import { track } from '#/helpers/analytics/ga/index.ts';
+
 
 const GITHUB_BASE =
   'https://raw.githubusercontent.com/its-tim-lee/uitimate/main/packages/docs/app/helpers';
@@ -44,12 +47,14 @@ export default function DownloadHelpers() {
       ];
 
       const success = await downloadFiles(files);
+
       if (success) {
         toast('Helpers folder downloaded!', {
           description: 'The "helpers" folder has been saved to your folder.'
         });
       }
     } catch (e: any) {
+      track('exception', { error: serializeError(e), description: 'fail to download helpers' });
       // Let the useFileSystemDownload hook handle File System API errors
       if (!e.message.includes('File System API')) {
         toast('Download failed', { description: e.message });

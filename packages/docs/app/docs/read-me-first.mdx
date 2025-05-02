@@ -1,7 +1,7 @@
 ---
 title: read-me-first
 ---
-## Setup **<u>Uitimate</u>**
+## Setup **Uitimate**
 
 Unlike **shadcn/ui**, we have almost no installation steps with far more easier setup.
 You're good to go as long as you're in a 1) React-dedicated environment (e.g., **Next**, **Remix**, …) with 2) **TypeScript**, and 3) **Tailwind** v4 enabled.
@@ -20,7 +20,7 @@ import ... from "#/..."
 where `#` is called an alias, and it must be configured ahead of time so that our code will work in your project.
 
 <details className="tw:cursor-pointer">
-<summary>**DEEP DIVE**: Why `#`? Why not `@`?</summary>
+<TrackableSummary id="setup__why-this-alias-symbol">**DEEP DIVE**: Why `#`? Why not `@`?</TrackableSummary>
 <div className="tw:pl-4">
   Using `#` is actually the best practice, because it leverages **Node.js**'s native subpath imports ⎯
   entries in the "imports" field of your package.json must start with `#` to distinguish them from package specifiers,
@@ -43,7 +43,7 @@ where `#` is called an alias, and it must be configured ahead of time so that ou
 Now follow the steps below to set up the corresponding files:
 
 <details className="tw:cursor-pointer">
-<summary>tsconfig.json</summary>
+<TrackableSummary id="setup__tsconfig-instruction">tsconfig.json</TrackableSummary>
   <div>
   Usually you will have this **TypeScript** file, but the name can be slightly different (e.g., maybe it's called `tsconfig.app.json`) depends on your choice of scaffolding tool (e.g., **Vite**, **Webpack**, …).
   ```json
@@ -62,7 +62,7 @@ Now follow the steps below to set up the corresponding files:
 </details>
 
 <details className="tw:cursor-pointer">
-  <summary>the build tool configuration file</summary>
+<TrackableSummary id="setup__build-tool-instruction">the build tool configuration file</TrackableSummary>
   <div className="tw:pl-4">
   This means that you're using something like **Vite** or **Webpack**, so you need to tell it what `#` means to allow it to analyze and/or compile correctly. Below is an example for **Vite**, but this is extremely common and easy to do in all other build tools:
   ```ts
@@ -80,7 +80,7 @@ Now follow the steps below to set up the corresponding files:
 </details>
 
 <details className="tw:cursor-pointer">
-<summary>package.json</summary>
+<TrackableSummary id="setup__package-json-instruction">package.json</TrackableSummary>
 <div>
   ```json
   {
@@ -128,7 +128,7 @@ where it should be placed, and even what its name should be are up to you, but m
 (typically it should be imported in the application entry file),
 otherwise all our components in your project will look UGLY!
 
-```tsx file=./../style/core.css
+```tsx file="style/core.css" id="tailwind-config"
 ```
 
 <br />

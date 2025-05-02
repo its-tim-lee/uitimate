@@ -3,15 +3,20 @@ import { usePathPreferences } from './PathPreferencesContext';
 import PathAdjuster from './PathAdjusterWrapper';
 import DownloadHelpers from './DownloadHelpers';
 import { PathPreferencesProvider } from './PathPreferencesContext';
-
+import { TrackableSummary } from './TrackableSummary';
+import { track } from '#/helpers/analytics/ga/index.ts';
 function _HelpersPathSection() {
   const { preferences, updateHelpersPath } = usePathPreferences();
-
+  const changePath = (path: string) => {
+    updateHelpersPath(path);
+    track('change_helpers_path', { to: path });
+  }
   return (
     <details>
-      <summary className="tw:cursor-pointer">
+      <TrackableSummary id="setup__helpers-path-instruction">
         <span className='tw:code'>import ... from '#/helpers/...'</span>
-      </summary>
+      </TrackableSummary>
+
       <div className="tw:pl-4">
         <p>
           We built some helpers to make the code more maintainable,
@@ -20,7 +25,7 @@ function _HelpersPathSection() {
         </p>
         <PathAdjuster
           adjustablePath={preferences.helpersPath}
-          onChange={updateHelpersPath}
+          onChange={changePath}
         />
         <p>
           Next, you need to download the "helpers" folder to your project
@@ -44,11 +49,15 @@ export const HelpersPathSection = () => {
 
 function _ComponentsPathSection() {
   const { preferences, updateComponentsPath } = usePathPreferences();
+  const changePath = (path: string) => {
+    updateComponentsPath(path);
+    track('change_components_path', { to: path });
+  }
   return (
     <details>
-      <summary className="tw:cursor-pointer">
+      <TrackableSummary id="setup__components-path-instruction">
         <span className='tw:code'>import ... from '#/components/ui/...'</span>
-      </summary>
+      </TrackableSummary>
       <div className="tw:pl-4">
         <p>
           The path
@@ -59,7 +68,7 @@ function _ComponentsPathSection() {
         </p>
         <PathAdjuster
           adjustablePath={preferences.componentsPath}
-          onChange={updateComponentsPath}
+          onChange={changePath}
         />
       </div>
     </details>
