@@ -20,7 +20,7 @@ export default function DocPageLayout({ children }: { children: React.ReactNode 
         <Sidebar className="tw:pt-0 tw:border-r tw:h-svh tw:overflow-y-scroll tw:md:block">
           <DocsSidebar />
         </Sidebar>
-        <SidebarPeer className="tw:p-4">
+        <SidebarPeer className="tw:p-4 tw:h-svh tw:overflow-y-scroll">
           {children}
         </SidebarPeer>
       </SidebarLayout>
