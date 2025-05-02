@@ -2,6 +2,7 @@ import { useState, useEffect, Children, isValidElement } from 'react';
 import { Cta } from '../ui/Cta/Cta.tsx';
 import { Icon } from "../ui/Icon/Icon.tsx";
 import { Tabs, TabsList, TabsTrigger } from '../ui/Tabs/Tabs.tsx';
+import { track } from '#/helpers/analytics/ga/index.ts';
 
 const CLI_TABS = ["pnpm", "yarn", "npm"];
 
@@ -44,6 +45,7 @@ export default function TerminalCommandInstructor({
   const copy = () => {
     navigator.clipboard.writeText(cliForTab(cliTab));
     setCopied(true);
+    track('copy_cli_command', { manager: cliTab, command: cli });
     setTimeout(() => setCopied(false), 1500);
   }
 
