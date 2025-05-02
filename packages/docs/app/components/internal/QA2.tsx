@@ -1,7 +1,8 @@
 import type { ComponentProps, ReactNode } from "react";
-import { useId } from "react";
+import { useId, Children } from "react";
 import { Accordion, AccordionItem as AccordionItemPrimitive, AccordionTrigger as AccordionTriggerPrimitive, AccordionContent as AccordionContentPrimitive } from "#/components/ui/Accordion/Accordion";
 import { cn } from "#/helpers/utils";
+import { track } from "#/helpers/analytics/ga/index.ts";
 
 type QA2Props = {
   value?: string;
@@ -25,13 +26,23 @@ const QA2Item = ({ className, value, ...props }: ComponentProps<typeof Accordion
     <AccordionItemPrimitive key={id} value={value ?? id} className={className} {...props} />
   )
 }
-const QA2Trigger = ({ className, children, ...props }: ComponentProps<typeof AccordionTriggerPrimitive>) => (
-  <AccordionTriggerPrimitive className={className} {...props}>
-    <span className='tw:leading-loose'>
-      {children}
-    </span>
-  </AccordionTriggerPrimitive>
-);
+
+const QA2Trigger = ({ id, children, onClick, ...props }: ComponentProps<typeof AccordionTriggerPrimitive>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setTimeout(() => {
+      const state = (e.target as HTMLButtonElement).getAttribute('data-state');
+      if (state === 'open') track('check_qa', { id });
+    }, 0);
+    if (onClick) onClick(e);
+  };
+  return (
+    <AccordionTriggerPrimitive onClick={handleClick} {...props}>
+      <span className='tw:leading-loose'>
+        {children}
+      </span>
+    </AccordionTriggerPrimitive>
+  );
+};
 
 const QA2Content = ({ className, ...props }: ComponentProps<typeof AccordionContentPrimitive>) => (
   <AccordionContentPrimitive className={cn("tw:text-muted-foreground", className)} {...props} />
