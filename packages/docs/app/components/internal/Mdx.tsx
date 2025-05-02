@@ -21,6 +21,7 @@ import { CodeBlock } from './CodeBlock';
 import PathAdjuster from './PathAdjusterWrapper';
 import DownloadHelpers from './DownloadHelpers';
 import { HelpersPathSection, ComponentsPathSection } from './PathPreferenceSection';
+import { TrackableSummary } from './TrackableSummary';
 
 const components = {
   PathAdjuster,
@@ -129,6 +130,7 @@ const components = {
   },
   ComponentDependencyNotice,
   CodeBlock,
+  TrackableSummary,
 }
 
 
