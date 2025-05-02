@@ -5,6 +5,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '#/components/ui/Tooltip/Tooltip.tsx'
+import { track } from '#/helpers/analytics/ga/index.ts'
 
 type DocTreeItemTagsProps = {
   tags?: {
@@ -46,6 +47,23 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
       {allTags.map((tag) => {
         const config = tagConfig[tag]
         if (config) {
+          // Add hover tracking logic
+          let hoverTimeout: NodeJS.Timeout | null = null;
+          let hasTracked = false;
+
+          const handleMouseEnter = () => {
+            hasTracked = false;
+            hoverTimeout = setTimeout(() => {
+              track(`check_tooltip_${tag}`)
+              hasTracked = true;
+            }, 1000)
+          }
+
+          const handleMouseLeave = () => {
+            if (hoverTimeout) clearTimeout(hoverTimeout)
+            hoverTimeout = null;
+          }
+
           return (
             <TooltipProvider key={tag}>
               <Tooltip delayDuration={0}>
@@ -56,6 +74,8 @@ export function DocTreeItemTags({ tags }: DocTreeItemTagsProps) {
                     variant={config.variant as any}
                     className={config.className}
                     asChild
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                   >
                     <span>{tag}</span>
                   </Cta>
