@@ -1,0 +1,9 @@
+<Form>
+  <FormItem>
+    <FormLabel/>
+    <FormControl/>
+    <FormDescription/>
+    <FormMessage />
+  </FormItem>
+  {/* more <FormItem/> ... */}
+</Form>
