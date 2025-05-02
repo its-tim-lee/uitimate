@@ -1,4 +1,4 @@
-## What is it?
+## TL;DR
 
 #### Short answer
 
@@ -8,20 +8,25 @@
 
 It's a replacement for [shadcn/ui](https://github.com/shadcn-ui/ui) with major improvements to greatly enhance DX through engineering best practices and new innovations.
 
-You can use it to build your design system, or to develop UI faster and more easily. It solves the dilemma of choosing between traditional component libraries (e.g., **MUI**) and headless ones (e.g., **Radix**).
+You can use it to build your design system or develop UI faster and more easily. It solves the dilemma of choosing between traditional component libraries (e.g., **MUI**) and headless ones (e.g., **Radix**).
 
-## Why was it created?
 
-The ultimate goal is to enable Vibe Coding for UI development directly from **Figma**, integrated with your existing codebase. Depending on your experience, you might be surprised by the relationship between that goal and **Uitimate**.
+## Motivation
 
-Frankly, building UIs REALLY, REALLY SUCKS ⎯ and even feels pointless in this AI era. While AI tends to prefer component libraries that aren't published on NPM (I call this "VPM": Virtual Package Management), we're still far from the goal I just mentioned.
+The ultimate goal is to enable [Vibe Coding](https://en.wikipedia.org/wiki/Vibe_coding) for UI development directly from **Figma**, integrating your existing component library in the codebase. Depending on your experience, you might be surprised by the relationship between that goal and **Uitimate**.
 
-So I'm building an AI system ⎯ a visual CMS that lets developers auto-replicate UI from **Figma** by interacting with AI, without coding, and without the many limitations imposed by big players (e.g., **Builder.io**) in this field. Our "major improvements" over **shadcn/ui** are actually a necessary part of the infrastructure for this system.
+Frankly, building UIs REALLY, REALLY SUCKS ⎯ and even feels pointless in this AI era. While AI tends to prefer component libraries that aren't published on NPM (I call this "VPM": Virtual Package Management, which is adopted by **Uitimate** and **shadcn/ui**), we're still far from the goal I just mentioned.
 
-I believe **Uitimate** will be extremely helpful for people to use directly, even without AI, because…
+So I'm building an AI system ⎯ a visual CMS that lets developers, without coding, auto-replicate UI from **Figma** by interacting with AI, without many of the limitations imposed by big players (e.g., **Builder.io**) in this field. Our "major improvements" over **shadcn/ui** are actually a necessary part of the infrastructure for this system.
+
+While the AI system is currently private, **Uitimate** is public because I believe it should be extremely helpful for people to use directly, even without AI:
+
+- You don't suffer from the dilemma ⎯ [the pain](https://redmonk.com/kholterhoff/2025/04/22/ui-component-libraries-shadcn-ui-and-the-revenge-of-copypasta/) of using a traditional component library, or being overwhelmed by the complexity and workload of building one based on a headless library from scratch. The VPM approach is actually the starting point of the beauty from the balance.
 
 - The overall software design quality of **Uitimate** should be good enough to make development delightful, with no major hassles compared to using **shadcn/ui**.
-- We'll show you how we make the component library "scalable," so you don't suffer from the dilemma ⎯ the pain of using a traditional component library, or being overwhelmed by the complexity of building one based on a headless library. The solution is the relevant concepts based on VPM. Since it's a new paradigm, it may take time for people to fully understand its power, but we'll release more articles to address that!
+
+- I'll gradually show you how to make the component library "scalable": **shadcn/ui** is just a start, but **Uitimate** will push it to the next level in terms of scalability for both humans and AI. There are lots of relevant concepts around VPM, but since it's a new paradigm, not many people talk about its potential, which is why it's worth a few words.
 
 
-And that's why I public **Uitimate**.
+## The vision
+**Uitimate** is currently an innovative component library, and it will always be open source. Ultimately, it will become a platform integrated with AI and a visual CMS that helps developers enjoy UI development while spending time on something meaningful.
