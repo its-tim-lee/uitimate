@@ -16,6 +16,7 @@ import type { ComponentProps } from "react";
 import siteData, { type DocTreeItem } from "#/data/site";
 import hotkeys from "hotkeys-js"
 import { track } from "#/helpers/analytics/ga/index.ts";
+import { useNavigate } from 'react-router';
 
 // Define a type for the structured search results
 type SearchablePage = {
@@ -31,6 +32,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const listRef = React.useRef<HTMLDivElement>(null);
   const [search, setSearch] = React.useState('');
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     hotkeys('alt+k', (e) => {
@@ -141,25 +143,20 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
                 <CommandItem
                   key={page.href}
                   value={page.fullTitle}
-                  onSelect={() => track('select_content', { content_id: page.fullTitle })}
+                  onSelect={() => {
+                    track('select_content', { content_id: page.fullTitle });
+                    navigate(page.href);
+                  }}
                 >
-                  <a
-                    href={page.href}
-                    aria-label={page.title}
-                    tabIndex={-1}
-                    className="tw:flex tw:items-center tw:w-full tw:h-full focus:tw-outline-none"
-                    onClick={e => e.stopPropagation()} // Prevent CommandItem from firing onClick again
-                  >
-                    <Icon icon={page.icon} className="tw:mr-4" />
-                    <div className="tw:flex tw:flex-col tw:truncate">
-                      <span className="tw:truncate">{page.title}</span>
-                      {page.context && (
-                        <span className="tw:text-xs tw:text-muted-foreground tw:truncate">
-                          {page.context}
-                        </span>
-                      )}
-                    </div>
-                  </a>
+                  <Icon icon={page.icon} className="tw:mr-4" />
+                  <div className="tw:flex tw:flex-col tw:truncate">
+                    <span className="tw:truncate">{page.title}</span>
+                    {page.context && (
+                      <span className="tw:text-xs tw:text-muted-foreground tw:truncate">
+                        {page.context}
+                      </span>
+                    )}
+                  </div>
                 </CommandItem>
               ))}
             </CommandGroup>
