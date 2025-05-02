@@ -148,34 +148,25 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
                 <CommandItem
                   key={page.href}
                   value={page.fullTitle}
-                  onSelect={(value) => {
-                    // Close the dialog regardless of navigation method
-                    setIsOpen(false);
-
-                    // Use a link element to handle the navigation instead
-                    // This lets the browser handle Ctrl/Cmd+Click naturally
-                    const a = document.createElement('a');
-                    a.href = page.href;
-                    // Make it behave like a normal link for accessibility
-                    a.rel = 'noopener noreferrer';
-                    // For screen readers
-                    a.setAttribute('aria-label', page.title);
-                    // Let the browser decide how to open it based on user's click behavior
-                    // The browser naturally handles Ctrl/Cmd+Click to open in new tab
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                  }}
+                  onSelect={() => setIsOpen(false)}
                 >
-                  <Icon icon={page.icon} className="tw:mr-2" />
-                  <div className="tw:flex tw:flex-col tw:truncate">
-                    <span className="tw:truncate">{page.title}</span>
-                    {page.context && (
-                      <span className="tw:text-xs tw:text-muted-foreground tw:truncate">
-                        {page.context}
-                      </span>
-                    )}
-                  </div>
+                  <a
+                    href={page.href}
+                    aria-label={page.title}
+                    tabIndex={-1}
+                    className="tw:flex tw:items-center tw:w-full tw:h-full focus:tw-outline-none"
+                    onClick={e => e.stopPropagation()} // Prevent CommandItem from firing onClick again
+                  >
+                    <Icon icon={page.icon} className="tw:mr-4" />
+                    <div className="tw:flex tw:flex-col tw:truncate">
+                      <span className="tw:truncate">{page.title}</span>
+                      {page.context && (
+                        <span className="tw:text-xs tw:text-muted-foreground tw:truncate">
+                          {page.context}
+                        </span>
+                      )}
+                    </div>
+                  </a>
                 </CommandItem>
               ))}
             </CommandGroup>
