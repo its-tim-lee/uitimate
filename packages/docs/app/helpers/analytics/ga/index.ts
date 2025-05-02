@@ -9,6 +9,7 @@ declare global {
 
 export const InitializeGA = () => {
   useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') return;
     const measurementId = 'G-NG3646V7SM';
     const script = document.createElement("script");
     script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
@@ -23,7 +24,6 @@ export const InitializeGA = () => {
     }
     document.head.appendChild(script);
   }, []);
-
   return null;
 }
 
