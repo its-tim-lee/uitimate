@@ -50,6 +50,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
 
   const autoFocusOnInputWhenOpen = () => {
     if (isOpen) {
+      setSearch('')
       const timer = setTimeout(() => { // Delay focus slightly to ensure the input is rendered and visible
         inputRef.current?.focus();
       }, 100);
