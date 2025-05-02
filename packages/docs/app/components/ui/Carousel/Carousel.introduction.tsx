@@ -18,7 +18,7 @@ export default () => {
       <p>
         This component follows this anatomy:
       </p>
-      <CodeBlock>{meta.anatomy}</CodeBlock>
+      <CodeBlock>{meta.anatomy ? String(meta.anatomy) : ''}</CodeBlock>
 
       <br />
       <h3>1️⃣ CarouselContent vs. CarouselItem</h3>

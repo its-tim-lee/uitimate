@@ -32,7 +32,7 @@ export default () => {
       <p>
         This component uses this simple anatomy:
       </p>
-      <CodeBlock>{meta.anatomy}</CodeBlock>
+      <CodeBlock>{meta.anatomy ? String(meta.anatomy) : ''}</CodeBlock>
       <p>
         Simple, right? The key thing to understand is that <code className="tw:code">CollapsibleContent</code>
         takes up space in the layout - whether it's collapsed or not, it will affect the surrounding elements and spacing!

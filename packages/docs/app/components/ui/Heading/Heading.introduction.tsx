@@ -34,7 +34,7 @@ export default () => {
       <p>
         This component follows this anatomy:
       </p>
-      <CodeBlock>{meta.anatomy}</CodeBlock>
+      <CodeBlock>{meta.anatomy ? String(meta.anatomy) : ''}</CodeBlock>
       <p>
         All child components are optional. If you only need a title, instead of the verbose:
       </p>
