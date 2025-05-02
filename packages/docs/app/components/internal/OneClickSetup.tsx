@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { generate } from '#/helpers/lock-info-generator';
 import pkg from '#/../package.json';
+import { track } from '#/helpers/analytics/ga/index.ts';
 import { toast } from '../ui/Toast/Toast.tsx';
 import TerminalCommandInstructor from './TerminalCommandInstructor';
 import { Cta } from '../ui/Cta/Cta.tsx';
@@ -10,6 +11,8 @@ import Banner from './InfoBanner.tsx';
 import FileSystemApiDialog from './FileSystemApiDialog';
 import { usePathPreferences } from './PathPreferencesContext';
 import { backOff } from 'exponential-backoff';
+import { TrackableSummary } from '#/components/internal/TrackableSummary.tsx';
+import { serializeError } from 'serialize-error';
 
 const GITHUB_RAW_BASE =
   'https://raw.githubusercontent.com/its-tim-lee/uitimate/main/packages/docs/app/components/ui';
@@ -147,6 +150,7 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
     // Check for File System API support
     // @ts-ignore
     if (typeof window.showDirectoryPicker !== 'function') {
+      track('not_support_file_system_api');
       setDialogOpen(true);
       return;
     }
@@ -171,6 +175,7 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
         description: 'All selected component source files have been saved to your folder.'
       });
     } catch (e: any) {
+      track('exception', { error: serializeError(e), description: `fail to download ${component} source files` });
       setError(e.message);
     }
     setDownloading(false);
@@ -214,7 +219,9 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
         {downloading ? 'Saving...' : 'Save Source Files'}
       </Cta>
       <details className='tw:mt-4'>
-        <summary className='tw:cursor-pointer'>Watch how to use "Save Source Files" correctly if this is your first time</summary>
+        <TrackableSummary id="save_source_files">
+          Watch how to use "Save Source Files" correctly if this is your first time
+        </TrackableSummary>
         <div>
           <p>
             This is VERY DIFFERENT from traditional "installation"
