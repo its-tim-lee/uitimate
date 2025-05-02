@@ -87,11 +87,10 @@ export default () => {
       {Component ? (
         type === 'recipe' ? (
           <div className="tw:prose tw:dark:prose-invert tw:max-w-none">
-            {meta && <ComponentPageHero title={name} subtitle={(meta as any).description} />}
             <PreviewBlock showCode={false}>
               <Component />
             </PreviewBlock>
-            {rawCode && <CodeBlock>{rawCode}</CodeBlock>}
+            {rawCode && <CodeBlock id={name}>{rawCode}</CodeBlock>}
           </div>
         ) : (
           <div className="tw:prose tw:dark:prose-invert tw:max-w-none">
