@@ -1,6 +1,6 @@
+import rehypeMdxCodeProps from 'rehype-mdx-code-props';
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files';
 import { casing } from '#/helpers/utils.ts';
-import codeImport from 'remark-code-import';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from "remark-gfm"
 
@@ -43,9 +43,12 @@ export default makeSource({
   contentDirInclude: ['components/ui', 'docs'], // This means that only these folders will be processed by Contentlayer
   documentTypes: [Doc],
   mdx: {
-    remarkPlugins: [remarkGfm, codeImport],
+    remarkPlugins: [
+      remarkGfm,
+    ],
     rehypePlugins: [
-      rehypeSlug // auto add ids to headings
+      rehypeSlug, // auto add ids to headings
+      rehypeMdxCodeProps
     ]
   }
 })
