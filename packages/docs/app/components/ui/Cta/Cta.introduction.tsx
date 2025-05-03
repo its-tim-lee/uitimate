@@ -125,7 +125,7 @@ export default () => {
 
       <QA2>
         <QA2Item value="why-one-component">
-          <QA2Trigger>Why using one component instead of separate button, badge, and toggle components?</QA2Trigger>
+          <QA2Trigger id='why-one-component'>Why using one component instead of separate button, badge, and toggle components?</QA2Trigger>
           <QA2Content>
             <p>
               Short answer: because they share the same essence.
@@ -168,7 +168,7 @@ export default () => {
           </QA2Content>
         </QA2Item>
         <QA2Item value="why-not-icon-button">
-          <QA2Trigger>Some component libraries invented "Icon Button", why not just follow through?</QA2Trigger>
+          <QA2Trigger id='why-not-icon-btn'>Some component libraries invented "Icon Button", why not just follow through?</QA2Trigger>
           <QA2Content>
             <p>
               This relates to the previous question about separate components.

@@ -43,6 +43,9 @@ export default makeSource({
   contentDirInclude: ['components/ui', 'docs'], // This means that only these folders will be processed by Contentlayer
   documentTypes: [Doc],
   mdx: {
+    /**
+     * WARN: don't use remark-code-import, it'd not be compatible with rehype-mdx-code-props
+     */
     remarkPlugins: [
       remarkGfm,
     ],

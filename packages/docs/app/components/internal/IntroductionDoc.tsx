@@ -9,6 +9,7 @@ import {
 } from "#/components/ui/Tooltip/Tooltip";
 import { Icon } from "#/components/ui/Icon/Icon";
 import { useHoverTrack } from '#/helpers/hooks/useHoverTrack';
+import { track } from "#/helpers/analytics/ga";
 const QuickDemoSection = () => <h2 id='quick-demo'>Quick Demo</h2>
 
 const QuickStartSection = () => {
@@ -28,7 +29,7 @@ const QuickStartSection = () => {
   )
 }
 
-const DefinitionSection = ({ children, ref }: ComponentProps<'div'>) => {
+const DefinitionSection = ({ children, ref, id }: ComponentProps<'div'>) => {
   const tooltipHandlers = useHoverTrack('check_definition_tooltip');
   return (
     <div>
@@ -45,7 +46,10 @@ const DefinitionSection = ({ children, ref }: ComponentProps<'div'>) => {
       </span>
       <Collapsible>
         <CollapsibleTrigger asChild>
-          <Cta shapes={["badge"]} variant="outline" size="lg" className="tw:data-[state=open]:hidden">
+          <Cta
+            shapes={["badge"]} variant="outline" size="lg" className="tw:data-[state=open]:hidden"
+            onClick={() => track('check_definition', { id })}
+          >
             Click to see more
           </Cta>
         </CollapsibleTrigger>

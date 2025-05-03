@@ -6,7 +6,7 @@ component: sidebar
   <VersatileTabs2Content value="preview-sidebar-chatgpt" demoId="sidebar-chatgpt" showCode={false} />
 </VersatileTabs2>
 
-<DefinitionSection>
+<DefinitionSection id='sidebar'>
 The word "sidebar" actually has at least 2 different meanings:
 * A context, or
 * A physical card (representing the "sidebar" shape)
@@ -61,20 +61,20 @@ Before diving deeper, let's play with a simple demo and peek at the code:
 Remember: the default shortcut for toggling the sidebar is `option/alt + b`.
 </Banner>
 
-<Details>
-  <DetailsTrigger>
-    **DEEP DIVE**: Noticed this is very different from [**<u>Shadcn</u>**'s Sidebar](https://ui.shadcn.com/docs/components/sidebar)?
-  </DetailsTrigger>
-  <DetailsContent>
-    Yep, sharp eye!
+<br />
 
-    Again, everything in our sidebar component stems from [the definition](definition),
-    which is really just common sense / practical observations.
+<details>
+<TrackableSummary id='difference-from-shadcn-sidebar'>**DEEP DIVE**: Noticed this is very different from [**<u>Shadcn</u>**'s Sidebar](https://ui.shadcn.com/docs/components/sidebar)?</TrackableSummary>
 
-    Without a solid spec, component design goes wrong.
-    It might look cool initially, but can lead to disaster later.
-  </DetailsContent>
-</Details>
+  Yep, sharp eye!
+
+  Again, everything in our sidebar component stems from [the definition](definition),
+  which is really just common sense / practical observations.
+
+  Without a solid spec, component design goes wrong.
+  It might look cool initially, but can lead to disaster later.
+   <br />
+</details>
 
 #### 1️⃣ The Sidebar
 
@@ -122,7 +122,7 @@ It's actually the easiest: just set `enableMobileSidebar={false}` on `<SidebarLa
   />
 </VersatileTabs2>
 Now, placement: where should `<Sidebar>` go inside `<SidebarLayout>`? This only matters for desktop:
-```tsx file="#/components/ui/Sidebar/Sidebar.anatomy.txt"
+```tsx file="components/ui/Sidebar/Sidebar.anatomy.txt"
 ```
 After placing it, you MUST declare the directions for both desktop and mobile sidebars using the mandatory `directions` prop on `<SidebarLayout>`.
 Here's the **TypeScript** definition (check the [previous demo](no-mobile-sidebar-demo) for an example):
@@ -133,12 +133,11 @@ Here's the **TypeScript** definition (check the [previous demo](no-mobile-sideba
     mobileSidebarDirection?: "left" | "right" | "top" | "bottom"
   ]
 ```
+<br />
 
-<Details>
-  <DetailsTrigger>
-    **DEEP DIVE**: The placement and `directions` seem kinda redundant?
-  </DetailsTrigger>
-  <DetailsContent>
+<details>
+<TrackableSummary id='difference-from-shadcn-sidebar'>**DEEP DIVE**: The placement and `directions` seem kinda redundant?</TrackableSummary>
+
     Yeah, a bit.
 
     But many sidebar libraries require a similar prop.
@@ -149,8 +148,8 @@ Here's the **TypeScript** definition (check the [previous demo](no-mobile-sideba
     Since you *have* to specify the mobile direction anyway, why not just declare both together? It makes both directions super explicit and clear!
 
     Seen this way, still think it's redundant?
-  </DetailsContent>
-</Details>
+   <br />
+</details>
 
 For other props and concepts, check out these demos and their code snippets:
 <VersatileTabs2 defaultValue="sidebar-in-dialog">
@@ -203,7 +202,7 @@ ___
 <QASection />
 <QA2>
   <QA2Item >
-    <QA2Trigger>Can I put more than one `<Sidebar>` or `<SidebarPeer>` in `<SidebarLayout>`?</QA2Trigger>
+    <QA2Trigger id='multiple-sidebar-in-sidebar-layout'>Can I put more than one `<Sidebar>` or `<SidebarPeer>` in `<SidebarLayout>`?</QA2Trigger>
      <QA2Content>
         You can! But it breaks the implementation policy and might cause issues!
 

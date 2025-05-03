@@ -181,7 +181,7 @@ export default () => {
 
       <QA2>
         <QA2Item value="why-no-padding-margin">
-          <QA2Trigger>Why no default padding, margin, or hover/animation styles?</QA2Trigger>
+          <QA2Trigger id='why-no-common-default-list-style'>Why no default padding, margin, or hover/animation styles?</QA2Trigger>
           <QA2Content>
             <p>
               If we added those, you'd inevitably run into situations where the defaults don't work (happens more often than you'd think!).

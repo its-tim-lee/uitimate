@@ -4,16 +4,17 @@ import {
   TooltipTrigger,
 } from "#/components/ui/Tooltip/Tooltip";
 import { Icon } from "#/components/ui/Icon/Icon";
-
+import { useHoverTrack } from '#/helpers/hooks/useHoverTrack';
 const UsageSection = () => {
+  const tooltipHandlers = useHoverTrack('check_usage_tooltip');
   return (
     <span className="tw:flex tw:items-center tw:gap-2">
       <h2 id="usage">Usage</h2>
 
       <Tooltip delayDuration={0}>
-        <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+        <TooltipTrigger asChild><Icon icon="mingcute:question-line" {...tooltipHandlers} /></TooltipTrigger>
 
-        <TooltipContent className="tw:w-[400px] tw:p-4">
+        <TooltipContent className="tw:w-[400px] tw:p-4 tw:text-lg">
           <p className="tw:text-justify">How you can play this component.</p>
         </TooltipContent>
       </Tooltip>
@@ -22,14 +23,15 @@ const UsageSection = () => {
 }
 
 const DemoScenariosSection = () => {
+  const tooltipHandlers = useHoverTrack('check_demo_scenarios_tooltip');
   return (
     <span className="tw:flex tw:items-center tw:gap-2">
       <h2 id="demo-scenarios">DEMO / Scenario</h2>
 
       <Tooltip delayDuration={0}>
-        <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+        <TooltipTrigger asChild><Icon icon="mingcute:question-line" {...tooltipHandlers} /></TooltipTrigger>
 
-        <TooltipContent className="tw:w-[400px] tw:p-4">
+        <TooltipContent className="tw:w-[400px] tw:p-4 tw:text-lg">
           <p className="tw:text-justify">This demostrates the commmon API/Component usages as well as some common real-world use cases.</p>
         </TooltipContent>
       </Tooltip>
@@ -39,14 +41,15 @@ const DemoScenariosSection = () => {
 
 
 const DemoRecipeSection = () => {
+  const tooltipHandlers = useHoverTrack('check_demo_recipe_tooltip');
   return (
     <span className="tw:flex tw:items-center tw:gap-2">
       <h2 id="demo-recipe">DEMO / Recipe</h2>
 
       <Tooltip delayDuration={0}>
-        <TooltipTrigger asChild><Icon icon="mingcute:question-line" /></TooltipTrigger>
+        <TooltipTrigger asChild><Icon icon="mingcute:question-line" {...tooltipHandlers} /></TooltipTrigger>
 
-        <TooltipContent className="tw:w-[400px] tw:p-4">
+        <TooltipContent className="tw:w-[400px] tw:p-4 tw:text-lg">
           <p className="tw:text-justify">These are the ones that many other libraries might treat them as part of their core components, but we show how those can be implemented without futher encapsulation.</p>
         </TooltipContent>
       </Tooltip>

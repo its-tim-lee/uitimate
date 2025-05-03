@@ -94,7 +94,7 @@ export default () => {
 
       <QA2>
         <QA2Item value="q1">
-          <QA2Trigger>Can we use &lt;HeadingSubtitle&gt; as the only child of &lt;Heading&gt;?</QA2Trigger>
+          <QA2Trigger id='use-only-heading-subtitle'>Can we use &lt;HeadingSubtitle&gt; as the only child of &lt;Heading&gt;?</QA2Trigger>
           <QA2Content>
             <p>
               You can, but it doesn't make sense.

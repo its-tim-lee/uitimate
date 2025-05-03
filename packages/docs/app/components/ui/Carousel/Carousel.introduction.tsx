@@ -49,7 +49,7 @@ export default () => {
 
       <QA2>
         <QA2Item value="embla-api">
-          <QA2Trigger>Any caveats to be aware of?</QA2Trigger>
+          <QA2Trigger id='embla-caveats'>Any caveats to be aware of?</QA2Trigger>
           <QA2Content>
             <p>
               Yes, but it's more about Embla's design than a true caveat.

@@ -100,7 +100,7 @@ export default ({ demoId, anatomy, preview, enableHeading = false, setup }: Comp
     <div>
       {enableHeading && <UsageSection />}
 
-      <VersatileTabs settings={tabSettings} variant="underline" />
+      <VersatileTabs settings={tabSettings} variant="underline" id={demoId} />
 
       <Dialog open={isDialogOpening} onOpenChange={handleDialogOpenChange}>
         <DialogContent>

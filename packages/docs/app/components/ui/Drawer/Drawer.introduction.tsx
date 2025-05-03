@@ -44,7 +44,7 @@ export default () => {
 
       <QA2>
         <QA2Item value="directions">
-          <QA2Trigger>Why no auto-management for open state?</QA2Trigger>
+          <QA2Trigger id='why-always-open-control-in-drawer'>Why no auto-management for open state?</QA2Trigger>
           <QA2Content>
             <p>
               Same deal as our <b><Link className="tw:link" to="./../../dialog/introduction">Dialog</Link></b> - check out the explanation there.
