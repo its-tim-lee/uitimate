@@ -6,6 +6,10 @@ const doc = allDocs.find(d => {
   return d.title?.toLowerCase() === 'introduction';
 });
 
+export const meta = () => ([{
+  title: "Introduction of Uitimate",
+}]);
+
 export default () => {
   return (
     <DocPageLayout>

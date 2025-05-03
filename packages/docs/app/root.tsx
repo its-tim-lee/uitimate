@@ -57,7 +57,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <title>Uitimate</title>
       </head>
       <body className='tw:h-[1000px]!'>
         <InitializeGA />
@@ -76,8 +75,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export function HydrateFallback({ loaderData }: Route.ComponentProps) {
   return <p>Loading...{loaderData.version}</p>;
 }
-
-
 
 export default function App() {
   const navigation = useNavigation();
