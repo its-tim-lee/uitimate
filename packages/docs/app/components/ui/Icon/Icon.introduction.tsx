@@ -53,7 +53,7 @@ export default () => {
 
       <QA2>
         <QA2Item value="icon-naming">
-          <QA2Trigger>
+          <QA2Trigger id='why-iconify'>
             <span>
               Why even use <b className="tw:brand">Iconify</b>?
             </span>
@@ -73,8 +73,8 @@ export default () => {
             </p>
           </QA2Content>
         </QA2Item>
-        <QA2Item value="accessibility">
-          <QA2Trigger>SSR support?</QA2Trigger>
+        <QA2Item value="ssr-support">
+          <QA2Trigger id='ssr-support-in-icon'>SSR support?</QA2Trigger>
           <QA2Content>
             <p className="tw:text-muted-foreground">
               You can use the approach something like:

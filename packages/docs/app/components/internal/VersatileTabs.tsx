@@ -55,7 +55,7 @@ type VersatileTabsProps = {
 /**
  * TODO: able to show code at first, but still allowed to check the preview
  */
-export default ({ settings, className, compact = false, variant = 'underline', ...props }: VersatileTabsProps) => {
+export default ({ id, settings, className, compact = false, variant = 'underline', ...props }: VersatileTabsProps) => {
   const [activeTab, setActiveTab] = useState(kebabCase(toLower(settings[0]?.title)));
   const [demoCodeStrings, setDemoCodeStrings] = useState<Record<string, string>>({});
   const [codeBlockVisibility, setCodeBlockVisibility] = useState<Record<string, boolean>>(
@@ -151,6 +151,7 @@ export default ({ settings, className, compact = false, variant = 'underline', .
                 {$s.showCodeFirst ? (
                   <>
                     <CodeBlock
+                      id={id}
                       showPreviewToggle={$s.showCodeFirst}
                       previewVisible={previewVisibility[tabId]}
                       onTogglePreview={() => togglePreviewVisibility(tabId)}
@@ -180,7 +181,7 @@ export default ({ settings, className, compact = false, variant = 'underline', .
                         {$s.caption}
                       </div>
                     )}
-                    {codeBlockVisibility[tabId] && <CodeBlock>{demoCodeStrings[tabId]}</CodeBlock>}
+                    {codeBlockVisibility[tabId] && <CodeBlock id={id}>{demoCodeStrings[tabId]}</CodeBlock>}
                   </>
                 )}
               </>

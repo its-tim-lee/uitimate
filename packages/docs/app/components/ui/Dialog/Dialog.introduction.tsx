@@ -110,7 +110,7 @@ export default () => {
 
       <QA2>
         <QA2Item value="dialog-vs-modal">
-          <QA2Trigger>Why not just use <b className='tw:brand'>Radix</b>'s dialog?</QA2Trigger>
+          <QA2Trigger id='why-not-radix-dialog'>Why not just use <b className='tw:brand'>Radix</b>'s dialog?</QA2Trigger>
           <QA2Content>
             <p>
               TBH, their DX is pretty rough. Unless you're doing something super basic,
@@ -119,7 +119,7 @@ export default () => {
           </QA2Content>
         </QA2Item>
         <QA2Item value="open-control">
-          <QA2Trigger>Why do I always need to provide <code className='tw:code'>open</code> to the <code className='tw:code'>Dialog</code>?</QA2Trigger>
+          <QA2Trigger id='why-always-open-control-in-dialog'>Why do I always need to provide <code className='tw:code'>open</code> to the <code className='tw:code'>Dialog</code>?</QA2Trigger>
           <QA2Content>
             <p>
               This is 100% best practice. Sure, other libraries let dialogs control themselves to save you a few lines of code.
