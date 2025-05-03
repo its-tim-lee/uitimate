@@ -4,6 +4,10 @@ import DocPageLayout from "#/components/internal/layout/DocPageLayout";
 const changelogFiles = import.meta.glob('../../CHANGELOG.md', { eager: true, as: 'raw' });
 const changelog = Object.values(changelogFiles)[0];
 
+export const meta = () => ([{
+  title: "Site's Changelog",
+}]);
+
 export default () => {
   return (
     <DocPageLayout>

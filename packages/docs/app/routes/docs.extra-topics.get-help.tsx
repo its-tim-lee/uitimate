@@ -4,6 +4,10 @@ import DocPageLayout from "#/components/internal/layout/DocPageLayout";
 const getHelpFiles = import.meta.glob('../docs/get-help.md', { eager: true, as: 'raw' });
 const getHelp = Object.values(getHelpFiles)[0];
 
+export const meta = () => ([{
+  title: "Get Help",
+}]);
+
 export default () => {
   return (
     <DocPageLayout>

@@ -6,6 +6,10 @@ const doc = allDocs.find(d => {
   return d.title?.toLowerCase() === 'read-me-first';
 });
 
+export const meta = () => ([{
+  title: "Uitimate / Setup",
+}]);
+
 export default () => {
   return (
     <DocPageLayout>

@@ -38,6 +38,14 @@ const tryImportRawContent = async (demoId: string) => {
   }
 };
 
+export const meta = ({ data }: { data: Awaited<ReturnType<typeof loader>> }) => {
+  if (!data) return [{ title: "Uitimate component doc" }];
+  const { name, page } = data;
+  return [{
+    title: page ? `${name}/${page}` : `recipe/${name}`
+  }];
+};
+
 /**
  * #2025-04-01
  * HACK: providing `key` from `loader` to `useLoaderData` for retrieving the component
