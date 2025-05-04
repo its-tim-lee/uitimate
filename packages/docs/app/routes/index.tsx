@@ -1,9 +1,12 @@
-import { redirect } from "react-router";
-
-export async function loader() {
-  return redirect("/docs/get-started/introduction");
-}
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 export default function Index() {
-  return null
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/docs/get-started/introduction", { replace: true });
+  }, [navigate]);
+
+  return null;
 }
