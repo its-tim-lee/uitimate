@@ -1,5 +1,15 @@
 {
   "projects": {
     "production": "uitimate-production"
-  }
+  },
+  "targets": {
+    "uitimate-production": {
+      "hosting": {
+        "uiTimate": [
+          "ui-timate"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
