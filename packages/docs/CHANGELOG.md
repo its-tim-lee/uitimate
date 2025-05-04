@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- Able to do redirect correctly from the home page to the intro page
+
 ## 1.0.1
 
 ### Patch Changes
