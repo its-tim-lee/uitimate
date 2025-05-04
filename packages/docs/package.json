@@ -10,6 +10,7 @@
     "#/*": "./app/*"
   },
   "scripts": {
+    "deploy:docs-production:hosting": "firebase deploy --only hosting --project=production -m $npm_package_version",
     "build": "cross-env NODE_ENV=production pnpm build:docs && cross-env NODE_ENV=production pnpm build:app",
     "build:app": "cross-env NODE_ENV=production react-router build",
     "build:docs": "cross-env NODE_ENV=production contentlayer2 build",
