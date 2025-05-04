@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "build/client",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/__spa-fallback.html"
+      }
+    ]
+  }
+}
