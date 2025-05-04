@@ -51,6 +51,10 @@ export default makeSource({
     ],
     rehypePlugins: [
       rehypeSlug, // auto add ids to headings
+      // TODO:
+      // Ideally we'd use this to replace the job of remark-code-import,
+      // but currently it has some challenges such that we can't help but need to temporary use "DirtyFixCodeBlock".
+      // (the challenges are everything about dynamic path used in vite's `meta.glob`)
       rehypeMdxCodeProps
     ]
   }

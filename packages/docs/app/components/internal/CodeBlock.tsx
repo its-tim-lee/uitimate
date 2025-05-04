@@ -6,17 +6,6 @@ import { Icon } from "#/components/ui/Icon/Icon"
 import { useState, useEffect } from "react"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/Collapsible/Collapsible'
 import { track } from "#/helpers/analytics/ga/index.ts"
-/**
- * HACK: this is a workaround to fix incompetent of dynamic import capability of Vite in this file.
- * Without this in the first place, Vite can't sure about the dynamic import like:
- * ```
- * import(`./../../${file}?raw`)
- * ```
- * and it'll fail to load the css file for some reason.
- * So having this import at here is just allowing Vite to process and cache,
- * and that will make the dynamic import work for that css file.
- */
-import '../../style/core.css?raw';
 
 
 interface CodeBlockProps extends Omit<ComponentProps<typeof SyntaxHighlighter>, 'children'> {
@@ -25,29 +14,12 @@ interface CodeBlockProps extends Omit<ComponentProps<typeof SyntaxHighlighter>, 
   onTogglePreview?: () => void;
   children: string;
   expandButtonTitle?: string;
-  file?: string;
 }
 
-export const CodeBlock = ({ id, showPreviewToggle, previewVisible, onTogglePreview, children, expandButtonTitle = 'View Code', file, ...props }: CodeBlockProps) => {
+export const CodeBlock = ({ id, showPreviewToggle, previewVisible, onTogglePreview, children, expandButtonTitle = 'View Code', ...props }: CodeBlockProps) => {
   const [isCopied, setIsCopied] = useState(false)
   const [isOpened, setIsOpened] = useState(false)
-  const [codeString, setCodeString] = useState<string | null>(null);
-
-  useEffect(() => {
-    let isMounted = true;
-    if (file) {
-      import(/* @vite-ignore */ `./../../${file}?raw`)
-        .then(mod => {
-          if (isMounted) setCodeString(mod.default || mod);
-        })
-        .catch(() => {
-          if (isMounted) setCodeString('// Failed to load file');
-        });
-    } else {
-      setCodeString(children as string);
-    }
-    return () => { isMounted = false; };
-  }, [file, children]);
+  const codeString = children as string;
 
   const handleCopy = async () => {
     if (codeString) {
