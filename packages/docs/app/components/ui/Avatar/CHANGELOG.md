@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- d0cb224: Fix: making sure the rendered image will be in circle shape by default
+
 ## 1.0.1
 
 ### Patch Changes
