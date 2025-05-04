@@ -22,6 +22,7 @@ import PathAdjuster from './PathAdjusterWrapper';
 import DownloadHelpers from './DownloadHelpers';
 import { HelpersPathSection, ComponentsPathSection } from './PathPreferenceSection';
 import { TrackableSummary } from './TrackableSummary';
+import { DirtyFixCodeBlock } from './DirtyFixCodeBlock';
 
 const components = {
   PathAdjuster,
@@ -131,6 +132,7 @@ const components = {
   ComponentDependencyNotice,
   CodeBlock,
   TrackableSummary,
+  DirtyFixCodeBlock,
 }
 
 
