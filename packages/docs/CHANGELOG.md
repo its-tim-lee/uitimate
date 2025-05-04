@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.3
+
+### Patch Changes
+
+- Fixed: some code snippet can't be loaded in production
+
 ## 1.0.2
 
 ### Patch Changes
