@@ -144,6 +144,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
                   key={page.href}
                   value={page.fullTitle}
                   onSelect={() => {
+                    setIsOpen(false);
                     track('select_content', { content_id: page.fullTitle });
                     navigate(page.href);
                   }}
