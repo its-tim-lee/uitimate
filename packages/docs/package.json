@@ -10,6 +10,8 @@
     "#/*": "./app/*"
   },
   "scripts": {
+    "cs": "pnpm --dir ../../ run cs",
+    "ver": "pnpm --dir ../../ run ver",
     "deploy:docs-production:hosting": "pnpm build && firebase deploy --only hosting --project=production -m $npm_package_version",
     "build": "cross-env NODE_ENV=production pnpm build:docs && cross-env NODE_ENV=production pnpm build:app",
     "build:app": "cross-env NODE_ENV=production react-router build",
