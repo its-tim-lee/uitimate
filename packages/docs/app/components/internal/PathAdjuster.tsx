@@ -40,7 +40,9 @@ export default function PathAdjuster({ adjustablePath = '', onChange, ...props }
   };
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-    const newPath = e.currentTarget.value;
+    let newPath = e.currentTarget.value;
+    // Automatically remove leading and trailing slashes
+    newPath = newPath.replace(/^\/+/g, '').replace(/\/+$/g, '');
     editingPathRef.current = newPath;
     setPath(newPath);
   };
