@@ -20,6 +20,7 @@ const Comp = () => {
         <Cta
           variant={"outline"}
           className={cn(!date && "tw:text-muted-foreground")}
+          data-testid="date-picker-cta"
         >
           <Icon icon='lucide-calendar' />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
