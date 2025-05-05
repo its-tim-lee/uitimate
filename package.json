@@ -6,6 +6,7 @@
   },
   "scripts": {
     "cs": "changeset && cursor $(ls -t .changeset/*.md | head -n 1)",
-    "ver": "changeset version"
+    "ver": "changeset version",
+    "pub": "changeset publish"
   }
 }
