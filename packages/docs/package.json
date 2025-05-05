@@ -10,7 +10,7 @@
     "#/*": "./app/*"
   },
   "scripts": {
-    "release": "release-it --config release-it.config.ts",
+    "release": "npx release-it --config release-it.config.ts",
     "cs": "pnpm --dir ../../ run cs",
     "ver": "pnpm --dir ../../ run ver",
     "deploy:docs-production:hosting": "pnpm build && firebase deploy --only hosting --project=production -m $npm_package_version",
