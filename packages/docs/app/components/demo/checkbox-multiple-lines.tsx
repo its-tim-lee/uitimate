@@ -1,7 +1,6 @@
 import { Checkbox, type CheckedState } from "#/components/ui/Checkbox/Checkbox.tsx"
 import { Icon } from "#/components/ui/Icon/Icon.tsx"
 import { TooltipContent, TooltipTrigger, Tooltip, } from "#/components/ui/Tooltip/Tooltip.tsx"
-import { Flat } from "#/components/preset/flat/index.tsx"
 import { Heading, HeadingSubtitle, HeadingTitle } from "#/components/ui/Heading/Heading.tsx"
 import { Label } from "#/components/ui/Label/Label.tsx"
 import { useState } from "react"
@@ -9,7 +8,7 @@ import { useState } from "react"
 export default () => {
   const [checked, setChecked] = useState<CheckedState>(true)
   return (
-    <Flat className='tw:w-[500px] tw:flex tw:flex-col tw:gap-4 not-prose'>
+    <div className='tw:bg-background tw:shadow-sm tw:border tw:border-solid tw:border-zinc-200 tw:rounded-[8px] tw:p-6 tw:w-[500px] tw:flex tw:flex-col tw:gap-4 not-prose'>
 
       <p>After permanent deletion of the app:</p>
 
@@ -41,6 +40,6 @@ export default () => {
         </Heading>
       </div>
 
-    </Flat>
+    </div>
   )
 }
