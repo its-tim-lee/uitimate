@@ -1,5 +1,12 @@
 ## Changelog
 
+## 1.0.6
+
+### Patch Changes
+
+- 53012c2: Fix site's searchbar
+- 56610ea: Fix: should be able to scroll to the right element in Sidebar intro doc from clicking "the definition"
+
 ## 1.0.5
 
 ### Patch Changes
