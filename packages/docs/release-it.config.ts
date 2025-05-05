@@ -4,6 +4,7 @@ const config: Config & { increment: boolean; changelog: null } = {
   increment: false, // Do not bump any version since we'll do so using "changeset version"
   changelog: null,
   git: {
+    changelog: undefined,
     commit: true,
     commitMessage: "chore(release): v${version}",
     tag: true,
