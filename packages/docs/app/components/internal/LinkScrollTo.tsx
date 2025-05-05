@@ -62,7 +62,7 @@ const LinkScrollTo = ({
   offset = -80,
   duration = 200,
   highlightDuration = 2000,
-  highlightClasses = ['tw:ring-1', 'tw:ring-muted-foreground/80', 'tw:rounded-md', 'tw:transition-all'],
+  highlightClasses = ['tw:ring-2', 'tw:ring-muted-foreground', 'tw:rounded-md', 'tw:transition-all'],
   children,
   maxRetries = 10
 }: LinkScrollToProps) => {
@@ -80,7 +80,8 @@ const LinkScrollTo = ({
       scroller.scrollTo(to, {
         duration,
         delay: 0,
-        offset
+        offset,
+        containerId: 'doc-scroll-container',
       });
       setHasScrolled(true);
       setRetryCount(0);
