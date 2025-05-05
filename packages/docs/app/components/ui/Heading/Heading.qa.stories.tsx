@@ -13,28 +13,6 @@ export default {
   tags: ['qa'],
 } as Meta;
 
-/**
- * #202504092
- */
-export const SixLevels = {
-  render: () => <Heading6Levels />
-};
-
-/**
- * #202504091
- */
-export const OnlyTitle = {
-  render: () => <HeadingOnlyTitle />
-};
-
-export const Article = {
-  render: () => <HeadingArticle />
-};
-
-export const Card = {
-  render: () => <HeadingCard />
-}
-
 export const Alert = {
   render: () => <HeadingAlert />
 }
