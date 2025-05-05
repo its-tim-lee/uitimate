@@ -4,35 +4,38 @@ import { tv, type VariantProps } from 'tailwind-variants'
 import { casing } from "#/helpers/utils.ts"
 
 const HeadingContext = createContext<{ size: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' }>({ size: 'h1' })
-// FIXME: intergate with https://github.com/tailwindlabs/tailwindcss-typography
 const headingVariants = tv({
   slots: {
-    root: "tw:flex tw:flex-col tw:gap-1.5 tw:text-left tw:mb-3 tw:relative",
+    root: "tw:flex tw:flex-col tw:text-left tw:mb-2 tw:relative",
     title: "tw:leading-none tw:text-foreground tw:tracking-tight tw:scroll-m-20 tw:relative",
     subtitle: "tw:text-base tw:text-muted-foreground",
   },
   variants: {
     size: {
       h1: {
-        title: "tw:text-3xl tw:font-bold",
+        root: "tw:gap-3.5",
+        title: "tw:font-black tw:text-4xl",
       },
       h2: {
-        title: "tw:text-2xl tw:font-semibold",
+        root: "tw:gap-3",
+        title: "tw:font-extrabold tw:text-3xl",
       },
       h3: {
-        title: "tw:text-xl tw:font-semibold",
+        root: "tw:gap-2.5",
+        title: "tw:font-bold tw:text-2xl",
       },
       h4: {
-        title: "tw:text-lg tw:font-semibold",
+        root: "tw:gap-2",
+        title: "tw:font-semibold tw:text-xl",
       },
       h5: {
-        title: "tw:text-base tw:font-semibold",
+        root: "tw:gap-1.5",
+        title: "tw:font-medium tw:text-lg",
       },
       h6: {
-        title: "tw:text-sm tw:font-medium", // FIXME: (do we really need to support this very case this way?) use case: checkbox label
-        subtitle: "tw:text-sm", // FIXME: is this really a good idea?
-        root: "tw:mb-0", // FIXME: is this really a good idea? cuz applying `tw:mb-0` on the root element from user is fucking easy
-      }
+        root: "tw:gap-1",
+        title: "tw:font-normal tw:text-base",
+      },
     }
   }
 })
