@@ -45,7 +45,7 @@ export default function TerminalCommandInstructor({
   const copy = () => {
     navigator.clipboard.writeText(cliForTab(cliTab));
     setCopied(true);
-    track('copy_cli_command', { manager: cliTab, command: cli });
+    track('copy_cli_command', { category: cliTab, content: cli });
     setTimeout(() => setCopied(false), 1500);
   }
 
