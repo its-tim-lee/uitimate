@@ -18,9 +18,11 @@ const config: Config & { increment: boolean; changelog: null } = {
   },
   github: {
     release: true,
-    releaseName: "v${version}",
-    releaseNotes: "See the changelog for release notes: https://github.com/its-tim-lee/uitimate/blob/main/packages/docs/CHANGELOG.md#${version}",
-    tokenRef: "GITHUB_TOKEN"
+    releaseName: "v${version}", // @ts-ignore
+    releaseNotes: ({ version }) => {
+      return `See the changelog for full details: \
+https://github.com/its-tim-lee/uitimate/blob/main/packages/docs/CHANGELOG.md#${version}`;
+    },
   },
   npm: {
     publish: false
