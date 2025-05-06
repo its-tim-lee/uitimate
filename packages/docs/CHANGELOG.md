@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.7
+
+### Patch Changes
+
+- force bump
+
 ## 1.0.6
 
 ### Patch Changes
