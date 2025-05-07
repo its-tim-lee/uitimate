@@ -1,0 +1,15 @@
+{
+  "ignore": {
+    "customPatterns": [
+      ".npmrc",
+      "LICENSE.md",
+      "README.md",
+      "CHANGELOG.md",
+      ".vscode/",
+      ".github/",
+      ".changeset/",
+      "packages/examples/",
+      "packages/docs/.firebase"
+    ]
+  }
+}
