@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.8
+
+### Patch Changes
+
+- Add a temporary meta title to the home route
+
 ## 1.0.7
 
 ### Patch Changes
