@@ -17,6 +17,7 @@ import siteData, { type DocTreeItem } from "#/data/site";
 import hotkeys from "hotkeys-js"
 import { track } from "#/helpers/analytics/ga/index.ts";
 import { useNavigate } from 'react-router';
+import { trim } from "#/helpers/utils.ts";
 
 // Define a type for the structured search results
 type SearchablePage = {
@@ -103,7 +104,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
     extractLinksRecursive(siteData.docsTree, []);
     return result;
   }, []);
-
+  const trackSearch = (term: string) => trim(term) && track('search', { search_term: trim(term) })
   return (
     <>
       <Cta
@@ -132,7 +133,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
             ref={inputRef}
             placeholder="Type a command or search..."
             value={search}
-            onBlur={() => track('search', { search_term: search })}
+            onBlur={() => trackSearch(search)}
             onValueChange={setSearch}
           />
           <CommandList ref={listRef}>
