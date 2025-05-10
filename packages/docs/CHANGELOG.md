@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.9
+
+### Patch Changes
+
+- Add title to the home page
+
 ## 1.0.8
 
 ### Patch Changes
