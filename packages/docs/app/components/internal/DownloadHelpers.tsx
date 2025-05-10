@@ -55,7 +55,7 @@ export default function DownloadHelpers() {
         track('download_helpers');
       }
     } catch (e: any) {
-      track('exception', { error: serializeError(e), description: 'fail to download helpers' });
+      track('exception', { error: JSON.stringify(serializeError(e)), description: 'fail to download helpers' });
       // Let the useFileSystemDownload hook handle File System API errors
       if (!e.message.includes('File System API')) {
         toast('Download failed', { description: e.message });

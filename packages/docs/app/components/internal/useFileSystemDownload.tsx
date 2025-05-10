@@ -42,7 +42,7 @@ export function useFileSystemDownload() {
       }
       return true;
     } catch (e: any) {
-      track('exception', { error: serializeError(e), description: 'failed to perform File System API' });
+      track('exception', { error: JSON.stringify(serializeError(e)), description: 'failed to perform File System API' });
       setError(e.message);
       return false;
     } finally {

@@ -176,7 +176,7 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
       });
       track('download_component', { id: component });
     } catch (e: any) {
-      track('exception', { error: serializeError(e), description: `fail to download ${component} source files` });
+      track('exception', { error: JSON.stringify(serializeError(e)), description: `fail to download ${component} source files` });
       setError(e.message);
     }
     setDownloading(false);
