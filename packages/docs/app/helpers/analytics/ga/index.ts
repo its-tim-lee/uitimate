@@ -8,22 +8,34 @@ declare global {
 }
 
 export const InitializeGA = () => {
+  const fireEventInDebugModeOnDemand = () => {
+    let debugMode = false;
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const isInternalTraffic = urlParams.has('debug');
+      const hasEverSetInternalTraffic = localStorage.getItem('debug') === '1';
+      if (isInternalTraffic) localStorage.setItem('debug', '1');
+      debugMode = isInternalTraffic || hasEverSetInternalTraffic;
+    } catch (e) {
+    }
+    if (window.gtag) {
+      window.gtag('config', measurementId, debugMode ? { traffic_type: 'internal' } : {});
+    }
+  }
+  const measurementId = 'G-NG3646V7SM';
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') return;
-    const measurementId = 'G-NG3646V7SM';
     const script = document.createElement("script");
     script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
     script.async = true;
     script.onload = () => {
       window.dataLayer = window.dataLayer || [];
-      window.gtag = function () {
-        window.dataLayer.push(arguments);
-      };
+      window.gtag = function () { window.dataLayer.push(arguments); };
       window.gtag('js', new Date());
-      window.gtag('config', measurementId);
+      fireEventInDebugModeOnDemand();
     }
     document.head.appendChild(script);
-  }, []);
+  }, [])
   return null;
 }
 
