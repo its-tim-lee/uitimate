@@ -2,7 +2,8 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "@changesets/cli": "2.28.1"
+    "@changesets/cli": "2.28.1",
+    "playwright": "1.52.0"
   },
   "scripts": {
     "cs": "changeset && cursor $(ls -t .changeset/*.md | head -n 1)",
