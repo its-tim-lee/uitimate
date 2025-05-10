@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.12
+
+### Patch Changes
+
+-  no track searching-term if the term is empty
+
 ## 1.0.11
 
 ### Patch Changes
