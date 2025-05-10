@@ -174,6 +174,7 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
       toast('All source files copied successfully!', {
         description: 'All selected component source files have been saved to your folder.'
       });
+      track('download_component', { id: component });
     } catch (e: any) {
       track('exception', { error: serializeError(e), description: `fail to download ${component} source files` });
       setError(e.message);

@@ -52,6 +52,7 @@ export default function DownloadHelpers() {
         toast('Helpers folder downloaded!', {
           description: 'The "helpers" folder has been saved to your folder.'
         });
+        track('download_helpers');
       }
     } catch (e: any) {
       track('exception', { error: serializeError(e), description: 'fail to download helpers' });
