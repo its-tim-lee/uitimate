@@ -17,7 +17,7 @@
     "build": "cross-env NODE_ENV=production pnpm build:docs && cross-env NODE_ENV=production pnpm build:app",
     "build:app": "cross-env NODE_ENV=production react-router build",
     "build:docs": "cross-env NODE_ENV=production contentlayer2 build",
-    "dev:app": "react-router dev",
+    "dev:app": "react-router dev --host",
     "dev:cl": "contentlayer2 dev",
     "dev": "pnpm build:docs && npx concurrently \"pnpm dev:app\" \"pnpm dev:cl\"",
     "server": "cross-env NODE_ENV=production react-router-serve ./build/server/index.js",
