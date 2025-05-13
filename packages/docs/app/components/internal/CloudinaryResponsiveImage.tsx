@@ -11,9 +11,9 @@ interface CloudinaryResponsiveImageProps {
 // https://res.cloudinary.com/dioorltki/image/upload/v1747084795/ai.png
 
 const BASE_URL = 'https://res.cloudinary.com/dioorltki/image/upload/';
-const WIDTHS = [400, 768, 1920];
+const WIDTHS = [768, 960, 1920]; // Add more breakpoints as needed
 const TRANSFORMATION = 'q_auto,f_auto';
-const SIZES = '(max-width: 400px) 400px, (max-width: 768px) 768px, 1920px';
+const SIZES = '100vw'; // Adjust this to match your layout, e.g., '100vw' for full width
 
 // Map imageId to version string
 const IMAGE_VERSION_MAP: Record<string, string> = {
@@ -22,7 +22,9 @@ const IMAGE_VERSION_MAP: Record<string, string> = {
   'editor.png': 'v1747084794'
 };
 
-const buildCldSrcSet = (imageId: string) => WIDTHS.map(w => `${buildCldURI({ imageId, width: w })} ${w}w`).join(', ');
+const buildCldSrcSet = (imageId: string) =>
+  WIDTHS.map(w => `${buildCldURI({ imageId, width: w })} ${w}w`).join(', ');
+
 const buildCldURI = ({ imageId, width }: { imageId: string, width: number }) => {
   const version = IMAGE_VERSION_MAP[imageId];
   const versionSegment = version ? `${version}/` : '';
@@ -35,7 +37,6 @@ const buildCldURI = ({ imageId, width }: { imageId: string, width: number }) => 
  */
 const CloudinaryResponsiveImage: React.FC<CloudinaryResponsiveImageProps> = ({ imageId, alt, className, children }) => {
   const isDev = process.env.NODE_ENV === 'development';
-
   if (isDev) return <>{children}</>;
   return (
     <picture>
