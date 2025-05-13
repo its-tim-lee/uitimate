@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.14
+
+### Patch Changes
+
+- polish the relevant docs
+
 ## 1.0.13
 
 ### Patch Changes
