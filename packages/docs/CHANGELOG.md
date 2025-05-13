@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.15
+
+### Patch Changes
+
+- Be able to redirect back to homepage by clicking the brand name on site-header
+
 ## 1.0.14
 
 ### Patch Changes
