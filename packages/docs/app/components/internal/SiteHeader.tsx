@@ -33,7 +33,7 @@ const SiteHeader: FC<SiteHeaderProps> = ({ onSidebarToggle }) => {
                 <Icon icon="lucide:align-left" />
               </Cta>
             )}
-            <a href="/docs/get-started/introduction" className="tw:mr-4 tw:flex tw:items-center tw:gap-2 tw:lg:mr-6">
+            <a href="/" className="tw:mr-4 tw:flex tw:items-center tw:gap-2 tw:lg:mr-6">
               {/* <Logo className="tw:h-6 tw:w-6" /> */}
               <span className="tw:font-bold tw:inline-block"> Uitimate </span>
             </a>
