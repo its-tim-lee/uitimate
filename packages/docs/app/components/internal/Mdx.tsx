@@ -1,3 +1,4 @@
+import { Cta } from '#/components/ui/Cta/Cta';
 import { useMDXComponent } from '#/helpers/hooks/useMDXComponent'
 import { type ComponentProps } from 'react';
 import ComponentPageUsage from './ComponentPageUsage.tsx';
@@ -23,12 +24,15 @@ import DownloadHelpers from './DownloadHelpers';
 import { HelpersPathSection, ComponentsPathSection } from './PathPreferenceSection';
 import { TrackableSummary } from './TrackableSummary';
 import { DirtyFixCodeBlock } from './DirtyFixCodeBlock';
+import CloudinaryResponsiveImage from './CloudinaryResponsiveImage';
 
 const components = {
+  Link,
   PathAdjuster,
   TerminalCommandInstructor,
   Pnpm,
   Yarn,
+  Cta,
   Npm,
   DependenciesListingSection,
   OneClickSetupSection,
@@ -133,6 +137,7 @@ const components = {
   CodeBlock,
   TrackableSummary,
   DirtyFixCodeBlock,
+  CloudinaryResponsiveImage,
 }
 
 

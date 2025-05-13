@@ -174,6 +174,15 @@ const VersatileTabs2Content = ({
   // Use compact from props or context, with props taking precedence
   const resolvedCompact = compact !== undefined ? compact : contextCompact;
 
+  // If no demoId, just render children in the tab content
+  if (!demoId) {
+    return (
+      <TabsContentPrimitive value={value} className={cn('tw:p-4 tw:py-0', className)} {...props}>
+        {children}
+      </TabsContentPrimitive>
+    );
+  }
+
   useEffect(() => {
     if (value) {
       registerDemo(value, demoId, showCodeFirst);
