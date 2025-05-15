@@ -1,20 +1,15 @@
 import { generateSitemapIndex } from "@forge42/seo-tools/sitemap"
-import { createDomain } from "#/helpers/http"
-import type { Route } from "./+types/sitemap-index[.]xml"
+import data from "#/data/repo.ts"
 
-export const loader = async ({ request }: Route.LoaderArgs) => {
-  const domain = createDomain(request)
+export const loader = async () => {
+  const domain = data.domain;
+  const today = new Date().toISOString().split('T')[0]; // e.g., "2024-07-17"
   const sitemaps = generateSitemapIndex([
     {
-      url: `${domain}/sitemap/en.xml`,
-      lastmod: "2024-07-17",
-    },
-    {
-      url: `${domain}/sitemap/bs.xml`,
-      lastmod: "2024-07-17",
+      url: `${domain}/sitemap/xml`,
+      lastmod: today,
     },
   ])
-
   return new Response(sitemaps, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",

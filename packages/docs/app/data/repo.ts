@@ -1,4 +1,5 @@
 export default {
   owner: 'its-tim-lee',
-  name: 'uitimate'
+  name: 'uitimate',
+  domain: 'https://ui-timate.web.app'
 }

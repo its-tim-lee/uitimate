@@ -44,6 +44,11 @@ export const links: Route.LinksFunction = () => [
     rel: 'icon',
     type: "image/svg+xml",
     href: "/favicon.svg"
+  },
+  {
+    rel: "sitemap",
+    type: "application/xml",
+    href: "/sitemap-index.xml"
   }
 ];
 
