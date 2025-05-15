@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.17
+
+### Patch Changes
+
+- Make robots and sitemap work to support SEO
+
 ## 1.0.16
 
 ### Patch Changes
