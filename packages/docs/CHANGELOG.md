@@ -1,5 +1,11 @@
 ## Changelog
 
+## 1.0.16
+
+### Patch Changes
+
+- verify site ownership
+
 ## 1.0.15
 
 ### Patch Changes
