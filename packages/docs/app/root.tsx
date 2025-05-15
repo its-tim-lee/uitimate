@@ -54,6 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         {/* <script dangerouslySetInnerHTML={{ __html: colorSchemeCode.default }} /> */}
         <meta charSet="utf-8" />
+        <meta name="google-site-verification" content="LWCqUKGvIas_spsJ3Of98UmO-Aq1TJPINL1-0KfvL9w" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
