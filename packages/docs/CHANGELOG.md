@@ -1,4 +1,8 @@
 ## Changelog
+> Note that, any change to the entire site will contribute to this changelog, and it's maintained independently from the component's.
+> (ie., any component source code change will contribute to the component's changelog)
+>
+> So, DO NOT CONFUSED!
 
 ## 1.0.18
 
@@ -108,11 +112,6 @@
 ### Patch Changes
 
 - Update to the latest React & React-router to fix the incompatible issue of ssr=false with prerendering
-
-> Note that, any change to the entire site will contribute to this changelog, and it's maintained independently from the component's.
-> (ie., any component source code change will contribute to the component's changelog)
->
-> So, DO NOT CONFUSED!
 
 ## 1.0.0
 
