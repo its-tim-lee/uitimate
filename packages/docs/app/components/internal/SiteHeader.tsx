@@ -50,7 +50,7 @@ const SiteHeader: FC<SiteHeaderProps> = ({ onSidebarToggle }) => {
             <div
               className="tw:flex tw:flex-1 tw:items-center tw:justify-between tw:gap-2 tw:md:justify-end"
             >
-              <Searchbar className="tw:flex-none" />
+              <Searchbar/>
 
               <nav className="tw:flex tw:items-center tw:gap-0.5">
                 <TwitterButton />

@@ -116,7 +116,7 @@ export default ({ ...props }: ComponentProps<typeof Cta>) => {
         {...props}
         className={cn(
           'tw:rounded-2xl tw:bg-muted/50 tw:font-normal tw:text-muted-foreground tw:shadow-none',
-          'tw:flex tw:justify-start'
+          'tw:justify-start tw:hidden tw:sm:flex'
         )}
       >
         <Icon icon='lucide:search' />

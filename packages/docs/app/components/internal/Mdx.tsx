@@ -25,8 +25,9 @@ import { HelpersPathSection, ComponentsPathSection } from './PathPreferenceSecti
 import { TrackableSummary } from './TrackableSummary';
 import { DirtyFixCodeBlock } from './DirtyFixCodeBlock';
 import CloudinaryResponsiveImage from './CloudinaryResponsiveImage';
-
+import GithubButton from './GithubButton';
 const components = {
+  GithubButton,
   Link,
   PathAdjuster,
   TerminalCommandInstructor,
