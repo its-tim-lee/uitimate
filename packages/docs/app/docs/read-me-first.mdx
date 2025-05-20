@@ -3,29 +3,28 @@ title: read-me-first
 ---
 ## Setup **Uitimate**
 
-Unlike **shadcn/ui**, we have almost no installation steps with far more easier setup.
-You're good to go as long as you're in a 1) React-dedicated environment (e.g., **Next**, **Remix**, …) with 2) **TypeScript**, and 3) **Tailwind** v4 enabled.
+Unlike **shadcn/ui**, our setup is much easier and requires almost no installation steps.
+You're ready to go as long as you have:
+1) a React-based project (e.g., **Next.js**, **Remix**, etc.),
+2) **TypeScript**, and
+3) **Tailwind CSS** v4 enabled.
 
-So, prepare one locally, and the guide below shows you how to configure it to use **Uitimate**.
-
-> We've prepared [one](https://github.com/its-tim-lee/uitimate/tree/main/packages/examples/uitimate-starter) for you, but note that,
-> you still need to review all content and do the relevant setup along the way below,
-> because some of the setup are very different from the traditional sense of "installation", "configuration", or whatever in other technical documents.
+We've prepared a [starter project](https://github.com/its-tim-lee/uitimate/tree/main/packages/examples/uitimate-starter) for you. However, you should still review all the content and follow the setup steps below, as some parts of our setup differ significantly from traditional "installation" or "configuration" processes you may have seen in other documentation.
 
 ### 1️⃣ &nbsp; Configure path alias in your project
 
-By default, our component source code and many demo codes use file paths like:
+By default, our component source code and many demo examples use file paths like:
 ```ts
 import ... from "#/..."
 ```
-where `#` is called an alias, and it must be configured ahead of time so that our code will work in your project.
+Here, `#` is an alias that must be configured in advance for our code to work in your project.
 
 <details className="tw:cursor-pointer">
 <TrackableSummary id="setup__why-this-alias-symbol">**DEEP DIVE**: Why `#`? Why not `@`?</TrackableSummary>
 <div className="tw:pl-4">
   Using `#` is actually the best practice, because it leverages **Node.js**'s native subpath imports ⎯
-  entries in the "imports" field of your package.json must start with `#` to distinguish them from package specifiers,
-  so `import foo from '#src/foo.js'` works out-of-the-box across **Node**, test runners, and bundlers without plugins or polyfills.
+  entries in the "imports" field of your package.json must start with `#` to distinguish them from package names,
+  so `import foo from '#src/foo.js'` works out of the box across **Node.js**, test runners, and bundlers, without plugins or polyfills.
 
   In contrast, @-based aliases (e.g. `@/src`) must be manually configured for each tool ⎯
   **Vite** requires explicit setup in the configuration file (and matching paths in tsconfig.json),
@@ -46,7 +45,7 @@ Now follow the steps below to set up the corresponding files:
 <details className="tw:cursor-pointer">
 <TrackableSummary id="setup__tsconfig-instruction">tsconfig.json</TrackableSummary>
   <div>
-  Usually you will have this **TypeScript** file, but the name can be slightly different (e.g., maybe it's called `tsconfig.app.json`) depends on your choice of scaffolding tool (e.g., **Vite**, **Webpack**, …).
+  Usually you will have this configuration file for the **TypeScript**, but the name can be slightly different (e.g., maybe it's called `tsconfig.app.json`) depending on your choice of scaffolding tool (e.g., **Vite**, **Webpack**, …).
   ```json
   {
     "compilerOptions": {
@@ -99,14 +98,9 @@ Now follow the steps below to set up the corresponding files:
 
 ### 2️⃣ &nbsp; Configure path preferences on this site
 
-Many of our code examples have import statements with certain paths,
-so if those code samples use path preferences that don't match your local environment setup,
-how can you use ours in your project without hassle or refactoring?
+Many of our code examples use specific import paths (see below). If these paths don't match your local setup, it can be a hassle to use our code without refactoring.
 
-That's why you need to do this here, so that all our code shown on this site will use the same setup as yours!
-
-So our code currently would only have two path preferences (and probably will not have more in the future),
-so please follow the instructions below to MAKE SURE they match your local environment setup:
+Currently, there're only two path preferences (and probably won't have more in the future), so please follow the instructions below to ensure they match your local environment setup:
 
 <HelpersPathSection />
 
@@ -114,7 +108,7 @@ so please follow the instructions below to MAKE SURE they match your local envir
 
 <br/>
 
-### 3️⃣ &nbsp; Download **<u>Uitimate</u>**'s base dependencies
+### 3️⃣ &nbsp; Download base dependencies
 Since our code uses some dependencies under the hood, you need to install them in your project:
 
 <TerminalCommandInstructor cli="npm add @tailwindcss/typography tailwind-merge tailwind-variants tailwindcss-animate lodash-es change-case clsx" />
@@ -122,26 +116,23 @@ Since our code uses some dependencies under the hood, you need to install them i
 <br/>
 
 ### 4️⃣ &nbsp; Configure **Tailwind**
-Make sure you've setup the **Tailwind** v4 in your project, and copy the following configuration for **Tailwind** to a CSS file. Where this file should be executed,
-where it should be placed, and even what its name should be are up to you, but make sure it's used in the project
-(typically it should be imported in the application entry file),
-otherwise all our components in your project will look UGLY!
+Make sure you've set up **Tailwind CSS v4** in your project, and copy the following configuration into a CSS file.
+You can choose where to place and import this file, but it must be included in your project (typically, it should be imported in your application's entry file).
+Otherwise, all our components will not be styled correctly.
 
 <DirtyFixCodeBlock id="core-css" />
 
 <br />
 
 <Banner>
-Notice that we use the prefix `tw` in the code above (i.e., stands for **Tailwind**), which is the best practice:
-now any of your **Tailwind** classes can only be used by prepending `tw:` (e.g., `tw:text-center`).
+Notice that we use the prefix `tw` in the code above (short for **Tailwind**), which we recommend as best practice: all your **Tailwind** classes should be used by prepending `tw:` (e.g., `tw:text-center`).
 </Banner>
 
 <br/>
 
 ### 5️⃣ &nbsp; Party time &nbsp; 🎉
-Now, just head to any of our component pages to take a look,
-and if you're willing to use that component, go to its "setup page" to follow the instructions there,
-and just start to play with **Uitimate**!
+Now, just head to any of our component pages to explore. If you want to use a component, go to its setup page and follow the instructions.
+You're ready to start using **Uitimate**!
 
 
 

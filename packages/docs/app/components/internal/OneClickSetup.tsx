@@ -189,39 +189,34 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
         onClose={() => setDialogOpen(false)}
         featureName="Save Source Files"
       />
-      <strong>1️⃣ &nbsp; Have finished the setup:</strong>
+      <strong>1️⃣ &nbsp; Make sure you have finished the global setup:</strong>
       <ul className='tw:list-disc tw:pl-4 tw:mb-10'>
         <li>
-          <a href="/docs/get-started/setup/read-me-first" className='tw:link'>Setup Uitimate</a>
+          If you haven't, please <a href="/docs/get-started/setup/read-me-first" className='tw:link'>do so.</a>
         </li>
       </ul>
       <strong>2️⃣ &nbsp; Install vendor dependencies:</strong>
       {analyzing ? (
         <div className="tw:flex tw:items-center tw:gap-2 tw:pt-4">
           <span className="tw:animate-spin">🔄</span>
-          <span>Analyzing what dependencies to be installed...</span>
+          <span>Analyzing which dependencies need to be installed...</span>
         </div>
       ) : cli && cli.trim() !== 'pnpm add' ? (
         <TerminalCommandInstructor cli={cli}>{children}</TerminalCommandInstructor>
       ) : (
-        <div className="tw:pt-4">Nothing needed to install.</div>
+        <div className="tw:pt-4">Nothing needed to be installed.</div>
       )}
 
       <br />
-      <strong>3️⃣ &nbsp; Install relevant files:</strong>
+      <strong>3️⃣ &nbsp; Install component:</strong>
       <br />
-      <Banner className='tw:my-3'>
-        Since you've accepted <span className='tw:code'>{preferences.componentsPath}</span> as the path to store all our components in
-        {` `} <a href='/docs/get-started/setup/read-me-first' className='tw:link'>Setup Uitimate</a>,
-        so, after pressing the button below, you <span className='tw:text-destructive'>MUST</span> pick the same path!
-      </Banner>
       <Cta onClick={handleDownload} disabled={downloading} className="tw:mt-2 tw:w-fit tw:relative">
         <Icon icon='lucide:cloud-download' />
         {downloading ? 'Saving...' : 'Save Source Files'}
       </Cta>
       <details className='tw:mt-4'>
         <TrackableSummary id="save_source_files">
-          Watch how to use "Save Source Files" correctly if this is your first time
+          Learn how to use "Save Source Files" correctly if this is your first time
         </TrackableSummary>
         <div>
           <p>
@@ -230,23 +225,18 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
           </p>
 
           <p>
-            Your browser will ask for permission—just accept all prompts,
-            and it will literally save files to your local folder (i.e., no zip file involved). That's why you can use the component immediately.
+            Your browser will ask for permission—just accept all the prompts, and the files will be saved directly to your local folder (no zip file involved). That’s why you can use the component immediately.
           </p>
           <Banner>
-            The source files are just "component folders". Currently,
-            we don't recommend changing those folder names,
-            nor extracting the files from them,
-            because that would break best practices, and you may have trouble getting updates in the future.
+            The "source files" are just one or more "component folders". Currently,
+            We don’t recommend renaming these folders or moving the files, as this could break best practices and may cause issues with future updates
           </Banner>
           <hr />
           <p>
             If you're curious why we use this API, the simple answer is: because we adopt a VPM (Virtual Package Management) approach.
           </p>
           <p>
-            In fact, explaining all the relevant concepts would require an article,
-            so a slightly longer answer is: under the VPM architecture, no NPM command can be used to install the component,
-            so how can you use the component then?
+            Explaining all the details would require a full article, but in short: with VPM, you can’t use NPM commands to install the component. So how do you use it?
           </p>
           <p>
             One way is to create a CLI tool to do the work,
@@ -255,18 +245,15 @@ export default function OneClickSetup({ component, additionalFiles = [], childre
             That can be frustrating!
           </p>
           <p>
-            That's why we use the File System API: you can literally just do a few clicks—and often just one click—
-            and the component will be in your project. Incredibly easy!
+            That’s why we use the File System API: with just a few clicks—often only one—the component will be added to your project. It’s incredibly easy!
           </p>
           <p>
             You might ask, "But does using that API mean it can download the component regardless of the development environment's complexity?"
           </p>
           <p>
-            Well, we've certainly found that it's much better, and even though there are some complexities that aren't covered,
-            this feature is evolving, so it shouldn't be a problem!
+            We’ve found this approach works much better overall. While there are still some edge cases, the feature is evolving and should cover most needs.
 
-            Plus, we use that API for other purposes as well, such as in the future,
-            making it possible for you to get component (or relevant info/files) updates without any hassle.
+            In the future, we’ll also use this API to make it easy for you to receive updates to components and related files.
           </p>
         </div>
       </details>
