@@ -1,6 +1,12 @@
 ## Changelog
   > Note: This is NOT the library's changelog, but the documentation's.
 
+## 1.0.20
+
+### Patch Changes
+
+- Fix doc
+
 ## 1.0.19
 
 ### Patch Changes
