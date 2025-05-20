@@ -1,14 +1,11 @@
 ## Changelog
+  > Note: This is NOT the library's changelog, but the documentation's.
 
 ## 1.0.19
 
 ### Patch Changes
 
 - b71f0f5: allow anybody get the latest robots.txt in anytime
-  > Note that, any change to the entire site will contribute to this changelog, and it's maintained independently from the component's.
-  > (ie., any component source code change will contribute to the component's changelog)
-  >
-  > So, DO NOT CONFUSED!
 
 ## 1.0.18
 
