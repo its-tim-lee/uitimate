@@ -114,6 +114,7 @@
     "@dotenvx/dotenvx": "^1.39.0",
     "@react-router/dev": "^7.5.3",
     "@react-router/fs-routes": "^7.5.3",
+    "@stagewise/toolbar-react": "0.1.2",
     "@storybook/addon-docs": "^8.6.10",
     "@storybook/addon-essentials": "^8.6.10",
     "@storybook/addon-interactions": "^8.6.10",
